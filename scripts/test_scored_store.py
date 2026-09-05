@@ -90,6 +90,7 @@ class MemoryStoreTests(unittest.TestCase):
             "hunt_fit": True,
             "scam_risk": "low",
             "reason": "bundle extra",
+            "has_score": True,
             "source": "closet_crawl",
         }
         watch = {"name": "Craft ADV M-L", "country": "ro", "target_type": "men's"}
@@ -239,6 +240,47 @@ class MemoryStoreTests(unittest.TestCase):
                 store, [1], [watch], exclude_ids={"10"}, scored_store_mod=ss,
             )
         self.assertEqual(revived, [])
+
+
+    def test_listing_upsert_does_not_wipe_score(self):
+        store = ss.MemoryScoredStore()
+        scored = ss.row_from_item_score(
+            item={
+                "id": 1,
+                "title": "dress",
+                "price": {"amount": "40", "currency_code": "RON"},
+                "user": {"id": 9, "login": "s"},
+                "_profile": {"country_code": "ro"},
+            },
+            score={
+                "deal_score": 8,
+                "value_band": "hunt",
+                "hunt_fit": True,
+                "scam_risk": "low",
+                "reason": "good",
+            },
+            hunt_name="H",
+            source="search",
+        )
+        store.upsert_score(scored)
+        listing_only = ss.row_from_item(
+            {
+                "id": 1,
+                "title": "dress updated",
+                "price": {"amount": "35", "currency_code": "RON"},
+                "user": {"id": 9, "login": "s"},
+                "_profile": {"country_code": "ro"},
+            },
+            "H",
+            "backfill",
+            hunt_fit=True,
+        )
+        store.upsert_score(listing_only)
+        row = store.load_by_seller(9)[0]
+        self.assertTrue(row["has_score"])
+        self.assertEqual(row["deal_score"], 8)
+        self.assertEqual(row["title"], "dress updated")
+        self.assertEqual(row["price"], 35.0)
 
 
 if __name__ == "__main__":

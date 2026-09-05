@@ -395,36 +395,7 @@
       ],
       "notes": "Heritage / premium Diadora lifestyle models only. Strong condition and absolute saving required."
     },
-    {
-      "name": "John Smedley M-L",
-      "query": "john smedley",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 200,
-      "target_type": "men's premium knitwear or polo",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Fine-gauge merino preferred. A 60 RON true Smedley in good condition can be a keep. Inspect moth holes, shrinkage, stains and stretched cuffs."
-    },
-    {
-      "name": "William Lockie M-L",
-      "query": "william lockie",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 230,
-      "target_type": "men's premium knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Cashmere, Geelong and lambswool. Material and condition matter more than low price."
-    },
+
     {
       "name": "Johnstons of Elgin M-L",
       "query": "johnstons of elgin",
@@ -440,36 +411,7 @@
       ],
       "notes": "Genuine Johnstons cashmere/knit. Large retail-to-resale gap expected. Reject moth damage and cheap blends."
     },
-    {
-      "name": "Malo knitwear M-L",
-      "query": "malo cashmere",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 260,
-      "target_type": "men's premium cashmere or knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Italian premium cashmere/knit. Condition and authenticity critical."
-    },
-    {
-      "name": "Drumohr M-L",
-      "query": "drumohr",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 420,
-      "hunt_price": 240,
-      "target_type": "men's premium knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Scottish premium knitwear. Prefer cashmere and fine merino in excellent condition."
-    },
+
     {
       "name": "Cruciani M-L",
       "query": "cruciani",
@@ -590,21 +532,7 @@
       ],
       "notes": "Premium basics. Skip multipacks of low interest; favour exceptional single pieces."
     },
-    {
-      "name": "Icebreaker merino M-L",
-      "query": "icebreaker merino",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 260,
-      "hunt_price": 150,
-      "target_type": "men's merino T-shirt, long sleeve or technical layer",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "High merino content preferred. Check holes and excessive pilling. Prefer premium lines."
-    },
+
     {
       "name": "Devold merino M-L",
       "query": "devold",
@@ -665,38 +593,7 @@
       ],
       "notes": "Swedish technical merino base layers. Excellent condition preferred."
     },
-    {
-      "name": "Cashmere broad M-L",
-      "query": "cashmere",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 30,
-      "price_to": 400,
-      "hunt_price": 230,
-      "min_deal_score": 9,
-      "target_type": "men's premium cashmere knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Broad recall for cashmere / cașmir / kaschmir / cachemire / kasmír. Model must reject blends, anonymous junk and moth damage. Only crème pieces from credible makers."
-    },
-    {
-      "name": "Merino broad M-L",
-      "query": "merino",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 30,
-      "price_to": 280,
-      "hunt_price": 160,
-      "min_deal_score": 9,
-      "target_type": "men's premium or technical merino clothing",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Broad merino wildcard. Reject thin fashion blends and low-value basics. Prefer known makers and high wool content."
-    },
+
     {
       "name": "Cashmere pure wildcard M-L",
       "query": "100% cashmere",

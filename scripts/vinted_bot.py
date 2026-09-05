@@ -944,7 +944,7 @@ def revive_scored_for_sellers(
 
 def save_indexed_scores(rows: list) -> None:
     INDEXED_PATH.parent.mkdir(parents=True, exist_ok=True)
-    INDEXED_PATH.write_text(json.dumps(rows[:2000], indent=2, ensure_ascii=False) + "\n")
+    INDEXED_PATH.write_text(json.dumps(rows[:10000], indent=2, ensure_ascii=False) + "\n")
 
 
 def seed_pool_from_history(watches: list) -> list:
@@ -1462,7 +1462,6 @@ def main() -> None:
             # Don't mark hundreds of FULL_SWEEP hits as seen without crawling them.
             new_items = new_items[:seed_cap]
             for item in new_items:
-                mark_seen(state, item.get("id"), watch["name"])
                 sid = seller_id(item)
                 if sid is None:
                     continue
@@ -1472,9 +1471,11 @@ def main() -> None:
                     "watch": watch,
                     "trigger_item": item,
                 })
+            # LLM-score seeds into Cockroach so same-seller rediscovery has real scores.
+            score_batch(watch, new_items, source="bundle_seed")
             print(
                 f"Hunt '{watch['name']}': {len(items)} listed, "
-                f"{len(new_items)} seeds (no solo score)",
+                f"{len(new_items)} seeds scored for index (no solo alert)",
                 file=sys.stderr,
             )
             continue
@@ -1864,7 +1865,7 @@ def main() -> None:
             )
         )
     try:
-        recent = score_db.load_recent(2000)
+        recent = score_db.load_recent(10000)
         indexed_export = [scored_store_mod.export_row(r) for r in recent]
         save_indexed_scores(indexed_export)
         opportunity_rows.extend(

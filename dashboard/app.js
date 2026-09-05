@@ -24,6 +24,7 @@ function renderStats() {
   const sellers = state.data.sellers || [];
   const cells = [
     ["Scored last run", run.scored ?? "—"],
+    ["Index (DB)", state.data.meta?.indexed_count ?? "—"],
     ["Keeps on desk", keeps.length],
     ["Bundles", (state.data.bundles || []).length],
     ["Sellers tracked", sellers.length],
@@ -34,9 +35,12 @@ function renderStats() {
     .map(([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`)
     .join("");
   const src = state.data.meta?.source || "local";
+  const idxSrc = state.data.meta?.indexed_source
+    ? ` · index via ${state.data.meta.indexed_source}`
+    : "";
   $("#lede").textContent = run.finished_at
-    ? `Last finished run ${fmtWhen(run.finished_at)} · data via ${src}. Refresh after Actions finishes to pull new keeps.`
-    : `Waiting for a finished run snapshot · data via ${src}.`;
+    ? `Last finished run ${fmtWhen(run.finished_at)} · data via ${src}${idxSrc}. Refresh after Actions finishes to pull new keeps.`
+    : `Waiting for a finished run snapshot · data via ${src}${idxSrc}.`;
 }
 
 async function loadRuns() {

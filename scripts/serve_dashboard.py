@@ -46,6 +46,65 @@ def build_snapshot() -> dict:
     run = _load("last_run.json", {})
     seen = _load("seen_listings.json", {})
     indexed = _load("indexed_scores.json", [])
+    indexed_source = "indexed_scores.json"
+    indexed_total = len(indexed) if isinstance(indexed, list) else 0
+
+    # Prefer live Cockroach rows when DATABASE_URL is set.
+    try:
+        import sys
+        scripts_dir = str(ROOT / "scripts")
+        if scripts_dir not in sys.path:
+            sys.path.insert(0, scripts_dir)
+        import scored_store as ss
+
+        store = ss.open_store()
+        if type(store).__name__ != "NullScoredStore":
+            recent = store.load_recent(10000)
+            live = [
+                ss.export_row(r)
+                for r in recent
+                if r.get("has_score")
+                and (r.get("reason") or "") != "unavailable during backfill"
+            ]
+            if live:
+                indexed = live
+                indexed_source = "cockroach"
+                indexed_total = store.count()
+                try:
+                    with store._conn.cursor() as cur:
+                        cur.execute(
+                            "SELECT COUNT(*) FROM scored_listings "
+                            "WHERE has_score AND COALESCE(reason,'') <> 'unavailable during backfill'"
+                        )
+                        indexed_total = int(cur.fetchone()[0])
+                except Exception:
+                    indexed_total = len(live)
+                opps = ss.index_bundle_opportunities(live)
+                if isinstance(bundles, list) and opps:
+                    existing = {
+                        f"{b.get('seller_id')}:"
+                        + ",".join(
+                            sorted(str(it.get("id")) for it in (b.get("items") or []) if it.get("id") is not None)
+                        )
+                        for b in bundles
+                    }
+                    for opp in opps:
+                        fp = (
+                            f"{opp.get('seller_id')}:"
+                            + ",".join(
+                                sorted(
+                                    str(it.get("id"))
+                                    for it in (opp.get("items") or [])
+                                    if it.get("id") is not None
+                                )
+                            )
+                        )
+                        if fp not in existing:
+                            bundles.append(opp)
+                            existing.add(fp)
+            store.close()
+    except Exception as e:
+        print(f"[dashboard] scored_store load skipped: {e}")
 
     finds_by_id: dict[str, dict] = {}
     for row in deals if isinstance(deals, list) else []:
@@ -255,9 +314,10 @@ def build_snapshot() -> dict:
             "last_run": seen.get("last_run"),
         },
         "meta": {
-            "source": "local-filesystem",
+            "source": "cockroach" if indexed_source == "cockroach" else "local-filesystem",
             "generated_at": datetime.now(timezone.utc).isoformat(),
-            "indexed_count": len(indexed) if isinstance(indexed, list) else 0,
+            "indexed_count": indexed_total,
+            "indexed_source": indexed_source,
         },
     }
 

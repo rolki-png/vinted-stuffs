@@ -125,68 +125,6 @@
   },
   {
     "item": {
-      "id": 9659414267,
-      "title": "Pantaloni scurti ciclism Craft ADV Offroad Xt Shorts W Pad M",
-      "price": {
-        "amount": "99.99",
-        "currency_code": "RON"
-      },
-      "brand_title": "Craft",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9659414267-pantaloni-scurti-ciclism-craft-adv-offroad-xt-shorts-w-pad-m",
-      "user": {
-        "id": 3157542666,
-        "login": "soringh91"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9659414267,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct ADV model, new with tags, excellent price for the product level."
-    },
-    "watch": "Craft ADV M-L",
-    "seller_id": 3157542666,
-    "seller": "soringh91"
-  },
-  {
-    "item": {
-      "id": 9563839582,
-      "title": "Vuori krótkie spodenki sportowe gym short rozmiar L",
-      "price": {
-        "amount": "98.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Vuori",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9563839582-vuori-krotkie-spodenki-sportowe-gym-short-rozmiar-l",
-      "user": {
-        "id": 104448461,
-        "login": "hs4pl"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9563839582,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Authentic Vuori gym shorts, size L, new with tags, excellent price."
-    },
-    "watch": "Vuori gym M-L",
-    "seller_id": 104448461,
-    "seller": "hs4pl"
-  },
-  {
-    "item": {
       "id": 9900660511,
       "title": "Buty Asics GT-2160 sneakersy niskie czarne 43.5",
       "price": {
@@ -412,6 +350,44 @@
     "watch": "Lululemon gym M-L",
     "seller_id": 236919211,
     "seller": "denisa.jesica"
+  },
+  {
+    "item": {
+      "id": 9613585928,
+      "title": "Tracksmith Van Cortlandt Singlet – czarny – L",
+      "price": {
+        "amount": "184.83",
+        "currency_code": "RON"
+      },
+      "brand_title": "Tracksmith",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 21,
+      "url": "https://www.vinted.ro/items/9613585928-tracksmith-van-cortlandt-singlet-czarny-l",
+      "user": {
+        "id": 116752338,
+        "login": "maryoush7"
+      },
+      "_profile": {
+        "username": "maryoush7",
+        "member_since": null,
+        "feedback_count": 107,
+        "feedback_reputation": 1,
+        "item_count": 50,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9613585928,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct item and brand but priced above the 170 RON target."
+    },
+    "watch": "Tracksmith gym M-L",
+    "seller_id": 116752338,
+    "seller": "maryoush7"
   },
   {
     "item": {
@@ -950,17 +926,93 @@
   },
   {
     "item": {
-      "id": 9613585928,
-      "title": "Tracksmith Van Cortlandt Singlet – czarny – L",
+      "id": 9903087381,
+      "title": "Pantaloni sport",
       "price": {
-        "amount": "184.83",
+        "amount": "50.0",
         "currency_code": "RON"
       },
-      "brand_title": "Tracksmith",
+      "brand_title": "H&M",
+      "size_title": "L",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9903087381-pantaloni-sport",
+      "user": {
+        "id": 264677064,
+        "login": "smadalin20"
+      },
+      "_profile": {
+        "username": "smadalin20",
+        "member_since": null,
+        "feedback_count": 3,
+        "feedback_reputation": 1,
+        "item_count": 13,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9903087381,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct brand and size, brand new, but lacks potential for bundling from this seller."
+    },
+    "watch": "Gym bundle seeds M-L",
+    "seller_id": 264677064,
+    "seller": "smadalin20"
+  },
+  {
+    "item": {
+      "id": 9239641254,
+      "title": "Rhone Men's Premium Long Sleeve Blue Size L No Logo Minimalist",
+      "price": {
+        "amount": "117.06",
+        "currency_code": "RON"
+      },
+      "brand_title": "Rhone",
+      "size_title": "L",
+      "status": "Nou fără etichetă",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9239641254-rhone-mens-premium-long-sleeve-blue-size-l-no-logo-minimalist",
+      "user": {
+        "id": 240066552,
+        "login": "amerykaniec6834"
+      },
+      "_profile": {
+        "username": "amerykaniec6834",
+        "member_since": null,
+        "feedback_count": 798,
+        "feedback_reputation": 1,
+        "item_count": 1088,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9239641254,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for a Rhone technical piece, but lacks specific line identification."
+    },
+    "watch": "Rhone gym M-L",
+    "seller_id": 240066552,
+    "seller": "amerykaniec6834"
+  },
+  {
+    "item": {
+      "id": 8632543321,
+      "title": "Koszulka do biegania z długim rękawem RHONE rozmiar L",
+      "price": {
+        "amount": "49.29",
+        "currency_code": "RON"
+      },
+      "brand_title": "Rhone",
       "size_title": "L",
       "status": "Foarte bună",
-      "favourite_count": 21,
-      "url": "https://www.vinted.ro/items/9613585928-tracksmith-van-cortlandt-singlet-czarny-l",
+      "favourite_count": 10,
+      "url": "https://www.vinted.ro/items/8632543321-koszulka-do-biegania-z-dlugim-rekawem-rhone-rozmiar-l",
       "user": {
         "id": 116752338,
         "login": "maryoush7"
@@ -975,585 +1027,585 @@
       }
     },
     "score": {
-      "id": 9613585928,
-      "deal_score": 7,
-      "value_band": "acceptable",
+      "id": 8632543321,
+      "deal_score": 8,
+      "value_band": "steal",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Correct item and brand but priced above the 170 RON target."
+      "reason": "Excellent price for a technical running top in the target size, though lacks detailed product line info."
     },
-    "watch": "Tracksmith gym M-L",
+    "watch": "Rhone gym M-L",
     "seller_id": 116752338,
     "seller": "maryoush7"
   },
   {
     "item": {
-      "id": 9803458932,
-      "title": "Bluza męska sportowa Odlo",
+      "id": 7457361208,
+      "title": "Rhone Peloton tshirt koszulka sportowa turkus niebieski active szybkoschnąca r. L 40",
       "price": {
-        "amount": "73.93",
+        "amount": "72.7",
         "currency_code": "RON"
       },
-      "brand_title": "Odlo",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9803458932-bluza-meska-sportowa-odlo",
-      "user": {
-        "id": 249863996,
-        "login": "kan_mm"
-      },
-      "_profile": {
-        "username": "kan_mm",
-        "member_since": null,
-        "feedback_count": 696,
-        "feedback_reputation": 1,
-        "item_count": 197,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9803458932,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "A standard generic Odlo gym top at a fair price, but lacks the premium technical line specification to be a must-buy."
-    },
-    "watch": "Odlo technical M-L",
-    "seller_id": 249863996,
-    "seller": "kan_mm"
-  },
-  {
-    "item": {
-      "id": 9896861931,
-      "title": "Kurtka wiatrowka Odlo",
-      "price": {
-        "amount": "70.23",
-        "currency_code": "RON"
-      },
-      "brand_title": "Odlo",
-      "size_title": "L",
-      "status": "Bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9896861931-kurtka-wiatrowka-odlo",
-      "user": {
-        "id": 121143460,
-        "login": "natan2222"
-      },
-      "_profile": {
-        "username": "natan2222",
-        "member_since": null,
-        "feedback_count": 45,
-        "feedback_reputation": 1,
-        "item_count": 29,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9896861931,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Fair price for an L-sized windbreaker, but condition is only 'good' which is not a premium, unmissable deal."
-    },
-    "watch": "Odlo technical M-L",
-    "seller_id": 121143460,
-    "seller": "natan2222"
-  },
-  {
-    "item": {
-      "id": 9896109938,
-      "title": "Kurtka sportowa wiatroszczelna ODLO",
-      "price": {
-        "amount": "166.34",
-        "currency_code": "RON"
-      },
-      "brand_title": "Odlo",
-      "size_title": "M / 38 / 10",
-      "status": "Nou cu etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9896109938-kurtka-sportowa-wiatroszczelna-odlo",
-      "user": {
-        "id": 127227066,
-        "login": "weryho"
-      },
-      "_profile": {
-        "username": "weryho",
-        "member_since": null,
-        "feedback_count": 334,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 487,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9896109938,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "New with tags is good, but the price is above the target hunt range and it is not a standout premium technical model."
-    },
-    "watch": "Odlo technical M-L",
-    "seller_id": 127227066,
-    "seller": "weryho"
-  },
-  {
-    "item": {
-      "id": 9894230372,
-      "title": "Odlo super bluza treningowa w roz M",
-      "price": {
-        "amount": "85.02",
-        "currency_code": "RON"
-      },
-      "brand_title": "Odlo",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9894230372-odlo-super-bluza-treningowa-w-roz-m",
-      "user": {
-        "id": 92258311,
-        "login": "biegaczadrian77"
-      },
-      "_profile": {
-        "username": "biegaczadrian77",
-        "member_since": null,
-        "feedback_count": 3758,
-        "feedback_reputation": 1,
-        "item_count": 2002,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9894230372,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Solid option but a generic training top that does not qualify as a creme-de-la-creme deal."
-    },
-    "watch": "Odlo technical M-L",
-    "seller_id": 92258311,
-    "seller": "biegaczadrian77"
-  },
-  {
-    "item": {
-      "id": 9898983808,
-      "title": "Gore Wear Bike L Windstopper membrana lekka kurtka wiatrochronna",
-      "price": {
-        "amount": "183.59",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gore Wear",
+      "brand_title": "Rhone",
       "size_title": "L",
       "status": "Foarte bună",
       "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9898983808-gore-wear-bike-l-windstopper-membrana-lekka-kurtka-wiatrochronna",
+      "url": "https://www.vinted.ro/items/7457361208-rhone-peloton-tshirt-koszulka-sportowa-turkus-niebieski-active-szybkoschnaca-r-l-40",
       "user": {
-        "id": 100159586,
-        "login": "donalonsowwa"
+        "id": 291875466,
+        "login": "zipes86"
       },
       "_profile": {
-        "username": "donalonsowwa",
+        "username": "zipes86",
         "member_since": null,
-        "feedback_count": 680,
+        "feedback_count": 30,
         "feedback_reputation": 1,
-        "item_count": 323,
+        "item_count": 75,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9898983808,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Technical Windstopper piece in correct size but exceeds the target hunt price."
-    },
-    "watch": "GOREWEAR M-L",
-    "seller_id": 100159586,
-    "seller": "donalonsowwa"
-  },
-  {
-    "item": {
-      "id": 9885911321,
-      "title": "Bluza rowerowa Gore",
-      "price": {
-        "amount": "98.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gore Wear",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 8,
-      "url": "https://www.vinted.ro/items/9885911321-bluza-rowerowa-gore",
-      "user": {
-        "id": 96882165,
-        "login": "gleglosz"
-      },
-      "_profile": {
-        "username": "gleglosz",
-        "member_since": null,
-        "feedback_count": 99,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 15,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9885911321,
+      "id": 7457361208,
       "deal_score": 7,
       "value_band": "hunt",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Decent price for a Gore jersey, but lacks the specific performance credentials to be a must-have."
+      "reason": "Decent price for a technical training shirt, but performance apparel with limited usage history often shows signs of wear not clearly visible."
     },
-    "watch": "GOREWEAR M-L",
-    "seller_id": 96882165,
-    "seller": "gleglosz"
+    "watch": "Rhone gym M-L",
+    "seller_id": 291875466,
+    "seller": "zipes86"
   },
   {
     "item": {
-      "id": 9867145462,
-      "title": "New Balance 990v6 USA 43 cm. stopa 27 cm.",
+      "id": 9563839582,
+      "title": "Vuori krótkie spodenki sportowe gym short rozmiar L",
       "price": {
-        "amount": "491.64",
+        "amount": "98.57",
         "currency_code": "RON"
       },
-      "brand_title": "New Balance",
-      "size_title": "43",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9867145462-new-balance-990v6-usa-43-cm-stopa-27-cm",
+      "brand_title": "Vuori",
+      "size_title": "Altele",
+      "status": "Nou cu etichetă",
+      "favourite_count": 13,
+      "url": "https://www.vinted.ro/items/9563839582-vuori-krotkie-spodenki-sportowe-gym-short-rozmiar-l",
       "user": {
-        "id": 171548419,
-        "login": "lafi83"
+        "id": 104448461,
+        "login": "hs4pl"
       },
       "_profile": {
-        "username": "lafi83",
+        "username": "hs4pl",
         "member_since": null,
-        "feedback_count": 80,
-        "feedback_reputation": 0.96,
-        "item_count": 121,
+        "feedback_count": 66,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 18,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9867145462,
+      "id": 9563839582,
+      "deal_score": 9,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "New with tags men's gym shorts in size L are a strong match."
+    },
+    "watch": "Vuori gym M-L",
+    "seller_id": 104448461,
+    "seller": "hs4pl"
+  },
+  {
+    "item": {
+      "id": 8561818058,
+      "title": "Vuori Sweatpants",
+      "price": {
+        "amount": "250.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Vuori",
+      "size_title": "M",
+      "status": "Nou cu etichetă",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/8561818058-vuori-sweatpants",
+      "user": {
+        "id": 193383166,
+        "login": "iloveshopping313"
+      },
+      "_profile": {
+        "username": "iloveshopping313",
+        "member_since": null,
+        "feedback_count": 148,
+        "feedback_reputation": 1,
+        "item_count": 92,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 8561818058,
       "deal_score": 7,
       "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Correct model (990v6) and size, but price is at the hard cap."
+      "reason": "Price is at the hard cap and product identity is too vague to qualify as a must-buy."
     },
-    "watch": "New Balance 990 size 43",
-    "seller_id": 171548419,
-    "seller": "lafi83"
+    "watch": "Vuori gym M-L",
+    "seller_id": 193383166,
+    "seller": "iloveshopping313"
   },
   {
     "item": {
-      "id": 9902264044,
-      "title": "Men Sneakers",
+      "id": 8929822310,
+      "title": "Tracksmith Longfellow férfi rövidnadrág W34",
       "price": {
-        "amount": "345.0",
+        "amount": "131.75",
+        "currency_code": "RON"
+      },
+      "brand_title": "Tracksmith",
+      "size_title": "50 | W34",
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/8929822310-tracksmith-longfellow-ferfi-rovidnadrag-w34",
+      "user": {
+        "id": 190883597,
+        "login": "vino033"
+      },
+      "_profile": {
+        "username": "vino033",
+        "member_since": null,
+        "feedback_count": 724,
+        "feedback_reputation": 1,
+        "item_count": 156,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 8929822310,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for Longfellow shorts but the size W34 is borderline for an M/L target."
+    },
+    "watch": "Tracksmith gym M-L",
+    "seller_id": 190883597,
+    "seller": "vino033"
+  },
+  {
+    "item": {
+      "id": 9720162360,
+      "title": "Saysky Running Tee L – lawendowa/popielata, hibiskus, techniczna koszulka biegowa, stan bdb",
+      "price": {
+        "amount": "121.99",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9720162360-saysky-running-tee-l-lawendowapopielata-hibiskus-techniczna-koszulka-biegowa-stan-bdb",
+      "user": {
+        "id": 257802353,
+        "login": "v_kw_c75"
+      },
+      "_profile": {
+        "username": "v_kw_c75",
+        "member_since": null,
+        "feedback_count": 121,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 127,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9720162360,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good condition and correct size, but price is standard for used Saysky."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 257802353,
+    "seller": "v_kw_c75"
+  },
+  {
+    "item": {
+      "id": 9662384354,
+      "title": "Nowy podkoszulek treningowy marki Saysky M",
+      "price": {
+        "amount": "97.34",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 14,
+      "url": "https://www.vinted.ro/items/9662384354-nowy-podkoszulek-treningowy-marki-saysky-m",
+      "user": {
+        "id": 92901575,
+        "login": "cool_monia"
+      },
+      "_profile": {
+        "username": "cool_monia",
+        "member_since": null,
+        "feedback_count": 360,
+        "feedback_reputation": 1,
+        "item_count": 523,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9662384354,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Solid deal on a new piece in target size M."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 92901575,
+    "seller": "cool_monia"
+  },
+  {
+    "item": {
+      "id": 9700002615,
+      "title": "Koszulka Kompresyjna - Falke ESS",
+      "price": {
+        "amount": "67.77",
+        "currency_code": "RON"
+      },
+      "brand_title": "Falke",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9700002615-koszulka-kompresyjna-falke-ess",
+      "user": {
+        "id": 286679351,
+        "login": "maroosee"
+      },
+      "_profile": {
+        "username": "maroosee",
+        "member_since": null,
+        "feedback_count": 295,
+        "feedback_reputation": 1,
+        "item_count": 224,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9700002615,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Rare confirmed Falke ESS technical compression shirt at an excellent price."
+    },
+    "watch": "Falke ESS M-L",
+    "seller_id": 286679351,
+    "seller": "maroosee"
+  },
+  {
+    "item": {
+      "id": 9897283104,
+      "title": "Bluza",
+      "price": {
+        "amount": "49.29",
+        "currency_code": "RON"
+      },
+      "brand_title": "Odlo",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9897283104-bluza",
+      "user": {
+        "id": 189630209,
+        "login": "gruchq99"
+      },
+      "_profile": {
+        "username": "gruchq99",
+        "member_since": null,
+        "feedback_count": 1435,
+        "feedback_reputation": 1,
+        "item_count": 67,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9897283104,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Basic item lacks description or performance line details to be a high-scoring deal."
+    },
+    "watch": "Odlo technical M-L",
+    "seller_id": 189630209,
+    "seller": "gruchq99"
+  },
+  {
+    "item": {
+      "id": 9903131454,
+      "title": "Legginsy grafitowe nowe 2XU",
+      "price": {
+        "amount": "135.54",
+        "currency_code": "RON"
+      },
+      "brand_title": "2XU",
+      "size_title": "M / 38 / 10",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9903131454-legginsy-grafitowe-nowe-2xu",
+      "user": {
+        "id": 95962205,
+        "login": "natala396"
+      },
+      "_profile": {
+        "username": "natala396",
+        "member_since": null,
+        "feedback_count": 59,
+        "feedback_reputation": 1,
+        "item_count": 48,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9903131454,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct item and size but missing seller history and zero favourites make this an ordinary, non-essential find."
+    },
+    "watch": "2XU M-L",
+    "seller_id": 95962205,
+    "seller": "natala396"
+  },
+  {
+    "item": {
+      "id": 9903125417,
+      "title": "Asics Gel Kayano 14",
+      "price": {
+        "amount": "220.0",
         "currency_code": "RON"
       },
       "brand_title": "Asics",
       "size_title": "42,5",
       "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9902264044-men-sneakers",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9903125417-asics-gel-kayano-14",
       "user": {
-        "id": 3163811915,
-        "login": "mstrein777"
+        "id": 171964072,
+        "login": "elenaaa.25"
       },
       "_profile": {
-        "username": "mstrein777",
+        "username": "elenaaa.25",
         "member_since": null,
-        "feedback_count": 9,
-        "feedback_reputation": 1,
-        "item_count": 7,
+        "feedback_count": 108,
+        "feedback_reputation": 0.8800000000000001,
+        "item_count": 25,
         "country_code": "ro"
       }
     },
     "score": {
-      "id": 9902264044,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size and model, but price is ordinary and seller history is limited."
-    },
-    "watch": "ASICS Gel Kayano 14 size 43",
-    "seller_id": 3163811915,
-    "seller": "mstrein777"
-  },
-  {
-    "item": {
-      "id": 9883706640,
-      "title": "Asics gel-1130 – Szaro-czarne – Rozmiar 43.5",
-      "price": {
-        "amount": "283.39",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9883706640-asics-gel-1130-szaro-czarne-rozmiar-435",
-      "user": {
-        "id": 92486911,
-        "login": "lucyna4ever"
-      },
-      "_profile": {
-        "username": "lucyna4ever",
-        "member_since": null,
-        "feedback_count": 149,
-        "feedback_reputation": 0.96,
-        "item_count": 117,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9883706640,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Matches size and model, but price is above the target hunt value for a used pair."
-    },
-    "watch": "ASICS Gel-1130 size 43",
-    "seller_id": 92486911,
-    "seller": "lucyna4ever"
-  },
-  {
-    "item": {
-      "id": 9886217920,
-      "title": "Gran Sasso włoska koszulka polo szara – Made in Italy – rozm. 48",
-      "price": {
-        "amount": "121.99",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gran Sasso",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9886217920-gran-sasso-wloska-koszulka-polo-szara-made-in-italy-rozm-48",
-      "user": {
-        "id": 98403909,
-        "login": "domi_jaworska_art"
-      },
-      "_profile": {
-        "username": "domi_jaworska_art",
-        "member_since": null,
-        "feedback_count": 1814,
-        "feedback_reputation": 1,
-        "item_count": 294,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9886217920,
+      "id": 9903125417,
       "deal_score": 7,
       "value_band": "hunt",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Solid price for a Gran Sasso polo but not an exceptional bargain."
+      "reason": "Missing seller history and zero favorites for a popular model at a good price makes it a skip for a high-priority hunt."
     },
-    "watch": "Gran Sasso M-L",
-    "seller_id": 98403909,
-    "seller": "domi_jaworska_art"
+    "watch": "ASICS Gel Kayano 14 size 43",
+    "seller_id": 171964072,
+    "seller": "elenaaa.25"
   },
   {
     "item": {
-      "id": 9859603458,
-      "title": "Sunspel z Męska koszula bawełny L",
+      "id": 9743397015,
+      "title": "Buty Diadora Titan / rozmiar 43",
       "price": {
-        "amount": "170.04",
+        "amount": "72.7",
         "currency_code": "RON"
       },
-      "brand_title": "Sunspel",
-      "size_title": "L",
-      "status": "Foarte bună",
+      "brand_title": "Diadora",
+      "size_title": "43",
+      "status": "Bună",
       "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9859603458-sunspel-z-meska-koszula-bawelny-l",
+      "url": "https://www.vinted.ro/items/9743397015-buty-diadora-titan-rozmiar-43",
       "user": {
-        "id": 3141310131,
-        "login": "donvasyl12"
+        "id": 177025170,
+        "login": "sergeinhoo"
       },
       "_profile": {
-        "username": "donvasyl12",
+        "username": "sergeinhoo",
         "member_since": null,
         "feedback_count": 82,
-        "feedback_reputation": 1,
-        "item_count": 59,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 48,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9859603458,
+      "id": 9743397015,
       "deal_score": 7,
-      "value_band": "acceptable",
+      "value_band": "steal",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Matches target brand and size, but price is slightly above the hunt target and not a standout deal."
+      "reason": "Correct size and model, but the 'good' condition suggests heavy wear that doesn't fit the 'creme-de-la-creme' criteria."
     },
-    "watch": "Sunspel M-L",
-    "seller_id": 3141310131,
-    "seller": "donvasyl12"
+    "watch": "Diadora Heritage size 43",
+    "seller_id": 177025170,
+    "seller": "sergeinhoo"
   },
   {
     "item": {
-      "id": 9851307286,
-      "title": "Koszulka z kapturem Smartwool - 100% wełna merino",
+      "id": 9902945987,
+      "title": "Koszulka termoaktywna Devold M Duo Active Wełna Merino wysyłka 24h",
       "price": {
-        "amount": "147.86",
+        "amount": "80.09",
         "currency_code": "RON"
       },
-      "brand_title": "Smartwool",
-      "size_title": "M / 38 / 10",
+      "brand_title": "Devold",
+      "size_title": "M",
       "status": "Foarte bună",
       "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9851307286-koszulka-z-kapturem-smartwool-100-welna-merino",
+      "url": "https://www.vinted.ro/items/9902945987-koszulka-termoaktywna-devold-m-duo-active-welna-merino-wysylka-24h",
       "user": {
-        "id": 92880685,
-        "login": "piotrstachon"
+        "id": 3128968628,
+        "login": "marcink547"
       },
       "_profile": {
-        "username": "piotrstachon",
+        "username": "marcink547",
         "member_since": null,
-        "feedback_count": 817,
+        "feedback_count": 508,
         "feedback_reputation": 1,
-        "item_count": 44,
+        "item_count": 371,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9851307286,
-      "deal_score": 7,
-      "value_band": "acceptable",
+      "id": 9902945987,
+      "deal_score": 9,
+      "value_band": "steal",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Valid Smartwool item in target size, but price is above the hunt value target and condition is not exceptional."
+      "reason": "Correct model and size for the hunt at a very strong price point."
     },
-    "watch": "Smartwool merino M-L",
-    "seller_id": 92880685,
-    "seller": "piotrstachon"
+    "watch": "Devold merino M-L",
+    "seller_id": 3128968628,
+    "seller": "marcink547"
   },
   {
     "item": {
-      "id": 9841384493,
-      "title": "Bluza koszulka merino Smartwool 200 M 38",
+      "id": 9835927326,
+      "title": "Bluza Smartwool 1/3 zip Merino 250",
       "price": {
         "amount": "184.83",
         "currency_code": "RON"
       },
       "brand_title": "Smartwool",
-      "size_title": "M / 38 / 10",
+      "size_title": "M",
       "status": "Foarte bună",
-      "favourite_count": 31,
-      "url": "https://www.vinted.ro/items/9841384493-bluza-koszulka-merino-smartwool-200-m-38",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9835927326-bluza-smartwool-13-zip-merino-250",
       "user": {
-        "id": 90400046,
-        "login": "moomin_mood"
+        "id": 3163284169,
+        "login": "bielinsk7"
       },
       "_profile": {
-        "username": "moomin_mood",
+        "username": "bielinsk7",
         "member_since": null,
-        "feedback_count": 712,
+        "feedback_count": 44,
         "feedback_reputation": 1,
-        "item_count": 24,
+        "item_count": 94,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9841384493,
+      "id": 9835927326,
       "deal_score": 7,
       "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Valid technical merino layer, but price is above the hunt value target."
+      "reason": "Price is above the ideal hunt value and the missing seller join date increases risk assessment."
     },
     "watch": "Smartwool merino M-L",
-    "seller_id": 90400046,
-    "seller": "moomin_mood"
+    "seller_id": 3163284169,
+    "seller": "bielinsk7"
   },
   {
     "item": {
-      "id": 9782273728,
-      "title": "Sukienka ciążowa na sesje/ na jesień Deva navy",
+      "id": 9888026604,
+      "title": "Seraphine zielona sukienka z wiązaniem krótki rękaw casual coquette 40 L",
       "price": {
-        "amount": "123.22",
+        "amount": "85.02",
         "currency_code": "RON"
       },
-      "brand_title": "Bebefield",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9782273728-sukienka-ciazowa-na-sesje-na-jesien-deva-navy",
+      "brand_title": "Seraphine",
+      "size_title": "L / 40 / 12",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9888026604-seraphine-zielona-sukienka-z-wiazaniem-krotki-rekaw-casual-coquette-40-l",
       "user": {
-        "id": 187735265,
-        "login": "iwomar1995"
+        "id": 92547698,
+        "login": "zanett92"
       },
       "_profile": {
-        "username": "iwomar1995",
+        "username": "zanett92",
         "member_since": null,
-        "feedback_count": 18,
+        "feedback_count": 3563,
         "feedback_reputation": 1,
-        "item_count": 7,
+        "item_count": 161,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9782273728,
-      "deal_score": 7,
-      "value_band": "acceptable",
+      "id": 9888026604,
+      "deal_score": 9,
+      "value_band": "steal",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Correct size and relevant maternity brand, but lacks the outstanding value needed for a higher score."
+      "reason": "New with tags Seraphine dress in size L at a very low price point makes for an outstanding, high-value find."
     },
-    "watch": "Ripe Maternity L-XL",
-    "seller_id": 187735265,
-    "seller": "iwomar1995"
+    "watch": "Seraphine maternity L-XL",
+    "seller_id": 92547698,
+    "seller": "zanett92"
   },
   {
     "item": {
-      "id": 9573308725,
-      "title": "Pantaloni de gravide",
+      "id": 9659414267,
+      "title": "Pantaloni scurti ciclism Craft ADV Offroad Xt Shorts W Pad M",
       "price": {
-        "amount": "12.0",
+        "amount": "99.99",
         "currency_code": "RON"
       },
-      "brand_title": "JoJo Maman Bébé",
-      "size_title": "L / 40 / 12",
-      "status": "Foarte bună",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9573308725-pantaloni-de-gravide",
+      "brand_title": "Craft",
+      "size_title": "M",
+      "status": "Nou cu etichetă",
+      "favourite_count": 24,
+      "url": "https://www.vinted.ro/items/9659414267-pantaloni-scurti-ciclism-craft-adv-offroad-xt-shorts-w-pad-m",
       "user": {
-        "id": 223528465,
-        "login": "teodora2024roz"
+        "id": 3157542666,
+        "login": "soringh91"
       },
       "_profile": {
-        "username": "teodora2024roz",
+        "username": "soringh91",
         "member_since": null,
-        "feedback_count": 1292,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 1468,
+        "feedback_count": 103,
+        "feedback_reputation": 1,
+        "item_count": 37,
         "country_code": "ro"
       }
     },
     "score": {
-      "id": 9573308725,
-      "deal_score": 7,
-      "value_band": "hunt",
+      "id": 9659414267,
+      "deal_score": 9,
+      "value_band": "steal",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Basic maternity trousers in correct size but lack the exceptional quality required for a high deal score."
+      "reason": "Exceptional value for a brand new ADV cycling short, though missing seller history warrants caution."
     },
-    "watch": "JoJo Maman Bebe maternity L-XL",
-    "seller_id": 223528465,
-    "seller": "teodora2024roz"
+    "watch": "Craft ADV M-L",
+    "seller_id": 3157542666,
+    "seller": "soringh91"
   }
 ]

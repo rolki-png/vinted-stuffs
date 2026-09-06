@@ -980,22 +980,6 @@
       ],
       "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
       "bundle_hunt": true
-    },
-    {
-      "name": "ASOS Maternity bundle seed XL-L/XL",
-      "query": "asos maternity",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 30,
-      "price_to": 140,
-      "hunt_price": 70,
-      "target_type": "women's maternity clothing",
-      "target_sizes": [
-        "L/XL",
-        "XL"
-      ],
-      "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
-      "bundle_hunt": true
     }
   ],
   "bundle_offer": {

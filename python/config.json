@@ -535,7 +535,10 @@
         "43.5",
         "43 1/3"
       ],
-      "notes": "Made in USA. Reject heavily worn heel, outsole or lining."
+      "notes": "Made in USA. Reject heavily worn heel, outsole or lining.",
+      "brand_ids": [
+        1775
+      ]
     },
     {
       "name": "New Balance 2002R size 43",

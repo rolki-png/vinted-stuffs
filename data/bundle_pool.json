@@ -1,1 +1,1438 @@
-[]
+[
+  {
+    "item": {
+      "id": 9900007195,
+      "title": "Rochie in dungi alb bleumarin",
+      "price": {
+        "amount": "25",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9900007195-rochie-in-dungi-alb-bleumarin",
+      "user": {
+        "id": 3136123988,
+        "login": "66any"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9900007195,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "A solid functional dress in the correct size, but a basic item that doesn't reach the 9+ threshold."
+    },
+    "watch": "Mamalicious maternity L-XL",
+    "seller_id": 3136123988,
+    "seller": "66any"
+  },
+  {
+    "item": {
+      "id": 9782289086,
+      "title": "Sukienka ciążowa czarna w prążek z półgolfem Noppies L",
+      "price": {
+        "amount": "61.61",
+        "currency_code": "RON"
+      },
+      "brand_title": "Noppies",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9782289086-sukienka-ciazowa-czarna-w-prazek-z-polgolfem-noppies-l",
+      "user": {
+        "id": 93880692,
+        "login": "malgutka"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9782289086,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a versatile maternity knit dress in the correct size; great value for Noppies."
+    },
+    "watch": "Noppies maternity L-XL",
+    "seller_id": 93880692,
+    "seller": "malgutka"
+  },
+  {
+    "item": {
+      "id": 9871986429,
+      "title": "Sukienka ciężowa i do karmienia Seraphine",
+      "price": {
+        "amount": "48.05",
+        "currency_code": "RON"
+      },
+      "brand_title": "Seraphine",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9871986429-sukienka-ciezowa-i-do-karmienia-seraphine",
+      "user": {
+        "id": 150590375,
+        "login": "alicja-sko"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9871986429,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a Seraphine maternity and nursing dress in the target XL size."
+    },
+    "watch": "Seraphine maternity L-XL",
+    "seller_id": 150590375,
+    "seller": "alicja-sko"
+  },
+  {
+    "item": {
+      "id": 9818336182,
+      "title": "Gore Running Wear Windstopper Light Jacket, size L very good condition",
+      "price": {
+        "amount": "130",
+        "currency_code": "RON"
+      },
+      "brand_title": "Gore Wear",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9818336182-gore-running-wear-windstopper-light-jacket-size-l-very-good-condition",
+      "user": {
+        "id": 195807166,
+        "login": "seenai"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9818336182,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and technical model at a very competitive price point."
+    },
+    "watch": "GOREWEAR M-L",
+    "seller_id": 195807166,
+    "seller": "seenai"
+  },
+  {
+    "item": {
+      "id": 9659414267,
+      "title": "Pantaloni scurti ciclism Craft ADV Offroad Xt Shorts W Pad M",
+      "price": {
+        "amount": "99.99",
+        "currency_code": "RON"
+      },
+      "brand_title": "Craft",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9659414267-pantaloni-scurti-ciclism-craft-adv-offroad-xt-shorts-w-pad-m",
+      "user": {
+        "id": 3157542666,
+        "login": "soringh91"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9659414267,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct ADV model, new with tags, excellent price for the product level."
+    },
+    "watch": "Craft ADV M-L",
+    "seller_id": 3157542666,
+    "seller": "soringh91"
+  },
+  {
+    "item": {
+      "id": 9563839582,
+      "title": "Vuori krótkie spodenki sportowe gym short rozmiar L",
+      "price": {
+        "amount": "98.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Vuori",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9563839582-vuori-krotkie-spodenki-sportowe-gym-short-rozmiar-l",
+      "user": {
+        "id": 104448461,
+        "login": "hs4pl"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9563839582,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Authentic Vuori gym shorts, size L, new with tags, excellent price."
+    },
+    "watch": "Vuori gym M-L",
+    "seller_id": 104448461,
+    "seller": "hs4pl"
+  },
+  {
+    "item": {
+      "id": 9734948039,
+      "title": "Seraphine ing XL",
+      "price": {
+        "amount": "87.93",
+        "currency_code": "RON"
+      },
+      "brand_title": "Seraphine",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9734948039-seraphine-ing-xl",
+      "user": {
+        "id": 3145138903,
+        "login": "edimama0602"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9734948039,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good value for a new Seraphine piece in the target XL size, suitable for maternity/nursing."
+    },
+    "watch": "Seraphine maternity L-XL",
+    "seller_id": 3145138903,
+    "seller": "edimama0602"
+  },
+  {
+    "item": {
+      "id": 9765472834,
+      "title": "Gore Running Wear Gore Windstopper Shell Sportowa Kurtka Do Biegania M",
+      "price": {
+        "amount": "110.88",
+        "currency_code": "RON"
+      },
+      "brand_title": "Gore Wear",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9765472834-gore-running-wear-gore-windstopper-shell-sportowa-kurtka-do-biegania-m",
+      "user": {
+        "id": 3172252364,
+        "login": "mountainadventuree"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9765472834,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a technical Windstopper shell, however, seller history is missing."
+    },
+    "watch": "GOREWEAR M-L",
+    "seller_id": 3172252364,
+    "seller": "mountainadventuree"
+  },
+  {
+    "item": {
+      "id": 9603651375,
+      "title": "Craft ADV Essence 38/M spodenki treningowe fitness siłownia outdoor",
+      "price": {
+        "amount": "60.38",
+        "currency_code": "RON"
+      },
+      "brand_title": "Craft",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9603651375-craft-adv-essence-38m-spodenki-treningowe-fitness-silownia-outdoor",
+      "user": {
+        "id": 252560852,
+        "login": "jimi37"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9603651375,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a new Craft ADV item, though seller history is missing."
+    },
+    "watch": "Craft ADV M-L",
+    "seller_id": 252560852,
+    "seller": "jimi37"
+  },
+  {
+    "item": {
+      "id": 8489670929,
+      "title": "Kamizelka odblaskowa Craft ADV Visibility męska L",
+      "price": {
+        "amount": "54.22",
+        "currency_code": "RON"
+      },
+      "brand_title": "Craft",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/8489670929-kamizelka-odblaskowa-craft-adv-visibility-meska-l",
+      "user": {
+        "id": 90374170,
+        "login": "krysjur"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 8489670929,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Matches the ADV series hunt with a good price for technical gear."
+    },
+    "watch": "Craft ADV M-L",
+    "seller_id": 90374170,
+    "seller": "krysjur"
+  },
+  {
+    "item": {
+      "id": 9209480121,
+      "title": "Maternity Midi Dress by Tiffany Rose - L/XL",
+      "price": {
+        "amount": "139.22",
+        "currency_code": "RON"
+      },
+      "brand_title": "Tiffany Rose",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9209480121-maternity-midi-dress-by-tiffany-rose-lxl",
+      "user": {
+        "id": 238026210,
+        "login": "relove4you"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9209480121,
+      "deal_score": 10,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Perfect match, excellent condition, great price, but requires verification of seller due to missing history."
+    },
+    "watch": "Tiffany Rose maternity dress L-XL",
+    "seller_id": 238026210,
+    "seller": "relove4you"
+  },
+  {
+    "item": {
+      "id": 9867145462,
+      "title": "New Balance 990v6 USA 43 cm. stopa 27 cm.",
+      "price": {
+        "amount": "491.64",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9867145462-new-balance-990v6-usa-43-cm-stopa-27-cm",
+      "user": {
+        "id": 171548419,
+        "login": "lafi83"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9867145462,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Matches the Made in USA v6 target, though slightly above the ideal price point."
+    },
+    "watch": "New Balance 990 size 43",
+    "seller_id": 171548419,
+    "seller": "lafi83"
+  },
+  {
+    "item": {
+      "id": 9100643476,
+      "title": "Ten Thousand running shorts uvu style Lululemon gym run sports",
+      "price": {
+        "amount": "184.83",
+        "currency_code": "RON"
+      },
+      "brand_title": "Ten Thousand",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9100643476-ten-thousand-running-shorts-uvu-style-lululemon-gym-run-sports",
+      "user": {
+        "id": 106592637,
+        "login": "anasttarasevich00"
+      },
+      "_profile": {
+        "username": "anasttarasevich00",
+        "member_since": null,
+        "feedback_count": 3087,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 537,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9100643476,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "low",
+      "reason": "Correct brand and size, but price is above the target hunt value for a used item."
+    },
+    "watch": "Ten Thousand gym M-L",
+    "seller_id": 106592637,
+    "seller": "anasttarasevich00"
+  },
+  {
+    "item": {
+      "id": 9899438226,
+      "title": "Saysky running t-shirt koszulka do begania",
+      "price": {
+        "amount": "98.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "M / 38 / 10",
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9899438226-saysky-running-t-shirt-koszulka-do-begania",
+      "user": {
+        "id": 91396899,
+        "login": "sashamadjoy3"
+      },
+      "_profile": {
+        "username": "sashamadjoy3",
+        "member_since": null,
+        "feedback_count": 1581,
+        "feedback_reputation": 1,
+        "item_count": 85,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9899438226,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for a standard technical tee in very good condition, but not an exceptional deal."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 91396899,
+    "seller": "sashamadjoy3"
+  },
+  {
+    "item": {
+      "id": 9882077487,
+      "title": "Spodenki biegowe / treningowe legginsy SaySky",
+      "price": {
+        "amount": "92.41",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "M / 38 / 10",
+      "status": "Foarte bună",
+      "favourite_count": 11,
+      "url": "https://www.vinted.ro/items/9882077487-spodenki-biegowe-treningowe-legginsy-saysky",
+      "user": {
+        "id": 198602981,
+        "login": "monikamajchi"
+      },
+      "_profile": {
+        "username": "monikamajchi",
+        "member_since": null,
+        "feedback_count": 241,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 71,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9882077487,
+      "deal_score": 8,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Technical running shorts at a great price, well within the target range."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 198602981,
+    "seller": "monikamajchi"
+  },
+  {
+    "item": {
+      "id": 9857173917,
+      "title": "Saysky Universe Combat Running T-Shirt Olive Green",
+      "price": {
+        "amount": "147.86",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9857173917-saysky-universe-combat-running-t-shirt-olive-green",
+      "user": {
+        "id": 108134866,
+        "login": "and7eyy"
+      },
+      "_profile": {
+        "username": "and7eyy",
+        "member_since": null,
+        "feedback_count": 1609,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 334,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9857173917,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct item and brand but exceeds the target hunt price of 130 RON."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 108134866,
+    "seller": "and7eyy"
+  },
+  {
+    "item": {
+      "id": 9838232462,
+      "title": "Saysky Paradise Pace Shorts Leaf Print",
+      "price": {
+        "amount": "92.41",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9838232462-saysky-paradise-pace-shorts-leaf-print",
+      "user": {
+        "id": 108134866,
+        "login": "and7eyy"
+      },
+      "_profile": {
+        "username": "and7eyy",
+        "member_since": null,
+        "feedback_count": 1609,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 334,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9838232462,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for functional Saysky shorts, but not an exceptional steal."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 108134866,
+    "seller": "and7eyy"
+  },
+  {
+    "item": {
+      "id": 9899264822,
+      "title": "Buty New Balance 2002R Khaki Cordura trainers new balance",
+      "price": {
+        "amount": "183.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "42,5",
+      "status": "Bună",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9899264822-buty-new-balance-2002r-khaki-cordura-trainers-new-balance",
+      "user": {
+        "id": 3140951367,
+        "login": "bohdant13"
+      },
+      "_profile": {
+        "username": "bohdant13",
+        "member_since": null,
+        "feedback_count": 7,
+        "feedback_reputation": 1,
+        "item_count": 3,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9899264822,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Matches size but condition is only 'good' which is not the outstanding quality required."
+    },
+    "watch": "New Balance 2002R size 43",
+    "seller_id": 3140951367,
+    "seller": "bohdant13"
+  },
+  {
+    "item": {
+      "id": 9898804649,
+      "title": "New Balance 1906R Silver 43",
+      "price": {
+        "amount": "345.01",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "43",
+      "status": "Foarte bună",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9898804649-new-balance-1906r-silver-43",
+      "user": {
+        "id": 122112755,
+        "login": "happi148"
+      },
+      "_profile": {
+        "username": "happi148",
+        "member_since": null,
+        "feedback_count": 824,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 22,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9898804649,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and model but price is within the acceptable range rather than a deal."
+    },
+    "watch": "New Balance 1906R size 43",
+    "seller_id": 122112755,
+    "seller": "happi148"
+  },
+  {
+    "item": {
+      "id": 9898779313,
+      "title": "New Balance 1906R Silver 43",
+      "price": {
+        "amount": "345.01",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "43",
+      "status": "Foarte bună",
+      "favourite_count": 5,
+      "url": "https://www.vinted.ro/items/9898779313-new-balance-1906r-silver-43",
+      "user": {
+        "id": 122112755,
+        "login": "happi148"
+      },
+      "_profile": {
+        "username": "happi148",
+        "member_since": null,
+        "feedback_count": 824,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 22,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9898779313,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Duplicate listing of a correctly sized pair but at an acceptable market price."
+    },
+    "watch": "New Balance 1906R size 43",
+    "seller_id": 122112755,
+    "seller": "happi148"
+  },
+  {
+    "item": {
+      "id": 9893731888,
+      "title": "Sneakersy New balance 1906R rozmiar 43 stan bardzo dobry A024",
+      "price": {
+        "amount": "283.4",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "43",
+      "status": "Foarte bună",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9893731888-sneakersy-new-balance-1906r-rozmiar-43-stan-bardzo-dobry-a024",
+      "user": {
+        "id": 3171429983,
+        "login": "blackgreen28"
+      },
+      "_profile": {
+        "username": "blackgreen28",
+        "member_since": null,
+        "feedback_count": 34,
+        "feedback_reputation": 1,
+        "item_count": 58,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9893731888,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good condition and correct size, but price is above the target hunt threshold."
+    },
+    "watch": "New Balance 1906R size 43",
+    "seller_id": 3171429983,
+    "seller": "blackgreen28"
+  },
+  {
+    "item": {
+      "id": 9902856650,
+      "title": "Asics kayano 14",
+      "price": {
+        "amount": "350.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "43,5",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9902856650-asics-kayano-14",
+      "user": {
+        "id": 149617120,
+        "login": "unchangedwarrior"
+      },
+      "_profile": {
+        "username": "unchangedwarrior",
+        "member_since": null,
+        "feedback_count": 54,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 8,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9902856650,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct model and size but price is above the hunt target and seller history is missing."
+    },
+    "watch": "ASICS Gel Kayano 14 size 43",
+    "seller_id": 149617120,
+    "seller": "unchangedwarrior"
+  },
+  {
+    "item": {
+      "id": 9900660511,
+      "title": "Buty Asics GT-2160 sneakersy niskie czarne 43.5",
+      "price": {
+        "amount": "141.7",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "43,5",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9900660511-buty-asics-gt-2160-sneakersy-niskie-czarne-435",
+      "user": {
+        "id": 309215298,
+        "login": "gracjan758"
+      },
+      "_profile": {
+        "username": "gracjan758",
+        "member_since": null,
+        "feedback_count": 34,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 17,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9900660511,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct model and size with a significant price advantage, though seller history is missing."
+    },
+    "watch": "ASICS GT-2160 size 43",
+    "seller_id": 309215298,
+    "seller": "gracjan758"
+  },
+  {
+    "item": {
+      "id": 9827975549,
+      "title": "Diadora Heritage",
+      "price": {
+        "amount": "108.43",
+        "currency_code": "RON"
+      },
+      "brand_title": "Diadora",
+      "size_title": "42,5",
+      "status": "Bună",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9827975549-diadora-heritage",
+      "user": {
+        "id": 3158796885,
+        "login": "oduwe"
+      },
+      "_profile": {
+        "username": "oduwe",
+        "member_since": null,
+        "feedback_count": 20,
+        "feedback_reputation": 1,
+        "item_count": 26,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9827975549,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct model and size, but condition is only 'good'."
+    },
+    "watch": "Diadora Heritage size 43",
+    "seller_id": 3158796885,
+    "seller": "oduwe"
+  },
+  {
+    "item": {
+      "id": 9889306801,
+      "title": "Bluză de lux Zimmerli x SWISS First Class, Mărimea L",
+      "price": {
+        "amount": "78.58",
+        "currency_code": "RON"
+      },
+      "brand_title": "Zimmerli of Switzerland",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9889306801-bluza-de-lux-zimmerli-x-swiss-first-class-marimea-l",
+      "user": {
+        "id": 155289165,
+        "login": "v.toni"
+      },
+      "_profile": {
+        "username": "v.toni",
+        "member_since": null,
+        "feedback_count": 314,
+        "feedback_reputation": 1,
+        "item_count": 432,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9889306801,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Genuine Zimmerli premium shirt in size L at an excellent price point."
+    },
+    "watch": "Zimmerli polo M-L",
+    "seller_id": 155289165,
+    "seller": "v.toni"
+  },
+  {
+    "item": {
+      "id": 9901568064,
+      "title": "Devold 80%merino L",
+      "price": {
+        "amount": "85.02",
+        "currency_code": "RON"
+      },
+      "brand_title": "Devold",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9901568064-devold-80merino-l",
+      "user": {
+        "id": 163221657,
+        "login": "zadzior19861986"
+      },
+      "_profile": {
+        "username": "zadzior19861986",
+        "member_since": null,
+        "feedback_count": 2179,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 340,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9901568064,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for a size L Devold merino piece, but lacks specific model details to be a 9+."
+    },
+    "watch": "Devold merino M-L",
+    "seller_id": 163221657,
+    "seller": "zadzior19861986"
+  },
+  {
+    "item": {
+      "id": 9901562484,
+      "title": "Odzież termoaktywna Merino Devold Kiwi roz. M",
+      "price": {
+        "amount": "98.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Devold",
+      "size_title": "M / 38 / 10",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9901562484-odziez-termoaktywna-merino-devold-kiwi-roz-m",
+      "user": {
+        "id": 103616799,
+        "login": "kvba213"
+      },
+      "_profile": {
+        "username": "kvba213",
+        "member_since": null,
+        "feedback_count": 257,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 60,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9901562484,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Devold Kiwi line in good condition and size M; a solid functional piece."
+    },
+    "watch": "Devold merino M-L",
+    "seller_id": 103616799,
+    "seller": "kvba213"
+  },
+  {
+    "item": {
+      "id": 9900912796,
+      "title": "Koszulka t-shirt merino Devold M męska sportowa",
+      "price": {
+        "amount": "92.41",
+        "currency_code": "RON"
+      },
+      "brand_title": "Devold",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 15,
+      "url": "https://www.vinted.ro/items/9900912796-koszulka-t-shirt-merino-devold-m-meska-sportowa",
+      "user": {
+        "id": 91055900,
+        "login": "winter_garden"
+      },
+      "_profile": {
+        "username": "winter_garden",
+        "member_since": null,
+        "feedback_count": 2641,
+        "feedback_reputation": 1,
+        "item_count": 120,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9900912796,
+      "deal_score": 9,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Genuine Devold merino T-shirt in M, highly functional and correctly priced."
+    },
+    "watch": "Devold merino M-L",
+    "seller_id": 91055900,
+    "seller": "winter_garden"
+  },
+  {
+    "item": {
+      "id": 9901824752,
+      "title": "Smartwool half zip bluza męska",
+      "price": {
+        "amount": "171.27",
+        "currency_code": "RON"
+      },
+      "brand_title": "Smartwool",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9901824752-smartwool-half-zip-bluza-meska",
+      "user": {
+        "id": 3159027846,
+        "login": "levanyk777"
+      },
+      "_profile": {
+        "username": "levanyk777",
+        "member_since": null,
+        "feedback_count": 154,
+        "feedback_reputation": 1,
+        "item_count": 126,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9901824752,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good product but price is above the hunt target and seller history is missing."
+    },
+    "watch": "Smartwool merino M-L",
+    "seller_id": 3159027846,
+    "seller": "levanyk777"
+  },
+  {
+    "item": {
+      "id": 9896939713,
+      "title": "Smartwool bluza",
+      "price": {
+        "amount": "86.25",
+        "currency_code": "RON"
+      },
+      "brand_title": "Smartwool",
+      "size_title": "M / 38 / 10",
+      "status": "Foarte bună",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9896939713-smartwool-bluza",
+      "user": {
+        "id": 92720475,
+        "login": "chatagi"
+      },
+      "_profile": {
+        "username": "chatagi",
+        "member_since": null,
+        "feedback_count": 642,
+        "feedback_reputation": 1,
+        "item_count": 37,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9896939713,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Attractive price for a Smartwool base layer, but missing seller history raises risk."
+    },
+    "watch": "Smartwool merino M-L",
+    "seller_id": 92720475,
+    "seller": "chatagi"
+  },
+  {
+    "item": {
+      "id": 9889078535,
+      "title": "Woolpower 400 Gr Halfzip túrapulóver",
+      "price": {
+        "amount": "219.82",
+        "currency_code": "RON"
+      },
+      "brand_title": "Woolpower",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9889078535-woolpower-400-gr-halfzip-turapulover",
+      "user": {
+        "id": 143883851,
+        "login": "mandagsmorgon12"
+      },
+      "_profile": {
+        "username": "mandagsmorgon12",
+        "member_since": null,
+        "feedback_count": 695,
+        "feedback_reputation": 1,
+        "item_count": 18,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9889078535,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Authentic Woolpower L size, but price is in the standard acceptable range rather than being an exceptional deal."
+    },
+    "watch": "Woolpower merino M-L",
+    "seller_id": 143883851,
+    "seller": "mandagsmorgon12"
+  },
+  {
+    "item": {
+      "id": 9767816000,
+      "title": "Téli kismama kabát",
+      "price": {
+        "amount": "146.55",
+        "currency_code": "RON"
+      },
+      "brand_title": "Noppies",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9767816000-teli-kismama-kabat",
+      "user": {
+        "id": 3151442260,
+        "login": "bemike2"
+      },
+      "_profile": {
+        "username": "bemike2",
+        "member_since": null,
+        "feedback_count": 80,
+        "feedback_reputation": 1,
+        "item_count": 31,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9767816000,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "A functional maternity winter coat at a fair price, though missing specific quality indicators for a 9+ score."
+    },
+    "watch": "Noppies maternity L-XL",
+    "seller_id": 3151442260,
+    "seller": "bemike2"
+  },
+  {
+    "item": {
+      "id": 9901597894,
+      "title": "Fakturowane spodnie luźne zwiewne materiałowe roz. L",
+      "price": {
+        "amount": "13.55",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9901597894-fakturowane-spodnie-luzne-zwiewne-materialowe-roz-l",
+      "user": {
+        "id": 171145125,
+        "login": "emilciaslomka"
+      },
+      "_profile": {
+        "username": "emilciaslomka",
+        "member_since": null,
+        "feedback_count": 1214,
+        "feedback_reputation": 1,
+        "item_count": 164,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9901597894,
+      "deal_score": 8,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and good price for flowy maternity trousers."
+    },
+    "watch": "Mamalicious maternity L-XL",
+    "seller_id": 171145125,
+    "seller": "emilciaslomka"
+  },
+  {
+    "item": {
+      "id": 9900831865,
+      "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
+      "price": {
+        "amount": "109.66",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9900831865-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
+      "user": {
+        "id": 253589201,
+        "login": "vintvib"
+      },
+      "_profile": {
+        "username": "vintvib",
+        "member_since": null,
+        "feedback_count": 163,
+        "feedback_reputation": 1,
+        "item_count": 126,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9900831865,
+      "deal_score": 9,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "New with tags maxi nursing/maternity dress in size XL is a high-value, functional item."
+    },
+    "watch": "Mamalicious maternity L-XL",
+    "seller_id": 253589201,
+    "seller": "vintvib"
+  },
+  {
+    "item": {
+      "id": 9900766745,
+      "title": "Blugi gravida xl",
+      "price": {
+        "amount": "25.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9900766745-blugi-gravida-xl",
+      "user": {
+        "id": 224819493,
+        "login": "mymdm"
+      },
+      "_profile": {
+        "username": "mymdm",
+        "member_since": null,
+        "feedback_count": 1017,
+        "feedback_reputation": 1,
+        "item_count": 2762,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9900766745,
+      "deal_score": 7,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for maternity jeans, but standard denim isn't a high-priority 'must-have' for this buyer."
+    },
+    "watch": "Mamalicious maternity L-XL",
+    "seller_id": 224819493,
+    "seller": "mymdm"
+  },
+  {
+    "item": {
+      "id": 9517771751,
+      "title": "Sukienka ciążowa i do karmienia JoJo Maman Bébé",
+      "price": {
+        "amount": "43.13",
+        "currency_code": "RON"
+      },
+      "brand_title": "JoJo Maman Bébé",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9517771751-sukienka-ciazowa-i-do-karmienia-jojo-maman-bebe",
+      "user": {
+        "id": 91582468,
+        "login": "cloudembrace"
+      },
+      "_profile": {
+        "username": "cloudembrace",
+        "member_since": null,
+        "feedback_count": 194,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 21,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9517771751,
+      "deal_score": 8,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and functional nursing/maternity style at a very low price point."
+    },
+    "watch": "JoJo Maman Bebe maternity L-XL",
+    "seller_id": 91582468,
+    "seller": "cloudembrace"
+  },
+  {
+    "item": {
+      "id": 9901332423,
+      "title": "Granatowa bluzka H&M Mama XL – fakturowana, zapinana na guziki nowa z metką",
+      "price": {
+        "amount": "36.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "H&M Mama",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9901332423-granatowa-bluzka-hm-mama-xl-fakturowana-zapinana-na-guziki-nowa-z-metka",
+      "user": {
+        "id": 3147664116,
+        "login": "wikaaa0305"
+      },
+      "_profile": {
+        "username": "wikaaa0305",
+        "member_since": null,
+        "feedback_count": 210,
+        "feedback_reputation": 1,
+        "item_count": 155,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9901332423,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "New with tags item, but individual shirt is not a high-value haul piece."
+    },
+    "watch": "H&M Mama bundle seed L-XL",
+    "seller_id": 3147664116,
+    "seller": "wikaaa0305"
+  },
+  {
+    "item": {
+      "id": 9898933341,
+      "title": "Lululemon Men’s Vent Tech Long Sleeve",
+      "price": {
+        "amount": "80.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Lululemon",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9898933341-lululemon-mens-vent-tech-long-sleeve",
+      "user": {
+        "id": 236919211,
+        "login": "denisa.jesica"
+      },
+      "_profile": {
+        "username": "denisa.jesica",
+        "member_since": null,
+        "feedback_count": 461,
+        "feedback_reputation": 1,
+        "item_count": 109,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9898933341,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a core technical training piece in the correct men's size, though seller history requires caution due to missing account date."
+    },
+    "watch": "Lululemon gym M-L",
+    "seller_id": 236919211,
+    "seller": "denisa.jesica"
+  },
+  {
+    "item": {
+      "id": 9560439858,
+      "title": "Kismama nadrág",
+      "price": {
+        "amount": "36.64",
+        "currency_code": "RON"
+      },
+      "brand_title": "Noppies",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9560439858-kismama-nadrag",
+      "user": {
+        "id": 3151442260,
+        "login": "bemike2"
+      },
+      "_profile": {
+        "username": "bemike2",
+        "member_since": null,
+        "feedback_count": 80,
+        "feedback_reputation": 1,
+        "item_count": 31,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9560439858,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Basic maternity trousers in a standard size, reasonably priced but not an essential or exceptional piece."
+    },
+    "watch": "Noppies maternity L-XL",
+    "seller_id": 3151442260,
+    "seller": "bemike2"
+  },
+  {
+    "item": {
+      "id": 9556239514,
+      "title": "Kismama kabát XL",
+      "price": {
+        "amount": "146.55",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9556239514-kismama-kabat-xl",
+      "user": {
+        "id": 3151442260,
+        "login": "bemike2"
+      },
+      "_profile": {
+        "username": "bemike2",
+        "member_since": null,
+        "feedback_count": 80,
+        "feedback_reputation": 1,
+        "item_count": 31,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9556239514,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "The price is above the 120 RON hunt target and the seller history is missing, making it an acceptable but not compelling purchase."
+    },
+    "watch": "Mamalicious maternity L-XL",
+    "seller_id": 3151442260,
+    "seller": "bemike2"
+  }
+]

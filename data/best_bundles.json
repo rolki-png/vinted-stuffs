@@ -1,5 +1,376 @@
 [
   {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "value_haul",
+    "seller": "cs.-lpetra0027",
+    "seller_id": 204189016,
+    "country": "hu",
+    "checkout_extra_ron": 23.051000000000002,
+    "listing_sum": 41.02,
+    "checkout_total": 64.071,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "Excellent price for three maternity-appropriate items in very good condition from reliable brands.",
+    "watch": "H&M Mama bundle seed L-XL",
+    "effective_price_per_useful_item": 21.36,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9902206545,
+        "title": "Kismama farmer",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9902206545-kismama-farmer",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "cs.-lpetra0027",
+        "seller_id": 204189016
+      },
+      {
+        "role": "haul",
+        "id": 9902195711,
+        "title": "Kismama farmer",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9902195711-kismama-farmer",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "cs.-lpetra0027",
+        "seller_id": 204189016
+      },
+      {
+        "role": "haul",
+        "id": 9900737847,
+        "title": "Rövid derekú pólók",
+        "price": 11.72,
+        "url": "https://www.vinted.ro/items/9900737847-rovid-dereku-polok",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "cs.-lpetra0027",
+        "seller_id": 204189016
+      }
+    ]
+  },
+  {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "value_haul",
+    "seller": "marcelina212121",
+    "seller_id": 268445885,
+    "country": "pl",
+    "checkout_extra_ron": 27.004,
+    "listing_sum": 80.08,
+    "checkout_total": 107.084,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "All four items are relevant maternity pieces in the target size, making the delivered cost excellent for the bundle.",
+    "watch": "H&M Mama bundle seed L-XL",
+    "effective_price_per_useful_item": 26.77,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9901929688,
+        "title": "Kolarki ciążowe",
+        "price": 18.48,
+        "url": "https://www.vinted.ro/items/9901929688-kolarki-ciazowe",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "marcelina212121",
+        "seller_id": 268445885
+      },
+      {
+        "role": "haul",
+        "id": 9423138050,
+        "title": "Koszulka ciążowa",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9423138050-koszulka-ciazowa",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "marcelina212121",
+        "seller_id": 268445885
+      },
+      {
+        "role": "haul",
+        "id": 9423087898,
+        "title": "Koszulka ciążowa",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9423087898-koszulka-ciazowa",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "marcelina212121",
+        "seller_id": 268445885
+      },
+      {
+        "role": "haul",
+        "id": 9424411856,
+        "title": "Dresy ciążowe",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9424411856-dresy-ciazowe",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "marcelina212121",
+        "seller_id": 268445885
+      }
+    ]
+  },
+  {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "value_haul",
+    "seller": "oliwia_0823",
+    "seller_id": 292698223,
+    "country": "pl",
+    "checkout_extra_ron": 27.5595,
+    "listing_sum": 91.19,
+    "checkout_total": 118.7495,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "Exceptional value bundle with 10 high-quality technical sport items at a very low cost per piece.",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 11.87,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9902158103,
+        "title": "Koszula sportowa",
+        "price": 11.09,
+        "url": "https://www.vinted.ro/items/9902158103-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9890934571,
+        "title": "Koszula sportowa",
+        "price": 2.46,
+        "url": "https://www.vinted.ro/items/9890934571-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9891580636,
+        "title": "Koszula sportowa",
+        "price": 6.16,
+        "url": "https://www.vinted.ro/items/9891580636-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9890929464,
+        "title": "Koszula sportowa",
+        "price": 6.16,
+        "url": "https://www.vinted.ro/items/9890929464-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9897404332,
+        "title": "Koszula sportowa",
+        "price": 7.39,
+        "url": "https://www.vinted.ro/items/9897404332-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9897800002,
+        "title": "Koszula sportowa Wyprzedaż!",
+        "price": 8.63,
+        "url": "https://www.vinted.ro/items/9897800002-koszula-sportowa-wyprzedaz",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9890926113,
+        "title": "Koszula sportowa",
+        "price": 8.63,
+        "url": "https://www.vinted.ro/items/9890926113-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9890919249,
+        "title": "Koszula sportowa",
+        "price": 8.63,
+        "url": "https://www.vinted.ro/items/9890919249-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9902153510,
+        "title": "Koszula sportowa",
+        "price": 11.09,
+        "url": "https://www.vinted.ro/items/9902153510-koszula-sportowa",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      },
+      {
+        "role": "haul",
+        "id": 9891618957,
+        "title": "T-shirt",
+        "price": 20.95,
+        "url": "https://www.vinted.ro/items/9891618957-t-shirt",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": 9,
+        "seller": "oliwia_0823",
+        "seller_id": 292698223
+      }
+    ]
+  },
+  {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "value_haul",
+    "seller": "1eleganckaszafa1",
+    "seller_id": 146302126,
+    "country": "pl",
+    "checkout_extra_ron": 25.649,
+    "listing_sum": 52.98,
+    "checkout_total": 78.62899999999999,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "Excellent value haul with 5 highly usable maternity/postpartum pieces at a very low price per item.",
+    "watch": "H&M Mama bundle seed L-XL",
+    "effective_price_per_useful_item": 15.73,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9795165476,
+        "title": "Ciążowe 40 L jeansowe spodnie jeansy skinny h&M mama",
+        "price": 6.16,
+        "url": "https://www.vinted.ro/items/9795165476-ciazowe-40-l-jeansowe-spodnie-jeansy-skinny-hm-mama",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "1eleganckaszafa1",
+        "seller_id": 146302126
+      },
+      {
+        "role": "haul",
+        "id": 9796506780,
+        "title": "Spodenki rybaczki ciążowe spodnie L H&M mama",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9796506780-spodenki-rybaczki-ciazowe-spodnie-l-hm-mama",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "1eleganckaszafa1",
+        "seller_id": 146302126
+      },
+      {
+        "role": "haul",
+        "id": 9795373235,
+        "title": "Bluzka damska do karmienia H&M xl",
+        "price": 7.39,
+        "url": "https://www.vinted.ro/items/9795373235-bluzka-damska-do-karmienia-hm-xl",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "1eleganckaszafa1",
+        "seller_id": 146302126
+      },
+      {
+        "role": "haul",
+        "id": 9885108377,
+        "title": "Top damski bluzka H&M xl biustonosz",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9885108377-top-damski-bluzka-hm-xl-biustonosz",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "1eleganckaszafa1",
+        "seller_id": 146302126
+      },
+      {
+        "role": "haul",
+        "id": 9732767191,
+        "title": "Jeansowe damskie spodnie 40 H&M",
+        "price": 14.79,
+        "url": "https://www.vinted.ro/items/9732767191-jeansowe-damskie-spodnie-40-hm",
+        "watch": "H&M Mama bundle seed L-XL",
+        "deal_score": 9,
+        "seller": "1eleganckaszafa1",
+        "seller_id": 146302126
+      }
+    ]
+  },
+  {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "near_haul",
+    "seller": "bemike2",
+    "seller_id": 3151442260,
+    "country": "hu",
+    "checkout_extra_ron": 25.7625,
+    "listing_sum": 95.25,
+    "checkout_total": 121.0125,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Noppies maternity L-XL",
+    "effective_price_per_useful_item": 30.253125,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9560437257,
+        "title": "Kismama rövidnadrág",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9560437257-kismama-rovidnadrag",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9768012569,
+        "title": "Kismama illetve szoptatós pulcsi xl",
+        "price": 29.31,
+        "url": "https://www.vinted.ro/items/9768012569-kismama-illetve-szoptatos-pulcsi-xl",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9560439858,
+        "title": "Kismama nadrág",
+        "price": 36.64,
+        "url": "https://www.vinted.ro/items/9560439858-kismama-nadrag",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9556654351,
+        "title": "Kismama 3/4 es nadrág",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9556654351-kismama-34-es-nadrag",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      }
+    ]
+  },
+  {
     "kept_at": "2026-09-05T20:27:14.406038+00:00",
     "kind": "near_haul",
     "seller": "diamencikowo",
@@ -377,6 +748,51 @@
         "url": "https://www.vinted.ro/items/9547215240-icebreaker-merino-bodyfit-200-mens-pullover-14-zip-100-wool-outdoor-hiking-style-grey-size-l",
         "watch": "Icebreaker merino M-L",
         "deal_score": 6
+      }
+    ]
+  },
+  {
+    "kept_at": "2026-09-06T04:42:17.017766+00:00",
+    "kind": "keep_bundle",
+    "seller": "bemike2",
+    "seller_id": 3151442260,
+    "country": "hu",
+    "checkout_extra_ron": 37.487,
+    "listing_sum": 329.74,
+    "checkout_total": 367.22700000000003,
+    "items": [
+      {
+        "role": "keep",
+        "id": 9767816000,
+        "title": "Téli kismama kabát",
+        "price": 146.55,
+        "url": "https://www.vinted.ro/items/9767816000-teli-kismama-kabat",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": 8,
+        "seller_id": 3151442260,
+        "seller": "bemike2"
+      },
+      {
+        "role": "extra",
+        "id": 9560439858,
+        "title": "Kismama nadrág",
+        "price": 36.64,
+        "url": "https://www.vinted.ro/items/9560439858-kismama-nadrag",
+        "watch": "Noppies maternity L-XL",
+        "deal_score": 7,
+        "seller_id": 3151442260,
+        "seller": "bemike2"
+      },
+      {
+        "role": "extra",
+        "id": 9556239514,
+        "title": "Kismama kabát XL",
+        "price": 146.55,
+        "url": "https://www.vinted.ro/items/9556239514-kismama-kabat-xl",
+        "watch": "Mamalicious maternity L-XL",
+        "deal_score": 7,
+        "seller_id": 3151442260,
+        "seller": "bemike2"
       }
     ]
   }

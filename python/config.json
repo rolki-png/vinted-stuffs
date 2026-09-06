@@ -233,17 +233,19 @@
       "per_page": 50,
       "price_to": 80,
       "hunt_price": 50,
-      "bundle_hunt": true,
-      "size_ids": [
-        1739,
-        1740
-      ],
       "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed."
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
+      "size_ids": [
+        1739,
+        1740,
+        208,
+        209
+      ],
+      "bundle_hunt": true
     },
     {
       "name": "Lululemon gym M-L",

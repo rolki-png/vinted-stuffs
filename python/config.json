@@ -555,7 +555,10 @@
         "43.5",
         "43 1/3"
       ],
-      "notes": "Only alert on unusually strong price and condition. Ordinary used-market 2002R is a skip."
+      "notes": "Only alert on unusually strong price and condition. Ordinary used-market 2002R is a skip.",
+      "brand_ids": [
+        1775
+      ]
     },
     {
       "name": "New Balance 1906R size 43",

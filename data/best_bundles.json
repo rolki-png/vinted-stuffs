@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-06T21:03:45.515083+00:00",
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -39,6 +39,269 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "near_haul",
+    "seller": "vargadod",
+    "seller_id": 292690466,
+    "country": "hu",
+    "checkout_extra_ron": 23.491,
+    "listing_sum": 49.82,
+    "checkout_total": 73.311,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 36.6555,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9778362672,
+        "title": "Piros Nike ujjatlan trikó / sportfelső - M",
+        "price": 24.91,
+        "url": "https://www.vinted.ro/items/9778362672-piros-nike-ujjatlan-triko-sportfelso-m",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "vargadod",
+        "seller_id": 292690466
+      },
+      {
+        "role": "haul",
+        "id": 9778317100,
+        "title": "Fekete Nike Sportswear ujjatlan trikó / felső - M (22.2)",
+        "price": 24.91,
+        "url": "https://www.vinted.ro/items/9778317100-fekete-nike-sportswear-ujjatlan-triko-felso-m-222",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "vargadod",
+        "seller_id": 292690466
+      }
+    ],
+    "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "value_haul",
+    "seller": "reipo",
+    "seller_id": 3166842296,
+    "country": "pl",
+    "checkout_extra_ron": 25.3715,
+    "listing_sum": 47.43,
+    "checkout_total": 72.8015,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "Three high-quality training shorts in the target size for under 25 RON per piece is an excellent value.",
+    "watch": "Broad training shorts M-L",
+    "effective_price_per_useful_item": 24.27,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9915963546,
+        "title": "Krótkie spodenki underamour",
+        "price": 13.55,
+        "url": "https://www.vinted.ro/items/9915963546-krotkie-spodenki-underamour",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 9,
+        "seller": "reipo",
+        "seller_id": 3166842296
+      },
+      {
+        "role": "haul",
+        "id": 9915949031,
+        "title": "Krótkie spodenki underamour",
+        "price": 16.63,
+        "url": "https://www.vinted.ro/items/9915949031-krotkie-spodenki-underamour",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 9,
+        "seller": "reipo",
+        "seller_id": 3166842296
+      },
+      {
+        "role": "haul",
+        "id": 9915944838,
+        "title": "Krótkie spodenki Adidas",
+        "price": 17.25,
+        "url": "https://www.vinted.ro/items/9915944838-krotkie-spodenki-adidas",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 9,
+        "seller": "reipo",
+        "seller_id": 3166842296
+      }
+    ],
+    "suggested_offer_ron": 42,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "near_haul",
+    "seller": "dobaidavidd",
+    "seller_id": 218257674,
+    "country": "ro",
+    "checkout_extra_ron": 21.0,
+    "listing_sum": 60.0,
+    "checkout_total": 81.0,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 40.5,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9864720748,
+        "title": "IQ Lion Athletics \"No Fear\" Sleeveless Workout Tank – Black (Size M)",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9864720748-iq-lion-athletics-no-fear-sleeveless-workout-tank-black-size-m",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dobaidavidd",
+        "seller_id": 218257674
+      },
+      {
+        "role": "haul",
+        "id": 9667699349,
+        "title": "Vintage Givova Black & Red Football Training Shorts",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9667699349-vintage-givova-black-red-football-training-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dobaidavidd",
+        "seller_id": 218257674
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "near_haul",
+    "seller": "tanieubrania67",
+    "seller_id": 284665058,
+    "country": "pl",
+    "checkout_extra_ron": 25.341,
+    "listing_sum": 46.82,
+    "checkout_total": 72.161,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 36.0805,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9910185859,
+        "title": "Adidas Spodenki Czerwone Sportowe Lampasy Logo Blokecore Vintage Y2K Drip",
+        "price": 23.41,
+        "url": "https://www.vinted.ro/items/9910185859-adidas-spodenki-czerwone-sportowe-lampasy-logo-blokecore-vintage-y2k-drip",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "tanieubrania67",
+        "seller_id": 284665058
+      },
+      {
+        "role": "haul",
+        "id": 9866940448,
+        "title": "Adidas Spodenki Sportowe Białe Szorty Logo Treningowe Kąpielowe Gumka W Pasie Rozmiar",
+        "price": 23.41,
+        "url": "https://www.vinted.ro/items/9866940448-adidas-spodenki-sportowe-biale-szorty-logo-treningowe-kapielowe-gumka-w-pasie-rozmiar",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "tanieubrania67",
+        "seller_id": 284665058
+      }
+    ],
+    "suggested_offer_ron": 34,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "near_haul",
+    "seller": "jasongeo13",
+    "seller_id": 244206201,
+    "country": "gr",
+    "checkout_extra_ron": 20.658,
+    "listing_sum": 53.16,
+    "checkout_total": 73.818,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed Nike shorts M-L",
+    "effective_price_per_useful_item": 36.909,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9863833409,
+        "title": "Nike short",
+        "price": 26.58,
+        "url": "https://www.vinted.ro/items/9863833409-nike-short",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": null,
+        "seller": "jasongeo13",
+        "seller_id": 244206201
+      },
+      {
+        "role": "haul",
+        "id": 6314206793,
+        "title": "Gym T shirt size L",
+        "price": 26.58,
+        "url": "https://www.vinted.ro/items/6314206793-gym-t-shirt-size-l",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": null,
+        "seller": "jasongeo13",
+        "seller_id": 244206201
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kind": "near_haul",
+    "seller": "huckfinn",
+    "seller_id": 147533585,
+    "country": "hu",
+    "checkout_extra_ron": 24.224,
+    "listing_sum": 64.48,
+    "checkout_total": 88.70400000000001,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed Adidas shorts M-L",
+    "effective_price_per_useful_item": 44.352000000000004,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9850232018,
+        "title": "Nike sport nadrág",
+        "price": 32.24,
+        "url": "https://www.vinted.ro/items/9850232018-nike-sport-nadrag",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "huckfinn",
+        "seller_id": 147533585
+      },
+      {
+        "role": "haul",
+        "id": 9850228643,
+        "title": "Adidas short",
+        "price": 32.24,
+        "url": "https://www.vinted.ro/items/9850228643-adidas-short",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "huckfinn",
+        "seller_id": 147533585
+      }
+    ],
+    "suggested_offer_ron": 41,
+    "offer_weak": true,
     "offer_target_per_item_ron": 30.0
   },
   {
@@ -91,48 +354,6 @@
       }
     ],
     "suggested_offer_ron": 63,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-06T21:03:45.515083+00:00",
-    "kind": "near_haul",
-    "seller": "vargadod",
-    "seller_id": 292690466,
-    "country": "hu",
-    "checkout_extra_ron": 23.491,
-    "listing_sum": 49.82,
-    "checkout_total": 73.311,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 36.6555,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9778362672,
-        "title": "Piros Nike ujjatlan trikó / sportfelső - M",
-        "price": 24.91,
-        "url": "https://www.vinted.ro/items/9778362672-piros-nike-ujjatlan-triko-sportfelso-m",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "vargadod",
-        "seller_id": 292690466
-      },
-      {
-        "role": "haul",
-        "id": 9778317100,
-        "title": "Fekete Nike Sportswear ujjatlan trikó / felső - M (22.2)",
-        "price": 24.91,
-        "url": "https://www.vinted.ro/items/9778317100-fekete-nike-sportswear-ujjatlan-triko-felso-m-222",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "vargadod",
-        "seller_id": 292690466
-      }
-    ],
-    "suggested_offer_ron": 36,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },

@@ -1,5 +1,281 @@
 [
   {
+    "kept_at": "2026-09-06T10:46:09.796618+00:00",
+    "kind": "near_haul",
+    "seller": "bemike2",
+    "seller_id": 3151442260,
+    "country": "hu",
+    "checkout_extra_ron": 25.7625,
+    "listing_sum": 95.25,
+    "checkout_total": 121.0125,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Noppies maternity XL-L/XL",
+    "effective_price_per_useful_item": 30.253125,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9560437257,
+        "title": "Kismama rövidnadrág",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9560437257-kismama-rovidnadrag",
+        "watch": "Noppies maternity XL-L/XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9768012569,
+        "title": "Kismama illetve szoptatós pulcsi xl",
+        "price": 29.31,
+        "url": "https://www.vinted.ro/items/9768012569-kismama-illetve-szoptatos-pulcsi-xl",
+        "watch": "Noppies maternity XL-L/XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9560439858,
+        "title": "Kismama nadrág",
+        "price": 36.64,
+        "url": "https://www.vinted.ro/items/9560439858-kismama-nadrag",
+        "watch": "Noppies maternity XL-L/XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      },
+      {
+        "role": "haul",
+        "id": 9556654351,
+        "title": "Kismama 3/4 es nadrág",
+        "price": 14.65,
+        "url": "https://www.vinted.ro/items/9556654351-kismama-34-es-nadrag",
+        "watch": "Noppies maternity XL-L/XL",
+        "deal_score": null,
+        "seller": "bemike2",
+        "seller_id": 3151442260
+      }
+    ],
+    "suggested_offer_ron": 85,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kept_at": "2026-09-06T10:46:09.796618+00:00",
+    "kind": "near_haul",
+    "seller": "rkenesei81",
+    "seller_id": 3158327387,
+    "country": "hu",
+    "checkout_extra_ron": 23.5645,
+    "listing_sum": 51.29,
+    "checkout_total": 74.8545,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 37.42725,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9905475907,
+        "title": "H&M Sport fekete futónadrág / leggings zsebbel",
+        "price": 21.98,
+        "url": "https://www.vinted.ro/items/9905475907-hm-sport-fekete-futonadrag-leggings-zsebbel",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "rkenesei81",
+        "seller_id": 3158327387
+      },
+      {
+        "role": "haul",
+        "id": 9894758079,
+        "title": "TCM melírozott női sport leggings / edzőnadrág",
+        "price": 29.31,
+        "url": "https://www.vinted.ro/items/9894758079-tcm-melirozott-noi-sport-leggings-edzonadrag",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "rkenesei81",
+        "seller_id": 3158327387
+      }
+    ],
+    "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T10:46:09.796618+00:00",
+    "kind": "near_haul",
+    "seller": "paatrycja67",
+    "seller_id": 107026933,
+    "country": "pl",
+    "checkout_extra_ron": 24.54,
+    "listing_sum": 30.8,
+    "checkout_total": 55.34,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle fails the minimum threshold of 3 useful pieces required to justify a single shipping charge for a value haul.",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 27.67,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9905607121,
+        "title": "Legginsy ciążowe H&M czarne",
+        "price": 18.48,
+        "url": "https://www.vinted.ro/items/9905607121-legginsy-ciazowe-hm-czarne",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "paatrycja67",
+        "seller_id": 107026933
+      },
+      {
+        "role": "haul",
+        "id": 7921045707,
+        "title": "Szare spodnie ciążowe",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/7921045707-szare-spodnie-ciazowe",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "paatrycja67",
+        "seller_id": 107026933
+      }
+    ],
+    "suggested_offer_ron": 27,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kept_at": "2026-09-06T10:46:09.796618+00:00",
+    "kind": "near_haul",
+    "seller": "hainefaine111",
+    "seller_id": 244375158,
+    "country": "ro",
+    "checkout_extra_ron": 22.0,
+    "listing_sum": 80.0,
+    "checkout_total": 102.0,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle consists mostly of women's apparel which does not match the target criteria for men's gym wear.",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 17.0,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9905656819,
+        "title": "Tricou fitness workout de barbati Cona sports marimea L",
+        "price": 10.0,
+        "url": "https://www.vinted.ro/items/9905656819-tricou-fitness-workout-de-barbati-cona-sports-marimea-l",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      },
+      {
+        "role": "haul",
+        "id": 9905473760,
+        "title": "Bluza fitness workout de dama Sports marimea M",
+        "price": 13.0,
+        "url": "https://www.vinted.ro/items/9905473760-bluza-fitness-workout-de-dama-sports-marimea-m",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      },
+      {
+        "role": "haul",
+        "id": 9905561271,
+        "title": "Bluza fitness workout de dama Adidas marimea M",
+        "price": 15.0,
+        "url": "https://www.vinted.ro/items/9905561271-bluza-fitness-workout-de-dama-adidas-marimea-m",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      },
+      {
+        "role": "haul",
+        "id": 9905622239,
+        "title": "Maieu fitness workout de dama Kingsfield marimea M",
+        "price": 12.0,
+        "url": "https://www.vinted.ro/items/9905622239-maieu-fitness-workout-de-dama-kingsfield-marimea-m",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      },
+      {
+        "role": "haul",
+        "id": 9905832668,
+        "title": "Bluza fitness workout de dama mare in Italy",
+        "price": 20.0,
+        "url": "https://www.vinted.ro/items/9905832668-bluza-fitness-workout-de-dama-mare-in-italy",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      },
+      {
+        "role": "haul",
+        "id": 9905875302,
+        "title": "Tricou fitness alergat barbati Crivit marimea L",
+        "price": 10.0,
+        "url": "https://www.vinted.ro/items/9905875302-tricou-fitness-alergat-barbati-crivit-marimea-l",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "hainefaine111",
+        "seller_id": 244375158
+      }
+    ],
+    "suggested_offer_ron": 72,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T10:46:09.796618+00:00",
+    "kind": "near_haul",
+    "seller": "mdsd33",
+    "seller_id": 3153288817,
+    "country": "pl",
+    "checkout_extra_ron": 25.403,
+    "listing_sum": 48.06,
+    "checkout_total": 73.463,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 36.7315,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9749648801,
+        "title": "Dwie koszulki  sportowe",
+        "price": 11.09,
+        "url": "https://www.vinted.ro/items/9749648801-dwie-koszulki-sportowe",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "mdsd33",
+        "seller_id": 3153288817
+      },
+      {
+        "role": "haul",
+        "id": 9905058325,
+        "title": "NIKE bluza L",
+        "price": 36.97,
+        "url": "https://www.vinted.ro/items/9905058325-nike-bluza-l",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "mdsd33",
+        "seller_id": 3153288817
+      }
+    ],
+    "suggested_offer_ron": 34,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
     "kept_at": "2026-09-06T09:38:26.762787+00:00",
     "kind": "near_haul",
     "seller": "liamihaela",
@@ -570,70 +846,6 @@
       }
     ],
     "suggested_offer_ron": 47,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
-  },
-  {
-    "kept_at": "2026-09-06T04:42:17.017766+00:00",
-    "kind": "near_haul",
-    "seller": "bemike2",
-    "seller_id": 3151442260,
-    "country": "hu",
-    "checkout_extra_ron": 25.7625,
-    "listing_sum": 95.25,
-    "checkout_total": 121.0125,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Noppies maternity L-XL",
-    "effective_price_per_useful_item": 30.253125,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9560437257,
-        "title": "Kismama rövidnadrág",
-        "price": 14.65,
-        "url": "https://www.vinted.ro/items/9560437257-kismama-rovidnadrag",
-        "watch": "Noppies maternity L-XL",
-        "deal_score": null,
-        "seller": "bemike2",
-        "seller_id": 3151442260
-      },
-      {
-        "role": "haul",
-        "id": 9768012569,
-        "title": "Kismama illetve szoptatós pulcsi xl",
-        "price": 29.31,
-        "url": "https://www.vinted.ro/items/9768012569-kismama-illetve-szoptatos-pulcsi-xl",
-        "watch": "Noppies maternity L-XL",
-        "deal_score": null,
-        "seller": "bemike2",
-        "seller_id": 3151442260
-      },
-      {
-        "role": "haul",
-        "id": 9560439858,
-        "title": "Kismama nadrág",
-        "price": 36.64,
-        "url": "https://www.vinted.ro/items/9560439858-kismama-nadrag",
-        "watch": "Noppies maternity L-XL",
-        "deal_score": null,
-        "seller": "bemike2",
-        "seller_id": 3151442260
-      },
-      {
-        "role": "haul",
-        "id": 9556654351,
-        "title": "Kismama 3/4 es nadrág",
-        "price": 14.65,
-        "url": "https://www.vinted.ro/items/9556654351-kismama-34-es-nadrag",
-        "watch": "Noppies maternity L-XL",
-        "deal_score": null,
-        "seller": "bemike2",
-        "seller_id": 3151442260
-      }
-    ],
-    "suggested_offer_ron": 85,
     "offer_weak": false,
     "offer_target_per_item_ron": 50.0
   },

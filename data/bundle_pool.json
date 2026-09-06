@@ -32,82 +32,6 @@
   },
   {
     "item": {
-      "id": 9900660511,
-      "title": "Buty Asics GT-2160 sneakersy niskie czarne 43.5",
-      "price": {
-        "amount": "141.7",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Foarte bună",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9900660511-buty-asics-gt-2160-sneakersy-niskie-czarne-435",
-      "user": {
-        "id": 309215298,
-        "login": "gracjan758"
-      },
-      "_profile": {
-        "username": "gracjan758",
-        "member_since": null,
-        "feedback_count": 34,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 17,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9900660511,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct model and size with a significant price advantage, though seller history is missing."
-    },
-    "watch": "ASICS GT-2160 size 43",
-    "seller_id": 309215298,
-    "seller": "gracjan758"
-  },
-  {
-    "item": {
-      "id": 9889306801,
-      "title": "Bluză de lux Zimmerli x SWISS First Class, Mărimea L",
-      "price": {
-        "amount": "78.58",
-        "currency_code": "RON"
-      },
-      "brand_title": "Zimmerli of Switzerland",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9889306801-bluza-de-lux-zimmerli-x-swiss-first-class-marimea-l",
-      "user": {
-        "id": 155289165,
-        "login": "v.toni"
-      },
-      "_profile": {
-        "username": "v.toni",
-        "member_since": null,
-        "feedback_count": 314,
-        "feedback_reputation": 1,
-        "item_count": 432,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9889306801,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Genuine Zimmerli premium shirt in size L at an excellent price point."
-    },
-    "watch": "Zimmerli polo M-L",
-    "seller_id": 155289165,
-    "seller": "v.toni"
-  },
-  {
-    "item": {
       "id": 9659414267,
       "title": "Pantaloni scurti ciclism Craft ADV Offroad Xt Shorts W Pad M",
       "price": {
@@ -281,37 +205,6 @@
     "watch": "Craft ADV M-L",
     "seller_id": 252560852,
     "seller": "jimi37"
-  },
-  {
-    "item": {
-      "id": 8489670929,
-      "title": "Kamizelka odblaskowa Craft ADV Visibility męska L",
-      "price": {
-        "amount": "54.22",
-        "currency_code": "RON"
-      },
-      "brand_title": "Craft",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/8489670929-kamizelka-odblaskowa-craft-adv-visibility-meska-l",
-      "user": {
-        "id": 90374170,
-        "login": "krysjur"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 8489670929,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Matches the ADV series hunt with a good price for technical gear."
-    },
-    "watch": "Craft ADV M-L",
-    "seller_id": 90374170,
-    "seller": "krysjur"
   },
   {
     "item": {
@@ -626,8 +519,8 @@
         "currency_code": "RON"
       },
       "brand_title": "H&M Sport",
-      "size_title": "M / 38 / 10",
-      "status": "Bună",
+      "size_title": null,
+      "status": "Used",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9905475907-hm-sport-fekete-futonadrag-leggings-zsebbel",
       "user": {
@@ -664,9 +557,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Lululemon",
-      "size_title": "M / 38 / 10",
-      "status": "Foarte bună",
-      "favourite_count": 1,
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9903781096-lululemon-workout-shorts-gym-pates-cardio-running-y2k-streetwear-swag-usa-pinterest",
       "user": {
         "id": 136553794,
@@ -702,9 +595,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Gore Wear",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 1,
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9882350572-gore-gore-windstooper-active-shellbluza-rozmiar-l",
       "user": {
         "id": 105628393,
@@ -733,310 +626,6 @@
   },
   {
     "item": {
-      "id": 9905301056,
-      "title": "2xu long sleeves running top",
-      "price": {
-        "amount": "55.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "2XU",
-      "size_title": "M / 38 / 10",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9905301056-2xu-long-sleeves-running-top",
-      "user": {
-        "id": 124138809,
-        "login": "fashionboxbudapest"
-      },
-      "_profile": {
-        "username": "fashionboxbudapest",
-        "member_since": null,
-        "feedback_count": 193,
-        "feedback_reputation": 1,
-        "item_count": 224,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9905301056,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct brand and size but basic item with missing seller historical verification."
-    },
-    "watch": "2XU M-L",
-    "seller_id": 124138809,
-    "seller": "fashionboxbudapest"
-  },
-  {
-    "item": {
-      "id": 9905112493,
-      "title": "New Balance 993 MR993GL Size 43 Very Good Condition Grey Miusa Summer Sporty Shoe Comfortable",
-      "price": {
-        "amount": "325.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "43",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9905112493-new-balance-993-mr993gl-size-43-very-good-condition-grey-miusa-summer-sporty-shoe-comfortable",
-      "user": {
-        "id": 155692816,
-        "login": "vintage_aesthetic_sp"
-      },
-      "_profile": {
-        "username": "vintage_aesthetic_sp",
-        "member_since": null,
-        "feedback_count": 1485,
-        "feedback_reputation": 1,
-        "item_count": 134,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9905112493,
-      "deal_score": 9,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct model and size in Made in USA line at a fair price, though account history missing details requires caution."
-    },
-    "watch": "New Balance 993 size 43",
-    "seller_id": 155692816,
-    "seller": "vintage_aesthetic_sp"
-  },
-  {
-    "item": {
-      "id": 9867917915,
-      "title": "Esmara kismama leggings M (40/42)",
-      "price": {
-        "amount": "16.12",
-        "currency_code": "RON"
-      },
-      "brand_title": "Esmara",
-      "size_title": "L / 40 / 12",
-      "status": "Bună",
-      "favourite_count": 10,
-      "url": "https://www.vinted.ro/items/9867917915-esmara-kismama-leggings-m-4042",
-      "user": {
-        "id": 129849242,
-        "login": "eszty.lett"
-      },
-      "_profile": {
-        "username": "eszty.lett",
-        "member_since": null,
-        "feedback_count": 243,
-        "feedback_reputation": 1,
-        "item_count": 440,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9867917915,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Esmara brand is low quality, failing to meet the creme-de-la-creme standard."
-    },
-    "watch": "Broad maternity leggings EN XL-L/XL",
-    "seller_id": 129849242,
-    "seller": "eszty.lett"
-  },
-  {
-    "item": {
-      "id": 9734554384,
-      "title": "Mamalicious leggings L/XL",
-      "price": {
-        "amount": "43.96",
-        "currency_code": "RON"
-      },
-      "brand_title": "Mamalicious",
-      "size_title": "L / 40 / 12",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9734554384-mamalicious-leggings-lxl",
-      "user": {
-        "id": 3145138903,
-        "login": "edimama0602"
-      },
-      "_profile": {
-        "username": "edimama0602",
-        "member_since": null,
-        "feedback_count": 104,
-        "feedback_reputation": 1,
-        "item_count": 172,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9734554384,
-      "deal_score": 9,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size (L/XL) and product, very good price for unworn condition."
-    },
-    "watch": "Mamalicious leggings XL-L/XL",
-    "seller_id": 3145138903,
-    "seller": "edimama0602"
-  },
-  {
-    "item": {
-      "id": 9587556101,
-      "title": "Mamalicious kismama leggings",
-      "price": {
-        "amount": "19.05",
-        "currency_code": "RON"
-      },
-      "brand_title": "Mamalicious",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9587556101-mamalicious-kismama-leggings",
-      "user": {
-        "id": 134949993,
-        "login": "reni682"
-      },
-      "_profile": {
-        "username": "reni682",
-        "member_since": null,
-        "feedback_count": 15,
-        "feedback_reputation": 1,
-        "item_count": 20,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9587556101,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size (XL) at an excellent price point."
-    },
-    "watch": "Mamalicious leggings XL-L/XL",
-    "seller_id": 134949993,
-    "seller": "reni682"
-  },
-  {
-    "item": {
-      "id": 9295650433,
-      "title": "Fekete hosszú xl méretű terhes nadrág",
-      "price": {
-        "amount": "18.9",
-        "currency_code": "RON"
-      },
-      "brand_title": "Mamalicious",
-      "size_title": "XL / 42 / 14",
-      "status": "Bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9295650433-fekete-hosszu-xl-meretu-terhes-nadrag",
-      "user": {
-        "id": 131726872,
-        "login": "erzso7919"
-      },
-      "_profile": {
-        "username": "erzso7919",
-        "member_since": null,
-        "feedback_count": 446,
-        "feedback_reputation": 1,
-        "item_count": 675,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9295650433,
-      "deal_score": 8,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Matches XL hunt requirement and price is well within budget for essential maternity wear."
-    },
-    "watch": "Mamalicious leggings XL-L/XL",
-    "seller_id": 131726872,
-    "seller": "erzso7919"
-  },
-  {
-    "item": {
-      "id": 9871986429,
-      "title": "Sukienka ciężowa i do karmienia Seraphine",
-      "price": {
-        "amount": "48.05",
-        "currency_code": "RON"
-      },
-      "brand_title": "Seraphine",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9871986429-sukienka-ciezowa-i-do-karmienia-seraphine",
-      "user": {
-        "id": 150590375,
-        "login": "alicja-sko"
-      },
-      "_profile": {
-        "username": "alicja-sko",
-        "member_since": null,
-        "feedback_count": 45,
-        "feedback_reputation": 1,
-        "item_count": 8,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9871986429,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Matches XL size and is a functional maternity/nursing dress at a great price."
-    },
-    "watch": "Seraphine maternity XL-L/XL",
-    "seller_id": 150590375,
-    "seller": "alicja-sko"
-  },
-  {
-    "item": {
-      "id": 9762922283,
-      "title": "Rochie maternitate fuchsia Isabella Oliver mărimea 5 (XL)",
-      "price": {
-        "amount": "34.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Isabella Oliver",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9762922283-rochie-maternitate-fuchsia-isabella-oliver-marimea-5-xl",
-      "user": {
-        "id": 3149278072,
-        "login": "busybi25"
-      },
-      "_profile": {
-        "username": "busybi25",
-        "member_since": null,
-        "feedback_count": 106,
-        "feedback_reputation": 1,
-        "item_count": 633,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9762922283,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct brand, perfect size match, and an excellent price for a premium maternity piece."
-    },
-    "watch": "Isabella Oliver maternity XL-L/XL",
-    "seller_id": 3149278072,
-    "seller": "busybi25"
-  },
-  {
-    "item": {
       "id": 9665326160,
       "title": "Spodnie damskie",
       "price": {
@@ -1044,9 +633,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Isabella Oliver",
-      "size_title": "XL",
-      "status": "Foarte bună",
-      "favourite_count": 1,
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9665326160-spodnie-damskie",
       "user": {
         "id": 3171419329,
@@ -1075,120 +664,6 @@
   },
   {
     "item": {
-      "id": 9209480121,
-      "title": "Maternity Midi Dress by Tiffany Rose - L/XL",
-      "price": {
-        "amount": "139.22",
-        "currency_code": "RON"
-      },
-      "brand_title": "Tiffany Rose",
-      "size_title": "XL / 42 / 14",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9209480121-maternity-midi-dress-by-tiffany-rose-lxl",
-      "user": {
-        "id": 238026210,
-        "login": "relove4you"
-      },
-      "_profile": {
-        "username": "relove4you",
-        "member_since": null,
-        "feedback_count": 406,
-        "feedback_reputation": 1,
-        "item_count": 255,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9209480121,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Excellent price for a brand-new Tiffany Rose dress in the correct XL size."
-    },
-    "watch": "Tiffany Rose maternity dress XL-L/XL",
-    "seller_id": 238026210,
-    "seller": "relove4you"
-  },
-  {
-    "item": {
-      "id": 9768012569,
-      "title": "Kismama illetve szoptatós pulcsi xl",
-      "price": {
-        "amount": "29.31",
-        "currency_code": "RON"
-      },
-      "brand_title": "Noppies",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9768012569-kismama-illetve-szoptatos-pulcsi-xl",
-      "user": {
-        "id": 3151442260,
-        "login": "bemike2"
-      },
-      "_profile": {
-        "username": "bemike2",
-        "member_since": null,
-        "feedback_count": 81,
-        "feedback_reputation": 1,
-        "item_count": 31,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9768012569,
-      "deal_score": 8,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Matches size and maternity/nursing criteria, but is a basic knitwear piece rather than a must-have."
-    },
-    "watch": "Noppies maternity XL-L/XL",
-    "seller_id": 3151442260,
-    "seller": "bemike2"
-  },
-  {
-    "item": {
-      "id": 9767816000,
-      "title": "Téli kismama kabát",
-      "price": {
-        "amount": "146.55",
-        "currency_code": "RON"
-      },
-      "brand_title": "Noppies",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 9,
-      "url": "https://www.vinted.ro/items/9767816000-teli-kismama-kabat",
-      "user": {
-        "id": 3151442260,
-        "login": "bemike2"
-      },
-      "_profile": {
-        "username": "bemike2",
-        "member_since": null,
-        "feedback_count": 81,
-        "feedback_reputation": 1,
-        "item_count": 31,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9767816000,
-      "deal_score": 9,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "High-value maternity outerwear in correct XL size represents a significant functional investment."
-    },
-    "watch": "Noppies maternity XL-L/XL",
-    "seller_id": 3151442260,
-    "seller": "bemike2"
-  },
-  {
-    "item": {
       "id": 9903997388,
       "title": "Sukienka marki Mamalicious dla kobiet w ciąży",
       "price": {
@@ -1196,8 +671,8 @@
         "currency_code": "RON"
       },
       "brand_title": "Mamalicious",
-      "size_title": "XL / 42 / 14",
-      "status": "Nou cu etichetă",
+      "size_title": null,
+      "status": "New",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9903997388-sukienka-marki-mamalicious-dla-kobiet-w-ciazy",
       "user": {
@@ -1234,8 +709,8 @@
         "currency_code": "RON"
       },
       "brand_title": "ASOS Maternity",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
+      "size_title": null,
+      "status": "Used",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9892007064-leginsy-z-panelem-na-ciazowy-brzuszek-xl-asos-maternity",
       "user": {
@@ -1272,9 +747,9 @@
         "currency_code": "RON"
       },
       "brand_title": "ASOS Maternity",
-      "size_title": "XL / 42 / 14",
-      "status": "Foarte bună",
-      "favourite_count": 2,
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9076943001-asos-maternity-dluga-sukienka-maxi-pudrowy-roz-42-xl-100-wiskoza",
       "user": {
         "id": 90545759,
@@ -1310,9 +785,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Seraphine",
-      "size_title": "XL / 42 / 14",
-      "status": "Nou fără etichetă",
-      "favourite_count": 1,
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9734948039-seraphine-ing-xl",
       "user": {
         "id": 3145138903,
@@ -1338,5 +813,644 @@
     "watch": "Seraphine leggings XL-L/XL",
     "seller_id": 3145138903,
     "seller": "edimama0602"
+  },
+  {
+    "item": {
+      "id": 9644564500,
+      "title": "Koszulka sportowa 2XU Compression SS Top męska M",
+      "price": {
+        "amount": "109.66",
+        "currency_code": "RON"
+      },
+      "brand_title": "2XU",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9644564500-koszulka-sportowa-2xu-compression-ss-top-meska-m",
+      "user": {
+        "id": 90374170,
+        "login": "krysjur"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9644564500,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good match for target brand and size, though missing seller history elevates risk."
+    },
+    "watch": "2XU M-L",
+    "seller_id": 90374170,
+    "seller": "krysjur"
+  },
+  {
+    "item": {
+      "id": 9898227354,
+      "title": "Legginsy kompresyjne do biegania 2xu",
+      "price": {
+        "amount": "35.73",
+        "currency_code": "RON"
+      },
+      "brand_title": "2XU",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9898227354-legginsy-kompresyjne-do-biegania-2xu",
+      "user": {
+        "id": 91061997,
+        "login": "frazos87"
+      },
+      "_profile": {
+        "username": "frazos87",
+        "member_since": null,
+        "feedback_count": 779,
+        "feedback_reputation": 0.82,
+        "item_count": 80,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9898227354,
+      "deal_score": 7,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Great price for compression tights in correct size L but lacks detailed description."
+    },
+    "watch": "2XU M-L",
+    "seller_id": 91061997,
+    "seller": "frazos87"
+  },
+  {
+    "item": {
+      "id": 9892854536,
+      "title": "The Core Compression 3/4 Tights 2XU",
+      "price": {
+        "amount": "59.14",
+        "currency_code": "RON"
+      },
+      "brand_title": "2XU",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9892854536-the-core-compression-34-tights-2xu",
+      "user": {
+        "id": 90759482,
+        "login": "gazuya"
+      },
+      "_profile": {
+        "username": "gazuya",
+        "member_since": null,
+        "feedback_count": 235,
+        "feedback_reputation": 1,
+        "item_count": 10,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9892854536,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for men's 2XU compression tights in M, but missing seller history makes it a skip for a high-priority 'must-have' list."
+    },
+    "watch": "2XU M-L",
+    "seller_id": 90759482,
+    "seller": "gazuya"
+  },
+  {
+    "item": {
+      "id": 9839210414,
+      "title": "Leginsy ciążowe Oceans Apart - Mila Maternity Pant",
+      "price": {
+        "amount": "121.99",
+        "currency_code": "RON"
+      },
+      "brand_title": "Oceans Apart",
+      "size_title": "L / 40 / 12",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9839210414-leginsy-ciazowe-oceans-apart-mila-maternity-pant",
+      "user": {
+        "id": 94617171,
+        "login": "adkaaa96"
+      },
+      "_profile": {
+        "username": "adkaaa96",
+        "member_since": null,
+        "feedback_count": 43,
+        "feedback_reputation": 1,
+        "item_count": 11,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9839210414,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Brand is good, but the price is above the hunt target for a standard used pair."
+    },
+    "watch": "Broad maternity leggings RO XL-L/XL",
+    "seller_id": 94617171,
+    "seller": "adkaaa96"
+  },
+  {
+    "item": {
+      "id": 9760806240,
+      "title": "Czarne elastyczne legginsy ciążowe z wysokim pasem r. L XL XXL 40 42 44",
+      "price": {
+        "amount": "30.8",
+        "currency_code": "RON"
+      },
+      "brand_title": null,
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 15,
+      "url": "https://www.vinted.ro/items/9760806240-czarne-elastyczne-legginsy-ciazowe-z-wysokim-pasem-r-l-xl-xxl-40-42-44",
+      "user": {
+        "id": 91719600,
+        "login": "xjowsta"
+      },
+      "_profile": {
+        "username": "xjowsta",
+        "member_since": null,
+        "feedback_count": 1270,
+        "feedback_reputation": 1,
+        "item_count": 127,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9760806240,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Basic item with no specific maternity brand and questionable quality, not worth a high score."
+    },
+    "watch": "Broad maternity leggings RO XL-L/XL",
+    "seller_id": 91719600,
+    "seller": "xjowsta"
+  },
+  {
+    "item": {
+      "id": 9683354911,
+      "title": "Czarne legginsy ciążowe ocieplane / Black Maternity Winter Leggings",
+      "price": {
+        "amount": "6.16",
+        "currency_code": "RON"
+      },
+      "brand_title": "Primark",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9683354911-czarne-legginsy-ciazowe-ocieplane-black-maternity-winter-leggings",
+      "user": {
+        "id": 3157870190,
+        "login": "arelys6"
+      },
+      "_profile": {
+        "username": "arelys6",
+        "member_since": null,
+        "feedback_count": 23,
+        "feedback_reputation": 1,
+        "item_count": 32,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9683354911,
+      "deal_score": 7,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Low quality brand (Primark) despite being in size XL and inexpensive."
+    },
+    "watch": "Broad maternity leggings EN XL-L/XL",
+    "seller_id": 3157870190,
+    "seller": "arelys6"
+  },
+  {
+    "item": {
+      "id": 8892135688,
+      "title": "Mamalicious Kismama nadrág",
+      "price": {
+        "amount": "117.24",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/8892135688-mamalicious-kismama-nadrag",
+      "user": {
+        "id": 170826782,
+        "login": "nikolszky"
+      },
+      "_profile": {
+        "username": "nikolszky",
+        "member_since": null,
+        "feedback_count": 9,
+        "feedback_reputation": 0.9199999999999999,
+        "item_count": 11,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 8892135688,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct item and size, but price is above the target hunt value and lacks seller history."
+    },
+    "watch": "Mamalicious leggings XL-L/XL",
+    "seller_id": 170826782,
+    "seller": "nikolszky"
+  },
+  {
+    "item": {
+      "id": 9682779668,
+      "title": "Zestaw ubrań ciążowych Seraphine & H&M Mama",
+      "price": {
+        "amount": "345.01",
+        "currency_code": "RON"
+      },
+      "brand_title": "Seraphine",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9682779668-zestaw-ubran-ciazowych-seraphine-hm-mama",
+      "user": {
+        "id": 307900890,
+        "login": "annglow"
+      },
+      "_profile": {
+        "username": "annglow",
+        "member_since": null,
+        "feedback_count": 81,
+        "feedback_reputation": 1,
+        "item_count": 83,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9682779668,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Mixed set including H&M items makes this less of a focused premium purchase."
+    },
+    "watch": "Seraphine maternity XL-L/XL",
+    "seller_id": 307900890,
+    "seller": "annglow"
+  },
+  {
+    "item": {
+      "id": 9565050780,
+      "title": "Sukienka ciążowa dopasowana ołówkowa marszczenia kremowa ecru premium elastyczna elegancka",
+      "price": {
+        "amount": "97.34",
+        "currency_code": "RON"
+      },
+      "brand_title": "Isabella Oliver",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9565050780-sukienka-ciazowa-dopasowana-olowkowa-marszczenia-kremowa-ecru-premium-elastyczna-elegancka",
+      "user": {
+        "id": 90737234,
+        "login": "joanna_b"
+      },
+      "_profile": {
+        "username": "joanna_b",
+        "member_since": null,
+        "feedback_count": 414,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 571,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9565050780,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct premium brand, elegant maternity-specific cut, and size XL fit the hunt criteria perfectly at a great price."
+    },
+    "watch": "Isabella Oliver maternity XL-L/XL",
+    "seller_id": 90737234,
+    "seller": "joanna_b"
+  },
+  {
+    "item": {
+      "id": 9075052822,
+      "title": "Eleganckie spodnie ciążowe Pietro Brunelli",
+      "price": {
+        "amount": "121.99",
+        "currency_code": "RON"
+      },
+      "brand_title": "Pietro Brunelli",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9075052822-eleganckie-spodnie-ciazowe-pietro-brunelli",
+      "user": {
+        "id": 90615679,
+        "login": "caroline_ks"
+      },
+      "_profile": {
+        "username": "caroline_ks",
+        "member_since": null,
+        "feedback_count": 562,
+        "feedback_reputation": 1,
+        "item_count": 100,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9075052822,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "low",
+      "reason": "Excellent deal for a Pietro Brunelli maternity item in size XL and unused condition."
+    },
+    "watch": "Pietro Brunelli maternity XL-L/XL",
+    "seller_id": 90615679,
+    "seller": "caroline_ks"
+  },
+  {
+    "item": {
+      "id": 9648697756,
+      "title": "Rochie alaptare XL",
+      "price": {
+        "amount": "70.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Noppies",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9648697756-rochie-alaptare-xl",
+      "user": {
+        "id": 153177771,
+        "login": "user907"
+      },
+      "_profile": {
+        "username": "user907",
+        "member_since": null,
+        "feedback_count": 65,
+        "feedback_reputation": 1,
+        "item_count": 76,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9648697756,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Matches size XL and hunt category, but lacks specific details to confirm it as a high-value piece."
+    },
+    "watch": "Noppies maternity XL-L/XL",
+    "seller_id": 153177771,
+    "seller": "user907"
+  },
+  {
+    "item": {
+      "id": 9900831865,
+      "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
+      "price": {
+        "amount": "109.66",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9900831865-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
+      "user": {
+        "id": 253589201,
+        "login": "vintvib"
+      },
+      "_profile": {
+        "username": "vintvib",
+        "member_since": null,
+        "feedback_count": 163,
+        "feedback_reputation": 1,
+        "item_count": 126,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9900831865,
+      "deal_score": 9,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent item, correct size, and good condition (new with tag)."
+    },
+    "watch": "Mamalicious maternity XL-L/XL",
+    "seller_id": 253589201,
+    "seller": "vintvib"
+  },
+  {
+    "item": {
+      "id": 9900766745,
+      "title": "Blugi gravida xl",
+      "price": {
+        "amount": "25.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9900766745-blugi-gravida-xl",
+      "user": {
+        "id": 224819493,
+        "login": "mymdm"
+      },
+      "_profile": {
+        "username": "mymdm",
+        "member_since": null,
+        "feedback_count": 1018,
+        "feedback_reputation": 1,
+        "item_count": 2794,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9900766745,
+      "deal_score": 8,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct brand and size in very good condition at an excellent price point."
+    },
+    "watch": "Mamalicious maternity XL-L/XL",
+    "seller_id": 224819493,
+    "seller": "mymdm"
+  },
+  {
+    "item": {
+      "id": 9803340066,
+      "title": "Damska czarna ciążowa bluzka koszula l 40 xl 42 Envie de Fraise koronka do karmienia",
+      "price": {
+        "amount": "48.05",
+        "currency_code": "RON"
+      },
+      "brand_title": "Envie de Fraise",
+      "size_title": "L / 40 / 12",
+      "status": "Nou cu etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9803340066-damska-czarna-ciazowa-bluzka-koszula-l-40-xl-42-envie-de-fraise-koronka-do-karmienia",
+      "user": {
+        "id": 90770066,
+        "login": "mars25596"
+      },
+      "_profile": {
+        "username": "mars25596",
+        "member_since": null,
+        "feedback_count": 1002,
+        "feedback_reputation": 1,
+        "item_count": 428,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9803340066,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and nursing feature, but lacks the high-end appeal for a higher score."
+    },
+    "watch": "Envie de Fraise maternity XL-L/XL",
+    "seller_id": 90770066,
+    "seller": "mars25596"
+  },
+  {
+    "item": {
+      "id": 9794474432,
+      "title": "Bluză,pentru gravide,Envie de Fraise",
+      "price": {
+        "amount": "14.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Envie de Fraise",
+      "size_title": "XL / 42 / 14",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9794474432-bluzapentru-gravideenvie-de-fraise",
+      "user": {
+        "id": 3145223754,
+        "login": "rodicab892"
+      },
+      "_profile": {
+        "username": "rodicab892",
+        "member_since": null,
+        "feedback_count": 337,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 970,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9794474432,
+      "deal_score": 7,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for XL, but it is a basic blouse rather than a high-value piece."
+    },
+    "watch": "Envie de Fraise maternity XL-L/XL",
+    "seller_id": 3145223754,
+    "seller": "rodicab892"
+  },
+  {
+    "item": {
+      "id": 9634818883,
+      "title": "Blugi maternitate",
+      "price": {
+        "amount": "40.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "JoJo Maman Bébé",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9634818883-blugi-maternitate",
+      "user": {
+        "id": 149900101,
+        "login": "ttify"
+      },
+      "_profile": {
+        "username": "ttify",
+        "member_since": null,
+        "feedback_count": 457,
+        "feedback_reputation": 1,
+        "item_count": 329,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9634818883,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good deal for maternity jeans in correct XL size, but not an exceptional 'must-have' piece."
+    },
+    "watch": "JoJo Maman Bebe maternity XL-L/XL",
+    "seller_id": 149900101,
+    "seller": "ttify"
+  },
+  {
+    "item": {
+      "id": 9906207512,
+      "title": "Kismama rövidnadrág szett 40-es",
+      "price": {
+        "amount": "14.65",
+        "currency_code": "RON"
+      },
+      "brand_title": "H&M Mama",
+      "size_title": "L / 40 / 12",
+      "status": "Bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9906207512-kismama-rovidnadrag-szett-40-es",
+      "user": {
+        "id": 3139673461,
+        "login": "geniko88"
+      },
+      "_profile": {
+        "username": "geniko88",
+        "member_since": null,
+        "feedback_count": 1,
+        "feedback_reputation": 1,
+        "item_count": 18,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9906207512,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Matches size L, but condition is merely good and it is a solo listing."
+    },
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "seller_id": 3139673461,
+    "seller": "geniko88"
   }
 ]

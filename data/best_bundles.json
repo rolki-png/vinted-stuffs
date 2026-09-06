@@ -808,6 +808,485 @@
     "offer_target_per_item_ron": 50.0
   },
   {
+    "kind": "index_keep_bundle",
+    "kept_at": "2026-09-06T00:41:34.727811+00:00",
+    "seller": "patyilevendula",
+    "seller_id": 108322181,
+    "country": "hu",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 133.36,
+    "checkout_total": 158.36,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "keep",
+        "id": 8545787923,
+        "title": "Seraphine L szoptatós kismama ruha",
+        "price": 61.55,
+        "url": "https://www.vinted.ro/items/8545787923-seraphine-l-szoptatos-kismama-ruha",
+        "watch": "Seraphine maternity L-XL",
+        "deal_score": 9,
+        "seller_id": 108322181,
+        "seller": "patyilevendula"
+      },
+      {
+        "role": "extra",
+        "id": 8705884811,
+        "title": "Seraphine denim, sötétkék 42",
+        "price": 71.81,
+        "url": "https://www.vinted.ro/items/8705884811-seraphine-denim-sotetkek-42",
+        "watch": "Seraphine maternity L-XL",
+        "deal_score": 8,
+        "seller_id": 108322181,
+        "seller": "patyilevendula"
+      }
+    ],
+    "suggested_offer_ron": 100,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T23:42:41.088788+00:00",
+    "seller": "vpstorevintage",
+    "seller_id": 90847474,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 284.62,
+    "checkout_total": 309.62,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9035459403,
+        "title": "Gran Sasso vintage v neck wool knit jumper sweater sweter wełniany",
+        "price": 186.06,
+        "url": "https://www.vinted.ro/items/9035459403-gran-sasso-vintage-v-neck-wool-knit-jumper-sweater-sweter-welniany",
+        "watch": "Gran Sasso M-L",
+        "deal_score": 7,
+        "seller_id": 90847474,
+        "seller": "vpstorevintage"
+      },
+      {
+        "role": "extra",
+        "id": 9652830712,
+        "title": "Gorewear running training shorts szorty sportowe do biegania",
+        "price": 98.56,
+        "url": "https://www.vinted.ro/items/9652830712-gorewear-running-training-shorts-szorty-sportowe-do-biegania",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 6,
+        "seller_id": 90847474,
+        "seller": "vpstorevintage"
+      }
+    ],
+    "suggested_offer_ron": 185,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T23:20:27.808142+00:00",
+    "seller": "horsnm",
+    "seller_id": 246449166,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 677.7,
+    "checkout_total": 702.7,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 8119240425,
+        "title": "New Balance 993 Black Czarne 990 Made in USA",
+        "price": 246.44,
+        "url": "https://www.vinted.ro/items/8119240425-new-balance-993-black-czarne-990-made-in-usa",
+        "watch": "New Balance 993 size 43",
+        "deal_score": 6,
+        "seller_id": 246449166,
+        "seller": "horsnm"
+      },
+      {
+        "role": "extra",
+        "id": 8969999144,
+        "title": "New Balance 990v4 Pink Ribbon Faded Rose 990 993 Made in USA",
+        "price": 431.26,
+        "url": "https://www.vinted.ro/items/8969999144-new-balance-990v4-pink-ribbon-faded-rose-990-993-made-in-usa",
+        "watch": "New Balance 990 size 43",
+        "deal_score": 6,
+        "seller_id": 246449166,
+        "seller": "horsnm"
+      }
+    ],
+    "suggested_offer_ron": 440,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:53:52.982999+00:00",
+    "seller": "lafi83",
+    "seller_id": 171548419,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 983.28,
+    "checkout_total": 1008.28,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9805714011,
+        "title": "New Balance 990v5 USA 43cm. stopa 27.5 cm.",
+        "price": 491.64,
+        "url": "https://www.vinted.ro/items/9805714011-new-balance-990v5-usa-43cm-stopa-275-cm",
+        "watch": "New Balance 990 size 43",
+        "deal_score": 7,
+        "seller_id": 171548419,
+        "seller": "lafi83"
+      },
+      {
+        "role": "extra",
+        "id": 9867145462,
+        "title": "New Balance 990v6 USA 43 cm. stopa 27 cm.",
+        "price": 491.64,
+        "url": "https://www.vinted.ro/items/9867145462-new-balance-990v6-usa-43-cm-stopa-27-cm",
+        "watch": "New Balance 990 size 43",
+        "deal_score": 6,
+        "seller_id": 171548419,
+        "seller": "lafi83"
+      }
+    ],
+    "suggested_offer_ron": 639,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_keep_bundle",
+    "kept_at": "2026-09-05T22:51:24.414944+00:00",
+    "seller": "bodzio1022",
+    "seller_id": 90457144,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 245.20999999999998,
+    "checkout_total": 270.21,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "keep",
+        "id": 9356538294,
+        "title": "Kurtka Gore Wear Windstopper M odblaski X-Run Ultra",
+        "price": 121.99,
+        "url": "https://www.vinted.ro/items/9356538294-kurtka-gore-wear-windstopper-m-odblaski-x-run-ultra",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 9,
+        "seller_id": 90457144,
+        "seller": "bodzio1022"
+      },
+      {
+        "role": "extra",
+        "id": 9630085777,
+        "title": "Koszulka sportowa 2XU M czarna",
+        "price": 80.09,
+        "url": "https://www.vinted.ro/items/9630085777-koszulka-sportowa-2xu-m-czarna",
+        "watch": "2XU M-L",
+        "deal_score": 6,
+        "seller_id": 90457144,
+        "seller": "bodzio1022"
+      },
+      {
+        "role": "extra",
+        "id": 9624570611,
+        "title": "Spodenki Gore Running Wear M czarne na rower rowerowe",
+        "price": 43.13,
+        "url": "https://www.vinted.ro/items/9624570611-spodenki-gore-running-wear-m-czarne-na-rower-rowerowe",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 6,
+        "seller_id": 90457144,
+        "seller": "bodzio1022"
+      }
+    ],
+    "suggested_offer_ron": 183,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:44:28.228698+00:00",
+    "seller": "minionek9590",
+    "seller_id": 127657237,
+    "country": null,
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 156.49,
+    "checkout_total": 181.49,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9766182337,
+        "title": "Kurtka/ bluza sportowa turystyczna 2XU L",
+        "price": 96.11,
+        "url": "https://www.vinted.ro/items/9766182337-kurtka-bluza-sportowa-turystyczna-2xu-l",
+        "watch": "2XU M-L",
+        "deal_score": 7,
+        "seller_id": 127657237,
+        "seller": "minionek9590"
+      },
+      {
+        "role": "extra",
+        "id": 9761660502,
+        "title": "Koszulka sportowa 2XU L",
+        "price": 60.38,
+        "url": "https://www.vinted.ro/items/9761660502-koszulka-sportowa-2xu-l",
+        "watch": "2XU M-L",
+        "deal_score": 6,
+        "seller_id": 127657237,
+        "seller": "minionek9590"
+      }
+    ],
+    "suggested_offer_ron": 101,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:44:28.228694+00:00",
+    "seller": "piotrekx_1",
+    "seller_id": 92528321,
+    "country": null,
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 36.96,
+    "checkout_total": 61.96,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9757617962,
+        "title": "Leginsy 2XU roz. M",
+        "price": 18.48,
+        "url": "https://www.vinted.ro/items/9757617962-leginsy-2xu-roz-m",
+        "watch": "2XU M-L",
+        "deal_score": 6,
+        "seller_id": 92528321,
+        "seller": "piotrekx_1"
+      },
+      {
+        "role": "extra",
+        "id": 9756776512,
+        "title": "Leginsy 2XU roz. M",
+        "price": 18.48,
+        "url": "https://www.vinted.ro/items/9756776512-leginsy-2xu-roz-m",
+        "watch": "2XU M-L",
+        "deal_score": 6,
+        "seller_id": 92528321,
+        "seller": "piotrekx_1"
+      }
+    ],
+    "suggested_offer_ron": 33,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:44:21.699400+00:00",
+    "seller": "michal85style",
+    "seller_id": 90712083,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 154.01999999999998,
+    "checkout_total": 179.01999999999998,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9733766545,
+        "title": "Spodnie kompresyjne 2XU getry do biegania męskie M",
+        "price": 92.41,
+        "url": "https://www.vinted.ro/items/9733766545-spodnie-kompresyjne-2xu-getry-do-biegania-meskie-m",
+        "watch": "2XU M-L",
+        "deal_score": 7,
+        "seller_id": 90712083,
+        "seller": "michal85style"
+      },
+      {
+        "role": "extra",
+        "id": 9469962476,
+        "title": "Bluza Gore sportowa do biegania , na rower M unisex",
+        "price": 61.61,
+        "url": "https://www.vinted.ro/items/9469962476-bluza-gore-sportowa-do-biegania-na-rower-m-unisex",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 6,
+        "seller_id": 90712083,
+        "seller": "michal85style"
+      }
+    ],
+    "suggested_offer_ron": 100,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:32:30.843928+00:00",
+    "seller": "therswardrobe",
+    "seller_id": 3145359859,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 77.0,
+    "checkout_total": 102.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9391895028,
+        "title": "Tricou Gore Windstopper, mărimea M",
+        "price": 41.0,
+        "url": "https://www.vinted.ro/items/9391895028-tricou-gore-windstopper-marimea-m",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 6,
+        "seller_id": 3145359859,
+        "seller": "therswardrobe"
+      },
+      {
+        "role": "extra",
+        "id": 9813308354,
+        "title": "Geacă ciclism Odlo, mărimea M",
+        "price": 36.0,
+        "url": "https://www.vinted.ro/items/9813308354-geaca-ciclism-odlo-marimea-m",
+        "watch": "Odlo technical M-L",
+        "deal_score": 6,
+        "seller_id": 3145359859,
+        "seller": "therswardrobe"
+      }
+    ],
+    "suggested_offer_ron": 50,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:32:30.843919+00:00",
+    "seller": "aaasaass",
+    "seller_id": 184993944,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 199.0,
+    "checkout_total": 224.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9523727653,
+        "title": "Tricou Ciclism GORE Wear Mărimea L Bărbați Albastru / Negru",
+        "price": 90.0,
+        "url": "https://www.vinted.ro/items/9523727653-tricou-ciclism-gore-wear-marimea-l-barbati-albastru-negru",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 7,
+        "seller_id": 184993944,
+        "seller": "aaasaass"
+      },
+      {
+        "role": "extra",
+        "id": 9484117627,
+        "title": "Tricou Ciclism GORE Wear Mărimea M Negru Albastru Dungi Abstracte Zip Buzunar",
+        "price": 109.0,
+        "url": "https://www.vinted.ro/items/9484117627-tricou-ciclism-gore-wear-marimea-m-negru-albastru-dungi-abstracte-zip-buzunar",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 7,
+        "seller_id": 184993944,
+        "seller": "aaasaass"
+      }
+    ],
+    "suggested_offer_ron": 129,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:24:01.611820+00:00",
+    "seller": "dmn071530",
+    "seller_id": 91555466,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 295.72,
+    "checkout_total": 320.72,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9674265221,
+        "title": "Kamizelka Gore Wear Windstopper Soft Shell rozm M",
+        "price": 123.22,
+        "url": "https://www.vinted.ro/items/9674265221-kamizelka-gore-wear-windstopper-soft-shell-rozm-m",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 8,
+        "seller_id": 91555466,
+        "seller": "dmn071530"
+      },
+      {
+        "role": "extra",
+        "id": 9674285734,
+        "title": "Kurtka GORE Wear Mythos 2.0 Windstopper Soft Shell rozm M",
+        "price": 172.5,
+        "url": "https://www.vinted.ro/items/9674285734-kurtka-gore-wear-mythos-20-windstopper-soft-shell-rozm-m",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 7,
+        "seller_id": 91555466,
+        "seller": "dmn071530"
+      }
+    ],
+    "suggested_offer_ron": 192,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-05T22:16:16.366836+00:00",
+    "seller": "kupno9099",
+    "seller_id": 237595614,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 243.96999999999997,
+    "checkout_total": 268.96999999999997,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9822884768,
+        "title": "gore wear spodnie termiczne biegowe czarne l",
+        "price": 85.02,
+        "url": "https://www.vinted.ro/items/9822884768-gore-wear-spodnie-termiczne-biegowe-czarne-l",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 7,
+        "seller_id": 237595614,
+        "seller": "kupno9099"
+      },
+      {
+        "role": "extra",
+        "id": 9822741142,
+        "title": "gore wear m base layer koszulka termoaktywna czarna długi rękaw",
+        "price": 158.95,
+        "url": "https://www.vinted.ro/items/9822741142-gore-wear-m-base-layer-koszulka-termoaktywna-czarna-dlugi-rekaw",
+        "watch": "GOREWEAR M-L",
+        "deal_score": 6,
+        "seller_id": 237595614,
+        "seller": "kupno9099"
+      }
+    ],
+    "suggested_offer_ron": 158,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
     "kept_at": "2026-09-05T20:27:14.406038+00:00",
     "kind": "near_haul",
     "seller": "diamencikowo",

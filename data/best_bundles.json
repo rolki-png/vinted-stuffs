@@ -1,5 +1,47 @@
 [
   {
+    "kept_at": "2026-09-06T07:00:53.578203+00:00",
+    "kind": "near_haul",
+    "seller": "suciucsr",
+    "seller_id": 3170024992,
+    "country": "ro",
+    "checkout_extra_ron": 21.2,
+    "listing_sum": 64.0,
+    "checkout_total": 85.2,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 42.6,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9903117395,
+        "title": "Șapcă Adidas neagră originală bărbați/unisex - Reglabilă sport 🧢",
+        "price": 37.0,
+        "url": "https://www.vinted.ro/items/9903117395-sapca-adidas-neagra-originala-barbatiunisex-reglabila-sport",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "suciucsr",
+        "seller_id": 3170024992
+      },
+      {
+        "role": "haul",
+        "id": 9903205920,
+        "title": "Șapcă bărbați C&A - Gri închis / Antracit sport 🧢",
+        "price": 27.0,
+        "url": "https://www.vinted.ro/items/9903205920-sapca-barbati-ca-gri-inchis-antracit-sport",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "suciucsr",
+        "seller_id": 3170024992
+      }
+    ],
+    "suggested_offer_ron": 41,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
     "kept_at": "2026-09-06T06:38:46.006299+00:00",
     "kind": "near_haul",
     "seller": "smadalin20",

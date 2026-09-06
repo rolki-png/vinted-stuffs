@@ -55,7 +55,9 @@ def load_state() -> dict:
 def save_state(state: dict) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     state["seen_ids"] = state.get("seen_ids", [])[-5000:]
-    state["seen_keys"] = state.get("seen_keys", [])[-8000:]
+    # Keep a long rolling window so busy multi-hunt runs do not thrash
+    # recently-seen keys (desk "Seen keys" used to stick at the old 8k cap).
+    state["seen_keys"] = state.get("seen_keys", [])[-50000:]
     state["crawled_trigger_ids"] = state.get("crawled_trigger_ids", [])[-2000:]
     STATE_PATH.write_text(json.dumps(state, indent=2) + "\n")
 

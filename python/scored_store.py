@@ -602,6 +602,11 @@ def ensure_schema(conn) -> None:
 def open_store() -> ScoredStore:
     url = database_url()
     if not url:
+        print(
+            "scored_store: DATABASE_URL unset — scores will NOT land in Cockroach "
+            "(desk Index stays stale; only Keeps in git JSON appear).",
+            file=sys.stderr,
+        )
         return NullScoredStore()
     try:
         import psycopg

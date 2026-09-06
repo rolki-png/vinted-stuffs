@@ -300,10 +300,10 @@ a.link:hover { border-bottom-color: var(--accent); }
   margin: 0 0 0.35rem;
   font-size: 1.35rem;
 }
-.bundle meta {
+.bundle .bundle-meta {
   display: block;
   color: var(--muted);
-  margin-bottom: 0.8rem;
+  margin: 0 0 0.8rem;
   font-family: var(--mono);
   font-size: 0.8rem;
 }

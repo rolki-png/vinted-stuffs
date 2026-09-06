@@ -576,7 +576,7 @@ export function DealDesk() {
                       <span className={`pill ${pillClass}`}>{kindLabel}</span>
                       {b.veto_status ? <span className={`pill ${b.veto_status}`}> {b.veto_status}</span> : null}
                     </h3>
-                    <meta>
+                    <p className="bundle-meta">
                       {b.country || '?'} · listings {Number(b.listing_sum || 0).toFixed(0)} + extra{' '}
                       {b.checkout_extra_ron ?? '?'} ={' '}
                       <strong>
@@ -596,7 +596,7 @@ export function DealDesk() {
                         </>
                       ) : null}
                       {b.reason ? ` · ${b.reason}` : ''} · {fmtWhen(b.kept_at)}
-                    </meta>
+                    </p>
                     <div className="bundle-items">
                       {(b.items || []).map((it) => (
                         <div className="bundle-item" key={String(it.id)}>
@@ -710,10 +710,10 @@ export function DealDesk() {
         <section className="panel active">
           <div className="bundle">
             <h3>Last scoring snapshot</h3>
-            <meta>
+            <p className="bundle-meta">
               finished {fmtWhen(run.finished_at)} · scored {run.scored ?? '—'} · solo keeps {run.solo_keeps ?? '—'} ·
               bundles {run.bundles ?? '—'} · alerts {run.alerts ?? '—'}
-            </meta>
+            </p>
             <p className="reason">Score histogram (count per deal_score)</p>
             <div className="hist">
               {Array.from({ length: 10 }, (_, i) => {
@@ -731,7 +731,9 @@ export function DealDesk() {
           </div>
           <div className="bundle" style={{ marginTop: '1rem' }}>
             <h3>GitHub Actions</h3>
-            <meta>Cron every 15m on GitHub · optional daily Vercel cron → same workflow</meta>
+            <p className="bundle-meta">
+              Cron every 15m on GitHub · optional daily Vercel cron → same workflow
+            </p>
             <div className="bundle-items">
               {runs.length ? (
                 runs.map((r) => (

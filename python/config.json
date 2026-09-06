@@ -640,7 +640,93 @@
       "notes": "Stricter complement to Cashmere broad. Only genuinely high-quality pure cashmere from a credible maker."
     },
     {
-      "name": "Seraphine maternity L-XL",
+      "name": "Broad maternity leggings RO XL-L/XL",
+      "query": "colanti maternity",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 180,
+      "hunt_price": 100,
+      "target_type": "women's maternity or nursing leggings",
+      "target_sizes": [
+        "L/XL",
+        "XL"
+      ],
+      "notes": "Prefer true maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Reject fashion-only non-maternity leggings and wrong sizes (plain L, M/L).",
+      "min_deal_score": 8
+    },
+    {
+      "name": "Broad maternity leggings EN XL-L/XL",
+      "query": "maternity leggings",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 180,
+      "hunt_price": 100,
+      "target_type": "women's maternity or nursing leggings",
+      "target_sizes": [
+        "L/XL",
+        "XL"
+      ],
+      "notes": "Prefer true maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Reject fashion-only non-maternity leggings and wrong sizes (plain L, M/L).",
+      "min_deal_score": 8
+    },
+    {
+      "name": "Mamalicious leggings XL-L/XL",
+      "query": "mamalicious leggings",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 180,
+      "hunt_price": 100,
+      "target_type": "women's maternity or nursing leggings",
+      "target_sizes": [
+        "L/XL",
+        "XL"
+      ],
+      "notes": "Mamalicious maternity/nursing leggings only. Gym + everyday. XL or L/XL only.",
+      "min_deal_score": 8,
+      "brand_ids": [
+        4694493
+      ]
+    },
+    {
+      "name": "Seraphine leggings XL-L/XL",
+      "query": "seraphine leggings",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 220,
+      "hunt_price": 120,
+      "target_type": "women's maternity or nursing leggings",
+      "target_sizes": [
+        "L/XL",
+        "XL"
+      ],
+      "notes": "Seraphine maternity/nursing leggings only. Gym + everyday. XL or L/XL only.",
+      "min_deal_score": 8,
+      "brand_ids": [
+        133550
+      ]
+    },
+    {
+      "name": "H&M Mama leggings XL-L/XL",
+      "query": "h&m mama leggings",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 120,
+      "hunt_price": 70,
+      "target_type": "women's maternity or nursing leggings",
+      "target_sizes": [
+        "L/XL",
+        "XL"
+      ],
+      "notes": "H&M Mama maternity leggings only. Gym + everyday. XL or L/XL only. Cheap singles are weak unless exceptional condition.",
+      "min_deal_score": 8
+    },
+    {
+      "name": "Seraphine maternity XL-L/XL",
       "query": "seraphine maternity",
       "country": "ro",
       "order": "newest_first",
@@ -649,18 +735,17 @@
       "hunt_price": 190,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, knitwear, trousers and nursing-compatible pieces.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, knitwear, trousers and nursing-compatible pieces.",
       "min_deal_score": 8,
       "brand_ids": [
         133550
       ]
     },
     {
-      "name": "Isabella Oliver maternity L-XL",
+      "name": "Isabella Oliver maternity XL-L/XL",
       "query": "isabella oliver",
       "country": "ro",
       "order": "newest_first",
@@ -669,18 +754,17 @@
       "hunt_price": 200,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium maternity. Dresses, knitwear, tops and tailored pieces. Reject ordinary non-maternity unless clearly pregnancy-suitable.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Dresses, knitwear, tops and tailored pieces. Reject ordinary non-maternity unless clearly pregnancy-suitable.",
       "min_deal_score": 8,
       "brand_ids": [
         288918
       ]
     },
     {
-      "name": "Pietro Brunelli maternity L-XL",
+      "name": "Pietro Brunelli maternity XL-L/XL",
       "query": "pietro brunelli",
       "country": "ro",
       "order": "newest_first",
@@ -689,15 +773,14 @@
       "hunt_price": 240,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium Italian maternity. Excellent condition required.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium Italian maternity. Excellent condition required.",
       "min_deal_score": 8
     },
     {
-      "name": "Tiffany Rose maternity dress L-XL",
+      "name": "Tiffany Rose maternity dress XL-L/XL",
       "query": "tiffany rose maternity",
       "country": "ro",
       "order": "newest_first",
@@ -706,15 +789,14 @@
       "hunt_price": 260,
       "target_type": "women's premium maternity occasion dress",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Only maternity occasion dresses with substantial absolute savings and excellent condition.",
+      "notes": "Only maternity occasion dresses with substantial absolute savings and excellent condition. Size target is XL or L/XL only — reject plain L and M/L.",
       "min_deal_score": 8
     },
     {
-      "name": "Boob Design maternity L-XL",
+      "name": "Boob Design maternity XL-L/XL",
       "query": "boob design",
       "country": "ro",
       "order": "newest_first",
@@ -723,18 +805,17 @@
       "hunt_price": 200,
       "target_type": "women's premium maternity and nursing clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "High priority when usable during pregnancy and later for nursing.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High priority when usable during pregnancy and later for nursing.",
       "min_deal_score": 8,
       "brand_ids": [
         395951
       ]
     },
     {
-      "name": "Ripe Maternity L-XL",
+      "name": "Ripe Maternity XL-L/XL",
       "query": "ripe maternity",
       "country": "ro",
       "order": "newest_first",
@@ -743,15 +824,14 @@
       "hunt_price": 170,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Versatile maternity pieces that also work postpartum. Avoid low-value basic tees unless bundled.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Versatile maternity pieces that also work postpartum. Avoid low-value basic tees unless bundled.",
       "min_deal_score": 8
     },
     {
-      "name": "Noppies maternity L-XL",
+      "name": "Noppies maternity XL-L/XL",
       "query": "noppies maternity",
       "country": "ro",
       "order": "newest_first",
@@ -760,18 +840,17 @@
       "hunt_price": 150,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Dresses, trousers, jeans, knitwear and jackets preferred. Basics only if bundled or exceptional.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Dresses, trousers, jeans, knitwear and jackets preferred. Basics only if bundled or exceptional.",
       "min_deal_score": 8,
       "brand_ids": [
         13407
       ]
     },
     {
-      "name": "Mamalicious maternity L-XL",
+      "name": "Mamalicious maternity XL-L/XL",
       "query": "mamalicious",
       "country": "ro",
       "order": "newest_first",
@@ -780,18 +859,17 @@
       "hunt_price": 120,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Buyer already likes Mamalicious. Prefer dresses, trousers, knitwear, outerwear. A cheap basic tee alone is not a keep.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Buyer already likes Mamalicious. Prefer dresses, trousers, knitwear, outerwear. A cheap basic tee alone is not a keep.",
       "min_deal_score": 8,
       "brand_ids": [
         4694493
       ]
     },
     {
-      "name": "Envie de Fraise maternity L-XL",
+      "name": "Envie de Fraise maternity XL-L/XL",
       "query": "envie de fraise",
       "country": "ro",
       "order": "newest_first",
@@ -800,15 +878,14 @@
       "hunt_price": 150,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Prioritise dresses, trousers, blouses. Avoid generic low-value tops unless bundled.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Prioritise dresses, trousers, blouses. Avoid generic low-value tops unless bundled.",
       "min_deal_score": 8
     },
     {
-      "name": "JoJo Maman Bebe maternity L-XL",
+      "name": "JoJo Maman Bebe maternity XL-L/XL",
       "query": "jojo maman bebe maternity",
       "country": "ro",
       "order": "newest_first",
@@ -817,15 +894,14 @@
       "hunt_price": 150,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Practical maternity. Prefer dresses, jeans, knitwear, outerwear. Basics alone should not alert.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Practical maternity. Prefer dresses, jeans, knitwear, outerwear. Basics alone should not alert.",
       "min_deal_score": 8
     },
     {
-      "name": "Hatch Collection maternity L-XL",
+      "name": "Hatch Collection maternity XL-L/XL",
       "query": "hatch collection maternity",
       "country": "ro",
       "order": "newest_first",
@@ -834,15 +910,14 @@
       "hunt_price": 240,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium maternity often wearable postpartum. Strong absolute saving required.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity often wearable postpartum. Strong absolute saving required.",
       "min_deal_score": 8
     },
     {
-      "name": "Beyond Nine maternity L-XL",
+      "name": "Beyond Nine maternity XL-L/XL",
       "query": "beyond nine",
       "country": "ro",
       "order": "newest_first",
@@ -851,15 +926,14 @@
       "hunt_price": 220,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium maternity. Prefer pieces usable postpartum.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Prefer pieces usable postpartum.",
       "min_deal_score": 8
     },
     {
-      "name": "Storq maternity L-XL",
+      "name": "Storq maternity XL-L/XL",
       "query": "storq maternity",
       "country": "ro",
       "order": "newest_first",
@@ -868,15 +942,14 @@
       "hunt_price": 190,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium everyday maternity that works postpartum.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium everyday maternity that works postpartum.",
       "min_deal_score": 8
     },
     {
-      "name": "Legoe Heritage maternity L-XL",
+      "name": "Legoe Heritage maternity XL-L/XL",
       "query": "legoe heritage",
       "country": "ro",
       "order": "newest_first",
@@ -885,15 +958,14 @@
       "hunt_price": 200,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium maternity. Excellent condition and fit required.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Excellent condition and fit required.",
       "min_deal_score": 8
     },
     {
-      "name": "Bae the Label maternity L-XL",
+      "name": "Bae the Label maternity XL-L/XL",
       "query": "bae the label",
       "country": "ro",
       "order": "newest_first",
@@ -902,15 +974,14 @@
       "hunt_price": 190,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Premium maternity/nursing. Prefer postpartum-wearable pieces.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity/nursing. Prefer postpartum-wearable pieces.",
       "min_deal_score": 8
     },
     {
-      "name": "H&M Mama bundle seed L-XL",
+      "name": "H&M Mama bundle seed XL-L/XL",
       "query": "h&m mama",
       "country": "ro",
       "order": "newest_first",
@@ -919,15 +990,14 @@
       "hunt_price": 60,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Bundle seed like H&M Sport hauls — not premium solo hunting. Rarely alert alone; closet crawl / multi-piece seller carts with very low delivered per useful item. bundle_hunt seed: never solo-alert; closet-hunt for multi-piece L/XL maternity value hauls.",
+      "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
       "bundle_hunt": true
     },
     {
-      "name": "Next Maternity bundle seed L-XL",
+      "name": "Next Maternity bundle seed XL-L/XL",
       "query": "next maternity",
       "country": "ro",
       "order": "newest_first",
@@ -936,15 +1006,14 @@
       "hunt_price": 70,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Bundle seed for closet hunting. Solo basics are skips unless an exceptional multi-piece value haul. bundle_hunt seed: never solo-alert; closet-hunt for multi-piece L/XL maternity value hauls.",
+      "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
       "bundle_hunt": true
     },
     {
-      "name": "ASOS Maternity bundle seed L-XL",
+      "name": "ASOS Maternity bundle seed XL-L/XL",
       "query": "asos maternity",
       "country": "ro",
       "order": "newest_first",
@@ -953,11 +1022,10 @@
       "hunt_price": 70,
       "target_type": "women's maternity clothing",
       "target_sizes": [
-        "L",
-        "XL",
-        "L/XL"
+        "L/XL",
+        "XL"
       ],
-      "notes": "Bundle seed for seller-closet hunting. Do not alert ordinary single ASOS maternity tees. bundle_hunt seed: never solo-alert; closet-hunt for multi-piece L/XL maternity value hauls.",
+      "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
       "bundle_hunt": true
     }
   ],

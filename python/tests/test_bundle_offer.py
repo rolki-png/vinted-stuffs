@@ -90,7 +90,7 @@ class OfferFieldsTests(unittest.TestCase):
             63.0,
             5,
             kind="value_haul",
-            watch_name="Mamalicious maternity L-XL",
+            watch_name="Mamalicious maternity XL-L/XL",
         )
         self.assertEqual(fields["suggested_offer_ron"], 187)
         self.assertEqual(fields["offer_target_per_item_ron"], 50.0)

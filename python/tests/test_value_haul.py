@@ -63,11 +63,19 @@ class PrefilterTests(unittest.TestCase):
         it["size_title"] = None
         self.assertFalse(vh.size_matches(it, ["M", "L"]))
 
+    def test_maternity_xl_lxl_rejects_plain_l(self):
+        targets = ["L/XL", "XL"]
+        self.assertFalse(vh.size_matches(item(1, "dress", size="L"), targets))
+        self.assertFalse(vh.size_matches(item(1, "dress", size="M/L"), targets))
+        self.assertFalse(vh.size_matches(item(1, "dress", size="L / 40 / 12"), targets))
+        self.assertTrue(vh.size_matches(item(1, "dress", size="XL"), targets))
+        self.assertTrue(vh.size_matches(item(1, "dress", size="L/XL"), targets))
+
     def test_maternity_seed_rejects_plain_hm_requires_mama_or_signal(self):
         mat_watch = {
-            "target_sizes": ["L", "XL"],
+            "target_sizes": ["L/XL", "XL"],
             "target_type": "women's maternity clothing",
-            "name": "H&M Mama bundle seed L-XL",
+            "name": "H&M Mama bundle seed XL-L/XL",
             "bundle_hunt": True,
             "notes": "Bundle seed like H&M Sport hauls — not premium solo hunting.",
         }
@@ -117,15 +125,15 @@ class PrefilterTests(unittest.TestCase):
 
     def test_maternity_prefilter_accepts_mama_rejects_gym(self):
         mat_watch = {
-            "target_sizes": ["L", "XL"],
+            "target_sizes": ["L/XL", "XL"],
             "target_type": "women's maternity clothing",
-            "name": "H&M Mama bundle seed L-XL",
+            "name": "H&M Mama bundle seed XL-L/XL",
             "notes": "H&M Mama Next ASOS maternity",
         }
         items = [
-            item(1, "H&M Mama nursing top", brand="H&M", size="L", price="25"),
-            item(2, "Nike training tee", brand="Nike", size="L", price="20"),
-            item(3, "Seraphine maternity dress", brand="Seraphine", size="XL", price="40"),
+            item(1, "H&M Mama nursing top", brand="H&M", size="XL", price="25"),
+            item(2, "Nike training tee", brand="Nike", size="XL", price="20"),
+            item(3, "Seraphine maternity dress", brand="Seraphine", size="L/XL", price="40"),
         ]
         out = vh.prefilter_candidates(items, mat_watch, {"value_haul": VH})
         ids = [x["id"] for x in out]
@@ -138,10 +146,10 @@ class PrefilterTests(unittest.TestCase):
             "seller",
             "ro",
             25.0,
-            [item(1, "H&M Mama top", brand="H&M", size="L")],
+            [item(1, "H&M Mama top", brand="H&M", size="XL")],
             {
                 "target_type": "women's maternity clothing",
-                "target_sizes": ["L", "XL"],
+                "target_sizes": ["L/XL", "XL"],
                 "notes": "Mama",
             },
         )

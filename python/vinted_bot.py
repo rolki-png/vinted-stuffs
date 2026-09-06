@@ -601,14 +601,15 @@ def _scoring_prompt(watch: dict, items: list) -> str:
             "For maternity clothing, do not reward an item simply because it is cheap. "
             "Prefer fewer, higher-value purchases over accumulating basics. "
             "Give 9–10 when several hold: premium maternity-specific construction; "
-            "dresses, trousers, knitwear, outerwear and substantial pieces; "
-            "garments usable both during pregnancy and postpartum/nursing; "
-            "excellent or unused condition; unusually large absolute savings versus retail. "
-            "Give 8 for a true L–XL hunt-fit in very-good+ condition at or under hunt price "
-            "when the piece is genuinely useful maternity/nursing wear. "
+            "leggings (gym + everyday), dresses, trousers, knitwear, outerwear and "
+            "substantial pieces; garments usable both during pregnancy and "
+            "postpartum/nursing; excellent or unused condition; unusually large "
+            "absolute savings versus retail. "
+            "Give 8 for a true XL or L/XL hunt-fit in very-good+ condition at or under "
+            "hunt price when the piece is genuinely useful maternity/nursing wear. "
             "A 30-50 RON basic maternity T-shirt sold individually is a skip. "
-            "Size target is women's L-XL. M/L or XL/XXL may qualify only when the brand's "
-            "actual measurements clearly make it appropriate."
+            "Size target is women's XL and L/XL only (also accept clear text equivalents "
+            "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
         )
     return SCORING_PROMPT.format(
         query=watch["query"],

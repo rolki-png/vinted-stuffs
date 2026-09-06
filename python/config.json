@@ -495,7 +495,10 @@
         "43.5",
         "43 1/3"
       ],
-      "notes": "Prefer Made in USA 990v4, v5 or v6. Condition and sole wear matter heavily. Reject suspicious fakes."
+      "notes": "Prefer Made in USA 990v4, v5 or v6. Condition and sole wear matter heavily. Reject suspicious fakes.",
+      "brand_ids": [
+        1775
+      ]
     },
     {
       "name": "New Balance 991 size 43",

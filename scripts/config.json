@@ -91,7 +91,10 @@
         "M",
         "L"
       ],
-      "notes": "Prioritise Pace Breaker, License to Train, Metal Vent Tech and other technical training lines. A merely good Craft-tier alternative should lose to a true Lululemon steal. Generic casual pieces are skips."
+      "notes": "Prioritise Pace Breaker, License to Train, Metal Vent Tech and other technical training lines. A merely good Craft-tier alternative should lose to a true Lululemon steal. Generic casual pieces are skips.",
+      "brand_ids": [
+        198238
+      ]
     },
     {
       "name": "Ten Thousand gym M-L",
@@ -106,7 +109,10 @@
         "M",
         "L"
       ],
-      "notes": "Interval, Session, Tactical and other genuine Ten Thousand training pieces only."
+      "notes": "Interval, Session, Tactical and other genuine Ten Thousand training pieces only.",
+      "brand_ids": [
+        3162601
+      ]
     },
     {
       "name": "Rhone gym M-L",
@@ -121,7 +127,10 @@
         "M",
         "L"
       ],
-      "notes": "Premium technical training apparel. Prefer Reign, Commuter and similar lines in excellent condition."
+      "notes": "Premium technical training apparel. Prefer Reign, Commuter and similar lines in excellent condition.",
+      "brand_ids": [
+        602053
+      ]
     },
     {
       "name": "Vuori gym M-L",
@@ -136,7 +145,10 @@
         "M",
         "L"
       ],
-      "notes": "Technical tees, shorts and pants. Prefer Kore, Strato, Sunday Performance."
+      "notes": "Technical tees, shorts and pants. Prefer Kore, Strato, Sunday Performance.",
+      "brand_ids": [
+        3855757
+      ]
     },
     {
       "name": "Tracksmith gym M-L",
@@ -151,7 +163,10 @@
         "M",
         "L"
       ],
-      "notes": "Premium running/training pieces only. Strong absolute saving vs new required."
+      "notes": "Premium running/training pieces only. Strong absolute saving vs new required.",
+      "brand_ids": [
+        1313649
+      ]
     },
     {
       "name": "Saysky running M-L",
@@ -166,7 +181,10 @@
         "M",
         "L"
       ],
-      "notes": "Technical running pieces with meaningful discount. Skip basic logo tees."
+      "notes": "Technical running pieces with meaningful discount. Skip basic logo tees.",
+      "brand_ids": [
+        2227047
+      ]
     },
     {
       "name": "Falke ESS M-L",
@@ -181,7 +199,10 @@
         "M",
         "L"
       ],
-      "notes": "Falke ESS / technical performance lines only. Ordinary socks alone are not a keep."
+      "notes": "Falke ESS / technical performance lines only. Ordinary socks alone are not a keep.",
+      "brand_ids": [
+        256450
+      ]
     },
     {
       "name": "Craft ADV M-L",
@@ -196,7 +217,10 @@
         "M",
         "L"
       ],
-      "notes": "ADV and PRO lines only. A merely good 120 RON Craft tee is a skip — wait for exceptional steals or better brands."
+      "notes": "ADV and PRO lines only. A merely good 120 RON Craft tee is a skip — wait for exceptional steals or better brands.",
+      "brand_ids": [
+        120326
+      ]
     },
     {
       "name": "Odlo technical M-L",
@@ -211,7 +235,10 @@
         "M",
         "L"
       ],
-      "notes": "Performance, Zeroweight, Blackcomb and premium technical lines preferred. Skip ordinary basics."
+      "notes": "Performance, Zeroweight, Blackcomb and premium technical lines preferred. Skip ordinary basics.",
+      "brand_ids": [
+        26843
+      ]
     },
     {
       "name": "GOREWEAR M-L",
@@ -226,7 +253,10 @@
         "M",
         "L"
       ],
-      "notes": "Genuinely technical pieces only — not basic logo tees."
+      "notes": "Genuinely technical pieces only — not basic logo tees.",
+      "brand_ids": [
+        603808
+      ]
     },
     {
       "name": "2XU M-L",
@@ -241,7 +271,10 @@
         "M",
         "L"
       ],
-      "notes": "Compression tights, shorts and technical tops. Excellent condition required."
+      "notes": "Compression tights, shorts and technical tops. Excellent condition required.",
+      "brand_ids": [
+        334691
+      ]
     },
     {
       "name": "New Balance 990 size 43",
@@ -621,7 +654,10 @@
         "L/XL"
       ],
       "notes": "High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, knitwear, trousers and nursing-compatible pieces.",
-      "min_deal_score": 8
+      "min_deal_score": 8,
+      "brand_ids": [
+        133550
+      ]
     },
     {
       "name": "Isabella Oliver maternity L-XL",
@@ -638,7 +674,10 @@
         "L/XL"
       ],
       "notes": "Premium maternity. Dresses, knitwear, tops and tailored pieces. Reject ordinary non-maternity unless clearly pregnancy-suitable.",
-      "min_deal_score": 8
+      "min_deal_score": 8,
+      "brand_ids": [
+        288918
+      ]
     },
     {
       "name": "Pietro Brunelli maternity L-XL",
@@ -689,7 +728,10 @@
         "L/XL"
       ],
       "notes": "High priority when usable during pregnancy and later for nursing.",
-      "min_deal_score": 8
+      "min_deal_score": 8,
+      "brand_ids": [
+        395951
+      ]
     },
     {
       "name": "Ripe Maternity L-XL",
@@ -723,7 +765,10 @@
         "L/XL"
       ],
       "notes": "Dresses, trousers, jeans, knitwear and jackets preferred. Basics only if bundled or exceptional.",
-      "min_deal_score": 8
+      "min_deal_score": 8,
+      "brand_ids": [
+        13407
+      ]
     },
     {
       "name": "Mamalicious maternity L-XL",
@@ -740,7 +785,10 @@
         "L/XL"
       ],
       "notes": "Buyer already likes Mamalicious. Prefer dresses, trousers, knitwear, outerwear. A cheap basic tee alone is not a keep.",
-      "min_deal_score": 8
+      "min_deal_score": 8,
+      "brand_ids": [
+        4694493
+      ]
     },
     {
       "name": "Envie de Fraise maternity L-XL",

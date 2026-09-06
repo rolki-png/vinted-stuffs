@@ -1,11 +1,49 @@
 {
   "name": "vinted-stuffs",
   "private": true,
-  "description": "Vinted hunt dashboard (static) + serverless trigger/snapshot APIs",
-  "engines": {
-    "node": ">=20"
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "vite dev --port 3000",
+    "generate-routes": "tsr generate",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint",
+    "format": "prettier --write . && eslint --fix",
+    "check": "prettier --check .",
+    "test": "cd python && python3 -m unittest discover -s tests -v"
   },
   "dependencies": {
-    "pg": "^8.23.0"
+    "@tanstack/react-router": "latest",
+    "@tanstack/react-start": "latest",
+    "nitro": "3.0.260610-beta",
+    "pg": "^8.23.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-config": "latest",
+    "@tanstack/router-cli": "^1.132.0",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.20.0",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
+  },
+  "description": "Vinted hunt bot + TanStack Start deal desk",
+  "engines": {
+    "node": ">=20"
   }
 }

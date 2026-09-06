@@ -575,7 +575,10 @@
         "43.5",
         "43 1/3"
       ],
-      "notes": "Only very good price and condition. Reject heavily worn pairs."
+      "notes": "Only very good price and condition. Reject heavily worn pairs.",
+      "brand_ids": [
+        1775
+      ]
     },
     {
       "name": "ASICS Gel Kayano 14 size 43",

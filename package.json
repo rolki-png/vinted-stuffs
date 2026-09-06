@@ -13,8 +13,8 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "test": "node scripts/assert-no-react-void-meta.mjs && cd python && python3 -m unittest discover -s tests -v",
-    "test:desk": "node scripts/assert-no-react-void-meta.mjs"
+    "test": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && cd python && python3 -m unittest discover -s tests -v",
+    "test:desk": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs"
   },
   "dependencies": {
     "@tanstack/react-router": "latest",

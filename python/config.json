@@ -69,20 +69,160 @@
   },
   "watches": [
     {
-      "name": "Gym bundle seeds M-L",
-      "query": "h&m sport",
+      "name": "Broad gym shorts M-L",
+      "query": "short sport",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 120,
+      "hunt_price": 70,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym or training shorts",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops."
+    },
+    {
+      "name": "Broad training shorts M-L",
+      "query": "pantaloni scurti sport",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 120,
+      "hunt_price": 70,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym or training shorts",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops."
+    },
+    {
+      "name": "Broad gym short EN M-L",
+      "query": "gym shorts",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 120,
+      "hunt_price": 70,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym or training shorts",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops."
+    },
+    {
+      "name": "Broad dri-fit shorts M-L",
+      "query": "dri fit short",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 120,
+      "hunt_price": 70,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym or training shorts",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops."
+    },
+    {
+      "name": "Gym seed short sport M-L",
+      "query": "short sport",
       "country": "ro",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
       "hunt_price": 50,
       "bundle_hunt": true,
-      "target_type": "men's gym clothing suitable for building a multi-item bundle",
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Individual item value can be modest. Looking for sellers with several useful men's gym pieces in M/L. H&M Sport/Move, Craft, Nike, Adidas, Under Armour, Puma, Reebok, Decathlon technical lines and similar are acceptable if several good-condition pieces can be bundled cheaply."
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed."
+    },
+    {
+      "name": "Gym seed gym shorts M-L",
+      "query": "gym shorts",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 80,
+      "hunt_price": 50,
+      "bundle_hunt": true,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym shorts suitable for building a multi-item bundle",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed."
+    },
+    {
+      "name": "Gym seed Nike shorts M-L",
+      "query": "nike short",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 80,
+      "hunt_price": 50,
+      "bundle_hunt": true,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym shorts suitable for building a multi-item bundle",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed."
+    },
+    {
+      "name": "Gym seed Adidas shorts M-L",
+      "query": "adidas short",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 50,
+      "price_to": 80,
+      "hunt_price": 50,
+      "bundle_hunt": true,
+      "size_ids": [
+        1739,
+        1740
+      ],
+      "target_type": "men's gym shorts suitable for building a multi-item bundle",
+      "target_sizes": [
+        "M",
+        "L"
+      ],
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed."
     },
     {
       "name": "Lululemon gym M-L",
@@ -92,14 +232,18 @@
       "per_page": 24,
       "price_to": 250,
       "hunt_price": 150,
-      "target_type": "men's gym clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Prioritise Pace Breaker, License to Train, Metal Vent Tech and other technical training lines. A merely good Craft-tier alternative should lose to a true Lululemon steal. Generic casual pieces are skips.",
+      "notes": "Men's gym/training SHORTS only (Pace Breaker and similar). Skip all T-shirts / Metal Vent Tech tees / koszulki / tricouri. Casual non-gym pieces are skips.",
       "brand_ids": [
         198238
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -110,14 +254,18 @@
       "per_page": 24,
       "price_to": 250,
       "hunt_price": 150,
-      "target_type": "men's gym clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Interval, Session, Tactical and other genuine Ten Thousand training pieces only.",
+      "notes": "Ten Thousand training SHORTS only. Skip all T-shirts / koszulki / tricouri / basic tops.",
       "brand_ids": [
         3162601
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -128,14 +276,18 @@
       "per_page": 24,
       "price_to": 250,
       "hunt_price": 150,
-      "target_type": "men's gym clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Premium technical training apparel. Prefer Reign, Commuter and similar lines in excellent condition.",
+      "notes": "Rhone training SHORTS only. Skip all T-shirts / koszulki / tricouri / basic tops.",
       "brand_ids": [
         602053
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -146,14 +298,18 @@
       "per_page": 24,
       "price_to": 280,
       "hunt_price": 170,
-      "target_type": "men's gym or running clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Premium running/training pieces only. Strong absolute saving vs new required.",
+      "notes": "Tracksmith running/training SHORTS preferred. Skip all T-shirts / koszulki / tricouri.",
       "brand_ids": [
         1313649
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -164,14 +320,18 @@
       "per_page": 24,
       "price_to": 220,
       "hunt_price": 130,
-      "target_type": "men's technical running clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Technical running pieces with meaningful discount. Skip basic logo tees.",
+      "notes": "Saysky technical running SHORTS preferred. Skip basic logo tees and all T-shirts / koszulki.",
       "brand_ids": [
         2227047
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -182,14 +342,18 @@
       "per_page": 24,
       "price_to": 220,
       "hunt_price": 130,
-      "target_type": "men's technical training or running clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Falke ESS / technical performance lines only. Ordinary socks alone are not a keep.",
+      "notes": "Falke ESS technical pieces; prefer shorts/tights over tops. Skip ordinary socks alone and all T-shirts / koszulki.",
       "brand_ids": [
         256450
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -200,14 +364,18 @@
       "per_page": 24,
       "price_to": 180,
       "hunt_price": 110,
-      "target_type": "men's technical gym or running clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "ADV and PRO lines only. A merely good 120 RON Craft tee is a skip — wait for exceptional steals or better brands.",
+      "notes": "Craft ADV/PRO SHORTS preferred. Skip all T-shirts / koszulki / tricouri — tees are always a skip.",
       "brand_ids": [
         120326
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -218,14 +386,18 @@
       "per_page": 24,
       "price_to": 200,
       "hunt_price": 120,
-      "target_type": "men's technical gym, running or base-layer clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Performance, Zeroweight, Blackcomb and premium technical lines preferred. Skip ordinary basics.",
+      "notes": "Odlo technical SHORTS preferred. Skip base-layer wool pieces and all T-shirts / koszulki.",
       "brand_ids": [
         26843
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -236,14 +408,18 @@
       "per_page": 24,
       "price_to": 240,
       "hunt_price": 150,
-      "target_type": "men's technical training or running clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Genuinely technical pieces only — not basic logo tees.",
+      "notes": "GOREWEAR technical SHORTS preferred. Skip basic logo tees and all T-shirts / koszulki.",
       "brand_ids": [
         603808
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -254,14 +430,18 @@
       "per_page": 24,
       "price_to": 220,
       "hunt_price": 140,
-      "target_type": "men's training and compression clothing",
+      "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Compression tights, shorts and technical tops. Excellent condition required.",
+      "notes": "2XU compression tights and SHORTS. Skip T-shirts / koszulki / tricouri.",
       "brand_ids": [
         334691
+      ],
+      "size_ids": [
+        1739,
+        1740
       ]
     },
     {
@@ -415,21 +595,6 @@
         "43 1/3"
       ],
       "notes": "Heritage / premium Diadora lifestyle models only. Strong condition and absolute saving required."
-    },
-    {
-      "name": "Cruciani M-L",
-      "query": "cruciani",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 230,
-      "target_type": "men's premium knitwear or knit polo",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Premium Italian knit. Skip low-value accessories unless exceptional."
     },
     {
       "name": "Zimmerli polo M-L",
@@ -590,7 +755,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, knitwear, trousers and nursing-compatible pieces.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, trousers, easy-care pieces and nursing-compatible pieces.",
       "min_deal_score": 8,
       "brand_ids": [
         133550
@@ -609,7 +774,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Dresses, knitwear, tops and tailored pieces. Reject ordinary non-maternity unless clearly pregnancy-suitable.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Dresses, tops, trousers and tailored easy-care pieces. Reject ordinary non-maternity unless clearly pregnancy-suitable.",
       "min_deal_score": 8,
       "brand_ids": [
         288918
@@ -695,7 +860,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Dresses, trousers, jeans, knitwear and jackets preferred. Basics only if bundled or exceptional.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Dresses, trousers, jeans and jackets preferred; skip wool/hard-care easy-care pieces. Basics only if bundled or exceptional.",
       "min_deal_score": 8,
       "brand_ids": [
         13407
@@ -714,7 +879,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Buyer already likes Mamalicious. Prefer dresses, trousers, knitwear, outerwear. A cheap basic tee alone is not a keep.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Buyer already likes Mamalicious. Prefer dresses, trousers, outerwear; skip wool/hard-care easy-care pieces. A cheap basic tee alone is not a keep.",
       "min_deal_score": 8,
       "brand_ids": [
         4694493
@@ -749,7 +914,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Practical maternity. Prefer dresses, jeans, knitwear, outerwear. Basics alone should not alert.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Practical maternity. Prefer dresses, jeans, outerwear; skip wool/hard-care easy-care pieces. Basics alone should not alert.",
       "min_deal_score": 8
     },
     {

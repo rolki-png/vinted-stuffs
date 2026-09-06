@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { loadIndexedFromDb, indexBundleOpportunities } from './scoredDb'
 import { loadVetoMap, applyToFinds, applyToBundles } from './listingVetoes'
+import { jsonFromGithubContents } from './githubContents.js'
 import fs from "node:fs"
 import path from "node:path"
 
@@ -42,10 +43,7 @@ async function fetchGithubJson(relPath) {
     throw new Error(`GitHub ${res.status} for ${relPath}: ${text.slice(0, 200)}`);
   }
   const body = await res.json();
-  if (body.encoding === "base64" && body.content) {
-    return JSON.parse(Buffer.from(body.content, "base64").toString("utf8"));
-  }
-  throw new Error(`Unexpected GitHub contents payload for ${relPath}`);
+  return jsonFromGithubContents(body, relPath, { token });
 }
 
 function readLocalJson(relPath, fallback) {
@@ -108,17 +106,24 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     ? vetoMode
     : "active";
 
-  const [deals, bundlesRaw, pool, run, seen, indexedFile, dbIndexed, vetoes] =
+  // Prefer Cockroach for indexed finds. Skip the GitHub export when DB has rows —
+  // indexed_scores.json often exceeds GitHub's 1MB Contents inline limit (~4MB+).
+  const dbIndexedPromise = loadIndexedFromDb(10000);
+  const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes] =
     await Promise.all([
       loadJson("best_deals.json", []),
       loadJson("best_bundles.json", []),
       loadJson("bundle_pool.json", []),
       loadJson("last_run.json", {}),
       loadJson("seen_listings.json", {}),
-      loadJson("indexed_scores.json", []),
-      loadIndexedFromDb(10000),
+      dbIndexedPromise,
       loadVetoMap(),
     ]);
+
+  const indexedFile =
+    dbIndexed && Array.isArray(dbIndexed.rows) && dbIndexed.rows.length
+      ? []
+      : await loadJson("indexed_scores.json", []);
 
   const indexed =
     dbIndexed && Array.isArray(dbIndexed.rows) && dbIndexed.rows.length

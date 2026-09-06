@@ -603,15 +603,24 @@ def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
             "For maternity clothing, do not reward an item simply because it is cheap. "
             "Prefer fewer, higher-value purchases over accumulating basics. "
             "Give 9–10 when several hold: premium maternity-specific construction; "
-            "leggings (gym + everyday), dresses, trousers, knitwear, outerwear and "
-            "substantial pieces; garments usable both during pregnancy and "
+            "leggings (gym + everyday), dresses, trousers, outerwear and "
+            "substantial easy-care pieces; garments usable both during pregnancy and "
             "postpartum/nursing; excellent or unused condition; unusually large "
             "absolute savings versus retail. "
+            "Skip wool, merino, cashmere, and other hard-care knitwear. "
             "Give 8 for a true XL or L/XL hunt-fit in very-good+ condition at or under "
             "hunt price when the piece is genuinely useful maternity/nursing wear. "
             "A 30-50 RON basic maternity T-shirt sold individually is a skip. "
             "Size target is women's XL and L/XL only (also accept clear text equivalents "
             "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
+        )
+    gym_tee_rules = ""
+    if is_mens_gym_watch(watch):
+        gym_tee_rules = (
+            "For this men's gym/training hunt, men's gym T-shirts / tees / koszulki / "
+            "tricouri / polos / basic tops are ALWAYS skip (hunt_fit false, value_band skip) "
+            "regardless of price or brand. Prefer gym/training shorts; other non-tee "
+            "technical pieces only if exceptional."
         )
     base = SCORING_PROMPT.format(
         query=watch["query"],
@@ -625,7 +634,9 @@ def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
             _listing_payload(items),
             ensure_ascii=False,
         ),
-        maternity_rules=maternity_rules,
+        maternity_rules="\n".join(
+            part for part in (maternity_rules, gym_tee_rules) if part
+        ),
     )
     block = (taste_block or "").strip()
     if not block:
@@ -668,6 +679,11 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
         return False
     if not score or score.get("scam_risk") == "high":
         return False
+    if item is not None and is_mens_gym_watch(watch):
+        import value_haul as vh
+
+        if vh.looks_like_mens_gym_tee(item):
+            return False
     min_score = watch.get("min_deal_score", config.get("min_deal_score", 9))
     if _as_int_score(score.get("deal_score")) < min_score:
         return False
@@ -1540,6 +1556,19 @@ def main() -> None:
     def score_batch(watch: dict, items: list, source: str = "search") -> None:
         if not items:
             return
+        if is_mens_gym_watch(watch):
+            import value_haul as vh
+
+            before = len(items)
+            items = [it for it in items if not vh.looks_like_mens_gym_tee(it)]
+            dropped = before - len(items)
+            if dropped:
+                print(
+                    f"Dropped {dropped} men's gym tee(s) before scoring ({watch['name']})",
+                    file=sys.stderr,
+                )
+            if not items:
+                return
         attach_seller_profiles(items, _country(watch))
         chunk_size = 10
         for offset in range(0, len(items), chunk_size):

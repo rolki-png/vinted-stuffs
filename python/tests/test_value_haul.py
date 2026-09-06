@@ -101,8 +101,18 @@ class PrefilterTests(unittest.TestCase):
             vh.looks_like_haul_fit(item(5, "Nike tee", brand="Nike", size="L"), mat_watch)
         )
 
-    def test_gym_title_accepted(self):
-        self.assertTrue(vh.looks_like_gymwear(item(1, "H&M Sport póló"), WATCH))
+    def test_gym_shorts_accepted(self):
+        self.assertTrue(vh.looks_like_gymwear(item(1, "H&M Sport shorts M"), WATCH))
+        self.assertTrue(vh.looks_like_gymwear(item(2, "Nike dri-fit short"), WATCH))
+
+    def test_gym_tees_rejected(self):
+        self.assertTrue(vh.looks_like_mens_gym_tee(item(1, "H&M Sport koszulka")))
+        self.assertTrue(vh.looks_like_mens_gym_tee(item(2, "Nike training tee")))
+        self.assertTrue(vh.looks_like_mens_gym_tee(item(3, "Adidas tricou sport")))
+        self.assertFalse(vh.looks_like_mens_gym_tee(item(4, "Adidas gym short")))
+        self.assertFalse(vh.looks_like_gymwear(item(1, "H&M Sport koszulka"), WATCH))
+        self.assertFalse(vh.looks_like_gymwear(item(2, "Nike training tee"), WATCH))
+        self.assertFalse(vh.looks_like_gymwear(item(3, "H&M Sport póló"), WATCH))
 
     def test_random_home_rejected(self):
         self.assertFalse(
@@ -115,13 +125,15 @@ class PrefilterTests(unittest.TestCase):
             item(2, "Adidas gym short", size="L", price="18"),
             item(3, "H&M Sport top", price="12"),
             item(4, "Candle holder", brand="Home", size="M", price="5"),
+            item(5, "Craft training shorts", price="16"),
         ]
         out = vh.prefilter_candidates(items, WATCH, {"value_haul": VH})
         ids = [x["id"] for x in out]
-        self.assertIn(1, ids)
+        self.assertNotIn(1, ids)  # tee
         self.assertIn(2, ids)
-        self.assertIn(3, ids)
+        self.assertNotIn(3, ids)  # top / tee-like
         self.assertNotIn(4, ids)
+        self.assertIn(5, ids)
 
     def test_maternity_prefilter_accepts_mama_rejects_gym(self):
         mat_watch = {

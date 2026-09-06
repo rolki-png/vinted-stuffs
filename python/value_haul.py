@@ -26,6 +26,18 @@ GYM_REJECT = (
     "push up", "push-up", "sport bh", "sport-bh",
 )
 
+# Men's gym T-shirts / tops — buyer is saturated; shorts remain in scope.
+_GYM_TEE_RE = re.compile(
+    r"(?i)(?<![a-z0-9])("
+    r"t-?shirts?|tees?|koszulk\w*|tricou(?:ri)?|p[oó]l[oó]s?|tops?"
+    r")(?![a-z0-9])"
+)
+_GYM_SHORTS_RE = re.compile(
+    r"(?i)(?<![a-z0-9])("
+    r"shorts?|shorturi|spoden\w*|pantaloni\s+scurt\w*|bermud\w*"
+    r")(?![a-z0-9])"
+)
+
 MATERNITY_TOKENS = (
     "maternity", "maternit", "mama", "maman", "nursing", "pregnancy", "pregnant",
     "bump", "ciąż", "ciaz", "karmieni", "gravid", "prenatal", "postpartum",
@@ -92,6 +104,14 @@ def _has_maternity_signal(blob: str) -> bool:
     return any(tok in blob for tok in MATERNITY_TOKENS)
 
 
+def looks_like_mens_gym_tee(item: dict) -> bool:
+    """True for men's gym T-shirt / tee / koszulka titles (not shorts)."""
+    blob = f"{item.get('title') or ''} {item.get('brand_title') or ''}"
+    if _GYM_SHORTS_RE.search(blob):
+        return False
+    return bool(_GYM_TEE_RE.search(blob))
+
+
 def looks_like_haul_fit(item: dict, watch: dict) -> bool:
     """Cheap prefilter: gymwear or maternity pieces matching the haul watch."""
     blob = f"{item.get('title') or ''} {item.get('brand_title') or ''}".lower()
@@ -108,6 +128,10 @@ def looks_like_haul_fit(item: dict, watch: dict) -> bool:
             brand = (item.get("brand_title") or "").lower()
             if "mama" in brand and any(b in brand for b in ("h&m", "hm", "next", "asos")):
                 return True
+        return False
+
+    # Men's gym path: tees are saturated — never haul-fit.
+    if looks_like_mens_gym_tee(item):
         return False
 
     if any(tok in blob for tok in GYM_REJECT):
@@ -254,7 +278,9 @@ def value_haul_prompt(payload: dict, vh: dict) -> str:
         brand_line = "For ordinary gym brands:"
         reject_line = (
             "Reject bundles where the apparent low price is achieved by including wrong sizes, "
-            "worn-out pieces, casual cotton tees with little gym value, or items the buyer is unlikely to use."
+            "worn-out pieces, men's gym T-shirts / koszulki / tricouri (buyer is saturated on tees), "
+            "casual cotton tops with little gym value, or items the buyer is unlikely to use. "
+            "Prefer gym/training shorts as useful items."
         )
     return f"""This is a BUNDLE / value haul hunt.
 

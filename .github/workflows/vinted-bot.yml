@@ -40,7 +40,7 @@ jobs:
           node-version: "22"
 
       - name: Install Python dependencies
-        run: pip install -r scripts/requirements.txt
+        run: pip install -r python/requirements.txt
 
       - name: Checkout Vinted CLI
         uses: actions/checkout@v4
@@ -68,7 +68,7 @@ jobs:
           SKIP_SCORING: ${{ inputs.skip_scoring }}
           FULL_SWEEP: ${{ inputs.full_sweep }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
-        run: python scripts/vinted_bot.py
+        run: python python/vinted_bot.py
 
       - name: Commit updated state
         run: |

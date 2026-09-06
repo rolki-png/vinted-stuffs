@@ -1,0 +1,13 @@
+[project]
+name = "vinted-stuffs-bot"
+version = "0.1.0"
+description = "Vinted hunt bot (search, score, bundles, ntfy)"
+requires-python = ">=3.12"
+dependencies = [
+  "google-genai",
+  "requests",
+  "psycopg[binary]>=3.2",
+]
+
+[tool.unittest]
+# discover from python/: python -m unittest discover -s tests -v

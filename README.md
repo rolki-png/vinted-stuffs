@@ -1,53 +1,58 @@
-vinted deal bot
+# vinted-stuffs
 
-Hunts Vinted (men's gym / sneakers / knit + maternity L–XL), scores with Vercel AI Gateway, alerts via ntfy, and writes `data/*.json` for the dashboard. Cron runs on **GitHub Actions**; the **dashboard deploys to Vercel** and can trigger those runs.
+Buyer-side Vinted hunt bot and Deal desk dashboard.
 
-Search uses **vinted-mcp-cli** (sibling checkout, `npx @googlarz/vinted-client`, or Actions install). Scoring uses **Vercel AI Gateway** first, then optional Gemini. Do not point the cron at the Cursor Agent SDK.
+- **Bot** (`python/`): searches Vinted, scores listings (Vercel AI Gateway / Gemini), builds bundle opportunities, alerts via ntfy, commits `data/*.json`.
+- **Dashboard** (TanStack Start): filterable finds, bundles, sellers, and Actions triggers — deploys to Vercel.
 
 ## Architecture
 
 | Piece | Where | Role |
 |---|---|---|
-| `scripts/vinted_bot.py` | local / GitHub Actions | Search, score, bundles, ntfy, commit `data/` |
+| `python/vinted_bot.py` | local / GitHub Actions | Search, score, bundles, ntfy, commit `data/` |
 | `.github/workflows/vinted-bot.yml` | GitHub | Every 15 min + manual / dashboard trigger |
-| `dashboard/` + `api/` | Vercel | Filterable finds, bundles, top sellers, Run hunt |
+| TanStack Start (`src/`) | Vercel | Deal desk UI + `/api/*` server routes |
 
-Vercel does **not** scrape Vinted (too slow / blocked). It reads committed JSON from GitHub and dispatches the Actions workflow.
+Vercel does **not** scrape Vinted. It reads committed JSON (and optional Cockroach score cache) and can dispatch the Actions workflow.
 
 ## Local bot
 
 ```bash
 set -a && source .env && set +a
-uv run python scripts/vinted_bot.py
-# one-shot backfill:
-FULL_SWEEP=1 uv run python scripts/vinted_bot.py
+uv run --with-requirements python/requirements.txt python python/vinted_bot.py
+FULL_SWEEP=1 uv run --with-requirements python/requirements.txt python python/vinted_bot.py
 ```
 
-Local dashboard (filesystem data):
+## Local dashboard
 
 ```bash
-uv run python scripts/serve_dashboard.py
-# → http://127.0.0.1:8765/
+npm install
+npm run dev
+# → http://127.0.0.1:3000/
+```
+
+## Tests
+
+```bash
+cd python && python3 -m unittest discover -s tests -v
 ```
 
 ## Deploy dashboard to Vercel
 
 ```bash
-cd /path/to/vinted-stuffs
 npx vercel
 ```
 
-Vercel project env vars (Production):
+Project env vars (Production):
 
 | Var | Purpose |
 |---|---|
-| `GITHUB_TOKEN` | PAT: `repo` + `actions:write` (or fine-grained Contents read + Actions write) |
-| `GITHUB_REPO` | `owner/repo` e.g. `rolki-png/vinted-stuffs` |
+| `GITHUB_TOKEN` | PAT: `repo` + `actions:write` |
+| `GITHUB_REPO` | `owner/repo` |
 | `GITHUB_REF` | usually `main` |
 | `GITHUB_WORKFLOW` | `vinted-bot.yml` |
-| `CRON_SECRET` | optional; Vercel Cron sends it as `Authorization: Bearer …` |
-
-GitHub Actions secrets (unchanged): `AI_GATEWAY_API_KEY`, `NTFY_TOPIC`, optional `GEMINI_API_KEY`. Repo variable `AI_GATEWAY_MODEL` optional.
+| `CRON_SECRET` | optional; Vercel Cron `Authorization: Bearer …` |
+| `DATABASE_URL` | optional Cockroach / Postgres for live score index + vetoes |
 
 After deploy: open the Vercel URL → **Run hunt** / **Hide** / **Park** work with no pasted secret. Data updates when Actions commits `data/*`; hit Refresh.
 
@@ -56,18 +61,26 @@ After deploy: open the Vercel URL → **Run hunt** / **Hide** / **Park** work wi
 1. **Primary:** GitHub Actions `*/15 * * * *` (already in the workflow).
 2. **Optional backup:** Vercel Cron hits `/api/cron` once daily at 06:00 UTC (`vercel.json`; Hobby plan limit). Keep GitHub Actions as the real 15‑min schedule.
 
+## Repo layout
+
+```
+src/                 TanStack Start app (UI + server routes)
+  components/        Deal desk React UI
+  routes/            File routes including /api/*
+  server/            Snapshot, GitHub dispatch, DB helpers
+python/              Hunt bot package
+  tests/             Python unit tests
+  sql/               Schema migrations
+data/                Bot-committed JSON snapshots
+docs/                Design specs & ADRs
+```
+
 ## Dashboard features
 
 - Finds: filter by hunt / band / score / source, sort by score / price / date
 - Bundles and top sellers (once seller ids are in the pool / keeps)
 - Runs tab: last score histogram + recent Actions runs
 - Trigger buttons dispatch `workflow_dispatch` on the hunt workflow
-
-## Config notes
-
-- Omit `price_from` — high-recall search; the scorer judges cheap listings.
-- Default keep bar is deal_score ≥ 9 (crème only). Solo clothing floor defaults to 0; if raised, hunt-band clothing under it is blocked unless steal-band.
-- `FULL_SWEEP=1` / dashboard Full sweep: paginate hunts, no 10-item cap.
 
 ## Known limits
 

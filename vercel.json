@@ -1,18 +1,6 @@
 {
-  "version": 2,
-  "rewrites": [
-    { "source": "/styles.css", "destination": "/dashboard/styles.css" },
-    { "source": "/app.js", "destination": "/dashboard/app.js" },
-    { "source": "/", "destination": "/dashboard/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "tanstack-start",
   "crons": [
     {
       "path": "/api/cron",

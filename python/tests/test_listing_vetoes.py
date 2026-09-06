@@ -51,6 +51,24 @@ class ApplyToFindsTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             lv.apply_to_finds(rows, vetoes, mode="hidden")
 
+    def test_bought_omitted_from_active_shown_in_bought_and_all(self):
+        rows = [
+            {"id": 1, "title": "active"},
+            {"id": 2, "title": "bought"},
+            {"id": 3, "title": "parked"},
+            {"id": 4, "title": "removed"},
+        ]
+        vetoes = {2: "bought", 3: "parked", 4: "removed"}
+        self.assertEqual(
+            [r["id"] for r in lv.apply_to_finds(rows, vetoes, mode="active")],
+            [1, 3],
+        )
+        bought = lv.apply_to_finds(rows, vetoes, mode="bought")
+        self.assertEqual([r["id"] for r in bought], [2])
+        self.assertEqual(bought[0]["veto_status"], "bought")
+        all_rows = lv.apply_to_finds(rows, vetoes, mode="all")
+        self.assertEqual([r["id"] for r in all_rows], [1, 3, 2])
+        self.assertNotIn(4, [r["id"] for r in all_rows])
     def test_clear_restores_via_empty_map(self):
         rows = [{"id": 2, "title": "midi"}]
         out = lv.apply_to_finds(rows, {})
@@ -78,6 +96,14 @@ class ApplyToBundlesTests(unittest.TestCase):
         out = lv.apply_to_bundles(bundles, {2: "removed"})
         self.assertEqual(out, [])
 
+    def test_bought_member_stripped_from_active_like_purchased(self):
+        bundles = [self._bundle(1, 2, 3)]
+        out = lv.apply_to_bundles(bundles, {3: "bought"}, mode="active")
+        self.assertEqual(len(out), 1)
+        self.assertEqual([it["id"] for it in out[0]["items"]], [1, 2])
+        out2 = lv.apply_to_bundles([self._bundle(1, 2)], {2: "bought"}, mode="active")
+        self.assertEqual(out2, [])
+
     def test_park_member_tags_bundle_and_sorts_down(self):
         active = self._bundle(10, 11)
         parked = self._bundle(20, 21)
@@ -99,6 +125,14 @@ class BotPredicateTests(unittest.TestCase):
         store.set_status(2, "parked")
         self.assertEqual(store.load_removed_ids(), {1})
 
+    def test_suppress_ids_include_bought_not_parked(self):
+        store = lv.MemoryVetoStore()
+        store.set_status(1, "removed")
+        store.set_status(2, "bought")
+        store.set_status(3, "parked")
+        self.assertEqual(store.load_suppress_ids(), {1, 2})
+        self.assertEqual(store.load_removed_ids(), {1})
+        self.assertTrue(lv.is_bought({2: "bought"}, 2))
     def test_filter_scored_rows_gates_keep_alert_path(self):
         removed = {2}
         rows = [
@@ -128,6 +162,47 @@ class MemoryStoreTests(unittest.TestCase):
         store.clear(99)
         self.assertEqual(store.load_map(), {42: "removed"})
         self.assertEqual(store.load_removed_ids(), {42})
+
+    def test_enrichment_and_outcomes_by_family(self):
+        store = lv.MemoryVetoStore()
+        store.set_status(
+            1,
+            "bought",
+            {
+                "hunt_name": "Lululemon gym M-L",
+                "hunt_family": "gym",
+                "brand": "Lululemon",
+                "size": "L",
+                "price_ron": 90,
+                "value_band": "steal",
+                "deal_score": 9,
+                "title": "ABC shorts",
+            },
+        )
+        store.set_status(
+            2,
+            "removed",
+            {
+                "hunt_family": "gym",
+                "brand": "Nike",
+                "size": "M",
+                "title": "meh",
+            },
+        )
+        store.set_status(3, "parked", {"hunt_family": "gym", "brand": "X"})
+        store.set_status(
+            4,
+            "removed",
+            {"hunt_family": "maternity", "brand": "Seraphine", "title": "dress"},
+        )
+        gym = store.load_outcomes("gym")
+        self.assertEqual({r["item_id"] for r in gym}, {1, 2})
+        self.assertTrue(all(r["status"] in ("bought", "removed") for r in gym))
+        bought = next(r for r in gym if r["item_id"] == 1)
+        self.assertEqual(bought["brand"], "Lululemon")
+        self.assertEqual(bought["title"], "ABC shorts")
+        mat = store.load_outcomes("maternity")
+        self.assertEqual([r["item_id"] for r in mat], [4])
 
 
 if __name__ == "__main__":

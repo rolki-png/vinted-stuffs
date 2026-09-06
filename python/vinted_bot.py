@@ -589,7 +589,7 @@ def _listing_payload(items: list) -> list:
     ]
 
 
-def _scoring_prompt(watch: dict, items: list) -> str:
+def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
     currency = (
         (items[0].get("price") or {}).get("currency_code", "RON")
         if items else "RON"
@@ -611,7 +611,7 @@ def _scoring_prompt(watch: dict, items: list) -> str:
             "Size target is women's XL and L/XL only (also accept clear text equivalents "
             "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
         )
-    return SCORING_PROMPT.format(
+    base = SCORING_PROMPT.format(
         query=watch["query"],
         target_type=watch.get("target_type", "men's item"),
         target_sizes=", ".join(watch.get("target_sizes", [])) or "unspecified",
@@ -625,6 +625,10 @@ def _scoring_prompt(watch: dict, items: list) -> str:
         ),
         maternity_rules=maternity_rules,
     )
+    block = (taste_block or "").strip()
+    if not block:
+        return base
+    return f"{base}\n\n{block}\n"
 
 
 def _max_new_items_per_watch(config: dict) -> int:
@@ -679,6 +683,50 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
             floor = float(config.get("solo_floor_clothing_ron", 0))
             if floor > 0 and amount is not None and amount <= floor:
                 return False
+    return True
+
+
+def _item_brand_size(item: dict | None) -> tuple[str | None, str | None]:
+    if not item:
+        return None, None
+    brand = item.get("brand_title") or item.get("brand")
+    size = item.get("size_title") or item.get("size")
+    return brand, size
+
+
+def is_keep_with_taste(
+    score: dict,
+    config: dict,
+    watch: dict,
+    item: dict | None = None,
+    outcomes: list | None = None,
+) -> bool:
+    """is_keep plus optional family hard-suppress from desk Remove patterns."""
+    if not is_keep(score, config, watch, item):
+        return False
+    import taste_learning as taste_mod
+
+    tc = taste_mod.taste_config(config)
+    if not tc["enabled"] or not outcomes:
+        return True
+    brand, size = _item_brand_size(item)
+    cand = {
+        "hunt_family": taste_mod.resolve_family(watch.get("name") or "", watch),
+        "brand": brand,
+        "size": size,
+    }
+    if taste_mod.hard_suppress(
+        cand,
+        outcomes,
+        min_removes=tc["hard_suppress_min_removes"],
+        require_zero_bought=tc["hard_suppress_require_zero_bought"],
+    ):
+        print(
+            f"taste_hard_suppress family={cand['hunt_family']} "
+            f"brand={brand!r} size={size!r} id={((item or {}).get('id'))}",
+            file=sys.stderr,
+        )
+        return False
     return True
 
 
@@ -1005,7 +1053,9 @@ def seed_pool_from_history(watches: list) -> list:
     return kept
 
 
-def assemble_bundles(scored: list, config: dict) -> tuple[list, list]:
+def assemble_bundles(
+    scored: list, config: dict, taste_outcomes: list | None = None
+) -> tuple[list, list]:
     by_seller: dict = {}
     for row in scored:
         sid = seller_id(row["item"])
@@ -1028,8 +1078,15 @@ def assemble_bundles(scored: list, config: dict) -> tuple[list, list]:
         # Defend against corrupt pool rows that share a fake seller id.
         unique = [r for r in unique if seller_id(r["item"]) == sid]
         keeps = [
-            r for r in unique
-            if is_keep(r["score"], config, r["watch_obj"], r["item"])
+            r
+            for r in unique
+            if is_keep_with_taste(
+                r["score"],
+                config,
+                r["watch_obj"],
+                r["item"],
+                taste_outcomes,
+            )
         ]
         extras = [
             r for r in unique
@@ -1081,9 +1138,11 @@ def _parse_scores(raw: str, source: str) -> list:
     return []
 
 
-def score_with_gateway(api_key: str, watch: dict, items: list) -> list:
+def score_with_gateway(
+    api_key: str, watch: dict, items: list, *, taste_block: str = ""
+) -> list:
     prompt = (
-        _scoring_prompt(watch, items)
+        _scoring_prompt(watch, items, taste_block=taste_block)
         + '\nWrap the array as {"listings": [ ... ]} so the response is a JSON object.'
     )
     resp = requests.post(
@@ -1104,10 +1163,12 @@ def score_with_gateway(api_key: str, watch: dict, items: list) -> list:
     return _parse_scores(content, "AI Gateway")
 
 
-def score_with_gemini(client, watch: dict, items: list) -> list:
+def score_with_gemini(
+    client, watch: dict, items: list, *, taste_block: str = ""
+) -> list:
     response = client.models.generate_content(
         model=GEMINI_MODEL,
-        contents=_scoring_prompt(watch, items),
+        contents=_scoring_prompt(watch, items, taste_block=taste_block),
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
         ),
@@ -1115,11 +1176,20 @@ def score_with_gemini(client, watch: dict, items: list) -> list:
     return _parse_scores(response.text or "", "Gemini")
 
 
-def score_listings(watch: dict, items: list, gateway_key: str, gemini_client) -> list:
+def score_listings(
+    watch: dict,
+    items: list,
+    gateway_key: str,
+    gemini_client,
+    *,
+    taste_block: str = "",
+) -> list:
     errors = []
     if gateway_key:
         try:
-            scores = score_with_gateway(gateway_key, watch, items)
+            scores = score_with_gateway(
+                gateway_key, watch, items, taste_block=taste_block
+            )
             if scores:
                 print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
                 return scores
@@ -1129,7 +1199,9 @@ def score_listings(watch: dict, items: list, gateway_key: str, gemini_client) ->
             print(errors[-1], file=sys.stderr)
     if gemini_client is not None:
         try:
-            scores = score_with_gemini(gemini_client, watch, items)
+            scores = score_with_gemini(
+                gemini_client, watch, items, taste_block=taste_block
+            )
             if scores:
                 print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
                 return scores
@@ -1375,12 +1447,48 @@ def main() -> None:
 
     veto_store = listing_vetoes_mod.open_store()
     try:
-        removed_ids = veto_store.load_removed_ids()
+        suppress_ids = veto_store.load_suppress_ids()
     except Exception as e:
-        print(f"listing_vetoes: failed to load removed ids: {e}", file=sys.stderr)
-        removed_ids = set()
-    if removed_ids:
-        print(f"Loaded {len(removed_ids)} removed listing veto(es).", file=sys.stderr)
+        print(f"listing_vetoes: failed to load suppress ids: {e}", file=sys.stderr)
+        suppress_ids = set()
+    if suppress_ids:
+        print(
+            f"Loaded {len(suppress_ids)} suppressed listing veto(es) "
+            f"(removed+bought).",
+            file=sys.stderr,
+        )
+    import taste_learning as taste_mod
+
+    taste_cfg = taste_mod.taste_config(config)
+    taste_outcomes_all: list = []
+    if taste_cfg["enabled"]:
+        try:
+            taste_outcomes_all = veto_store.load_outcomes()
+        except Exception as e:
+            print(f"listing_vetoes: failed to load taste outcomes: {e}", file=sys.stderr)
+            taste_outcomes_all = []
+    if taste_outcomes_all:
+        print(
+            f"Loaded {len(taste_outcomes_all)} taste outcome(s) for learning.",
+            file=sys.stderr,
+        )
+
+    def taste_outcomes_for(watch: dict) -> list:
+        family = taste_mod.resolve_family(watch.get("name") or "", watch)
+        return [
+            r
+            for r in taste_outcomes_all
+            if (r.get("hunt_family") or "other") == family
+        ]
+
+    def taste_block_for(watch: dict) -> str:
+        if not taste_cfg["enabled"]:
+            return ""
+        return taste_mod.build_taste_prompt_block(
+            taste_outcomes_for(watch),
+            per_polarity=taste_cfg["prompt_examples_per_polarity"],
+        )
+
     gemini_client = None
     if not test_mode and gemini_key:
         if genai is None:
@@ -1424,7 +1532,13 @@ def main() -> None:
                     for item in chunk
                 ]
             else:
-                scores = score_listings(watch, chunk, gateway_key, gemini_client)
+                scores = score_listings(
+                    watch,
+                    chunk,
+                    gateway_key,
+                    gemini_client,
+                    taste_block=taste_block_for(watch),
+                )
             scores_by_id = {str(s["id"]): s for s in scores if s.get("id") is not None}
             for item in chunk:
                 mark_seen(state, item.get("id"), watch["name"])
@@ -1552,11 +1666,12 @@ def main() -> None:
             "sid": sid,
             "country": _country(row["watch_obj"]),
             "score": row.get("score") or {},
-            "is_keep": is_keep(
+            "is_keep": is_keep_with_taste(
                 row.get("score") or {},
                 config,
                 row.get("watch_obj") or {},
                 row.get("item"),
+                taste_outcomes_for(row.get("watch_obj") or {}),
             ),
         })
     crawl_meta = select_closet_crawl_sellers(crawl_candidates, config)
@@ -1702,7 +1817,7 @@ def main() -> None:
                 score = score_value_haul(payload, config, gateway_key, gemini_client)
             if score:
                 useful = vh.useful_items(candidates, score) or candidates
-                useful = listing_vetoes_mod.filter_items(useful, removed_ids)
+                useful = listing_vetoes_mod.filter_items(useful, suppress_ids)
                 if len(useful) < 2:
                     continue
                 if vh.is_value_haul_alert(score, useful, extra, vh_cfg):
@@ -1740,7 +1855,7 @@ def main() -> None:
             continue
         if len(near_hauls) >= near_haul_limit:
             continue
-        near_items = listing_vetoes_mod.filter_items(candidates, removed_ids)
+        near_items = listing_vetoes_mod.filter_items(candidates, suppress_ids)
         if len(near_items) < 2:
             continue
         fingerprint = vh.value_haul_fingerprint(meta["sid"], near_items)
@@ -1828,13 +1943,13 @@ def main() -> None:
             file=sys.stderr,
         )
     merged = merge_scored(scored, still_prior + revived)
-    merged = listing_vetoes_mod.filter_scored_rows(merged, removed_ids)
-    bundles, solos = assemble_bundles(merged, config)
+    merged = listing_vetoes_mod.filter_scored_rows(merged, suppress_ids)
+    bundles, solos = assemble_bundles(merged, config, taste_outcomes_all)
     # Re-check bundle membership after remove (assemble already omitted removed rows).
     pruned_bundles = []
     for bundle in bundles:
-        keeps = listing_vetoes_mod.filter_scored_rows(bundle.get("keeps") or [], removed_ids)
-        extras = listing_vetoes_mod.filter_scored_rows(bundle.get("extras") or [], removed_ids)
+        keeps = listing_vetoes_mod.filter_scored_rows(bundle.get("keeps") or [], suppress_ids)
+        extras = listing_vetoes_mod.filter_scored_rows(bundle.get("extras") or [], suppress_ids)
         members = keeps + extras
         if len(members) < 2 or not keeps:
             continue
@@ -1850,7 +1965,7 @@ def main() -> None:
             "checkout_total": listing_sum + extra,
         })
     bundles = pruned_bundles[: int(config.get("max_bundles_per_run", 3))]
-    solos = listing_vetoes_mod.filter_scored_rows(solos, removed_ids)
+    solos = listing_vetoes_mod.filter_scored_rows(solos, suppress_ids)
     new_bundles = []
     for bundle in bundles:
         key = bundle_fingerprint(bundle)

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-type VetoMode = 'active' | 'parked' | 'all'
+type VetoMode = 'active' | 'parked' | 'bought' | 'all'
 type Tab = 'finds' | 'bundles' | 'sellers' | 'run'
 
 type Find = {
@@ -19,6 +19,8 @@ type Find = {
   url?: string
   scam_risk?: string
   kept_at?: string
+  brand?: string
+  size?: string
   veto_status?: string | null
 }
 
@@ -107,7 +109,7 @@ function VetoButtons({
   onError: (msg: string) => void
 }) {
   if (itemId == null) return null
-  if (status === 'parked') {
+  if (status === 'parked' || status === 'bought') {
     return (
       <button
         type="button"
@@ -123,6 +125,13 @@ function VetoButtons({
   }
   return (
     <>
+      <button
+        type="button"
+        className="btn veto-btn"
+        onClick={() => onSet(itemId, 'bought').catch((e) => onError(String(e.message || e)))}
+      >
+        Bought
+      </button>
       <button
         type="button"
         className="btn veto-btn"
@@ -221,11 +230,39 @@ export function DealDesk() {
     }
   }
 
+  const enrichmentFor = (itemId: string | number) => {
+    const id = String(itemId)
+    const find = (data?.finds || []).find((f) => String(f.id) === id)
+    if (find) {
+      return {
+        hunt_name: find.watch || null,
+        brand: find.brand || null,
+        size: find.size || null,
+        price_ron: find.price_num ?? find.price ?? null,
+        value_band: find.value_band || null,
+        deal_score: find.deal_score ?? null,
+        title: find.title || null,
+      }
+    }
+    for (const b of data?.bundles || []) {
+      const it = (b.items || []).find((x) => String(x.id) === id)
+      if (it) {
+        return {
+          hunt_name: it.watch || null,
+          price_ron: it.price ?? null,
+          deal_score: it.deal_score ?? null,
+          title: it.title || null,
+        }
+      }
+    }
+    return {}
+  }
+
   const setVetoStatus = async (itemId: string | number, status: string | null) => {
     const body =
       status == null
         ? { item_id: Number(itemId), clear: true }
-        : { item_id: Number(itemId), status }
+        : { item_id: Number(itemId), status, ...enrichmentFor(itemId) }
     const res = await fetch('/api/veto', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -233,8 +270,10 @@ export function DealDesk() {
     })
     const json = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(json.error || json.message || `HTTP ${res.status}`)
-    if (status == null) setToast({ text: `Cleared park on #${itemId}` })
+    if (status == null) setToast({ text: `Cleared veto on #${itemId}` })
     else if (status === 'removed') setToast({ text: `Removed #${itemId}` })
+    else if (status === 'bought')
+      setToast({ text: `Marked bought #${itemId}`, undoId: itemId })
     else setToast({ text: `Parked #${itemId}`, undoId: itemId })
     await load()
   }
@@ -255,7 +294,8 @@ export function DealDesk() {
       return true
     })
     rows.sort((a, b) => {
-      const vetoRank = (r: Find) => (r.veto_status === 'parked' ? 1 : 0)
+      const vetoRank = (r: Find) =>
+        r.veto_status === 'parked' ? 1 : r.veto_status === 'bought' ? 2 : 0
       const vr = vetoRank(a) - vetoRank(b)
       if (vr) return vr
       switch (sort) {
@@ -428,6 +468,7 @@ export function DealDesk() {
               <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
+                <option value="bought">Bought</option>
                 <option value="all">All</option>
               </select>
             </label>
@@ -533,6 +574,7 @@ export function DealDesk() {
               <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
+                <option value="bought">Bought</option>
                 <option value="all">All</option>
               </select>
             </label>

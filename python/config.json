@@ -12,6 +12,12 @@
   "bundle_extra_min_score": 7,
   "closet_crawl_limit": 12,
   "closet_crawl_max_sellers": 20,
+  "taste_learning": {
+    "enabled": true,
+    "prompt_examples_per_polarity": 5,
+    "hard_suppress_min_removes": 3,
+    "hard_suppress_require_zero_bought": true
+  },
   "checkout_extra_ron": {
     "ro": 25,
     "hu": 30,

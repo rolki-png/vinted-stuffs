@@ -65,9 +65,21 @@ steal, hunt, acceptable, or skip — price versus quality for that exact piece, 
 _Avoid_: Discount, percentage off
 
 **Remove**:
-Permanent buyer tombstone of a listing id (typically sold/gone): omitted from Finds, Bundles, Top sellers, and one-off desk surfaces forever; suppressed from future alerts and persisted keeps. No Undo. Cockroach `listing_vetoes.status = removed`.
+Permanent buyer tombstone of a listing id (typically sold/gone): omitted from Finds, Bundles, Top sellers, and one-off desk surfaces forever; suppressed from future alerts and persisted keeps. No Undo. Cockroach `listing_vetoes.status = removed`. Strong negative taste signal within the hunt family.
 _Avoid_: Hide (retired), Delete (UI may say Remove; do not hard-delete score rows in v1), ban, block
 
 **Park**:
-Buyer soft veto of a listing id: still on the desk, tagged and sorted below active rows, score unchanged. Does not suppress bot alerts. Reversible.
+Buyer soft veto of a listing id: still on the desk, tagged and sorted below active rows, score unchanged. Does not suppress bot alerts. Reversible. Learning weight ~0 (ignored by taste learning).
 _Avoid_: Pass (conflicts with keep language), demote (UI ok; prefer Park in domain docs)
+
+**Bought**:
+Buyer-confirmed purchase of a listing id. Off Active Finds; listed under the Bought filter/history; suppresses re-alerts for that exact id; strong positive taste signal within the hunt family. Reversible Undo.
+_Avoid_: Purchased (ok synonym in UI copy), Keep (different — Keep is scorer output)
+
+**Hunt family**:
+Coarse taste bucket (maternity / gym / sneakers / knitwear / other) used to scope learning so maternity Removes do not affect gym scoring.
+_Avoid_: Category (unqualified), watch group
+
+**Taste learning**:
+Hybrid use of desk outcomes — prompt few-shots from Bought/Remove plus conservative hard suppress of keep/alert for repeated Remove patterns with no Bought counter-example in-family.
+_Avoid_: ML model, preference engine (unqualified)

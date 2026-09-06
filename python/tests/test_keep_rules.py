@@ -113,6 +113,58 @@ class KeepRuleTests(unittest.TestCase):
             bot.is_value_haul_path_watch({"target_type": "men's sneakers"})
         )
 
+    def test_taste_hard_suppress_blocks_keep(self):
+        item = {
+            "id": 1,
+            "brand_title": "Nike",
+            "size_title": "L",
+            "price": {"amount": "40", "currency_code": "RON"},
+        }
+        score = {
+            "deal_score": 9,
+            "value_band": "steal",
+            "hunt_fit": True,
+            "scam_risk": "low",
+        }
+        watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
+        outcomes = [
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+        ]
+        self.assertTrue(bot.is_keep(score, CONFIG, watch, item))
+        self.assertFalse(
+            bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes)
+        )
+
+    def test_scoring_prompt_appends_taste_block(self):
+        watch = {
+            "name": "Lululemon gym M-L",
+            "query": "lululemon",
+            "target_type": "men's gym",
+            "target_sizes": ["M", "L"],
+            "notes": "x",
+            "hunt_price": 50,
+            "price_to": 80,
+        }
+        items = [
+            {
+                "id": 1,
+                "title": "shorts",
+                "price": {"amount": "40", "currency_code": "RON"},
+            }
+        ]
+        prompt = bot._scoring_prompt(
+            watch,
+            items,
+            taste_block=(
+                "Buyer taste from desk outcomes:\n"
+                "Bought (strong positive):\n- Good"
+            ),
+        )
+        self.assertIn("Buyer taste from desk outcomes", prompt)
+        self.assertIn("Good", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()

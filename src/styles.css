@@ -267,6 +267,7 @@ tbody tr:hover { background: rgba(31, 111, 91, 0.05); }
 .pill.near { color: #8a5a2b; background: rgba(138, 90, 43, 0.12); }
 .pill.pool, .pill.scored { color: var(--muted); }
 .pill.parked { color: #6b5b2e; background: rgba(138, 90, 43, 0.14); }
+.pill.bought { color: #1e4d3a; background: rgba(46, 125, 90, 0.14); }
 .pill.removed, .pill.hidden { color: var(--skip); background: rgba(0, 0, 0, 0.06); }
 td.actions { white-space: nowrap; }
 .veto-btn {

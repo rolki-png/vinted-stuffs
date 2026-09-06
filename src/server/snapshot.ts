@@ -104,7 +104,7 @@ function bumpSeller(sellers, { sid, login, country, dealScore, band, isKeep, ite
 }
 
 async function buildSnapshot({ vetoMode = "active" } = {}) {
-  const mode = ["active", "parked", "all"].includes(vetoMode)
+  const mode = ["active", "parked", "bought", "all"].includes(vetoMode)
     ? vetoMode
     : "active";
 

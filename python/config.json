@@ -515,7 +515,10 @@
         "43.5",
         "43 1/3"
       ],
-      "notes": "Made in UK models preferred. Strong authenticity check required."
+      "notes": "Made in UK models preferred. Strong authenticity check required.",
+      "brand_ids": [
+        1775
+      ]
     },
     {
       "name": "New Balance 993 size 43",

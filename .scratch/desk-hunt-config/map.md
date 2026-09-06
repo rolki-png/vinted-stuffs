@@ -21,6 +21,7 @@ A design spec for configuring **hunts** from the Deal desk: add, replace, and re
 
 <!-- index: one line per closed ticket -->
 - [Vinted brand picker from the desk](issues/01-vinted-brand-picker-from-desk.md): Yes — desk server route via `@googlarz/vinted-client` `opBrands` → `/api/v2/brands`; proxy/rate-limit/open-desk constraints for v1
+- [Safe GitHub Contents writes for hunt config](issues/02-github-contents-config-write.md): Contents GET→R-M-W `watches`→PUT with blob sha on `main`; existing `repo`/Contents-write PAT; tip races with bot `data/` → 409 retry; conflict if config sha moved
 
 ## Not yet specified
 

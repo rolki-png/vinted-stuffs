@@ -104,7 +104,7 @@ function bumpSeller(sellers, { sid, login, country, dealScore, band, isKeep, ite
 }
 
 async function buildSnapshot({ vetoMode = "active" } = {}) {
-  const mode = ["active", "parked", "hidden", "all"].includes(vetoMode)
+  const mode = ["active", "parked", "all"].includes(vetoMode)
     ? vetoMode
     : "active";
 
@@ -256,9 +256,29 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
   }
 
   const finds = [...findsById.values()];
-  const sellers = new Map();
 
-  for (const f of finds) {
+  const dataSource =
+    indexedSource === "cockroach"
+      ? `cockroach+${
+          process.env.GITHUB_TOKEN && process.env.GITHUB_REPO
+            ? `github:${process.env.GITHUB_REPO}`
+            : "json"
+        }`
+      : process.env.GITHUB_TOKEN && process.env.GITHUB_REPO
+        ? `github:${process.env.GITHUB_REPO}@${process.env.GITHUB_REF || "main"}`
+        : "local-filesystem";
+
+  const findsApplied = applyToFinds(finds, vetoes, { mode });
+  const bundlesApplied = applyToBundles(
+    Array.isArray(bundles) ? bundles : [],
+    vetoes,
+    { mode }
+  );
+
+  // Rebuild sellers from post-veto desk rows so Remove drops sold inventory
+  // from Top sellers / one-off aggregates.
+  const sellers = new Map();
+  for (const f of findsApplied) {
     bumpSeller(sellers, {
       sid: f.seller_id,
       login: f.seller,
@@ -270,8 +290,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       watch: f.watch,
     });
   }
-
-  for (const b of Array.isArray(bundles) ? bundles : []) {
+  for (const b of bundlesApplied) {
     bumpSeller(sellers, {
       sid: b.seller_id,
       login: b.seller,
@@ -315,24 +334,6 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       };
     })
     .sort((a, b) => b.best_score - a.best_score || b.avg_score - a.avg_score || b.keeps - a.keeps);
-
-  const dataSource =
-    indexedSource === "cockroach"
-      ? `cockroach+${
-          process.env.GITHUB_TOKEN && process.env.GITHUB_REPO
-            ? `github:${process.env.GITHUB_REPO}`
-            : "json"
-        }`
-      : process.env.GITHUB_TOKEN && process.env.GITHUB_REPO
-        ? `github:${process.env.GITHUB_REPO}@${process.env.GITHUB_REF || "main"}`
-        : "local-filesystem";
-
-  const findsApplied = applyToFinds(finds, vetoes, { mode });
-  const bundlesApplied = applyToBundles(
-    Array.isArray(bundles) ? bundles : [],
-    vetoes,
-    { mode }
-  );
 
   return {
     finds: findsApplied,

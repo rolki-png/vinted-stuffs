@@ -6,7 +6,7 @@ function vetoModeFromUrl(url: URL) {
     url.searchParams.get('veto') ||
     url.searchParams.get('veto_mode') ||
     'active'
-  return ['active', 'parked', 'hidden', 'all'].includes(raw) ? raw : 'active'
+  return ['active', 'parked', 'all'].includes(raw) ? raw : 'active'
 }
 
 export const Route = createFileRoute('/api/dashboard')({

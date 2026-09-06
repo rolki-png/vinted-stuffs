@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-type VetoMode = 'active' | 'parked' | 'hidden' | 'all'
+type VetoMode = 'active' | 'parked' | 'all'
 type Tab = 'finds' | 'bundles' | 'sellers' | 'run'
 
 type Find = {
@@ -107,7 +107,7 @@ function VetoButtons({
   onError: (msg: string) => void
 }) {
   if (itemId == null) return null
-  if (status === 'hidden' || status === 'parked') {
+  if (status === 'parked') {
     return (
       <button
         type="button"
@@ -118,14 +118,17 @@ function VetoButtons({
       </button>
     )
   }
+  if (status === 'removed' || status === 'hidden') {
+    return null
+  }
   return (
     <>
       <button
         type="button"
         className="btn veto-btn"
-        onClick={() => onSet(itemId, 'hidden').catch((e) => onError(String(e.message || e)))}
+        onClick={() => onSet(itemId, 'removed').catch((e) => onError(String(e.message || e)))}
       >
-        Hide
+        Remove
       </button>
       <button
         type="button"
@@ -230,13 +233,9 @@ export function DealDesk() {
     })
     const json = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(json.error || json.message || `HTTP ${res.status}`)
-    if (status == null) setToast({ text: `Cleared veto on #${itemId}` })
-    else {
-      setToast({
-        text: status === 'hidden' ? `Hidden #${itemId}` : `Parked #${itemId}`,
-        undoId: itemId,
-      })
-    }
+    if (status == null) setToast({ text: `Cleared park on #${itemId}` })
+    else if (status === 'removed') setToast({ text: `Removed #${itemId}` })
+    else setToast({ text: `Parked #${itemId}`, undoId: itemId })
     await load()
   }
 
@@ -256,8 +255,7 @@ export function DealDesk() {
       return true
     })
     rows.sort((a, b) => {
-      const vetoRank = (r: Find) =>
-        r.veto_status === 'parked' ? 1 : r.veto_status === 'hidden' ? 2 : 0
+      const vetoRank = (r: Find) => (r.veto_status === 'parked' ? 1 : 0)
       const vr = vetoRank(a) - vetoRank(b)
       if (vr) return vr
       switch (sort) {
@@ -430,7 +428,6 @@ export function DealDesk() {
               <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
-                <option value="hidden">Hidden</option>
                 <option value="all">All</option>
               </select>
             </label>
@@ -536,7 +533,6 @@ export function DealDesk() {
               <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
-                <option value="hidden">Hidden</option>
                 <option value="all">All</option>
               </select>
             </label>

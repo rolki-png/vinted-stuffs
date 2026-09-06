@@ -1,3 +1,4 @@
+-- status: removed | parked (legacy hidden rows are migrated to removed)
 CREATE TABLE IF NOT EXISTS listing_vetoes (
   item_id BIGINT NOT NULL PRIMARY KEY,
   status TEXT NOT NULL,

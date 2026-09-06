@@ -64,9 +64,9 @@ _Avoid_: Full scrape, monitor user (unqualified)
 steal, hunt, acceptable, or skip — price versus quality for that exact piece, after fees, not "under the search cap".
 _Avoid_: Discount, percentage off
 
-**Hide**:
-Buyer veto of a listing id on the desk: removed from Finds and Bundles, and suppressed from future alerts and persisted keeps for that listing. Reversible via the Hidden filter.
-_Avoid_: Delete, ban, block, dismiss (UI may say dismiss; domain term is Hide)
+**Remove**:
+Permanent buyer tombstone of a listing id (typically sold/gone): omitted from Finds, Bundles, Top sellers, and one-off desk surfaces forever; suppressed from future alerts and persisted keeps. No Undo. Cockroach `listing_vetoes.status = removed`.
+_Avoid_: Hide (retired), Delete (UI may say Remove; do not hard-delete score rows in v1), ban, block
 
 **Park**:
 Buyer soft veto of a listing id: still on the desk, tagged and sorted below active rows, score unchanged. Does not suppress bot alerts. Reversible.

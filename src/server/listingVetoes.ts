@@ -5,13 +5,14 @@ import os from "node:os"
 import pg from "pg"
 
 /**
- * Listing vetoes (Hide / Park) — Cockroach map + pure desk apply helpers.
- * Mirrors scripts/listing_vetoes.py.
+ * Listing vetoes (Remove / Park) — Cockroach map + pure desk apply helpers.
+ * Mirrors python/listing_vetoes.py.
  */
 
-const STATUS_HIDDEN = "hidden";
-const STATUS_PARKED = "parked";
-const VALID = new Set([STATUS_HIDDEN, STATUS_PARKED]);
+const STATUS_REMOVED = "removed"
+const STATUS_PARKED = "parked"
+const STATUS_HIDDEN_LEGACY = "hidden"
+const VALID = new Set([STATUS_REMOVED, STATUS_PARKED])
 
 const DDL = `
 CREATE TABLE IF NOT EXISTS listing_vetoes (
@@ -19,147 +20,165 @@ CREATE TABLE IF NOT EXISTS listing_vetoes (
   status TEXT NOT NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-`;
+`
+
+const MIGRATE_HIDDEN_SQL =
+  "UPDATE listing_vetoes SET status = 'removed' WHERE status = 'hidden'"
 
 function databaseUrl() {
   return (
     process.env.DATABASE_URL ||
     process.env.COCKROACH_DATABASE_URL ||
     ""
-  ).trim() || null;
+  ).trim() || null
 }
 
 function sslConfig() {
-  return { rejectUnauthorized: false };
+  return { rejectUnauthorized: false }
+}
+
+function normalizeStatus(status) {
+  if (status == null) return null
+  const st = String(status)
+  if (st === STATUS_HIDDEN_LEGACY) return STATUS_REMOVED
+  return st
+}
+
+function coerceWriteStatus(status) {
+  const st = normalizeStatus(status)
+  if (!VALID.has(st)) {
+    const err = new Error("invalid_status")
+    err.status = 400
+    throw err
+  }
+  return st
 }
 
 function itemId(rowOrId) {
   const raw =
     rowOrId && typeof rowOrId === "object"
       ? rowOrId.id ?? rowOrId.item_id
-      : rowOrId;
-  if (raw == null) return null;
-  const n = Number(raw);
-  return Number.isFinite(n) ? n : null;
+      : rowOrId
+  if (raw == null) return null
+  const n = Number(raw)
+  return Number.isFinite(n) ? n : null
 }
 
 function statusFor(vetoes, rowOrId) {
-  const id = itemId(rowOrId);
-  if (id == null) return null;
-  return vetoes[id] || vetoes[String(id)] || null;
+  const id = itemId(rowOrId)
+  if (id == null) return null
+  return normalizeStatus(vetoes[id] || vetoes[String(id)] || null)
 }
 
-function isHidden(vetoes, rowOrId) {
-  return statusFor(vetoes, rowOrId) === STATUS_HIDDEN;
+function isRemoved(vetoes, rowOrId) {
+  return statusFor(vetoes, rowOrId) === STATUS_REMOVED
 }
 
 function isParked(vetoes, rowOrId) {
-  return statusFor(vetoes, rowOrId) === STATUS_PARKED;
+  return statusFor(vetoes, rowOrId) === STATUS_PARKED
 }
 
-function sortVetoKey(row) {
-  const st = row.veto_status;
-  if (st === STATUS_PARKED) return 1;
-  if (st === STATUS_HIDDEN) return 2;
-  return 0;
-}
+const isHidden = isRemoved
 
 function applyToFinds(rows, vetoes, { mode = "active" } = {}) {
-  if (!["active", "parked", "hidden", "all"].includes(mode)) {
-    throw new Error(`unknown veto mode: ${mode}`);
+  if (!["active", "parked", "all"].includes(mode)) {
+    throw new Error(`unknown veto mode: ${mode}`)
   }
-  const out = [];
+  const out = []
   for (const row of rows || []) {
-    const st = statusFor(vetoes, row);
-    if (mode === "active" && st === STATUS_HIDDEN) continue;
-    if (mode === "parked" && st !== STATUS_PARKED) continue;
-    if (mode === "hidden" && st !== STATUS_HIDDEN) continue;
-    const tagged = { ...row };
-    if (st) tagged.veto_status = st;
-    else delete tagged.veto_status;
-    out.push(tagged);
+    const st = statusFor(vetoes, row)
+    if (st === STATUS_REMOVED) continue
+    if (mode === "parked" && st !== STATUS_PARKED) continue
+    const tagged = { ...row }
+    if (st) tagged.veto_status = st
+    else delete tagged.veto_status
+    out.push(tagged)
   }
-  return out.sort((a, b) => sortVetoKey(a) - sortVetoKey(b));
+  return out.sort((a, b) => {
+    const ar = a.veto_status === STATUS_PARKED ? 1 : 0
+    const br = b.veto_status === STATUS_PARKED ? 1 : 0
+    return ar - br
+  })
 }
 
 function applyToBundles(rows, vetoes, { mode = "active" } = {}) {
-  if (!["active", "parked", "hidden", "all"].includes(mode)) {
-    throw new Error(`unknown veto mode: ${mode}`);
+  if (!["active", "parked", "all"].includes(mode)) {
+    throw new Error(`unknown veto mode: ${mode}`)
   }
-  const out = [];
+  const out = []
   for (const bundle of rows || []) {
-    const items = Array.isArray(bundle.items) ? bundle.items : [];
-    const kept = [];
+    const items = Array.isArray(bundle.items) ? bundle.items : []
+    const kept = []
     for (const it of items) {
-      const st = statusFor(vetoes, it);
-      if (mode === "active" && st === STATUS_HIDDEN) continue;
-      if (mode === "parked" && st === STATUS_HIDDEN) continue;
-      if (mode === "hidden" && st !== STATUS_HIDDEN) continue;
-      const tagged = { ...it };
-      if (st) tagged.veto_status = st;
-      else delete tagged.veto_status;
-      kept.push(tagged);
+      const st = statusFor(vetoes, it)
+      if (st === STATUS_REMOVED) continue
+      const tagged = { ...it }
+      if (st) tagged.veto_status = st
+      else delete tagged.veto_status
+      kept.push(tagged)
     }
-    if (mode === "hidden") {
-      if (!kept.length) continue;
-    } else if (kept.length < 2) {
-      continue;
-    } else if (
+    if (kept.length < 2) continue
+    if (
       mode === "parked" &&
       !kept.some((it) => it.veto_status === STATUS_PARKED)
     ) {
-      continue;
+      continue
     }
 
-    const row = { ...bundle, items: kept };
-    let listingSum = 0;
+    const row = { ...bundle, items: kept }
+    let listingSum = 0
     for (const it of kept) {
-      const p = Number(it.price);
-      if (Number.isFinite(p)) listingSum += p;
+      const p = Number(it.price)
+      if (Number.isFinite(p)) listingSum += p
     }
-    row.listing_sum = listingSum;
+    row.listing_sum = listingSum
     if (row.checkout_extra_ron != null) {
-      const extra = Number(row.checkout_extra_ron);
-      if (Number.isFinite(extra)) row.checkout_total = listingSum + extra;
+      const extra = Number(row.checkout_extra_ron)
+      if (Number.isFinite(extra)) row.checkout_total = listingSum + extra
     }
-    const anyParked = kept.some((it) => it.veto_status === STATUS_PARKED);
-    const anyHidden = kept.some((it) => it.veto_status === STATUS_HIDDEN);
-    if (mode === "hidden" || (mode === "all" && anyHidden && !anyParked)) {
-      row.veto_status = STATUS_HIDDEN;
-    } else if (anyParked) {
-      row.veto_status = STATUS_PARKED;
+    if (kept.some((it) => it.veto_status === STATUS_PARKED)) {
+      row.veto_status = STATUS_PARKED
     } else {
-      delete row.veto_status;
+      delete row.veto_status
     }
-    out.push(row);
+    out.push(row)
   }
-  return out.sort((a, b) => sortVetoKey(a) - sortVetoKey(b));
+  return out.sort((a, b) => {
+    const ar = a.veto_status === STATUS_PARKED ? 1 : 0
+    const br = b.veto_status === STATUS_PARKED ? 1 : 0
+    return ar - br
+  })
 }
 
 async function withClient(fn) {
-  const url = databaseUrl();
-  if (!url) return null;
-  const { Client } = pg;
-  let connectionString = url;
+  const url = databaseUrl()
+  if (!url) return null
+  const { Client } = pg
+  let connectionString = url
   if (!fs.existsSync(path.join(os.homedir(), ".postgresql", "root.crt"))) {
-    connectionString = url.replace(/sslmode=verify-full/gi, "sslmode=require");
+    connectionString = url.replace(/sslmode=verify-full/gi, "sslmode=require")
   }
   const client = new Client({
     connectionString,
     ssl: sslConfig(),
     connectionTimeoutMillis: 8000,
     query_timeout: 15000,
-  });
+  })
   try {
-    await client.connect();
-    await client.query(DDL);
-    return await fn(client);
+    await client.connect()
+    await client.query(DDL)
+    try {
+      await client.query(MIGRATE_HIDDEN_SQL)
+    } catch (err) {
+      console.error("listingVetoes migrate note:", err.message || err)
+    }
+    return await fn(client)
   } catch (err) {
-    console.error("listingVetoes:", err.message || err);
-    return null;
+    console.error("listingVetoes:", err.message || err)
+    return null
   } finally {
     try {
-      await client.end();
+      await client.end()
     } catch {
       /* ignore */
     }
@@ -168,28 +187,24 @@ async function withClient(fn) {
 
 async function loadVetoMap() {
   const map = await withClient(async (client) => {
-    const res = await client.query("SELECT item_id, status FROM listing_vetoes");
-    const out = {};
+    const res = await client.query("SELECT item_id, status FROM listing_vetoes")
+    const out = {}
     for (const row of res.rows) {
-      out[Number(row.item_id)] = String(row.status);
+      out[Number(row.item_id)] = normalizeStatus(String(row.status))
     }
-    return out;
-  });
-  return map || {};
+    return out
+  })
+  return map || {}
 }
 
 async function setVetoStatus(itemId, status) {
-  const id = Number(itemId);
+  const id = Number(itemId)
   if (!Number.isFinite(id)) {
-    const err = new Error("invalid_item_id");
-    err.status = 400;
-    throw err;
+    const err = new Error("invalid_item_id")
+    err.status = 400
+    throw err
   }
-  if (!VALID.has(status)) {
-    const err = new Error("invalid_status");
-    err.status = 400;
-    throw err;
-  }
+  const st = coerceWriteStatus(status)
   const ok = await withClient(async (client) => {
     await client.query(
       `INSERT INTO listing_vetoes (item_id, status, updated_at)
@@ -197,41 +212,43 @@ async function setVetoStatus(itemId, status) {
        ON CONFLICT (item_id) DO UPDATE SET
          status = EXCLUDED.status,
          updated_at = EXCLUDED.updated_at`,
-      [id, status]
-    );
-    return true;
-  });
+      [id, st],
+    )
+    return true
+  })
   if (!ok) {
-    const err = new Error("veto_db_unavailable");
-    err.status = 503;
-    throw err;
+    const err = new Error("veto_db_unavailable")
+    err.status = 503
+    throw err
   }
-  return { item_id: id, status };
+  return { item_id: id, status: st }
 }
 
 async function clearVeto(itemId) {
-  const id = Number(itemId);
+  const id = Number(itemId)
   if (!Number.isFinite(id)) {
-    const err = new Error("invalid_item_id");
-    err.status = 400;
-    throw err;
+    const err = new Error("invalid_item_id")
+    err.status = 400
+    throw err
   }
   const ok = await withClient(async (client) => {
-    await client.query("DELETE FROM listing_vetoes WHERE item_id = $1", [id]);
-    return true;
-  });
+    await client.query("DELETE FROM listing_vetoes WHERE item_id = $1", [id])
+    return true
+  })
   if (!ok) {
-    const err = new Error("veto_db_unavailable");
-    err.status = 503;
-    throw err;
+    const err = new Error("veto_db_unavailable")
+    err.status = 503
+    throw err
   }
-  return { item_id: id, cleared: true };
+  return { item_id: id, cleared: true }
 }
 
 export {
-STATUS_HIDDEN,
+  STATUS_REMOVED,
   STATUS_PARKED,
+  STATUS_HIDDEN_LEGACY,
   databaseUrl,
+  isRemoved,
   isHidden,
   isParked,
   applyToFinds,
@@ -239,4 +256,5 @@ STATUS_HIDDEN,
   loadVetoMap,
   setVetoStatus,
   clearVeto,
+  normalizeStatus,
 }

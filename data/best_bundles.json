@@ -1,5 +1,108 @@
 [
   {
+    "kept_at": "2026-09-06T13:13:05.264139+00:00",
+    "kind": "near_haul",
+    "seller": "wojtusqq",
+    "seller_id": 91163205,
+    "country": "pl",
+    "checkout_extra_ron": 27.066,
+    "listing_sum": 81.32,
+    "checkout_total": 108.386,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 36.12866666666667,
+    "items": [
+      {
+        "role": "haul",
+        "id": 8701712189,
+        "title": "Spodnie ciążowe New Look Maternity Skinny rurki XL/42",
+        "price": 34.5,
+        "url": "https://www.vinted.ro/items/8701712189-spodnie-ciazowe-new-look-maternity-skinny-rurki-xl42",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "wojtusqq",
+        "seller_id": 91163205
+      },
+      {
+        "role": "haul",
+        "id": 9043645361,
+        "title": "Bluzka ciążowa XL/42",
+        "price": 16.02,
+        "url": "https://www.vinted.ro/items/9043645361-bluzka-ciazowa-xl42",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "wojtusqq",
+        "seller_id": 91163205
+      },
+      {
+        "role": "haul",
+        "id": 9215366287,
+        "title": "Spodnie ciążowe na lato XL/42",
+        "price": 30.8,
+        "url": "https://www.vinted.ro/items/9215366287-spodnie-ciazowe-na-lato-xl42",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "wojtusqq",
+        "seller_id": 91163205
+      }
+    ],
+    "suggested_offer_ron": 73,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T13:11:43.436255+00:00",
+    "seller": "mymdm",
+    "seller_id": 224819493,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 84.0,
+    "checkout_total": 109.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9906844012,
+        "title": "Blugi gravida xl",
+        "price": 29.0,
+        "url": "https://www.vinted.ro/items/9906844012-blugi-gravida-xl",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 8,
+        "seller_id": 224819493,
+        "seller": "mymdm"
+      },
+      {
+        "role": "extra",
+        "id": 9900766745,
+        "title": "Blugi gravida xl",
+        "price": 25.0,
+        "url": "https://www.vinted.ro/items/9900766745-blugi-gravida-xl",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 8,
+        "seller_id": 224819493,
+        "seller": "mymdm"
+      },
+      {
+        "role": "extra",
+        "id": 9903695852,
+        "title": "Pantalonii McKinley M",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9903695852-pantalonii-mckinley-m",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 6,
+        "seller_id": 224819493,
+        "seller": "mymdm"
+      }
+    ],
+    "suggested_offer_ron": 75,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
     "kind": "near_haul",
     "seller": "bemike2",

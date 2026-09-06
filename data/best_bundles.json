@@ -1,5 +1,89 @@
 [
   {
+    "kept_at": "2026-09-06T09:38:26.762787+00:00",
+    "kind": "near_haul",
+    "seller": "liamihaela",
+    "seller_id": 148743860,
+    "country": "ro",
+    "checkout_extra_ron": 18.9,
+    "listing_sum": 18.0,
+    "checkout_total": 36.9,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Both items are functional for gym use, in good condition, and priced well below the 25 RON threshold per item.",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 18.45,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9868981766,
+        "title": "Hanorac cu fermoar și glugă Crane Sports, mărimea L",
+        "price": 8.0,
+        "url": "https://www.vinted.ro/items/9868981766-hanorac-cu-fermoar-si-gluga-crane-sports-marimea-l",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "liamihaela",
+        "seller_id": 148743860
+      },
+      {
+        "role": "haul",
+        "id": 9864085017,
+        "title": "Bluză trening / Jachetă sport neagră Well Uomo mărimea M cu buzunare",
+        "price": 10.0,
+        "url": "https://www.vinted.ro/items/9864085017-bluza-trening-jacheta-sport-neagra-well-uomo-marimea-m-cu-buzunare",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "liamihaela",
+        "seller_id": 148743860
+      }
+    ],
+    "suggested_offer_ron": 16,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T09:38:26.762787+00:00",
+    "kind": "near_haul",
+    "seller": "roxaqqa",
+    "seller_id": 254544547,
+    "country": "ro",
+    "checkout_extra_ron": 19.75,
+    "listing_sum": 35.0,
+    "checkout_total": 54.75,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle consists of lifestyle casual wear rather than gym-appropriate gear and fails the useful item count requirement.",
+    "watch": "Gym bundle seeds M-L",
+    "effective_price_per_useful_item": 27.375,
+    "items": [
+      {
+        "role": "haul",
+        "id": 6515714022,
+        "title": "top y2k",
+        "price": 5.0,
+        "url": "https://www.vinted.ro/items/6515714022-top-y2k",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "roxaqqa",
+        "seller_id": 254544547
+      },
+      {
+        "role": "haul",
+        "id": 9904513284,
+        "title": "Hanorac zip up cu Snoopy",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9904513284-hanorac-zip-up-cu-snoopy",
+        "watch": "Gym bundle seeds M-L",
+        "deal_score": null,
+        "seller": "roxaqqa",
+        "seller_id": 254544547
+      }
+    ],
+    "suggested_offer_ron": 31,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
     "kept_at": "2026-09-06T07:00:53.578203+00:00",
     "kind": "near_haul",
     "seller": "suciucsr",

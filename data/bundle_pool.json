@@ -315,44 +315,6 @@
   },
   {
     "item": {
-      "id": 9898933341,
-      "title": "Lululemon Men’s Vent Tech Long Sleeve",
-      "price": {
-        "amount": "80.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Lululemon",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9898933341-lululemon-mens-vent-tech-long-sleeve",
-      "user": {
-        "id": 236919211,
-        "login": "denisa.jesica"
-      },
-      "_profile": {
-        "username": "denisa.jesica",
-        "member_since": null,
-        "feedback_count": 461,
-        "feedback_reputation": 1,
-        "item_count": 109,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9898933341,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Excellent price for a core technical training piece in the correct men's size, though seller history requires caution due to missing account date."
-    },
-    "watch": "Lululemon gym M-L",
-    "seller_id": 236919211,
-    "seller": "denisa.jesica"
-  },
-  {
-    "item": {
       "id": 9563839582,
       "title": "Vuori krótkie spodenki sportowe gym short rozmiar L",
       "price": {
@@ -388,44 +350,6 @@
     "watch": "Vuori gym M-L",
     "seller_id": 104448461,
     "seller": "hs4pl"
-  },
-  {
-    "item": {
-      "id": 9902945987,
-      "title": "Koszulka termoaktywna Devold M Duo Active Wełna Merino wysyłka 24h",
-      "price": {
-        "amount": "80.09",
-        "currency_code": "RON"
-      },
-      "brand_title": "Devold",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9902945987-koszulka-termoaktywna-devold-m-duo-active-welna-merino-wysylka-24h",
-      "user": {
-        "id": 3128968628,
-        "login": "marcink547"
-      },
-      "_profile": {
-        "username": "marcink547",
-        "member_since": null,
-        "feedback_count": 508,
-        "feedback_reputation": 1,
-        "item_count": 371,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9902945987,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct model and size for the hunt at a very strong price point."
-    },
-    "watch": "Devold merino M-L",
-    "seller_id": 3128968628,
-    "seller": "marcink547"
   },
   {
     "item": {
@@ -926,268 +850,230 @@
   },
   {
     "item": {
-      "id": 9898779313,
-      "title": "New Balance 1906R Silver 43",
+      "id": 9904739295,
+      "title": "Odlo Logic Windproof L kurtka kolarska rowerowa przeciwwiatrowa",
       "price": {
-        "amount": "345.01",
+        "amount": "147.86",
         "currency_code": "RON"
       },
-      "brand_title": "New Balance",
-      "size_title": null,
-      "status": "Used",
+      "brand_title": "Odlo",
+      "size_title": "L",
+      "status": "Foarte bună",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9898779313-new-balance-1906r-silver-43",
+      "url": "https://www.vinted.ro/items/9904739295-odlo-logic-windproof-l-kurtka-kolarska-rowerowa-przeciwwiatrowa",
       "user": {
-        "id": 122112755,
-        "login": "happi148"
+        "id": 91049108,
+        "login": "monisia1701"
       },
       "_profile": {
-        "username": "happi148",
+        "username": "monisia1701",
         "member_since": null,
-        "feedback_count": 824,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 22,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9898779313,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Duplicate listing of a correctly sized pair but at an acceptable market price."
-    },
-    "watch": "New Balance 1906R size 43",
-    "seller_id": 122112755,
-    "seller": "happi148"
-  },
-  {
-    "item": {
-      "id": 9893731888,
-      "title": "Sneakersy New balance 1906R rozmiar 43 stan bardzo dobry A024",
-      "price": {
-        "amount": "283.4",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9893731888-sneakersy-new-balance-1906r-rozmiar-43-stan-bardzo-dobry-a024",
-      "user": {
-        "id": 3171429983,
-        "login": "blackgreen28"
-      },
-      "_profile": {
-        "username": "blackgreen28",
-        "member_since": null,
-        "feedback_count": 34,
+        "feedback_count": 1274,
         "feedback_reputation": 1,
         "item_count": 58,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9893731888,
+      "id": 9904739295,
       "deal_score": 7,
       "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Good condition and correct size, but price is above the target hunt threshold."
+      "reason": "Functional windproof piece, but price is above the hunt target."
     },
-    "watch": "New Balance 1906R size 43",
-    "seller_id": 3171429983,
-    "seller": "blackgreen28"
+    "watch": "Odlo technical M-L",
+    "seller_id": 91049108,
+    "seller": "monisia1701"
   },
   {
     "item": {
-      "id": 9835927326,
-      "title": "Bluza Smartwool 1/3 zip Merino 250",
+      "id": 9903614705,
+      "title": "Leginsy 2xu rozmiar m",
       "price": {
-        "amount": "184.83",
+        "amount": "17.25",
         "currency_code": "RON"
       },
-      "brand_title": "Smartwool",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9835927326-bluza-smartwool-13-zip-merino-250",
+      "brand_title": "2XU",
+      "size_title": "M / 38 / 10",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9903614705-leginsy-2xu-rozmiar-m",
       "user": {
-        "id": 3163284169,
-        "login": "bielinsk7"
+        "id": 193003693,
+        "login": "alekravtsova"
       },
       "_profile": {
-        "username": "bielinsk7",
+        "username": "alekravtsova",
         "member_since": null,
-        "feedback_count": 44,
-        "feedback_reputation": 1,
-        "item_count": 94,
+        "feedback_count": 102,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 47,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9835927326,
+      "id": 9903614705,
       "deal_score": 7,
       "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Price is above the ideal hunt value and the missing seller join date increases risk assessment."
+      "reason": "Correct item and price, but missing seller history on account makes this a skip for high-end gear."
     },
-    "watch": "Smartwool merino M-L",
-    "seller_id": 3163284169,
-    "seller": "bielinsk7"
+    "watch": "2XU M-L",
+    "seller_id": 193003693,
+    "seller": "alekravtsova"
   },
   {
     "item": {
-      "id": 9888026604,
-      "title": "Seraphine zielona sukienka z wiązaniem krótki rękaw casual coquette 40 L",
+      "id": 9904421856,
+      "title": "New Balance 2002r",
+      "price": {
+        "amount": "170.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "42,5",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9904421856-new-balance-2002r",
+      "user": {
+        "id": 188377747,
+        "login": "utu_88"
+      },
+      "_profile": {
+        "username": "utu_88",
+        "member_since": null,
+        "feedback_count": 634,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 26,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9904421856,
+      "deal_score": 9,
+      "value_band": "steal",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Excellent price for a correct size 42.5 in good condition, though missing seller join date warrants caution."
+    },
+    "watch": "New Balance 2002R size 43",
+    "seller_id": 188377747,
+    "seller": "utu_88"
+  },
+  {
+    "item": {
+      "id": 9886975122,
+      "title": "Sneakersy New Balance  1906R czarne rozm 42,5",
+      "price": {
+        "amount": "245.2",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "42,5",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9886975122-sneakersy-new-balance-1906r-czarne-rozm-425",
+      "user": {
+        "id": 3167445664,
+        "login": "corvesta"
+      },
+      "_profile": {
+        "username": "corvesta",
+        "member_since": null,
+        "feedback_count": 20,
+        "feedback_reputation": 1,
+        "item_count": 4,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9886975122,
+      "deal_score": 9,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and model at an excellent price, though lack of seller history elevates risk."
+    },
+    "watch": "New Balance 1906R size 43",
+    "seller_id": 3167445664,
+    "seller": "corvesta"
+  },
+  {
+    "item": {
+      "id": 9904664279,
+      "title": "Granatowa termoaktywna wełniana bluza z golfem męska Devold L/XL wool",
       "price": {
         "amount": "85.02",
         "currency_code": "RON"
       },
-      "brand_title": "Seraphine",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9888026604-seraphine-zielona-sukienka-z-wiazaniem-krotki-rekaw-casual-coquette-40-l",
+      "brand_title": "Devold",
+      "size_title": "L",
+      "status": "Bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9904664279-granatowa-termoaktywna-welniana-bluza-z-golfem-meska-devold-lxl-wool",
       "user": {
-        "id": 92547698,
-        "login": "zanett92"
+        "id": 140707158,
+        "login": "nusia9797"
       },
       "_profile": {
-        "username": "zanett92",
+        "username": "nusia9797",
         "member_since": null,
-        "feedback_count": 3563,
+        "feedback_count": 1367,
         "feedback_reputation": 1,
-        "item_count": 161,
+        "item_count": 823,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9888026604,
-      "deal_score": 9,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "New with tags Seraphine dress in size L at a very low price point makes for an outstanding, high-value find."
-    },
-    "watch": "Seraphine maternity L-XL",
-    "seller_id": 92547698,
-    "seller": "zanett92"
-  },
-  {
-    "item": {
-      "id": 8578565793,
-      "title": "Σορτς αμερικανικής εταιρείας vuori",
-      "price": {
-        "amount": "58.49",
-        "currency_code": "RON"
-      },
-      "brand_title": "Vuori",
-      "size_title": "M / 38 / 10",
-      "status": "Foarte bună",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/8578565793-sorts-amerikanikis-etaireias-vuori",
-      "user": {
-        "id": 217329621,
-        "login": "nazda19"
-      },
-      "_profile": {
-        "username": "nazda19",
-        "member_since": null,
-        "feedback_count": 52,
-        "feedback_reputation": 0.9,
-        "item_count": 124,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 8578565793,
-      "deal_score": 7,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size and brand but generic description lacks specificity on the model, making it a standard purchase rather than a standout deal."
-    },
-    "watch": "Vuori gym M-L",
-    "seller_id": 217329621,
-    "seller": "nazda19"
-  },
-  {
-    "item": {
-      "id": 9680441840,
-      "title": "Saysky RSG Running T Shirt Tee Size M Men’s Dry Koszulka Do Biegania",
-      "price": {
-        "amount": "98.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Saysky",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9680441840-saysky-rsg-running-t-shirt-tee-size-m-mens-dry-koszulka-do-biegania",
-      "user": {
-        "id": 221702180,
-        "login": "crispycracker17"
-      },
-      "_profile": {
-        "username": "crispycracker17",
-        "member_since": null,
-        "feedback_count": 1174,
-        "feedback_reputation": 1,
-        "item_count": 294,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9680441840,
+      "id": 9904664279,
       "deal_score": 7,
       "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Basic Saysky logo tee in good condition, priced fairly but not a standout deal that would be disappointing to miss."
+      "reason": "Correct brand and size, but condition is only 'good' which for wool layers often means visible wear."
     },
-    "watch": "Saysky running M-L",
-    "seller_id": 221702180,
-    "seller": "crispycracker17"
+    "watch": "Devold merino M-L",
+    "seller_id": 140707158,
+    "seller": "nusia9797"
   },
   {
     "item": {
-      "id": 9903255578,
-      "title": "Zestaw spodni ciążowych hm mama 7 sztuk",
+      "id": 9904398661,
+      "title": "Spodnie ciążowe H&H rozmiar 42",
       "price": {
-        "amount": "48.05",
+        "amount": "18.48",
         "currency_code": "RON"
       },
       "brand_title": "H&M Mama",
       "size_title": "XL / 42 / 14",
-      "status": "Bună",
+      "status": "Foarte bună",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9903255578-zestaw-spodni-ciazowych-hm-mama-7-sztuk",
+      "url": "https://www.vinted.ro/items/9904398661-spodnie-ciazowe-hh-rozmiar-42",
       "user": {
-        "id": 311282250,
-        "login": "karolikie91"
+        "id": 112783790,
+        "login": "domi872415"
       },
       "_profile": {
-        "username": "karolikie91",
+        "username": "domi872415",
         "member_since": null,
-        "feedback_count": 42,
-        "feedback_reputation": 1,
-        "item_count": 71,
+        "feedback_count": 142,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 170,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9903255578,
-      "deal_score": 9,
-      "value_band": "steal",
+      "id": 9904398661,
+      "deal_score": 7,
+      "value_band": "hunt",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Large haul of 7 H&M Mama items at an excellent price point per unit for the target size."
+      "reason": "Correct XL size and maternity fit, but solo item purchase does not meet the high-value haul criteria."
     },
     "watch": "H&M Mama bundle seed L-XL",
-    "seller_id": 311282250,
-    "seller": "karolikie91"
+    "seller_id": 112783790,
+    "seller": "domi872415"
   }
 ]

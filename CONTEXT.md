@@ -63,3 +63,11 @@ _Avoid_: Full scrape, monitor user (unqualified)
 **Value band**:
 steal, hunt, acceptable, or skip — price versus quality for that exact piece, after fees, not "under the search cap".
 _Avoid_: Discount, percentage off
+
+**Hide**:
+Buyer veto of a listing id on the desk: removed from Finds and Bundles, and suppressed from future alerts and persisted keeps for that listing. Reversible via the Hidden filter.
+_Avoid_: Delete, ban, block, dismiss (UI may say dismiss; domain term is Hide)
+
+**Park**:
+Buyer soft veto of a listing id: still on the desk, tagged and sorted below active rows, score unchanged. Does not suppress bot alerts. Reversible.
+_Avoid_: Pass (conflicts with keep language), demote (UI ok; prefer Park in domain docs)

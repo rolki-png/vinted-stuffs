@@ -1370,6 +1370,16 @@ def main() -> None:
     import scored_store as scored_store_mod
 
     score_db = scored_store_mod.open_store()
+    import listing_vetoes as listing_vetoes_mod
+
+    veto_store = listing_vetoes_mod.open_store()
+    try:
+        hidden_ids = veto_store.load_hidden_ids()
+    except Exception as e:
+        print(f"listing_vetoes: failed to load hidden ids: {e}", file=sys.stderr)
+        hidden_ids = set()
+    if hidden_ids:
+        print(f"Loaded {len(hidden_ids)} hidden listing veto(es).", file=sys.stderr)
     gemini_client = None
     if not test_mode and gemini_key:
         if genai is None:
@@ -1691,6 +1701,9 @@ def main() -> None:
                 score = score_value_haul(payload, config, gateway_key, gemini_client)
             if score:
                 useful = vh.useful_items(candidates, score) or candidates
+                useful = listing_vetoes_mod.filter_items(useful, hidden_ids)
+                if len(useful) < 2:
+                    continue
                 if vh.is_value_haul_alert(score, useful, extra, vh_cfg):
                     fingerprint = vh.value_haul_fingerprint(meta["sid"], useful)
                     if fingerprint not in alerted_bundles:
@@ -1726,7 +1739,9 @@ def main() -> None:
             continue
         if len(near_hauls) >= near_haul_limit:
             continue
-        near_items = candidates
+        near_items = listing_vetoes_mod.filter_items(candidates, hidden_ids)
+        if len(near_items) < 2:
+            continue
         fingerprint = vh.value_haul_fingerprint(meta["sid"], near_items)
         if fingerprint in alerted_bundles:
             continue
@@ -1812,8 +1827,29 @@ def main() -> None:
             file=sys.stderr,
         )
     merged = merge_scored(scored, still_prior + revived)
+    merged = listing_vetoes_mod.filter_scored_rows(merged, hidden_ids)
     bundles, solos = assemble_bundles(merged, config)
-    bundles = bundles[: int(config.get("max_bundles_per_run", 3))]
+    # Re-check bundle membership after hide (assemble already omitted hidden rows).
+    pruned_bundles = []
+    for bundle in bundles:
+        keeps = listing_vetoes_mod.filter_scored_rows(bundle.get("keeps") or [], hidden_ids)
+        extras = listing_vetoes_mod.filter_scored_rows(bundle.get("extras") or [], hidden_ids)
+        members = keeps + extras
+        if len(members) < 2 or not keeps:
+            continue
+        listing_sum = sum(listing_amount(r["item"]) or 0 for r in members)
+        country = bundle.get("country") or "ro"
+        extra = checkout_extra_ron(country, config, listing_sum)
+        pruned_bundles.append({
+            **bundle,
+            "keeps": keeps,
+            "extras": extras,
+            "listing_sum": listing_sum,
+            "checkout_extra_ron": extra,
+            "checkout_total": listing_sum + extra,
+        })
+    bundles = pruned_bundles[: int(config.get("max_bundles_per_run", 3))]
+    solos = listing_vetoes_mod.filter_scored_rows(solos, hidden_ids)
     new_bundles = []
     for bundle in bundles:
         key = bundle_fingerprint(bundle)
@@ -2016,6 +2052,10 @@ def main() -> None:
     state["last_value_hauls"] = len(value_hauls)
     state["last_near_hauls"] = len(near_hauls)
     save_state(state)
+    try:
+        veto_store.close()
+    except Exception:
+        pass
     try:
         score_db.close()
     except Exception:

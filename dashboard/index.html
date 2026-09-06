@@ -83,6 +83,15 @@
           </select>
         </label>
         <label>
+          Status
+          <select id="veto">
+            <option value="active" selected>Active</option>
+            <option value="parked">Parked</option>
+            <option value="hidden">Hidden</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
           Sort
           <select id="sort">
             <option value="score-desc">Score ↓</option>
@@ -95,6 +104,7 @@
         </label>
       </div>
       <p class="count" id="finds-count"></p>
+      <p class="ops-msg" id="toast" hidden></p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -115,6 +125,17 @@
     </section>
 
     <section class="panel" id="panel-bundles">
+      <div class="toolbar">
+        <label>
+          Status
+          <select id="veto-bundles">
+            <option value="active" selected>Active</option>
+            <option value="parked">Parked</option>
+            <option value="hidden">Hidden</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+      </div>
       <div id="bundles-root"></div>
     </section>
 

@@ -266,6 +266,14 @@ tbody tr:hover { background: rgba(31, 111, 91, 0.05); }
 .pill.haul { color: var(--ok); background: rgba(61, 90, 128, 0.1); }
 .pill.near { color: #8a5a2b; background: rgba(138, 90, 43, 0.12); }
 .pill.pool, .pill.scored { color: var(--muted); }
+.pill.parked { color: #6b5b2e; background: rgba(138, 90, 43, 0.14); }
+.pill.hidden { color: var(--skip); background: rgba(0, 0, 0, 0.06); }
+td.actions { white-space: nowrap; }
+.veto-btn {
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+}
 .risk-high { color: var(--danger); }
 .risk-medium { color: var(--hunt); }
 .risk-low { color: var(--steal); }

@@ -131,12 +131,79 @@ async function triggerHunt({ fullSweep = false } = {}) {
 }
 
 async function load() {
-  const res = await fetch("/api/dashboard", { cache: "no-store" });
+  const mode = ($("#veto")?.value || "active").trim() || "active";
+  if ($("#veto-bundles") && $("#veto-bundles").value !== mode) {
+    $("#veto-bundles").value = mode;
+  }
+  const qs = mode && mode !== "active" ? `?veto=${encodeURIComponent(mode)}` : "";
+  const res = await fetch(`/api/dashboard${qs}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`API ${res.status}`);
   state.data = await res.json();
   state.runs = await loadRuns();
   renderAll();
   $("#pulse").hidden = false;
+}
+
+function showToast(text, { undoId } = {}) {
+  const el = $("#toast");
+  if (!el) return;
+  el.hidden = false;
+  el.className = "ops-msg ok";
+  if (undoId != null) {
+    el.innerHTML = `${escapeHtml(text)} <button type="button" class="btn" data-undo-id="${escapeAttr(undoId)}">Undo</button>`;
+    el.querySelector("[data-undo-id]")?.addEventListener("click", () => {
+      setVeto(undoId, null).catch(console.error);
+    });
+  } else {
+    el.textContent = text;
+  }
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => {
+    el.hidden = true;
+    el.textContent = "";
+  }, 8000);
+}
+
+async function setVeto(itemId, status) {
+  const token = secret();
+  if (!token) {
+    setOpsMsg("Enter DASHBOARD_SECRET first (same value as on Vercel).", "err");
+    return;
+  }
+  sessionStorage.setItem("dashSecret", token);
+  const body =
+    status == null
+      ? { item_id: Number(itemId), clear: true }
+      : { item_id: Number(itemId), status };
+  const res = await fetch("/api/veto", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-dashboard-secret": token,
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || data.message || `HTTP ${res.status}`);
+  if (status == null) {
+    showToast(`Cleared veto on #${itemId}`);
+  } else {
+    showToast(
+      status === "hidden" ? `Hidden #${itemId}` : `Parked #${itemId}`,
+      { undoId: itemId }
+    );
+  }
+  await load();
+}
+
+function vetoActions(itemId, vetoStatus) {
+  if (itemId == null) return "";
+  if (vetoStatus === "hidden" || vetoStatus === "parked") {
+    return `<button type="button" class="btn veto-btn" data-veto-clear="${escapeAttr(itemId)}">Undo</button>`;
+  }
+  return `
+    <button type="button" class="btn veto-btn" data-veto-hide="${escapeAttr(itemId)}">Hide</button>
+    <button type="button" class="btn veto-btn" data-veto-park="${escapeAttr(itemId)}">Park</button>`;
 }
 
 function fillWatchOptions() {
@@ -192,17 +259,24 @@ function renderFinds() {
     const sellerCell = f.seller_id
       ? `<a class="link" href="https://www.vinted.ro/member/${f.seller_id}" target="_blank" rel="noreferrer">${escapeHtml(seller)}</a>`
       : escapeHtml(seller);
+    const vetoPill = f.veto_status
+      ? `<span class="pill ${escapeAttr(f.veto_status)}">${escapeHtml(f.veto_status)}</span>`
+      : "";
     return `<tr>
       <td class="score">${f.deal_score ?? "—"}</td>
       <td><span class="pill ${escapeAttr(f.value_band || "skip")}">${escapeHtml(f.value_band || "—")}</span>
-          <span class="pill ${escapeAttr(f.source || "")}">${escapeHtml(f.source || "")}</span></td>
+          <span class="pill ${escapeAttr(f.source || "")}">${escapeHtml(f.source || "")}</span>
+          ${vetoPill}</td>
       <td><div class="title">${escapeHtml(f.title || "—")}</div>
           <span class="reason">${escapeHtml(f.reason || "")}</span></td>
       <td class="mono">${fmtPrice(f.price_num ?? f.price, f.currency)}</td>
       <td>${escapeHtml(f.watch || "—")}</td>
       <td>${sellerCell}</td>
       <td class="risk-${escapeAttr(f.scam_risk || "")}">${escapeHtml(f.scam_risk || "—")}</td>
-      <td>${f.url ? `<a class="link" href="${escapeAttr(f.url)}" target="_blank" rel="noreferrer">Open</a>` : ""}</td>
+      <td class="actions">
+        ${f.url ? `<a class="link" href="${escapeAttr(f.url)}" target="_blank" rel="noreferrer">Open</a>` : ""}
+        ${vetoActions(f.id, f.veto_status)}
+      </td>
     </tr>`;
   }).join("") || `<tr><td colspan="8">No finds match these filters.</td></tr>`;
 }
@@ -234,23 +308,27 @@ function renderBundles() {
       ? ` · <strong>offer ~${Number(b.suggested_offer_ron).toFixed(0)} RON</strong>${b.offer_weak ? " <span class=\"pill near\">weak</span>" : ""}`
       : "";
     const reason = b.reason ? ` · ${escapeHtml(b.reason)}` : "";
+    const vetoPill = b.veto_status
+      ? ` <span class="pill ${escapeAttr(b.veto_status)}">${escapeHtml(b.veto_status)}</span>`
+      : "";
     const items = (b.items || []).map((it) => `
       <div class="bundle-item">
         <span class="pill ${it.role === "keep" ? "keep" : "hunt"}">${escapeHtml(it.role || "")}</span>
         <div>
-          <div class="title">${escapeHtml(it.title || "")}</div>
+          <div class="title">${escapeHtml(it.title || "")}${it.veto_status ? ` <span class="pill ${escapeAttr(it.veto_status)}">${escapeHtml(it.veto_status)}</span>` : ""}</div>
           <span class="reason">${escapeHtml(it.watch || "")} · score ${it.deal_score ?? "—"}</span>
         </div>
         <div>
           <div class="mono">${fmtPrice(it.price)}</div>
           ${it.url ? `<a class="link" href="${escapeAttr(it.url)}" target="_blank" rel="noreferrer">Open</a>` : ""}
+          ${vetoActions(it.id, it.veto_status)}
         </div>
       </div>`).join("");
     const profile = b.seller_id
       ? `<a class="link" href="https://www.vinted.ro/member/${b.seller_id}" target="_blank" rel="noreferrer">${escapeHtml(b.seller || b.seller_id)}</a>`
       : escapeHtml(b.seller || "seller");
     return `<article class="bundle">
-      <h3>${profile} <span class="pill ${pillClass}">${kindLabel}</span></h3>
+      <h3>${profile} <span class="pill ${pillClass}">${kindLabel}</span>${vetoPill}</h3>
       <meta>${escapeHtml(b.country || "?")} · listings ${Number(b.listing_sum || 0).toFixed(0)} + extra ${b.checkout_extra_ron ?? "?"} = <strong>${Number(b.checkout_total || (Number(b.listing_sum || 0) + Number(b.checkout_extra_ron || 0))).toFixed(0)} RON</strong>${per}${offer}${reason} · ${fmtWhen(b.kept_at)}</meta>
       <div class="bundle-items">${items}</div>
     </article>`;
@@ -314,6 +392,24 @@ $$(".tab").forEach((btn) => {
 ["q", "watch", "band", "minScore", "source", "sort"].forEach((id) => {
   $(`#${id}`).addEventListener("input", renderFinds);
   $(`#${id}`).addEventListener("change", renderFinds);
+});
+$("#veto")?.addEventListener("change", () => {
+  if ($("#veto-bundles")) $("#veto-bundles").value = $("#veto").value;
+  load().catch(console.error);
+});
+$("#veto-bundles")?.addEventListener("change", () => {
+  if ($("#veto")) $("#veto").value = $("#veto-bundles").value;
+  load().catch(console.error);
+});
+document.body.addEventListener("click", (ev) => {
+  const t = ev.target;
+  if (!(t instanceof HTMLElement)) return;
+  const hide = t.getAttribute("data-veto-hide");
+  const park = t.getAttribute("data-veto-park");
+  const clear = t.getAttribute("data-veto-clear");
+  if (hide) setVeto(hide, "hidden").catch((e) => setOpsMsg(String(e.message || e), "err"));
+  else if (park) setVeto(park, "parked").catch((e) => setOpsMsg(String(e.message || e), "err"));
+  else if (clear) setVeto(clear, null).catch((e) => setOpsMsg(String(e.message || e), "err"));
 });
 $("#sellerSort").addEventListener("change", renderSellers);
 $("#refresh").addEventListener("click", () => load().catch(console.error));

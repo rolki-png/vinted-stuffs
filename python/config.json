@@ -123,16 +123,18 @@
       "per_page": 50,
       "price_to": 120,
       "hunt_price": 70,
-      "size_ids": [
-        1739,
-        1740
-      ],
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
         "L"
       ],
-      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops."
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops.",
+      "size_ids": [
+        1739,
+        1740,
+        208,
+        209
+      ]
     },
     {
       "name": "Broad dri-fit shorts M-L",

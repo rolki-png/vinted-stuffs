@@ -139,24 +139,6 @@
       ]
     },
     {
-      "name": "Vuori gym M-L",
-      "query": "vuori",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 250,
-      "hunt_price": 150,
-      "target_type": "men's gym clothing",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Technical tees, shorts and pants. Prefer Kore, Strato, Sunday Performance.",
-      "brand_ids": [
-        3855757
-      ]
-    },
-    {
       "name": "Tracksmith gym M-L",
       "query": "tracksmith",
       "country": "ro",
@@ -435,21 +417,6 @@
       "notes": "Heritage / premium Diadora lifestyle models only. Strong condition and absolute saving required."
     },
     {
-      "name": "Johnstons of Elgin M-L",
-      "query": "johnstons of elgin",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 260,
-      "target_type": "men's premium cashmere or knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Genuine Johnstons cashmere/knit. Large retail-to-resale gap expected. Reject moth damage and cheap blends."
-    },
-    {
       "name": "Cruciani M-L",
       "query": "cruciani",
       "country": "ro",
@@ -463,51 +430,6 @@
         "L"
       ],
       "notes": "Premium Italian knit. Skip low-value accessories unless exceptional."
-    },
-    {
-      "name": "Gran Sasso M-L",
-      "query": "gran sasso",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 320,
-      "hunt_price": 190,
-      "target_type": "men's premium knitwear or knit polo",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Merino and high-quality Italian knitwear preferred."
-    },
-    {
-      "name": "Fedeli M-L",
-      "query": "fedeli",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 260,
-      "target_type": "men's premium knitwear, polo or T-shirt",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Merino, cashmere and premium cotton. Strong condition required."
-    },
-    {
-      "name": "Sunspel M-L",
-      "query": "sunspel",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 280,
-      "hunt_price": 160,
-      "target_type": "men's premium T-shirt, polo or knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Classic premium T-shirts, polos and merino. Avoid underwear unless unusually compelling."
     },
     {
       "name": "Zimmerli polo M-L",
@@ -568,82 +490,6 @@
         "L"
       ],
       "notes": "Premium basics. Skip multipacks of low interest; favour exceptional single pieces."
-    },
-    {
-      "name": "Devold merino M-L",
-      "query": "devold",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 260,
-      "hunt_price": 150,
-      "target_type": "men's merino T-shirt, long sleeve or technical layer",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Prioritise genuine high-merino technical pieces."
-    },
-    {
-      "name": "Smartwool merino M-L",
-      "query": "smartwool",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 240,
-      "hunt_price": 140,
-      "target_type": "men's technical merino clothing",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Technical merino layers preferred. Skip ordinary socks unless exceptional."
-    },
-    {
-      "name": "Ortovox merino M-L",
-      "query": "ortovox",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 280,
-      "hunt_price": 160,
-      "target_type": "men's technical merino clothing",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Alpine technical merino. Strong absolute saving vs new required."
-    },
-    {
-      "name": "Woolpower merino M-L",
-      "query": "woolpower",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 280,
-      "hunt_price": 160,
-      "target_type": "men's technical merino clothing",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Swedish technical merino base layers. Excellent condition preferred."
-    },
-    {
-      "name": "Cashmere pure wildcard M-L",
-      "query": "100% cashmere",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 230,
-      "min_deal_score": 9,
-      "target_type": "men's premium 100% cashmere knitwear",
-      "target_sizes": [
-        "M",
-        "L"
-      ],
-      "notes": "Stricter complement to Cashmere broad. Only genuinely high-quality pure cashmere from a credible maker."
     },
     {
       "name": "Broad maternity leggings RO XL-L/XL",
@@ -936,54 +782,6 @@
         "XL"
       ],
       "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Prefer pieces usable postpartum.",
-      "min_deal_score": 8
-    },
-    {
-      "name": "Storq maternity XL-L/XL",
-      "query": "storq maternity",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 190,
-      "target_type": "women's premium maternity clothing",
-      "target_sizes": [
-        "L/XL",
-        "XL"
-      ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium everyday maternity that works postpartum.",
-      "min_deal_score": 8
-    },
-    {
-      "name": "Legoe Heritage maternity XL-L/XL",
-      "query": "legoe heritage",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 380,
-      "hunt_price": 200,
-      "target_type": "women's premium maternity clothing",
-      "target_sizes": [
-        "L/XL",
-        "XL"
-      ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity. Excellent condition and fit required.",
-      "min_deal_score": 8
-    },
-    {
-      "name": "Bae the Label maternity XL-L/XL",
-      "query": "bae the label",
-      "country": "ro",
-      "order": "newest_first",
-      "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 190,
-      "target_type": "women's premium maternity clothing",
-      "target_sizes": [
-        "L/XL",
-        "XL"
-      ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. Premium maternity/nursing. Prefer postpartum-wearable pieces.",
       "min_deal_score": 8
     },
     {

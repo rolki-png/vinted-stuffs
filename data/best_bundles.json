@@ -486,48 +486,6 @@
     "offer_target_per_item_ron": 50.0
   },
   {
-    "kept_at": "2026-09-06T06:38:46.006299+00:00",
-    "kind": "near_haul",
-    "seller": "hs4pl",
-    "seller_id": 104448461,
-    "country": "pl",
-    "checkout_extra_ron": 24.848,
-    "listing_sum": 36.96,
-    "checkout_total": 61.808,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Vuori gym M-L",
-    "effective_price_per_useful_item": 30.904,
-    "items": [
-      {
-        "role": "haul",
-        "id": 6781086829,
-        "title": "Spodenki sportowe",
-        "price": 12.32,
-        "url": "https://www.vinted.ro/items/6781086829-spodenki-sportowe",
-        "watch": "Vuori gym M-L",
-        "deal_score": null,
-        "seller": "hs4pl",
-        "seller_id": 104448461
-      },
-      {
-        "role": "haul",
-        "id": 6775942759,
-        "title": "Bluza sportowa",
-        "price": 24.64,
-        "url": "https://www.vinted.ro/items/6775942759-bluza-sportowa",
-        "watch": "Vuori gym M-L",
-        "deal_score": null,
-        "seller": "hs4pl",
-        "seller_id": 104448461
-      }
-    ],
-    "suggested_offer_ron": 33,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
     "kind": "value_haul",
     "seller": "cs.-lpetra0027",
@@ -1225,38 +1183,6 @@
       }
     ],
     "suggested_offer_ron": 184,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T18:45:43.426160+00:00",
-    "seller": "bluemental",
-    "seller_id": 287168667,
-    "country": "ro",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 300.0,
-    "checkout_total": 325.0,
-    "items": [
-      {
-        "role": "keep",
-        "id": 9344203551,
-        "title": "Gran Sasso Men’s Polo Shirt Pocket 100% Cotton Old Money Casual Style Blue Size 52",
-        "price": 100.0,
-        "url": "https://www.vinted.ro/items/9344203551-gran-sasso-mens-polo-shirt-pocket-100-cotton-old-money-casual-style-blue-size-52",
-        "watch": "Gran Sasso M-L",
-        "deal_score": 8
-      },
-      {
-        "role": "extra",
-        "id": 9547215240,
-        "title": "Icebreaker Merino Bodyfit 200 Men’s Pullover 1/4 Zip 100% Wool Outdoor Hiking Style Grey Size L",
-        "price": 200.0,
-        "url": "https://www.vinted.ro/items/9547215240-icebreaker-merino-bodyfit-200-mens-pullover-14-zip-100-wool-outdoor-hiking-style-grey-size-l",
-        "watch": "Icebreaker merino M-L",
-        "deal_score": 6
-      }
-    ],
-    "suggested_offer_ron": 225,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0
   },

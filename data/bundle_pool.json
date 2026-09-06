@@ -108,44 +108,6 @@
   },
   {
     "item": {
-      "id": 9563839582,
-      "title": "Vuori krótkie spodenki sportowe gym short rozmiar L",
-      "price": {
-        "amount": "98.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Vuori",
-      "size_title": "Altele",
-      "status": "Nou cu etichetă",
-      "favourite_count": 13,
-      "url": "https://www.vinted.ro/items/9563839582-vuori-krotkie-spodenki-sportowe-gym-short-rozmiar-l",
-      "user": {
-        "id": 104448461,
-        "login": "hs4pl"
-      },
-      "_profile": {
-        "username": "hs4pl",
-        "member_since": null,
-        "feedback_count": 66,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 18,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9563839582,
-      "deal_score": 9,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "New with tags men's gym shorts in size L are a strong match."
-    },
-    "watch": "Vuori gym M-L",
-    "seller_id": 104448461,
-    "seller": "hs4pl"
-  },
-  {
-    "item": {
       "id": 9659414267,
       "title": "Pantaloni scurti ciclism Craft ADV Offroad Xt Shorts W Pad M",
       "price": {
@@ -657,44 +619,6 @@
   },
   {
     "item": {
-      "id": 9904664279,
-      "title": "Granatowa termoaktywna wełniana bluza z golfem męska Devold L/XL wool",
-      "price": {
-        "amount": "85.02",
-        "currency_code": "RON"
-      },
-      "brand_title": "Devold",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9904664279-granatowa-termoaktywna-welniana-bluza-z-golfem-meska-devold-lxl-wool",
-      "user": {
-        "id": 140707158,
-        "login": "nusia9797"
-      },
-      "_profile": {
-        "username": "nusia9797",
-        "member_since": null,
-        "feedback_count": 1367,
-        "feedback_reputation": 1,
-        "item_count": 823,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9904664279,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct brand and size, but condition is only 'good' which for wool layers often means visible wear."
-    },
-    "watch": "Devold merino M-L",
-    "seller_id": 140707158,
-    "seller": "nusia9797"
-  },
-  {
-    "item": {
       "id": 9905475907,
       "title": "H&M Sport fekete futónadrág / leggings zsebbel",
       "price": {
@@ -882,82 +806,6 @@
     "watch": "New Balance 993 size 43",
     "seller_id": 155692816,
     "seller": "vintage_aesthetic_sp"
-  },
-  {
-    "item": {
-      "id": 9905050523,
-      "title": "Sunspel Z Męska koszula bawełny L",
-      "price": {
-        "amount": "144.16",
-        "currency_code": "RON"
-      },
-      "brand_title": "Sunspel",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9905050523-sunspel-z-meska-koszula-bawelny-l",
-      "user": {
-        "id": 3141310131,
-        "login": "donvasyl12"
-      },
-      "_profile": {
-        "username": "donvasyl12",
-        "member_since": null,
-        "feedback_count": 82,
-        "feedback_reputation": 1,
-        "item_count": 56,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9905050523,
-      "deal_score": 7,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct brand and size, but seller history and item details are too sparse to confirm high quality."
-    },
-    "watch": "Sunspel M-L",
-    "seller_id": 3141310131,
-    "seller": "donvasyl12"
-  },
-  {
-    "item": {
-      "id": 9905126928,
-      "title": "Smartwool wełniane leginsy spodnie M 100% wełna merino wool",
-      "price": {
-        "amount": "98.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Smartwool",
-      "size_title": "M / 38 / 10",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9905126928-smartwool-welniane-leginsy-spodnie-m-100-welna-merino-wool",
-      "user": {
-        "id": 3135283003,
-        "login": "positiveways"
-      },
-      "_profile": {
-        "username": "positiveways",
-        "member_since": null,
-        "feedback_count": 667,
-        "feedback_reputation": 1,
-        "item_count": 377,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9905126928,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct item and brand, but listed as women's size 38/M which is likely not the men's technical fit requested."
-    },
-    "watch": "Smartwool merino M-L",
-    "seller_id": 3135283003,
-    "seller": "positiveways"
   },
   {
     "item": {

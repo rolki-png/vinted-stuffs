@@ -77,6 +77,8 @@ jobs:
           git add data/seen_listings.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json data/indexed_scores.json
           if ! git diff --cached --quiet; then
             git commit -m "Update hunt state [skip ci]"
+            # Main can move while the bot runs (manual pushes); rebase then push.
+            git pull --rebase origin main
             git push
           else
             echo "No state changes to commit"

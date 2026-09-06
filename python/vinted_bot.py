@@ -694,6 +694,39 @@ def _item_brand_size(item: dict | None) -> tuple[str | None, str | None]:
     return brand, size
 
 
+def is_taste_hard_suppressed(
+    config: dict,
+    watch: dict,
+    item: dict | None,
+    outcomes: list | None,
+) -> bool:
+    """True when family Remove pattern should block keep/alert for this item."""
+    import taste_learning as taste_mod
+
+    tc = taste_mod.taste_config(config)
+    if not tc["enabled"] or not outcomes:
+        return False
+    brand, size = _item_brand_size(item)
+    cand = {
+        "hunt_family": taste_mod.resolve_family(watch.get("name") or "", watch),
+        "brand": brand,
+        "size": size,
+    }
+    if not taste_mod.hard_suppress(
+        cand,
+        outcomes,
+        min_removes=tc["hard_suppress_min_removes"],
+        require_zero_bought=tc["hard_suppress_require_zero_bought"],
+    ):
+        return False
+    print(
+        f"taste_hard_suppress family={cand['hunt_family']} "
+        f"brand={brand!r} size={size!r} id={((item or {}).get('id'))}",
+        file=sys.stderr,
+    )
+    return True
+
+
 def is_keep_with_taste(
     score: dict,
     config: dict,
@@ -704,30 +737,7 @@ def is_keep_with_taste(
     """is_keep plus optional family hard-suppress from desk Remove patterns."""
     if not is_keep(score, config, watch, item):
         return False
-    import taste_learning as taste_mod
-
-    tc = taste_mod.taste_config(config)
-    if not tc["enabled"] or not outcomes:
-        return True
-    brand, size = _item_brand_size(item)
-    cand = {
-        "hunt_family": taste_mod.resolve_family(watch.get("name") or "", watch),
-        "brand": brand,
-        "size": size,
-    }
-    if taste_mod.hard_suppress(
-        cand,
-        outcomes,
-        min_removes=tc["hard_suppress_min_removes"],
-        require_zero_bought=tc["hard_suppress_require_zero_bought"],
-    ):
-        print(
-            f"taste_hard_suppress family={cand['hunt_family']} "
-            f"brand={brand!r} size={size!r} id={((item or {}).get('id'))}",
-            file=sys.stderr,
-        )
-        return False
-    return True
+    return not is_taste_hard_suppressed(config, watch, item, outcomes)
 
 
 def is_bundle_extra(score: dict, config: dict) -> bool:
@@ -874,10 +884,18 @@ def save_bundle_pool(rows: list) -> None:
     POOL_PATH.write_text(json.dumps(list(unique.values())[:200], indent=2, ensure_ascii=False) + "\n")
 
 
-def pool_candidates(rows: list, config: dict) -> list:
+def pool_candidates(
+    rows: list, config: dict, taste_outcomes: list | None = None
+) -> list:
     out = []
     for row in rows:
-        if is_keep(row["score"], config, row["watch_obj"], row["item"]) or is_bundle_extra(row["score"], config):
+        if is_taste_hard_suppressed(
+            config, row["watch_obj"], row["item"], taste_outcomes
+        ):
+            continue
+        if is_keep(row["score"], config, row["watch_obj"], row["item"]) or is_bundle_extra(
+            row["score"], config
+        ):
             out.append(row)
     return out
 
@@ -1089,8 +1107,13 @@ def assemble_bundles(
             )
         ]
         extras = [
-            r for r in unique
-            if r not in keeps and is_bundle_extra(r["score"], config)
+            r
+            for r in unique
+            if r not in keeps
+            and is_bundle_extra(r["score"], config)
+            and not is_taste_hard_suppressed(
+                config, r["watch_obj"], r["item"], taste_outcomes
+            )
         ]
         if keeps and extras:
             country = (
@@ -1510,7 +1533,7 @@ def main() -> None:
         except (RuntimeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
             print(f"Bundle pool seed skipped: {e}", file=sys.stderr)
             prior_rows = []
-    prior_rows = pool_candidates(prior_rows, config)
+    prior_rows = pool_candidates(prior_rows, config, taste_outcomes_all)
 
     def score_batch(watch: dict, items: list, source: str = "search") -> None:
         if not items:
@@ -1996,7 +2019,7 @@ def main() -> None:
     for keep in keeps:
         send_ntfy(ntfy_topic, keep["item"], keep["score"])
         alerts_sent += 1
-    save_bundle_pool(pool_candidates(merged, config))
+    save_bundle_pool(pool_candidates(merged, config, taste_outcomes_all))
     bundles = new_bundles
 
     best_rows = load_best()
@@ -2012,6 +2035,8 @@ def main() -> None:
                 "watch": keep["watch"],
                 "id": item.get("id"),
                 "title": item.get("title"),
+                "brand": item.get("brand_title") or item.get("brand"),
+                "size": item.get("size_title") or item.get("size"),
                 "price": (item.get("price") or {}).get("amount"),
                 "currency": (item.get("price") or {}).get("currency_code"),
                 "url": item.get("url"),

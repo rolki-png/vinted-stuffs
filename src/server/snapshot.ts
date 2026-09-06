@@ -165,7 +165,17 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     if (row.id == null) continue;
     const id = String(row.id);
     const existing = findsById.get(id);
-    if (existing && existing.source === "keep") continue;
+    if (existing && existing.source === "keep") {
+      // Keep rows win on ranking fields, but fill brand/size gaps from cache.
+      findsById.set(id, {
+        ...existing,
+        brand: existing.brand ?? row.brand ?? null,
+        size: existing.size ?? row.size ?? null,
+        title: existing.title || row.title || existing.title,
+        url: existing.url || row.url || existing.url,
+      });
+      continue;
+    }
     findsById.set(id, {
       ...(existing || {}),
       ...Object.fromEntries(Object.entries(row).filter(([, v]) => v != null)),

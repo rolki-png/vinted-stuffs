@@ -272,6 +272,53 @@ async function loadVetoMap() {
   return map || {}
 }
 
+async function fillEnrichmentFromScored(client, itemId, enr) {
+  const needs =
+    !enr.brand ||
+    !enr.size ||
+    !enr.title ||
+    enr.price_ron == null ||
+    !enr.hunt_name ||
+    enr.deal_score == null ||
+    !enr.value_band
+  if (!needs) return enr
+  try {
+    const res = await client.query(
+      `SELECT hunt_name, title, price, brand, size, deal_score, value_band
+       FROM scored_listings
+       WHERE item_id = $1
+       ORDER BY scored_at DESC NULLS LAST
+       LIMIT 1`,
+      [itemId],
+    )
+    const row = res.rows[0]
+    if (!row) return enr
+    return {
+      hunt_name: enr.hunt_name || row.hunt_name || null,
+      hunt_family: enr.hunt_family || null,
+      brand: enr.brand || row.brand || null,
+      size: enr.size || row.size || null,
+      price_ron:
+        enr.price_ron != null
+          ? enr.price_ron
+          : row.price != null
+            ? Number(row.price)
+            : null,
+      value_band: enr.value_band || row.value_band || null,
+      deal_score:
+        enr.deal_score != null
+          ? enr.deal_score
+          : row.deal_score != null
+            ? Number(row.deal_score)
+            : null,
+      title: enr.title || row.title || null,
+    }
+  } catch (err) {
+    console.error("listingVetoes scored fill note:", err.message || err)
+    return enr
+  }
+}
+
 async function setVetoStatus(itemId, status, enrichment) {
   const id = Number(itemId)
   if (!Number.isFinite(id)) {
@@ -280,8 +327,12 @@ async function setVetoStatus(itemId, status, enrichment) {
     throw err
   }
   const st = coerceWriteStatus(status)
-  const enr = coerceEnrichment(enrichment)
+  let enr = coerceEnrichment(enrichment)
   const ok = await withClient(async (client) => {
+    enr = coerceEnrichment(await fillEnrichmentFromScored(client, id, enr))
+    if (!enr.hunt_family && enr.hunt_name) {
+      enr.hunt_family = resolveFamily(enr.hunt_name)
+    }
     await client.query(
       `INSERT INTO listing_vetoes (
          item_id, status, updated_at,

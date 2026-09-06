@@ -136,6 +136,65 @@ class KeepRuleTests(unittest.TestCase):
         self.assertFalse(
             bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes)
         )
+        self.assertTrue(
+            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
+        )
+
+    def test_taste_hard_suppress_blocks_bundle_extra_path(self):
+        item = {
+            "id": 2,
+            "brand_title": "Nike",
+            "size_title": "L",
+            "price": {"amount": "40", "currency_code": "RON"},
+        }
+        score = {
+            "deal_score": 8,
+            "value_band": "hunt",
+            "hunt_fit": True,
+            "scam_risk": "low",
+        }
+        watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
+        outcomes = [
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
+        ]
+        self.assertTrue(bot.is_bundle_extra(score, CONFIG))
+        self.assertTrue(
+            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
+        )
+        bundles, solos = bot.assemble_bundles(
+            [
+                {
+                    "item": {
+                        "id": 1,
+                        "brand_title": "Lulu",
+                        "size_title": "L",
+                        "price": {"amount": "90", "currency_code": "RON"},
+                        "user": {"id": 9, "login": "s"},
+                    },
+                    "score": {
+                        "deal_score": 9,
+                        "value_band": "steal",
+                        "hunt_fit": True,
+                        "scam_risk": "low",
+                    },
+                    "watch": watch["name"],
+                    "watch_obj": watch,
+                },
+                {
+                    "item": {**item, "user": {"id": 9, "login": "s"}},
+                    "score": score,
+                    "watch": watch["name"],
+                    "watch_obj": watch,
+                },
+            ],
+            CONFIG,
+            outcomes,
+        )
+        self.assertEqual(bundles, [])
+        self.assertEqual(len(solos), 1)
+        self.assertEqual(solos[0]["item"]["id"], 1)
 
     def test_scoring_prompt_appends_taste_block(self):
         watch = {

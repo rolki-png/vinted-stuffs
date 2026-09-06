@@ -236,6 +236,10 @@ function filteredFinds() {
     return true;
   });
   rows.sort((a, b) => {
+    const vetoRank = (r) =>
+      r.veto_status === "parked" ? 1 : r.veto_status === "hidden" ? 2 : 0;
+    const vr = vetoRank(a) - vetoRank(b);
+    if (vr) return vr;
     switch (sort) {
       case "score-asc": return (a.deal_score || 0) - (b.deal_score || 0);
       case "price-asc": return (a.price_num ?? 1e12) - (b.price_num ?? 1e12);

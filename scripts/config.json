@@ -395,7 +395,6 @@
       ],
       "notes": "Heritage / premium Diadora lifestyle models only. Strong condition and absolute saving required."
     },
-
     {
       "name": "Johnstons of Elgin M-L",
       "query": "johnstons of elgin",
@@ -411,7 +410,6 @@
       ],
       "notes": "Genuine Johnstons cashmere/knit. Large retail-to-resale gap expected. Reject moth damage and cheap blends."
     },
-
     {
       "name": "Cruciani M-L",
       "query": "cruciani",
@@ -532,7 +530,6 @@
       ],
       "notes": "Premium basics. Skip multipacks of low interest; favour exceptional single pieces."
     },
-
     {
       "name": "Devold merino M-L",
       "query": "devold",
@@ -593,7 +590,6 @@
       ],
       "notes": "Swedish technical merino base layers. Excellent condition preferred."
     },
-
     {
       "name": "Cashmere pure wildcard M-L",
       "query": "100% cashmere",
@@ -916,5 +912,13 @@
       "notes": "Bundle seed for seller-closet hunting. Do not alert ordinary single ASOS maternity tees. bundle_hunt seed: never solo-alert; closet-hunt for multi-piece L/XL maternity value hauls.",
       "bundle_hunt": true
     }
-  ]
+  ],
+  "bundle_offer": {
+    "gym_target_delivered_per_item_ron": 30,
+    "maternity_target_delivered_per_item_ron": 50,
+    "min_haircut": 0.1,
+    "max_haircut_alerted": 0.25,
+    "max_haircut_near": 0.35,
+    "default_checkout_extra_ron": 25
+  }
 }

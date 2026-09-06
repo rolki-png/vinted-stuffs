@@ -62,19 +62,34 @@ class PrefilterTests(unittest.TestCase):
         it["size_title"] = None
         self.assertFalse(vh.size_matches(it, ["M", "L"]))
 
-    def test_maternity_seed_accepts_hm_without_maternity_word(self):
+    def test_maternity_seed_rejects_plain_hm_requires_mama_or_signal(self):
         mat_watch = {
             "target_sizes": ["L", "XL"],
             "target_type": "women's maternity clothing",
             "name": "H&M Mama bundle seed L-XL",
             "bundle_hunt": True,
-            "notes": "bundle seed",
+            "notes": "Bundle seed like H&M Sport hauls — not premium solo hunting.",
         }
-        self.assertTrue(
-            vh.looks_like_haul_fit(item(1, "Tricou H&M", brand="H&M", size="L"), mat_watch)
+        # Bare H&M shirt must NOT pass (this was producing junk near-hauls).
+        self.assertFalse(
+            vh.looks_like_haul_fit(
+                item(1, "Czarna Koszula 100% bawełna", brand="H&M", size="L"), mat_watch
+            )
         )
         self.assertFalse(
-            vh.looks_like_haul_fit(item(2, "Nike tee", brand="Nike", size="L"), mat_watch)
+            vh.looks_like_haul_fit(item(2, "Półgolf w paski", brand="H&M", size="L"), mat_watch)
+        )
+        # H&M Mama line / local maternity wording still counts.
+        self.assertTrue(
+            vh.looks_like_haul_fit(item(3, "Tricou Mama", brand="H&M", size="L"), mat_watch)
+        )
+        self.assertTrue(
+            vh.looks_like_haul_fit(
+                item(4, "Koszulka ciążowa H&M L", brand="H&M", size="L"), mat_watch
+            )
+        )
+        self.assertFalse(
+            vh.looks_like_haul_fit(item(5, "Nike tee", brand="Nike", size="L"), mat_watch)
         )
 
     def test_gym_title_accepted(self):
@@ -205,6 +220,21 @@ class NearHaulTests(unittest.TestCase):
         self.assertEqual(row["seller"], "bob")
         self.assertEqual(len(row["items"]), 2)
         self.assertIn("Fee-gated", row["reason"])
+        self.assertIn("suggested_offer_ron", row)
+        self.assertIn("offer_weak", row)
+
+    def test_value_haul_record_includes_offer(self):
+        items = [item(1, "a", price="20"), item(2, "b", price="20"), item(3, "c", price="20")]
+        row = vh.value_haul_record(
+            {"seller": "bob", "seller_id": 9, "country": "ro", "checkout_extra_ron": 30},
+            {"deal_score": 9, "value_band": "steal", "reason": "ok"},
+            items,
+            "Gym bundle seeds M-L",
+            "t1",
+        )
+        self.assertEqual(row["kind"], "value_haul")
+        self.assertEqual(row["suggested_offer_ron"], 54)
+        self.assertFalse(row["offer_weak"])
 
     def test_merge_supersedes_near_with_value(self):
         items = [item(1, "a"), item(2, "b")]
@@ -244,6 +274,21 @@ class NearHaulTests(unittest.TestCase):
         )
         merged = vh.merge_bundle_rows([], [near], max_opportunity=80)
         self.assertEqual(merged[0]["kind"], "near_haul")
+
+
+    def test_enrich_fills_missing_offer_on_old_row(self):
+        items = [item(1, "a", price="40"), item(2, "b", price="50")]
+        old = {
+            "kind": "near_haul",
+            "seller_id": 1,
+            "listing_sum": 90,
+            "checkout_extra_ron": 25,
+            "watch": "Gym bundle seeds M-L",
+            "items": [{"id": 1, "watch": "Gym"}, {"id": 2, "watch": "Gym"}],
+        }
+        enriched = vh.enrich_bundle_offer_fields([old])
+        self.assertEqual(enriched[0]["suggested_offer_ron"], 58)
+        self.assertTrue(enriched[0]["offer_weak"])
 
 
 if __name__ == "__main__":

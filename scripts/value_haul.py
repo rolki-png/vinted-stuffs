@@ -27,12 +27,13 @@ GYM_REJECT = (
 )
 
 MATERNITY_TOKENS = (
-    "maternity", "mama", "nursing", "pregnancy", "pregnant", "bump",
+    "maternity", "maternit", "mama", "maman", "nursing", "pregnancy", "pregnant",
+    "bump", "ciąż", "ciaz", "karmieni", "gravid", "prenatal", "postpartum",
     "seraphine", "isabella oliver", "noppies", "mamalicious", "boob",
     "ripe", "hatch", "storq", "asos maternity", "next maternity",
     "jojo maman", "envie de fraise", "tiffany rose", "pietro brunelli",
+    "hm mama", "h&m mama",
 )
-
 
 def value_haul_config(config: dict) -> dict:
     defaults = {
@@ -87,28 +88,25 @@ def is_maternity_watch(watch: dict) -> bool:
     return "maternity" in target or "maternity" in name or "mama" in name
 
 
+def _has_maternity_signal(blob: str) -> bool:
+    return any(tok in blob for tok in MATERNITY_TOKENS)
+
+
 def looks_like_haul_fit(item: dict, watch: dict) -> bool:
     """Cheap prefilter: gymwear or maternity pieces matching the haul watch."""
     blob = f"{item.get('title') or ''} {item.get('brand_title') or ''}".lower()
-    notes = (watch.get("notes") or "").lower()
     name = (watch.get("name") or "").lower()
     target = (watch.get("target_type") or "").lower()
     if is_maternity_watch(watch):
-        if any(tok in blob for tok in MATERNITY_TOKENS):
+        # Require an explicit maternity/nursing/Mama-line signal.
+        # Do NOT accept bare H&M / Next / ASOS brand alone — that pulled random
+        # non-maternity closet fillers into Mama near-hauls.
+        if _has_maternity_signal(blob):
             return True
-        for word in notes.replace(",", " ").split():
-            if len(word) >= 4 and word in blob:
-                return True
-        # Bundle seeds: accept the seed brand + size even when the title omits
-        # "maternity" (common for H&M Mama / Next / ASOS closet fillers).
+        # Seed watches: brand_title must itself say Mama (e.g. "H&M Mama").
         if watch.get("bundle_hunt"):
-            if ("h&m" in name or "mama" in name) and (
-                "h&m" in blob or re.search(r"\bhm\b", blob) or "mama" in blob
-            ):
-                return True
-            if "next" in name and "next" in blob:
-                return True
-            if "asos" in name and "asos" in blob:
+            brand = (item.get("brand_title") or "").lower()
+            if "mama" in brand and any(b in brand for b in ("h&m", "hm", "next", "asos")):
                 return True
         return False
 
@@ -347,10 +345,19 @@ def value_haul_fingerprint(seller_id, useful_items: list) -> str:
     return f"{seller_id}:" + ",".join(ids)
 
 
-def value_haul_record(haul: dict, score: dict, useful: list, watch_name: str, kept_at: str) -> dict:
+def value_haul_record(
+    haul: dict,
+    score: dict,
+    useful: list,
+    watch_name: str,
+    kept_at: str,
+    config: dict | None = None,
+) -> dict:
+    import bundle_offer as bo
+
     listing_sum = sum(_listing_amount(it) or 0 for it in useful)
     extra = float(haul.get("checkout_extra_ron") or 0)
-    return {
+    row = {
         "kept_at": kept_at,
         "kind": "value_haul",
         "seller": haul.get("seller"),
@@ -379,6 +386,17 @@ def value_haul_record(haul: dict, score: dict, useful: list, watch_name: str, ke
             for it in useful
         ],
     }
+    row.update(
+        bo.offer_fields(
+            listing_sum,
+            extra,
+            len(useful),
+            kind="value_haul",
+            watch_name=watch_name,
+            config=config,
+        )
+    )
+    return row
 
 
 def near_haul_record(
@@ -388,14 +406,17 @@ def near_haul_record(
     kept_at: str,
     rough_per_item: float | None = None,
     reason: str | None = None,
+    config: dict | None = None,
 ) -> dict:
     """Dashboard-only opportunity: fee gate passed, not LLM-confirmed steal."""
+    import bundle_offer as bo
+
     listing_sum = sum(_listing_amount(it) or 0 for it in useful)
     extra = float(haul.get("checkout_extra_ron") or 0)
     per = rough_per_item
     if per is None:
         per = rough_delivered_per_item(useful, extra)
-    return {
+    row = {
         "kept_at": kept_at,
         "kind": "near_haul",
         "seller": haul.get("seller"),
@@ -424,6 +445,17 @@ def near_haul_record(
             for it in useful
         ],
     }
+    row.update(
+        bo.offer_fields(
+            listing_sum,
+            extra,
+            len(useful),
+            kind="near_haul",
+            watch_name=watch_name,
+            config=config,
+        )
+    )
+    return row
 
 
 def bundle_row_fingerprint(row: dict) -> str:
@@ -439,6 +471,51 @@ _KIND_RANK = {
     "index_near_bundle": 1,
     "keep_bundle": 0,
 }
+
+
+def enrich_bundle_offer_fields(rows: list, config: dict | None = None) -> list:
+    """Fill suggested_offer_ron on rows that lack it (e.g. prior hunt state)."""
+    import bundle_offer as bo
+
+    cfg = bo.bundle_offer_config(config)
+    default_extra = float(cfg.get("default_checkout_extra_ron", 25))
+    out = []
+    for row in rows:
+        r = dict(row)
+        if r.get("suggested_offer_ron") is not None:
+            out.append(r)
+            continue
+        items = r.get("items") or []
+        try:
+            listing = float(r.get("listing_sum") or 0)
+        except (TypeError, ValueError):
+            listing = 0.0
+        extra = r.get("checkout_extra_ron")
+        try:
+            extra_f = float(extra) if extra is not None else default_extra
+        except (TypeError, ValueError):
+            extra_f = default_extra
+        watch_name = r.get("watch") or next(
+            (it.get("watch") for it in items if it.get("watch")),
+            None,
+        )
+        kind = r.get("kind") or "keep_bundle"
+        fields = bo.offer_fields(
+            listing,
+            extra_f,
+            len(items),
+            kind=kind,
+            watch_name=watch_name,
+            config=config,
+        )
+        if fields:
+            r.update(fields)
+            if r.get("checkout_extra_ron") is None:
+                r["checkout_extra_ron"] = extra_f
+            if r.get("checkout_total") is None and listing:
+                r["checkout_total"] = listing + extra_f
+        out.append(r)
+    return out
 
 
 def merge_bundle_rows(

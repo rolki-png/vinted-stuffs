@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Protocol
@@ -343,8 +344,11 @@ def index_bundle_opportunities(
     *,
     min_items: int = 2,
     min_deal_score: int = 6,
+    config: dict | None = None,
 ) -> list[dict]:
     """Group indexed hunt-fit rows by seller into dashboard near-bundle shapes."""
+    import bundle_offer as bo
+
     by_seller: dict[str, list] = {}
     for row in export_rows:
         if row.get("hunt_fit") is False:
@@ -368,6 +372,8 @@ def index_bundle_opportunities(
             continue
         by_seller.setdefault(str(sid), []).append(row)
 
+    offer_cfg = bo.bundle_offer_config(config)
+    default_extra = float(offer_cfg.get("default_checkout_extra_ron", 25))
     out = []
     for sid, rows in by_seller.items():
         best: dict[str, dict] = {}
@@ -393,13 +399,17 @@ def index_bundle_opportunities(
             if int(r.get("deal_score") or 0) >= 9 and (r.get("value_band") in ("steal", "hunt"))
         ]
         kind = "index_keep_bundle" if keeps and len(members) > len(keeps) else "index_near_bundle"
-        out.append({
+        watch_name = next((r.get("watch") for r in members if r.get("watch")), None)
+        extra = default_extra
+        row = {
             "kind": kind,
             "kept_at": max((r.get("scored_at") or "") for r in members),
             "seller": seller,
             "seller_id": int(sid) if str(sid).isdigit() else sid,
             "country": country,
+            "checkout_extra_ron": extra,
             "listing_sum": listing_sum,
+            "checkout_total": listing_sum + extra,
             "value_band": "opportunity",
             "reason": "Indexed same-seller listings (score cache rediscovery)",
             "items": [
@@ -417,7 +427,18 @@ def index_bundle_opportunities(
                 }
                 for r in members
             ],
-        })
+        }
+        row.update(
+            bo.offer_fields(
+                listing_sum,
+                extra,
+                len(members),
+                kind=kind,
+                watch_name=watch_name,
+                config=config,
+            )
+        )
+        out.append(row)
     out.sort(key=lambda b: b.get("kept_at") or "", reverse=True)
     return out
 
@@ -516,10 +537,26 @@ class PsycopgScoredStore:
     def upsert_many(self, rows: list[dict]) -> None:
         if not rows:
             return
-        with self._conn.cursor() as cur:
-            for row in rows:
-                cur.execute(UPSERT_SQL, row)
-        self._conn.commit()
+        # Tiny commits + retries: Cockroach serializable aborts under concurrent dashboard reads.
+        batch = 10
+        for i in range(0, len(rows), batch):
+            chunk = rows[i:i + batch]
+            for attempt in range(6):
+                try:
+                    with self._conn.cursor() as cur:
+                        for row in chunk:
+                            cur.execute(UPSERT_SQL, row)
+                    self._conn.commit()
+                    break
+                except Exception as e:
+                    try:
+                        self._conn.rollback()
+                    except Exception:
+                        pass
+                    if attempt == 5:
+                        raise
+                    time.sleep(0.25 * (2 ** attempt))
+                    print(f"scored_store upsert retry {attempt + 1}: {e}", file=sys.stderr)
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         with self._conn.cursor() as cur:

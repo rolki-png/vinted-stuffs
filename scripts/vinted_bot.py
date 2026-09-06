@@ -1290,6 +1290,10 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> None:
         f"{bundle['listing_sum']:.0f} + {bundle['checkout_extra_ron']:.0f} checkout extra "
         f"= {bundle['checkout_total']:.0f} RON ({bundle.get('country') or '?'})"
     ]
+    offer = bundle.get("suggested_offer_ron")
+    if offer is not None:
+        weak = " (weak/stretch)" if bundle.get("offer_weak") else ""
+        lines.append(f"offer ~{int(offer)} RON{weak}")
     for row in bundle["keeps"]:
         amt = listing_amount(row["item"])
         lines.append(
@@ -1324,6 +1328,10 @@ def send_ntfy_value_haul(topic: str, haul: dict, score: dict, useful: list) -> N
         score.get("reason") or "",
         f"{haul.get('listing_sum', 0):.0f} + {haul.get('checkout_extra_ron', 0):.0f} = {haul.get('checkout_total', 0):.0f} RON",
     ]
+    offer = haul.get("suggested_offer_ron")
+    if offer is not None:
+        weak = " (weak/stretch)" if haul.get("offer_weak") else ""
+        lines.append(f"offer ~{int(offer)} RON{weak}")
     for it in useful:
         lines.append(f"- {it.get('title')} ({listing_amount(it)} RON)")
     profile = None
@@ -1486,6 +1494,7 @@ def main() -> None:
         score_batch(watch, new_items)
 
     import value_haul as vh
+    import bundle_offer as bo
 
     vh_cfg = vh.value_haul_config(config)
     value_haul_sellers: dict[str, dict] = {}
@@ -1691,6 +1700,17 @@ def main() -> None:
                             "listing_sum": listing_sum,
                             "checkout_total": listing_sum + extra,
                         })
+                        haul.update(
+                            bo.offer_fields(
+                                listing_sum,
+                                extra,
+                                len(useful),
+                                kind="value_haul",
+                                watch=meta["watch"],
+                                watch_name=meta["watch"].get("name"),
+                                config=config,
+                            )
+                        )
                         add_alerted_bundle_key(alerted_bundle_keys, alerted_bundles, fingerprint)
                         value_hauls.append({
                             "haul": haul,
@@ -1807,6 +1827,18 @@ def main() -> None:
     keeps = select_best(this_run_solos, config)
 
     for bundle in new_bundles:
+        members = bundle["keeps"] + bundle["extras"]
+        watch_name = next((r.get("watch") for r in members if r.get("watch")), None)
+        bundle.update(
+            bo.offer_fields(
+                bundle["listing_sum"],
+                bundle["checkout_extra_ron"],
+                len(members),
+                kind="keep_bundle",
+                watch_name=watch_name,
+                config=config,
+            )
+        )
         send_ntfy_bundle(ntfy_topic, bundle)
         alerts_sent += 1
     for keep in keeps:
@@ -1851,6 +1883,7 @@ def main() -> None:
                 result["useful"],
                 result["watch_name"],
                 now,
+                config=config,
             )
         )
     for result in near_hauls:
@@ -1862,6 +1895,7 @@ def main() -> None:
                 now,
                 rough_per_item=result.get("rough"),
                 reason=result.get("reason"),
+                config=config,
             )
         )
     try:
@@ -1869,7 +1903,7 @@ def main() -> None:
         indexed_export = [scored_store_mod.export_row(r) for r in recent]
         save_indexed_scores(indexed_export)
         opportunity_rows.extend(
-            scored_store_mod.index_bundle_opportunities(indexed_export)
+            scored_store_mod.index_bundle_opportunities(indexed_export, config=config)
         )
         print(
             f"Indexed score cache export: {len(indexed_export)} row(s).",
@@ -1883,37 +1917,55 @@ def main() -> None:
         bundle_seller = bundle.get("seller") or (
             seller_login(keep_items[0]["item"]) if keep_items else None
         )
-        new_keep_bundle_rows.append(
-            {
-                "kept_at": now,
-                "kind": "keep_bundle",
-                "seller": bundle_seller,
-                "seller_id": bundle["seller_id"],
-                "country": bundle.get("country"),
-                "checkout_extra_ron": bundle["checkout_extra_ron"],
-                "listing_sum": bundle["listing_sum"],
-                "checkout_total": bundle["checkout_total"],
-                "items": [
-                    {
-                        "role": "keep" if r in bundle["keeps"] else "extra",
-                        "id": r["item"].get("id"),
-                        "title": r["item"].get("title"),
-                        "price": listing_amount(r["item"]),
-                        "url": r["item"].get("url"),
-                        "watch": r["watch"],
-                        "deal_score": r["score"].get("deal_score"),
-                        "seller_id": seller_id(r["item"]),
-                        "seller": seller_login(r["item"]) or bundle_seller,
-                    }
-                    for r in bundle["keeps"] + bundle["extras"]
-                ],
-            }
-        )
+        members = bundle["keeps"] + bundle["extras"]
+        row = {
+            "kept_at": now,
+            "kind": "keep_bundle",
+            "seller": bundle_seller,
+            "seller_id": bundle["seller_id"],
+            "country": bundle.get("country"),
+            "checkout_extra_ron": bundle["checkout_extra_ron"],
+            "listing_sum": bundle["listing_sum"],
+            "checkout_total": bundle["checkout_total"],
+            "items": [
+                {
+                    "role": "keep" if r in bundle["keeps"] else "extra",
+                    "id": r["item"].get("id"),
+                    "title": r["item"].get("title"),
+                    "price": listing_amount(r["item"]),
+                    "url": r["item"].get("url"),
+                    "watch": r["watch"],
+                    "deal_score": r["score"].get("deal_score"),
+                    "seller_id": seller_id(r["item"]),
+                    "seller": seller_login(r["item"]) or bundle_seller,
+                }
+                for r in members
+            ],
+        }
+        if bundle.get("suggested_offer_ron") is not None:
+            row["suggested_offer_ron"] = bundle["suggested_offer_ron"]
+            row["offer_weak"] = bool(bundle.get("offer_weak"))
+            if bundle.get("offer_target_per_item_ron") is not None:
+                row["offer_target_per_item_ron"] = bundle["offer_target_per_item_ron"]
+        else:
+            watch_name = next((r.get("watch") for r in members if r.get("watch")), None)
+            row.update(
+                bo.offer_fields(
+                    bundle["listing_sum"],
+                    bundle["checkout_extra_ron"],
+                    len(members),
+                    kind="keep_bundle",
+                    watch_name=watch_name,
+                    config=config,
+                )
+            )
+        new_keep_bundle_rows.append(row)
     bundle_rows = vh.merge_bundle_rows(
         load_bundles(),
         new_keep_bundle_rows + opportunity_rows,
         max_opportunity=int(vh_cfg.get("max_opportunity_bundles", 80)),
     )
+    bundle_rows = vh.enrich_bundle_offer_fields(bundle_rows, config)
     save_bundles(bundle_rows)
     histogram: dict[str, int] = {}
     for row in scored:

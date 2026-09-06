@@ -230,6 +230,9 @@ function renderBundles() {
     const per = b.effective_price_per_useful_item != null
       ? ` · ~${Number(b.effective_price_per_useful_item).toFixed(0)} RON/item`
       : "";
+    const offer = b.suggested_offer_ron != null
+      ? ` · <strong>offer ~${Number(b.suggested_offer_ron).toFixed(0)} RON</strong>${b.offer_weak ? " <span class=\"pill near\">weak</span>" : ""}`
+      : "";
     const reason = b.reason ? ` · ${escapeHtml(b.reason)}` : "";
     const items = (b.items || []).map((it) => `
       <div class="bundle-item">
@@ -248,7 +251,7 @@ function renderBundles() {
       : escapeHtml(b.seller || "seller");
     return `<article class="bundle">
       <h3>${profile} <span class="pill ${pillClass}">${kindLabel}</span></h3>
-      <meta>${escapeHtml(b.country || "?")} · listings ${Number(b.listing_sum || 0).toFixed(0)} + extra ${b.checkout_extra_ron} = <strong>${Number(b.checkout_total || 0).toFixed(0)} RON</strong>${per}${reason} · ${fmtWhen(b.kept_at)}</meta>
+      <meta>${escapeHtml(b.country || "?")} · listings ${Number(b.listing_sum || 0).toFixed(0)} + extra ${b.checkout_extra_ron ?? "?"} = <strong>${Number(b.checkout_total || (Number(b.listing_sum || 0) + Number(b.checkout_extra_ron || 0))).toFixed(0)} RON</strong>${per}${offer}${reason} · ${fmtWhen(b.kept_at)}</meta>
       <div class="bundle-items">${items}</div>
     </article>`;
   }).join("")}</div>`;

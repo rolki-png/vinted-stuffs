@@ -44,6 +44,10 @@ _Avoid_: Value haul
 The assumed buyer cost once per checkout for shipping plus Vinted fees, on top of listing prices. Prefer `checkout_fees` (estimated shipping + fixed buyer fee + percent of listing sum) so a 50 RON and a 300 RON cart are not charged the same overhead; else fall back to flat `checkout_extra_ron` by country. One extra per seller checkout, not per item.
 _Avoid_: Shipping (alone), fee, postage
 
+**Bundle offer**:
+The buyer's proposed goods total for a multi-item cart from one seller (below listing sum); shipping and fees still settle at checkout. Guidance suggests this number; the buyer submits it on Vinted.
+_Avoid_: Bid (unqualified), discount, counter-offer (seller side)
+
 **Seen key**:
 The pair of a listing id and a hunt name. A listing already judged for one hunt can still be judged for a later hunt.
 _Avoid_: seen_ids (legacy global suppress only)

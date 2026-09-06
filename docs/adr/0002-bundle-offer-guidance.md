@@ -1,0 +1,3 @@
+# Bundle offer: delivered-per-item then haircut clamp
+
+Suggested bundle offers are goods totals the buyer types on Vinted. We back-solve from delivered cost per useful item (gym 30 RON, maternity 50 RON) using the existing checkout-extra estimate, then clamp to a haircut band on listing sum (min 10% off; max 25% alerted / 35% near). Fixed %-off alone ignores fees and cart size; summing per-item fair prices fights the value-haul mental model and needs score fields near hauls lack. Persist the number on the bundle row so ntfy and the dashboard never recompute it; do not auto-submit or track offer lifecycle.

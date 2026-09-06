@@ -183,6 +183,9 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(len(opps), 1)
         self.assertEqual(opps[0]["kind"], "index_near_bundle")
         self.assertEqual(len(opps[0]["items"]), 2)
+        self.assertIn("suggested_offer_ron", opps[0])
+        self.assertEqual(opps[0]["checkout_extra_ron"], 25)
+        self.assertTrue(opps[0].get("offer_weak"))
 
     def test_revive_skips_unknown_hunt_and_excluded_ids(self):
         import vinted_bot as bot

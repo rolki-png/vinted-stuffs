@@ -2,6 +2,10 @@
 import { loadIndexedFromDb, indexBundleOpportunities } from './scoredDb'
 import { loadVetoMap, applyToFinds, applyToBundles } from './listingVetoes'
 import { jsonFromGithubContents } from './githubContents.js'
+import {
+  activeWatchNamesFromConfig,
+  filterToActiveWatches,
+} from './activeWatches.js'
 import fs from "node:fs"
 import path from "node:path"
 
@@ -57,7 +61,10 @@ function readLocalJson(relPath, fallback) {
 }
 
 async function loadJson(name, fallback) {
-  const rel = `data/${name}`;
+  return loadRepoJson(`data/${name}`, fallback);
+}
+
+async function loadRepoJson(rel, fallback) {
   if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
     try {
       const remote = await fetchGithubJson(rel);
@@ -109,7 +116,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
   // Prefer Cockroach for indexed finds. Skip the GitHub export when DB has rows —
   // indexed_scores.json often exceeds GitHub's 1MB Contents inline limit (~4MB+).
   const dbIndexedPromise = loadIndexedFromDb(10000);
-  const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes] =
+  const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes, huntConfig] =
     await Promise.all([
       loadJson("best_deals.json", []),
       loadJson("best_bundles.json", []),
@@ -118,7 +125,10 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       loadJson("seen_listings.json", {}),
       dbIndexedPromise,
       loadVetoMap(),
+      loadRepoJson("python/config.json", {}),
     ]);
+
+  const activeWatches = activeWatchNamesFromConfig(huntConfig);
 
   const indexedFile =
     dbIndexed && Array.isArray(dbIndexed.rows) && dbIndexed.rows.length
@@ -342,7 +352,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         avg_score: Math.round((row.score_sum / n) * 100) / 100,
         best_score: row.best_score,
         bands: row.bands,
-        watches: [...row.watches].sort(),
+        watches: filterToActiveWatches([...row.watches], activeWatches),
         profile_url: row.seller_id
           ? `https://www.vinted.ro/member/${row.seller_id}`
           : null,
@@ -350,11 +360,16 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     })
     .sort((a, b) => b.best_score - a.best_score || b.avg_score - a.avg_score || b.keeps - a.keeps);
 
+  const watchesFromFinds = [
+    ...new Set(findsApplied.map((f) => f.watch).filter(Boolean)),
+  ].sort();
+
   return {
     finds: findsApplied,
     bundles: bundlesApplied,
     sellers: sellerRows,
-    watches: [...new Set(findsApplied.map((f) => f.watch).filter(Boolean))].sort(),
+    // Prefer live config hunts so retired watches (merino, etc.) leave the filter.
+    watches: activeWatches.length ? activeWatches : watchesFromFinds,
     veto_mode: mode,
     run: {
       finished_at: run.finished_at || null,
@@ -373,6 +388,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       indexed_count: indexedTotal,
       indexed_source: indexedSource,
       veto_count: Object.keys(vetoes || {}).length,
+      active_watch_count: activeWatches.length || null,
     },
   };
 }

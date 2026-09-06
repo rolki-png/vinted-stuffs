@@ -10,15 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiBrandsRouteImport } from './routes/api/brands'
 import { Route as ApiCronRouteImport } from './routes/api/cron'
 import { Route as ApiDashboardRouteImport } from './routes/api/dashboard'
+import { Route as ApiHuntsRouteImport } from './routes/api/hunts'
 import { Route as ApiRunsRouteImport } from './routes/api/runs'
+import { Route as ApiSizeGroupsRouteImport } from './routes/api/size-groups'
 import { Route as ApiTriggerRouteImport } from './routes/api/trigger'
 import { Route as ApiVetoRouteImport } from './routes/api/veto'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBrandsRoute = ApiBrandsRouteImport.update({
+  id: '/api/brands',
+  path: '/api/brands',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiCronRoute = ApiCronRouteImport.update({
@@ -31,9 +39,19 @@ const ApiDashboardRoute = ApiDashboardRouteImport.update({
   path: '/api/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHuntsRoute = ApiHuntsRouteImport.update({
+  id: '/api/hunts',
+  path: '/api/hunts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiRunsRoute = ApiRunsRouteImport.update({
   id: '/api/runs',
   path: '/api/runs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSizeGroupsRoute = ApiSizeGroupsRouteImport.update({
+  id: '/api/size-groups',
+  path: '/api/size-groups',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTriggerRoute = ApiTriggerRouteImport.update({
@@ -49,26 +67,35 @@ const ApiVetoRoute = ApiVetoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
+  '/api/size-groups': typeof ApiSizeGroupsRoute
   '/api/trigger': typeof ApiTriggerRoute
   '/api/veto': typeof ApiVetoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
+  '/api/size-groups': typeof ApiSizeGroupsRoute
   '/api/trigger': typeof ApiTriggerRoute
   '/api/veto': typeof ApiVetoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
+  '/api/size-groups': typeof ApiSizeGroupsRoute
   '/api/trigger': typeof ApiTriggerRoute
   '/api/veto': typeof ApiVetoRoute
 }
@@ -76,34 +103,46 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/hunts'
     | '/api/runs'
+    | '/api/size-groups'
     | '/api/trigger'
     | '/api/veto'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/hunts'
     | '/api/runs'
+    | '/api/size-groups'
     | '/api/trigger'
     | '/api/veto'
   id:
     | '__root__'
     | '/'
+    | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/hunts'
     | '/api/runs'
+    | '/api/size-groups'
     | '/api/trigger'
     | '/api/veto'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiBrandsRoute: typeof ApiBrandsRoute
   ApiCronRoute: typeof ApiCronRoute
   ApiDashboardRoute: typeof ApiDashboardRoute
+  ApiHuntsRoute: typeof ApiHuntsRoute
   ApiRunsRoute: typeof ApiRunsRoute
+  ApiSizeGroupsRoute: typeof ApiSizeGroupsRoute
   ApiTriggerRoute: typeof ApiTriggerRoute
   ApiVetoRoute: typeof ApiVetoRoute
 }
@@ -115,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/brands': {
+      id: '/api/brands'
+      path: '/api/brands'
+      fullPath: '/api/brands'
+      preLoaderRoute: typeof ApiBrandsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/cron': {
@@ -131,11 +177,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/hunts': {
+      id: '/api/hunts'
+      path: '/api/hunts'
+      fullPath: '/api/hunts'
+      preLoaderRoute: typeof ApiHuntsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/runs': {
       id: '/api/runs'
       path: '/api/runs'
       fullPath: '/api/runs'
       preLoaderRoute: typeof ApiRunsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/size-groups': {
+      id: '/api/size-groups'
+      path: '/api/size-groups'
+      fullPath: '/api/size-groups'
+      preLoaderRoute: typeof ApiSizeGroupsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/trigger': {
@@ -157,9 +217,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiBrandsRoute: ApiBrandsRoute,
   ApiCronRoute: ApiCronRoute,
   ApiDashboardRoute: ApiDashboardRoute,
+  ApiHuntsRoute: ApiHuntsRoute,
   ApiRunsRoute: ApiRunsRoute,
+  ApiSizeGroupsRoute: ApiSizeGroupsRoute,
   ApiTriggerRoute: ApiTriggerRoute,
   ApiVetoRoute: ApiVetoRoute,
 }

@@ -13,10 +13,11 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "test": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && cd python && python3 -m unittest discover -s tests -v",
-    "test:desk": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs"
+    "test": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && node scripts/test-hunt-config.mjs && node scripts/test-github-config-put.mjs && cd python && python3 -m unittest discover -s tests -v",
+    "test:desk": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && node scripts/test-hunt-config.mjs && node scripts/test-github-config-put.mjs"
   },
   "dependencies": {
+    "@googlarz/vinted-client": "1.1.4",
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
     "nitro": "3.0.260610-beta",

@@ -1,6 +1,5 @@
 /**
  * Set / clear listing vetoes (Hide / Park).
- * Auth: x-dashboard-secret or Bearer == DASHBOARD_SECRET.
  *
  * POST   { item_id, status: "hidden"|"parked" }
  * DELETE { item_id }  or POST { item_id, clear: true }
@@ -9,14 +8,6 @@ const {
   setVetoStatus,
   clearVeto,
 } = require("../lib/listingVetoes");
-
-function authorized(req) {
-  const expected = process.env.DASHBOARD_SECRET || "";
-  if (!expected) return false;
-  const header = req.headers["x-dashboard-secret"] || "";
-  const bearer = (req.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  return header === expected || bearer === expected;
-}
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -51,11 +42,6 @@ module.exports = async function handler(req, res) {
     res.json({ error: "method_not_allowed" });
     return;
   }
-  if (!authorized(req)) {
-    res.statusCode = 401;
-    res.json({ error: "unauthorized" });
-    return;
-  }
   try {
     const body = await readBody(req);
     const itemId = body.item_id ?? body.itemId;
@@ -79,5 +65,3 @@ module.exports = async function handler(req, res) {
     res.json({ error: String(err.message || err) });
   }
 };
-
-module.exports.authorized = authorized;

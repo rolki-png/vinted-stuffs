@@ -88,10 +88,6 @@ function renderRun() {
     </div>`;
 }
 
-function secret() {
-  return ($("#dash-secret")?.value || sessionStorage.getItem("dashSecret") || "").trim();
-}
-
 function setOpsMsg(text, kind) {
   const el = $("#ops-msg");
   el.textContent = text || "";
@@ -99,22 +95,13 @@ function setOpsMsg(text, kind) {
 }
 
 async function triggerHunt({ fullSweep = false } = {}) {
-  const token = secret();
-  if (!token) {
-    setOpsMsg("Enter DASHBOARD_SECRET first (same value as on Vercel).", "err");
-    return;
-  }
-  sessionStorage.setItem("dashSecret", token);
   $("#run-now").disabled = true;
   $("#run-sweep").disabled = true;
   setOpsMsg(fullSweep ? "Dispatching full sweep…" : "Dispatching hunt…");
   try {
     const res = await fetch("/api/trigger", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-dashboard-secret": token,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ full_sweep: fullSweep }),
     });
     const data = await res.json().catch(() => ({}));
@@ -165,22 +152,13 @@ function showToast(text, { undoId } = {}) {
 }
 
 async function setVeto(itemId, status) {
-  const token = secret();
-  if (!token) {
-    setOpsMsg("Enter DASHBOARD_SECRET first (same value as on Vercel).", "err");
-    return;
-  }
-  sessionStorage.setItem("dashSecret", token);
   const body =
     status == null
       ? { item_id: Number(itemId), clear: true }
       : { item_id: Number(itemId), status };
   const res = await fetch("/api/veto", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-dashboard-secret": token,
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
   const data = await res.json().catch(() => ({}));
@@ -419,11 +397,6 @@ $("#sellerSort").addEventListener("change", renderSellers);
 $("#refresh").addEventListener("click", () => load().catch(console.error));
 $("#run-now")?.addEventListener("click", () => triggerHunt({ fullSweep: false }));
 $("#run-sweep")?.addEventListener("click", () => triggerHunt({ fullSweep: true }));
-const saved = sessionStorage.getItem("dashSecret");
-if (saved && $("#dash-secret")) $("#dash-secret").value = saved;
-$("#dash-secret")?.addEventListener("change", () => {
-  sessionStorage.setItem("dashSecret", $("#dash-secret").value.trim());
-});
 
 load().catch((err) => {
   $("#lede").textContent = `Failed to load snapshot: ${err.message}. Locally: uv run python scripts/serve_dashboard.py — or deploy to Vercel.`;

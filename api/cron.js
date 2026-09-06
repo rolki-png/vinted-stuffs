@@ -15,11 +15,7 @@ module.exports = async function handler(req, res) {
 
   const cronSecret = process.env.CRON_SECRET || "";
   const auth = req.headers.authorization || "";
-  const ok =
-    (cronSecret && auth === `Bearer ${cronSecret}`) ||
-    (process.env.DASHBOARD_SECRET &&
-      (req.headers["x-dashboard-secret"] === process.env.DASHBOARD_SECRET ||
-        auth === `Bearer ${process.env.DASHBOARD_SECRET}`));
+  const ok = Boolean(cronSecret) && auth === `Bearer ${cronSecret}`;
 
   if (!ok) {
     res.statusCode = 401;

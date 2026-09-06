@@ -1,6 +1,6 @@
 /**
  * Trigger the GitHub Actions hunt workflow (workflow_dispatch).
- * Auth: header x-dashboard-secret must match DASHBOARD_SECRET.
+ * Open from the desk UI — auth is the GITHUB_TOKEN server-side, not a pasted secret.
  */
 async function triggerWorkflow({ fullSweep = false, skipScoring = false } = {}) {
   const repo = process.env.GITHUB_REPO;
@@ -41,14 +41,6 @@ async function triggerWorkflow({ fullSweep = false, skipScoring = false } = {}) 
   return { ok: true, repo, workflow, ref, full_sweep: Boolean(fullSweep) };
 }
 
-function authorized(req) {
-  const expected = process.env.DASHBOARD_SECRET || "";
-  if (!expected) return false;
-  const header = req.headers["x-dashboard-secret"] || "";
-  const bearer = (req.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  return header === expected || bearer === expected;
-}
-
 function readBody(req) {
   return new Promise((resolve, reject) => {
     if (req.body && typeof req.body === "object") {
@@ -82,11 +74,6 @@ module.exports = async function handler(req, res) {
     res.json({ error: "method_not_allowed" });
     return;
   }
-  if (!authorized(req)) {
-    res.statusCode = 401;
-    res.json({ error: "unauthorized" });
-    return;
-  }
   try {
     const body = await readBody(req);
     const result = await triggerWorkflow({
@@ -102,4 +89,3 @@ module.exports = async function handler(req, res) {
 };
 
 module.exports.triggerWorkflow = triggerWorkflow;
-module.exports.authorized = authorized;

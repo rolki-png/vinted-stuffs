@@ -45,12 +45,11 @@ Vercel project env vars (Production):
 | `GITHUB_REPO` | `owner/repo` e.g. `rolki-png/vinted-stuffs` |
 | `GITHUB_REF` | usually `main` |
 | `GITHUB_WORKFLOW` | `vinted-bot.yml` |
-| `DASHBOARD_SECRET` | long random string — paste into the dashboard UI to Run hunt |
 | `CRON_SECRET` | optional; Vercel Cron sends it as `Authorization: Bearer …` |
 
 GitHub Actions secrets (unchanged): `AI_GATEWAY_API_KEY`, `NTFY_TOPIC`, optional `GEMINI_API_KEY`. Repo variable `AI_GATEWAY_MODEL` optional.
 
-After deploy: open the Vercel URL → enter `DASHBOARD_SECRET` → **Run hunt** (or **Full sweep**). Data updates when Actions commits `data/*`; hit Refresh.
+After deploy: open the Vercel URL → **Run hunt** / **Hide** / **Park** work with no pasted secret. Data updates when Actions commits `data/*`; hit Refresh.
 
 ### Schedulers
 

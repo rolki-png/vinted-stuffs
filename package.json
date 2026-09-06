@@ -13,7 +13,7 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "test": "cd python && python3 -m unittest discover -s tests -v",
+    "test": "node scripts/assert-no-react-void-meta.mjs && cd python && python3 -m unittest discover -s tests -v",
     "test:desk": "node scripts/assert-no-react-void-meta.mjs"
   },
   "dependencies": {

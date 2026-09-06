@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "tanstack-start",
+  "ignoreCommand": "git log -1 --pretty=%B | grep -qE '\\[skip ci\\]'",
   "crons": [
     {
       "path": "/api/cron",

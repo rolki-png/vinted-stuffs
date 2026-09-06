@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { HuntsPanel } from '#/components/HuntsPanel'
 
 type VetoMode = 'active' | 'parked' | 'bought' | 'all'
-type Tab = 'finds' | 'bundles' | 'sellers' | 'run'
+type Tab = 'finds' | 'bundles' | 'sellers' | 'run' | 'hunts'
 
 type Find = {
   id?: number | string
@@ -402,6 +403,7 @@ export function DealDesk() {
             ['bundles', 'Bundles'],
             ['sellers', 'Top sellers'],
             ['run', 'Runs'],
+            ['hunts', 'Hunts'],
           ] as const
         ).map(([id, label]) => (
           <button
@@ -746,6 +748,14 @@ export function DealDesk() {
             </table>
           </div>
         </section>
+      ) : null}
+
+      {tab === 'hunts' ? (
+        <HuntsPanel
+          onOps={(msg) => {
+            setOpsMsg(msg)
+          }}
+        />
       ) : null}
 
       {tab === 'run' ? (

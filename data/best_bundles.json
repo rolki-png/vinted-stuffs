@@ -1,5 +1,250 @@
 [
   {
+    "kept_at": "2026-09-06T18:46:39.165526+00:00",
+    "kind": "near_haul",
+    "seller": "nikolson5",
+    "seller_id": 3147122815,
+    "country": "ro",
+    "checkout_extra_ron": 20.95,
+    "listing_sum": 59.0,
+    "checkout_total": 79.95,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 39.975,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9895892413,
+        "title": "Jachetă Sport Active Sport  Retro Y2K | Zip-Up | Training",
+        "price": 24.0,
+        "url": "https://www.vinted.ro/items/9895892413-jacheta-sport-active-sport-retro-y2k-zip-up-training",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolson5",
+        "seller_id": 3147122815
+      },
+      {
+        "role": "haul",
+        "id": 9895945023,
+        "title": "Puma Sturm Graz Football Shorts  | Alb/Negru/Galben | Retro",
+        "price": 35.0,
+        "url": "https://www.vinted.ro/items/9895945023-puma-sturm-graz-football-shorts-albnegrugalben-retro",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolson5",
+        "seller_id": 3147122815
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T18:46:39.165526+00:00",
+    "kind": "near_haul",
+    "seller": "k_oliver19",
+    "seller_id": 199564331,
+    "country": "hu",
+    "checkout_extra_ron": 27.2285,
+    "listing_sum": 124.57,
+    "checkout_total": 151.7985,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 37.949625,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9889400261,
+        "title": "Under Armour Tech férfi sportpóló (L)",
+        "price": 25.65,
+        "url": "https://www.vinted.ro/items/9889400261-under-armour-tech-ferfi-sportpolo-l",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "k_oliver19",
+        "seller_id": 199564331
+      },
+      {
+        "role": "haul",
+        "id": 9912440260,
+        "title": "Adidas Aeroready férfi sport short (L)",
+        "price": 29.31,
+        "url": "https://www.vinted.ro/items/9912440260-adidas-aeroready-ferfi-sport-short-l",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "k_oliver19",
+        "seller_id": 199564331
+      },
+      {
+        "role": "haul",
+        "id": 9897722071,
+        "title": "Adidas Climalite Sport Rövidnadrág (M)",
+        "price": 36.64,
+        "url": "https://www.vinted.ro/items/9897722071-adidas-climalite-sport-rovidnadrag-m",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "k_oliver19",
+        "seller_id": 199564331
+      },
+      {
+        "role": "haul",
+        "id": 9910473946,
+        "title": "Lonsdale London fekete férfi cargo sport shorts / rövidnadrág (M)",
+        "price": 32.97,
+        "url": "https://www.vinted.ro/items/9910473946-lonsdale-london-fekete-ferfi-cargo-sport-shorts-rovidnadrag-m",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "k_oliver19",
+        "seller_id": 199564331
+      }
+    ],
+    "suggested_offer_ron": 92,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T18:36:39.049477+00:00",
+    "seller": "k_oliver19",
+    "seller_id": 199564331,
+    "country": "hu",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 65.95,
+    "checkout_total": 90.95,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9888771122,
+        "title": "Adidas Vintage 3-csíkos férfi rövidnadrág (M)",
+        "price": 36.64,
+        "url": "https://www.vinted.ro/items/9888771122-adidas-vintage-3-csikos-ferfi-rovidnadrag-m",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": 7,
+        "seller_id": 199564331,
+        "seller": "k_oliver19"
+      },
+      {
+        "role": "extra",
+        "id": 9912440260,
+        "title": "Adidas Aeroready férfi sport short (L)",
+        "price": 29.31,
+        "url": "https://www.vinted.ro/items/9912440260-adidas-aeroready-ferfi-sport-short-l",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": 6,
+        "seller_id": 199564331,
+        "seller": "k_oliver19"
+      }
+    ],
+    "suggested_offer_ron": 42,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T18:35:18.730572+00:00",
+    "seller": "thriftzoneromania",
+    "seller_id": 246162485,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 160.0,
+    "checkout_total": 185.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9897610025,
+        "title": "Nike Șorturi Sport Bărbați – Albastru – Mărimea L – Originale",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9897610025-nike-sorturi-sport-barbati-albastru-marimea-l-originale",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 246162485,
+        "seller": "thriftzoneromania"
+      },
+      {
+        "role": "extra",
+        "id": 9897670357,
+        "title": "Nike Dri-FIT Șorturi Sport Negre – Swoosh Alb – Mărimea L",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9897670357-nike-dri-fit-sorturi-sport-negre-swoosh-alb-marimea-l",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 246162485,
+        "seller": "thriftzoneromania"
+      },
+      {
+        "role": "extra",
+        "id": 9897582671,
+        "title": "Puma Șorturi Sport Roșii – Performance – Mărimea L – Originale",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9897582671-puma-sorturi-sport-rosii-performance-marimea-l-originale",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 246162485,
+        "seller": "thriftzoneromania"
+      },
+      {
+        "role": "extra",
+        "id": 9897713882,
+        "title": "Adidas ClimaLite Șorturi Sport Vintage Y2K Negre cu Alb – Mărimea M",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9897713882-adidas-climalite-sorturi-sport-vintage-y2k-negre-cu-alb-marimea-m",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 246162485,
+        "seller": "thriftzoneromania"
+      }
+    ],
+    "suggested_offer_ron": 104,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T18:33:35.528762+00:00",
+    "seller": "stilsclipitor",
+    "seller_id": 267444694,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 80.0,
+    "checkout_total": 105.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9912801268,
+        "title": "Pantaloni scurți Nike",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9912801268-pantaloni-scurti-nike",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 7,
+        "seller_id": 267444694,
+        "seller": "stilsclipitor"
+      },
+      {
+        "role": "extra",
+        "id": 9912761362,
+        "title": "Pantaloni scurți Nike",
+        "price": 40.0,
+        "url": "https://www.vinted.ro/items/9912761362-pantaloni-scurti-nike",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 7,
+        "seller_id": 267444694,
+        "seller": "stilsclipitor"
+      }
+    ],
+    "suggested_offer_ron": 52,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
     "kept_at": "2026-09-06T16:32:41.856841+00:00",
     "kind": "near_haul",
     "seller": "mrsebastian",
@@ -208,48 +453,6 @@
       }
     ],
     "suggested_offer_ron": 34,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-06T16:32:41.856841+00:00",
-    "kind": "near_haul",
-    "seller": "nikolson5",
-    "seller_id": 3147122815,
-    "country": "ro",
-    "checkout_extra_ron": 20.95,
-    "listing_sum": 59.0,
-    "checkout_total": 79.95,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 39.975,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9895892413,
-        "title": "Jachetă Sport Active Sport  Retro Y2K | Zip-Up | Training",
-        "price": 24.0,
-        "url": "https://www.vinted.ro/items/9895892413-jacheta-sport-active-sport-retro-y2k-zip-up-training",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "nikolson5",
-        "seller_id": 3147122815
-      },
-      {
-        "role": "haul",
-        "id": 9895945023,
-        "title": "Puma Sturm Graz Football Shorts  | Alb/Negru/Galben | Retro",
-        "price": 35.0,
-        "url": "https://www.vinted.ro/items/9895945023-puma-sturm-graz-football-shorts-albnegrugalben-retro",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "nikolson5",
-        "seller_id": 3147122815
-      }
-    ],
-    "suggested_offer_ron": 39,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },

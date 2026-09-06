@@ -4,12 +4,7 @@ import { triggerWorkflow } from '#/server/github'
 async function handleCron(request: Request) {
   const cronSecret = process.env.CRON_SECRET || ''
   const auth = request.headers.get('authorization') || ''
-  const dashSecret = process.env.DASHBOARD_SECRET || ''
-  const ok =
-    (cronSecret && auth === `Bearer ${cronSecret}`) ||
-    (dashSecret &&
-      (request.headers.get('x-dashboard-secret') === dashSecret ||
-        auth === `Bearer ${dashSecret}`))
+  const ok = Boolean(cronSecret) && auth === `Bearer ${cronSecret}`
 
   if (!ok) {
     return Response.json(

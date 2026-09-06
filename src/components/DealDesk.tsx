@@ -81,8 +81,6 @@ type GhRun = {
   display_title?: string
 }
 
-const SECRET_KEY = 'dashSecret'
-
 function fmtPrice(n: unknown, currency = 'RON') {
   if (n == null || Number.isNaN(Number(n))) return '—'
   return `${Number(n).toFixed(0)} ${currency || 'RON'}`
@@ -144,7 +142,6 @@ export function DealDesk() {
   const [data, setData] = useState<Snapshot | null>(null)
   const [runs, setRuns] = useState<GhRun[]>([])
   const [tab, setTab] = useState<Tab>('finds')
-  const [secret, setSecret] = useState('')
   const [opsMsg, setOpsMsg] = useState<{ text: string; kind?: 'ok' | 'err' } | null>(null)
   const [toast, setToast] = useState<{ text: string; undoId?: string | number } | null>(null)
   const [busy, setBusy] = useState(false)
@@ -160,9 +157,6 @@ export function DealDesk() {
   const [sort, setSort] = useState('score-desc')
   const [sellerSort, setSellerSort] = useState('best')
 
-  useEffect(() => {
-    setSecret(sessionStorage.getItem(SECRET_KEY) || '')
-  }, [])
 
   const loadRuns = useCallback(async () => {
     try {
@@ -201,21 +195,12 @@ export function DealDesk() {
   }, [toast])
 
   const triggerHunt = async (fullSweep: boolean) => {
-    const token = secret.trim()
-    if (!token) {
-      setOpsMsg({ text: 'Enter DASHBOARD_SECRET first (same value as on Vercel).', kind: 'err' })
-      return
-    }
-    sessionStorage.setItem(SECRET_KEY, token)
     setBusy(true)
     setOpsMsg({ text: fullSweep ? 'Dispatching full sweep…' : 'Dispatching hunt…' })
     try {
       const res = await fetch('/api/trigger', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-dashboard-secret': token,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ full_sweep: fullSweep }),
       })
       const json = await res.json().catch(() => ({}))
@@ -234,22 +219,13 @@ export function DealDesk() {
   }
 
   const setVetoStatus = async (itemId: string | number, status: string | null) => {
-    const token = secret.trim()
-    if (!token) {
-      setOpsMsg({ text: 'Enter DASHBOARD_SECRET first (same value as on Vercel).', kind: 'err' })
-      return
-    }
-    sessionStorage.setItem(SECRET_KEY, token)
     const body =
       status == null
         ? { item_id: Number(itemId), clear: true }
         : { item_id: Number(itemId), status }
     const res = await fetch('/api/veto', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-dashboard-secret': token,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
     const json = await res.json().catch(() => ({}))
@@ -369,17 +345,6 @@ export function DealDesk() {
       </header>
 
       <section className="ops">
-        <label className="secret-row">
-          Dashboard secret
-          <input
-            type="password"
-            autoComplete="off"
-            placeholder="DASHBOARD_SECRET (stored in this browser only)"
-            value={secret}
-            onChange={(e) => setSecret(e.target.value)}
-            onBlur={() => sessionStorage.setItem(SECRET_KEY, secret.trim())}
-          />
-        </label>
         <p className={`ops-msg${opsMsg?.kind ? ` ${opsMsg.kind}` : ''}`}>{opsMsg?.text || ''}</p>
       </section>
 

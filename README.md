@@ -34,7 +34,7 @@ npm run dev
 ## Tests
 
 ```bash
-cd python && python -m unittest discover -s tests -v
+cd python && python3 -m unittest discover -s tests -v
 ```
 
 ## Deploy dashboard to Vercel
@@ -51,9 +51,15 @@ Project env vars (Production):
 | `GITHUB_REPO` | `owner/repo` |
 | `GITHUB_REF` | usually `main` |
 | `GITHUB_WORKFLOW` | `vinted-bot.yml` |
-| `DASHBOARD_SECRET` | long random string — paste into the desk UI to run hunts / veto |
 | `CRON_SECRET` | optional; Vercel Cron `Authorization: Bearer …` |
 | `DATABASE_URL` | optional Cockroach / Postgres for live score index + vetoes |
+
+After deploy: open the Vercel URL → **Run hunt** / **Hide** / **Park** work with no pasted secret. Data updates when Actions commits `data/*`; hit Refresh.
+
+### Schedulers
+
+1. **Primary:** GitHub Actions `*/15 * * * *` (already in the workflow).
+2. **Optional backup:** Vercel Cron hits `/api/cron` once daily at 06:00 UTC (`vercel.json`; Hobby plan limit). Keep GitHub Actions as the real 15‑min schedule.
 
 ## Repo layout
 
@@ -68,3 +74,16 @@ python/              Hunt bot package
 data/                Bot-committed JSON snapshots
 docs/                Design specs & ADRs
 ```
+
+## Dashboard features
+
+- Finds: filter by hunt / band / score / source, sort by score / price / date
+- Bundles and top sellers (once seller ids are in the pool / keeps)
+- Runs tab: last score histogram + recent Actions runs
+- Trigger buttons dispatch `workflow_dispatch` on the hunt workflow
+
+## Known limits
+
+- Search results have no description, so "pay outside the app" will not show up.
+- Missing seller history is elevated scam risk.
+- GitHub-hosted runners may get DataDome-blocked; local or self-hosted is more reliable for sweeps.

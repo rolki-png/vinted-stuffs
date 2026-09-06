@@ -38,14 +38,6 @@ export async function triggerWorkflow({ fullSweep = false, skipScoring = false }
   return { ok: true, repo, workflow, ref, full_sweep: Boolean(fullSweep) }
 }
 
-export function authorized(request) {
-  const expected = process.env.DASHBOARD_SECRET || ""
-  if (!expected) return false
-  const header = request.headers.get("x-dashboard-secret") || ""
-  const bearer = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "")
-  return header === expected || bearer === expected
-}
-
 export async function listWorkflowRuns() {
   const repo = process.env.GITHUB_REPO
   const token = process.env.GITHUB_TOKEN

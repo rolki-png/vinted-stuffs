@@ -1,16 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { authorized, triggerWorkflow } from '#/server/github'
+import { triggerWorkflow } from '#/server/github'
 
 export const Route = createFileRoute('/api/trigger')({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        if (!authorized(request)) {
-          return Response.json(
-            { error: 'unauthorized' },
-            { status: 401, headers: { 'Cache-Control': 'no-store' } },
-          )
-        }
+        // Open from the desk UI — auth is GITHUB_TOKEN server-side, not a pasted secret.
         try {
           const body = (await request.json().catch(() => ({}))) as Record<
             string,

@@ -1,14 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { authorized } from '#/server/github'
 import { clearVeto, setVetoStatus } from '#/server/listingVetoes'
 
 async function handleVeto(request: Request) {
-  if (!authorized(request)) {
-    return Response.json(
-      { error: 'unauthorized' },
-      { status: 401, headers: { 'Cache-Control': 'no-store' } },
-    )
-  }
   try {
     const body = (await request.json().catch(() => ({}))) as Record<
       string,

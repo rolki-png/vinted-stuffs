@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-06T18:46:39.165526+00:00",
+    "kept_at": "2026-09-06T21:03:45.515083+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -40,6 +40,260 @@
     "suggested_offer_ron": 39,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T21:03:45.515083+00:00",
+    "kind": "near_haul",
+    "seller": "dominikdlug",
+    "seller_id": 224190745,
+    "country": "pl",
+    "checkout_extra_ron": 26.9425,
+    "listing_sum": 78.85,
+    "checkout_total": 105.79249999999999,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 35.26416666666666,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9872852072,
+        "title": "Nike running gym shorts",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9872852072-nike-running-gym-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dominikdlug",
+        "seller_id": 224190745
+      },
+      {
+        "role": "haul",
+        "id": 9511506467,
+        "title": "Adidas navy blue sport shorts",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9511506467-adidas-navy-blue-sport-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dominikdlug",
+        "seller_id": 224190745
+      },
+      {
+        "role": "haul",
+        "id": 9572772166,
+        "title": "Nike lamine yamal 19 shorts",
+        "price": 29.57,
+        "url": "https://www.vinted.ro/items/9572772166-nike-lamine-yamal-19-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dominikdlug",
+        "seller_id": 224190745
+      }
+    ],
+    "suggested_offer_ron": 63,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T21:03:45.515083+00:00",
+    "kind": "near_haul",
+    "seller": "vargadod",
+    "seller_id": 292690466,
+    "country": "hu",
+    "checkout_extra_ron": 23.491,
+    "listing_sum": 49.82,
+    "checkout_total": 73.311,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 36.6555,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9778362672,
+        "title": "Piros Nike ujjatlan trikó / sportfelső - M",
+        "price": 24.91,
+        "url": "https://www.vinted.ro/items/9778362672-piros-nike-ujjatlan-triko-sportfelso-m",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "vargadod",
+        "seller_id": 292690466
+      },
+      {
+        "role": "haul",
+        "id": 9778317100,
+        "title": "Fekete Nike Sportswear ujjatlan trikó / felső - M (22.2)",
+        "price": 24.91,
+        "url": "https://www.vinted.ro/items/9778317100-fekete-nike-sportswear-ujjatlan-triko-felso-m-222",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "vargadod",
+        "seller_id": 292690466
+      }
+    ],
+    "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-06T21:03:45.515083+00:00",
+    "kind": "near_haul",
+    "seller": "zzossiam",
+    "seller_id": 3167864194,
+    "country": "pl",
+    "checkout_extra_ron": 25.4645,
+    "listing_sum": 49.29,
+    "checkout_total": 74.75450000000001,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 37.377250000000004,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9873963566,
+        "title": "Vintage retro puma gym shorts m",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9873963566-vintage-retro-puma-gym-shorts-m",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "zzossiam",
+        "seller_id": 3167864194
+      },
+      {
+        "role": "haul",
+        "id": 9873963942,
+        "title": "Nike shorts dryfit workwear L",
+        "price": 36.97,
+        "url": "https://www.vinted.ro/items/9873963942-nike-shorts-dryfit-workwear-l",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "zzossiam",
+        "seller_id": 3167864194
+      }
+    ],
+    "suggested_offer_ron": 34,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T20:59:58.127387+00:00",
+    "seller": "mrdaniolan",
+    "seller_id": 91117401,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 128.14,
+    "checkout_total": 153.14,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9874742834,
+        "title": "Szorty Nike Academy",
+        "price": 48.05,
+        "url": "https://www.vinted.ro/items/9874742834-szorty-nike-academy",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      },
+      {
+        "role": "extra",
+        "id": 9843041668,
+        "title": "Szare dresy Gymshark",
+        "price": 80.09,
+        "url": "https://www.vinted.ro/items/9843041668-szare-dresy-gymshark",
+        "watch": "Broad gym short EN M-L",
+        "deal_score": 7,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      }
+    ],
+    "suggested_offer_ron": 83,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T20:59:46.434189+00:00",
+    "seller": "dominikdlug",
+    "seller_id": 224190745,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 49.28,
+    "checkout_total": 74.28,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9872852072,
+        "title": "Nike running gym shorts",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9872852072-nike-running-gym-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 224190745,
+        "seller": "dominikdlug"
+      },
+      {
+        "role": "extra",
+        "id": 9511506467,
+        "title": "Adidas navy blue sport shorts",
+        "price": 24.64,
+        "url": "https://www.vinted.ro/items/9511506467-adidas-navy-blue-sport-shorts",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 6,
+        "seller_id": 224190745,
+        "seller": "dominikdlug"
+      }
+    ],
+    "suggested_offer_ron": 35,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T20:56:33.064383+00:00",
+    "seller": "vintvib",
+    "seller_id": 253589201,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 219.32,
+    "checkout_total": 244.32,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "keep",
+        "id": 9914848191,
+        "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
+        "price": 109.66,
+        "url": "https://www.vinted.ro/items/9914848191-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 9,
+        "seller_id": 253589201,
+        "seller": "vintvib"
+      },
+      {
+        "role": "keep",
+        "id": 9900831865,
+        "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
+        "price": 109.66,
+        "url": "https://www.vinted.ro/items/9900831865-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 9,
+        "seller_id": 253589201,
+        "seller": "vintvib"
+      }
+    ],
+    "suggested_offer_ron": 142,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 50.0
   },
   {
     "kept_at": "2026-09-06T18:46:39.165526+00:00",

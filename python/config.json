@@ -676,7 +676,10 @@
         "M",
         "L"
       ],
-      "notes": "Premium cotton polos/tees. Skip ordinary underwear packs."
+      "notes": "Premium cotton polos/tees. Skip ordinary underwear packs.",
+      "brand_ids": [
+        72806
+      ]
     },
     {
       "name": "Merz b. Schwanen M-L",

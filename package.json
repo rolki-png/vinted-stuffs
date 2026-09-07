@@ -14,7 +14,7 @@
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
     "test": "node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && node scripts/test-hunt-config.mjs && node scripts/test-github-config-put.mjs && uv run --project python python -m unittest discover -s python/tests -v",
-    "test:desk": "node scripts/test-listing-veto-reasons.mjs && node scripts/test-listing-veto-v2.mjs && node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/test-listing-veto-store.mjs && node scripts/test-score-semantics.mjs && node scripts/test-score-view.mjs && node scripts/test-deal-desk-presentation.mjs && node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/test-dashboard-snapshot.mjs && node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && node scripts/test-hunt-config.mjs && node scripts/test-github-config-put.mjs"
+    "test:desk": "node scripts/test-listing-veto-reasons.mjs && node scripts/test-listing-veto-v2.mjs && node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/test-listing-veto-store.mjs && node scripts/test-score-semantics.mjs && node scripts/test-score-view.mjs && node scripts/test-deal-desk-presentation.mjs && node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/test-dashboard-snapshot.mjs && node --disable-warning=ExperimentalWarning --experimental-strip-types scripts/test-github-trigger.mjs && node scripts/assert-no-react-void-meta.mjs && node scripts/test-github-contents-json.mjs && node scripts/test-hunt-config.mjs && node scripts/test-github-config-put.mjs"
   },
   "dependencies": {
     "@googlarz/vinted-client": "1.1.4",

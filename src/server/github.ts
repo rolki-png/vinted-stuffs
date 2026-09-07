@@ -1,5 +1,9 @@
 // @ts-nocheck
-export async function triggerWorkflow({ fullSweep = false, skipScoring = false } = {}) {
+export async function triggerWorkflow({
+  fullSweep = false,
+  skipScoring = false,
+  legacyActiveV2 = false,
+} = {}) {
   const repo = process.env.GITHUB_REPO
   const token = process.env.GITHUB_TOKEN
   const workflow = process.env.GITHUB_WORKFLOW || "vinted-bot.yml"
@@ -25,6 +29,7 @@ export async function triggerWorkflow({ fullSweep = false, skipScoring = false }
       inputs: {
         skip_scoring: String(Boolean(skipScoring)),
         full_sweep: String(Boolean(fullSweep)),
+        legacy_active_v2: String(Boolean(legacyActiveV2)),
       },
     }),
   })
@@ -35,7 +40,14 @@ export async function triggerWorkflow({ fullSweep = false, skipScoring = false }
     err.status = res.status
     throw err
   }
-  return { ok: true, repo, workflow, ref, full_sweep: Boolean(fullSweep) }
+  return {
+    ok: true,
+    repo,
+    workflow,
+    ref,
+    full_sweep: Boolean(fullSweep),
+    legacy_active_v2: Boolean(legacyActiveV2),
+  }
 }
 
 export async function listWorkflowRuns() {

@@ -14,6 +14,9 @@ export const Route = createFileRoute('/api/trigger')({
           const result = await triggerWorkflow({
             fullSweep: Boolean(body.full_sweep || body.fullSweep),
             skipScoring: Boolean(body.skip_scoring || body.skipScoring),
+            legacyActiveV2: Boolean(
+              body.legacy_active_v2 || body.legacyActiveV2,
+            ),
           })
           return Response.json(result, {
             headers: { 'Cache-Control': 'no-store' },

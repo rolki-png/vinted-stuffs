@@ -108,44 +108,6 @@
   },
   {
     "item": {
-      "id": 9913727835,
-      "title": "Spodenki, szorty Nike Jordan",
-      "price": {
-        "amount": "43.13",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9913727835-spodenki-szorty-nike-jordan",
-      "user": {
-        "id": 96956781,
-        "login": "kraw.m"
-      },
-      "_profile": {
-        "username": "kraw.m",
-        "member_since": null,
-        "feedback_count": 192,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 123,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9913727835,
-      "deal_score": 8,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Strong price for a reputable training brand in good condition."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 96956781,
-    "seller": "kraw.m"
-  },
-  {
-    "item": {
       "id": 9883725053,
       "title": "Nike σορτσάκι ανδρικό",
       "price": {
@@ -222,44 +184,6 @@
   },
   {
     "item": {
-      "id": 9899438226,
-      "title": "Saysky running t-shirt koszulka do begania",
-      "price": {
-        "amount": "98.53",
-        "currency_code": "RON"
-      },
-      "brand_title": "Saysky",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9899438226-saysky-running-t-shirt-koszulka-do-begania",
-      "user": {
-        "id": 91396899,
-        "login": "sashamadjoy3"
-      },
-      "_profile": {
-        "username": "sashamadjoy3",
-        "member_since": null,
-        "feedback_count": 1581,
-        "feedback_reputation": 1,
-        "item_count": 85,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9899438226,
-      "deal_score": 7,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Good price for a standard technical tee in very good condition, but not an exceptional deal."
-    },
-    "watch": "Saysky running M-L",
-    "seller_id": 91396899,
-    "seller": "sashamadjoy3"
-  },
-  {
-    "item": {
       "id": 9802616833,
       "title": "Adidas Climalite sort",
       "price": {
@@ -295,6 +219,44 @@
     "watch": "Gym seed Adidas shorts M-L",
     "seller_id": 132308521,
     "seller": "tarsil"
+  },
+  {
+    "item": {
+      "id": 9899438226,
+      "title": "Saysky running t-shirt koszulka do begania",
+      "price": {
+        "amount": "98.53",
+        "currency_code": "RON"
+      },
+      "brand_title": "Saysky",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9899438226-saysky-running-t-shirt-koszulka-do-begania",
+      "user": {
+        "id": 91396899,
+        "login": "sashamadjoy3"
+      },
+      "_profile": {
+        "username": "sashamadjoy3",
+        "member_since": null,
+        "feedback_count": 1581,
+        "feedback_reputation": 1,
+        "item_count": 85,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9899438226,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for a standard technical tee in very good condition, but not an exceptional deal."
+    },
+    "watch": "Saysky running M-L",
+    "seller_id": 91396899,
+    "seller": "sashamadjoy3"
   },
   {
     "item": {
@@ -778,268 +740,534 @@
   },
   {
     "item": {
-      "id": 9903997388,
-      "title": "Sukienka marki Mamalicious dla kobiet w ciąży",
+      "id": 9919272514,
+      "title": "shorts",
       "price": {
-        "amount": "98.53",
-        "currency_code": "RON"
-      },
-      "brand_title": "Mamalicious",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9903997388-sukienka-marki-mamalicious-dla-kobiet-w-ciazy",
-      "user": {
-        "id": 3181720932,
-        "login": "karinan433"
-      },
-      "_profile": {
-        "username": "karinan433",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 33,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9903997388,
-      "deal_score": 9,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size (XL) for a new-with-tags dress; fits the criteria for high-quality maternity wear."
-    },
-    "watch": "Mamalicious maternity XL-L/XL",
-    "seller_id": 3181720932,
-    "seller": "karinan433"
-  },
-  {
-    "item": {
-      "id": 9917124446,
-      "title": "Adidas – męskie spodenki sportowe",
-      "price": {
-        "amount": "24.63",
-        "currency_code": "RON"
-      },
-      "brand_title": "adidas",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9917124446-adidas-meskie-spodenki-sportowe",
-      "user": {
-        "id": 3157222962,
-        "login": "hannahkb2026"
-      },
-      "_profile": {
-        "username": "hannahkb2026",
-        "member_since": null,
-        "feedback_count": 23,
-        "feedback_reputation": 1,
-        "item_count": 91,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9917124446,
-      "deal_score": 7,
-      "value_band": "steal",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Good price for functional Adidas gear, but still just standard training wear."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 3157222962,
-    "seller": "hannahkb2026"
-  },
-  {
-    "item": {
-      "id": 9845540612,
-      "title": "spodenki nike",
-      "price": {
-        "amount": "24.63",
+        "amount": "21.25",
         "currency_code": "RON"
       },
       "brand_title": "Nike",
       "size_title": "M",
       "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9845540612-spodenki-nike",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9919272514-shorts",
       "user": {
-        "id": 102806340,
-        "login": "jadwigasmalkiewicz"
+        "id": 3152086615,
+        "login": "sildah1"
       },
       "_profile": {
-        "username": "jadwigasmalkiewicz",
+        "username": "sildah1",
         "member_since": null,
-        "feedback_count": 71,
-        "feedback_reputation": 0.96,
-        "item_count": 212,
+        "feedback_count": 17,
+        "feedback_reputation": 1,
+        "item_count": 17,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9919272514,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Cheap Nike shorts but seller has only one item in this category making a bundle impossible."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 3152086615,
+    "seller": "sildah1"
+  },
+  {
+    "item": {
+      "id": 9917623070,
+      "title": "Adidas Shorts Running Aeroready",
+      "price": {
+        "amount": "63.76",
+        "currency_code": "RON"
+      },
+      "brand_title": "adidas",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 5,
+      "url": "https://www.vinted.ro/items/9917623070-adidas-shorts-running-aeroready",
+      "user": {
+        "id": 267282508,
+        "login": "papagiorgos"
+      },
+      "_profile": {
+        "username": "papagiorgos",
+        "member_since": null,
+        "feedback_count": 8,
+        "feedback_reputation": 1,
+        "item_count": 2,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9917623070,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Adidas Aeroready is standard, but the limited seller history makes this a skip."
+    },
+    "watch": "Broad gym short EN M-L",
+    "seller_id": 267282508,
+    "seller": "papagiorgos"
+  },
+  {
+    "item": {
+      "id": 9883621128,
+      "title": "Nike shorts",
+      "price": {
+        "amount": "47.82",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "L",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9883621128-nike-shorts",
+      "user": {
+        "id": 3164276561,
+        "login": "steliosch77"
+      },
+      "_profile": {
+        "username": "steliosch77",
+        "member_since": null,
+        "feedback_count": 15,
+        "feedback_reputation": 0.9,
+        "item_count": 7,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9883621128,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "New with tag Nike shorts at a fair price, but not an exceptional bargain for this specific hunt."
+    },
+    "watch": "Gym seed short sport M-L",
+    "seller_id": 3164276561,
+    "seller": "steliosch77"
+  },
+  {
+    "item": {
+      "id": 9919600520,
+      "title": "Asics training shorts",
+      "price": {
+        "amount": "37.2",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9919600520-asics-training-shorts",
+      "user": {
+        "id": 3130451110,
+        "login": "manosk82"
+      },
+      "_profile": {
+        "username": "manosk82",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 28,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9919600520,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good condition Asics training shorts at a fair price, but not an exceptional 'must-have' piece."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 3130451110,
+    "seller": "manosk82"
+  },
+  {
+    "item": {
+      "id": 9918964417,
+      "title": "Nike golf shorts",
+      "price": {
+        "amount": "44.03",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike Golf",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9918964417-nike-golf-shorts",
+      "user": {
+        "id": 3155500099,
+        "login": "fabianp456"
+      },
+      "_profile": {
+        "username": "fabianp456",
+        "member_since": null,
+        "feedback_count": 5,
+        "feedback_reputation": 1,
+        "item_count": 74,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9918964417,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Solid Nike Golf shorts but individual item value does not meet the high-bar requirement."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 3155500099,
+    "seller": "fabianp456"
+  },
+  {
+    "item": {
+      "id": 9914348412,
+      "title": "Πωλείται nike shorts σαν καινούργιο η τιμή είναι η ΕΛΧΑΙΣΤΗ",
+      "price": {
+        "amount": "34.54",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9914348412-poleitai-nike-shorts-san-kainourgio-i-timi-einai-i-elksaisth",
+      "user": {
+        "id": 310823756,
+        "login": "lefteris-nton"
+      },
+      "_profile": {
+        "username": "lefteris-nton",
+        "member_since": null,
+        "feedback_count": 5,
+        "feedback_reputation": 1,
+        "item_count": 31,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9914348412,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Fair price for new condition but listing lacks enough specific detail for a 9+ score."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 310823756,
+    "seller": "lefteris-nton"
+  },
+  {
+    "item": {
+      "id": 9912864320,
+      "title": "Rövidnadrág",
+      "price": {
+        "amount": "36.69",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9912864320-rovidnadrag",
+      "user": {
+        "id": 229656559,
+        "login": "medvemilan"
+      },
+      "_profile": {
+        "username": "medvemilan",
+        "member_since": null,
+        "feedback_count": 19,
+        "feedback_reputation": 1,
+        "item_count": 3,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9912864320,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Decent price point but the seller lacks the necessary inventory to justify a bundle."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 229656559,
+    "seller": "medvemilan"
+  },
+  {
+    "item": {
+      "id": 9889662494,
+      "title": "Nike shorts medium",
+      "price": {
+        "amount": "37.2",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 18,
+      "url": "https://www.vinted.ro/items/9889662494-nike-shorts-medium",
+      "user": {
+        "id": 310823756,
+        "login": "lefteris-nton"
+      },
+      "_profile": {
+        "username": "lefteris-nton",
+        "member_since": null,
+        "feedback_count": 5,
+        "feedback_reputation": 1,
+        "item_count": 31,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9889662494,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Good price for new condition but requires more inventory from the seller to be useful."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 310823756,
+    "seller": "lefteris-nton"
+  },
+  {
+    "item": {
+      "id": 9891481293,
+      "title": "Adidas rövid nadrág",
+      "price": {
+        "amount": "22.01",
+        "currency_code": "RON"
+      },
+      "brand_title": "adidas",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9891481293-adidas-rovid-nadrag",
+      "user": {
+        "id": 275607498,
+        "login": "koviandi3"
+      },
+      "_profile": {
+        "username": "koviandi3",
+        "member_since": null,
+        "feedback_count": 31,
+        "feedback_reputation": 1,
+        "item_count": 47,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9891481293,
+      "deal_score": 7,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Standard Adidas gym shorts at a fair price, but lacks the bundle potential required for a high score."
+    },
+    "watch": "Gym seed Adidas shorts M-L",
+    "seller_id": 275607498,
+    "seller": "koviandi3"
+  },
+  {
+    "item": {
+      "id": 9906559272,
+      "title": "Buty Asics Gel Kayano 14",
+      "price": {
+        "amount": "406.44",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "43,5",
+      "status": "Foarte bună",
+      "favourite_count": 15,
+      "url": "https://www.vinted.ro/items/9906559272-buty-asics-gel-kayano-14",
+      "user": {
+        "id": 128537328,
+        "login": "tagetup1"
+      },
+      "_profile": {
+        "username": "tagetup1",
+        "member_since": null,
+        "feedback_count": 57,
+        "feedback_reputation": 0.8,
+        "item_count": 5,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9845540612,
+      "id": 9906559272,
       "deal_score": 7,
-      "value_band": "hunt",
+      "value_band": "acceptable",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Correct size and brand but insufficient information to confirm if it is a seed for a multi-piece bundle."
-    },
-    "watch": "Gym seed Nike shorts M-L",
-    "seller_id": 102806340,
-    "seller": "jadwigasmalkiewicz"
-  },
-  {
-    "item": {
-      "id": 9816465201,
-      "title": "Adidas Techfit short",
-      "price": {
-        "amount": "42.56",
-        "currency_code": "RON"
-      },
-      "brand_title": "adidas",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9816465201-adidas-techfit-short",
-      "user": {
-        "id": 247297539,
-        "login": "wii333"
-      },
-      "_profile": {
-        "username": "wii333",
-        "member_since": null,
-        "feedback_count": 208,
-        "feedback_reputation": 1,
-        "item_count": 231,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9816465201,
-      "deal_score": 7,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct size and item, but a single item does not meet the criteria for an alert; needs to be part of a bundle."
-    },
-    "watch": "Gym seed Adidas shorts M-L",
-    "seller_id": 247297539,
-    "seller": "wii333"
-  },
-  {
-    "item": {
-      "id": 9917128567,
-      "title": "Asics Gel Kayano 14 Black Pure Silver Férfi Használt Sneaker 42.5",
-      "price": {
-        "amount": "220.13",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "42,5",
-      "status": "Foarte bună",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9917128567-asics-gel-kayano-14-black-pure-silver-ferfi-hasznalt-sneaker-425",
-      "user": {
-        "id": 266086374,
-        "login": "rdani11"
-      },
-      "_profile": {
-        "username": "rdani11",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 29,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9917128567,
-      "deal_score": 7,
-      "value_band": "hunt",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct model and size but missing seller history and feedback history elevate the scam risk for a high-demand sneaker."
+      "reason": "Correct model and size, but price is above the hunt target and seller history is missing."
     },
     "watch": "ASICS Gel Kayano 14 size 43",
-    "seller_id": 266086374,
-    "seller": "rdani11"
+    "seller_id": 128537328,
+    "seller": "tagetup1"
   },
   {
     "item": {
-      "id": 9917097053,
-      "title": "Spodnie ciążowe hm mama",
+      "id": 9919074519,
+      "title": "Rozm xl mama licious",
       "price": {
-        "amount": "34.49",
+        "amount": "43.11",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9919074519-rozm-xl-mama-licious",
+      "user": {
+        "id": 90413470,
+        "login": "qachna79"
+      },
+      "_profile": {
+        "username": "qachna79",
+        "member_since": null,
+        "feedback_count": 1067,
+        "feedback_reputation": 1,
+        "item_count": 205,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9919074519,
+      "deal_score": 7,
+      "value_band": "acceptable",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size (XL) and price, but item type (unspecified) is not a high-value priority."
+    },
+    "watch": "Mamalicious maternity XL-L/XL",
+    "seller_id": 90413470,
+    "seller": "qachna79"
+  },
+  {
+    "item": {
+      "id": 9919687294,
+      "title": "Cygaretki ciążowe",
+      "price": {
+        "amount": "36.95",
         "currency_code": "RON"
       },
       "brand_title": "H&M Mama",
       "size_title": "XL / 42 / 14",
       "status": "Foarte bună",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9917097053-spodnie-ciazowe-hm-mama",
+      "url": "https://www.vinted.ro/items/9919687294-cygaretki-ciazowe",
       "user": {
-        "id": 91852582,
-        "login": "natkawariatka30"
+        "id": 90803064,
+        "login": "klaudia1234s"
       },
       "_profile": {
-        "username": "natkawariatka30",
+        "username": "klaudia1234s",
         "member_since": null,
-        "feedback_count": 29,
-        "feedback_reputation": 1,
-        "item_count": 62,
+        "feedback_count": 112,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 31,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9917097053,
+      "id": 9919687294,
+      "deal_score": 8,
+      "value_band": "hunt",
+      "hunt_fit": true,
+      "scam_risk": "medium",
+      "reason": "Correct size and category for the hunt, but should be part of a bundle."
+    },
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "seller_id": 90803064,
+    "seller": "klaudia1234s"
+  },
+  {
+    "item": {
+      "id": 9919538720,
+      "title": "Nike driFit shorts",
+      "price": {
+        "amount": "42.51",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9919538720-nike-drifit-shorts",
+      "user": {
+        "id": 3130451110,
+        "login": "manosk82"
+      },
+      "_profile": {
+        "username": "manosk82",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 28,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9919538720,
       "deal_score": 7,
       "value_band": "hunt",
       "hunt_fit": true,
       "scam_risk": "medium",
-      "reason": "Correct size and brand but individual piece is not a strong enough deal to qualify as a keeper."
+      "reason": "Technical Nike Dri-Fit shorts are a solid training basic, but the lack of seller history keeps the score at a standard acceptable level."
     },
-    "watch": "H&M Mama bundle seed XL-L/XL",
-    "seller_id": 91852582,
-    "seller": "natkawariatka30"
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 3130451110,
+    "seller": "manosk82"
   },
   {
     "item": {
-      "id": 9916803568,
-      "title": "Spodenki Nike rozm L Dri Fit",
+      "id": 9865582138,
+      "title": "Nike shorts medium",
       "price": {
-        "amount": "43.11",
+        "amount": "45.17",
         "currency_code": "RON"
       },
       "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 7,
-      "url": "https://www.vinted.ro/items/9916803568-spodenki-nike-rozm-l-dri-fit",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 27,
+      "url": "https://www.vinted.ro/items/9865582138-nike-shorts-medium",
       "user": {
-        "id": 90721125,
-        "login": "agaizamimi1"
+        "id": 310823756,
+        "login": "lefteris-nton"
       },
       "_profile": {
-        "username": "agaizamimi1",
+        "username": "lefteris-nton",
         "member_since": null,
-        "feedback_count": 1126,
+        "feedback_count": 5,
         "feedback_reputation": 1,
-        "item_count": 165,
-        "country_code": "pl"
+        "item_count": 31,
+        "country_code": "gr"
       }
     },
     "score": {
-      "id": 9916803568,
+      "id": 9865582138,
       "deal_score": 7,
       "value_band": "hunt",
       "hunt_fit": true,
-      "scam_risk": "low",
-      "reason": "Standard Nike Dri-Fit shorts are common, making this a fair price but not a compelling 'must-buy' deal."
+      "scam_risk": "medium",
+      "reason": "It is a standard pair of used-condition Nike shorts at a fair price, lacking the exceptional quality or rarity to be a 'must-have' deal."
     },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 90721125,
-    "seller": "agaizamimi1"
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 310823756,
+    "seller": "lefteris-nton"
   }
 ]

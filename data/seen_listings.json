@@ -12460,8 +12460,8 @@
   "last_near_hauls": 5,
   "legacy_active_v2": {
     "cursor": [
-      "9907650349",
-      "Broad gym short EN M-L"
+      "9907052896",
+      "Broad gym shorts M-L"
     ],
     "unavailable_pairs": [
       [
@@ -17242,6 +17242,10 @@
       ],
       [
         "9912440260",
+        "Broad gym shorts M-L"
+      ],
+      [
+        "9912440260",
         "Gym seed Adidas shorts M-L"
       ],
       [
@@ -18542,6 +18546,10 @@
       ],
       [
         "9919272514",
+        "Broad gym shorts M-L"
+      ],
+      [
+        "9919272514",
         "Gym seed Nike shorts M-L"
       ],
       [
@@ -19288,18 +19296,18 @@
       "9878999716:Broad gym short EN M-L": 1
     },
     "last_run": {
-      "candidates": 1752,
-      "selected": 99,
-      "checked": 84,
-      "live": 37,
-      "newly_unavailable": 47,
+      "candidates": 1715,
+      "selected": 15,
+      "checked": 11,
+      "live": 9,
+      "newly_unavailable": 2,
       "newly_stuck": 0,
-      "unknown": 15,
-      "rescored": 37,
-      "legacy": 1715,
-      "unavailable": 1700,
+      "unknown": 4,
+      "rescored": 9,
+      "legacy": 1706,
+      "unavailable": 1702,
       "stuck": 0,
-      "remaining": 15,
+      "remaining": 4,
       "status": "partial",
       "exit_code": 3
     }

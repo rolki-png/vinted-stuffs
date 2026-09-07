@@ -192,6 +192,19 @@ def _connected(candidate_ids: list[str], outcomes: list[dict]) -> bool:
     return seen == set(candidate_ids)
 
 
+def comparison_graph_connected(
+    candidates: list[dict],
+    outcomes: list[dict],
+    config: dict | None = None,
+) -> bool:
+    shortlist = _qualified_in_score_order(candidates, config)[
+        : _pairwise_limit(config)
+    ]
+    candidate_ids = [candidate_key(row) for row in shortlist]
+    valid_outcomes = _valid_outcomes(candidate_ids, outcomes)
+    return bool(valid_outcomes) and _connected(candidate_ids, valid_outcomes)
+
+
 def apply_rankings(
     candidates: list[dict],
     outcomes: list[dict],

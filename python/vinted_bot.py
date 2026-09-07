@@ -1383,23 +1383,39 @@ def rank_candidates(
     errors = []
     if gateway_key:
         try:
-            outcomes = _valid_rank_outcomes(
+            gateway_outcomes = _valid_rank_outcomes(
                 _rank_with_gateway(gateway_key, prompt),
                 pairs,
             )
-            if not outcomes:
-                errors.append("AI Gateway returned malformed pairwise comparisons")
+            if buy_ranking.comparison_graph_connected(
+                candidates,
+                gateway_outcomes,
+                config,
+            ):
+                outcomes = gateway_outcomes
+            else:
+                errors.append(
+                    "AI Gateway returned no connected pairwise comparison graph"
+                )
         except Exception as exc:
             errors.append(f"AI Gateway pairwise ranking failed: {exc}")
             print(errors[-1], file=sys.stderr)
     if not outcomes and gemini_client is not None:
         try:
-            outcomes = _valid_rank_outcomes(
+            gemini_outcomes = _valid_rank_outcomes(
                 _rank_with_gemini(gemini_client, prompt),
                 pairs,
             )
-            if not outcomes:
-                errors.append("Gemini returned malformed pairwise comparisons")
+            if buy_ranking.comparison_graph_connected(
+                candidates,
+                gemini_outcomes,
+                config,
+            ):
+                outcomes = gemini_outcomes
+            else:
+                errors.append(
+                    "Gemini returned no connected pairwise comparison graph"
+                )
         except Exception as exc:
             errors.append(f"Gemini pairwise ranking failed: {exc}")
             print(errors[-1], file=sys.stderr)
@@ -1427,9 +1443,22 @@ def persist_ranked_candidates(score_db, candidates: list[dict]) -> None:
             or score.get("rank_confidence") is None
         ):
             continue
+        raw_item_id = (candidate.get("item") or {}).get("id")
+        try:
+            if isinstance(raw_item_id, bool):
+                raise ValueError
+            item_id = int(raw_item_id)
+        except (TypeError, ValueError, OverflowError):
+            identity = f"{raw_item_id}:{candidate.get('watch') or ''}"
+            print(
+                f"Skipping rank persistence for {identity}: "
+                f"invalid item id {raw_item_id!r}.",
+                file=sys.stderr,
+            )
+            continue
         rows.append(
             {
-                "item_id": (candidate.get("item") or {}).get("id"),
+                "item_id": item_id,
                 "hunt_name": candidate.get("watch") or "",
                 "rank_position": score.get("rank_position"),
                 "rank_confidence": score.get("rank_confidence"),

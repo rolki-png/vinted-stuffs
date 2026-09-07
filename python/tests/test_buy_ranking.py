@@ -4,7 +4,7 @@ import inspect
 import io
 import unittest
 from datetime import datetime, timezone
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import buy_ranking as br
 import scored_store
@@ -344,13 +344,106 @@ class RankingIntegrationTests(unittest.TestCase):
                 object(),
                 config,
             )
-        gemini.assert_not_called()
+        gemini.assert_called_once()
         self.assertEqual(
             [row["score"]["rank_position"] for row in ranked],
             [1, 2, 3],
         )
         self.assertTrue(
             all(row["score"]["rank_confidence"] == "low" for row in ranked)
+        )
+
+    def test_disconnected_gateway_falls_through_to_connected_gemini(self):
+        rows = [
+            candidate(1, 92, 85, 97),
+            candidate(2, 91, 85, 96),
+            candidate(3, 90, 85, 95),
+        ]
+        gateway_incomplete = [
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "left",
+                "confidence": 0.95,
+                "reason": "gateway partial",
+            }
+        ]
+        gemini_connected = [
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "second is better",
+            },
+            {
+                "left": "2:H",
+                "right": "3:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "third is better",
+            },
+        ]
+        config = {"buy_scoring": {"pairwise_neighbors": 1}}
+        with (
+            patch.object(
+                bot, "_rank_with_gateway", return_value=gateway_incomplete
+            ),
+            patch.object(
+                bot, "_rank_with_gemini", return_value=gemini_connected
+            ) as gemini,
+        ):
+            ranked = bot.rank_candidates(
+                rows,
+                "gateway-key",
+                object(),
+                config,
+            )
+        gemini.assert_called_once()
+        self.assertEqual(
+            [row["score"]["rank_position"] for row in ranked],
+            [3, 2, 1],
+        )
+        self.assertTrue(
+            all(row["score"]["rank_confidence"] == "high" for row in ranked)
+        )
+
+    def test_connected_gateway_result_skips_gemini(self):
+        rows = [
+            candidate(1, 92, 85, 97),
+            candidate(2, 91, 85, 96),
+            candidate(3, 90, 85, 95),
+        ]
+        connected = [
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "second is better",
+            },
+            {
+                "left": "2:H",
+                "right": "3:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "third is better",
+            },
+        ]
+        with (
+            patch.object(bot, "_rank_with_gateway", return_value=connected),
+            patch.object(bot, "_rank_with_gemini") as gemini,
+        ):
+            ranked = bot.rank_candidates(
+                rows,
+                "gateway-key",
+                object(),
+                {"buy_scoring": {"pairwise_neighbors": 1}},
+            )
+        gemini.assert_not_called()
+        self.assertEqual(
+            [row["score"]["rank_position"] for row in ranked],
+            [3, 2, 1],
         )
 
     def test_valid_pair_rows_survive_malformed_and_duplicate_siblings(self):
@@ -509,6 +602,37 @@ class RankingIntegrationTests(unittest.TestCase):
         self.assertEqual(persisted["rank_confidence"], "low")
         self.assertEqual(persisted["source"], "search")
         self.assertEqual(persisted["scored_at"], scored_at)
+
+    def test_rank_persistence_coerces_numeric_string_item_id(self):
+        store = MagicMock()
+        row = candidate("123", 90, 85, 95)
+        br.apply_rankings([row], [])
+
+        bot.persist_ranked_candidates(store, [row])
+
+        store.replace_rankings.assert_called_once_with(
+            [
+                {
+                    "item_id": 123,
+                    "hunt_name": "H",
+                    "rank_position": 1,
+                    "rank_confidence": "low",
+                }
+            ]
+        )
+
+    def test_rank_persistence_skips_invalid_id_and_still_clears_stale_ranks(self):
+        store = MagicMock()
+        row = candidate("not-an-id", 90, 85, 95)
+        br.apply_rankings([row], [])
+        stderr = io.StringIO()
+
+        with patch("sys.stderr", new=stderr):
+            bot.persist_ranked_candidates(store, [row])
+
+        store.replace_rankings.assert_called_once_with([])
+        self.assertIn("invalid item id 'not-an-id'", stderr.getvalue())
+        self.assertIn("not-an-id:H", stderr.getvalue())
 
     def test_main_assigns_ranking_return_before_rank_persistence_and_selection(self):
         source = inspect.getsource(bot.main)

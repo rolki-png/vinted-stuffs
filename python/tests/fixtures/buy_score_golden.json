@@ -1,0 +1,84 @@
+[
+  {
+    "name": "hm_daily_right_fit",
+    "delivered_cost_ron": 60,
+    "expected_band": "good",
+    "better_than": "lululemon_worn_wrong_role",
+    "extraction": {
+      "id": 1,
+      "hunt_fit": true,
+      "verification_concern": "none",
+      "reason": "useful daily layer",
+      "factors": {
+        "fit_probability": {"value": 0.95, "confidence": 1, "evidence": "known size"},
+        "usefulness": {"value": 95, "confidence": 1, "evidence": "daily role"},
+        "quality": {"value": 70, "confidence": 1, "evidence": "adequate construction"},
+        "condition": {"value": 95, "confidence": 1, "evidence": "unused"},
+        "versatility": {"value": 90, "confidence": 1, "evidence": "many settings"},
+        "equivalent_replacement_cost": {"value": 150, "currency": "RON", "confidence": 1, "evidence": "equivalent daily item"},
+        "duplication_probability": {"value": 0.1, "confidence": 1, "evidence": "distinct role"}
+      }
+    }
+  },
+  {
+    "name": "lululemon_worn_wrong_role",
+    "delivered_cost_ron": 120,
+    "expected_band": "skip",
+    "extraction": {
+      "id": 2,
+      "hunt_fit": true,
+      "verification_concern": "inspect",
+      "reason": "premium label but worn and rarely useful",
+      "factors": {
+        "fit_probability": {"value": 0.8, "confidence": 1, "evidence": "uncertain cut"},
+        "usefulness": {"value": 60, "confidence": 1, "evidence": "occasional role"},
+        "quality": {"value": 75, "confidence": 1, "evidence": "older technical line"},
+        "condition": {"value": 40, "confidence": 1, "evidence": "visible wear"},
+        "versatility": {"value": 70, "confidence": 1, "evidence": "gym only"},
+        "equivalent_replacement_cost": {"value": 300, "currency": "RON", "confidence": 1, "evidence": "equivalent used piece"},
+        "duplication_probability": {"value": 0.2, "confidence": 1, "evidence": "similar item owned"}
+      }
+    }
+  },
+  {
+    "name": "maternity_daily_postpartum",
+    "delivered_cost_ron": 100,
+    "expected_band": "keep",
+    "extraction": {
+      "id": 3,
+      "hunt_fit": true,
+      "verification_concern": "none",
+      "reason": "high-use maternity and postpartum piece",
+      "factors": {
+        "fit_probability": {"value": 0.98, "confidence": 1, "evidence": "exact target size"},
+        "usefulness": {"value": 98, "confidence": 1, "evidence": "daily and postpartum"},
+        "quality": {"value": 90, "confidence": 1, "evidence": "maternity construction"},
+        "condition": {"value": 95, "confidence": 1, "evidence": "unused"},
+        "versatility": {"value": 95, "confidence": 1, "evidence": "pregnancy and nursing"},
+        "equivalent_replacement_cost": {"value": 450, "currency": "RON", "confidence": 1, "evidence": "conservative equivalent"},
+        "duplication_probability": {"value": 0, "confidence": 1, "evidence": "needed role"}
+      }
+    }
+  },
+  {
+    "name": "sneaker_exceptional_use",
+    "delivered_cost_ron": 150,
+    "expected_band": "keep",
+    "better_than": "hm_daily_right_fit",
+    "extraction": {
+      "id": 4,
+      "hunt_fit": true,
+      "verification_concern": "none",
+      "reason": "excellent durable everyday sneaker",
+      "factors": {
+        "fit_probability": {"value": 1, "confidence": 1, "evidence": "known model and size"},
+        "usefulness": {"value": 95, "confidence": 1, "evidence": "frequent wear"},
+        "quality": {"value": 95, "confidence": 1, "evidence": "durable construction"},
+        "condition": {"value": 98, "confidence": 1, "evidence": "near new"},
+        "versatility": {"value": 90, "confidence": 1, "evidence": "daily outfits"},
+        "equivalent_replacement_cost": {"value": 700, "currency": "RON", "confidence": 1, "evidence": "same-tier replacement"},
+        "duplication_probability": {"value": 0.02, "confidence": 1, "evidence": "needed rotation"}
+      }
+    }
+  }
+]

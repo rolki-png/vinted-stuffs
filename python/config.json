@@ -1,4 +1,22 @@
 {
+  "buy_scoring": {
+    "score_version": 2,
+    "keep_min_score": 85,
+    "bundle_min_score": 60,
+    "min_keep_confidence": 0.6,
+    "duplication_penalty": 15,
+    "absolute_saving_full_scale_ron": 200,
+    "personal_adjustment_cap": 10,
+    "pairwise_max_candidates": 20,
+    "pairwise_neighbors": 2,
+    "factor_weights": {
+      "usefulness": 0.3,
+      "quality": 0.2,
+      "condition": 0.15,
+      "versatility": 0.1,
+      "value": 0.25
+    }
+  },
   "min_deal_score": 9,
   "require_hunt_fit": true,
   "keep_value_bands": [

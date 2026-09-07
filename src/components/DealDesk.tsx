@@ -711,7 +711,7 @@ export function DealDesk() {
                               {buyBand.label}
                             </span>
                           ) : isDeclaredV2(f) ? (
-                            <span className="pill skip">Invalid v2</span>
+                            <span className="pill unknown">Invalid v2</span>
                           ) : (
                             <span className="legacy-score">
                               Legacy band: {f.value_band || 'not recorded'}

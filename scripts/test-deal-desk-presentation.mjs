@@ -14,6 +14,7 @@ assert.doesNotMatch(source, /#\/server\/scoreSemantics\.js/)
 assert.match(source, /usableRank\(row\)/)
 assert.match(source, /buyBandPresentation\(f\)/)
 assert.doesNotMatch(source, /f\.buy_band \|\| 'skip'/)
+assert.doesNotMatch(source, /className="pill skip">Invalid v2/)
 
 const controlsStart = source.indexOf('className="remove-controls"')
 const controlsEnd = source.indexOf('</span>', controlsStart)

@@ -1234,6 +1234,210 @@ def _parse_scores(raw: str, source: str) -> list:
     return []
 
 
+def _comparison_prompt(
+    candidates: list[dict],
+    pairs: list[tuple[str, str]],
+) -> str:
+    import buy_ranking
+
+    by_key = {buy_ranking.candidate_key(row): row for row in candidates}
+    requested_keys = list(dict.fromkeys(key for pair in pairs for key in pair))
+    context = []
+    for key in requested_keys:
+        row = by_key[key]
+        score = row.get("score") or {}
+        factors = score.get("score_factors")
+        factors = factors if isinstance(factors, dict) else {}
+        evidence = score.get("factor_evidence")
+        evidence = evidence if isinstance(evidence, dict) else {}
+        context.append(
+            {
+                "key": key,
+                "title": (row.get("item") or {}).get("title") or "",
+                "hunt": row.get("watch") or "",
+                "score_factors": factors,
+                "factor_evidence": evidence,
+                "delivered_price_ron": factors.get("delivered_cost_ron"),
+                "interval": [
+                    score.get("score_interval_low"),
+                    score.get("score_interval_high"),
+                ],
+            }
+        )
+    payload = {
+        "requested_pairs": [
+            {"left": left, "right": right} for left, right in pairs
+        ],
+        "candidates": context,
+    }
+    return (
+        "Rank this buyer's close purchase candidates. Compare every requested pair "
+        "exactly once using utility factors, evidence, delivered price, and uncertainty "
+        "intervals. Do not rescore candidates and do not compare unrequested pairs. "
+        "Return one JSON object with a comparisons array. Each comparison must repeat "
+        "the requested left and right keys exactly and contain winner "
+        '("left", "right", or "tie"), confidence (0 to 1), and a short reason.\n'
+        + json.dumps(payload, ensure_ascii=False, sort_keys=True)
+    )
+
+
+def _parse_comparison_response(raw: str, source: str) -> list:
+    text = (raw or "").strip()
+    if text.startswith("```"):
+        text = text.strip("`")
+        if text.lower().startswith("json"):
+            text = text[4:].lstrip()
+    try:
+        parsed = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        print(f"Could not parse {source} pairwise response.", file=sys.stderr)
+        return []
+    if isinstance(parsed, dict) and isinstance(parsed.get("comparisons"), list):
+        return parsed["comparisons"]
+    print(
+        f"{source} returned JSON without a comparisons array.",
+        file=sys.stderr,
+    )
+    return []
+
+
+def _valid_rank_outcomes(
+    outcomes: list,
+    pairs: list[tuple[str, str]],
+) -> list[dict]:
+    if not isinstance(outcomes, list) or len(outcomes) != len(pairs):
+        return []
+    expected = set(pairs)
+    accepted = {}
+    for outcome in outcomes:
+        if not isinstance(outcome, dict):
+            return []
+        pair = (outcome.get("left"), outcome.get("right"))
+        confidence = outcome.get("confidence")
+        if (
+            pair not in expected
+            or pair in accepted
+            or outcome.get("winner") not in {"left", "right", "tie"}
+            or not _bounded_number(confidence, 0, 1)
+            or not isinstance(outcome.get("reason"), str)
+        ):
+            return []
+        accepted[pair] = {
+            "left": pair[0],
+            "right": pair[1],
+            "winner": outcome["winner"],
+            "confidence": float(confidence),
+            "reason": outcome["reason"][:240],
+        }
+    if set(accepted) != expected:
+        return []
+    return [accepted[pair] for pair in pairs]
+
+
+def _rank_with_gateway(api_key: str, prompt: str) -> list:
+    response = requests.post(
+        f"{VERCEL_GATEWAY_BASE}/chat/completions",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "model": AI_GATEWAY_MODEL,
+            "messages": [{"role": "user", "content": prompt}],
+            "response_format": {"type": "json_object"},
+        },
+        timeout=60,
+    )
+    response.raise_for_status()
+    content = (
+        ((response.json().get("choices") or [{}])[0].get("message") or {}).get(
+            "content"
+        )
+        or ""
+    )
+    return _parse_comparison_response(content, "AI Gateway")
+
+
+def _rank_with_gemini(client, prompt: str) -> list:
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(response_mime_type="application/json"),
+    )
+    return _parse_comparison_response(response.text or "", "Gemini")
+
+
+def rank_candidates(
+    candidates: list[dict],
+    gateway_key: str,
+    gemini_client,
+    config: dict,
+) -> list[dict]:
+    import buy_ranking
+
+    pairs = buy_ranking.comparison_pairs(candidates, config)
+    if not pairs:
+        return buy_ranking.apply_rankings(candidates, [], config)
+    prompt = _comparison_prompt(candidates, pairs)
+    outcomes = []
+    errors = []
+    if gateway_key:
+        try:
+            outcomes = _valid_rank_outcomes(
+                _rank_with_gateway(gateway_key, prompt),
+                pairs,
+            )
+            if not outcomes:
+                errors.append("AI Gateway returned malformed pairwise comparisons")
+        except Exception as exc:
+            errors.append(f"AI Gateway pairwise ranking failed: {exc}")
+            print(errors[-1], file=sys.stderr)
+    if not outcomes and gemini_client is not None:
+        try:
+            outcomes = _valid_rank_outcomes(
+                _rank_with_gemini(gemini_client, prompt),
+                pairs,
+            )
+            if not outcomes:
+                errors.append("Gemini returned malformed pairwise comparisons")
+        except Exception as exc:
+            errors.append(f"Gemini pairwise ranking failed: {exc}")
+            print(errors[-1], file=sys.stderr)
+    if outcomes:
+        print(
+            f"Ranked {len(pairs)} close candidate pair(s).",
+            file=sys.stderr,
+        )
+    else:
+        print(
+            "All pairwise rankers failed: "
+            + "; ".join(errors or ["no pairwise ranker configured"]),
+            file=sys.stderr,
+        )
+    return buy_ranking.apply_rankings(candidates, outcomes, config)
+
+
+def persist_ranked_candidates(score_db, candidates: list[dict], scored_store_mod) -> None:
+    rows = []
+    for candidate in candidates:
+        score = candidate.get("score") or {}
+        if (
+            score.get("score_version") != 2
+            or score.get("rank_position") is None
+            or score.get("rank_confidence") is None
+        ):
+            continue
+        rows.append(
+            scored_store_mod.row_from_item_score(
+                candidate["item"],
+                score,
+                candidate.get("watch") or "",
+                source="pairwise_rank",
+            )
+        )
+    score_db.upsert_many(rows)
+
+
 def _bounded_number(value, low: float, high: float) -> bool:
     if isinstance(value, bool):
         return False
@@ -2370,6 +2574,17 @@ def main() -> None:
         )
     merged = merge_scored(scored, still_prior + revived)
     merged = listing_vetoes_mod.filter_scored_rows(merged, suppress_ids)
+    rank_candidates(
+        merged,
+        "" if test_mode else gateway_key,
+        None if test_mode else gemini_client,
+        config,
+    )
+    try:
+        # Score rows are written in score_batch; rank-bearing rewrites must follow them.
+        persist_ranked_candidates(score_db, merged, scored_store_mod)
+    except Exception as e:
+        print(f"scored_store rank upsert failed: {e}", file=sys.stderr)
     bundles, solos = assemble_bundles(merged, config)
     # Re-check bundle membership after remove (assemble already omitted removed rows).
     pruned_bundles = []

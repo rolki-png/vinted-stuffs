@@ -5,13 +5,14 @@ Vinted deal-bot.
 For each configured "watch" (a saved search), this:
   1. searches Vinted via the vinted-mcp-cli (no ScrapeBadger)
   2. drops any listing we've already processed (dedup state in data/seen_listings.json)
-  3. scores new listings (Vercel AI Gateway, then Gemini fallback) for deal + scam risk
-  4. pushes a ntfy alert for anything that clears the watch's threshold
+  3. extracts purchase factors and calculates v2 utility scores
+  4. pushes a ntfy alert for anything that clears v2 qualification
   5. commits the updated dedup state back (handled by the GitHub Actions workflow)
  
 Config lives in python/config.json — see that file for the schema.
 """
 import json
+import math
 import os
 import subprocess
 import sys
@@ -471,7 +472,7 @@ def select_closet_crawl_sellers(candidates: list, config: dict) -> list:
         candidates,
         key=lambda c: (
             1 if c.get("is_keep") else 0,
-            _as_int_score((c.get("score") or {}).get("deal_score")),
+            _score_sort_key(c.get("score") or {}),
         ),
         reverse=True,
     )
@@ -500,69 +501,66 @@ def select_closet_crawl_sellers(candidates: list, config: dict) -> list:
 # ChatGPT Plus has no API. An OpenAI API key can be sent *through* the gateway
 # as BYOK; a chatgpt.com subscription cannot.
  
-SCORING_PROMPT = """The buyer pays shipping and Vinted buyer fees on top of \
-the listing price. Cheap individual items are usually NOT outstanding deals. \
-Do not give a high deal score merely because an item costs little, nor merely \
-because a premium brand is discounted.
+SCORING_PROMPT = """You are extracting purchase-utility factors from second-hand \
+Vinted listings. Return ONLY a JSON array (no prose or markdown fences), with \
+one object per listing:
 
-The buyer does NOT want to accumulate lots of clothes. Only recommend \
-creme-de-la-creme deals: items that are unusually good in quality, fit, \
-condition and price, and that would be genuinely disappointing to miss. \
-A normal good deal is a skip. Prefer fewer, better items over quantity.
+{{
+  "id": <listing id>,
+  "hunt_fit": <boolean>,
+  "verification_concern": "none" | "inspect" | "block",
+  "verification_reason": "<evidence or empty>",
+  "reason": "<one sentence purchase assessment>",
+  "personal_adjustments": {{
+    "fit_probability": <-10..10>,
+    "usefulness": <-10..10>,
+    "quality": <-10..10>,
+    "condition": <-10..10>,
+    "versatility": <-10..10>,
+    "value": <-10..10>,
+    "duplication_probability": <-10..10>
+  }},
+  "factors": {{
+    "fit_probability": {{"value": <0..1>, "confidence": <0..1>, "evidence": "<short>"}},
+    "usefulness": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
+    "quality": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
+    "condition": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
+    "versatility": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
+    "equivalent_replacement_cost": {{
+      "value": <positive amount>,
+      "currency": "RON",
+      "confidence": <0..1>,
+      "evidence": "<conservative equivalent>"
+    }},
+    "duplication_probability": {{"value": <0..1>, "confidence": <0..1>, "evidence": "<short>"}}
+  }}
+}}
 
-For a 9+ alert, several of these should hold at once:
-- outstanding product (not merely a correct brand)
-- large ABSOLUTE saving vs buying an equivalent high-quality item new
-- very good / unused condition
-- correct size and a cut the buyer will realistically wear often
-- timeless or highly functional, not filler
+Never return buy_score. Do not reward brand or MSRP alone. Estimate a conservative \
+equivalent replacement, not aspirational retail. Seller age/history is not a utility \
+penalty. Use verification_concern only for item identity, authenticity, material \
+condition, or missing evidence. Use "unknown" evidence with confidence 0 when a \
+listing does not support an estimate. Personal adjustments must be zero unless the \
+reason-scoped buyer taste evidence below specifically supports an adjustment to that \
+factor.
 
-You are screening second-hand Vinted listings. Most listings should fail. \
-Return ONLY a JSON array (no prose, no markdown fences) with one object \
-per listing:
-
-  {{"id": <item id>, "deal_score": <1-10>, "value_band": "steal"|"hunt"|"acceptable"|"skip", \
-"hunt_fit": <true|false>, "scam_risk": "low"|"medium"|"high", \
-"reason": "<one short sentence>"}}
-
-hunt_fit: true only if the listing genuinely matches this hunt.
+hunt_fit is true only when the listing genuinely matches this hunt.
 
 Hunt type: {target_type}
 Target sizes: {target_sizes}
 Specific hunt: {query}
 Extra instructions: {notes}
+Hunt price: {hunt_price} {currency}
+Hard search cap: {price_to} {currency}
 
 For men's clothing hunts, reject women's/kids pieces and incorrect sizes.
 For maternity or women's hunts, reject men's and kids pieces.
 For sneakers, use the stated EU size and allow equivalent nearby manufacturer \
 sizes only when they realistically fit the target.
 For model-specific hunts, reject generic products from the same brand.
-For premium knitwear, verify that the material/line is actually valuable; \
-the brand name alone is not enough.
+For premium knitwear, verify that the material/line is actually valuable; brand \
+alone is not enough.
 {maternity_rules}
-
-value_band is price vs quality for that exact piece:
-  steal — well under the hunt price for the right SKU and very-good+ condition
-  hunt — at or under the hunt price ({hunt_price} {currency}) for a true match
-  acceptable — between hunt price and the hard cap ({price_to} {currency}); \
-ordinary used-market price, not a keep
-  skip — overpriced, wrong item, poor condition, or junk keyword match
-
-deal_score (after fees/shipping) — 9 means "would hate to miss", not "good price":
-  10 = exceptional steal; rare enough to buy immediately
-  9 = outstanding deal; unusually strong value and very desirable
-  8 = good deal, but not special enough for this buyer — not a keep
-  7 or below = skip (acceptable, cap-adjacent, cheap-but-low-value, wrong line, weak condition)
-
-scam_risk, in order of importance:
-  1. Seller account age/history (member_since, feedback_count, item_count) — \
-a brand-new account selling a suspiciously cheap piece is the strongest signal.
-  2. Implausibly low price for the brand/item/condition.
-  3. Low favourite count relative to how good the deal claims to be.
-Missing seller history is elevated risk, same as a new account — never "low".
-
-Buyer hunt: "{query}". Hunt price (good value): {hunt_price} {currency}. \
-Hard cap (search only): {price_to} {currency}.
 
 Listings:
 {listings_json}
@@ -591,7 +589,7 @@ def _listing_payload(items: list) -> list:
     ]
 
 
-def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
+def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
     currency = (
         (items[0].get("price") or {}).get("currency_code", "RON")
         if items else "RON"
@@ -602,14 +600,15 @@ def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
         maternity_rules = (
             "For maternity clothing, do not reward an item simply because it is cheap. "
             "Prefer fewer, higher-value purchases over accumulating basics. "
-            "Give 9–10 when several hold: premium maternity-specific construction; "
+            "Raise usefulness and quality only when supported by evidence such as "
+            "premium maternity-specific construction; "
             "leggings (gym + everyday), dresses, trousers, outerwear and "
             "substantial easy-care pieces; garments usable both during pregnancy and "
             "postpartum/nursing; excellent or unused condition; unusually large "
             "absolute savings versus retail. "
             "Skip wool, merino, cashmere, and other hard-care knitwear. "
-            "Give 8 for a true XL or L/XL hunt-fit in very-good+ condition at or under "
-            "hunt price when the piece is genuinely useful maternity/nursing wear. "
+            "Only mark a true XL or L/XL as hunt-fit when it is genuinely useful "
+            "maternity/nursing wear. "
             "A 30-50 RON basic maternity T-shirt sold individually is a skip. "
             "Size target is women's XL and L/XL only (also accept clear text equivalents "
             "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
@@ -618,7 +617,7 @@ def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
     if is_mens_gym_watch(watch):
         gym_tee_rules = (
             "For this men's gym/training hunt, men's gym T-shirts / tees / koszulki / "
-            "tricouri / polos / basic tops are ALWAYS skip (hunt_fit false, value_band skip) "
+            "tricouri / polos / basic tops are ALWAYS hunt_fit false "
             "regardless of price or brand. Prefer gym/training shorts; other non-tee "
             "technical pieces only if exceptional."
         )
@@ -644,6 +643,9 @@ def _scoring_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
     return f"{base}\n\n{block}\n"
 
 
+_scoring_prompt = _extraction_prompt
+
+
 def _max_new_items_per_watch(config: dict) -> int:
     return int(
         config.get("max_new_items_per_watch")
@@ -657,6 +659,76 @@ def _as_int_score(value) -> int:
         return int(value)
     except (TypeError, ValueError):
         return 0
+
+
+def _is_declared_v2(score: dict) -> bool:
+    try:
+        return int(score.get("score_version") or 0) == 2
+    except (TypeError, ValueError):
+        return False
+
+
+def _score_sort_key(score: dict) -> tuple[int, int, int]:
+    """Sort v2 scores together and ahead of explicitly legacy score rows."""
+    import buy_score as buy_score_mod
+
+    try:
+        if buy_score_mod.is_v2_score(score):
+            return (
+                1,
+                _as_int_score(score.get("buy_score")),
+                1 if score.get("buy_band") == "exceptional" else 0,
+            )
+    except (TypeError, ValueError):
+        pass
+    return (
+        0,
+        _as_int_score(score.get("deal_score")),
+        1 if score.get("value_band") == "steal" else 0,
+    )
+
+
+def _score_snapshot(score: dict) -> dict:
+    common = {
+        "score_version": 2 if _is_declared_v2(score) else None,
+        "hunt_fit": score.get("hunt_fit"),
+        "reason": score.get("reason") or "",
+    }
+    if _is_declared_v2(score):
+        return {
+            **common,
+            "buy_score": score.get("buy_score"),
+            "buy_band": score.get("buy_band"),
+            "score_confidence": score.get("score_confidence"),
+            "score_interval_low": score.get("score_interval_low"),
+            "score_interval_high": score.get("score_interval_high"),
+            "score_factors": score.get("score_factors") or {},
+            "factor_evidence": score.get("factor_evidence") or {},
+            "verification_concern": score.get("verification_concern"),
+            "verification_reason": score.get("verification_reason") or "",
+            "rank_position": score.get("rank_position"),
+            "rank_confidence": score.get("rank_confidence"),
+        }
+    return {
+        **common,
+        "deal_score": score.get("deal_score"),
+        "value_band": score.get("value_band"),
+        "scam_risk": score.get("scam_risk"),
+    }
+
+
+def _v2_score_histogram(rows: list) -> dict[str, int]:
+    keys = [f"{low}-{low + 9}" for low in range(0, 90, 10)] + ["90-100"]
+    histogram = {key: 0 for key in keys}
+    for row in rows:
+        score = row.get("score") or {}
+        if not _is_declared_v2(score):
+            continue
+        value = max(0, min(100, _as_int_score(score.get("buy_score"))))
+        low = min((value // 10) * 10, 90)
+        high = 100 if low == 90 else low + 9
+        histogram[f"{low}-{high}"] += 1
+    return histogram
 
 
 def listing_amount(item: dict):
@@ -674,16 +746,40 @@ def is_clothing_solo_bound(watch: dict) -> bool:
 
 
 def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) -> bool:
-    """True only for a true-fit, crème-level listing that is not high-risk."""
+    """Apply v2 utility gates, with explicit legacy cached-row fallback."""
     if watch.get("bundle_hunt"):
         return False
-    if not score or score.get("scam_risk") == "high":
+    if not score:
         return False
     if item is not None and is_mens_gym_watch(watch):
         import value_haul as vh
 
         if vh.looks_like_mens_gym_tee(item):
             return False
+    import buy_score as buy_score_mod
+
+    try:
+        declared_v2 = int(score.get("score_version") or 0) == 2
+        calculated_v2 = buy_score_mod.is_v2_score(score)
+    except (TypeError, ValueError):
+        declared_v2 = False
+        calculated_v2 = False
+    if declared_v2:
+        if not calculated_v2:
+            return False
+        cfg = buy_score_mod.score_config(config)
+        try:
+            confidence = float(score.get("score_confidence") or 0)
+        except (TypeError, ValueError):
+            return False
+        return (
+            score.get("hunt_fit") is True
+            and _as_int_score(score.get("buy_score")) >= int(cfg["keep_min_score"])
+            and confidence >= float(cfg["min_keep_confidence"])
+            and score.get("verification_concern") != "block"
+        )
+    if score.get("scam_risk") == "high":
+        return False
     min_score = watch.get("min_deal_score", config.get("min_deal_score", 9))
     if _as_int_score(score.get("deal_score")) < min_score:
         return False
@@ -705,6 +801,23 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
 
 
 def is_bundle_extra(score: dict, config: dict) -> bool:
+    import buy_score as buy_score_mod
+
+    try:
+        declared_v2 = int(score.get("score_version") or 0) == 2
+        calculated_v2 = buy_score_mod.is_v2_score(score)
+    except (TypeError, ValueError):
+        declared_v2 = False
+        calculated_v2 = False
+    if declared_v2:
+        if not calculated_v2:
+            return False
+        cfg = buy_score_mod.score_config(config)
+        return (
+            score.get("hunt_fit") is True
+            and _as_int_score(score.get("buy_score")) >= int(cfg["bundle_min_score"])
+            and score.get("verification_concern") != "block"
+        )
     if score.get("hunt_fit") is not True:
         return False
     if score.get("scam_risk") == "high":
@@ -761,13 +874,10 @@ def matching_watches(item: dict, watches: list) -> list:
 
 
 def select_best(candidates: list, config: dict) -> list:
-    """Rank keeps by deal_score and keep only the top N for the whole run."""
+    """Rank v2 keeps together, ahead of legacy rows, and cap the whole run."""
     ranked = sorted(
         candidates,
-        key=lambda c: (
-            _as_int_score(c["score"].get("deal_score")),
-            1 if c["score"].get("value_band") == "steal" else 0,
-        ),
+        key=lambda c: _score_sort_key(c["score"]),
         reverse=True,
     )
     limit = int(config.get("max_keeps_per_run", 3))
@@ -992,14 +1102,11 @@ def seed_pool_from_history(watches: list) -> list:
         watch = by_name.get(raw.get("watch"))
         if not watch:
             continue
-        score = {
-            "id": raw.get("id"),
-            "deal_score": raw.get("deal_score"),
-            "value_band": raw.get("value_band"),
-            "hunt_fit": raw.get("hunt_fit", True),
-            "scam_risk": raw.get("scam_risk", "medium"),
-            "reason": raw.get("reason", ""),
-        }
+        score = _score_snapshot(raw)
+        score["id"] = raw.get("id")
+        score["hunt_fit"] = raw.get("hunt_fit", True)
+        if not _is_declared_v2(score):
+            score["scam_risk"] = raw.get("scam_risk", "medium")
         if score.get("hunt_fit") is False:
             continue
         item = {
@@ -1113,11 +1220,179 @@ def _parse_scores(raw: str, source: str) -> list:
     return []
 
 
+def _bounded_number(value, low: float, high: float) -> bool:
+    if isinstance(value, bool):
+        return False
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return False
+    return math.isfinite(number) and low <= number <= high
+
+
+def _valid_factor(field, low: float, high: float, *, positive: bool = False) -> bool:
+    if not isinstance(field, dict):
+        return False
+    value = field.get("value")
+    if not _bounded_number(value, low, high):
+        return False
+    if positive and float(value) <= 0:
+        return False
+    return (
+        _bounded_number(field.get("confidence"), 0, 1)
+        and isinstance(field.get("evidence"), str)
+    )
+
+
+def _valid_extractions(extractions: list, items: list) -> bool:
+    """Accept only complete, bounded factor output for the requested listings."""
+    if not isinstance(extractions, list) or not extractions:
+        return False
+    expected_ids = [str(item.get("id")) for item in items if item.get("id") is not None]
+    if len(extractions) != len(expected_ids):
+        return False
+    seen_ids = []
+    for extraction in extractions:
+        if not isinstance(extraction, dict):
+            return False
+        seen_ids.append(str(extraction.get("id")))
+        if not isinstance(extraction.get("hunt_fit"), bool):
+            return False
+        if extraction.get("verification_concern") not in {
+            "none",
+            "inspect",
+            "block",
+        }:
+            return False
+        if not isinstance(extraction.get("verification_reason"), str):
+            return False
+        if not isinstance(extraction.get("reason"), str):
+            return False
+        adjustments = extraction.get("personal_adjustments")
+        if not isinstance(adjustments, dict) or any(
+            not _bounded_number(value, -10, 10) for value in adjustments.values()
+        ):
+            return False
+        factors = extraction.get("factors")
+        if not isinstance(factors, dict):
+            return False
+        if not _valid_factor(factors.get("fit_probability"), 0, 1):
+            return False
+        if not all(
+            _valid_factor(factors.get(key), 0, 100)
+            for key in ("usefulness", "quality", "condition", "versatility")
+        ):
+            return False
+        replacement = factors.get("equivalent_replacement_cost")
+        if not _valid_factor(replacement, 0, float("inf"), positive=True):
+            return False
+        if str(replacement.get("currency") or "").upper() != "RON":
+            return False
+        if not _valid_factor(factors.get("duplication_probability"), 0, 1):
+            return False
+    return sorted(seen_ids) == sorted(expected_ids) and len(set(seen_ids)) == len(seen_ids)
+
+
+def normalize_extractions(
+    extractions: list,
+    items: list,
+    watch: dict,
+    config: dict,
+) -> list:
+    import buy_score as buy_score_mod
+
+    by_id = {str(item.get("id")): item for item in items}
+    out = []
+    for extraction in extractions:
+        item = by_id.get(str(extraction.get("id")))
+        if not item:
+            continue
+        amount = listing_amount(item)
+        if amount is None:
+            continue
+        country = _country(watch)
+        delivered = amount + checkout_extra_ron(country, config, amount)
+        out.append(
+            buy_score_mod.calculate_buy_score(
+                extraction,
+                delivered_cost_ron=delivered,
+                config=config,
+            )
+        )
+    return out
+
+
+def _test_mode_extractions(items: list, watch: dict, config: dict) -> list:
+    """Build valid deterministic extraction fixtures for the real calculator."""
+    extractions = []
+    for item in items:
+        amount = listing_amount(item) or 0
+        delivered = amount + checkout_extra_ron(_country(watch), config, amount)
+        evidence = "TEST MODE - extraction skipped"
+        extractions.append(
+            {
+                "id": item.get("id"),
+                "hunt_fit": True,
+                "verification_concern": "none",
+                "verification_reason": "",
+                "reason": evidence,
+                "personal_adjustments": {
+                    "fit_probability": 0,
+                    "usefulness": 0,
+                    "quality": 0,
+                    "condition": 0,
+                    "versatility": 0,
+                    "value": 0,
+                    "duplication_probability": 0,
+                },
+                "factors": {
+                    "fit_probability": {
+                        "value": 1,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "usefulness": {
+                        "value": 100,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "quality": {
+                        "value": 100,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "condition": {
+                        "value": 100,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "versatility": {
+                        "value": 100,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "equivalent_replacement_cost": {
+                        "value": delivered + 1000,
+                        "currency": "RON",
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                    "duplication_probability": {
+                        "value": 0,
+                        "confidence": 1,
+                        "evidence": evidence,
+                    },
+                },
+            }
+        )
+    return extractions
+
+
 def score_with_gateway(
     api_key: str, watch: dict, items: list, *, taste_block: str = ""
 ) -> list:
     prompt = (
-        _scoring_prompt(watch, items, taste_block=taste_block)
+        _extraction_prompt(watch, items, taste_block=taste_block)
         + '\nWrap the array as {"listings": [ ... ]} so the response is a JSON object.'
     )
     resp = requests.post(
@@ -1143,7 +1418,7 @@ def score_with_gemini(
 ) -> list:
     response = client.models.generate_content(
         model=GEMINI_MODEL,
-        contents=_scoring_prompt(watch, items, taste_block=taste_block),
+        contents=_extraction_prompt(watch, items, taste_block=taste_block),
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
         ),
@@ -1156,31 +1431,36 @@ def score_listings(
     items: list,
     gateway_key: str,
     gemini_client,
+    config: dict,
     *,
     taste_block: str = "",
 ) -> list:
     errors = []
     if gateway_key:
         try:
-            scores = score_with_gateway(
+            extractions = score_with_gateway(
                 gateway_key, watch, items, taste_block=taste_block
             )
-            if scores:
-                print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
-                return scores
-            errors.append("AI Gateway returned no parseable scores")
+            if _valid_extractions(extractions, items):
+                scores = normalize_extractions(extractions, items, watch, config)
+                if scores:
+                    print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
+                    return scores
+            errors.append("AI Gateway returned invalid or incomplete factor extraction")
         except requests.RequestException as e:
             errors.append(f"AI Gateway failed: {e}")
             print(errors[-1], file=sys.stderr)
     if gemini_client is not None:
         try:
-            scores = score_with_gemini(
+            extractions = score_with_gemini(
                 gemini_client, watch, items, taste_block=taste_block
             )
-            if scores:
-                print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
-                return scores
-            errors.append("Gemini returned no parseable scores")
+            if _valid_extractions(extractions, items):
+                scores = normalize_extractions(extractions, items, watch, config)
+                if scores:
+                    print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
+                    return scores
+            errors.append("Gemini returned invalid or incomplete factor extraction")
         except Exception as e:
             errors.append(f"Gemini failed: {e}")
             print(errors[-1], file=sys.stderr)
@@ -1308,23 +1588,55 @@ def _ntfy_post(topic: str, title: str, body: str, url: str | None, priority: str
         print(f"ntfy send failed: {e}", file=sys.stderr)
 
 
+def _v2_notification_score(score: dict) -> str:
+    return (
+        f"{_as_int_score(score.get('buy_score'))}/100 "
+        f"[{_as_int_score(score.get('score_interval_low'))}-"
+        f"{_as_int_score(score.get('score_interval_high'))}] "
+        f"{score.get('buy_band') or 'skip'} "
+        f"verification: {score.get('verification_concern') or 'block'}"
+    )
+
+
 def send_ntfy(topic: str, item: dict, score: dict) -> None:
     price = (item.get("price") or {}).get("amount", "?")
     currency = (item.get("price") or {}).get("currency_code", "")
-    band = score.get("value_band") or "keep"
-    title = _header_safe(
-        f"{score['deal_score']}/10 {band}: {item.get('title', '')[:50]}"
-    )
-    body = (
-        f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
-        f"- {band} - scam: {score['scam_risk']}\n{score['reason']}"
-    )
+    if _is_declared_v2(score):
+        score_text = _v2_notification_score(score)
+        title = _header_safe(f"{score_text}: {item.get('title', '')[:50]}")
+        body = (
+            f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
+            f"- {score_text}\n{score.get('reason') or ''}"
+        )
+        high_priority = _as_int_score(score.get("buy_score")) >= 85
+    else:
+        band = score.get("value_band") or "keep"
+        title = _header_safe(
+            f"{score['deal_score']}/10 {band}: {item.get('title', '')[:50]}"
+        )
+        body = (
+            f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
+            f"- {band} - scam: {score['scam_risk']}\n{score['reason']}"
+        )
+        high_priority = _as_int_score(score.get("deal_score")) >= 9
     _ntfy_post(
         topic,
         title,
         body,
         item.get("url"),
-        "high" if _as_int_score(score.get("deal_score")) >= 9 else "default",
+        "high" if high_priority else "default",
+    )
+
+
+def _bundle_notification_line(role: str, row: dict) -> str:
+    score = row["score"]
+    if _is_declared_v2(score):
+        score_text = _v2_notification_score(score)
+    else:
+        score_text = f"{score.get('deal_score')}/10"
+    return (
+        f"{role} {score_text} {row['item'].get('title', '')[:70]} "
+        f"({listing_amount(row['item'])} RON) {row['item'].get('url') or ''}"
     )
 
 
@@ -1343,17 +1655,9 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> None:
         weak = " (weak/stretch)" if bundle.get("offer_weak") else ""
         lines.append(f"offer ~{int(offer)} RON{weak}")
     for row in bundle["keeps"]:
-        amt = listing_amount(row["item"])
-        lines.append(
-            f"KEEP {row['score'].get('deal_score')}/10 {row['item'].get('title', '')[:70]} "
-            f"({amt} RON) {row['item'].get('url') or ''}"
-        )
+        lines.append(_bundle_notification_line("KEEP", row))
     for row in bundle["extras"]:
-        amt = listing_amount(row["item"])
-        lines.append(
-            f"EXTRA {row['score'].get('deal_score')}/10 {row['item'].get('title', '')[:70]} "
-            f"({amt} RON) {row['item'].get('url') or ''}"
-        )
+        lines.append(_bundle_notification_line("EXTRA", row))
     click = (bundle["keeps"][0]["item"].get("user") or {})
     profile = None
     if bundle.get("seller_id"):
@@ -1508,23 +1812,19 @@ def main() -> None:
         for offset in range(0, len(items), chunk_size):
             chunk = items[offset:offset + chunk_size]
             if test_mode:
-                scores = [
-                    {
-                        "id": item.get("id"),
-                        "deal_score": 10,
-                        "value_band": "steal",
-                        "hunt_fit": True,
-                        "scam_risk": "low",
-                        "reason": "TEST MODE - scoring skipped",
-                    }
-                    for item in chunk
-                ]
+                scores = normalize_extractions(
+                    _test_mode_extractions(chunk, watch, config),
+                    chunk,
+                    watch,
+                    config,
+                )
             else:
                 scores = score_listings(
                     watch,
                     chunk,
                     gateway_key,
                     gemini_client,
+                    config,
                     taste_block=taste_block_for(watch),
                 )
             scores_by_id = {str(s["id"]): s for s in scores if s.get("id") is not None}
@@ -2004,10 +2304,7 @@ def main() -> None:
                 "price": (item.get("price") or {}).get("amount"),
                 "currency": (item.get("price") or {}).get("currency_code"),
                 "url": item.get("url"),
-                "deal_score": score.get("deal_score"),
-                "value_band": score.get("value_band"),
-                "scam_risk": score.get("scam_risk"),
-                "reason": score.get("reason"),
+                **_score_snapshot(score),
                 "seller_id": seller_id(item),
                 "seller": seller_login(item),
                 "seller_country": (item.get("_profile") or {}).get("country_code"),
@@ -2076,7 +2373,7 @@ def main() -> None:
                     "price": listing_amount(r["item"]),
                     "url": r["item"].get("url"),
                     "watch": r["watch"],
-                    "deal_score": r["score"].get("deal_score"),
+                    **_score_snapshot(r["score"]),
                     "seller_id": seller_id(r["item"]),
                     "seller": seller_login(r["item"]) or bundle_seller,
                 }
@@ -2108,14 +2405,11 @@ def main() -> None:
     )
     bundle_rows = vh.enrich_bundle_offer_fields(bundle_rows, config)
     save_bundles(bundle_rows)
-    histogram: dict[str, int] = {}
-    for row in scored:
-        key = str(_as_int_score(row["score"].get("deal_score")))
-        histogram[key] = histogram.get(key, 0) + 1
+    histogram = _v2_score_histogram(scored)
     top = sorted(
         scored,
         key=lambda r: (
-            _as_int_score(r["score"].get("deal_score")),
+            _score_sort_key(r["score"]),
             1 if r["score"].get("hunt_fit") is True else 0,
         ),
         reverse=True,
@@ -2123,6 +2417,7 @@ def main() -> None:
     LAST_RUN_PATH.parent.mkdir(parents=True, exist_ok=True)
     LAST_RUN_PATH.write_text(json.dumps({
         "finished_at": now,
+        "score_version": 2,
         "scored": len(scored),
         "solo_keeps": len(keeps),
         "bundles": len(bundles),
@@ -2137,11 +2432,7 @@ def main() -> None:
                 "price": listing_amount(r["item"]),
                 "url": r["item"].get("url"),
                 "watch": r["watch"],
-                "deal_score": r["score"].get("deal_score"),
-                "value_band": r["score"].get("value_band"),
-                "hunt_fit": r["score"].get("hunt_fit"),
-                "scam_risk": r["score"].get("scam_risk"),
-                "reason": r["score"].get("reason"),
+                **_score_snapshot(r["score"]),
                 "seller_id": seller_id(r["item"]),
                 "seller": seller_login(r["item"]),
             }

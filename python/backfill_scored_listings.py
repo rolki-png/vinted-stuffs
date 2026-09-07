@@ -255,7 +255,13 @@ def main() -> None:
         chunk_size = 10
         for offset in range(0, len(items), chunk_size):
             chunk = items[offset:offset + chunk_size]
-            scores = bot.score_listings(watch, chunk, gateway, gemini_client)
+            scores = bot.score_listings(
+                watch,
+                chunk,
+                gateway,
+                gemini_client,
+                config,
+            )
             by_id = {str(s["id"]): s for s in scores if s.get("id") is not None}
             rows = []
             for item in chunk:

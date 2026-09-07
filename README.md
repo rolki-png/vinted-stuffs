@@ -7,11 +7,11 @@ Buyer-side Vinted hunt bot and Deal desk dashboard.
 
 ## Architecture
 
-| Piece | Where | Role |
-|---|---|---|
-| `python/vinted_bot.py` | local / GitHub Actions | Search, score, bundles, ntfy, commit `data/` |
-| `.github/workflows/vinted-bot.yml` | GitHub | Every 15 min + manual / dashboard trigger |
-| TanStack Start (`src/`) | Vercel | Deal desk UI + `/api/*` server routes |
+| Piece                              | Where                  | Role                                         |
+| ---------------------------------- | ---------------------- | -------------------------------------------- |
+| `python/vinted_bot.py`             | local / GitHub Actions | Search, score, bundles, ntfy, commit `data/` |
+| `.github/workflows/vinted-bot.yml` | GitHub                 | Every 15 min + manual / dashboard trigger    |
+| TanStack Start (`src/`)            | Vercel                 | Deal desk UI + `/api/*` server routes        |
 
 Vercel does **not** scrape Vinted listings. It reads committed JSON (and optional Cockroach score cache), can dispatch the Actions workflow, and (Hunts tab only) looks up Vinted **catalogue** brands/sizes.
 
@@ -19,9 +19,25 @@ Vercel does **not** scrape Vinted listings. It reads committed JSON (and optiona
 
 ```bash
 set -a && source .env && set +a
-uv run --with-requirements python/requirements.txt python python/vinted_bot.py
-FULL_SWEEP=1 uv run --with-requirements python/requirements.txt python python/vinted_bot.py
+uv run --project python python python/vinted_bot.py
+FULL_SWEEP=1 uv run --project python python python/vinted_bot.py
 ```
+
+## Scoring
+
+V2 separates extraction from scoring. The LLM extracts evidence and confidence
+for usefulness, quality, condition, versatility, replacement cost, fit, and
+duplication. Deterministic code then calculates `buy_score` as purchase utility
+on a 0–100 scale, including delivered cost and an uncertainty interval.
+Unknown evidence is pulled toward neutral rather than treated as proof of risk.
+
+`buy_band` labels the calculated score: `skip` below 60, `bundle` at 60–74,
+`good` at 75–84, `keep` at 85–94, and `exceptional` at 95–100. A Keep also
+requires hunt fit, score confidence of at least 0.60, and no blocking
+verification concern. Pairwise comparisons rank only qualifying candidates
+whose uncertainty intervals overlap; rank orders close choices but never
+changes `buy_score` or promotes a sub-threshold listing. Legacy 1–10 scores are
+shown only as labelled history and are never compared with v2 scores.
 
 ## Local dashboard
 
@@ -34,8 +50,36 @@ npm run dev
 ## Tests
 
 ```bash
-cd python && python3 -m unittest discover -s tests -v
+uv run --project python python -m unittest discover -s python/tests -v
 ```
+
+## Legacy v2 rollout
+
+The production legacy migration has not been run by this change. The preferred
+rollout is a manual **vinted-deal-bot** GitHub Actions dispatch with
+`legacy_active_v2` enabled. That path injects the repository's `DATABASE_URL`,
+AI gateway/Gemini, and Vinted CLI settings without exposing their values. Each
+dispatch availability-checks one bounded batch before any paid scoring call,
+commits the export and progress state, and reports:
+
+- exit `0`: no available active-hunt legacy gaps remain;
+- exit `3`: a partial batch was committed; dispatch the rollout again;
+- any other nonzero exit: an operational failure.
+
+Confirmed unavailable rows keep their historical score and rationale and are
+tracked outside the score row, so they do not consume later batches or count as
+active completion gaps. Fetch failures remain retryable. Normal manual and
+scheduled bot runs do not enter this rollout path.
+
+For a deliberate local rollout with the same database and provider environment
+configured:
+
+```bash
+uv run --project python python python/backfill_scored_listings.py \
+  --legacy-active-v2 --limit 10000 --export
+```
+
+This command can incur paid LLM usage.
 
 ## Deploy dashboard to Vercel
 
@@ -45,14 +89,14 @@ npx vercel
 
 Project env vars (Production):
 
-| Var | Purpose |
-|---|---|
-| `GITHUB_TOKEN` | PAT: `repo` + `actions:write` (also Contents write for Hunts tab) |
-| `GITHUB_REPO` | `owner/repo` |
-| `GITHUB_REF` | usually `main` |
-| `GITHUB_WORKFLOW` | `vinted-bot.yml` |
-| `CRON_SECRET` | optional; Vercel Cron `Authorization: Bearer …` |
-| `DATABASE_URL` | optional Cockroach / Postgres for live score index + vetoes |
+| Var                | Purpose                                                                        |
+| ------------------ | ------------------------------------------------------------------------------ |
+| `GITHUB_TOKEN`     | PAT: `repo` + `actions:write` (also Contents write for Hunts tab)              |
+| `GITHUB_REPO`      | `owner/repo`                                                                   |
+| `GITHUB_REF`       | usually `main`                                                                 |
+| `GITHUB_WORKFLOW`  | `vinted-bot.yml`                                                               |
+| `CRON_SECRET`      | optional; Vercel Cron `Authorization: Bearer …`                                |
+| `DATABASE_URL`     | optional Cockroach / Postgres for live score index + vetoes                    |
 | `VINTED_PROXY_URL` | optional; catalogue brand/size lookups from Vercel if direct egress is blocked |
 
 After deploy: open the Vercel URL → **Run hunt** / **Remove** / **Park** / **Hunts** work with no pasted secret. Data updates when Actions commits `data/*`; hunt list updates when the Hunts tab saves `python/config.json`. Hit Refresh for finds.
@@ -90,6 +134,5 @@ Vercel does **not** scrape Vinted listings. Catalogue lookup (brands / size grou
 ## Known limits
 
 - Search results have no description, so "pay outside the app" will not show up.
-- Missing seller history is elevated scam risk.
 - GitHub-hosted runners may get DataDome-blocked; local or self-hosted is more reliable for sweeps.
 - Hunts tab write API is open like veto/trigger (server-side `GITHUB_TOKEN`); treat the Vercel URL as private.

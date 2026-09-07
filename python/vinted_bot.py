@@ -1471,6 +1471,25 @@ def score_with_gemini(
     return _parse_scores(response.text or "", "Gemini")
 
 
+def _log_scoring_result(
+    provider: str,
+    model: str,
+    valid_extraction_count: int,
+    scores: list[dict],
+) -> None:
+    if scores:
+        print(
+            f"Scored {len(scores)} listing(s) via {provider} ({model})",
+            file=sys.stderr,
+        )
+        return
+    print(
+        f"{provider} returned {valid_extraction_count} valid factor extraction(s), "
+        "but matching rows were unpriced; leaving them unscored.",
+        file=sys.stderr,
+    )
+
+
 def score_listings(
     watch: dict,
     items: list,
@@ -1489,19 +1508,12 @@ def score_listings(
             valid_extractions = _valid_extractions(extractions, items, config)
             if valid_extractions:
                 scores = normalize_extractions(valid_extractions, items, watch, config)
-                if scores:
-                    print(
-                        f"Scored {len(scores)} listing(s) via Vercel AI Gateway "
-                        f"({AI_GATEWAY_MODEL})",
-                        file=sys.stderr,
-                    )
-                else:
-                    print(
-                        f"Vercel AI Gateway returned {len(valid_extractions)} valid "
-                        "factor extraction(s), but matching rows were unpriced; "
-                        "leaving them unscored.",
-                        file=sys.stderr,
-                    )
+                _log_scoring_result(
+                    "Vercel AI Gateway",
+                    AI_GATEWAY_MODEL,
+                    len(valid_extractions),
+                    scores,
+                )
                 return scores
             errors.append("AI Gateway returned no valid factor extractions")
         except requests.RequestException as e:
@@ -1515,7 +1527,12 @@ def score_listings(
             valid_extractions = _valid_extractions(extractions, items, config)
             if valid_extractions:
                 scores = normalize_extractions(valid_extractions, items, watch, config)
-                print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
+                _log_scoring_result(
+                    "Gemini",
+                    GEMINI_MODEL,
+                    len(valid_extractions),
+                    scores,
+                )
                 return scores
             errors.append("Gemini returned no valid factor extractions")
         except Exception as e:
@@ -1647,7 +1664,7 @@ def _ntfy_post(
     )
     try:
         urllib.request.urlopen(req, timeout=10)
-    except urllib.error.URLError as e:
+    except (urllib.error.URLError, TimeoutError) as e:
         print(f"ntfy send failed: {e}", file=sys.stderr)
         return False
     return True
@@ -1751,32 +1768,20 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
     if offer is not None:
         weak = " (weak/stretch)" if bundle.get("offer_weak") else ""
         lines.append(f"offer ~{int(offer)} RON{weak}")
-    for row in bundle["keeps"]:
-        line = _bundle_notification_line("KEEP", row)
-        if line is None:
-            member = row["item"].get("id")
-            if member is None:
-                member = row["item"].get("title") or "unknown"
-            print(
-                f"Suppressed bundle notification: member {member} has malformed v2 "
-                "calculated score fields; whole bundle remains retryable.",
-                file=sys.stderr,
-            )
-            return False
-        lines.append(line)
-    for row in bundle["extras"]:
-        line = _bundle_notification_line("EXTRA", row)
-        if line is None:
-            member = row["item"].get("id")
-            if member is None:
-                member = row["item"].get("title") or "unknown"
-            print(
-                f"Suppressed bundle notification: member {member} has malformed v2 "
-                "calculated score fields; whole bundle remains retryable.",
-                file=sys.stderr,
-            )
-            return False
-        lines.append(line)
+    for role, rows in (("KEEP", bundle["keeps"]), ("EXTRA", bundle["extras"])):
+        for row in rows:
+            line = _bundle_notification_line(role, row)
+            if line is None:
+                member = row["item"].get("id")
+                if member is None:
+                    member = row["item"].get("title") or "unknown"
+                print(
+                    f"Suppressed bundle notification: member {member} has malformed v2 "
+                    "calculated score fields; whole bundle remains retryable.",
+                    file=sys.stderr,
+                )
+                return False
+            lines.append(line)
     click = (bundle["keeps"][0]["item"].get("user") or {})
     profile = None
     if bundle.get("seller_id"):

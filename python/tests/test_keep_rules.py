@@ -329,6 +329,27 @@ class KeepRuleTests(unittest.TestCase):
         self.assertIn("malformed v2", stderr.getvalue().lower())
         self.assertIn("7", stderr.getvalue())
 
+    def test_ntfy_timeout_is_logged_as_transport_failure(self):
+        stderr = io.StringIO()
+        with (
+            patch.object(
+                bot.urllib.request,
+                "urlopen",
+                side_effect=TimeoutError("request timed out"),
+            ),
+            patch("sys.stderr", new=stderr),
+        ):
+            sent = bot._ntfy_post(
+                "topic",
+                "title",
+                "body",
+                None,
+                "default",
+            )
+        self.assertFalse(sent)
+        self.assertIn("ntfy send failed", stderr.getvalue())
+        self.assertIn("request timed out", stderr.getvalue())
+
     def test_v2_bundle_notification_uses_only_v2_score_semantics(self):
         row = {
             "item": {
@@ -361,7 +382,7 @@ class KeepRuleTests(unittest.TestCase):
         self.assertIn("keep", body)
         self.assertIn("inspect", body)
 
-    def test_malformed_v2_bundle_notification_is_not_sent(self):
+    def test_malformed_v2_bundle_member_is_not_sent_for_either_role(self):
         row = {
             "item": {
                 "id": 8,
@@ -374,26 +395,28 @@ class KeepRuleTests(unittest.TestCase):
                 "score_interval_high": 95,
             },
         }
-        bundle = {
-            "seller": "seller",
-            "seller_id": 4,
-            "country": "ro",
-            "listing_sum": 80,
-            "checkout_extra_ron": 22,
-            "checkout_total": 102,
-            "keeps": [row],
-            "extras": [],
-        }
-        stderr = io.StringIO()
-        with (
-            patch.object(bot, "_ntfy_post") as send,
-            patch("sys.stderr", new=stderr),
-        ):
-            sent = bot.send_ntfy_bundle("topic", bundle)
-        self.assertFalse(sent)
-        send.assert_not_called()
-        self.assertIn("malformed v2", stderr.getvalue().lower())
-        self.assertIn("member 8", stderr.getvalue().lower())
+        for role in ("keeps", "extras"):
+            with self.subTest(role=role):
+                bundle = {
+                    "seller": "seller",
+                    "seller_id": 4,
+                    "country": "ro",
+                    "listing_sum": 80,
+                    "checkout_extra_ron": 22,
+                    "checkout_total": 102,
+                    "keeps": [row] if role == "keeps" else [],
+                    "extras": [row] if role == "extras" else [],
+                }
+                stderr = io.StringIO()
+                with (
+                    patch.object(bot, "_ntfy_post") as send,
+                    patch("sys.stderr", new=stderr),
+                ):
+                    sent = bot.send_ntfy_bundle("topic", bundle)
+                self.assertFalse(sent)
+                send.assert_not_called()
+                self.assertIn("malformed v2", stderr.getvalue().lower())
+                self.assertIn("member 8", stderr.getvalue().lower())
 
     def test_v2_snapshot_contains_v2_fields_without_legacy_score_fields(self):
         score = {

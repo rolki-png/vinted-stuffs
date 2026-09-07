@@ -187,8 +187,38 @@ class ScoringPromptTests(unittest.TestCase):
         gemini.assert_not_called()
         self.assertEqual(scores, [])
         self.assertNotIn("Scored 0", stderr.getvalue())
-        self.assertIn("valid factor extraction", stderr.getvalue())
-        self.assertIn("unpriced", stderr.getvalue())
+        self.assertEqual(
+            stderr.getvalue(),
+            "Vercel AI Gateway returned 1 valid factor extraction(s), but "
+            "matching rows were unpriced; leaving them unscored.\n",
+        )
+
+    def test_gemini_truthfully_logs_valid_but_unpriced_row(self):
+        unpriced = {
+            **self.items[0],
+            "price": {"amount": "unknown", "currency_code": "RON"},
+        }
+        stderr = io.StringIO()
+        with (
+            patch.object(
+                bot, "score_with_gemini", return_value=[self.extracted]
+            ),
+            patch("sys.stderr", new=stderr),
+        ):
+            scores = bot.score_listings(
+                self.watch,
+                [unpriced],
+                "",
+                object(),
+                {},
+            )
+        self.assertEqual(scores, [])
+        self.assertNotIn("Scored 0", stderr.getvalue())
+        self.assertEqual(
+            stderr.getvalue(),
+            "Gemini returned 1 valid factor extraction(s), but matching rows "
+            "were unpriced; leaving them unscored.\n",
+        )
 
     def test_gemini_may_return_valid_subset_after_empty_gateway_result(self):
         items = [self.items[0], {**self.items[0], "id": 2}]

@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-07T00:54:19.773104+00:00",
+    "kept_at": "2026-09-07T05:57:50.151747+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -42,25 +42,25 @@
     "offer_target_per_item_ron": 30.0
   },
   {
-    "kept_at": "2026-09-07T00:54:19.773104+00:00",
+    "kept_at": "2026-09-07T05:57:50.151747+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
     "country": "hu",
-    "checkout_extra_ron": 23.491,
-    "listing_sum": 49.82,
-    "checkout_total": 73.311,
+    "checkout_extra_ron": 23.495,
+    "listing_sum": 49.9,
+    "checkout_total": 73.395,
     "deal_score": null,
     "value_band": "opportunity",
     "reason": "Fee-gated closet match (not LLM-confirmed)",
     "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 36.6555,
+    "effective_price_per_useful_item": 36.6975,
     "items": [
       {
         "role": "haul",
         "id": 9778362672,
         "title": "Piros Nike ujjatlan trikó / sportfelső - M",
-        "price": 24.91,
+        "price": 24.95,
         "url": "https://www.vinted.ro/items/9778362672-piros-nike-ujjatlan-triko-sportfelso-m",
         "watch": "Gym seed short sport M-L",
         "deal_score": null,
@@ -71,7 +71,7 @@
         "role": "haul",
         "id": 9778317100,
         "title": "Fekete Nike Sportswear ujjatlan trikó / felső - M (22.2)",
-        "price": 24.91,
+        "price": 24.95,
         "url": "https://www.vinted.ro/items/9778317100-fekete-nike-sportswear-ujjatlan-triko-felso-m-222",
         "watch": "Gym seed short sport M-L",
         "deal_score": null,
@@ -81,6 +81,84 @@
     ],
     "suggested_offer_ron": 36,
     "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T05:50:40.346591+00:00",
+    "seller": "zeet_originals",
+    "seller_id": 3146415872,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 117.03,
+    "checkout_total": 142.03,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9900185844,
+        "title": "Puma spodenki męskie dresowe r. M",
+        "price": 43.13,
+        "url": "https://www.vinted.ro/items/9900185844-puma-spodenki-meskie-dresowe-r-m",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 3146415872,
+        "seller": "zeet_originals"
+      },
+      {
+        "role": "extra",
+        "id": 9838243208,
+        "title": "Adidas Surf Swim Shorts spodenki r. 34",
+        "price": 73.9,
+        "url": "https://www.vinted.ro/items/9838243208-adidas-surf-swim-shorts-spodenki-r-34",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": 6,
+        "seller_id": 3146415872,
+        "seller": "zeet_originals"
+      }
+    ],
+    "suggested_offer_ron": 76,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T05:50:27.527911+00:00",
+    "seller": "wwikap",
+    "seller_id": 111763343,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 147.8,
+    "checkout_total": 172.8,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9913303972,
+        "title": "Adidas vintage szorty sportowe czarno-szare",
+        "price": 67.74,
+        "url": "https://www.vinted.ro/items/9913303972-adidas-vintage-szorty-sportowe-czarno-szare",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 6,
+        "seller_id": 111763343,
+        "seller": "wwikap"
+      },
+      {
+        "role": "extra",
+        "id": 9913303642,
+        "title": "Nike Dri-FIT spodenki sportowe oliwkowe",
+        "price": 80.06,
+        "url": "https://www.vinted.ro/items/9913303642-nike-dri-fit-spodenki-sportowe-oliwkowe",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 6,
+        "seller_id": 111763343,
+        "seller": "wwikap"
+      }
+    ],
+    "suggested_offer_ron": 96,
+    "offer_weak": true,
     "offer_target_per_item_ron": 30.0
   },
   {

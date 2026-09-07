@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-07T12:08:30.058647+00:00",
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -42,7 +42,7 @@
     "offer_target_per_item_ron": 30.0
   },
   {
-    "kept_at": "2026-09-07T12:08:30.058647+00:00",
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -80,6 +80,491 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kind": "near_haul",
+    "seller": "zzossiam",
+    "seller_id": 3167864194,
+    "country": "pl",
+    "checkout_extra_ron": 25.4635,
+    "listing_sum": 49.27,
+    "checkout_total": 74.7335,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed Adidas shorts M-L",
+    "effective_price_per_useful_item": 37.36675,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9873963566,
+        "title": "Vintage retro puma gym shorts m",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9873963566-vintage-retro-puma-gym-shorts-m",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "zzossiam",
+        "seller_id": 3167864194
+      },
+      {
+        "role": "haul",
+        "id": 9873963942,
+        "title": "Nike shorts dryfit workwear L",
+        "price": 36.95,
+        "url": "https://www.vinted.ro/items/9873963942-nike-shorts-dryfit-workwear-l",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "zzossiam",
+        "seller_id": 3167864194
+      }
+    ],
+    "suggested_offer_ron": 34,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kind": "value_haul",
+    "seller": "domigaia",
+    "seller_id": 90492428,
+    "country": "pl",
+    "checkout_extra_ron": 25.7705,
+    "listing_sum": 55.41,
+    "checkout_total": 81.1805,
+    "deal_score": 9,
+    "value_band": "steal",
+    "reason": "Excellent value for three high-street maternity staples that perfectly match the target size and category.",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 27.06,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9924090081,
+        "title": "Mama, ciąża, odzież ciążowa",
+        "price": 18.47,
+        "url": "https://www.vinted.ro/items/9924090081-mama-ciaza-odziez-ciazowa",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": 9,
+        "seller": "domigaia",
+        "seller_id": 90492428
+      },
+      {
+        "role": "haul",
+        "id": 9924028582,
+        "title": "Mama, ciąża, odzież ciążowa",
+        "price": 18.47,
+        "url": "https://www.vinted.ro/items/9924028582-mama-ciaza-odziez-ciazowa",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": 9,
+        "seller": "domigaia",
+        "seller_id": 90492428
+      },
+      {
+        "role": "haul",
+        "id": 9924000432,
+        "title": "Mama, ciąża, odzież ciążowa",
+        "price": 18.47,
+        "url": "https://www.vinted.ro/items/9924000432-mama-ciaza-odziez-ciazowa",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": 9,
+        "seller": "domigaia",
+        "seller_id": 90492428
+      }
+    ],
+    "suggested_offer_ron": 49,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kind": "near_haul",
+    "seller": "majomkavok",
+    "seller_id": 258243053,
+    "country": "hu",
+    "checkout_extra_ron": 22.101,
+    "listing_sum": 22.02,
+    "checkout_total": 44.120999999999995,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle only contains two items and lacks sufficient gym shorts to meet the multi-item training shorts haul criteria.",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 22.060499999999998,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9410577346,
+        "title": "Sportos rövidnadrág",
+        "price": 7.34,
+        "url": "https://www.vinted.ro/items/9410577346-sportos-rovidnadrag",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "majomkavok",
+        "seller_id": 258243053
+      },
+      {
+        "role": "haul",
+        "id": 9228802522,
+        "title": "Sport melltartó",
+        "price": 14.68,
+        "url": "https://www.vinted.ro/items/9228802522-sport-melltarto",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "majomkavok",
+        "seller_id": 258243053
+      }
+    ],
+    "suggested_offer_ron": 19,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kind": "near_haul",
+    "seller": "nikolas574",
+    "seller_id": 269281822,
+    "country": "gr",
+    "checkout_extra_ron": 21.1885,
+    "listing_sum": 63.77,
+    "checkout_total": 84.9585,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 42.47925,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9842422315,
+        "title": "Reebok shorts",
+        "price": 26.57,
+        "url": "https://www.vinted.ro/items/9842422315-reebok-shorts",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolas574",
+        "seller_id": 269281822
+      },
+      {
+        "role": "haul",
+        "id": 9856386253,
+        "title": "Nike shorts",
+        "price": 37.2,
+        "url": "https://www.vinted.ro/items/9856386253-nike-shorts",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolas574",
+        "seller_id": 269281822
+      }
+    ],
+    "suggested_offer_ron": 41,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:49:08.521659+00:00",
+    "seller": "sporty_boy",
+    "seller_id": 3126773947,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 160.11,
+    "checkout_total": 185.11,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9920299499,
+        "title": "Nike męskie spodenki dresowe sportowe rozmiar L",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9920299499-nike-meskie-spodenki-dresowe-sportowe-rozmiar-l",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 3126773947,
+        "seller": "sporty_boy"
+      },
+      {
+        "role": "extra",
+        "id": 9923908932,
+        "title": "Nike męskie spodenki sportowe dresowe rozmiar M",
+        "price": 55.42,
+        "url": "https://www.vinted.ro/items/9923908932-nike-meskie-spodenki-sportowe-dresowe-rozmiar-m",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 3126773947,
+        "seller": "sporty_boy"
+      },
+      {
+        "role": "extra",
+        "id": 9924079195,
+        "title": "Kappa męskie spodenki dresowe treningowe rozmiar L",
+        "price": 61.58,
+        "url": "https://www.vinted.ro/items/9924079195-kappa-meskie-spodenki-dresowe-treningowe-rozmiar-l",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 7,
+        "seller_id": 3126773947,
+        "seller": "sporty_boy"
+      }
+    ],
+    "suggested_offer_ron": 104,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:48:21.305298+00:00",
+    "seller": "zzossiam",
+    "seller_id": 3167864194,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 92.38,
+    "checkout_total": 117.38,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9922762868,
+        "title": "Adidas formotion 3stripes firebird short gym workout",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9922762868-adidas-formotion-3stripes-firebird-short-gym-workout",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": 8,
+        "seller_id": 3167864194,
+        "seller": "zzossiam"
+      },
+      {
+        "role": "extra",
+        "id": 9873963942,
+        "title": "Nike shorts dryfit workwear L",
+        "price": 36.95,
+        "url": "https://www.vinted.ro/items/9873963942-nike-shorts-dryfit-workwear-l",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 3167864194,
+        "seller": "zzossiam"
+      },
+      {
+        "role": "extra",
+        "id": 9873963566,
+        "title": "Vintage retro puma gym shorts m",
+        "price": 12.32,
+        "url": "https://www.vinted.ro/items/9873963566-vintage-retro-puma-gym-shorts-m",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 6,
+        "seller_id": 3167864194,
+        "seller": "zzossiam"
+      }
+    ],
+    "suggested_offer_ron": 65,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:48:15.866397+00:00",
+    "seller": "flajhaj",
+    "seller_id": 90949570,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 86.22,
+    "checkout_total": 111.22,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9924038200,
+        "title": "Spodenki szorty męskie sportowe czarne Nike dri fit rozm M",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9924038200-spodenki-szorty-meskie-sportowe-czarne-nike-dri-fit-rozm-m",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 8,
+        "seller_id": 90949570,
+        "seller": "flajhaj"
+      },
+      {
+        "role": "extra",
+        "id": 9924022798,
+        "title": "Spodenki szorty męskie sportowe szare logo Nike dri fit rozm L",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9924022798-spodenki-szorty-meskie-sportowe-szare-logo-nike-dri-fit-rozm-l",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 90949570,
+        "seller": "flajhaj"
+      }
+    ],
+    "suggested_offer_ron": 56,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:48:08.956378+00:00",
+    "seller": "md47gregjn",
+    "seller_id": 257907004,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 61.58,
+    "checkout_total": 86.58,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9924070932,
+        "title": "Spodenki Nike Dri-Fit trening running shorts",
+        "price": 30.79,
+        "url": "https://www.vinted.ro/items/9924070932-spodenki-nike-dri-fit-trening-running-shorts",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 8,
+        "seller_id": 257907004,
+        "seller": "md47gregjn"
+      },
+      {
+        "role": "extra",
+        "id": 9845306898,
+        "title": "Szorty Nike vintage retro shorts 90s",
+        "price": 30.79,
+        "url": "https://www.vinted.ro/items/9845306898-szorty-nike-vintage-retro-shorts-90s",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 6,
+        "seller_id": 257907004,
+        "seller": "md47gregjn"
+      }
+    ],
+    "suggested_offer_ron": 40,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:40:41.097929+00:00",
+    "seller": "boivintage",
+    "seller_id": 258370387,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 73.0,
+    "checkout_total": 98.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9923264159,
+        "title": "shorts",
+        "price": 50.0,
+        "url": "https://www.vinted.ro/items/9923264159-shorts",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": 7,
+        "seller_id": 258370387,
+        "seller": "boivintage"
+      },
+      {
+        "role": "extra",
+        "id": 9860870306,
+        "title": "Fighter/Sport Gym Shorts for Men",
+        "price": 23.0,
+        "url": "https://www.vinted.ro/items/9860870306-fightersport-gym-shorts-for-men",
+        "watch": "Broad gym short EN M-L",
+        "deal_score": 6,
+        "seller_id": 258370387,
+        "seller": "boivintage"
+      }
+    ],
+    "suggested_offer_ron": 47,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:40:25.752721+00:00",
+    "seller": "mrdaniolan",
+    "seller_id": 91117401,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 171.25,
+    "checkout_total": 196.25,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9921615380,
+        "title": "Zielone Szorty UA",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9921615380-zielone-szorty-ua",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      },
+      {
+        "role": "extra",
+        "id": 9874742834,
+        "title": "Szorty Nike Academy",
+        "price": 48.05,
+        "url": "https://www.vinted.ro/items/9874742834-szorty-nike-academy",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      },
+      {
+        "role": "extra",
+        "id": 9843041668,
+        "title": "Szare dresy Gymshark",
+        "price": 80.09,
+        "url": "https://www.vinted.ro/items/9843041668-szare-dresy-gymshark",
+        "watch": "Broad gym short EN M-L",
+        "deal_score": 7,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      }
+    ],
+    "suggested_offer_ron": 111,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:40:24.799803+00:00",
+    "seller": "kendoka98",
+    "seller_id": 177474589,
+    "country": "hu",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 39.62,
+    "checkout_total": 64.62,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9923288875,
+        "title": "2in1 rövidnadrág",
+        "price": 19.81,
+        "url": "https://www.vinted.ro/items/9923288875-2in1-rovidnadrag",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 177474589,
+        "seller": "kendoka98"
+      },
+      {
+        "role": "extra",
+        "id": 9923300643,
+        "title": "2in1 rövidnadrág",
+        "price": 19.81,
+        "url": "https://www.vinted.ro/items/9923300643-2in1-rovidnadrag",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 7,
+        "seller_id": 177474589,
+        "seller": "kendoka98"
+      }
+    ],
+    "suggested_offer_ron": 35,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },
@@ -1023,48 +1508,6 @@
       }
     ],
     "suggested_offer_ron": 63,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-06T21:03:45.515083+00:00",
-    "kind": "near_haul",
-    "seller": "zzossiam",
-    "seller_id": 3167864194,
-    "country": "pl",
-    "checkout_extra_ron": 25.4645,
-    "listing_sum": 49.29,
-    "checkout_total": 74.75450000000001,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed gym shorts M-L",
-    "effective_price_per_useful_item": 37.377250000000004,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9873963566,
-        "title": "Vintage retro puma gym shorts m",
-        "price": 12.32,
-        "url": "https://www.vinted.ro/items/9873963566-vintage-retro-puma-gym-shorts-m",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": null,
-        "seller": "zzossiam",
-        "seller_id": 3167864194
-      },
-      {
-        "role": "haul",
-        "id": 9873963942,
-        "title": "Nike shorts dryfit workwear L",
-        "price": 36.97,
-        "url": "https://www.vinted.ro/items/9873963942-nike-shorts-dryfit-workwear-l",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": null,
-        "seller": "zzossiam",
-        "seller_id": 3167864194
-      }
-    ],
-    "suggested_offer_ron": 34,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },
@@ -3291,227 +3734,6 @@
       }
     ],
     "suggested_offer_ron": 33,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T20:23:39.453954+00:00",
-    "kind": "near_haul",
-    "seller": "cichywita",
-    "seller_id": 244458038,
-    "country": "pl",
-    "checkout_extra_ron": 25.587,
-    "listing_sum": 51.739999999999995,
-    "checkout_total": 77.327,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 38.6635,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9596366482,
-        "title": "Jasnozielona męska koszulka sportowa T-shirt Morela L",
-        "price": 27.11,
-        "url": "https://www.vinted.ro/items/9596366482-jasnozielona-meska-koszulka-sportowa-t-shirt-morela-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "cichywita",
-        "seller_id": 244458038
-      },
-      {
-        "role": "haul",
-        "id": 9606307047,
-        "title": "Czarna koszulka sportowa T-shirt treningowy Domyos L",
-        "price": 24.63,
-        "url": "https://www.vinted.ro/items/9606307047-czarna-koszulka-sportowa-t-shirt-treningowy-domyos-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "cichywita",
-        "seller_id": 244458038
-      }
-    ],
-    "suggested_offer_ron": 34,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T20:23:39.453954+00:00",
-    "kind": "near_haul",
-    "seller": "nibyja2",
-    "seller_id": 91455072,
-    "country": "pl",
-    "checkout_extra_ron": 24.91,
-    "listing_sum": 38.2,
-    "checkout_total": 63.11,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 31.555,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9900827476,
-        "title": "Koszulka sportowa męska M",
-        "price": 17.25,
-        "url": "https://www.vinted.ro/items/9900827476-koszulka-sportowa-meska-m",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "nibyja2",
-        "seller_id": 91455072
-      },
-      {
-        "role": "haul",
-        "id": 9072771736,
-        "title": "Bluza męska sportowa L",
-        "price": 20.95,
-        "url": "https://www.vinted.ro/items/9072771736-bluza-meska-sportowa-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "nibyja2",
-        "seller_id": 91455072
-      }
-    ],
-    "suggested_offer_ron": 34,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T20:22:19.494691+00:00",
-    "kind": "near_haul",
-    "seller": "jessi5004",
-    "seller_id": 3128995009,
-    "country": "pl",
-    "checkout_extra_ron": 25.649,
-    "listing_sum": 52.980000000000004,
-    "checkout_total": 78.629,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 39.3145,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9534631103,
-        "title": "Legginsy sportowe melanż",
-        "price": 22.18,
-        "url": "https://www.vinted.ro/items/9534631103-legginsy-sportowe-melanz",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "jessi5004",
-        "seller_id": 3128995009
-      },
-      {
-        "role": "haul",
-        "id": 9534765134,
-        "title": "Różowe legginsy sportowe",
-        "price": 30.8,
-        "url": "https://www.vinted.ro/items/9534765134-rozowe-legginsy-sportowe",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "jessi5004",
-        "seller_id": 3128995009
-      }
-    ],
-    "suggested_offer_ron": 34,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T20:22:19.494691+00:00",
-    "kind": "near_haul",
-    "seller": "madadutz1",
-    "seller_id": 253367971,
-    "country": "ro",
-    "checkout_extra_ron": 19.55,
-    "listing_sum": 31.0,
-    "checkout_total": 50.55,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 25.275,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9900845742,
-        "title": "Hanorac negru cu glugă şnururi H&M şi Black Hoodie with Drawstrings",
-        "price": 15.0,
-        "url": "https://www.vinted.ro/items/9900845742-hanorac-negru-cu-gluga-snururi-hm-si-black-hoodie-with-drawstrings",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "madadutz1",
-        "seller_id": 253367971
-      },
-      {
-        "role": "haul",
-        "id": 9900897260,
-        "title": "Hanorac negru cu glugă şnururi H&M şi Black Hoodie with Drawstrings",
-        "price": 16.0,
-        "url": "https://www.vinted.ro/items/9900897260-hanorac-negru-cu-gluga-snururi-hm-si-black-hoodie-with-drawstrings",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "madadutz1",
-        "seller_id": 253367971
-      }
-    ],
-    "suggested_offer_ron": 27,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T19:56:57.208122+00:00",
-    "kind": "value_haul",
-    "seller": "anowi7777",
-    "seller_id": 94997645,
-    "country": "pl",
-    "checkout_extra_ron": 25.403,
-    "listing_sum": 48.06,
-    "checkout_total": 73.463,
-    "deal_score": 9,
-    "value_band": "steal",
-    "reason": "Three high-quality athletic tops at a price well below the steal threshold of 25 RON per item.",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 24.49,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9896983801,
-        "title": "Koszulka sportowa typu dri fit marki crivit",
-        "price": 12.32,
-        "url": "https://www.vinted.ro/items/9896983801-koszulka-sportowa-typu-dri-fit-marki-crivit",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": 9,
-        "seller": "anowi7777",
-        "seller_id": 94997645
-      },
-      {
-        "role": "haul",
-        "id": 9897049564,
-        "title": "Sportowa czarna koszulka h&m",
-        "price": 14.79,
-        "url": "https://www.vinted.ro/items/9897049564-sportowa-czarna-koszulka-hm",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": 9,
-        "seller": "anowi7777",
-        "seller_id": 94997645
-      },
-      {
-        "role": "haul",
-        "id": 9896917363,
-        "title": "Koszulka sportowa Nike typu dri-fit slim-fit",
-        "price": 20.95,
-        "url": "https://www.vinted.ro/items/9896917363-koszulka-sportowa-nike-typu-dri-fit-slim-fit",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": 9,
-        "seller": "anowi7777",
-        "seller_id": 94997645
-      }
-    ],
-    "suggested_offer_ron": 43,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },

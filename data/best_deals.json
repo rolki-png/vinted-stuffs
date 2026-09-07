@@ -1,5 +1,23 @@
 [
   {
+    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "watch": "New Balance 1906R size 43",
+    "id": 9920729268,
+    "title": "New Balance 1906R",
+    "brand": "New Balance",
+    "size": "43",
+    "price": "166.27",
+    "currency": "RON",
+    "url": "https://www.vinted.ro/items/9920729268-new-balance-1906r",
+    "deal_score": 9,
+    "value_band": "steal",
+    "scam_risk": "medium",
+    "reason": "Excellent price for the correct model and size, though missing seller history warrants caution.",
+    "seller_id": 127882155,
+    "seller": "jagapiotrek",
+    "seller_country": "pl"
+  },
+  {
     "kept_at": "2026-09-07T05:57:50.151747+00:00",
     "watch": "Broad training shorts M-L",
     "id": 9916803568,
@@ -812,21 +830,5 @@
     "seller_id": 91710408,
     "seller": "lok_ok",
     "seller_country": "pl"
-  },
-  {
-    "kept_at": "2026-09-05T17:18:44.208761+00:00",
-    "watch": "Lululemon gym M-L",
-    "id": 9898933341,
-    "title": "Lululemon Men\u2019s Vent Tech Long Sleeve",
-    "price": "80.00",
-    "currency": "RON",
-    "url": "https://www.vinted.ro/items/9898933341-lululemon-mens-vent-tech-long-sleeve",
-    "deal_score": 9,
-    "value_band": "steal",
-    "scam_risk": "medium",
-    "reason": "Excellent match for a technical men's shirt at a very good price point.",
-    "seller_id": 236919211,
-    "seller": "denisa.jesica",
-    "seller_country": "ro"
   }
 ]

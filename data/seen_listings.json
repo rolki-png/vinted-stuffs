@@ -12461,7 +12461,7 @@
   "legacy_active_v2": {
     "cursor": [
       "9874699531",
-      "Broad gym short EN M-L"
+      "Broad dri-fit shorts M-L"
     ],
     "unavailable_pairs": [
       [
@@ -19300,20 +19300,20 @@
       "9878999716:Broad gym short EN M-L": 1
     },
     "last_run": {
-      "candidates": 1706,
-      "selected": 4,
-      "checked": 3,
-      "live": 2,
-      "newly_unavailable": 1,
+      "candidates": 1704,
+      "selected": 1,
+      "checked": 1,
+      "live": 1,
+      "newly_unavailable": 0,
       "newly_stuck": 0,
-      "unknown": 1,
-      "rescored": 2,
-      "legacy": 1704,
+      "unknown": 0,
+      "rescored": 1,
+      "legacy": 1703,
       "unavailable": 1703,
       "stuck": 0,
-      "remaining": 1,
-      "status": "partial",
-      "exit_code": 3
+      "remaining": 0,
+      "status": "complete",
+      "exit_code": 0
     }
   }
 }

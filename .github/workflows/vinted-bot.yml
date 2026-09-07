@@ -115,11 +115,21 @@ jobs:
             echo "No state changes to commit"
           fi
 
+      - name: Queue next legacy v2 batch
+        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3' }}
+        continue-on-error: true
+        run: |
+          echo "Partial batch; queue the next legacy_active_v2 dispatch."
+          curl -fsS -X POST "https://vinted-stuffs.vercel.app/api/trigger" \
+            -H "content-type: application/json" \
+            -H "user-agent: vinted-deal-bot-requeue" \
+            -d '{"legacy_active_v2":true,"full_sweep":false,"skip_scoring":false}'
+
       - name: Check legacy rollout completion
         if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
         run: |
           if [[ "$LEGACY_ACTIVE_V2_EXIT_CODE" -eq 3 ]]; then
-            echo "Legacy v2 rollout is partial; dispatch legacy_active_v2 again."
+            echo "Legacy v2 rollout is partial; the next batch was queued."
             exit 3
           fi
           if [[ "${LEGACY_ACTIVE_V2_STATUS}" == "exhausted" || "${LEGACY_ACTIVE_V2_STUCK:-0}" -gt 0 ]]; then

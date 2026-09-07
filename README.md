@@ -72,7 +72,9 @@ commits the export and progress state, and reports:
   and no stuck live rows are left on the desk;
 - exit `0` with status `exhausted`: no retryable gaps remain, but stuck live
   rows still show 1–10 scores until they are inspected and retried;
-- exit `3`: a partial batch was committed; dispatch the rollout again;
+- exit `3`: a partial batch was committed; the workflow queues the next
+  `legacy_active_v2` dispatch automatically (desk **Rescore legacy v2** still
+  works if that queue call fails);
 - any other nonzero exit: an operational failure.
 
 Confirmed unavailable rows keep their historical score and rationale and are

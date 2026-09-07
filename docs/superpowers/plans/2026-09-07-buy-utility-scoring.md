@@ -1846,6 +1846,7 @@ git commit -m "feat: show utility evidence and removal reasons"
 **Files:**
 - Modify: `python/backfill_scored_listings.py`
 - Create: `python/tests/test_backfill_scored_listings.py`
+- Modify: `.github/workflows/vinted-bot.yml`
 - Modify: `README.md`
 - Modify: `CONTEXT.md`
 
@@ -1926,7 +1927,22 @@ pending selection. Fetch availability first, score only live rows through the v2
 unavailable legacy rows; preserve their history. Production rollout repeats bounded
 batches until every still-active dashboard row has `score_version = 2`.
 
-- [ ] **Step 4: Update domain and operation docs**
+- [ ] **Step 4: Add a secret-backed GitHub Actions rollout mode**
+
+Add a boolean `workflow_dispatch` input named `legacy_active_v2`. Scheduled and
+normal manual runs retain the standard bot path. When the input is true, run:
+
+```bash
+uv run --project python python python/backfill_scored_listings.py \
+  --legacy-active-v2 --limit 10000 --export
+```
+
+using the existing `DATABASE_URL`, `AI_GATEWAY_API_KEY` / `GEMINI_API_KEY`, and
+`VINTED_BIN` environment. Do not expose or echo secret values. Install Python
+requirements through `uv`, not `pip`, and commit/export the same state files as a
+normal bot run.
+
+- [ ] **Step 5: Update domain and operation docs**
 
 In `CONTEXT.md`, redefine Keep as v2 `buy_score >= 85` with medium/high confidence,
 document `buy_band`, and state that legacy 1–10 rows are display-only history.
@@ -1936,7 +1952,8 @@ In `README.md`:
 
 - describe calculated utility and pairwise rank;
 - remove “missing seller history is elevated scam risk”;
-- document the manual rollout command:
+- document both the local rollout command and the preferred GitHub Actions
+  `legacy_active_v2` dispatch that uses repository secrets:
 
 ```bash
 uv run --project python python python/backfill_scored_listings.py \
@@ -1949,7 +1966,7 @@ uv run --project python python python/backfill_scored_listings.py \
 uv run --project python python -m unittest discover -s python/tests -v
 ```
 
-- [ ] **Step 5: Run migration and full verification**
+- [ ] **Step 6: Run migration and full verification**
 
 Run:
 
@@ -1967,11 +1984,12 @@ Expected: all Python tests pass; Node scripts print `ok`; Prettier and Vite pass
 Do not execute the paid `--legacy-active-v2` operation in automated tests or
 during implementation without configured credentials and an explicit rollout run.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 git add python/backfill_scored_listings.py \
-  python/tests/test_backfill_scored_listings.py README.md CONTEXT.md
+  python/tests/test_backfill_scored_listings.py \
+  .github/workflows/vinted-bot.yml README.md CONTEXT.md
 git commit -m "feat: add safe v2 legacy-score rollout"
 ```
 

@@ -704,47 +704,6 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
     return True
 
 
-def _item_brand_size(item: dict | None) -> tuple[str | None, str | None]:
-    if not item:
-        return None, None
-    brand = item.get("brand_title") or item.get("brand")
-    size = item.get("size_title") or item.get("size")
-    return brand, size
-
-
-def is_taste_hard_suppressed(
-    config: dict,
-    watch: dict,
-    item: dict | None,
-    outcomes: list | None,
-) -> bool:
-    """True when family Remove pattern should block keep/alert for this item."""
-    import taste_learning as taste_mod
-
-    tc = taste_mod.taste_config(config)
-    if not tc["enabled"] or not outcomes:
-        return False
-    brand, size = _item_brand_size(item)
-    cand = {
-        "hunt_family": taste_mod.resolve_family(watch.get("name") or "", watch),
-        "brand": brand,
-        "size": size,
-    }
-    if not taste_mod.hard_suppress(
-        cand,
-        outcomes,
-        min_removes=tc["hard_suppress_min_removes"],
-        require_zero_bought=tc["hard_suppress_require_zero_bought"],
-    ):
-        return False
-    print(
-        f"taste_hard_suppress family={cand['hunt_family']} "
-        f"brand={brand!r} size={size!r} id={((item or {}).get('id'))}",
-        file=sys.stderr,
-    )
-    return True
-
-
 def is_keep_with_taste(
     score: dict,
     config: dict,
@@ -752,10 +711,8 @@ def is_keep_with_taste(
     item: dict | None = None,
     outcomes: list | None = None,
 ) -> bool:
-    """is_keep plus optional family hard-suppress from desk Remove patterns."""
-    if not is_keep(score, config, watch, item):
-        return False
-    return not is_taste_hard_suppressed(config, watch, item, outcomes)
+    """Legacy candidate gate; taste feedback cannot create hard vetoes."""
+    return is_keep(score, config, watch, item)
 
 
 def is_bundle_extra(score: dict, config: dict) -> bool:
@@ -907,10 +864,6 @@ def pool_candidates(
 ) -> list:
     out = []
     for row in rows:
-        if is_taste_hard_suppressed(
-            config, row["watch_obj"], row["item"], taste_outcomes
-        ):
-            continue
         if is_keep(row["score"], config, row["watch_obj"], row["item"]) or is_bundle_extra(
             row["score"], config
         ):
@@ -1129,9 +1082,6 @@ def assemble_bundles(
             for r in unique
             if r not in keeps
             and is_bundle_extra(r["score"], config)
-            and not is_taste_hard_suppressed(
-                config, r["watch_obj"], r["item"], taste_outcomes
-            )
         ]
         if keeps and extras:
             country = (

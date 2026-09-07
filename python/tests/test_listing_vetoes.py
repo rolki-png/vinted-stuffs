@@ -163,6 +163,18 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(store.load_map(), {42: "removed"})
         self.assertEqual(store.load_removed_ids(), {42})
 
+    def test_remove_reason_round_trip_and_no_stale_reason(self):
+        store = lv.MemoryVetoStore()
+        store.set_status(1, "removed", {"hunt_family": "gym"}, "poor_value")
+        self.assertEqual(store.load_outcomes()[0]["reason_code"], "poor_value")
+        store.set_status(1, "bought", {"hunt_family": "gym"})
+        self.assertIsNone(store.load_outcomes()[0]["reason_code"])
+
+    def test_invalid_remove_reason_rejected(self):
+        store = lv.MemoryVetoStore()
+        with self.assertRaisesRegex(ValueError, "invalid remove reason"):
+            store.set_status(1, "removed", {}, "brand_bad")
+
     def test_enrichment_and_outcomes_by_family(self):
         store = lv.MemoryVetoStore()
         store.set_status(

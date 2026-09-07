@@ -3,6 +3,7 @@ import fs from "node:fs"
 import path from "node:path"
 import os from "node:os"
 import pg from "pg"
+import { feedbackParams } from "#/server/listingFeedback.js"
 import { resolveFamily } from "#/server/tasteLearning"
 
 /**
@@ -32,6 +33,7 @@ const DDL = `
 CREATE TABLE IF NOT EXISTS listing_vetoes (
   item_id BIGINT NOT NULL PRIMARY KEY,
   status TEXT NOT NULL,
+  reason_code TEXT NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   hunt_name TEXT NULL,
   hunt_family TEXT NULL,
@@ -48,6 +50,7 @@ const MIGRATE_HIDDEN_SQL =
   "UPDATE listing_vetoes SET status = 'removed' WHERE status = 'hidden'"
 
 const ALTER_COLUMNS_SQL = [
+  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_name TEXT NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_family TEXT NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS brand TEXT NULL",
@@ -319,15 +322,15 @@ async function fillEnrichmentFromScored(client, itemId, enr) {
   }
 }
 
-async function setVetoStatus(itemId, status, enrichment) {
-  const id = Number(itemId)
-  if (!Number.isFinite(id)) {
-    const err = new Error("invalid_item_id")
-    err.status = 400
-    throw err
-  }
-  const st = coerceWriteStatus(status)
-  let enr = coerceEnrichment(enrichment)
+async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
+  const [id, rawStatus, reason, rawEnrichment] = feedbackParams(
+    itemId,
+    status,
+    enrichment,
+    reasonCode,
+  )
+  const st = coerceWriteStatus(rawStatus)
+  let enr = coerceEnrichment(rawEnrichment)
   const ok = await withClient(async (client) => {
     enr = coerceEnrichment(await fillEnrichmentFromScored(client, id, enr))
     if (!enr.hunt_family && enr.hunt_name) {
@@ -335,12 +338,13 @@ async function setVetoStatus(itemId, status, enrichment) {
     }
     await client.query(
       `INSERT INTO listing_vetoes (
-         item_id, status, updated_at,
+         item_id, status, reason_code, updated_at,
          hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score, title
        )
-       VALUES ($1, $2, now(), $3, $4, $5, $6, $7, $8, $9, $10)
+       VALUES ($1, $2, $3, now(), $4, $5, $6, $7, $8, $9, $10, $11)
        ON CONFLICT (item_id) DO UPDATE SET
          status = EXCLUDED.status,
+         reason_code = EXCLUDED.reason_code,
          updated_at = EXCLUDED.updated_at,
          hunt_name = COALESCE(EXCLUDED.hunt_name, listing_vetoes.hunt_name),
          hunt_family = COALESCE(EXCLUDED.hunt_family, listing_vetoes.hunt_family),
@@ -353,6 +357,7 @@ async function setVetoStatus(itemId, status, enrichment) {
       [
         id,
         st,
+        reason,
         enr.hunt_name,
         enr.hunt_family,
         enr.brand,
@@ -370,7 +375,7 @@ async function setVetoStatus(itemId, status, enrichment) {
     err.status = 503
     throw err
   }
-  return { item_id: id, status: st }
+  return { item_id: id, status: st, reason_code: reason }
 }
 
 async function clearVeto(itemId) {

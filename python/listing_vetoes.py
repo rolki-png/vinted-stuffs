@@ -13,6 +13,16 @@ STATUS_BOUGHT = "bought"
 STATUS_HIDDEN_LEGACY = "hidden"
 VALID_STATUSES = frozenset({STATUS_REMOVED, STATUS_PARKED, STATUS_BOUGHT})
 VALID_MODES = frozenset({"active", "parked", "bought", "all"})
+VALID_REMOVE_REASONS = frozenset({
+    "sold_unavailable",
+    "wrong_size",
+    "bad_fit_style",
+    "low_quality_condition",
+    "poor_value",
+    "rarely_useful",
+    "already_own_similar",
+    "other",
+})
 
 ENRICHMENT_FIELDS = (
     "hunt_name",
@@ -29,6 +39,7 @@ DDL = """
 CREATE TABLE IF NOT EXISTS listing_vetoes (
   item_id BIGINT NOT NULL PRIMARY KEY,
   status TEXT NOT NULL,
+  reason_code TEXT NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   hunt_name TEXT NULL,
   hunt_family TEXT NULL,
@@ -46,6 +57,7 @@ MIGRATE_HIDDEN_SQL = (
 )
 
 ALTER_COLUMNS_SQL = [
+    "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_name TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_family TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS brand TEXT NULL",
@@ -58,16 +70,17 @@ ALTER_COLUMNS_SQL = [
 
 UPSERT_SQL = """
 INSERT INTO listing_vetoes (
-  item_id, status, updated_at,
+  item_id, status, reason_code, updated_at,
   hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score, title
 )
 VALUES (
-  %(item_id)s, %(status)s, %(updated_at)s,
+  %(item_id)s, %(status)s, %(reason_code)s, %(updated_at)s,
   %(hunt_name)s, %(hunt_family)s, %(brand)s, %(size)s, %(price_ron)s,
   %(value_band)s, %(deal_score)s, %(title)s
 )
 ON CONFLICT (item_id) DO UPDATE SET
   status = EXCLUDED.status,
+  reason_code = EXCLUDED.reason_code,
   updated_at = EXCLUDED.updated_at,
   hunt_name = COALESCE(EXCLUDED.hunt_name, listing_vetoes.hunt_name),
   hunt_family = COALESCE(EXCLUDED.hunt_family, listing_vetoes.hunt_family),
@@ -81,7 +94,7 @@ ON CONFLICT (item_id) DO UPDATE SET
 
 DELETE_SQL = "DELETE FROM listing_vetoes WHERE item_id = %s"
 LOAD_SQL = """
-SELECT item_id, status, hunt_name, hunt_family, brand, size,
+SELECT item_id, status, reason_code, hunt_name, hunt_family, brand, size,
        price_ron, value_band, deal_score, title, updated_at
 FROM listing_vetoes
 """
@@ -108,6 +121,19 @@ def coerce_write_status(status: str) -> str:
     if st not in VALID_STATUSES:
         raise ValueError(f"invalid veto status: {status}")
     return st
+
+
+def coerce_reason(status: str, reason_code: str | None) -> str | None:
+    if (
+        status != STATUS_REMOVED
+        or reason_code is None
+        or str(reason_code).strip() == ""
+    ):
+        return None
+    reason = str(reason_code).strip()
+    if reason not in VALID_REMOVE_REASONS:
+        raise ValueError(f"invalid remove reason: {reason}")
+    return reason
 
 
 def _item_id(row_or_id) -> int | None:
@@ -322,7 +348,11 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
 
 class VetoStore(Protocol):
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None: ...
     def clear(self, item_id: int) -> None: ...
     def load_map(self) -> dict[int, str]: ...
@@ -337,7 +367,11 @@ class MemoryVetoStore:
         self._rows: dict[int, dict] = {}
 
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
         iid = int(item_id)
         st = coerce_write_status(status)
@@ -346,6 +380,7 @@ class MemoryVetoStore:
         merged = {
             "item_id": iid,
             "status": st,
+            "reason_code": coerce_reason(st, reason_code),
             "updated_at": datetime.now(timezone.utc).isoformat(),
         }
         for key in ENRICHMENT_FIELDS:
@@ -396,8 +431,13 @@ class MemoryVetoStore:
 
 class NullVetoStore:
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
+        coerce_reason(coerce_write_status(status), reason_code)
         return None
 
     def clear(self, item_id: int) -> None:
@@ -427,7 +467,11 @@ class PsycopgVetoStore:
         self._conn = conn
 
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
         status = coerce_write_status(status)
         now = datetime.now(timezone.utc)
@@ -435,6 +479,7 @@ class PsycopgVetoStore:
         params = {
             "item_id": int(item_id),
             "status": status,
+            "reason_code": coerce_reason(status, reason_code),
             "updated_at": now,
             **enr,
         }
@@ -477,6 +522,7 @@ class PsycopgVetoStore:
             cols = [
                 "item_id",
                 "status",
+                "reason_code",
                 "hunt_name",
                 "hunt_family",
                 "brand",

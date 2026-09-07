@@ -113,7 +113,7 @@ class KeepRuleTests(unittest.TestCase):
             bot.is_value_haul_path_watch({"target_type": "men's sneakers"})
         )
 
-    def test_taste_hard_suppress_blocks_keep(self):
+    def test_unexplained_removes_do_not_block_keep(self):
         item = {
             "id": 1,
             "brand_title": "Nike",
@@ -133,14 +133,10 @@ class KeepRuleTests(unittest.TestCase):
             {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
         ]
         self.assertTrue(bot.is_keep(score, CONFIG, watch, item))
-        self.assertFalse(
-            bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes)
-        )
-        self.assertTrue(
-            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
-        )
+        self.assertTrue(bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes))
+        self.assertFalse(hasattr(bot, "is_taste_hard_suppressed"))
 
-    def test_taste_hard_suppress_blocks_bundle_extra_path(self):
+    def test_unexplained_removes_do_not_block_bundle_extra_path(self):
         item = {
             "id": 2,
             "brand_title": "Nike",
@@ -160,9 +156,6 @@ class KeepRuleTests(unittest.TestCase):
             {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
         ]
         self.assertTrue(bot.is_bundle_extra(score, CONFIG))
-        self.assertTrue(
-            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
-        )
         bundles, solos = bot.assemble_bundles(
             [
                 {
@@ -192,9 +185,12 @@ class KeepRuleTests(unittest.TestCase):
             CONFIG,
             outcomes,
         )
-        self.assertEqual(bundles, [])
-        self.assertEqual(len(solos), 1)
-        self.assertEqual(solos[0]["item"]["id"], 1)
+        self.assertEqual(len(bundles), 1)
+        self.assertEqual(
+            [row["item"]["id"] for row in bundles[0]["keeps"] + bundles[0]["extras"]],
+            [1, 2],
+        )
+        self.assertEqual(solos, [])
 
     def test_scoring_prompt_appends_taste_block(self):
         watch = {

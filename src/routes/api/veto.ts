@@ -52,6 +52,7 @@ async function handleVeto(request: Request) {
       itemId,
       body.status,
       enrichmentFromBody(body),
+      body.reason_code ?? body.reasonCode ?? null,
     )
     return Response.json(
       { ok: true, ...result },

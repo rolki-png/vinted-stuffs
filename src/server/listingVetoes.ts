@@ -8,7 +8,6 @@ import { resolveFamily } from "./tasteLearning.ts"
 import {
   ENRICHMENT_FIELDS,
   coerceEnrichment as coerceVetoEnrichment,
-  mergeEnrichment as mergeVetoEnrichment,
   prepareEnrichmentForWrite,
 } from "./listingVetoEnrichment.js"
 
@@ -261,20 +260,38 @@ async function loadVetoMap() {
   return map || {}
 }
 
-async function fillEnrichmentFromScored(client, itemId, enr) {
-  const hasScoreContext =
-    enr.score_version != null ||
-    enr.buy_score != null ||
-    enr.buy_band != null ||
-    enr.deal_score != null ||
-    enr.value_band != null
+const V2_SCORE_FIELDS = ["score_version", "buy_score", "buy_band"]
+const LEGACY_SCORE_FIELDS = ["deal_score", "value_band"]
+const SCORE_FIELDS = [...LEGACY_SCORE_FIELDS, ...V2_SCORE_FIELDS]
+
+function hasAnyField(value, fields) {
+  return (
+    value &&
+    typeof value === "object" &&
+    fields.some((field) => Object.prototype.hasOwnProperty.call(value, field))
+  )
+}
+
+function scoreRequestIntent(enrichment) {
+  const prepared = prepareEnrichmentForWrite(enrichment)
+  if (prepared.scoreUpdateKind !== "preserve") {
+    return prepared.scoreUpdateKind
+  }
+  if (hasAnyField(enrichment, V2_SCORE_FIELDS)) return "partial-v2"
+  if (hasAnyField(enrichment, LEGACY_SCORE_FIELDS)) return "partial-legacy"
+  return "absent"
+}
+
+async function fillEnrichmentFromScored(client, itemId, enr, scoreIntent) {
+  const needsScoreFill =
+    scoreIntent === "absent" || scoreIntent === "partial-legacy"
   const needs =
     !enr.brand ||
     !enr.size ||
     !enr.title ||
     enr.price_ron == null ||
     !enr.hunt_name ||
-    !hasScoreContext
+    needsScoreFill
   if (!needs) return enr
   try {
     const res = await client.query(
@@ -288,21 +305,44 @@ async function fillEnrichmentFromScored(client, itemId, enr) {
     )
     const row = res.rows[0]
     if (!row) return enr
-    return mergeVetoEnrichment(
-      coerceEnrichment({
-        hunt_name: row.hunt_name,
-        brand: row.brand,
-        size: row.size,
-        price_ron: row.price,
-        value_band: row.value_band,
-        deal_score: row.deal_score,
-        score_version: row.score_version,
-        buy_score: row.buy_score,
-        buy_band: row.buy_band,
-        title: row.title,
-      }),
-      enr,
-    )
+    const authoritative = coerceEnrichment({
+      hunt_name: row.hunt_name,
+      brand: row.brand,
+      size: row.size,
+      price_ron: row.price,
+      value_band: row.value_band,
+      deal_score: row.deal_score,
+      score_version: row.score_version,
+      buy_score: row.buy_score,
+      buy_band: row.buy_band,
+      title: row.title,
+    })
+    const out = coerceEnrichment(enr)
+    for (const key of ENRICHMENT_FIELDS.filter(
+      (field) => !SCORE_FIELDS.includes(field),
+    )) {
+      if (out[key] == null) out[key] = authoritative[key]
+    }
+    const authoritativePrepared =
+      prepareEnrichmentForWrite(authoritative)
+    if (
+      scoreIntent === "absent" &&
+      authoritativePrepared.scoreUpdateKind !== "preserve"
+    ) {
+      for (const key of SCORE_FIELDS) {
+        out[key] = authoritativePrepared.enrichment[key]
+      }
+    } else if (
+      scoreIntent === "partial-legacy" &&
+      authoritativePrepared.scoreUpdateKind === "legacy"
+    ) {
+      for (const key of LEGACY_SCORE_FIELDS) {
+        if (out[key] == null) {
+          out[key] = authoritativePrepared.enrichment[key]
+        }
+      }
+    }
+    return out
   } catch (err) {
     console.error("listingVetoes scored fill note:", err.message || err)
     return enr
@@ -317,27 +357,15 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
     reasonCode,
   )
   const st = coerceWriteStatus(rawStatus)
-  const requested = prepareEnrichmentForWrite(rawEnrichment)
-  let enr = requested.enrichment
+  const scoreIntent = scoreRequestIntent(rawEnrichment)
+  let enr = coerceEnrichment(rawEnrichment)
   const ok = await withClient(async (client) => {
-    enr = coerceEnrichment(await fillEnrichmentFromScored(client, id, enr))
+    enr = coerceEnrichment(
+      await fillEnrichmentFromScored(client, id, enr, scoreIntent),
+    )
     const filled = prepareEnrichmentForWrite(enr)
-    const scoreUpdateKind =
-      requested.scoreUpdateKind === "preserve"
-        ? "preserve"
-        : filled.scoreUpdateKind
+    const scoreUpdateKind = filled.scoreUpdateKind
     enr = filled.enrichment
-    if (scoreUpdateKind === "preserve") {
-      for (const key of [
-        "value_band",
-        "deal_score",
-        "score_version",
-        "buy_score",
-        "buy_band",
-      ]) {
-        enr[key] = null
-      }
-    }
     if (!enr.hunt_family && enr.hunt_name) {
       enr.hunt_family = resolveFamily(enr.hunt_name)
     }

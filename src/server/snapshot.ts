@@ -373,7 +373,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         if (band) bands[band] = (bands[band] || 0) + 1;
       }
       const hasV2 = selected.some(isV2);
-      const hasDeclaredV2 = allScoreRows.some(isDeclaredV2);
+      const hasLegacy = selected.some((scoreRow) => !isDeclaredV2(scoreRow));
       return {
         seller_id: row.seller_id,
         seller: row.seller || `user ${row.seller_id}`,
@@ -384,9 +384,9 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
           ? Math.round((scores.reduce((sum, value) => sum + value, 0) / scores.length) * 100) / 100
           : null,
         best_score: scores.length ? Math.max(...scores) : null,
-        score_version: hasDeclaredV2 ? 2 : null,
-        legacy_score: !hasDeclaredV2,
-        score_tier: hasV2 ? 2 : hasDeclaredV2 ? 0 : 1,
+        score_version: hasV2 ? 2 : null,
+        legacy_score: hasLegacy,
+        score_tier: hasV2 ? 2 : hasLegacy ? 1 : 0,
         bands,
         watches: [...row.watches].sort(),
         profile_url: row.seller_id

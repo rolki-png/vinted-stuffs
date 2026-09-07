@@ -165,6 +165,16 @@ fs.writeFileSync(
     },
     v2(4, 92, 2),
     v2(5, 86, 1),
+    {
+      id: 8,
+      title: "valid legacy sibling",
+      seller_id: 40,
+      seller: "malformed-v2",
+      deal_score: 8,
+      value_band: "acceptable",
+      hunt_fit: true,
+      has_score: true,
+    },
   ]),
 )
 fs.writeFileSync(
@@ -214,7 +224,7 @@ try {
     new Set(snapshot.finds.slice(0, 4).map((row) => row.id)),
     new Set([1, 4, 5, 6]),
   )
-  assert.deepEqual(snapshot.finds.slice(4).map((row) => row.id), [3, 2, 7])
+  assert.deepEqual(snapshot.finds.slice(4).map((row) => row.id), [3, 2, 8, 7])
   const upgraded = snapshot.finds.find((row) => row.id === 1)
   assert.equal(upgraded.score_version, 2)
   assert.equal(upgraded.buy_score, 88)
@@ -243,9 +253,13 @@ try {
   const legacySeller = snapshot.sellers.find((row) => row.seller_id === 20)
   assert.equal(legacySeller.legacy_score, true)
   assert.equal(legacySeller.avg_score, 10)
-  const malformedSeller = snapshot.sellers.find((row) => row.seller_id === 40)
-  assert.equal(malformedSeller.legacy_score, false)
-  assert.equal(malformedSeller.avg_score, null)
+  const mixedMalformedSeller = snapshot.sellers.find(
+    (row) => row.seller_id === 40,
+  )
+  assert.equal(mixedMalformedSeller.score_version, null)
+  assert.equal(mixedMalformedSeller.legacy_score, true)
+  assert.equal(mixedMalformedSeller.score_tier, 1)
+  assert.equal(mixedMalformedSeller.avg_score, 8)
   assert.deepEqual(snapshot.run.score_histogram_bins, [
     { label: "80–89", count: 4 },
     { label: "90–100", count: 2 },

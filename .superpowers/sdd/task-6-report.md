@@ -231,3 +231,65 @@ Full verification:
   SQL contract is covered by symmetric Python/JS decision tests, Python mocked
   params/load tests, the behavioral mocked TypeScript client test, and the
   production build.
+
+---
+
+## Task 6 re-review regression pass
+
+### RED evidence
+
+- `node scripts/test-score-semantics.mjs`
+  - Legacy→legacy replacement returned `source: "index"` instead of preserving
+    the prior `source: "keep"`.
+  - Equal-score bundle rows were reordered by exceptional/steal bands instead
+    of retaining stable input order.
+- `node --disable-warning=ExperimentalWarning --experimental-strip-types
+  scripts/test-dashboard-snapshot.mjs`
+  - A seller with a valid legacy row plus a malformed declared-v2 sibling was
+    labelled `score_version: 2` instead of legacy.
+- `node --disable-warning=ExperimentalWarning --experimental-strip-types
+  scripts/test-listing-veto-store.mjs`
+  - A scoreless fresh veto with an authoritative v2 `scored_listings` row bound
+    `preserve` and null score fields rather than the filled v2 triple.
+
+### GREEN changes
+
+- Veto writes now classify request score intent before coercion:
+  - complete valid request v2 or legacy context wins;
+  - any partial/invalid v2 request preserves the existing veto score context;
+  - no request score fields allows a complete authoritative scored row to
+    choose v2 or legacy;
+  - legacy-only partial input can fill its missing legacy field only from a
+    complete valid authoritative legacy row.
+- The mocked TypeScript store test now behaviorally covers fresh v2 fill, fresh
+  legacy fill, partial-v2 preservation across conflicts, partial-legacy
+  completion, and a complete request winning over conflicting authoritative
+  score data. Insert column/parameter arity remains covered.
+- Legacy→legacy merges retain historical keep source. Legacy→v2 keeps retain it
+  only when the winning v2 row itself qualifies as keep.
+- Seller labels are derived from `sellerScoreRows`' selected valid family.
+  Excluded malformed-v2 siblings no longer relabel a valid legacy seller.
+- Bundle score ties now return comparator equality and rely on JavaScript's
+  stable sort, matching Python indexed-bundle score-only ordering.
+
+### Verification
+
+- Focused Node: score semantics, veto enrichment, mocked TypeScript veto store,
+  and dashboard snapshot scripts all passed.
+- Focused Python: 23 listing-veto tests passed.
+- `npm run test:desk`: all nine scripts passed.
+- Full Python discovery: 175 tests passed.
+- `npm run build`: client, SSR, and Nitro production builds passed.
+- `git diff --check` passed; no `uv.lock` was created.
+
+### Self-review
+
+- The request-intent decision occurs on the original payload, before coercion
+  creates nullable keys, so scoreless and explicitly partial requests remain
+  distinguishable.
+- Authoritative fill copies metadata independently from score context and only
+  exposes a score family after full validation through the existing
+  `prepareEnrichmentForWrite` boundary.
+- Live Cockroach execution remains the only unavailable integration check; SQL
+  conflict behavior is exercised through the mocked client and explicit
+  update-decision simulation.

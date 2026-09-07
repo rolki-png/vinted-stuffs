@@ -105,7 +105,9 @@ function mergeScoreRows(current, incoming) {
   }
   const hadKeepSource =
     current?.source === "keep" || incoming?.source === "keep"
-  if (hadKeepSource && isV2(winner) && isKeep(winner)) {
+  if (hadKeepSource && !isDeclaredV2(winner)) {
+    merged.source = "keep"
+  } else if (hadKeepSource && isV2(winner) && isKeep(winner)) {
     merged.source = "keep"
   } else if (merged.source === "keep") {
     const fallbackSource =
@@ -219,20 +221,7 @@ function compareBundleScoreRows(left, right) {
   if (leftTier !== rightTier) return rightTier - leftTier
   const scoreDifference =
     (displayScore(right) ?? -Infinity) - (displayScore(left) ?? -Infinity)
-  if (scoreDifference) return scoreDifference
-  if (leftTier === 2) {
-    return (
-      Number(right?.buy_band === "exceptional") -
-      Number(left?.buy_band === "exceptional")
-    )
-  }
-  if (leftTier === 1) {
-    return (
-      Number(right?.value_band === "steal") -
-      Number(left?.value_band === "steal")
-    )
-  }
-  return 0
+  return scoreDifference || 0
 }
 
 function sortBundleScoreRows(rows) {

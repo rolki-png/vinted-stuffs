@@ -85,6 +85,13 @@ assert.equal(
   ).source,
   "index",
 )
+assert.equal(
+  mergeScoreRows(
+    { id: 9, source: "keep", ...legacy, deal_score: 9 },
+    { id: 9, source: "index", ...legacy, deal_score: 8 },
+  ).source,
+  "keep",
+)
 assert.deepEqual(
   scoreFields({
     ...v2,
@@ -232,7 +239,7 @@ assert.deepEqual(
     { id: "legacy-hunt", ...legacy, deal_score: 9, value_band: "hunt" },
     { id: "legacy-steal", ...legacy, deal_score: 9, value_band: "steal" },
   ]).map((row) => row.id),
-  ["exceptional-tie", "keep-tie", "legacy-steal", "legacy-hunt"],
+  ["keep-tie", "exceptional-tie", "legacy-hunt", "legacy-steal"],
 )
 assert.deepEqual(
   histogramBins({ "80-89": 4, "90-100": 2 }),

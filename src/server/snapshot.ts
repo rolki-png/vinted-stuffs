@@ -6,10 +6,12 @@ import {
   displayScore,
   histogramBins,
   isKeep,
+  isDeclaredV2,
   isV2,
   mergeScoreRows,
-  scoreFields,
+  sanitizeScoreRow,
   sellerScoreRows,
+  sortBundleScoreRows,
   sortScoreRows,
 } from './scoreSemantics.js'
 import fs from "node:fs"
@@ -84,21 +86,19 @@ async function loadJson(name, fallback) {
 }
 
 function dashboardRow(row) {
-  return {
+  const out = sanitizeScoreRow({
     ...row,
     deal_score: legacyScore(row?.deal_score),
-    ...scoreFields(row),
-  };
+  });
+  if (isDeclaredV2(row)) {
+    if (out.source === "keep" && !isKeep(row)) out.source = "scored";
+  }
+  return out;
 }
 
 function mergeFindRow(current, incoming) {
   if (!current) return dashboardRow(incoming);
-  const currentV2 = isV2(current);
-  const incomingV2 = isV2(incoming);
   const merged = mergeScoreRows(current, incoming);
-  if (currentV2 === incomingV2 && current.source) {
-    merged.source = current.source;
-  }
   return dashboardRow(merged);
 }
 
@@ -128,7 +128,7 @@ function mergeBundles(current, incoming) {
   return {
     ...(other || {}),
     ...(preferred || {}),
-    items: sortScoreRows([...items.values()]),
+    items: sortBundleScoreRows([...items.values()]),
   };
 }
 
@@ -363,7 +363,8 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 
   const sellerRows = [...sellers.values()]
     .map((row) => {
-      const selected = sellerScoreRows([...row.score_rows.values()])
+      const allScoreRows = [...row.score_rows.values()];
+      const selected = sellerScoreRows(allScoreRows)
         .filter((scoreRow) => displayScore(scoreRow) != null);
       const scores = selected.map(displayScore);
       const bands = {};
@@ -372,6 +373,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         if (band) bands[band] = (bands[band] || 0) + 1;
       }
       const hasV2 = selected.some(isV2);
+      const hasDeclaredV2 = allScoreRows.some(isDeclaredV2);
       return {
         seller_id: row.seller_id,
         seller: row.seller || `user ${row.seller_id}`,
@@ -382,8 +384,9 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
           ? Math.round((scores.reduce((sum, value) => sum + value, 0) / scores.length) * 100) / 100
           : null,
         best_score: scores.length ? Math.max(...scores) : null,
-        score_version: hasV2 ? 2 : null,
-        legacy_score: !hasV2,
+        score_version: hasDeclaredV2 ? 2 : null,
+        legacy_score: !hasDeclaredV2,
+        score_tier: hasV2 ? 2 : hasDeclaredV2 ? 0 : 1,
         bands,
         watches: [...row.watches].sort(),
         profile_url: row.seller_id
@@ -393,7 +396,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     })
     .sort(
       (a, b) =>
-        Number(a.legacy_score) - Number(b.legacy_score) ||
+        b.score_tier - a.score_tier ||
         (b.best_score ?? -Infinity) - (a.best_score ?? -Infinity) ||
         (b.avg_score ?? -Infinity) - (a.avg_score ?? -Infinity) ||
         b.keeps - a.keeps,

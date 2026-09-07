@@ -263,8 +263,88 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(row["buy_band"], "keep")
         self.assertEqual(row["title"], "updated title")
 
+    def test_partial_or_invalid_score_context_preserves_existing_scale(self):
+        store = lv.MemoryVetoStore()
+        store.set_status(
+            8,
+            "removed",
+            {"deal_score": 9, "value_band": "steal", "title": "old"},
+            "poor_value",
+        )
+
+        store.set_status(
+            8,
+            "removed",
+            {"score_version": 2, "buy_score": 88, "title": "partial v2"},
+            "poor_value",
+        )
+        legacy = store.load_outcomes()[0]
+        self.assertEqual(legacy["deal_score"], 9)
+        self.assertEqual(legacy["value_band"], "steal")
+        self.assertIsNone(legacy["score_version"])
+        self.assertEqual(legacy["title"], "partial v2")
+
+        store.set_status(
+            9,
+            "bought",
+            {"score_version": 2, "buy_score": 90, "buy_band": "keep"},
+        )
+        store.set_status(9, "bought", {"deal_score": 10, "title": "partial legacy"})
+        v2 = next(row for row in store.load_outcomes() if row["item_id"] == 9)
+        self.assertEqual(v2["score_version"], 2)
+        self.assertEqual(v2["buy_score"], 90)
+        self.assertEqual(v2["buy_band"], "keep")
+        self.assertIsNone(v2["deal_score"])
+        self.assertEqual(v2["title"], "partial legacy")
+
+        store.set_status(
+            9,
+            "bought",
+            {
+                "score_version": 2,
+                "buy_score": 101,
+                "buy_band": "exceptional",
+                "deal_score": 9,
+                "value_band": "steal",
+            },
+        )
+        still_v2 = next(
+            row for row in store.load_outcomes() if row["item_id"] == 9
+        )
+        self.assertEqual(still_v2["buy_score"], 90)
+        self.assertEqual(still_v2["buy_band"], "keep")
+
 
 class PsycopgStoreTests(unittest.TestCase):
+    def test_upsert_binds_explicit_score_update_decision(self):
+        conn = MagicMock()
+        cursor = conn.cursor.return_value.__enter__.return_value
+        store = lv.PsycopgVetoStore(conn)
+
+        store.set_status(
+            10,
+            "bought",
+            {"score_version": 2, "buy_score": 88, "buy_band": "keep"},
+        )
+        params = cursor.execute.call_args.args[1]
+        self.assertEqual(params["score_update_kind"], "v2")
+
+        store.set_status(10, "bought", {"score_version": 2, "buy_score": 91})
+        params = cursor.execute.call_args.args[1]
+        self.assertEqual(params["score_update_kind"], "preserve")
+        self.assertIsNone(params["score_version"])
+        self.assertIsNone(params["buy_score"])
+        self.assertIsNone(params["buy_band"])
+
+        store.set_status(
+            10,
+            "removed",
+            {"deal_score": 9, "value_band": "steal"},
+            "poor_value",
+        )
+        params = cursor.execute.call_args.args[1]
+        self.assertEqual(params["score_update_kind"], "legacy")
+
     def test_v2_outcome_load_round_trip(self):
         conn = MagicMock()
         cursor = conn.cursor.return_value.__enter__.return_value

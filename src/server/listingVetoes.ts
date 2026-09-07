@@ -9,6 +9,7 @@ import {
   ENRICHMENT_FIELDS,
   coerceEnrichment as coerceVetoEnrichment,
   mergeEnrichment as mergeVetoEnrichment,
+  prepareEnrichmentForWrite,
 } from "./listingVetoEnrichment.js"
 
 /**
@@ -316,9 +317,27 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
     reasonCode,
   )
   const st = coerceWriteStatus(rawStatus)
-  let enr = coerceEnrichment(rawEnrichment)
+  const requested = prepareEnrichmentForWrite(rawEnrichment)
+  let enr = requested.enrichment
   const ok = await withClient(async (client) => {
     enr = coerceEnrichment(await fillEnrichmentFromScored(client, id, enr))
+    const filled = prepareEnrichmentForWrite(enr)
+    const scoreUpdateKind =
+      requested.scoreUpdateKind === "preserve"
+        ? "preserve"
+        : filled.scoreUpdateKind
+    enr = filled.enrichment
+    if (scoreUpdateKind === "preserve") {
+      for (const key of [
+        "value_band",
+        "deal_score",
+        "score_version",
+        "buy_score",
+        "buy_band",
+      ]) {
+        enr[key] = null
+      }
+    }
     if (!enr.hunt_family && enr.hunt_name) {
       enr.hunt_family = resolveFamily(enr.hunt_name)
     }
@@ -338,32 +357,29 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
          brand = COALESCE(EXCLUDED.brand, listing_vetoes.brand),
          size = COALESCE(EXCLUDED.size, listing_vetoes.size),
          price_ron = COALESCE(EXCLUDED.price_ron, listing_vetoes.price_ron),
-         value_band = CASE
-           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-                OR EXCLUDED.buy_band IS NOT NULL THEN NULL
-           ELSE COALESCE(EXCLUDED.value_band, listing_vetoes.value_band)
+         value_band = CASE $15
+           WHEN 'v2' THEN NULL
+           WHEN 'legacy' THEN EXCLUDED.value_band
+           ELSE listing_vetoes.value_band
          END,
-         deal_score = CASE
-           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-                OR EXCLUDED.buy_band IS NOT NULL THEN NULL
-           ELSE COALESCE(EXCLUDED.deal_score, listing_vetoes.deal_score)
+         deal_score = CASE $15
+           WHEN 'v2' THEN NULL
+           WHEN 'legacy' THEN EXCLUDED.deal_score
+           ELSE listing_vetoes.deal_score
          END,
-         score_version = CASE
-           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.score_version
-           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+         score_version = CASE $15
+           WHEN 'v2' THEN EXCLUDED.score_version
+           WHEN 'legacy' THEN NULL
            ELSE listing_vetoes.score_version
          END,
-         buy_score = CASE
-           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_score
-           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+         buy_score = CASE $15
+           WHEN 'v2' THEN EXCLUDED.buy_score
+           WHEN 'legacy' THEN NULL
            ELSE listing_vetoes.buy_score
          END,
-         buy_band = CASE
-           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_band
-           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+         buy_band = CASE $15
+           WHEN 'v2' THEN EXCLUDED.buy_band
+           WHEN 'legacy' THEN NULL
            ELSE listing_vetoes.buy_band
          END,
          title = COALESCE(EXCLUDED.title, listing_vetoes.title)`,
@@ -382,6 +398,7 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
         enr.buy_score,
         enr.buy_band,
         enr.title,
+        scoreUpdateKind,
       ],
     )
     return true

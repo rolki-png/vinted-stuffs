@@ -3,9 +3,11 @@ import { offerFields, DEFAULTS } from './bundleOffer.ts'
 import {
   displayScore,
   isKeep,
+  isDeclaredV2,
   isV2,
+  sanitizeScoreRow,
   scoreFields,
-  sortScoreRows,
+  sortBundleScoreRows,
 } from './scoreSemantics.js'
 import fs from "node:fs"
 import path from "node:path"
@@ -36,7 +38,7 @@ function exportRow(row) {
     const n = Number(price);
     price = Number.isFinite(n) ? n : null;
   }
-  return {
+  return sanitizeScoreRow({
     id: row.item_id != null ? Number(row.item_id) : null,
     watch: row.hunt_name,
     title: row.title || "",
@@ -60,7 +62,7 @@ function exportRow(row) {
     scored_at: scoredAt,
     index_source: row.source,
     source: "index",
-  };
+  });
 }
 
 function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 } = {}) {
@@ -68,6 +70,7 @@ function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 }
   for (const row of exportRows) {
     if (row.reason === "unavailable during backfill") continue;
     const v2 = isV2(row);
+    if (isDeclaredV2(row) && !v2) continue;
     if (v2) {
       if (row.hunt_fit !== true) continue;
       if (!["bundle", "good", "keep", "exceptional"].includes(row.buy_band)) continue;
@@ -98,7 +101,7 @@ function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 }
         best.set(id, r);
       }
     }
-    const members = sortScoreRows([...best.values()]);
+    const members = sortBundleScoreRows([...best.values()]);
     if (members.length < minItems) continue;
     let listingSum = 0;
     for (const r of members) listingSum += Number(r.price || 0);

@@ -52,16 +52,24 @@ const exported = exportRow({
   verification_reason: "check seams",
   rank_position: 3,
   rank_confidence: "medium",
+  deal_score: 10,
+  value_band: "steal",
+  scam_risk: "low",
+  reason: "stale legacy reason",
   has_score: true,
 })
 assert.equal(exported.legacy_score, false)
 assert.equal(exported.buy_score, 89)
+assert.equal(exported.deal_score, null)
+assert.equal(exported.value_band, undefined)
+assert.equal(exported.reason, undefined)
+assert.equal(exported.verification_reason, "check seams")
 assert.deepEqual(exported.score_factors, { usefulness: 89 })
 assert.deepEqual(exported.factor_evidence, { usefulness: "frequent use" })
 
 const bundleRows = [
-  v2(11, 90, 1),
-  v2(12, 70, 2, { buy_band: "bundle" }),
+  v2(11, 90, 2),
+  v2(12, 70, 1, { buy_band: "bundle" }),
   {
     id: 13,
     seller_id: 10,
@@ -105,6 +113,28 @@ fs.writeFileSync(
       deal_score: 10,
       value_band: "steal",
       hunt_fit: true,
+      reason: "legacy keep reason",
+    },
+    v2(6, 89, null, {
+      seller_id: 30,
+      seller: "standalone-v2",
+      source: "keep",
+      deal_score: 10,
+      value_band: "steal",
+      scam_risk: "low",
+      reason: "stale legacy reason",
+      verification_reason: "verify fabric",
+    }),
+    {
+      id: 7,
+      seller_id: 40,
+      seller: "malformed-v2",
+      score_version: 2,
+      buy_score: 101,
+      buy_band: "exceptional",
+      deal_score: 10,
+      value_band: "steal",
+      reason: "must not become legacy",
     },
   ]),
 )
@@ -181,28 +211,41 @@ try {
   process.chdir(root)
   const snapshot = await buildSnapshot()
   assert.deepEqual(
-    snapshot.finds.map((row) => row.id),
-    [5, 4, 1, 3, 2],
+    new Set(snapshot.finds.slice(0, 4).map((row) => row.id)),
+    new Set([1, 4, 5, 6]),
   )
+  assert.deepEqual(snapshot.finds.slice(4).map((row) => row.id), [3, 2, 7])
   const upgraded = snapshot.finds.find((row) => row.id === 1)
   assert.equal(upgraded.score_version, 2)
   assert.equal(upgraded.buy_score, 88)
   assert.equal(upgraded.legacy_score, false)
+  assert.equal(upgraded.source, "keep")
   assert.equal(upgraded.deal_score, null)
+  assert.equal(upgraded.reason, undefined)
   assert.deepEqual(upgraded.score_factors, { usefulness: 88 })
+
+  const standalone = snapshot.finds.find((row) => row.id === 6)
+  assert.equal(standalone.deal_score, null)
+  assert.equal(standalone.value_band, undefined)
+  assert.equal(standalone.reason, undefined)
+  assert.equal(standalone.verification_reason, "verify fabric")
 
   const legacy = snapshot.finds.find((row) => row.id === 3)
   assert.equal(legacy.deal_score, 10)
   assert.equal(legacy.legacy_score, true)
 
-  assert.equal(snapshot.sellers[0].seller_id, 10)
-  assert.equal(snapshot.sellers[0].score_version, 2)
-  assert.equal(snapshot.sellers[0].best_score, 92)
-  assert.equal(snapshot.sellers[0].avg_score, 88.67)
-  assert.equal(snapshot.sellers[0].keeps, 3)
-  assert.equal(snapshot.sellers[0].listings, 4)
-  assert.equal(snapshot.sellers[1].legacy_score, true)
-  assert.equal(snapshot.sellers[1].avg_score, 10)
+  const mixedSeller = snapshot.sellers.find((row) => row.seller_id === 10)
+  assert.equal(mixedSeller.score_version, 2)
+  assert.equal(mixedSeller.best_score, 92)
+  assert.equal(mixedSeller.avg_score, 88.67)
+  assert.equal(mixedSeller.keeps, 3)
+  assert.equal(mixedSeller.listings, 4)
+  const legacySeller = snapshot.sellers.find((row) => row.seller_id === 20)
+  assert.equal(legacySeller.legacy_score, true)
+  assert.equal(legacySeller.avg_score, 10)
+  const malformedSeller = snapshot.sellers.find((row) => row.seller_id === 40)
+  assert.equal(malformedSeller.legacy_score, false)
+  assert.equal(malformedSeller.avg_score, null)
   assert.deepEqual(snapshot.run.score_histogram_bins, [
     { label: "80–89", count: 4 },
     { label: "90–100", count: 2 },

@@ -37,6 +37,20 @@ ENRICHMENT_FIELDS = (
     "buy_band",
     "title",
 )
+SCORE_CONTEXT_FIELDS = (
+    "value_band",
+    "deal_score",
+    "score_version",
+    "buy_score",
+    "buy_band",
+)
+ALLOWED_BUY_BANDS = frozenset({
+    "skip",
+    "bundle",
+    "good",
+    "keep",
+    "exceptional",
+})
 
 DDL = """
 CREATE TABLE IF NOT EXISTS listing_vetoes (
@@ -98,32 +112,29 @@ ON CONFLICT (item_id) DO UPDATE SET
   brand = COALESCE(EXCLUDED.brand, listing_vetoes.brand),
   size = COALESCE(EXCLUDED.size, listing_vetoes.size),
   price_ron = COALESCE(EXCLUDED.price_ron, listing_vetoes.price_ron),
-  value_band = CASE
-    WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-         OR EXCLUDED.buy_band IS NOT NULL THEN NULL
-    ELSE COALESCE(EXCLUDED.value_band, listing_vetoes.value_band)
+  value_band = CASE %(score_update_kind)s
+    WHEN 'v2' THEN NULL
+    WHEN 'legacy' THEN EXCLUDED.value_band
+    ELSE listing_vetoes.value_band
   END,
-  deal_score = CASE
-    WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-         OR EXCLUDED.buy_band IS NOT NULL THEN NULL
-    ELSE COALESCE(EXCLUDED.deal_score, listing_vetoes.deal_score)
+  deal_score = CASE %(score_update_kind)s
+    WHEN 'v2' THEN NULL
+    WHEN 'legacy' THEN EXCLUDED.deal_score
+    ELSE listing_vetoes.deal_score
   END,
-  score_version = CASE
-    WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-         OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.score_version
-    WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+  score_version = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.score_version
+    WHEN 'legacy' THEN NULL
     ELSE listing_vetoes.score_version
   END,
-  buy_score = CASE
-    WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-         OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_score
-    WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+  buy_score = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.buy_score
+    WHEN 'legacy' THEN NULL
     ELSE listing_vetoes.buy_score
   END,
-  buy_band = CASE
-    WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
-         OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_band
-    WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+  buy_band = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.buy_band
+    WHEN 'legacy' THEN NULL
     ELSE listing_vetoes.buy_band
   END,
   title = COALESCE(EXCLUDED.title, listing_vetoes.title)
@@ -375,7 +386,12 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
                 out[key] = None
         elif key in {"deal_score", "score_version", "buy_score"}:
             try:
-                out[key] = int(val)
+                number = float(val)
+                out[key] = (
+                    int(number)
+                    if not isinstance(val, bool) and number.is_integer()
+                    else None
+                )
             except (TypeError, ValueError):
                 out[key] = None
         else:
@@ -384,25 +400,62 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
     return out
 
 
+def score_update_kind(enrichment: dict | None) -> str:
+    has_v2_input = bool(
+        enrichment
+        and any(
+            key in enrichment and enrichment[key] is not None
+            for key in ("score_version", "buy_score", "buy_band")
+        )
+    )
+    value = coerce_enrichment(enrichment)
+    if (
+        value["score_version"] == 2
+        and value["buy_score"] is not None
+        and 0 <= value["buy_score"] <= 100
+        and value["buy_band"] in ALLOWED_BUY_BANDS
+    ):
+        return "v2"
+    if has_v2_input:
+        return "preserve"
+    if (
+        value["deal_score"] is not None
+        and 1 <= value["deal_score"] <= 10
+        and value["value_band"] is not None
+    ):
+        return "legacy"
+    return "preserve"
+
+
+def prepare_enrichment_for_write(
+    enrichment: dict | None,
+) -> tuple[dict[str, Any], str]:
+    value = coerce_enrichment(enrichment)
+    update_kind = score_update_kind(enrichment)
+    if update_kind == "v2":
+        value["deal_score"] = None
+        value["value_band"] = None
+    elif update_kind == "legacy":
+        value["score_version"] = None
+        value["buy_score"] = None
+        value["buy_band"] = None
+    else:
+        for key in SCORE_CONTEXT_FIELDS:
+            value[key] = None
+    return value, update_kind
+
+
 def merge_enrichment(previous: dict | None, incoming: dict | None) -> dict[str, Any]:
-    current = coerce_enrichment(previous)
-    new = coerce_enrichment(incoming)
+    current, _ = prepare_enrichment_for_write(previous)
+    new, update_kind = prepare_enrichment_for_write(incoming)
     merged = {
         key: new[key] if new[key] is not None else current[key]
         for key in ENRICHMENT_FIELDS
+        if key not in SCORE_CONTEXT_FIELDS
     }
-    has_v2 = any(
-        new[key] is not None for key in ("score_version", "buy_score", "buy_band")
-    )
-    has_legacy = any(new[key] is not None for key in ("deal_score", "value_band"))
-    if has_v2:
-        merged["deal_score"] = None
-        merged["value_band"] = None
-        for key in ("score_version", "buy_score", "buy_band"):
-            merged[key] = new[key]
-    elif has_legacy:
-        for key in ("score_version", "buy_score", "buy_band"):
-            merged[key] = None
+    score_source = current if update_kind == "preserve" else new
+    for key in SCORE_CONTEXT_FIELDS:
+        merged[key] = score_source[key]
     return merged
 
 
@@ -534,12 +587,13 @@ class PsycopgVetoStore:
     ) -> None:
         status = coerce_write_status(status)
         now = datetime.now(timezone.utc)
-        enr = coerce_enrichment(enrichment)
+        enr, update_kind = prepare_enrichment_for_write(enrichment)
         params = {
             "item_id": int(item_id),
             "status": status,
             "reason_code": coerce_reason(status, reason_code),
             "updated_at": now,
+            "score_update_kind": update_kind,
             **enr,
         }
         with self._conn.cursor() as cur:

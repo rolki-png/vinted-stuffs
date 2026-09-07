@@ -4,6 +4,7 @@ import {
   ENRICHMENT_FIELDS,
   coerceEnrichment,
   mergeEnrichment,
+  scoreUpdateDecision,
 } from "../src/server/listingVetoEnrichment.js"
 
 for (const field of ["score_version", "buy_score", "buy_band"]) {
@@ -38,6 +39,73 @@ assert.equal(legacy.buy_score, null)
 assert.equal(legacy.buy_band, null)
 assert.equal(legacy.deal_score, 9)
 assert.equal(legacy.value_band, "steal")
+
+assert.equal(
+  scoreUpdateDecision(
+    coerceEnrichment({
+      score_version: 2,
+      buy_score: 88,
+      buy_band: "keep",
+    }),
+  ),
+  "v2",
+)
+assert.equal(
+  scoreUpdateDecision(
+    coerceEnrichment({ score_version: 2, buy_score: 88 }),
+  ),
+  "preserve",
+)
+assert.equal(
+  scoreUpdateDecision(
+    coerceEnrichment({
+      score_version: 2,
+      buy_score: 101,
+      buy_band: "exceptional",
+      deal_score: 9,
+      value_band: "steal",
+    }),
+  ),
+  "preserve",
+)
+assert.equal(
+  scoreUpdateDecision(coerceEnrichment({ deal_score: 9 })),
+  "preserve",
+)
+assert.equal(
+  scoreUpdateDecision(
+    coerceEnrichment({ deal_score: 9, value_band: "steal" }),
+  ),
+  "legacy",
+)
+
+const legacyContext = coerceEnrichment({
+  deal_score: 9,
+  value_band: "steal",
+  title: "old",
+})
+const partialV2 = mergeEnrichment(
+  legacyContext,
+  coerceEnrichment({
+    score_version: 2,
+    buy_score: 88,
+    title: "new metadata",
+  }),
+)
+assert.equal(partialV2.deal_score, 9)
+assert.equal(partialV2.value_band, "steal")
+assert.equal(partialV2.score_version, null)
+assert.equal(partialV2.title, "new metadata")
+
+const partialLegacy = mergeEnrichment(
+  v2,
+  coerceEnrichment({ deal_score: 10, title: "metadata only" }),
+)
+assert.equal(partialLegacy.score_version, 2)
+assert.equal(partialLegacy.buy_score, 88)
+assert.equal(partialLegacy.buy_band, "keep")
+assert.equal(partialLegacy.deal_score, null)
+assert.equal(partialLegacy.title, "metadata only")
 
 const routeSource = fs.readFileSync(
   new URL("../src/routes/api/veto.ts", import.meta.url),

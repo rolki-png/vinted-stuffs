@@ -129,3 +129,105 @@ Additional checks:
   integration test, and the production server build.
 - Direct snapshot integration testing uses Node 22's experimental TypeScript
   stripping with its warning disabled; production compilation uses Vite/Nitro.
+
+---
+
+## Task 6 review-fix pass
+
+### Findings addressed
+
+1. Valid v2 detection now requires declared version 2 plus an integer
+   `buy_score` in `[0, 100]`. Dashboard ordering uses explicit valid-v2,
+   legacy, and malformed-declared-v2 tiers; malformed v2 rows cannot fall back
+   to legacy display, keep, seller, or bundle semantics.
+2. Pairwise ranks are used only when both compared v2 rows have positive integer
+   positions and `low`/`medium`/`high` rank confidence. Mixed ranked/unranked
+   global lists ignore stale ranks and sort all valid v2 rows by `buy_score`,
+   avoiding both freshness promotion and a non-transitive comparator cycle.
+3. V2 sanitization clears `deal_score`, `value_band`, `scam_risk`, and legacy
+   `reason`, while retaining `verification_reason`. It runs for DB exports,
+   standalone rows, and merged rows.
+4. A legacy `source: "keep"` survives a v2 replacement only when the winning v2
+   row itself passes all v2 keep gates. Non-keep v2 replacements retain their
+   actual source.
+5. JS and Python veto enrichment now share the same three update decisions:
+   `v2` only for a complete valid version/score/allowed-band triple, `legacy`
+   only for a complete legacy score/band pair with no invalid v2 attempt, and
+   `preserve` otherwise. SQL receives that explicit decision rather than
+   inferring updates from nullable columns.
+6. Partial or invalid score payloads bind null score values with `preserve`, so
+   they cannot clear or partially overwrite either existing scale. Complete v2
+   and legacy payloads clear the opposite scale.
+7. Bundle members use Python-parity ordering: score tier, numeric score, then
+   exceptional/steal tie-breaks. Dashboard freshness/rank ordering is not used.
+8. `scripts/test-listing-veto-store.mjs` uses a mocked `pg.Client` to execute the
+   TypeScript store path and verify 15 insert columns, 15 bound parameters,
+   complete-v2/preserve/legacy decisions, and v2→partial→legacy state behavior.
+
+### Review RED evidence
+
+- `node scripts/test-score-semantics.mjs`
+  - Invalid/fractional/out-of-range scores were accepted as v2.
+  - A single old rank outranked a stronger unranked score.
+  - Mixed ranked/unranked rows produced a stale-rank-first order.
+  - Bundle tie/order tests showed rank semantics and insertion-order tie
+    behavior instead of Python score ordering.
+- `node --disable-warning=ExperimentalWarning --experimental-strip-types
+  scripts/test-dashboard-snapshot.mjs`
+  - Bundle members were `[12, 11]` instead of score-ordered `[11, 12]`.
+  - Standalone DB v2 export retained `deal_score: 10`.
+  - A malformed-v2-only seller was labelled legacy.
+- `node scripts/test-listing-veto-v2.mjs`
+  - `scoreUpdateDecision` did not exist.
+  - Mixed invalid-v2 plus complete legacy input selected `legacy` instead of
+    `preserve`.
+- `node --disable-warning=ExperimentalWarning --experimental-strip-types
+  scripts/test-listing-veto-store.mjs`
+  - The store bound 14 parameters instead of the decision-aware 15.
+- Focused Python review tests failed because partial v2 cleared legacy context,
+  partial legacy cleared v2 context, and Psycopg params had no
+  `score_update_kind`.
+
+### Review verification
+
+Focused Node:
+
+```text
+node scripts/test-score-semantics.mjs
+node scripts/test-listing-veto-v2.mjs
+node --disable-warning=ExperimentalWarning --experimental-strip-types \
+  scripts/test-listing-veto-store.mjs
+node --disable-warning=ExperimentalWarning --experimental-strip-types \
+  scripts/test-dashboard-snapshot.mjs
+```
+
+Result: all four scripts exited 0.
+
+Focused Python:
+
+```text
+source "$HOME/.local/bin/env" && PYTHONPATH=python/tests \
+  uv run --project python --no-sync python -m unittest \
+  python.tests.test_listing_vetoes -v
+```
+
+Result: 23 tests passed.
+
+Full verification:
+
+- `npm run test:desk` — all nine scripts passed.
+- `source "$HOME/.local/bin/env" && uv run --project python --no-sync
+  python -m unittest discover -s python/tests -v` — 175 tests passed.
+- `npm run build` — client, SSR, and Nitro production builds passed.
+- `git diff --check` passed; no `uv.lock` was created.
+
+### Task 7 dependency and concerns
+
+- Task 7 must replace `DealDesk.tsx` client-side `deal_score` filtering and
+  sorting with the same valid-v2/legacy/malformed tier semantics. The server
+  snapshot is safe, but the current client re-sorts rows using legacy fields and
+  can undo server ordering until Task 7 lands.
+- Live Cockroach execution remains unavailable in this environment. The updated
+  SQL contract is covered by symmetric Python/JS decision tests, Python mocked
+  params/load tests, the behavioral mocked TypeScript client test, and the
+  production build.

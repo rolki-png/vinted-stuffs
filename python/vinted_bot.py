@@ -704,17 +704,6 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
     return True
 
 
-def is_keep_with_taste(
-    score: dict,
-    config: dict,
-    watch: dict,
-    item: dict | None = None,
-    outcomes: list | None = None,
-) -> bool:
-    """Legacy candidate gate; taste feedback cannot create hard vetoes."""
-    return is_keep(score, config, watch, item)
-
-
 def is_bundle_extra(score: dict, config: dict) -> bool:
     if score.get("hunt_fit") is not True:
         return False
@@ -859,9 +848,7 @@ def save_bundle_pool(rows: list) -> None:
     POOL_PATH.write_text(json.dumps(list(unique.values())[:200], indent=2, ensure_ascii=False) + "\n")
 
 
-def pool_candidates(
-    rows: list, config: dict, taste_outcomes: list | None = None
-) -> list:
+def pool_candidates(rows: list, config: dict) -> list:
     out = []
     for row in rows:
         if is_keep(row["score"], config, row["watch_obj"], row["item"]) or is_bundle_extra(
@@ -1042,9 +1029,7 @@ def seed_pool_from_history(watches: list) -> list:
     return kept
 
 
-def assemble_bundles(
-    scored: list, config: dict, taste_outcomes: list | None = None
-) -> tuple[list, list]:
+def assemble_bundles(scored: list, config: dict) -> tuple[list, list]:
     by_seller: dict = {}
     for row in scored:
         sid = seller_id(row["item"])
@@ -1069,12 +1054,11 @@ def assemble_bundles(
         keeps = [
             r
             for r in unique
-            if is_keep_with_taste(
+            if is_keep(
                 r["score"],
                 config,
                 r["watch_obj"],
                 r["item"],
-                taste_outcomes,
             )
         ]
         extras = [
@@ -1501,7 +1485,7 @@ def main() -> None:
         except (RuntimeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
             print(f"Bundle pool seed skipped: {e}", file=sys.stderr)
             prior_rows = []
-    prior_rows = pool_candidates(prior_rows, config, taste_outcomes_all)
+    prior_rows = pool_candidates(prior_rows, config)
 
     def score_batch(watch: dict, items: list, source: str = "search") -> None:
         if not items:
@@ -1670,12 +1654,11 @@ def main() -> None:
             "sid": sid,
             "country": _country(row["watch_obj"]),
             "score": row.get("score") or {},
-            "is_keep": is_keep_with_taste(
+            "is_keep": is_keep(
                 row.get("score") or {},
                 config,
                 row.get("watch_obj") or {},
                 row.get("item"),
-                taste_outcomes_for(row.get("watch_obj") or {}),
             ),
         })
     crawl_meta = select_closet_crawl_sellers(crawl_candidates, config)
@@ -1948,7 +1931,7 @@ def main() -> None:
         )
     merged = merge_scored(scored, still_prior + revived)
     merged = listing_vetoes_mod.filter_scored_rows(merged, suppress_ids)
-    bundles, solos = assemble_bundles(merged, config, taste_outcomes_all)
+    bundles, solos = assemble_bundles(merged, config)
     # Re-check bundle membership after remove (assemble already omitted removed rows).
     pruned_bundles = []
     for bundle in bundles:
@@ -2000,7 +1983,7 @@ def main() -> None:
     for keep in keeps:
         send_ntfy(ntfy_topic, keep["item"], keep["score"])
         alerts_sent += 1
-    save_bundle_pool(pool_candidates(merged, config, taste_outcomes_all))
+    save_bundle_pool(pool_candidates(merged, config))
     bundles = new_bundles
 
     best_rows = load_best()

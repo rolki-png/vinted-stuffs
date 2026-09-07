@@ -86,6 +86,42 @@ class TestPrompt(unittest.TestCase):
         self.assertIn("poor_value", block)
         self.assertIn("value adjustment only", block)
 
+    def test_two_same_reason_and_mixed_two_plus_one_do_not_emit_guidance(self):
+        two_poor_value = [
+            {
+                "status": "removed",
+                "reason_code": "poor_value",
+                "hunt_family": "gym",
+                "title": f"shorts {i}",
+            }
+            for i in range(2)
+        ]
+        self.assertEqual(tl.build_taste_prompt_block(two_poor_value), "")
+        mixed_reasons = [
+            *two_poor_value,
+            {
+                "status": "removed",
+                "reason_code": "rarely_useful",
+                "hunt_family": "gym",
+                "title": "leggings",
+            },
+        ]
+        self.assertEqual(tl.build_taste_prompt_block(mixed_reasons), "")
+
+    def test_qualifying_reason_shows_three_examples_below_display_limit(self):
+        rows = [
+            {
+                "status": "removed",
+                "reason_code": "poor_value",
+                "hunt_family": "gym",
+                "title": f"shorts {i}",
+            }
+            for i in range(3)
+        ]
+        block = tl.build_taste_prompt_block(rows, per_polarity=1)
+        for i in range(3):
+            self.assertIn(f"shorts {i}", block)
+
     def test_empty_outcomes(self):
         self.assertEqual(tl.build_taste_prompt_block([]), "")
 

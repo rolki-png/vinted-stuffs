@@ -1,4 +1,5 @@
 import path_setup  # noqa: F401
+import inspect
 import unittest
 
 import vinted_bot as bot
@@ -113,7 +114,16 @@ class KeepRuleTests(unittest.TestCase):
             bot.is_value_haul_path_watch({"target_type": "men's sneakers"})
         )
 
-    def test_unexplained_removes_do_not_block_keep(self):
+    def test_candidate_helpers_have_no_taste_outcomes_plumbing(self):
+        self.assertFalse(hasattr(bot, "is_keep_with_taste"))
+        self.assertNotIn(
+            "taste_outcomes", inspect.signature(bot.pool_candidates).parameters
+        )
+        self.assertNotIn(
+            "taste_outcomes", inspect.signature(bot.assemble_bundles).parameters
+        )
+
+    def test_candidate_keep_uses_calculator_gate(self):
         item = {
             "id": 1,
             "brand_title": "Nike",
@@ -127,16 +137,10 @@ class KeepRuleTests(unittest.TestCase):
             "scam_risk": "low",
         }
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-        ]
         self.assertTrue(bot.is_keep(score, CONFIG, watch, item))
-        self.assertTrue(bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes))
         self.assertFalse(hasattr(bot, "is_taste_hard_suppressed"))
 
-    def test_unexplained_removes_do_not_block_bundle_extra_path(self):
+    def test_bundle_extra_uses_calculator_gate(self):
         item = {
             "id": 2,
             "brand_title": "Nike",
@@ -150,11 +154,6 @@ class KeepRuleTests(unittest.TestCase):
             "scam_risk": "low",
         }
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-        ]
         self.assertTrue(bot.is_bundle_extra(score, CONFIG))
         bundles, solos = bot.assemble_bundles(
             [
@@ -183,7 +182,6 @@ class KeepRuleTests(unittest.TestCase):
                 },
             ],
             CONFIG,
-            outcomes,
         )
         self.assertEqual(len(bundles), 1)
         self.assertEqual(

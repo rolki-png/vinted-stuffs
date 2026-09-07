@@ -15,4 +15,9 @@ assert.deepEqual(
   feedbackParams(7, 'removed', {}, 'rarely_useful').slice(0, 3),
   [7, 'removed', 'rarely_useful'],
 )
+assert.deepEqual(feedbackParams(8, 'hidden', {}, 'poor_value').slice(0, 3), [
+  8,
+  'removed',
+  'poor_value',
+])
 console.log('ok listing-veto-reasons')

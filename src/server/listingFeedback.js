@@ -9,6 +9,19 @@ const VALID_REMOVE_REASONS = new Set([
   'other',
 ])
 
+const VALID_STATUSES = new Set(['removed', 'parked', 'bought'])
+
+function coerceWriteStatus(status) {
+  const rawStatus = String(status)
+  const normalized = rawStatus === 'hidden' ? 'removed' : rawStatus
+  if (!VALID_STATUSES.has(normalized)) {
+    const error = new Error('invalid_status')
+    error.status = 400
+    throw error
+  }
+  return normalized
+}
+
 function coerceRemoveReason(status, reasonCode) {
   if (
     status !== 'removed' ||
@@ -33,7 +46,13 @@ function feedbackParams(itemId, status, enrichment, reasonCode) {
     error.status = 400
     throw error
   }
-  return [id, status, coerceRemoveReason(status, reasonCode), enrichment || {}]
+  const normalizedStatus = coerceWriteStatus(status)
+  return [
+    id,
+    normalizedStatus,
+    coerceRemoveReason(normalizedStatus, reasonCode),
+    enrichment || {},
+  ]
 }
 
 export { VALID_REMOVE_REASONS, coerceRemoveReason, feedbackParams }

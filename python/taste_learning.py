@@ -148,10 +148,11 @@ def build_taste_prompt_block(
 
     limit = max(0, int(per_polarity))
     bought = sorted(bought, key=_sort_key, reverse=True)[:limit]
+    negative_limit = max(3, limit)
     reason_groups = [
         (
             reason,
-            sorted(rows, key=_sort_key, reverse=True)[:limit],
+            sorted(rows, key=_sort_key, reverse=True)[:negative_limit],
         )
         for reason, rows in removed_by_reason.items()
         if len(rows) >= 3

@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { HuntsPanel } from '#/components/HuntsPanel'
 import {
+  buyBandPresentation,
   factorRows,
   histogramRows,
+  isDeclaredV2,
+  isV2,
   keepCounts,
   matchesBandFilter,
   matchesScoreFilter,
@@ -10,29 +13,19 @@ import {
   scoreScaleLabel,
   sellerComparator,
   sortFinds,
+  usableRank,
   vetoPayload,
 } from '#/components/scoreView.js'
-import { isDeclaredV2, isV2 } from '#/server/scoreSemantics.js'
+import type {
+  FactorRow,
+  HistogramRow,
+  ScoreRow,
+} from '#/components/scoreView.js'
 
 type VetoMode = 'active' | 'parked' | 'bought' | 'all'
 type Tab = 'finds' | 'bundles' | 'sellers' | 'run' | 'hunts'
 
-type ScoreFields = {
-  score_version?: number | null
-  buy_score?: number | null
-  buy_band?: string | null
-  score_confidence?: number | null
-  score_interval_low?: number | null
-  score_interval_high?: number | null
-  score_factors?: Record<string, unknown> | null
-  factor_evidence?: Record<string, unknown> | null
-  verification_concern?: string | null
-  verification_reason?: string | null
-  rank_position?: number | null
-  rank_confidence?: string | null
-  legacy_score?: boolean
-  hunt_fit?: boolean
-}
+type ScoreFields = ScoreRow
 
 type Find = ScoreFields & {
   id?: number | string
@@ -162,6 +155,7 @@ function fmtConfidence(value: unknown) {
 
 function ScoreSummary({ row }: { row: ScoreFields & { deal_score?: number } }) {
   const v2 = isV2(row)
+  const rank = usableRank(row)
   return (
     <>
       <div>
@@ -176,10 +170,11 @@ function ScoreSummary({ row }: { row: ScoreFields & { deal_score?: number } }) {
           <span className="score-meta">
             Confidence {fmtConfidence(row.score_confidence)}
           </span>
-          <span className="score-meta">
-            Rank {row.rank_position != null ? `#${row.rank_position}` : '—'}
-            {row.rank_confidence ? ` · ${row.rank_confidence}` : ''}
-          </span>
+          {rank ? (
+            <span className="score-meta">
+              Rank #{rank.position} · {rank.confidence}
+            </span>
+          ) : null}
         </>
       ) : null}
     </>
@@ -193,7 +188,7 @@ function ScoreEvidence({ row }: { row: ScoreFields }) {
     <details className="score-evidence">
       <summary>Why this score</summary>
       {factors.length ? (
-        factors.map((factor) => (
+        factors.map((factor: FactorRow) => (
           <div className="factor-row" key={factor.key}>
             <span>{factor.label}</span>
             <strong>{factor.value}</strong>
@@ -287,17 +282,9 @@ function VetoButtons({
         Bought
       </button>
       <span className="remove-controls">
-        <button
-          type="button"
-          className="btn veto-btn"
-          onClick={() => setStatus('removed', reasonCode || undefined)}
-        >
-          Remove
-        </button>
         <select
           className="remove-reason"
           aria-label={`Remove reason for listing ${itemId}`}
-          title="Sold / unavailable and Other do not affect preference learning"
           value={reasonCode}
           onChange={(event) => setReasonCode(event.target.value)}
         >
@@ -307,6 +294,16 @@ function VetoButtons({
             </option>
           ))}
         </select>
+        <button
+          type="button"
+          className="btn veto-btn"
+          onClick={() => setStatus('removed', reasonCode || undefined)}
+        >
+          Remove
+        </button>
+        <small className="remove-learning-note">
+          Other and Sold/unavailable do not affect taste learning.
+        </small>
       </span>
       <button
         type="button"
@@ -497,7 +494,7 @@ export function DealDesk() {
   ]
 
   const hist = histogramRows(run.score_histogram)
-  const histMax = Math.max(1, ...hist.map((row) => row.count), 1)
+  const histMax = Math.max(1, ...hist.map((row: HistogramRow) => row.count), 1)
 
   return (
     <div className="page">
@@ -699,9 +696,10 @@ export function DealDesk() {
               </thead>
               <tbody>
                 {finds.length ? (
-                  finds.map((f) => {
+                  finds.map((f: Find) => {
                     const sellerLabel =
                       f.seller || (f.seller_id ? `#${f.seller_id}` : '—')
+                    const buyBand = buyBandPresentation(f)
                     return (
                       <tr key={String(f.id)}>
                         <td className="score">
@@ -709,8 +707,8 @@ export function DealDesk() {
                         </td>
                         <td>
                           {isV2(f) ? (
-                            <span className={`pill ${f.buy_band || 'skip'}`}>
-                              {f.buy_band || 'No v2 band'}
+                            <span className={`pill ${buyBand.className}`}>
+                              {buyBand.label}
                             </span>
                           ) : isDeclaredV2(f) ? (
                             <span className="pill skip">Invalid v2</span>
@@ -1095,7 +1093,7 @@ export function DealDesk() {
             </p>
             {hist.length ? (
               <div className="hist">
-                {hist.map(({ label, count }) => {
+                {hist.map(({ label, count }: HistogramRow) => {
                   const h = Math.max(8, Math.round((count / histMax) * 100))
                   return (
                     <div

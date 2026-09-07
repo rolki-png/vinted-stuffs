@@ -337,6 +337,10 @@ tbody tr:hover {
 .pill.skip {
   color: var(--skip);
 }
+.pill.unknown {
+  color: var(--muted);
+  background: rgba(90, 106, 96, 0.08);
+}
 .pill.keep {
   color: var(--steal);
 }
@@ -385,27 +389,27 @@ td.actions {
 }
 .remove-controls {
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 0.35rem;
   align-items: center;
+  max-width: 18rem;
+  white-space: normal;
 }
 .remove-reason {
   max-width: 10rem;
   font: 500 0.8rem var(--sans);
+}
+.remove-learning-note {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.2;
 }
 .verification-inspect {
   color: var(--hunt);
 }
 .verification-block {
   color: var(--danger);
-}
-.risk-high {
-  color: var(--danger);
-}
-.risk-medium {
-  color: var(--hunt);
-}
-.risk-low {
-  color: var(--steal);
 }
 
 a.link {

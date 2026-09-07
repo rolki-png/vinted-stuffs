@@ -54,7 +54,9 @@ function scoreLabel(row) {
   const score = displayScore(row)
   const low = finiteNumber(row?.score_interval_low)
   const high = finiteNumber(row?.score_interval_high)
-  if (low != null && high != null) return `${score} (${low}–${high})`
+  if (low != null && high != null) {
+    return `${score} (90% interval ${low}–${high})`
+  }
   return String(score)
 }
 
@@ -64,17 +66,39 @@ function scoreScaleLabel(row) {
   return displayScore(row) == null ? 'Unscored' : 'Legacy /10'
 }
 
-function hasCurrentRank(row) {
+function usableRank(row) {
   const position = finiteNumber(row?.rank_position)
-  return (
+  if (
     Number.isInteger(position) &&
     position >= 1 &&
     RANK_CONFIDENCE.has(row?.rank_confidence)
-  )
+  ) {
+    return { position, confidence: row.rank_confidence }
+  }
+  return null
+}
+
+function hasCurrentRank(row) {
+  return usableRank(row) != null
+}
+
+function buyBandPresentation(row) {
+  if (BUY_BANDS.has(row?.buy_band)) {
+    return { label: row.buy_band, className: row.buy_band }
+  }
+  return { label: 'Unknown v2 band', className: 'unknown' }
+}
+
+function vetoStatusTier(row) {
+  if (!row?.veto_status || row.veto_status === 'active') return 0
+  if (row.veto_status === 'parked') return 1
+  return 2
 }
 
 function findComparator(sort, { useRanks = false } = {}) {
   return (left, right) => {
+    const statusDifference = vetoStatusTier(left) - vetoStatusTier(right)
+    if (statusDifference) return statusDifference
     if (sort === 'score-desc' || sort === 'score-asc') {
       const tierDifference = scoreTier(right) - scoreTier(left)
       if (tierDifference) return tierDifference
@@ -112,13 +136,26 @@ function findComparator(sort, { useRanks = false } = {}) {
 
 function sortFinds(rows, sort) {
   const copy = [...(rows || [])]
-  if (sort !== 'score-desc' && sort !== 'score-asc') {
-    return copy.sort(findComparator(sort))
+  const useRanksByStatus = new Map()
+  if (sort === 'score-desc' || sort === 'score-asc') {
+    for (const status of [0, 1, 2]) {
+      const v2Rows = copy.filter(
+        (row) => vetoStatusTier(row) === status && isV2(row),
+      )
+      useRanksByStatus.set(
+        status,
+        v2Rows.length > 0 && v2Rows.every((row) => hasCurrentRank(row)),
+      )
+    }
   }
-  const v2Rows = copy.filter(isV2)
-  const useRanks =
-    v2Rows.length > 0 && v2Rows.every((row) => hasCurrentRank(row))
-  return copy.sort(findComparator(sort, { useRanks }))
+  return copy.sort((left, right) => {
+    const status = vetoStatusTier(left)
+    return findComparator(sort, {
+      useRanks:
+        status === vetoStatusTier(right) &&
+        useRanksByStatus.get(status) === true,
+    })(left, right)
+  })
 }
 
 function keepCounts(rows) {
@@ -251,10 +288,14 @@ function histogramRows(histogram) {
 }
 
 export {
+  buyBandPresentation,
   factorRows,
   filterScore,
   findComparator,
   histogramRows,
+  isDeclaredV2,
+  isKeep,
+  isV2,
   keepCounts,
   matchesBandFilter,
   matchesScoreFilter,
@@ -263,6 +304,7 @@ export {
   scoreScaleLabel,
   sellerComparator,
   sortFinds,
+  usableRank,
   vetoPayload,
   vetoScoreContext,
 }

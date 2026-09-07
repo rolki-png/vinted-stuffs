@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict'
 import {
+  buyBandPresentation,
   factorRows,
   filterScore,
   findComparator,
   histogramRows,
+  isDeclaredV2,
+  isKeep,
+  isV2,
   keepCounts,
   matchesBandFilter,
   matchesScoreFilter,
@@ -12,6 +16,7 @@ import {
   scoreScaleLabel,
   sellerComparator,
   sortFinds,
+  usableRank,
   vetoPayload,
   vetoScoreContext,
 } from '../src/components/scoreView.js'
@@ -32,7 +37,7 @@ const malformedV2 = {
   value_band: 'steal',
 }
 
-assert.equal(scoreLabel(v2), '87 (82–92)')
+assert.equal(scoreLabel(v2), '87 (90% interval 82–92)')
 assert.equal(scoreLabel({ deal_score: 9 }), '9 legacy')
 assert.equal(scoreLabel(malformedV2), 'Invalid v2 score')
 assert.equal(scoreLabel({}), '—')
@@ -45,6 +50,33 @@ assert.equal(filterScore(malformedV2), null)
 assert.equal(scoreScaleLabel(v2), 'V2 utility /100')
 assert.equal(scoreScaleLabel(legacy), 'Legacy /10')
 assert.equal(scoreScaleLabel(malformedV2), 'Invalid v2')
+assert.equal(isV2(v2), true)
+assert.equal(isDeclaredV2(malformedV2), true)
+assert.equal(isKeep({ ...v2, hunt_fit: true, score_confidence: 0.8 }), true)
+assert.deepEqual(
+  usableRank({ ...v2, rank_position: 2, rank_confidence: 'medium' }),
+  { position: 2, confidence: 'medium' },
+)
+assert.equal(
+  usableRank({ ...v2, rank_position: 2, rank_confidence: 'unknown' }),
+  null,
+)
+assert.equal(
+  usableRank({ ...v2, rank_position: 0, rank_confidence: 'high' }),
+  null,
+)
+assert.deepEqual(buyBandPresentation(v2), {
+  label: 'keep',
+  className: 'keep',
+})
+assert.deepEqual(buyBandPresentation({ ...v2, buy_band: null }), {
+  label: 'Unknown v2 band',
+  className: 'unknown',
+})
+assert.deepEqual(buyBandPresentation({ ...v2, buy_band: 'surprise' }), {
+  label: 'Unknown v2 band',
+  className: 'unknown',
+})
 assert.equal(matchesScoreFilter(v2, 'v2:85'), true)
 assert.equal(matchesScoreFilter({ ...v2, buy_score: 84 }, 'v2:85'), false)
 assert.equal(matchesScoreFilter(legacy, 'v2:85'), false)
@@ -126,6 +158,83 @@ assert.deepEqual(
     'score-asc',
   ).map((row) => row.id),
   ['v2-low', 'v2-high', 'legacy-low', 'legacy-high', 'malformed'],
+)
+assert.deepEqual(
+  sortFinds(
+    [
+      {
+        id: 'parked-v2',
+        ...v2,
+        buy_score: 100,
+        veto_status: 'parked',
+      },
+      {
+        id: 'active-rank-two',
+        ...v2,
+        buy_score: 95,
+        rank_position: 2,
+        rank_confidence: 'high',
+      },
+      {
+        id: 'bought-v2',
+        ...v2,
+        buy_score: 99,
+        veto_status: 'bought',
+      },
+      {
+        id: 'active-rank-one',
+        ...v2,
+        buy_score: 80,
+        rank_position: 1,
+        rank_confidence: 'medium',
+      },
+      {
+        id: 'parked-legacy',
+        ...legacy,
+        deal_score: 10,
+        veto_status: 'parked',
+      },
+      {
+        id: 'active-legacy',
+        ...legacy,
+        deal_score: 10,
+        veto_status: 'active',
+      },
+      {
+        id: 'removed-legacy',
+        ...legacy,
+        deal_score: 10,
+        veto_status: 'removed',
+      },
+      { id: 'active-malformed', ...malformedV2 },
+    ],
+    'score-desc',
+  ).map((row) => row.id),
+  [
+    'active-rank-one',
+    'active-rank-two',
+    'active-legacy',
+    'active-malformed',
+    'parked-v2',
+    'parked-legacy',
+    'bought-v2',
+    'removed-legacy',
+  ],
+)
+assert.deepEqual(
+  sortFinds(
+    [
+      {
+        id: 'parked-cheap',
+        ...legacy,
+        price_num: 10,
+        veto_status: 'parked',
+      },
+      { id: 'active-expensive', ...v2, price_num: 100 },
+    ],
+    'price-asc',
+  ).map((row) => row.id),
+  ['active-expensive', 'parked-cheap'],
 )
 assert.deepEqual(
   [

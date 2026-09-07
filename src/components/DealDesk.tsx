@@ -1,10 +1,40 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { HuntsPanel } from '#/components/HuntsPanel'
+import {
+  factorRows,
+  histogramRows,
+  keepCounts,
+  matchesBandFilter,
+  matchesScoreFilter,
+  scoreLabel,
+  scoreScaleLabel,
+  sellerComparator,
+  sortFinds,
+  vetoPayload,
+} from '#/components/scoreView.js'
+import { isDeclaredV2, isV2 } from '#/server/scoreSemantics.js'
 
 type VetoMode = 'active' | 'parked' | 'bought' | 'all'
 type Tab = 'finds' | 'bundles' | 'sellers' | 'run' | 'hunts'
 
-type Find = {
+type ScoreFields = {
+  score_version?: number | null
+  buy_score?: number | null
+  buy_band?: string | null
+  score_confidence?: number | null
+  score_interval_low?: number | null
+  score_interval_high?: number | null
+  score_factors?: Record<string, unknown> | null
+  factor_evidence?: Record<string, unknown> | null
+  verification_concern?: string | null
+  verification_reason?: string | null
+  rank_position?: number | null
+  rank_confidence?: string | null
+  legacy_score?: boolean
+  hunt_fit?: boolean
+}
+
+type Find = ScoreFields & {
   id?: number | string
   title?: string
   watch?: string
@@ -25,14 +55,17 @@ type Find = {
   veto_status?: string | null
 }
 
-type BundleItem = {
+type BundleItem = ScoreFields & {
   id?: number | string
   title?: string
   watch?: string
   role?: string
   deal_score?: number
+  value_band?: string
   price?: number
   url?: string
+  brand?: string
+  size?: string
   veto_status?: string | null
 }
 
@@ -61,6 +94,10 @@ type Seller = {
   avg_score?: number
   keeps?: number
   listings?: number
+  score_version?: number | null
+  legacy_score?: boolean
+  score_tier?: number
+  bands?: Record<string, number>
   country?: string
   watches?: string[]
 }
@@ -84,6 +121,18 @@ type GhRun = {
   display_title?: string
 }
 
+const REMOVE_REASONS = [
+  ['', 'No reason'],
+  ['sold_unavailable', 'Sold / unavailable'],
+  ['wrong_size', 'Wrong size'],
+  ['bad_fit_style', 'Bad fit / style'],
+  ['low_quality_condition', 'Low quality / condition'],
+  ['poor_value', 'Poor value'],
+  ['rarely_useful', 'Rarely useful'],
+  ['already_own_similar', 'Already own similar'],
+  ['other', 'Other'],
+] as const
+
 function fmtPrice(n: unknown, currency = 'RON') {
   if (n == null || Number.isNaN(Number(n))) return '—'
   return `${Number(n).toFixed(0)} ${currency || 'RON'}`
@@ -98,6 +147,95 @@ function fmtWhen(iso?: string | null) {
   }
 }
 
+function fmtConfidence(value: unknown) {
+  if (
+    value == null ||
+    typeof value === 'boolean' ||
+    (typeof value === 'string' && value.trim() === '')
+  ) {
+    return '—'
+  }
+  const confidence = Number(value)
+  if (!Number.isFinite(confidence)) return '—'
+  return `${Math.round(confidence * 100)}%`
+}
+
+function ScoreSummary({ row }: { row: ScoreFields & { deal_score?: number } }) {
+  const v2 = isV2(row)
+  return (
+    <>
+      <div>
+        {scoreLabel(row)}
+        {v2 ? <span className="score-denominator"> /100</span> : null}
+      </div>
+      <span className={v2 ? 'score-meta' : 'legacy-score'}>
+        {scoreScaleLabel(row)}
+      </span>
+      {v2 ? (
+        <>
+          <span className="score-meta">
+            Confidence {fmtConfidence(row.score_confidence)}
+          </span>
+          <span className="score-meta">
+            Rank {row.rank_position != null ? `#${row.rank_position}` : '—'}
+            {row.rank_confidence ? ` · ${row.rank_confidence}` : ''}
+          </span>
+        </>
+      ) : null}
+    </>
+  )
+}
+
+function ScoreEvidence({ row }: { row: ScoreFields }) {
+  if (!isV2(row)) return null
+  const factors = factorRows(row)
+  return (
+    <details className="score-evidence">
+      <summary>Why this score</summary>
+      {factors.length ? (
+        factors.map((factor) => (
+          <div className="factor-row" key={factor.key}>
+            <span>{factor.label}</span>
+            <strong>{factor.value}</strong>
+            <small>{factor.evidence || 'No supporting note'}</small>
+          </div>
+        ))
+      ) : (
+        <small>Factor evidence unavailable.</small>
+      )}
+    </details>
+  )
+}
+
+function VerificationSummary({ row }: { row: Find | BundleItem }) {
+  if (isV2(row)) {
+    const concern = row.verification_concern || 'none'
+    const concernClass =
+      concern === 'block'
+        ? 'verification-block'
+        : concern === 'inspect'
+          ? 'verification-inspect'
+          : ''
+    return (
+      <div className={concernClass}>
+        <strong>{concern}</strong>
+        <span className="reason">
+          {row.verification_reason || 'No additional verification note'}
+        </span>
+      </div>
+    )
+  }
+  if (isDeclaredV2(row)) {
+    return <span className="verification-block">Invalid v2 score data</span>
+  }
+  const legacyRisk = 'scam_risk' in row ? row.scam_risk : null
+  return (
+    <span className="legacy-score">
+      Legacy risk: {legacyRisk || 'not recorded'}
+    </span>
+  )
+}
+
 function VetoButtons({
   itemId,
   status,
@@ -106,16 +244,31 @@ function VetoButtons({
 }: {
   itemId?: string | number
   status?: string | null
-  onSet: (id: string | number, status: string | null) => Promise<void>
+  onSet: (
+    id: string | number,
+    status: string | null,
+    reasonCode?: string,
+  ) => Promise<void>
   onError: (msg: string) => void
 }) {
+  const [reasonCode, setReasonCode] = useState('')
+
+  useEffect(() => {
+    setReasonCode('')
+  }, [itemId, status])
+
   if (itemId == null) return null
+  const setStatus = (nextStatus: string | null, reason?: string) => {
+    onSet(itemId, nextStatus, reason)
+      .then(() => setReasonCode(''))
+      .catch((e) => onError(String(e.message || e)))
+  }
   if (status === 'parked' || status === 'bought') {
     return (
       <button
         type="button"
         className="btn veto-btn"
-        onClick={() => onSet(itemId, null).catch((e) => onError(String(e.message || e)))}
+        onClick={() => setStatus(null)}
       >
         Undo
       </button>
@@ -129,21 +282,36 @@ function VetoButtons({
       <button
         type="button"
         className="btn veto-btn"
-        onClick={() => onSet(itemId, 'bought').catch((e) => onError(String(e.message || e)))}
+        onClick={() => setStatus('bought')}
       >
         Bought
       </button>
+      <span className="remove-controls">
+        <button
+          type="button"
+          className="btn veto-btn"
+          onClick={() => setStatus('removed', reasonCode || undefined)}
+        >
+          Remove
+        </button>
+        <select
+          className="remove-reason"
+          aria-label={`Remove reason for listing ${itemId}`}
+          title="Sold / unavailable and Other do not affect preference learning"
+          value={reasonCode}
+          onChange={(event) => setReasonCode(event.target.value)}
+        >
+          {REMOVE_REASONS.map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </span>
       <button
         type="button"
         className="btn veto-btn"
-        onClick={() => onSet(itemId, 'removed').catch((e) => onError(String(e.message || e)))}
-      >
-        Remove
-      </button>
-      <button
-        type="button"
-        className="btn veto-btn"
-        onClick={() => onSet(itemId, 'parked').catch((e) => onError(String(e.message || e)))}
+        onClick={() => setStatus('parked')}
       >
         Park
       </button>
@@ -155,8 +323,14 @@ export function DealDesk() {
   const [data, setData] = useState<Snapshot | null>(null)
   const [runs, setRuns] = useState<GhRun[]>([])
   const [tab, setTab] = useState<Tab>('finds')
-  const [opsMsg, setOpsMsg] = useState<{ text: string; kind?: 'ok' | 'err' } | null>(null)
-  const [toast, setToast] = useState<{ text: string; undoId?: string | number } | null>(null)
+  const [opsMsg, setOpsMsg] = useState<{
+    text: string
+    kind?: 'ok' | 'err'
+  } | null>(null)
+  const [toast, setToast] = useState<{
+    text: string
+    undoId?: string | number
+  } | null>(null)
   const [busy, setBusy] = useState(false)
   const [live, setLive] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -164,12 +338,11 @@ export function DealDesk() {
   const [q, setQ] = useState('')
   const [watch, setWatch] = useState('')
   const [band, setBand] = useState('')
-  const [minScore, setMinScore] = useState('0')
+  const [minScore, setMinScore] = useState('')
   const [source, setSource] = useState('')
   const [veto, setVeto] = useState<VetoMode>('active')
   const [sort, setSort] = useState('score-desc')
   const [sellerSort, setSellerSort] = useState('best')
-
 
   const loadRuns = useCallback(async () => {
     try {
@@ -209,7 +382,9 @@ export function DealDesk() {
 
   const triggerHunt = async (fullSweep: boolean) => {
     setBusy(true)
-    setOpsMsg({ text: fullSweep ? 'Dispatching full sweep…' : 'Dispatching hunt…' })
+    setOpsMsg({
+      text: fullSweep ? 'Dispatching full sweep…' : 'Dispatching hunt…',
+    })
     try {
       const res = await fetch('/api/trigger', {
         method: 'POST',
@@ -217,7 +392,8 @@ export function DealDesk() {
         body: JSON.stringify({ full_sweep: fullSweep }),
       })
       const json = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(json.message || json.error || `HTTP ${res.status}`)
+      if (!res.ok)
+        throw new Error(json.message || json.error || `HTTP ${res.status}`)
       setOpsMsg({
         text: `Queued on GitHub (${json.repo} / ${json.workflow}). Check Runs tab.`,
         kind: 'ok',
@@ -231,46 +407,36 @@ export function DealDesk() {
     }
   }
 
-  const enrichmentFor = (itemId: string | number) => {
+  const scoreRowFor = (itemId: string | number) => {
     const id = String(itemId)
     const find = (data?.finds || []).find((f) => String(f.id) === id)
-    if (find) {
-      return {
-        hunt_name: find.watch || null,
-        brand: find.brand || null,
-        size: find.size || null,
-        price_ron: find.price_num ?? find.price ?? null,
-        value_band: find.value_band || null,
-        deal_score: find.deal_score ?? null,
-        title: find.title || null,
-      }
-    }
+    if (find) return find
     for (const b of data?.bundles || []) {
       const it = (b.items || []).find((x) => String(x.id) === id)
-      if (it) {
-        return {
-          hunt_name: it.watch || null,
-          price_ron: it.price ?? null,
-          deal_score: it.deal_score ?? null,
-          title: it.title || null,
-        }
-      }
+      if (it) return it
     }
     return {}
   }
 
-  const setVetoStatus = async (itemId: string | number, status: string | null) => {
-    const body =
-      status == null
-        ? { item_id: Number(itemId), clear: true }
-        : { item_id: Number(itemId), status, ...enrichmentFor(itemId) }
+  const setVetoStatus = async (
+    itemId: string | number,
+    status: string | null,
+    reasonCode?: string,
+  ) => {
+    const body = vetoPayload(
+      itemId,
+      status,
+      scoreRowFor(itemId),
+      status === 'removed' ? reasonCode : undefined,
+    )
     const res = await fetch('/api/veto', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
     const json = await res.json().catch(() => ({}))
-    if (!res.ok) throw new Error(json.error || json.message || `HTTP ${res.status}`)
+    if (!res.ok)
+      throw new Error(json.error || json.message || `HTTP ${res.status}`)
     if (status == null) setToast({ text: `Cleared veto on #${itemId}` })
     else if (status === 'removed') setToast({ text: `Removed #${itemId}` })
     else if (status === 'bought')
@@ -282,84 +448,56 @@ export function DealDesk() {
   const finds = useMemo(() => {
     let rows = [...(data?.finds || [])]
     const query = q.trim().toLowerCase()
-    const min = Number(minScore || 0)
     rows = rows.filter((f) => {
       if (watch && f.watch !== watch) return false
-      if (band && f.value_band !== band) return false
-      if ((f.deal_score || 0) < min) return false
+      if (!matchesBandFilter(f, band)) return false
+      if (!matchesScoreFilter(f, minScore)) return false
       if (source && f.source !== source) return false
       if (query) {
-        const blob = `${f.title || ''} ${f.watch || ''} ${f.seller || ''} ${f.reason || ''}`.toLowerCase()
+        const blob =
+          `${f.title || ''} ${f.watch || ''} ${f.seller || ''} ${f.reason || ''}`.toLowerCase()
         if (!blob.includes(query)) return false
       }
       return true
     })
-    rows.sort((a, b) => {
-      const vetoRank = (r: Find) =>
-        r.veto_status === 'parked' ? 1 : r.veto_status === 'bought' ? 2 : 0
-      const vr = vetoRank(a) - vetoRank(b)
-      if (vr) return vr
-      switch (sort) {
-        case 'score-asc':
-          return (a.deal_score || 0) - (b.deal_score || 0)
-        case 'price-asc':
-          return (a.price_num ?? 1e12) - (b.price_num ?? 1e12)
-        case 'price-desc':
-          return (b.price_num ?? -1) - (a.price_num ?? -1)
-        case 'date-desc':
-          return String(b.kept_at || '').localeCompare(String(a.kept_at || ''))
-        case 'watch':
-          return String(a.watch || '').localeCompare(String(b.watch || ''))
-        case 'score-desc':
-        default:
-          return (
-            (b.deal_score || 0) - (a.deal_score || 0) ||
-            (a.price_num ?? 1e12) - (b.price_num ?? 1e12)
-          )
-      }
-    })
-    return rows
+    return sortFinds(rows, sort)
   }, [data, q, watch, band, minScore, source, sort])
 
   const sellers = useMemo(() => {
     const rows = [...(data?.sellers || [])]
-    rows.sort((a, b) => {
-      if (sellerSort === 'avg') return (b.avg_score || 0) - (a.avg_score || 0)
-      if (sellerSort === 'keeps') {
-        return (b.keeps || 0) - (a.keeps || 0) || (b.best_score || 0) - (a.best_score || 0)
-      }
-      if (sellerSort === 'listings') return (b.listings || 0) - (a.listings || 0)
-      return (b.best_score || 0) - (a.best_score || 0) || (b.avg_score || 0) - (a.avg_score || 0)
-    })
+    rows.sort(sellerComparator(sellerSort))
     return rows
   }, [data, sellerSort])
 
   const run = data?.run || {}
-  const keeps = (data?.finds || []).filter(
-    (f) => f.source === 'keep' || f.value_band === 'steal' || f.value_band === 'hunt',
-  )
+  const qualifiedKeeps = keepCounts(data?.finds || [])
   const lede = error
     ? error
     : run.finished_at
       ? `Last finished run ${fmtWhen(run.finished_at)} · data via ${data?.meta?.source || 'local'}${
-          data?.meta?.indexed_source ? ` · index via ${data.meta.indexed_source}` : ''
+          data?.meta?.indexed_source
+            ? ` · index via ${data.meta.indexed_source}`
+            : ''
         }. Refresh after Actions finishes to pull new keeps.`
       : `Waiting for a finished run snapshot · data via ${data?.meta?.source || 'local'}${
-          data?.meta?.indexed_source ? ` · index via ${data.meta.indexed_source}` : ''
+          data?.meta?.indexed_source
+            ? ` · index via ${data.meta.indexed_source}`
+            : ''
         }.`
 
   const stats: Array<[string, string | number]> = [
     ['Scored last run', run.scored ?? '—'],
     ['Index (DB)', data?.meta?.indexed_count ?? '—'],
-    ['Keeps on desk', keeps.length],
+    ['V2 qualified keeps', qualifiedKeeps.v2],
+    ['Legacy keeps /10', qualifiedKeeps.legacy],
     ['Bundles', (data?.bundles || []).length],
     ['Sellers tracked', (data?.sellers || []).length],
     ['Alerts last run', run.alerts ?? '—'],
     ['Seen keys', run.seen_keys ?? '—'],
   ]
 
-  const hist = run.score_histogram || {}
-  const histMax = Math.max(1, ...Object.values(hist).map(Number), 1)
+  const hist = histogramRows(run.score_histogram)
+  const histMax = Math.max(1, ...hist.map((row) => row.count), 1)
 
   return (
     <div className="page">
@@ -370,13 +508,27 @@ export function DealDesk() {
           <p className="lede">{lede}</p>
         </div>
         <div className="hero-actions">
-          <button type="button" className="btn btn-accent" disabled={busy} onClick={() => triggerHunt(false)}>
+          <button
+            type="button"
+            className="btn btn-accent"
+            disabled={busy}
+            onClick={() => triggerHunt(false)}
+          >
             Run hunt
           </button>
-          <button type="button" className="btn" disabled={busy} onClick={() => triggerHunt(true)}>
+          <button
+            type="button"
+            className="btn"
+            disabled={busy}
+            onClick={() => triggerHunt(true)}
+          >
             Full sweep
           </button>
-          <button type="button" className="btn" onClick={() => load().catch(console.error)}>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => load().catch(console.error)}
+          >
             Refresh
           </button>
           {live ? <span className="pulse">live</span> : null}
@@ -384,7 +536,9 @@ export function DealDesk() {
       </header>
 
       <section className="ops">
-        <p className={`ops-msg${opsMsg?.kind ? ` ${opsMsg.kind}` : ''}`}>{opsMsg?.text || ''}</p>
+        <p className={`ops-msg${opsMsg?.kind ? ` ${opsMsg.kind}` : ''}`}>
+          {opsMsg?.text || ''}
+        </p>
       </section>
 
       <section className="stats" aria-label="Run summary">
@@ -422,7 +576,12 @@ export function DealDesk() {
           <div className="toolbar">
             <label>
               Search
-              <input type="search" placeholder="title, watch, seller…" value={q} onChange={(e) => setQ(e.target.value)} />
+              <input
+                type="search"
+                placeholder="title, watch, seller…"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+              />
             </label>
             <label>
               Hunt
@@ -439,25 +598,41 @@ export function DealDesk() {
               Band
               <select value={band} onChange={(e) => setBand(e.target.value)}>
                 <option value="">All</option>
-                <option value="steal">steal</option>
-                <option value="hunt">hunt</option>
-                <option value="acceptable">acceptable</option>
-                <option value="skip">skip</option>
+                <optgroup label="V2 utility bands">
+                  <option value="v2:exceptional">V2 exceptional</option>
+                  <option value="v2:keep">V2 keep</option>
+                  <option value="v2:good">V2 good</option>
+                  <option value="v2:bundle">V2 bundle</option>
+                  <option value="v2:skip">V2 skip</option>
+                </optgroup>
+                <optgroup label="Legacy history /10">
+                  <option value="legacy:steal">Legacy steal</option>
+                  <option value="legacy:hunt">Legacy hunt</option>
+                  <option value="legacy:acceptable">Legacy acceptable</option>
+                  <option value="legacy:skip">Legacy skip</option>
+                </optgroup>
               </select>
             </label>
             <label>
-              Min score
-              <select value={minScore} onChange={(e) => setMinScore(e.target.value)}>
-                <option value="0">Any</option>
-                <option value="6">6+</option>
-                <option value="7">7+</option>
-                <option value="8">8+</option>
-                <option value="9">9+</option>
+              Score threshold
+              <select
+                value={minScore}
+                onChange={(e) => setMinScore(e.target.value)}
+              >
+                <option value="">Any score version</option>
+                <option value="v2:60">V2 60+ /100</option>
+                <option value="v2:75">V2 75+ /100</option>
+                <option value="v2:85">V2 85+ /100</option>
+                <option value="v2:95">V2 95+ /100</option>
+                <option value="legacy">Legacy only /10</option>
               </select>
             </label>
             <label>
               Source
-              <select value={source} onChange={(e) => setSource(e.target.value)}>
+              <select
+                value={source}
+                onChange={(e) => setSource(e.target.value)}
+              >
                 <option value="">All</option>
                 <option value="keep">kept</option>
                 <option value="index">score index</option>
@@ -467,7 +642,10 @@ export function DealDesk() {
             </label>
             <label>
               Status
-              <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
+              <select
+                value={veto}
+                onChange={(e) => setVeto(e.target.value as VetoMode)}
+              >
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
                 <option value="bought">Bought</option>
@@ -493,7 +671,13 @@ export function DealDesk() {
             <p className="ops-msg ok">
               {toast.text}{' '}
               {toast.undoId != null ? (
-                <button type="button" className="btn" onClick={() => setVetoStatus(toast.undoId!, null).catch(console.error)}>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() =>
+                    setVetoStatus(toast.undoId!, null).catch(console.error)
+                  }
+                >
                   Undo
                 </button>
               ) : null}
@@ -509,41 +693,79 @@ export function DealDesk() {
                   <th>Price</th>
                   <th>Hunt</th>
                   <th>Seller</th>
-                  <th>Risk</th>
+                  <th>Verification</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {finds.length ? (
                   finds.map((f) => {
-                    const sellerLabel = f.seller || (f.seller_id ? `#${f.seller_id}` : '—')
+                    const sellerLabel =
+                      f.seller || (f.seller_id ? `#${f.seller_id}` : '—')
                     return (
                       <tr key={String(f.id)}>
-                        <td className="score">{f.deal_score ?? '—'}</td>
+                        <td className="score">
+                          <ScoreSummary row={f} />
+                        </td>
                         <td>
-                          <span className={`pill ${f.value_band || 'skip'}`}>{f.value_band || '—'}</span>{' '}
-                          <span className={`pill ${f.source || ''}`}>{f.source || ''}</span>{' '}
-                          {f.veto_status ? <span className={`pill ${f.veto_status}`}>{f.veto_status}</span> : null}
+                          {isV2(f) ? (
+                            <span className={`pill ${f.buy_band || 'skip'}`}>
+                              {f.buy_band || 'No v2 band'}
+                            </span>
+                          ) : isDeclaredV2(f) ? (
+                            <span className="pill skip">Invalid v2</span>
+                          ) : (
+                            <span className="legacy-score">
+                              Legacy band: {f.value_band || 'not recorded'}
+                            </span>
+                          )}{' '}
+                          <span className={`pill ${f.source || ''}`}>
+                            {f.source || ''}
+                          </span>{' '}
+                          {f.veto_status ? (
+                            <span className={`pill ${f.veto_status}`}>
+                              {f.veto_status}
+                            </span>
+                          ) : null}
                         </td>
                         <td>
                           <div className="title">{f.title || '—'}</div>
-                          <span className="reason">{f.reason || ''}</span>
+                          {!isDeclaredV2(f) && f.reason ? (
+                            <span className="reason">
+                              Legacy rationale: {f.reason}
+                            </span>
+                          ) : null}
+                          <ScoreEvidence row={f} />
                         </td>
-                        <td className="mono">{fmtPrice(f.price_num ?? f.price, f.currency)}</td>
+                        <td className="mono">
+                          {fmtPrice(f.price_num ?? f.price, f.currency)}
+                        </td>
                         <td>{f.watch || '—'}</td>
                         <td>
                           {f.seller_id ? (
-                            <a className="link" href={`https://www.vinted.ro/member/${f.seller_id}`} target="_blank" rel="noreferrer">
+                            <a
+                              className="link"
+                              href={`https://www.vinted.ro/member/${f.seller_id}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
                               {sellerLabel}
                             </a>
                           ) : (
                             sellerLabel
                           )}
                         </td>
-                        <td className={`risk-${f.scam_risk || ''}`}>{f.scam_risk || '—'}</td>
+                        <td>
+                          <VerificationSummary row={f} />
+                        </td>
                         <td className="actions">
                           {f.url ? (
-                            <a className="link" href={f.url} target="_blank" rel="noreferrer">
+                            <a
+                              className="link"
+                              href={f.url}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
                               Open
                             </a>
                           ) : null}
@@ -551,7 +773,9 @@ export function DealDesk() {
                             itemId={f.id}
                             status={f.veto_status}
                             onSet={setVetoStatus}
-                            onError={(msg) => setOpsMsg({ text: msg, kind: 'err' })}
+                            onError={(msg) =>
+                              setOpsMsg({ text: msg, kind: 'err' })
+                            }
                           />
                         </td>
                       </tr>
@@ -573,7 +797,10 @@ export function DealDesk() {
           <div className="toolbar">
             <label>
               Status
-              <select value={veto} onChange={(e) => setVeto(e.target.value as VetoMode)}>
+              <select
+                value={veto}
+                onChange={(e) => setVeto(e.target.value as VetoMode)}
+              >
                 <option value="active">Active</option>
                 <option value="parked">Parked</option>
                 <option value="bought">Bought</option>
@@ -583,9 +810,10 @@ export function DealDesk() {
           </div>
           {!(data?.bundles || []).length ? (
             <div className="empty">
-              No wardrobe opportunities yet. Near hauls appear when a seller’s closet clears the fee gate; index
-              near/bundles come from the Cockroach score cache when the same seller has multiple hunt-fits; value hauls
-              when the model confirms a steal/hunt.
+              No wardrobe opportunities yet. Near hauls appear when a seller’s
+              closet clears the fee gate; index near/bundles come from the
+              Cockroach score cache when the same seller has multiple hunt-fits;
+              value hauls when the model confirms a steal/hunt.
             </div>
           ) : (
             <div className="bundle-grid">
@@ -611,21 +839,34 @@ export function DealDesk() {
                   <article className="bundle" key={idx}>
                     <h3>
                       {b.seller_id ? (
-                        <a className="link" href={`https://www.vinted.ro/member/${b.seller_id}`} target="_blank" rel="noreferrer">
+                        <a
+                          className="link"
+                          href={`https://www.vinted.ro/member/${b.seller_id}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           {b.seller || b.seller_id}
                         </a>
                       ) : (
                         b.seller || 'seller'
                       )}{' '}
                       <span className={`pill ${pillClass}`}>{kindLabel}</span>
-                      {b.veto_status ? <span className={`pill ${b.veto_status}`}> {b.veto_status}</span> : null}
+                      {b.veto_status ? (
+                        <span className={`pill ${b.veto_status}`}>
+                          {' '}
+                          {b.veto_status}
+                        </span>
+                      ) : null}
                     </h3>
                     <p className="bundle-meta">
-                      {b.country || '?'} · listings {Number(b.listing_sum || 0).toFixed(0)} + extra{' '}
+                      {b.country || '?'} · listings{' '}
+                      {Number(b.listing_sum || 0).toFixed(0)} + extra{' '}
                       {b.checkout_extra_ron ?? '?'} ={' '}
                       <strong>
                         {Number(
-                          b.checkout_total || Number(b.listing_sum || 0) + Number(b.checkout_extra_ron || 0),
+                          b.checkout_total ||
+                            Number(b.listing_sum || 0) +
+                              Number(b.checkout_extra_ron || 0),
                         ).toFixed(0)}{' '}
                         RON
                       </strong>
@@ -635,8 +876,14 @@ export function DealDesk() {
                       {b.suggested_offer_ron != null ? (
                         <>
                           {' '}
-                          · <strong>offer ~{Number(b.suggested_offer_ron).toFixed(0)} RON</strong>
-                          {b.offer_weak ? <span className="pill near"> weak</span> : null}
+                          ·{' '}
+                          <strong>
+                            offer ~{Number(b.suggested_offer_ron).toFixed(0)}{' '}
+                            RON
+                          </strong>
+                          {b.offer_weak ? (
+                            <span className="pill near"> weak</span>
+                          ) : null}
                         </>
                       ) : null}
                       {b.reason ? ` · ${b.reason}` : ''} · {fmtWhen(b.kept_at)}
@@ -644,20 +891,39 @@ export function DealDesk() {
                     <div className="bundle-items">
                       {(b.items || []).map((it) => (
                         <div className="bundle-item" key={String(it.id)}>
-                          <span className={`pill ${it.role === 'keep' ? 'keep' : 'hunt'}`}>{it.role || ''}</span>
+                          <span
+                            className={`pill ${it.role === 'keep' ? 'keep' : 'hunt'}`}
+                          >
+                            {it.role || ''}
+                          </span>
                           <div>
                             <div className="title">
                               {it.title || ''}
-                              {it.veto_status ? <span className={`pill ${it.veto_status}`}> {it.veto_status}</span> : null}
+                              {it.veto_status ? (
+                                <span className={`pill ${it.veto_status}`}>
+                                  {' '}
+                                  {it.veto_status}
+                                </span>
+                              ) : null}
                             </div>
-                            <span className="reason">
-                              {it.watch || ''} · score {it.deal_score ?? '—'}
-                            </span>
+                            <span className="reason">{it.watch || ''}</span>
+                            <div className="score bundle-score">
+                              <ScoreSummary row={it} />
+                            </div>
+                            <div className="bundle-verification">
+                              <VerificationSummary row={it} />
+                            </div>
+                            <ScoreEvidence row={it} />
                           </div>
                           <div>
                             <div className="mono">{fmtPrice(it.price)}</div>
                             {it.url ? (
-                              <a className="link" href={it.url} target="_blank" rel="noreferrer">
+                              <a
+                                className="link"
+                                href={it.url}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
                                 Open
                               </a>
                             ) : null}
@@ -665,7 +931,9 @@ export function DealDesk() {
                               itemId={it.id}
                               status={it.veto_status}
                               onSet={setVetoStatus}
-                              onError={(msg) => setOpsMsg({ text: msg, kind: 'err' })}
+                              onError={(msg) =>
+                                setOpsMsg({ text: msg, kind: 'err' })
+                              }
                             />
                           </div>
                         </div>
@@ -684,7 +952,10 @@ export function DealDesk() {
           <div className="toolbar">
             <label>
               Sort sellers
-              <select value={sellerSort} onChange={(e) => setSellerSort(e.target.value)}>
+              <select
+                value={sellerSort}
+                onChange={(e) => setSellerSort(e.target.value)}
+              >
                 <option value="best">Best score</option>
                 <option value="avg">Avg score</option>
                 <option value="keeps">Keep count</option>
@@ -698,9 +969,9 @@ export function DealDesk() {
                 <tr>
                   <th>#</th>
                   <th>Seller</th>
-                  <th>Best</th>
-                  <th>Avg</th>
-                  <th>Keeps</th>
+                  <th>Best score</th>
+                  <th>Average</th>
+                  <th>Qualified keeps</th>
                   <th>Listings</th>
                   <th>Country</th>
                   <th>Hunts</th>
@@ -709,38 +980,90 @@ export function DealDesk() {
               </thead>
               <tbody>
                 {sellers.length ? (
-                  sellers.map((s, i) => (
-                    <tr key={String(s.seller_id || s.seller || i)}>
-                      <td className="mono">{i + 1}</td>
-                      <td>
-                        {s.profile_url ? (
-                          <a className="link" href={s.profile_url} target="_blank" rel="noreferrer">
-                            {s.seller}
-                          </a>
-                        ) : (
-                          s.seller
-                        )}
-                      </td>
-                      <td className="score">{s.best_score}</td>
-                      <td className="mono">{s.avg_score}</td>
-                      <td>{s.keeps}</td>
-                      <td>{s.listings}</td>
-                      <td>{(s.country || '—').toUpperCase()}</td>
-                      <td>{(s.watches || []).slice(0, 3).join(', ') || '—'}</td>
-                      <td>
-                        {s.profile_url ? (
-                          <a className="link" href={s.profile_url} target="_blank" rel="noreferrer">
-                            Profile
-                          </a>
-                        ) : null}
-                      </td>
-                    </tr>
-                  ))
+                  sellers.map((s, i) => {
+                    const v2Seller =
+                      s.score_tier === 2 ||
+                      (s.score_tier == null && s.score_version === 2)
+                    const legacySeller = !v2Seller && s.legacy_score === true
+                    const scale = v2Seller ? '/100' : legacySeller ? '/10' : ''
+                    return (
+                      <tr key={String(s.seller_id || s.seller || i)}>
+                        <td className="mono">{i + 1}</td>
+                        <td>
+                          {s.profile_url ? (
+                            <a
+                              className="link"
+                              href={s.profile_url}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {s.seller}
+                            </a>
+                          ) : (
+                            s.seller
+                          )}
+                        </td>
+                        <td className="score">
+                          {s.best_score ?? '—'} {scale}
+                          <span
+                            className={v2Seller ? 'score-meta' : 'legacy-score'}
+                          >
+                            {v2Seller
+                              ? 'V2 utility'
+                              : legacySeller
+                                ? 'Legacy history'
+                                : 'Unscored'}
+                          </span>
+                          <span className="seller-bands">
+                            {Object.entries(s.bands || {}).map(
+                              ([name, count]) => (
+                                <span className={`pill ${name}`} key={name}>
+                                  {name} {count}
+                                </span>
+                              ),
+                            )}
+                          </span>
+                        </td>
+                        <td className="mono">
+                          {s.avg_score ?? '—'} {scale}
+                        </td>
+                        <td>
+                          {s.keeps ?? 0}
+                          <span
+                            className={v2Seller ? 'score-meta' : 'legacy-score'}
+                          >
+                            {v2Seller
+                              ? 'V2 qualified'
+                              : legacySeller
+                                ? 'Legacy rule'
+                                : 'No score family'}
+                          </span>
+                        </td>
+                        <td>{s.listings}</td>
+                        <td>{(s.country || '—').toUpperCase()}</td>
+                        <td>
+                          {(s.watches || []).slice(0, 3).join(', ') || '—'}
+                        </td>
+                        <td>
+                          {s.profile_url ? (
+                            <a
+                              className="link"
+                              href={s.profile_url}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              Profile
+                            </a>
+                          ) : null}
+                        </td>
+                      </tr>
+                    )
+                  })
                 ) : (
                   <tr>
                     <td colSpan={9}>
-                      No seller scores yet — appears once listings carry seller_id (after this sweep finishes / pool
-                      fills).
+                      No seller scores yet — appears once listings carry
+                      seller_id (after this sweep finishes / pool fills).
                     </td>
                   </tr>
                 )}
@@ -763,28 +1086,41 @@ export function DealDesk() {
           <div className="bundle">
             <h3>Last scoring snapshot</h3>
             <p className="bundle-meta">
-              finished {fmtWhen(run.finished_at)} · scored {run.scored ?? '—'} · solo keeps {run.solo_keeps ?? '—'} ·
-              bundles {run.bundles ?? '—'} · alerts {run.alerts ?? '—'}
+              finished {fmtWhen(run.finished_at)} · scored {run.scored ?? '—'} ·
+              solo keeps {run.solo_keeps ?? '—'} · bundles {run.bundles ?? '—'}{' '}
+              · alerts {run.alerts ?? '—'}
             </p>
-            <p className="reason">Score histogram (count per deal_score)</p>
-            <div className="hist">
-              {Array.from({ length: 10 }, (_, i) => {
-                const score = String(i + 1)
-                const n = Number(hist[score] || 0)
-                const h = Math.max(8, Math.round((n / histMax) * 100))
-                return (
-                  <div className="bar" key={score} style={{ height: h }} title={`${score}: ${n}`}>
-                    <strong>{n}</strong>
-                    <span>{score}</span>
-                  </div>
-                )
-              })}
-            </div>
+            <p className="reason">
+              V2 utility histogram (/100, ten-point bins)
+            </p>
+            {hist.length ? (
+              <div className="hist">
+                {hist.map(({ label, count }) => {
+                  const h = Math.max(8, Math.round((count / histMax) * 100))
+                  return (
+                    <div
+                      className="bar"
+                      key={label}
+                      style={{ height: h }}
+                      title={`${label}: ${count}`}
+                    >
+                      <strong>{count}</strong>
+                      <span>{label}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <p className="legacy-score">
+                No v2 histogram is available for this historical run.
+              </p>
+            )}
           </div>
           <div className="bundle" style={{ marginTop: '1rem' }}>
             <h3>GitHub Actions</h3>
             <p className="bundle-meta">
-              Cron every 15m on GitHub · optional daily Vercel cron → same workflow
+              Cron every 15m on GitHub · optional daily Vercel cron → same
+              workflow
             </p>
             <div className="bundle-items">
               {runs.length ? (
@@ -803,14 +1139,21 @@ export function DealDesk() {
                       {r.conclusion ? ` / ${r.conclusion}` : ''}
                     </span>
                     <div>
-                      <div className="title">{r.display_title || r.event || 'run'}</div>
+                      <div className="title">
+                        {r.display_title || r.event || 'run'}
+                      </div>
                       <span className="reason">
                         {fmtWhen(r.created_at)} · {r.event || ''}
                       </span>
                     </div>
                     <div>
                       {r.html_url ? (
-                        <a className="link" href={r.html_url} target="_blank" rel="noreferrer">
+                        <a
+                          className="link"
+                          href={r.html_url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           GitHub
                         </a>
                       ) : null}
@@ -818,7 +1161,10 @@ export function DealDesk() {
                   </div>
                 ))
               ) : (
-                <p className="reason">No GitHub Actions runs visible yet (set GITHUB_TOKEN + GITHUB_REPO on Vercel).</p>
+                <p className="reason">
+                  No GitHub Actions runs visible yet (set GITHUB_TOKEN +
+                  GITHUB_REPO on Vercel).
+                </p>
               )}
             </div>
           </div>

@@ -1305,13 +1305,13 @@ def _valid_rank_outcomes(
     outcomes: list,
     pairs: list[tuple[str, str]],
 ) -> list[dict]:
-    if not isinstance(outcomes, list) or len(outcomes) != len(pairs):
+    if not isinstance(outcomes, list):
         return []
     expected = set(pairs)
     accepted = {}
     for outcome in outcomes:
         if not isinstance(outcome, dict):
-            return []
+            continue
         pair = (outcome.get("left"), outcome.get("right"))
         confidence = outcome.get("confidence")
         if (
@@ -1321,7 +1321,7 @@ def _valid_rank_outcomes(
             or not _bounded_number(confidence, 0, 1)
             or not isinstance(outcome.get("reason"), str)
         ):
-            return []
+            continue
         accepted[pair] = {
             "left": pair[0],
             "right": pair[1],
@@ -1329,9 +1329,7 @@ def _valid_rank_outcomes(
             "confidence": float(confidence),
             "reason": outcome["reason"][:240],
         }
-    if set(accepted) != expected:
-        return []
-    return [accepted[pair] for pair in pairs]
+    return [accepted[pair] for pair in pairs if pair in accepted]
 
 
 def _rank_with_gateway(api_key: str, prompt: str) -> list:
@@ -1378,6 +1376,8 @@ def rank_candidates(
     pairs = buy_ranking.comparison_pairs(candidates, config)
     if not pairs:
         return buy_ranking.apply_rankings(candidates, [], config)
+    if not gateway_key and gemini_client is None:
+        return buy_ranking.apply_rankings(candidates, [], config)
     prompt = _comparison_prompt(candidates, pairs)
     outcomes = []
     errors = []
@@ -1405,7 +1405,7 @@ def rank_candidates(
             print(errors[-1], file=sys.stderr)
     if outcomes:
         print(
-            f"Ranked {len(pairs)} close candidate pair(s).",
+            f"Ranked {len(outcomes)} close candidate pair(s).",
             file=sys.stderr,
         )
     else:
@@ -1417,7 +1417,7 @@ def rank_candidates(
     return buy_ranking.apply_rankings(candidates, outcomes, config)
 
 
-def persist_ranked_candidates(score_db, candidates: list[dict], scored_store_mod) -> None:
+def persist_ranked_candidates(score_db, candidates: list[dict]) -> None:
     rows = []
     for candidate in candidates:
         score = candidate.get("score") or {}
@@ -1428,14 +1428,14 @@ def persist_ranked_candidates(score_db, candidates: list[dict], scored_store_mod
         ):
             continue
         rows.append(
-            scored_store_mod.row_from_item_score(
-                candidate["item"],
-                score,
-                candidate.get("watch") or "",
-                source="pairwise_rank",
-            )
+            {
+                "item_id": (candidate.get("item") or {}).get("id"),
+                "hunt_name": candidate.get("watch") or "",
+                "rank_position": score.get("rank_position"),
+                "rank_confidence": score.get("rank_confidence"),
+            }
         )
-    score_db.upsert_many(rows)
+    score_db.replace_rankings(rows)
 
 
 def _bounded_number(value, low: float, high: float) -> bool:
@@ -2574,7 +2574,7 @@ def main() -> None:
         )
     merged = merge_scored(scored, still_prior + revived)
     merged = listing_vetoes_mod.filter_scored_rows(merged, suppress_ids)
-    rank_candidates(
+    merged = rank_candidates(
         merged,
         "" if test_mode else gateway_key,
         None if test_mode else gemini_client,
@@ -2582,9 +2582,9 @@ def main() -> None:
     )
     try:
         # Score rows are written in score_batch; rank-bearing rewrites must follow them.
-        persist_ranked_candidates(score_db, merged, scored_store_mod)
+        persist_ranked_candidates(score_db, merged)
     except Exception as e:
-        print(f"scored_store rank upsert failed: {e}", file=sys.stderr)
+        print(f"scored_store rank replacement failed: {e}", file=sys.stderr)
     bundles, solos = assemble_bundles(merged, config)
     # Re-check bundle membership after remove (assemble already omitted removed rows).
     pruned_bundles = []

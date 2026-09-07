@@ -374,6 +374,130 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(exported["buy_band"], "keep")
         self.assertIsNone(exported["deal_score"])
 
+    def test_memory_replace_rankings_preserves_score_and_provenance(self):
+        store = ss.MemoryScoredStore()
+        scored_at = datetime(2026, 9, 5, 12, 30, tzinfo=timezone.utc)
+        for item_id, rank in ((201, 7), (202, 8)):
+            store.upsert_score(
+                ss.row_from_item_score(
+                    {
+                        "id": item_id,
+                        "title": f"item {item_id}",
+                        "price": {"amount": "80", "currency_code": "RON"},
+                        "user": {"id": 7, "login": "seller"},
+                        "_profile": {"country_code": "ro"},
+                    },
+                    {
+                        "score_version": 2,
+                        "buy_score": 90 - (item_id - 201),
+                        "buy_band": "keep",
+                        "score_confidence": 0.8,
+                        "score_interval_low": 85,
+                        "score_interval_high": 95,
+                        "score_factors": {"quality": 84},
+                        "factor_evidence": {"quality": "dense fabric"},
+                        "verification_concern": "none",
+                        "verification_reason": "",
+                        "hunt_fit": True,
+                        "reason": "strong",
+                        "rank_position": rank,
+                        "rank_confidence": "medium",
+                    },
+                    "Gym",
+                    source="closet_crawl",
+                    scored_at=scored_at,
+                )
+            )
+        before = {
+            row["item_id"]: row for row in store.load_by_seller(7)
+        }
+
+        store.replace_rankings(
+            [
+                {
+                    "item_id": 201,
+                    "hunt_name": "Gym",
+                    "rank_position": 1,
+                    "rank_confidence": "high",
+                }
+            ]
+        )
+
+        after = {
+            row["item_id"]: row for row in store.load_by_seller(7)
+        }
+        for field, value in before[201].items():
+            if field not in {"rank_position", "rank_confidence"}:
+                self.assertEqual(after[201][field], value, field)
+        self.assertEqual(after[201]["rank_position"], 1)
+        self.assertEqual(after[201]["rank_confidence"], "high")
+        self.assertIsNone(after[202]["rank_position"])
+        self.assertIsNone(after[202]["rank_confidence"])
+        self.assertEqual(after[202]["source"], "closet_crawl")
+        self.assertEqual(after[202]["scored_at"], scored_at)
+
+    def test_empty_replace_rankings_clears_stale_v2_ranks(self):
+        store = ss.MemoryScoredStore()
+        row = ss.row_from_item_score(
+            {"id": 203, "title": "item", "price": {"amount": 80}},
+            {
+                "score_version": 2,
+                "buy_score": 90,
+                "hunt_fit": True,
+                "rank_position": 4,
+                "rank_confidence": "high",
+            },
+            "Gym",
+            source="search",
+        )
+        store.upsert_score(row)
+
+        store.replace_rankings([])
+
+        persisted = store.load_recent()[0]
+        self.assertIsNone(persisted["rank_position"])
+        self.assertIsNone(persisted["rank_confidence"])
+
+    def test_null_store_accepts_rank_replacement(self):
+        self.assertIsNone(ss.NullScoredStore().replace_rankings([]))
+
+    def test_postgres_replace_rankings_clears_then_updates_in_one_transaction(self):
+        conn = MagicMock()
+        cursor = conn.cursor.return_value.__enter__.return_value
+        rankings = [
+            {
+                "item_id": 301,
+                "hunt_name": "Gym",
+                "rank_position": 1,
+                "rank_confidence": "high",
+            },
+            {
+                "item_id": 302,
+                "hunt_name": "Maternity",
+                "rank_position": 2,
+                "rank_confidence": "medium",
+            },
+        ]
+
+        ss.PsycopgScoredStore(conn).replace_rankings(rankings)
+
+        calls = cursor.execute.call_args_list
+        self.assertEqual(calls[0].args, (ss.CLEAR_V2_RANKINGS_SQL,))
+        self.assertEqual(
+            calls[1].args,
+            (ss.UPDATE_V2_RANKING_SQL, (1, "high", 301, "Gym")),
+        )
+        self.assertEqual(
+            calls[2].args,
+            (ss.UPDATE_V2_RANKING_SQL, (2, "medium", 302, "Maternity")),
+        )
+        conn.commit.assert_called_once_with()
+        conn.rollback.assert_not_called()
+        update_clause = ss.UPDATE_V2_RANKING_SQL.split("WHERE", 1)[0].lower()
+        for forbidden in ("source", "scored_at", "buy_score", "score_factors"):
+            self.assertNotIn(forbidden, update_clause)
+        self.assertIn("score_version = 2", ss.UPDATE_V2_RANKING_SQL)
+
     def test_postgres_upsert_serializes_v2_json_objects(self):
         conn = MagicMock()
         cursor = conn.cursor.return_value.__enter__.return_value

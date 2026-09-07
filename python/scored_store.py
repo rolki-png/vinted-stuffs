@@ -183,6 +183,19 @@ SELECT item_id::text || ':' || hunt_name AS seen_key FROM scored_listings
 
 COUNT_SQL = "SELECT COUNT(*) FROM scored_listings"
 
+CLEAR_V2_RANKINGS_SQL = """
+UPDATE scored_listings
+SET rank_position = NULL, rank_confidence = NULL
+WHERE score_version = 2
+  AND (rank_position IS NOT NULL OR rank_confidence IS NOT NULL)
+"""
+
+UPDATE_V2_RANKING_SQL = """
+UPDATE scored_listings
+SET rank_position = %s, rank_confidence = %s
+WHERE item_id = %s AND hunt_name = %s AND score_version = 2
+"""
+
 
 def _load_dotenv_file() -> None:
     root = Path(__file__).resolve().parents[1]
@@ -598,6 +611,7 @@ def index_bundle_opportunities(
 class ScoredStore(Protocol):
     def upsert_score(self, row: dict) -> None: ...
     def upsert_many(self, rows: list[dict]) -> None: ...
+    def replace_rankings(self, rows: list[dict]) -> None: ...
     def load_by_seller(self, seller_id: int) -> list[dict]: ...
     def load_recent(self, limit: int = 10000) -> list[dict]: ...
     def existing_keys(self) -> set[str]: ...
@@ -610,6 +624,9 @@ class NullScoredStore:
         return None
 
     def upsert_many(self, rows: list[dict]) -> None:
+        return None
+
+    def replace_rankings(self, rows: list[dict]) -> None:
         return None
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
@@ -660,6 +677,20 @@ class MemoryScoredStore:
     def upsert_many(self, rows: list[dict]) -> None:
         for row in rows:
             self.upsert_score(row)
+
+    def replace_rankings(self, rows: list[dict]) -> None:
+        for stored in self._rows.values():
+            if stored.get("score_version") == 2:
+                stored["rank_position"] = None
+                stored["rank_confidence"] = None
+        for ranking in rows:
+            stored = self._rows.get(
+                (ranking.get("item_id"), ranking.get("hunt_name"))
+            )
+            if not stored or stored.get("score_version") != 2:
+                continue
+            stored["rank_position"] = ranking.get("rank_position")
+            stored["rank_confidence"] = ranking.get("rank_confidence")
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         return [dict(r) for r in self._rows.values() if r.get("seller_id") == seller_id]
@@ -712,6 +743,36 @@ class PsycopgScoredStore:
                         raise
                     time.sleep(0.25 * (2 ** attempt))
                     print(f"scored_store upsert retry {attempt + 1}: {e}", file=sys.stderr)
+
+    def replace_rankings(self, rows: list[dict]) -> None:
+        for attempt in range(6):
+            try:
+                with self._conn.cursor() as cur:
+                    cur.execute(CLEAR_V2_RANKINGS_SQL)
+                    for ranking in rows:
+                        cur.execute(
+                            UPDATE_V2_RANKING_SQL,
+                            (
+                                ranking.get("rank_position"),
+                                ranking.get("rank_confidence"),
+                                ranking.get("item_id"),
+                                ranking.get("hunt_name"),
+                            ),
+                        )
+                self._conn.commit()
+                return
+            except Exception as e:
+                try:
+                    self._conn.rollback()
+                except Exception:
+                    pass
+                if attempt == 5:
+                    raise
+                time.sleep(0.25 * (2 ** attempt))
+                print(
+                    f"scored_store rank replace retry {attempt + 1}: {e}",
+                    file=sys.stderr,
+                )
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         with self._conn.cursor() as cur:

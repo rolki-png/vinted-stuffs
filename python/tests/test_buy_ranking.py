@@ -1,6 +1,9 @@
 import path_setup  # noqa: F401
 import copy
+import inspect
+import io
 import unittest
+from datetime import datetime, timezone
 from unittest.mock import patch
 
 import buy_ranking as br
@@ -60,6 +63,54 @@ class RankingTests(unittest.TestCase):
             }
         }
         self.assertEqual(br.comparison_pairs(rows, config), [])
+
+    def test_configured_max_and_neighbor_limits_bound_pair_generation(self):
+        rows = [
+            candidate(iid, 100 - iid, 80, 100)
+            for iid in range(1, 7)
+        ]
+        pairs = br.comparison_pairs(
+            rows,
+            {
+                "buy_scoring": {
+                    "pairwise_max_candidates": 4,
+                    "pairwise_neighbors": 2,
+                }
+            },
+        )
+        self.assertEqual(
+            pairs,
+            [
+                ("1:H", "2:H"),
+                ("1:H", "3:H"),
+                ("2:H", "3:H"),
+                ("2:H", "4:H"),
+                ("3:H", "4:H"),
+            ],
+        )
+
+    def test_bundle_hunt_and_legacy_candidates_are_excluded(self):
+        rows = [
+            candidate(1, 92, 87, 96),
+            candidate(2, 91, 86, 95),
+            candidate(3, 99, 90, 100, watch="Bundle"),
+            candidate(4, 99, 90, 100, watch="Legacy"),
+        ]
+        rows[2]["watch_obj"] = {"bundle_hunt": True}
+        rows[3]["score"] = {
+            "deal_score": 10,
+            "value_band": "steal",
+            "hunt_fit": True,
+            "rank_position": 1,
+            "rank_confidence": "high",
+        }
+        self.assertEqual(
+            br.comparison_pairs(rows, {}),
+            [("1:H", "2:H")],
+        )
+        ranked = br.apply_rankings(rows, [], {})
+        self.assertNotIn("rank_position", ranked[2]["score"])
+        self.assertNotIn("rank_position", ranked[3]["score"])
 
     def test_bradley_terry_orders_pairwise_winner(self):
         order = br.bradley_terry_rank(
@@ -133,6 +184,31 @@ class RankingTests(unittest.TestCase):
         )
         self.assertNotIn("rank_position", ranked[2]["score"])
         self.assertNotIn("rank_confidence", ranked[2]["score"])
+
+    def test_stale_ranks_are_cleared_outside_active_ranked_set(self):
+        active = [candidate(1, 90, 85, 95), candidate(2, 89, 84, 94)]
+        subthreshold = candidate(3, 84, 80, 90)
+        bundle = candidate(4, 95, 90, 99, watch="Bundle")
+        bundle["watch_obj"] = {"bundle_hunt": True}
+        legacy = candidate(5, 95, 90, 99, watch="Legacy")
+        legacy["score"] = {
+            "deal_score": 10,
+            "hunt_fit": True,
+        }
+        rows = active + [subthreshold, bundle, legacy]
+        for row in rows:
+            row["score"]["rank_position"] = 99
+            row["score"]["rank_confidence"] = "high"
+
+        ranked = br.apply_rankings(rows, [], {})
+
+        self.assertEqual(
+            {row["score"]["rank_position"] for row in active},
+            {1, 2},
+        )
+        for row in (subthreshold, bundle, legacy):
+            self.assertNotIn("rank_position", row["score"])
+            self.assertNotIn("rank_confidence", row["score"])
 
 
 class RankingIntegrationTests(unittest.TestCase):
@@ -260,7 +336,7 @@ class RankingIntegrationTests(unittest.TestCase):
         config = {"buy_scoring": {"pairwise_neighbors": 1}}
         with (
             patch.object(bot, "_rank_with_gateway", return_value=incomplete),
-            patch.object(bot, "_rank_with_gemini", return_value=incomplete),
+            patch.object(bot, "_rank_with_gemini", return_value=[]) as gemini,
         ):
             ranked = bot.rank_candidates(
                 rows,
@@ -268,6 +344,7 @@ class RankingIntegrationTests(unittest.TestCase):
                 object(),
                 config,
             )
+        gemini.assert_not_called()
         self.assertEqual(
             [row["score"]["rank_position"] for row in ranked],
             [1, 2, 3],
@@ -276,27 +353,170 @@ class RankingIntegrationTests(unittest.TestCase):
             all(row["score"]["rank_confidence"] == "low" for row in ranked)
         )
 
+    def test_valid_pair_rows_survive_malformed_and_duplicate_siblings(self):
+        rows = [
+            candidate(1, 92, 85, 97),
+            candidate(2, 91, 85, 96),
+            candidate(3, 90, 85, 95),
+        ]
+        mixed = [
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "valid first edge",
+            },
+            {
+                "left": "1:H",
+                "right": "unknown:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "unknown candidate",
+            },
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "left",
+                "confidence": 0.9,
+                "reason": "duplicate edge",
+            },
+            {
+                "left": "2:H",
+                "right": "3:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "valid second edge",
+            },
+            {
+                "left": "2:H",
+                "right": "3:H",
+                "winner": "invalid",
+                "confidence": 0.9,
+                "reason": "malformed winner",
+            },
+        ]
+        expected = [
+            {
+                "left": "1:H",
+                "right": "2:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "valid first edge",
+            },
+            {
+                "left": "2:H",
+                "right": "3:H",
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "valid second edge",
+            },
+        ]
+        pairs = [("1:H", "2:H"), ("2:H", "3:H")]
+        self.assertEqual(bot._valid_rank_outcomes(mixed, pairs), expected)
+
+        with (
+            patch.object(bot, "_rank_with_gateway", return_value=mixed),
+            patch.object(bot, "_rank_with_gemini", return_value=[]) as gemini,
+        ):
+            ranked = bot.rank_candidates(
+                rows,
+                "gateway-key",
+                object(),
+                {"buy_scoring": {"pairwise_neighbors": 1}},
+            )
+        gemini.assert_not_called()
+        self.assertEqual(
+            [row["score"]["rank_position"] for row in ranked],
+            [3, 2, 1],
+        )
+
+    def test_provider_results_rank_only_top_configured_shortlist(self):
+        rows = [
+            candidate(1001 + index, 100 - index // 2, 0, 100)
+            for index in range(22)
+        ]
+        config = {
+            "buy_scoring": {
+                "pairwise_max_candidates": 20,
+                "pairwise_neighbors": 1,
+            }
+        }
+        pairs = br.comparison_pairs(rows, config)
+        outcomes = [
+            {
+                "left": left,
+                "right": right,
+                "winner": "right",
+                "confidence": 0.9,
+                "reason": "right wins",
+            }
+            for left, right in pairs
+        ]
+        with patch.object(
+            bot, "_rank_with_gateway", return_value=outcomes
+        ) as gateway:
+            ranked = bot.rank_candidates(rows, "gateway-key", None, config)
+
+        gateway.assert_called_once()
+        self.assertEqual(len(pairs), 19)
+        self.assertEqual(ranked[19]["score"]["rank_position"], 1)
+        self.assertEqual(ranked[19]["score"]["rank_confidence"], "high")
+        self.assertEqual(
+            [row["score"]["rank_position"] for row in ranked[20:]],
+            [21, 22],
+        )
+        self.assertTrue(
+            all(
+                row["score"]["rank_confidence"] == "low"
+                for row in ranked[20:]
+            )
+        )
+
+    def test_no_configured_provider_falls_back_without_failure_noise(self):
+        rows = [candidate(1, 92, 85, 97), candidate(2, 91, 85, 96)]
+        stderr = io.StringIO()
+        with patch("sys.stderr", new=stderr):
+            ranked = bot.rank_candidates(rows, "", None, {})
+        self.assertEqual(
+            [row["score"]["rank_position"] for row in ranked],
+            [1, 2],
+        )
+        self.assertEqual(stderr.getvalue(), "")
+
     def test_rank_persistence_follows_initial_score_write(self):
         store = scored_store.MemoryScoredStore()
         row = candidate(1, 90, 85, 95)
         row["item"]["price"] = {"amount": 100, "currency_code": "RON"}
+        scored_at = datetime(2026, 9, 7, tzinfo=timezone.utc)
         store.upsert_score(
             scored_store.row_from_item_score(
                 row["item"],
                 row["score"],
                 row["watch"],
                 source="search",
+                scored_at=scored_at,
             )
         )
         self.assertIsNone(store.load_recent()[0]["rank_position"])
 
         br.apply_rankings([row], [])
-        bot.persist_ranked_candidates(store, [row], scored_store)
+        bot.persist_ranked_candidates(store, [row])
 
         persisted = store.load_recent()[0]
         self.assertEqual(persisted["buy_score"], 90)
         self.assertEqual(persisted["rank_position"], 1)
         self.assertEqual(persisted["rank_confidence"], "low")
+        self.assertEqual(persisted["source"], "search")
+        self.assertEqual(persisted["scored_at"], scored_at)
+
+    def test_main_assigns_ranking_return_before_rank_persistence_and_selection(self):
+        source = inspect.getsource(bot.main)
+        rank_call = source.index("merged = rank_candidates(")
+        rank_write = source.index("persist_ranked_candidates(")
+        selection = source.index("assemble_bundles(")
+        self.assertLess(rank_call, rank_write)
+        self.assertLess(rank_write, selection)
 
 
 if __name__ == "__main__":

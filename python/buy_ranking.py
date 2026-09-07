@@ -34,6 +34,8 @@ def _qualified(candidate: dict, config: dict | None = None) -> bool:
         is_v2 = False
     item = candidate.get("item") if isinstance(candidate, dict) else {}
     item = item if isinstance(item, dict) else {}
+    watch = candidate.get("watch_obj") if isinstance(candidate, dict) else {}
+    watch = watch if isinstance(watch, dict) else {}
     return (
         item.get("id") is not None
         and is_v2
@@ -45,6 +47,7 @@ def _qualified(candidate: dict, config: dict | None = None) -> bool:
         and confidence >= float(cfg["min_keep_confidence"])
         and score.get("hunt_fit") is True
         and score.get("verification_concern") != "block"
+        and not watch.get("bundle_hunt")
     )
 
 
@@ -69,20 +72,31 @@ def _bounded_count(value, default: int) -> int:
         return default
 
 
-def comparison_pairs(
+def _pairwise_limit(config: dict | None) -> int:
+    cfg = (config or {}).get("buy_scoring") or {}
+    return _bounded_count(cfg.get("pairwise_max_candidates", 20), 20)
+
+
+def _qualified_in_score_order(
     candidates: list[dict],
     config: dict | None,
-) -> list[tuple[str, str]]:
-    cfg = (config or {}).get("buy_scoring") or {}
-    limit = _bounded_count(cfg.get("pairwise_max_candidates", 20), 20)
-    neighbors = _bounded_count(cfg.get("pairwise_neighbors", 2), 2)
-    rows = sorted(
+) -> list[dict]:
+    return sorted(
         (row for row in candidates if _qualified(row, config)),
         key=lambda row: (
             -float(row["score"]["buy_score"]),
             candidate_key(row),
         ),
-    )[:limit]
+    )
+
+
+def comparison_pairs(
+    candidates: list[dict],
+    config: dict | None,
+) -> list[tuple[str, str]]:
+    cfg = (config or {}).get("buy_scoring") or {}
+    neighbors = _bounded_count(cfg.get("pairwise_neighbors", 2), 2)
+    rows = _qualified_in_score_order(candidates, config)[: _pairwise_limit(config)]
     pairs: list[tuple[str, str]] = []
     for index, left in enumerate(rows):
         for right in rows[index + 1 : index + 1 + neighbors]:
@@ -137,16 +151,25 @@ def bradley_terry_rank(
     return sorted(ids, key=lambda key: (-strengths[key], key))
 
 
-def _outcomes_valid(candidate_ids: list[str], outcomes: list[dict]) -> bool:
+def _valid_outcomes(candidate_ids: list[str], outcomes: list[dict]) -> list[dict]:
     known = set(candidate_ids)
-    return all(
-        isinstance(outcome, dict)
-        and outcome.get("left") in known
-        and outcome.get("right") in known
-        and outcome.get("left") != outcome.get("right")
-        and outcome.get("winner") in {"left", "right", "tie"}
-        for outcome in outcomes
-    )
+    valid = []
+    seen = set()
+    for outcome in outcomes:
+        if not isinstance(outcome, dict):
+            continue
+        pair = (outcome.get("left"), outcome.get("right"))
+        if (
+            pair in seen
+            or pair[0] not in known
+            or pair[1] not in known
+            or pair[0] == pair[1]
+            or outcome.get("winner") not in {"left", "right", "tie"}
+        ):
+            continue
+        seen.add(pair)
+        valid.append(outcome)
+    return valid
 
 
 def _connected(candidate_ids: list[str], outcomes: list[dict]) -> bool:
@@ -174,29 +197,37 @@ def apply_rankings(
     outcomes: list[dict],
     config: dict | None = None,
 ) -> list[dict]:
-    qualified = [row for row in candidates if _qualified(row, config)]
-    fallback = sorted(
-        qualified,
-        key=lambda row: (
-            -float(row["score"]["buy_score"]),
-            candidate_key(row),
-        ),
-    )
-    ids = [candidate_key(row) for row in fallback]
+    for row in candidates:
+        score = row.get("score") if isinstance(row, dict) else None
+        if isinstance(score, dict):
+            score.pop("rank_position", None)
+            score.pop("rank_confidence", None)
+    qualified = _qualified_in_score_order(candidates, config)
+    limit = _pairwise_limit(config)
+    shortlist = qualified[:limit]
+    remainder = qualified[limit:]
+    shortlist_ids = [candidate_key(row) for row in shortlist]
+    valid_outcomes = _valid_outcomes(shortlist_ids, outcomes)
     usable = (
-        bool(outcomes)
-        and _outcomes_valid(ids, outcomes)
-        and _connected(ids, outcomes)
+        bool(valid_outcomes)
+        and _connected(shortlist_ids, valid_outcomes)
     )
-    order = bradley_terry_rank(ids, outcomes) if usable else ids
+    shortlist_order = (
+        bradley_terry_rank(shortlist_ids, valid_outcomes)
+        if usable
+        else shortlist_ids
+    )
+    order = shortlist_order + [candidate_key(row) for row in remainder]
     position = {key: index + 1 for index, key in enumerate(order)}
+    shortlist_keys = set(shortlist_ids)
     mean_confidence = 0.0
     if usable:
         confidences = [
-            _number(outcome.get("confidence")) or 0.0 for outcome in outcomes
+            _number(outcome.get("confidence")) or 0.0
+            for outcome in valid_outcomes
         ]
         mean_confidence = sum(confidences) / len(confidences)
-    confidence = (
+    shortlist_confidence = (
         "high"
         if mean_confidence >= 0.80
         else "medium"
@@ -205,5 +236,9 @@ def apply_rankings(
     )
     for row in qualified:
         row["score"]["rank_position"] = position[candidate_key(row)]
-        row["score"]["rank_confidence"] = confidence
+        row["score"]["rank_confidence"] = (
+            shortlist_confidence
+            if candidate_key(row) in shortlist_keys
+            else "low"
+        )
     return candidates

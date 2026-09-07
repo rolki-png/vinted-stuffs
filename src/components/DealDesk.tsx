@@ -377,16 +377,26 @@ export function DealDesk() {
     return () => window.clearTimeout(t)
   }, [toast])
 
-  const triggerHunt = async (fullSweep: boolean) => {
+  const triggerHunt = async ({
+    fullSweep = false,
+    legacyActiveV2 = false,
+  } = {}) => {
     setBusy(true)
     setOpsMsg({
-      text: fullSweep ? 'Dispatching full sweep…' : 'Dispatching hunt…',
+      text: legacyActiveV2
+        ? 'Dispatching legacy v2 rescore…'
+        : fullSweep
+          ? 'Dispatching full sweep…'
+          : 'Dispatching hunt…',
     })
     try {
       const res = await fetch('/api/trigger', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ full_sweep: fullSweep }),
+        body: JSON.stringify({
+          full_sweep: fullSweep,
+          legacy_active_v2: legacyActiveV2,
+        }),
       })
       const json = await res.json().catch(() => ({}))
       if (!res.ok)
@@ -509,7 +519,7 @@ export function DealDesk() {
             type="button"
             className="btn btn-accent"
             disabled={busy}
-            onClick={() => triggerHunt(false)}
+            onClick={() => triggerHunt({ fullSweep: false })}
           >
             Run hunt
           </button>
@@ -517,9 +527,17 @@ export function DealDesk() {
             type="button"
             className="btn"
             disabled={busy}
-            onClick={() => triggerHunt(true)}
+            onClick={() => triggerHunt({ fullSweep: true })}
           >
             Full sweep
+          </button>
+          <button
+            type="button"
+            className="btn"
+            disabled={busy}
+            onClick={() => triggerHunt({ legacyActiveV2: true })}
+          >
+            Rescore legacy v2
           </button>
           <button
             type="button"

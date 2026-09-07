@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kept_at": "2026-09-07T23:32:18.795422+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -39,10 +39,15 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-07T17:52:19.803882+00:00",
+    "kept_at": "2026-09-07T23:32:18.795422+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -81,7 +86,106 @@
     ],
     "suggested_offer_ron": 36,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-07T23:32:18.795422+00:00",
+    "kind": "near_haul",
+    "seller": "sildah1",
+    "seller_id": 3152086615,
+    "country": "gr",
+    "checkout_extra_ron": 20.391,
+    "listing_sum": 47.82,
+    "checkout_total": 68.211,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed Nike shorts M-L",
+    "effective_price_per_useful_item": 34.1055,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9926195251,
+        "title": "shorts",
+        "price": 21.25,
+        "url": "https://www.vinted.ro/items/9926195251-shorts",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": null,
+        "seller": "sildah1",
+        "seller_id": 3152086615
+      },
+      {
+        "role": "haul",
+        "id": 9919252829,
+        "title": "shorts",
+        "price": 26.57,
+        "url": "https://www.vinted.ro/items/9919252829-shorts",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": null,
+        "seller": "sildah1",
+        "seller_id": 3152086615
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-07T23:32:18.795422+00:00",
+    "kind": "near_haul",
+    "seller": "ochiul",
+    "seller_id": 189522630,
+    "country": "ro",
+    "checkout_extra_ron": 19.25,
+    "listing_sum": 25.0,
+    "checkout_total": 44.25,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle consists entirely of T-shirts, which are explicitly excluded from the buyer's needs, and contains no gym shorts.",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 22.125,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9767464198,
+        "title": "Men's Nike Dri-FIT Red Football / Sports Jersey (Size L) - SV Assenheim e.V.",
+        "price": 19.0,
+        "url": "https://www.vinted.ro/items/9767464198-mens-nike-dri-fit-red-football-sports-jersey-size-l-sv-assenheim-ev",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "ochiul",
+        "seller_id": 189522630
+      },
+      {
+        "role": "haul",
+        "id": 9669749294,
+        "title": "H&M Essentials No. 7 Mens Size M Light Blue Short Sleeve T-Shirt Regular Fit",
+        "price": 6.0,
+        "url": "https://www.vinted.ro/items/9669749294-hm-essentials-no-7-mens-size-m-light-blue-short-sleeve-t-shirt-regular-fit",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "ochiul",
+        "seller_id": 189522630
+      }
+    ],
+    "suggested_offer_ron": 22,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T17:52:19.803882+00:00",
@@ -123,7 +227,12 @@
     ],
     "suggested_offer_ron": 34,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T17:52:19.803882+00:00",
@@ -176,7 +285,12 @@
     ],
     "suggested_offer_ron": 49,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T17:52:19.803882+00:00",
@@ -218,7 +332,12 @@
     ],
     "suggested_offer_ron": 19,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T17:52:19.803882+00:00",
@@ -260,7 +379,12 @@
     ],
     "suggested_offer_ron": 41,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -310,7 +434,72 @@
     ],
     "suggested_offer_ron": 104,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:49:08.521659+00:00",
+    "seller": "sporty_boy",
+    "seller_id": 3126773947,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 98.53,
+    "checkout_total": 123.53,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9920299499,
+        "title": "Nike męskie spodenki dresowe sportowe rozmiar L",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9920299499-nike-meskie-spodenki-dresowe-sportowe-rozmiar-l",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 3126773947,
+        "seller": "sporty_boy"
+      },
+      {
+        "role": "extra",
+        "id": 9923908932,
+        "title": "Nike męskie spodenki sportowe dresowe rozmiar M",
+        "price": 55.42,
+        "url": "https://www.vinted.ro/items/9923908932-nike-meskie-spodenki-sportowe-dresowe-rozmiar-m",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 3126773947,
+        "seller": "sporty_boy"
+      }
+    ],
+    "suggested_offer_ron": 64,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -360,7 +549,12 @@
     ],
     "suggested_offer_ron": 65,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -382,6 +576,14 @@
         "url": "https://www.vinted.ro/items/9924038200-spodenki-szorty-meskie-sportowe-czarne-nike-dri-fit-rozm-m",
         "watch": "Broad training shorts M-L",
         "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 90949570,
         "seller": "flajhaj"
       },
@@ -393,13 +595,26 @@
         "url": "https://www.vinted.ro/items/9924022798-spodenki-szorty-meskie-sportowe-szare-logo-nike-dri-fit-rozm-l",
         "watch": "Broad gym shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 90949570,
         "seller": "flajhaj"
       }
     ],
     "suggested_offer_ron": 56,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -438,7 +653,12 @@
     ],
     "suggested_offer_ron": 40,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -477,7 +697,12 @@
     ],
     "suggested_offer_ron": 47,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -527,7 +752,72 @@
     ],
     "suggested_offer_ron": 111,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T17:40:25.752721+00:00",
+    "seller": "mrdaniolan",
+    "seller_id": 91117401,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 123.2,
+    "checkout_total": 148.2,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9921615380,
+        "title": "Zielone Szorty UA",
+        "price": 43.11,
+        "url": "https://www.vinted.ro/items/9921615380-zielone-szorty-ua",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      },
+      {
+        "role": "extra",
+        "id": 9843041668,
+        "title": "Szare dresy Gymshark",
+        "price": 80.09,
+        "url": "https://www.vinted.ro/items/9843041668-szare-dresy-gymshark",
+        "watch": "Broad gym short EN M-L",
+        "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 91117401,
+        "seller": "mrdaniolan"
+      }
+    ],
+    "suggested_offer_ron": 80,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -549,6 +839,14 @@
         "url": "https://www.vinted.ro/items/9923288875-2in1-rovidnadrag",
         "watch": "Gym seed gym shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 177474589,
         "seller": "kendoka98"
       },
@@ -560,13 +858,26 @@
         "url": "https://www.vinted.ro/items/9923300643-2in1-rovidnadrag",
         "watch": "Gym seed gym shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 177474589,
         "seller": "kendoka98"
       }
     ],
     "suggested_offer_ron": 35,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T12:08:30.058647+00:00",
@@ -608,7 +919,12 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T12:08:30.058647+00:00",
@@ -650,7 +966,12 @@
     ],
     "suggested_offer_ron": 35,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T12:08:30.058647+00:00",
@@ -714,7 +1035,12 @@
     ],
     "suggested_offer_ron": 66,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T12:08:30.058647+00:00",
@@ -767,7 +1093,12 @@
     ],
     "suggested_offer_ron": 62,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -789,6 +1120,14 @@
         "url": "https://www.vinted.ro/items/9865582138-nike-shorts-medium",
         "watch": "Broad gym shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 310823756,
         "seller": "lefteris-nton"
       },
@@ -800,6 +1139,14 @@
         "url": "https://www.vinted.ro/items/9889662494-nike-shorts-medium",
         "watch": "Gym seed Nike shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 310823756,
         "seller": "lefteris-nton"
       },
@@ -811,13 +1158,26 @@
         "url": "https://www.vinted.ro/items/9914348412-poleitai-nike-shorts-san-kainourgio-i-timi-einai-i-elksaisth",
         "watch": "Gym seed Nike shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 310823756,
         "seller": "lefteris-nton"
       }
     ],
     "suggested_offer_ron": 75,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -856,11 +1216,16 @@
     ],
     "suggested_offer_ron": 51,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
-    "kept_at": "2026-09-07T11:58:50.812702+00:00",
+    "kept_at": "2026-09-07T11:59:14.922582+00:00",
     "seller": "papadopoulos.skg",
     "seller_id": 308157981,
     "country": "gr",
@@ -872,30 +1237,51 @@
     "items": [
       {
         "role": "extra",
-        "id": 9901369391,
-        "title": "Νίκε σορτσάκι ανδρικό",
-        "price": 69.08,
-        "url": "https://www.vinted.ro/items/9901369391-nike-sortsaki-andriko",
-        "watch": "Broad dri-fit shorts M-L",
-        "deal_score": 8,
-        "seller_id": 308157981,
-        "seller": "papadopoulos.skg"
-      },
-      {
-        "role": "extra",
         "id": 9883725053,
         "title": "Nike σορτσάκι ανδρικό",
         "price": 63.8,
         "url": "https://www.vinted.ro/items/9883725053-nike-sortsaki-andriko",
         "watch": "Broad dri-fit shorts M-L",
         "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 308157981,
+        "seller": "papadopoulos.skg"
+      },
+      {
+        "role": "extra",
+        "id": 9901369391,
+        "title": "Νίκε σορτσάκι ανδρικό",
+        "price": 69.08,
+        "url": "https://www.vinted.ro/items/9901369391-nike-sortsaki-andriko",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 308157981,
         "seller": "papadopoulos.skg"
       }
     ],
     "suggested_offer_ron": 86,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T07:01:52.973635+00:00",
@@ -948,7 +1334,12 @@
     ],
     "suggested_offer_ron": 64,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-07T07:01:52.973635+00:00",
@@ -990,7 +1381,12 @@
     ],
     "suggested_offer_ron": 44,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1040,7 +1436,12 @@
     ],
     "suggested_offer_ron": 68,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1079,7 +1480,12 @@
     ],
     "suggested_offer_ron": 35,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1118,7 +1524,12 @@
     ],
     "suggested_offer_ron": 76,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1140,6 +1551,14 @@
         "url": "https://www.vinted.ro/items/9913303972-adidas-vintage-szorty-sportowe-czarno-szare",
         "watch": "Broad training shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 111763343,
         "seller": "wwikap"
       },
@@ -1151,13 +1570,26 @@
         "url": "https://www.vinted.ro/items/9913303642-nike-dri-fit-spodenki-sportowe-oliwkowe",
         "watch": "Broad training shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 111763343,
         "seller": "wwikap"
       }
     ],
     "suggested_offer_ron": 96,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1179,6 +1611,14 @@
         "url": "https://www.vinted.ro/items/9880120882-mens-shorts-nike-training-gym-running-sports-dri-fit-soccer-athletic-szorty-meski-treningowe",
         "watch": "Broad gym short EN M-L",
         "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 90814365,
         "seller": "dima_hontaruk26"
       },
@@ -1190,13 +1630,26 @@
         "url": "https://www.vinted.ro/items/9859604020-mens-short-nike-valencia-cf-00s-vintage-football-soccer-training-spain-meski-szorty-pilkarskie",
         "watch": "Gym seed Nike shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 90814365,
         "seller": "dima_hontaruk26"
       }
     ],
     "suggested_offer_ron": 80,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1235,7 +1688,12 @@
     ],
     "suggested_offer_ron": 27,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T22:55:21.108917+00:00",
@@ -1288,7 +1746,12 @@
     ],
     "suggested_offer_ron": 42,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T22:55:21.108917+00:00",
@@ -1330,7 +1793,12 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T22:55:21.108917+00:00",
@@ -1372,7 +1840,12 @@
     ],
     "suggested_offer_ron": 34,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T22:55:21.108917+00:00",
@@ -1414,7 +1887,12 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T22:55:21.108917+00:00",
@@ -1456,7 +1934,12 @@
     ],
     "suggested_offer_ron": 41,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T21:03:45.515083+00:00",
@@ -1509,7 +1992,12 @@
     ],
     "suggested_offer_ron": 63,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1548,7 +2036,12 @@
     ],
     "suggested_offer_ron": 83,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1587,7 +2080,12 @@
     ],
     "suggested_offer_ron": 35,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1609,6 +2107,14 @@
         "url": "https://www.vinted.ro/items/9914848191-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
         "watch": "Mamalicious maternity XL-L/XL",
         "deal_score": 9,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 253589201,
         "seller": "vintvib"
       },
@@ -1620,13 +2126,26 @@
         "url": "https://www.vinted.ro/items/9900831865-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
         "watch": "Mamalicious maternity XL-L/XL",
         "deal_score": 9,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 253589201,
         "seller": "vintvib"
       }
     ],
     "suggested_offer_ron": 142,
     "offer_weak": true,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T18:46:39.165526+00:00",
@@ -1690,7 +2209,12 @@
     ],
     "suggested_offer_ron": 92,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1729,7 +2253,12 @@
     ],
     "suggested_offer_ron": 42,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1790,7 +2319,12 @@
     ],
     "suggested_offer_ron": 104,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -1812,6 +2346,14 @@
         "url": "https://www.vinted.ro/items/9912801268-pantaloni-scurti-nike",
         "watch": "Broad training shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 267444694,
         "seller": "stilsclipitor"
       },
@@ -1823,13 +2365,26 @@
         "url": "https://www.vinted.ro/items/9912761362-pantaloni-scurti-nike",
         "watch": "Broad training shorts M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 267444694,
         "seller": "stilsclipitor"
       }
     ],
     "suggested_offer_ron": 52,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T16:32:41.856841+00:00",
@@ -1904,7 +2459,12 @@
     ],
     "suggested_offer_ron": 123,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T16:32:41.856841+00:00",
@@ -1946,7 +2506,12 @@
     ],
     "suggested_offer_ron": 38,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T16:32:41.856841+00:00",
@@ -1999,7 +2564,12 @@
     ],
     "suggested_offer_ron": 60,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T16:32:41.856841+00:00",
@@ -2041,7 +2611,12 @@
     ],
     "suggested_offer_ron": 34,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -2080,7 +2655,12 @@
     ],
     "suggested_offer_ron": 37,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -2102,6 +2682,14 @@
         "url": "https://www.vinted.ro/items/9910401880-short-nike-activewear-drifit",
         "watch": "Gym seed Nike shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 166946818,
         "seller": "mrsebastian"
       },
@@ -2113,13 +2701,26 @@
         "url": "https://www.vinted.ro/items/9910426218-nike-short-activewear-drifit",
         "watch": "Gym seed Nike shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 166946818,
         "seller": "mrsebastian"
       }
     ],
     "suggested_offer_ron": 104,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -2158,7 +2759,12 @@
     ],
     "suggested_offer_ron": 35,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -2180,17 +2786,14 @@
         "url": "https://www.vinted.ro/items/9907650349-spodenki-adidas-vintage-sweatpants-sport-premium-logo-casual-style-gym-streetwear",
         "watch": "Gym seed gym shorts M-L",
         "deal_score": 8,
-        "seller_id": 98111218,
-        "seller": "matys33777"
-      },
-      {
-        "role": "extra",
-        "id": 9907053809,
-        "title": "Peak Performance spodenki shorts outdoors premium logo trekking hiking sports streetwear style",
-        "price": 60.38,
-        "url": "https://www.vinted.ro/items/9907053809-peak-performance-spodenki-shorts-outdoors-premium-logo-trekking-hiking-sports-streetwear-style",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 98111218,
         "seller": "matys33777"
       },
@@ -2202,6 +2805,33 @@
         "url": "https://www.vinted.ro/items/9907052896-nike-sportswear-logo-spodenki-short-zielone-premium-streetwear-style-gym-casual",
         "watch": "Gym seed short sport M-L",
         "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 98111218,
+        "seller": "matys33777"
+      },
+      {
+        "role": "extra",
+        "id": 9907053809,
+        "title": "Peak Performance spodenki shorts outdoors premium logo trekking hiking sports streetwear style",
+        "price": 60.38,
+        "url": "https://www.vinted.ro/items/9907053809-peak-performance-spodenki-shorts-outdoors-premium-logo-trekking-hiking-sports-streetwear-style",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 7,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 98111218,
         "seller": "matys33777"
       },
@@ -2213,13 +2843,26 @@
         "url": "https://www.vinted.ro/items/9907294660-spodenki-adidas-vintage-szorty-sport-premium-logo-casual-style-gym-streetwear",
         "watch": "Gym seed gym shorts M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 98111218,
         "seller": "matys33777"
       }
     ],
     "suggested_offer_ron": 156,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T13:13:05.264139+00:00",
@@ -2272,7 +2915,12 @@
     ],
     "suggested_offer_ron": 73,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -2322,7 +2970,72 @@
     ],
     "suggested_offer_ron": 75,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-06T13:06:26.684883+00:00",
+    "seller": "mymdm",
+    "seller_id": 224819493,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 54.0,
+    "checkout_total": 79.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9906844012,
+        "title": "Blugi gravida xl",
+        "price": 29.0,
+        "url": "https://www.vinted.ro/items/9906844012-blugi-gravida-xl",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 224819493,
+        "seller": "mymdm"
+      },
+      {
+        "role": "extra",
+        "id": 9900766745,
+        "title": "Blugi gravida xl",
+        "price": 25.0,
+        "url": "https://www.vinted.ro/items/9900766745-blugi-gravida-xl",
+        "watch": "Mamalicious maternity XL-L/XL",
+        "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 224819493,
+        "seller": "mymdm"
+      }
+    ],
+    "suggested_offer_ron": 48,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
@@ -2386,7 +3099,12 @@
     ],
     "suggested_offer_ron": 85,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
@@ -2428,7 +3146,12 @@
     ],
     "suggested_offer_ron": 36,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
@@ -2470,7 +3193,12 @@
     ],
     "suggested_offer_ron": 27,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
@@ -2556,7 +3284,12 @@
     ],
     "suggested_offer_ron": 72,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T10:46:09.796618+00:00",
@@ -2598,7 +3331,12 @@
     ],
     "suggested_offer_ron": 34,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T09:38:26.762787+00:00",
@@ -2640,7 +3378,12 @@
     ],
     "suggested_offer_ron": 16,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T09:38:26.762787+00:00",
@@ -2682,7 +3425,12 @@
     ],
     "suggested_offer_ron": 31,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T07:00:53.578203+00:00",
@@ -2724,7 +3472,12 @@
     ],
     "suggested_offer_ron": 41,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T06:38:46.006299+00:00",
@@ -2766,7 +3519,12 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T06:38:46.006299+00:00",
@@ -2808,7 +3566,12 @@
     ],
     "suggested_offer_ron": 16,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
@@ -2861,7 +3624,12 @@
     ],
     "suggested_offer_ron": 36,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
@@ -2925,7 +3693,12 @@
     ],
     "suggested_offer_ron": 72,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
@@ -3055,7 +3828,12 @@
     ],
     "suggested_offer_ron": 82,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
@@ -3130,7 +3908,12 @@
     ],
     "suggested_offer_ron": 47,
     "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_keep_bundle",
@@ -3152,6 +3935,14 @@
         "url": "https://www.vinted.ro/items/8545787923-seraphine-l-szoptatos-kismama-ruha",
         "watch": "Seraphine maternity L-XL",
         "deal_score": 9,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 108322181,
         "seller": "patyilevendula"
       },
@@ -3163,13 +3954,26 @@
         "url": "https://www.vinted.ro/items/8705884811-seraphine-denim-sotetkek-42",
         "watch": "Seraphine maternity L-XL",
         "deal_score": 8,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 108322181,
         "seller": "patyilevendula"
       }
     ],
     "suggested_offer_ron": 100,
     "offer_weak": true,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3208,7 +4012,12 @@
     ],
     "suggested_offer_ron": 185,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3230,6 +4039,14 @@
         "url": "https://www.vinted.ro/items/8119240425-new-balance-993-black-czarne-990-made-in-usa",
         "watch": "New Balance 993 size 43",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 246449166,
         "seller": "horsnm"
       },
@@ -3241,13 +4058,26 @@
         "url": "https://www.vinted.ro/items/8969999144-new-balance-990v4-pink-ribbon-faded-rose-990-993-made-in-usa",
         "watch": "New Balance 990 size 43",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 246449166,
         "seller": "horsnm"
       }
     ],
     "suggested_offer_ron": 440,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3286,7 +4116,12 @@
     ],
     "suggested_offer_ron": 639,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_keep_bundle",
@@ -3336,7 +4171,12 @@
     ],
     "suggested_offer_ron": 183,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3375,7 +4215,12 @@
     ],
     "suggested_offer_ron": 101,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3397,6 +4242,14 @@
         "url": "https://www.vinted.ro/items/9757617962-leginsy-2xu-roz-m",
         "watch": "2XU M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 92528321,
         "seller": "piotrekx_1"
       },
@@ -3408,13 +4261,26 @@
         "url": "https://www.vinted.ro/items/9756776512-leginsy-2xu-roz-m",
         "watch": "2XU M-L",
         "deal_score": 6,
+        "score_version": null,
+        "buy_score": null,
+        "buy_band": null,
+        "score_confidence": null,
+        "score_interval_low": null,
+        "score_interval_high": null,
+        "rank_position": null,
+        "rank_confidence": null,
         "seller_id": 92528321,
         "seller": "piotrekx_1"
       }
     ],
     "suggested_offer_ron": 33,
     "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3453,7 +4319,12 @@
     ],
     "suggested_offer_ron": 100,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3492,7 +4363,12 @@
     ],
     "suggested_offer_ron": 50,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kind": "index_near_bundle",
@@ -3531,211 +4407,12 @@
     ],
     "suggested_offer_ron": 129,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-05T22:24:01.611820+00:00",
-    "seller": "dmn071530",
-    "seller_id": 91555466,
-    "country": "pl",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 295.72,
-    "checkout_total": 320.72,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9674265221,
-        "title": "Kamizelka Gore Wear Windstopper Soft Shell rozm M",
-        "price": 123.22,
-        "url": "https://www.vinted.ro/items/9674265221-kamizelka-gore-wear-windstopper-soft-shell-rozm-m",
-        "watch": "GOREWEAR M-L",
-        "deal_score": 8,
-        "seller_id": 91555466,
-        "seller": "dmn071530"
-      },
-      {
-        "role": "extra",
-        "id": 9674285734,
-        "title": "Kurtka GORE Wear Mythos 2.0 Windstopper Soft Shell rozm M",
-        "price": 172.5,
-        "url": "https://www.vinted.ro/items/9674285734-kurtka-gore-wear-mythos-20-windstopper-soft-shell-rozm-m",
-        "watch": "GOREWEAR M-L",
-        "deal_score": 7,
-        "seller_id": 91555466,
-        "seller": "dmn071530"
-      }
-    ],
-    "suggested_offer_ron": 192,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-05T22:16:16.366836+00:00",
-    "seller": "kupno9099",
-    "seller_id": 237595614,
-    "country": "pl",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 243.96999999999997,
-    "checkout_total": 268.96999999999997,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9822884768,
-        "title": "gore wear spodnie termiczne biegowe czarne l",
-        "price": 85.02,
-        "url": "https://www.vinted.ro/items/9822884768-gore-wear-spodnie-termiczne-biegowe-czarne-l",
-        "watch": "GOREWEAR M-L",
-        "deal_score": 7,
-        "seller_id": 237595614,
-        "seller": "kupno9099"
-      },
-      {
-        "role": "extra",
-        "id": 9822741142,
-        "title": "gore wear m base layer koszulka termoaktywna czarna długi rękaw",
-        "price": 158.95,
-        "url": "https://www.vinted.ro/items/9822741142-gore-wear-m-base-layer-koszulka-termoaktywna-czarna-dlugi-rekaw",
-        "watch": "GOREWEAR M-L",
-        "deal_score": 6,
-        "seller_id": 237595614,
-        "seller": "kupno9099"
-      }
-    ],
-    "suggested_offer_ron": 158,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
-  },
-  {
-    "kept_at": "2026-09-05T20:27:14.406038+00:00",
-    "kind": "near_haul",
-    "seller": "diamencikowo",
-    "seller_id": 104082847,
-    "country": "pl",
-    "checkout_extra_ron": 25.156,
-    "listing_sum": 43.120000000000005,
-    "checkout_total": 68.27600000000001,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "H&M Mama bundle seed L-XL",
-    "effective_price_per_useful_item": 34.138000000000005,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9762121547,
-        "title": "Czarna Koszula 100% bawełna",
-        "price": 18.48,
-        "url": "https://www.vinted.ro/items/9762121547-czarna-koszula-100-bawelna",
-        "watch": "H&M Mama bundle seed L-XL",
-        "deal_score": null,
-        "seller": "diamencikowo",
-        "seller_id": 104082847
-      },
-      {
-        "role": "haul",
-        "id": 9790010512,
-        "title": "Półgolf w paski",
-        "price": 24.64,
-        "url": "https://www.vinted.ro/items/9790010512-polgolf-w-paski",
-        "watch": "H&M Mama bundle seed L-XL",
-        "deal_score": null,
-        "seller": "diamencikowo",
-        "seller_id": 104082847
-      }
-    ],
-    "suggested_offer_ron": 38,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
-  },
-  {
-    "kept_at": "2026-09-05T20:23:39.453954+00:00",
-    "kind": "near_haul",
-    "seller": "nutka2008",
-    "seller_id": 101670319,
-    "country": "pl",
-    "checkout_extra_ron": 24.6635,
-    "listing_sum": 33.269999999999996,
-    "checkout_total": 57.933499999999995,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "H&M Mama bundle seed L-XL",
-    "effective_price_per_useful_item": 28.966749999999998,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9899635208,
-        "title": "Spodenki ciążowe H&M L len i wiskoza",
-        "price": 18.48,
-        "url": "https://www.vinted.ro/items/9899635208-spodenki-ciazowe-hm-l-len-i-wiskoza",
-        "watch": "H&M Mama bundle seed L-XL",
-        "deal_score": null,
-        "seller": "nutka2008",
-        "seller_id": 101670319
-      },
-      {
-        "role": "haul",
-        "id": 9899486356,
-        "title": "Koszulka ciążowa H&M L",
-        "price": 14.79,
-        "url": "https://www.vinted.ro/items/9899486356-koszulka-ciazowa-hm-l",
-        "watch": "H&M Mama bundle seed L-XL",
-        "deal_score": null,
-        "seller": "nutka2008",
-        "seller_id": 101670319
-      }
-    ],
-    "suggested_offer_ron": 29,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 50.0
-  },
-  {
-    "kept_at": "2026-09-05T20:23:39.453954+00:00",
-    "kind": "near_haul",
-    "seller": "kasia198x",
-    "seller_id": 91028197,
-    "country": "pl",
-    "checkout_extra_ron": 24.848,
-    "listing_sum": 36.96,
-    "checkout_total": 61.808,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 30.904,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9897979402,
-        "title": "Crivit & Maffashion L/XL koszulka sportowa",
-        "price": 18.48,
-        "url": "https://www.vinted.ro/items/9897979402-crivit-maffashion-lxl-koszulka-sportowa",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "kasia198x",
-        "seller_id": 91028197
-      },
-      {
-        "role": "haul",
-        "id": 9897931672,
-        "title": "CRIVIT x Maffashion 38/40 – czarna bluzka sportowa – Nowa",
-        "price": 18.48,
-        "url": "https://www.vinted.ro/items/9897931672-crivit-x-maffashion-3840-czarna-bluzka-sportowa-nowa",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "kasia198x",
-        "seller_id": 91028197
-      }
-    ],
-    "suggested_offer_ron": 33,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-05T18:45:43.426160+00:00",
@@ -3767,7 +4444,12 @@
     ],
     "suggested_offer_ron": 184,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-06T04:42:17.017766+00:00",
@@ -3815,6 +4497,11 @@
     ],
     "suggested_offer_ron": 247,
     "offer_weak": true,
-    "offer_target_per_item_ron": 50.0
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
   }
 ]

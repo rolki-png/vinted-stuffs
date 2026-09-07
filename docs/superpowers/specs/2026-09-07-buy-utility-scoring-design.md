@@ -206,15 +206,20 @@ verification_reason: short evidence
 
 Only `block` prevents a keep. `inspect` remains visible for buyer review.
 
-The display and behavior bands are:
+The calculated `buy_band` display and behavior bands are:
 
-| Score | Meaning | Behavior |
-|---:|---|---|
-| 0–59 | Skip | No alert or bundle role |
-| 60–74 | Bundle extra | May ride with a keep when existing bundle rules pass |
-| 75–84 | Good candidate | Display only; no keep alert |
-| 85–94 | Keep candidate | Keep only if hard gates pass and confidence is medium/high |
-| 95–100 | Exceptional | Same gates; highest-priority keep candidate |
+| Score | `buy_band` | Meaning | Behavior |
+|---:|---|---|---|
+| 0–59 | `skip` | Skip | No alert or bundle role |
+| 60–74 | `bundle` | Bundle extra | May ride with a keep when existing bundle rules pass |
+| 75–84 | `good` | Good candidate | Display only; no keep alert |
+| 85–94 | `keep` | Keep candidate | Keep only if hard gates pass and confidence is medium/high |
+| 95–100 | `exceptional` | Exceptional | Same gates; highest-priority keep candidate |
+
+`buy_band` is not the existing `value_band`. Legacy `value_band` describes price
+versus quality (`steal`, `hunt`, `acceptable`, or `skip`) and remains available for
+history and value explanation. V2 qualification and bundle roles use `buy_band`, so
+the two meanings are never overloaded.
 
 Pairwise ranking never promotes a score below 85 into a keep.
 
@@ -271,6 +276,7 @@ Add these fields to the scored-listings schema and API shape:
 
 - `score_version` integer;
 - `buy_score` integer nullable;
+- `buy_band` text nullable;
 - `score_confidence` numeric nullable;
 - `score_interval_low` and `score_interval_high` integers nullable;
 - `score_factors` JSON;
@@ -311,7 +317,8 @@ The Finds table shows:
 - confidence;
 - global rank when available;
 - factor breakdown with evidence;
-- value/behavior band;
+- `buy_band` plus the numerical value factor;
+- legacy `value_band` when present;
 - verification concern;
 - legacy label for old rows.
 

@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-07T05:57:50.151747+00:00",
+    "kept_at": "2026-09-07T07:01:52.973635+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -42,7 +42,7 @@
     "offer_target_per_item_ron": 30.0
   },
   {
-    "kept_at": "2026-09-07T05:57:50.151747+00:00",
+    "kept_at": "2026-09-07T07:01:52.973635+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -80,6 +80,190 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-07T07:01:52.973635+00:00",
+    "kind": "near_haul",
+    "seller": "wii333",
+    "seller_id": 247297539,
+    "country": "hu",
+    "checkout_extra_ron": 24.596,
+    "listing_sum": 71.92,
+    "checkout_total": 96.516,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed Adidas shorts M-L",
+    "effective_price_per_useful_item": 32.172000000000004,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9874821928,
+        "title": "Running Sport and Street short",
+        "price": 26.42,
+        "url": "https://www.vinted.ro/items/9874821928-running-sport-and-street-short",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "wii333",
+        "seller_id": 247297539
+      },
+      {
+        "role": "haul",
+        "id": 9875138537,
+        "title": "H&M Férfi short",
+        "price": 17.61,
+        "url": "https://www.vinted.ro/items/9875138537-hm-ferfi-short",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "wii333",
+        "seller_id": 247297539
+      },
+      {
+        "role": "haul",
+        "id": 9875037693,
+        "title": "Crane futónadrág",
+        "price": 27.89,
+        "url": "https://www.vinted.ro/items/9875037693-crane-futonadrag",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": null,
+        "seller": "wii333",
+        "seller_id": 247297539
+      }
+    ],
+    "suggested_offer_ron": 64,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kept_at": "2026-09-07T07:01:52.973635+00:00",
+    "kind": "near_haul",
+    "seller": "natkawariatka30",
+    "seller_id": 91852582,
+    "country": "pl",
+    "checkout_extra_ron": 25.4635,
+    "listing_sum": 49.27,
+    "checkout_total": 74.7335,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 37.36675,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9917097053,
+        "title": "Spodnie ciążowe hm mama",
+        "price": 34.49,
+        "url": "https://www.vinted.ro/items/9917097053-spodnie-ciazowe-hm-mama",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "natkawariatka30",
+        "seller_id": 91852582
+      },
+      {
+        "role": "haul",
+        "id": 9827917372,
+        "title": "Biustonosz do karmienia h&m mama",
+        "price": 14.78,
+        "url": "https://www.vinted.ro/items/9827917372-biustonosz-do-karmienia-hm-mama",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "natkawariatka30",
+        "seller_id": 91852582
+      }
+    ],
+    "suggested_offer_ron": 44,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T06:58:56.854261+00:00",
+    "seller": "wii333",
+    "seller_id": 247297539,
+    "country": "hu",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 105.67,
+    "checkout_total": 130.67000000000002,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9816465201,
+        "title": "Adidas Techfit short",
+        "price": 42.56,
+        "url": "https://www.vinted.ro/items/9816465201-adidas-techfit-short",
+        "watch": "Gym seed Adidas shorts M-L",
+        "deal_score": 7,
+        "seller_id": 247297539,
+        "seller": "wii333"
+      },
+      {
+        "role": "extra",
+        "id": 9874976499,
+        "title": "Everton funkcionális short, kerékpáros nadrág",
+        "price": 35.22,
+        "url": "https://www.vinted.ro/items/9874976499-everton-funkcionalis-short-kerekparos-nadrag",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 6,
+        "seller_id": 247297539,
+        "seller": "wii333"
+      },
+      {
+        "role": "extra",
+        "id": 9875037693,
+        "title": "Crane futónadrág",
+        "price": 27.89,
+        "url": "https://www.vinted.ro/items/9875037693-crane-futonadrag",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": 6,
+        "seller_id": 247297539,
+        "seller": "wii333"
+      }
+    ],
+    "suggested_offer_ron": 68,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T06:54:58.325297+00:00",
+    "seller": "jadwigasmalkiewicz",
+    "seller_id": 102806340,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 49.26,
+    "checkout_total": 74.25999999999999,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9845540612,
+        "title": "spodenki nike",
+        "price": 24.63,
+        "url": "https://www.vinted.ro/items/9845540612-spodenki-nike",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": 7,
+        "seller_id": 102806340,
+        "seller": "jadwigasmalkiewicz"
+      },
+      {
+        "role": "extra",
+        "id": 9847263049,
+        "title": "spodenki nike",
+        "price": 24.63,
+        "url": "https://www.vinted.ro/items/9847263049-spodenki-nike",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": 6,
+        "seller_id": 102806340,
+        "seller": "jadwigasmalkiewicz"
+      }
+    ],
+    "suggested_offer_ron": 35,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },

@@ -1841,7 +1841,7 @@ git commit -m "feat: show utility evidence and removal reasons"
 
 ---
 
-### Task 8: Legacy high-score rescore and rollout documentation
+### Task 8: Active legacy rescore and rollout documentation
 
 **Files:**
 - Modify: `python/backfill_scored_listings.py`
@@ -1850,9 +1850,9 @@ git commit -m "feat: show utility evidence and removal reasons"
 - Modify: `CONTEXT.md`
 
 **Interfaces:**
-- Produces: `legacy_high_score_pairs(store, watch_by_name) -> list[tuple[str, str]]`
-- CLI flag: `--legacy-high-scores-v2`
-- Selection: `score_version IS NULL AND deal_score BETWEEN 8 AND 10`
+- Produces: `legacy_active_pairs(store, watch_by_name) -> list[tuple[str, str]]`
+- CLI flag: `--legacy-active-v2`
+- Selection: every scored dashboard row without `score_version = 2`
 - Availability-check before any paid scoring call
 
 - [ ] **Step 1: Write failing migration-selection tests**
@@ -1869,18 +1869,18 @@ import backfill_scored_listings as backfill
 class FakeStore:
     def load_recent(self, limit):
         return [
-            {"item_id": 1, "hunt_name": "Gym", "deal_score": 9, "score_version": None},
-            {"item_id": 2, "hunt_name": "Gym", "deal_score": 7, "score_version": None},
-            {"item_id": 3, "hunt_name": "Gym", "deal_score": 10, "score_version": 2},
-            {"item_id": 4, "hunt_name": "Removed Hunt", "deal_score": 9, "score_version": None},
-            {"item_id": 5, "hunt_name": "Gym", "deal_score": 8, "score_version": None},
+            {"item_id": 1, "hunt_name": "Gym", "deal_score": 9, "score_version": None, "has_score": True, "reason": ""},
+            {"item_id": 2, "hunt_name": "Gym", "deal_score": 7, "score_version": None, "has_score": True, "reason": ""},
+            {"item_id": 3, "hunt_name": "Gym", "deal_score": 10, "score_version": 2, "has_score": True, "reason": ""},
+            {"item_id": 4, "hunt_name": "Removed Hunt", "deal_score": 9, "score_version": None, "has_score": True, "reason": ""},
+            {"item_id": 5, "hunt_name": "Gym", "deal_score": 1, "score_version": None, "has_score": True, "reason": "unavailable during backfill"},
         ]
 
 
 class BackfillV2Tests(unittest.TestCase):
-    def test_selects_only_active_legacy_eight_to_ten(self):
-        pairs = backfill.legacy_high_score_pairs(FakeStore(), {"Gym": {"name": "Gym"}})
-        self.assertEqual(pairs, [("1", "Gym"), ("5", "Gym")])
+    def test_selects_all_scored_legacy_rows_for_active_hunts(self):
+        pairs = backfill.legacy_active_pairs(FakeStore(), {"Gym": {"name": "Gym"}})
+        self.assertEqual(pairs, [("1", "Gym"), ("2", "Gym")])
 
 
 if __name__ == "__main__":
@@ -1896,32 +1896,35 @@ uv run --project python python -m unittest \
   python.tests.test_backfill_scored_listings -v
 ```
 
-Expected: FAIL because `legacy_high_score_pairs` does not exist.
+Expected: FAIL because `legacy_active_pairs` does not exist.
 
 - [ ] **Step 3: Implement the explicit v2 rescore mode**
 
 Add:
 
 ```python
-def legacy_high_score_pairs(store, watch_by_name: dict) -> list[tuple[str, str]]:
+def legacy_active_pairs(store, watch_by_name: dict) -> list[tuple[str, str]]:
     rows = store.load_recent(50000)
     pairs = []
     for row in rows:
         hunt = row.get("hunt_name")
         if hunt not in watch_by_name:
             continue
+        if not row.get("has_score"):
+            continue
         if int(row.get("score_version") or 0) == 2:
             continue
-        score = int(row.get("deal_score") or 0)
-        if 8 <= score <= 10:
-            pairs.append((str(row["item_id"]), str(hunt)))
+        if row.get("reason") == "unavailable during backfill":
+            continue
+        pairs.append((str(row["item_id"]), str(hunt)))
     return sorted(set(pairs))
 ```
 
-Add `--legacy-high-scores-v2`. When set, use this pair source instead of seen-key
+Add `--legacy-active-v2`. When set, use this pair source instead of seen-key
 pending selection. Fetch availability first, score only live rows through the v2
 `score_listings(..., config=config)` path, and upsert. Do not write v2 tombstones for
-unavailable legacy rows; preserve their history.
+unavailable legacy rows; preserve their history. Production rollout repeats bounded
+batches until every still-active dashboard row has `score_version = 2`.
 
 - [ ] **Step 4: Update domain and operation docs**
 
@@ -1937,7 +1940,7 @@ In `README.md`:
 
 ```bash
 uv run --project python python python/backfill_scored_listings.py \
-  --legacy-high-scores-v2 --limit 500 --export
+  --legacy-active-v2 --limit 10000 --export
 ```
 
 - update Python test instructions:
@@ -1961,7 +1964,7 @@ git diff --check
 Expected: all Python tests pass; Node scripts print `ok`; Prettier and Vite pass;
 `git diff --check` emits no output.
 
-Do not execute the paid `--legacy-high-scores-v2` operation in automated tests or
+Do not execute the paid `--legacy-active-v2` operation in automated tests or
 during implementation without configured credentials and an explicit rollout run.
 
 - [ ] **Step 6: Commit**

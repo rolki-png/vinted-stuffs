@@ -301,10 +301,11 @@ Do not map old scores to the new scale. At rollout:
 
 1. Deploy additive schema and API changes.
 2. Enable v2 for all newly scored listings.
-3. Availability-check cached legacy rows scored 8–10.
-4. Rescore only the still-active rows under v2.
-5. Preserve all other legacy rows for history, labelled and excluded from v2
-   ranking.
+3. Availability-check every cached legacy row shown by the dashboard.
+4. Rescore every still-active row under v2 in bounded batches.
+5. Preserve unavailable legacy rows for history, labelled and excluded from v2
+   ranking. Production migration is complete only when no active dashboard row
+   remains legacy.
 
 A prompt/calculator policy change increments `score_version`; cached scores are
 never silently interpreted under new semantics.

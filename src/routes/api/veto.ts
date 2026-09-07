@@ -9,6 +9,9 @@ const ENRICHMENT_KEYS = [
   'price_ron',
   'value_band',
   'deal_score',
+  'score_version',
+  'buy_score',
+  'buy_band',
   'title',
 ] as const
 

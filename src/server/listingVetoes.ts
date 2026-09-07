@@ -3,8 +3,13 @@ import fs from "node:fs"
 import path from "node:path"
 import os from "node:os"
 import pg from "pg"
-import { feedbackParams } from "#/server/listingFeedback.js"
-import { resolveFamily } from "#/server/tasteLearning"
+import { feedbackParams } from "./listingFeedback.js"
+import { resolveFamily } from "./tasteLearning.ts"
+import {
+  ENRICHMENT_FIELDS,
+  coerceEnrichment as coerceVetoEnrichment,
+  mergeEnrichment as mergeVetoEnrichment,
+} from "./listingVetoEnrichment.js"
 
 /**
  * Listing vetoes (Remove / Park / Bought) — Cockroach map + pure desk apply helpers.
@@ -17,17 +22,6 @@ const STATUS_BOUGHT = "bought"
 const STATUS_HIDDEN_LEGACY = "hidden"
 const VALID = new Set([STATUS_REMOVED, STATUS_PARKED, STATUS_BOUGHT])
 const VALID_MODES = new Set(["active", "parked", "bought", "all"])
-
-const ENRICHMENT_FIELDS = [
-  "hunt_name",
-  "hunt_family",
-  "brand",
-  "size",
-  "price_ron",
-  "value_band",
-  "deal_score",
-  "title",
-]
 
 const DDL = `
 CREATE TABLE IF NOT EXISTS listing_vetoes (
@@ -42,6 +36,9 @@ CREATE TABLE IF NOT EXISTS listing_vetoes (
   price_ron DOUBLE PRECISION NULL,
   value_band TEXT NULL,
   deal_score INT NULL,
+  score_version INT NULL,
+  buy_score INT NULL,
+  buy_band TEXT NULL,
   title TEXT NULL
 );
 `
@@ -58,6 +55,9 @@ const ALTER_COLUMNS_SQL = [
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS price_ron DOUBLE PRECISION NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS value_band TEXT NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS deal_score INT NULL",
+  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS score_version INT NULL",
+  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_score INT NULL",
+  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_band TEXT NULL",
   "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS title TEXT NULL",
 ]
 
@@ -91,22 +91,7 @@ function coerceWriteStatus(status) {
 }
 
 function coerceEnrichment(enrichment) {
-  const out = {}
-  for (const key of ENRICHMENT_FIELDS) out[key] = null
-  if (!enrichment || typeof enrichment !== "object") return out
-  for (const key of ENRICHMENT_FIELDS) {
-    if (enrichment[key] == null) continue
-    if (key === "price_ron") {
-      const n = Number(enrichment[key])
-      out[key] = Number.isFinite(n) ? n : null
-    } else if (key === "deal_score") {
-      const n = Number(enrichment[key])
-      out[key] = Number.isFinite(n) ? Math.trunc(n) : null
-    } else {
-      const s = String(enrichment[key]).trim()
-      out[key] = s || null
-    }
-  }
+  const out = coerceVetoEnrichment(enrichment)
   if (!out.hunt_family && out.hunt_name) {
     out.hunt_family = resolveFamily(out.hunt_name)
   }
@@ -276,18 +261,24 @@ async function loadVetoMap() {
 }
 
 async function fillEnrichmentFromScored(client, itemId, enr) {
+  const hasScoreContext =
+    enr.score_version != null ||
+    enr.buy_score != null ||
+    enr.buy_band != null ||
+    enr.deal_score != null ||
+    enr.value_band != null
   const needs =
     !enr.brand ||
     !enr.size ||
     !enr.title ||
     enr.price_ron == null ||
     !enr.hunt_name ||
-    enr.deal_score == null ||
-    !enr.value_band
+    !hasScoreContext
   if (!needs) return enr
   try {
     const res = await client.query(
-      `SELECT hunt_name, title, price, brand, size, deal_score, value_band
+      `SELECT hunt_name, title, price, brand, size, deal_score, value_band,
+              score_version, buy_score, buy_band
        FROM scored_listings
        WHERE item_id = $1
        ORDER BY scored_at DESC NULLS LAST
@@ -296,26 +287,21 @@ async function fillEnrichmentFromScored(client, itemId, enr) {
     )
     const row = res.rows[0]
     if (!row) return enr
-    return {
-      hunt_name: enr.hunt_name || row.hunt_name || null,
-      hunt_family: enr.hunt_family || null,
-      brand: enr.brand || row.brand || null,
-      size: enr.size || row.size || null,
-      price_ron:
-        enr.price_ron != null
-          ? enr.price_ron
-          : row.price != null
-            ? Number(row.price)
-            : null,
-      value_band: enr.value_band || row.value_band || null,
-      deal_score:
-        enr.deal_score != null
-          ? enr.deal_score
-          : row.deal_score != null
-            ? Number(row.deal_score)
-            : null,
-      title: enr.title || row.title || null,
-    }
+    return mergeVetoEnrichment(
+      coerceEnrichment({
+        hunt_name: row.hunt_name,
+        brand: row.brand,
+        size: row.size,
+        price_ron: row.price,
+        value_band: row.value_band,
+        deal_score: row.deal_score,
+        score_version: row.score_version,
+        buy_score: row.buy_score,
+        buy_band: row.buy_band,
+        title: row.title,
+      }),
+      enr,
+    )
   } catch (err) {
     console.error("listingVetoes scored fill note:", err.message || err)
     return enr
@@ -339,9 +325,10 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
     await client.query(
       `INSERT INTO listing_vetoes (
          item_id, status, reason_code, updated_at,
-         hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score, title
+         hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score,
+         score_version, buy_score, buy_band, title
        )
-       VALUES ($1, $2, $3, now(), $4, $5, $6, $7, $8, $9, $10, $11)
+       VALUES ($1, $2, $3, now(), $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
        ON CONFLICT (item_id) DO UPDATE SET
          status = EXCLUDED.status,
          reason_code = EXCLUDED.reason_code,
@@ -351,8 +338,34 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
          brand = COALESCE(EXCLUDED.brand, listing_vetoes.brand),
          size = COALESCE(EXCLUDED.size, listing_vetoes.size),
          price_ron = COALESCE(EXCLUDED.price_ron, listing_vetoes.price_ron),
-         value_band = COALESCE(EXCLUDED.value_band, listing_vetoes.value_band),
-         deal_score = COALESCE(EXCLUDED.deal_score, listing_vetoes.deal_score),
+         value_band = CASE
+           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
+                OR EXCLUDED.buy_band IS NOT NULL THEN NULL
+           ELSE COALESCE(EXCLUDED.value_band, listing_vetoes.value_band)
+         END,
+         deal_score = CASE
+           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
+                OR EXCLUDED.buy_band IS NOT NULL THEN NULL
+           ELSE COALESCE(EXCLUDED.deal_score, listing_vetoes.deal_score)
+         END,
+         score_version = CASE
+           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
+                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.score_version
+           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+           ELSE listing_vetoes.score_version
+         END,
+         buy_score = CASE
+           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
+                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_score
+           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+           ELSE listing_vetoes.buy_score
+         END,
+         buy_band = CASE
+           WHEN EXCLUDED.score_version IS NOT NULL OR EXCLUDED.buy_score IS NOT NULL
+                OR EXCLUDED.buy_band IS NOT NULL THEN EXCLUDED.buy_band
+           WHEN EXCLUDED.deal_score IS NOT NULL OR EXCLUDED.value_band IS NOT NULL THEN NULL
+           ELSE listing_vetoes.buy_band
+         END,
          title = COALESCE(EXCLUDED.title, listing_vetoes.title)`,
       [
         id,
@@ -365,6 +378,9 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
         enr.price_ron,
         enr.value_band,
         enr.deal_score,
+        enr.score_version,
+        enr.buy_score,
+        enr.buy_band,
         enr.title,
       ],
     )

@@ -1,5 +1,12 @@
 // @ts-nocheck
-import { offerFields, DEFAULTS } from './bundleOffer'
+import { offerFields, DEFAULTS } from './bundleOffer.ts'
+import {
+  displayScore,
+  isKeep,
+  isV2,
+  scoreFields,
+  sortScoreRows,
+} from './scoreSemantics.js'
 import fs from "node:fs"
 import path from "node:path"
 import os from "node:os"
@@ -47,6 +54,7 @@ function exportRow(row) {
     value_band: row.value_band,
     hunt_fit: row.hunt_fit,
     scam_risk: row.scam_risk,
+    ...scoreFields(row),
     reason: row.reason,
     has_score: Boolean(row.has_score),
     scored_at: scoredAt,
@@ -58,42 +66,45 @@ function exportRow(row) {
 function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 } = {}) {
   const bySeller = new Map();
   for (const row of exportRows) {
-    if (row.hunt_fit === false) continue;
-    if (row.value_band === "skip") continue;
     if (row.reason === "unavailable during backfill") continue;
-    if (row.has_score) {
+    const v2 = isV2(row);
+    if (v2) {
+      if (row.hunt_fit !== true) continue;
+      if (!["bundle", "good", "keep", "exceptional"].includes(row.buy_band)) continue;
+      if (row.verification_concern === "block") continue;
+    } else if (row.hunt_fit === false || row.value_band === "skip") {
+      continue;
+    } else if (row.has_score) {
       const ds = Number(row.deal_score || 0);
       if (ds < minDealScore) continue;
     } else if (row.hunt_fit !== true) {
       continue;
     }
     if (row.seller_id == null) continue;
-    const key = String(row.seller_id);
+    const key = `${String(row.seller_id)}:${v2 ? "v2" : "legacy"}`;
     if (!bySeller.has(key)) bySeller.set(key, []);
     bySeller.get(key).push(row);
   }
 
   const out = [];
   const defaultExtra = DEFAULTS.default_checkout_extra_ron;
-  for (const [sid, rows] of bySeller) {
+  for (const [key, rows] of bySeller) {
+    const sid = key.slice(0, key.lastIndexOf(":"));
     const best = new Map();
     for (const r of rows) {
       const id = String(r.id);
       const prev = best.get(id);
-      if (!prev || Number(r.deal_score || 0) > Number(prev.deal_score || 0)) {
+      if (!prev || Number(displayScore(r) || 0) > Number(displayScore(prev) || 0)) {
         best.set(id, r);
       }
     }
-    const members = [...best.values()];
+    const members = sortScoreRows([...best.values()]);
     if (members.length < minItems) continue;
-    members.sort((a, b) => Number(b.deal_score || 0) - Number(a.deal_score || 0));
     let listingSum = 0;
     for (const r of members) listingSum += Number(r.price || 0);
     const seller = members.find((r) => r.seller)?.seller || null;
     const country = members.find((r) => r.seller_country)?.seller_country || null;
-    const keeps = members.filter(
-      (r) => Number(r.deal_score || 0) >= 9 && (r.value_band === "steal" || r.value_band === "hunt")
-    );
+    const keeps = members.filter(isKeep);
     const kind =
       keeps.length && members.length > keeps.length
         ? "index_keep_bundle"
@@ -112,16 +123,16 @@ function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 }
       value_band: "opportunity",
       reason: "Indexed same-seller listings (live from score cache)",
       items: members.map((r) => ({
-        role:
-          Number(r.deal_score || 0) >= 9 && (r.value_band === "steal" || r.value_band === "hunt")
-            ? "keep"
-            : "extra",
+        role: isKeep(r) ? "keep" : "extra",
         id: r.id,
         title: r.title,
         price: r.price,
         url: r.url,
         watch: r.watch,
         deal_score: r.deal_score,
+        value_band: r.value_band,
+        hunt_fit: r.hunt_fit,
+        ...scoreFields(r),
         seller_id: r.seller_id,
         seller: r.seller || seller,
       })),
@@ -176,7 +187,11 @@ async function loadIndexedFromDb(limit = 10000) {
     const res = await client.query(
       `SELECT item_id, hunt_name, title, price, currency, brand, size, condition, url,
               favourite_count, seller_id, seller_login, seller_country,
-              deal_score, value_band, hunt_fit, scam_risk, reason, has_score, scored_at, source
+              deal_score, value_band, hunt_fit, scam_risk,
+              score_version, buy_score, buy_band, score_confidence,
+              score_interval_low, score_interval_high, score_factors, factor_evidence,
+              verification_concern, verification_reason, rank_position, rank_confidence,
+              reason, has_score, scored_at, source
        FROM scored_listings
        WHERE has_score = true
          AND COALESCE(reason, '') <> 'unavailable during backfill'

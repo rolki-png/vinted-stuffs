@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { HuntsPanel } from '#/components/HuntsPanel'
 import {
   buyBandPresentation,
+  bundleConfidenceLabel,
   factorRows,
   histogramRows,
   isDeclaredV2,
@@ -12,6 +13,7 @@ import {
   scoreLabel,
   scoreScaleLabel,
   sellerComparator,
+  sortBundles,
   sortFinds,
   usableRank,
   vetoPayload,
@@ -76,6 +78,10 @@ type Bundle = {
   reason?: string
   kept_at?: string
   veto_status?: string | null
+  bundle_score?: number | null
+  bundle_confidence?: number | null
+  bundle_rank_position?: number | null
+  bundle_anchor_item_id?: number | string | null
   items?: BundleItem[]
 }
 
@@ -339,6 +345,7 @@ export function DealDesk() {
   const [source, setSource] = useState('')
   const [veto, setVeto] = useState<VetoMode>('active')
   const [sort, setSort] = useState('score-desc')
+  const [bundleSort, setBundleSort] = useState('new-desc')
   const [sellerSort, setSellerSort] = useState('best')
 
   const loadRuns = useCallback(async () => {
@@ -476,6 +483,11 @@ export function DealDesk() {
     return rows
   }, [data, sellerSort])
 
+  const bundles = useMemo(
+    () => sortBundles(data?.bundles || [], bundleSort),
+    [data, bundleSort],
+  )
+
   const run = data?.run || {}
   const qualifiedKeeps = keepCounts(data?.finds || [])
   const lede = error
@@ -497,7 +509,7 @@ export function DealDesk() {
     ['Index (DB)', data?.meta?.indexed_count ?? '—'],
     ['V2 qualified keeps', qualifiedKeeps.v2],
     ['Legacy keeps /10', qualifiedKeeps.legacy],
-    ['Bundles', (data?.bundles || []).length],
+    ['Bundles', bundles.length],
     ['Sellers tracked', (data?.sellers || []).length],
     ['Alerts last run', run.alerts ?? '—'],
     ['Seen keys', run.seen_keys ?? '—'],
@@ -823,8 +835,18 @@ export function DealDesk() {
                 <option value="all">All</option>
               </select>
             </label>
+            <label>
+              Sort
+              <select
+                value={bundleSort}
+                onChange={(e) => setBundleSort(e.target.value)}
+              >
+                <option value="new-desc">Newest → oldest</option>
+                <option value="best-desc">Best → worst</option>
+              </select>
+            </label>
           </div>
-          {!(data?.bundles || []).length ? (
+          {!bundles.length ? (
             <div className="empty">
               No wardrobe opportunities yet. Near hauls appear when a seller’s
               closet clears the fee gate; index near/bundles come from the
@@ -833,7 +855,7 @@ export function DealDesk() {
             </div>
           ) : (
             <div className="bundle-grid">
-              {(data?.bundles || []).map((b, idx) => {
+              {bundles.map((b, idx) => {
                 const kind = b.kind || 'keep_bundle'
                 const kindLabel =
                   kind === 'value_haul'
@@ -851,6 +873,7 @@ export function DealDesk() {
                     : kind === 'near_haul' || kind === 'index_near_bundle'
                       ? 'near'
                       : 'keep'
+                const confLabel = bundleConfidenceLabel(b.bundle_confidence)
                 return (
                   <article className="bundle" key={idx}>
                     <h3>
@@ -867,6 +890,18 @@ export function DealDesk() {
                         b.seller || 'seller'
                       )}{' '}
                       <span className={`pill ${pillClass}`}>{kindLabel}</span>
+                      {b.bundle_score != null ? (
+                        <span className="pill keep">
+                          {' '}
+                          Bundle {b.bundle_score}
+                          {confLabel ? ` · ${confLabel}` : ''}
+                          {b.bundle_rank_position != null
+                            ? ` · #${b.bundle_rank_position}`
+                            : ''}
+                        </span>
+                      ) : (
+                        <span className="pill near"> —</span>
+                      )}
                       {b.veto_status ? (
                         <span className={`pill ${b.veto_status}`}>
                           {' '}

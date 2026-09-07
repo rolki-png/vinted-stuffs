@@ -185,6 +185,7 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(len(opps), 1)
         self.assertEqual(opps[0]["kind"], "index_near_bundle")
         self.assertEqual(len(opps[0]["items"]), 2)
+        self.assertIsNone(opps[0].get("bundle_score"))
         self.assertIn("suggested_offer_ron", opps[0])
         self.assertEqual(opps[0]["checkout_extra_ron"], 25)
         self.assertTrue(opps[0].get("offer_weak"))
@@ -235,6 +236,14 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(v2_items[0]["score_version"], 2)
         self.assertEqual(v2_items[0]["score_interval_low"], 85)
         self.assertEqual(v2_items[0]["rank_position"], 1)
+        v2_opp = next(
+            opportunity
+            for opportunity in opportunities
+            if opportunity["items"][0]["id"] == 3
+        )
+        self.assertEqual(v2_opp["kind"], "index_keep_bundle")
+        self.assertIsNotNone(v2_opp.get("bundle_score"))
+        self.assertEqual(v2_opp.get("bundle_anchor_item_id"), 3)
 
     def test_revive_skips_unknown_hunt_and_excluded_ids(self):
         import vinted_bot as bot

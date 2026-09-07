@@ -1,0 +1,171 @@
+[
+  {
+    "name": "strong_keep_bundle",
+    "kind": "keep_bundle",
+    "expected_score": 97,
+    "members": [
+      {
+        "id": 1,
+        "role": "keep",
+        "score_version": 2,
+        "buy_score": 92,
+        "score_confidence": 0.9,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 2,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 70,
+        "score_confidence": 0.8,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  },
+  {
+    "name": "haul_pseudo_keep",
+    "kind": "value_haul",
+    "expected_score": 79,
+    "members": [
+      {
+        "id": 10,
+        "role": "haul",
+        "score_version": 2,
+        "buy_score": 74,
+        "score_confidence": 0.7,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 11,
+        "role": "haul",
+        "score_version": 2,
+        "buy_score": 68,
+        "score_confidence": 0.7,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  },
+  {
+    "name": "weak_extras_pile_on",
+    "kind": "keep_bundle",
+    "expected_score": 95,
+    "better_than": "weak_extras_pile_on_many",
+    "members": [
+      {
+        "id": 20,
+        "role": "keep",
+        "score_version": 2,
+        "buy_score": 90,
+        "score_confidence": 0.85,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 21,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 72,
+        "score_confidence": 0.8,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  },
+  {
+    "name": "weak_extras_pile_on_many",
+    "kind": "keep_bundle",
+    "expected_score": 93,
+    "members": [
+      {
+        "id": 30,
+        "role": "keep",
+        "score_version": 2,
+        "buy_score": 88,
+        "score_confidence": 0.85,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 31,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 60,
+        "score_confidence": 0.7,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 32,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 61,
+        "score_confidence": 0.7,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 33,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 62,
+        "score_confidence": 0.7,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  },
+  {
+    "name": "single_extra_cart",
+    "kind": "keep_bundle",
+    "expected_score": 95,
+    "members": [
+      {
+        "id": 40,
+        "role": "keep",
+        "score_version": 2,
+        "buy_score": 88,
+        "score_confidence": 0.9,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 41,
+        "role": "extra",
+        "score_version": 2,
+        "buy_score": 80,
+        "score_confidence": 0.85,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  },
+  {
+    "name": "near_haul_unscored",
+    "kind": "near_haul",
+    "expected_score": null,
+    "members": [
+      {
+        "id": 50,
+        "role": "haul",
+        "score_version": 2,
+        "buy_score": 70,
+        "score_confidence": 0.8,
+        "verification_concern": "none",
+        "hunt_fit": true
+      },
+      {
+        "id": 51,
+        "role": "haul",
+        "score_version": 2,
+        "buy_score": 65,
+        "score_confidence": 0.8,
+        "verification_concern": "none",
+        "hunt_fit": true
+      }
+    ]
+  }
+]

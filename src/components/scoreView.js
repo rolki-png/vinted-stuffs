@@ -287,8 +287,44 @@ function histogramRows(histogram) {
   return histogramBins(histogram)
 }
 
+function bundleConfidenceLabel(confidence) {
+  const value = finiteNumber(confidence)
+  if (value == null) return null
+  if (value < 0.6) return 'low'
+  if (value < 0.8) return 'medium'
+  return 'high'
+}
+
+function sortBundles(rows, sort) {
+  const list = [...(rows || [])]
+  if (sort === 'best-desc') {
+    list.sort((left, right) => {
+      const leftScore = finiteNumber(left?.bundle_score)
+      const rightScore = finiteNumber(right?.bundle_score)
+      const leftRanked = leftScore != null
+      const rightRanked = rightScore != null
+      if (leftRanked !== rightRanked) return leftRanked ? -1 : 1
+      if (leftRanked && rightRanked && leftScore !== rightScore) {
+        return rightScore - leftScore
+      }
+      const leftPos = finiteNumber(left?.bundle_rank_position)
+      const rightPos = finiteNumber(right?.bundle_rank_position)
+      if (leftPos != null && rightPos != null && leftPos !== rightPos) {
+        return leftPos - rightPos
+      }
+      return String(right?.kept_at || '').localeCompare(String(left?.kept_at || ''))
+    })
+    return list
+  }
+  list.sort((left, right) =>
+    String(right?.kept_at || '').localeCompare(String(left?.kept_at || '')),
+  )
+  return list
+}
+
 export {
   buyBandPresentation,
+  bundleConfidenceLabel,
   factorRows,
   filterScore,
   findComparator,
@@ -303,6 +339,7 @@ export {
   scoreLabel,
   scoreScaleLabel,
   sellerComparator,
+  sortBundles,
   sortFinds,
   usableRank,
   vetoPayload,

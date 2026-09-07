@@ -39,6 +39,12 @@ The v2 label derived from `buy_score`: skip (0–59), bundle (60–74), good
 hunt fit, confidence, and verification gates still apply separately.
 _Avoid_: Value band, discount
 
+**Bundle score**:
+Calculated checkout purchase utility (0–100) for a multi-item cart. Keep-anchored
+on the strongest Keep (or best haul item), plus a bounded extras/fee term.
+`near_haul` / `index_near_bundle` stay null. Desk can sort Newest or Best.
+_Avoid_: Deal score for carts, LLM cart grade
+
 **Pairwise rank**:
 An ordering among qualifying v2 candidates with overlapping uncertainty
 intervals. It helps choose between close options but never changes calculated

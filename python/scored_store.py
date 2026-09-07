@@ -633,7 +633,9 @@ def index_bundle_opportunities(
                 config=config,
             )
         )
-        out.append(row)
+        import bundle_score as bscore
+
+        out.append(bscore.apply_to_row(row, config))
     out.sort(key=lambda b: b.get("kept_at") or "", reverse=True)
     return out
 

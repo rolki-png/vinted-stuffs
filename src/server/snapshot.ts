@@ -14,6 +14,7 @@ import {
   sortBundleScoreRows,
   sortScoreRows,
 } from './scoreSemantics.js'
+import { applyToRow, assignBundleRanks } from './bundleScore.js'
 import fs from "node:fs"
 import path from "node:path"
 
@@ -103,10 +104,10 @@ function mergeFindRow(current, incoming) {
 }
 
 function dashboardBundle(bundle) {
-  return {
+  return applyToRow({
     ...bundle,
     items: (bundle?.items || []).map((item) => dashboardRow(item)),
-  };
+  });
 }
 
 function mergeBundles(current, incoming) {
@@ -125,11 +126,11 @@ function mergeBundles(current, incoming) {
         ? current
         : incoming;
   const other = preferred === current ? incoming : current;
-  return {
+  return applyToRow({
     ...(other || {}),
     ...(preferred || {}),
     items: sortBundleScoreRows([...items.values()]),
-  };
+  });
 }
 
 function sellerEntry(sellers, { sid, login, country }) {
@@ -324,10 +325,10 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         : "local-filesystem";
 
   const findsApplied = sortScoreRows(applyToFinds(finds, vetoes, { mode }));
-  const bundlesApplied = applyToBundles(
-    Array.isArray(bundles) ? bundles : [],
-    vetoes,
-    { mode }
+  const bundlesApplied = assignBundleRanks(
+    applyToBundles(Array.isArray(bundles) ? bundles : [], vetoes, { mode }).map(
+      (row) => applyToRow(row),
+    ),
   );
 
   // Rebuild sellers from post-veto desk rows so Remove drops sold inventory

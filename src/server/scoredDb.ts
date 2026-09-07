@@ -9,6 +9,7 @@ import {
   scoreFields,
   sortBundleScoreRows,
 } from './scoreSemantics.js'
+import { applyToRow } from './bundleScore.js'
 import fs from "node:fs"
 import path from "node:path"
 import os from "node:os"
@@ -141,7 +142,7 @@ function indexBundleOpportunities(exportRows, { minItems = 2, minDealScore = 6 }
       })),
     };
     Object.assign(row, offerFields(listingSum, extra, members.length, { kind, watchName }));
-    out.push(row);
+    out.push(applyToRow(row));
   }
   out.sort((a, b) => String(b.kept_at || "").localeCompare(String(a.kept_at || "")));
   return out;

@@ -17,6 +17,14 @@
       "value": 0.25
     }
   },
+  "bundle_scoring": {
+    "score_version": 1,
+    "extras_weight": 0.15,
+    "quality_gap_penalty": 0.05,
+    "fee_relief_scale": 6,
+    "extras_term_min": -8,
+    "extras_term_max": 12
+  },
   "min_deal_score": 9,
   "require_hunt_fit": true,
   "keep_value_bands": [

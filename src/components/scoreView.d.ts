@@ -107,6 +107,13 @@ export function sortFinds<T extends ScoreRow>(
   rows: readonly T[] | null | undefined,
   sort: string,
 ): T[]
+export function sortBundles<T extends { bundle_score?: number | null; bundle_rank_position?: number | null; kept_at?: string | null }>(
+  rows: readonly T[] | null | undefined,
+  sort: string,
+): T[]
+export function bundleConfidenceLabel(
+  confidence: number | null | undefined,
+): 'low' | 'medium' | 'high' | null
 export function keepCounts(rows: readonly ScoreRow[] | null | undefined): {
   v2: number
   legacy: number

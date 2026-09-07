@@ -2703,7 +2703,56 @@ def main() -> None:
         )
     save_best(best_rows)
 
+    import bundle_score as bscore
+
+    item_score_lookup = {}
+
+    def _remember_score(iid, snap: dict) -> None:
+        if iid is None or not isinstance(snap, dict):
+            return
+        key = str(iid)
+        prev = item_score_lookup.get(key)
+        if prev is None or int(snap.get("buy_score") or 0) >= int(prev.get("buy_score") or 0):
+            item_score_lookup[key] = snap
+
+    for row in merged:
+        item = row.get("item") or {}
+        _remember_score(item.get("id"), _score_snapshot(row.get("score") or {}))
+
     opportunity_rows = []
+    try:
+        recent = score_db.load_recent(10000)
+        indexed_export = [scored_store_mod.export_row(r) for r in recent]
+        save_indexed_scores(indexed_export)
+        for exported in indexed_export:
+            _remember_score(
+                exported.get("id"),
+                {
+                    "score_version": exported.get("score_version"),
+                    "buy_score": exported.get("buy_score"),
+                    "buy_band": exported.get("buy_band"),
+                    "score_confidence": exported.get("score_confidence"),
+                    "score_interval_low": exported.get("score_interval_low"),
+                    "score_interval_high": exported.get("score_interval_high"),
+                    "verification_concern": exported.get("verification_concern"),
+                    "verification_reason": exported.get("verification_reason"),
+                    "hunt_fit": exported.get("hunt_fit"),
+                    "rank_position": exported.get("rank_position"),
+                    "rank_confidence": exported.get("rank_confidence"),
+                    "deal_score": exported.get("deal_score"),
+                    "value_band": exported.get("value_band"),
+                },
+            )
+        opportunity_rows.extend(
+            scored_store_mod.index_bundle_opportunities(indexed_export, config=config)
+        )
+        print(
+            f"Indexed score cache export: {len(indexed_export)} row(s).",
+            file=sys.stderr,
+        )
+    except Exception as e:
+        print(f"indexed score export failed: {e}", file=sys.stderr)
+
     for result in value_hauls:
         opportunity_rows.append(
             vh.value_haul_record(
@@ -2713,6 +2762,7 @@ def main() -> None:
                 result["watch_name"],
                 now,
                 config=config,
+                item_scores=item_score_lookup,
             )
         )
     for result in near_hauls:
@@ -2727,19 +2777,6 @@ def main() -> None:
                 config=config,
             )
         )
-    try:
-        recent = score_db.load_recent(10000)
-        indexed_export = [scored_store_mod.export_row(r) for r in recent]
-        save_indexed_scores(indexed_export)
-        opportunity_rows.extend(
-            scored_store_mod.index_bundle_opportunities(indexed_export, config=config)
-        )
-        print(
-            f"Indexed score cache export: {len(indexed_export)} row(s).",
-            file=sys.stderr,
-        )
-    except Exception as e:
-        print(f"indexed score export failed: {e}", file=sys.stderr)
     new_keep_bundle_rows = []
     for bundle in bundles:
         keep_items = bundle.get("keeps") or []
@@ -2788,13 +2825,15 @@ def main() -> None:
                     config=config,
                 )
             )
-        new_keep_bundle_rows.append(row)
+        new_keep_bundle_rows.append(bscore.apply_to_row(row, config))
     bundle_rows = vh.merge_bundle_rows(
         load_bundles(),
         new_keep_bundle_rows + opportunity_rows,
         max_opportunity=int(vh_cfg.get("max_opportunity_bundles", 80)),
     )
     bundle_rows = vh.enrich_bundle_offer_fields(bundle_rows, config)
+    bundle_rows = [bscore.apply_to_row(row, config) for row in bundle_rows]
+    bundle_rows = bscore.assign_bundle_ranks(bundle_rows)
     save_bundles(bundle_rows)
     histogram = _v2_score_histogram(scored)
     top = sorted(

@@ -378,11 +378,31 @@ def value_haul_record(
     watch_name: str,
     kept_at: str,
     config: dict | None = None,
+    item_scores: dict | None = None,
 ) -> dict:
     import bundle_offer as bo
+    import bundle_score as bscore
 
     listing_sum = sum(_listing_amount(it) or 0 for it in useful)
     extra = float(haul.get("checkout_extra_ron") or 0)
+    scores = item_scores or {}
+    items = []
+    for it in useful:
+        item = {
+            "role": "haul",
+            "id": it.get("id"),
+            "title": it.get("title"),
+            "price": _listing_amount(it),
+            "url": it.get("url"),
+            "watch": watch_name,
+            "deal_score": score.get("deal_score"),
+            "seller": haul.get("seller") or it.get("seller"),
+            "seller_id": haul.get("seller_id") or it.get("seller_id"),
+        }
+        snap = scores.get(str(it.get("id"))) if it.get("id") is not None else None
+        if isinstance(snap, dict):
+            item.update(snap)
+        items.append(item)
     row = {
         "kept_at": kept_at,
         "kind": "value_haul",
@@ -397,20 +417,7 @@ def value_haul_record(
         "reason": score.get("reason"),
         "watch": watch_name,
         "effective_price_per_useful_item": score.get("effective_price_per_useful_item"),
-        "items": [
-            {
-                "role": "haul",
-                "id": it.get("id"),
-                "title": it.get("title"),
-                "price": _listing_amount(it),
-                "url": it.get("url"),
-                "watch": watch_name,
-                "deal_score": score.get("deal_score"),
-                "seller": haul.get("seller") or it.get("seller"),
-                "seller_id": haul.get("seller_id") or it.get("seller_id"),
-            }
-            for it in useful
-        ],
+        "items": items,
     }
     row.update(
         bo.offer_fields(
@@ -422,7 +429,7 @@ def value_haul_record(
             config=config,
         )
     )
-    return row
+    return bscore.apply_to_row(row, config)
 
 
 def near_haul_record(
@@ -436,6 +443,7 @@ def near_haul_record(
 ) -> dict:
     """Dashboard-only opportunity: fee gate passed, not LLM-confirmed steal."""
     import bundle_offer as bo
+    import bundle_score as bscore
 
     listing_sum = sum(_listing_amount(it) or 0 for it in useful)
     extra = float(haul.get("checkout_extra_ron") or 0)
@@ -481,7 +489,7 @@ def near_haul_record(
             config=config,
         )
     )
-    return row
+    return bscore.apply_to_row(row, config)
 
 
 def bundle_row_fingerprint(row: dict) -> str:

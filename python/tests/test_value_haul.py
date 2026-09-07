@@ -238,6 +238,7 @@ class NearHaulTests(unittest.TestCase):
         self.assertEqual(row["kind"], "near_haul")
         self.assertEqual(row["value_band"], "opportunity")
         self.assertIsNone(row["deal_score"])
+        self.assertIsNone(row.get("bundle_score"))
         self.assertEqual(row["seller"], "bob")
         self.assertEqual(len(row["items"]), 2)
         self.assertIn("Fee-gated", row["reason"])

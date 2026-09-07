@@ -36,4 +36,9 @@ assert.match(styles, /\.pill\.unknown\s*\{/)
 assert.match(styles, /\.remove-learning-note\s*\{/)
 assert.doesNotMatch(styles, /\.risk-(?:high|medium|low)\s*\{/)
 
+assert.match(source, /Newest → oldest/)
+assert.match(source, /Best → worst/)
+assert.match(source, /bundleSort/)
+assert.match(source, /Bundle \{b\.bundle_score\}/)
+
 console.log('ok deal-desk-presentation')

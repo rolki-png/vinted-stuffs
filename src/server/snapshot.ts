@@ -2,6 +2,7 @@
 import { loadIndexedFromDb, indexBundleOpportunities } from './scoredDb.ts'
 import { loadVetoMap, applyToFinds, applyToBundles } from './listingVetoes.ts'
 import { jsonFromGithubContents } from './githubContents.js'
+import { queryFindsSummary } from './findsPage.js'
 import {
   displayScore,
   histogramBins,
@@ -171,7 +172,8 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
   // Prefer Cockroach for indexed finds. Skip the GitHub export when DB has rows —
   // indexed_scores.json often exceeds GitHub's 1MB Contents inline limit (~4MB+).
   const dbIndexedPromise = loadIndexedFromDb(10000);
-  const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes] =
+  const summaryPromise = queryFindsSummary(mode);
+  const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes, findsSummary] =
     await Promise.all([
       loadJson("best_deals.json", []),
       loadJson("best_bundles.json", []),
@@ -180,6 +182,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       loadJson("seen_listings.json", {}),
       dbIndexedPromise,
       loadVetoMap(),
+      summaryPromise,
     ]);
 
   const indexedFile =
@@ -325,6 +328,13 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         : "local-filesystem";
 
   const findsApplied = sortScoreRows(applyToFinds(finds, vetoes, { mode }));
+  const keepsV2 = findsApplied.filter((row) => isKeep(row) && isV2(row)).length;
+  const keepsLegacy = findsApplied.filter(
+    (row) => isKeep(row) && !isDeclaredV2(row),
+  ).length;
+  const watchesFromFinds = [
+    ...new Set(findsApplied.map((f) => f.watch).filter(Boolean)),
+  ].sort();
   const bundlesApplied = assignBundleRanks(
     applyToBundles(Array.isArray(bundles) ? bundles : [], vetoes, { mode }).map(
       (row) => applyToRow(row),
@@ -404,10 +414,12 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     );
 
   return {
-    finds: findsApplied,
+    finds: [],
     bundles: bundlesApplied,
     sellers: sellerRows,
-    watches: [...new Set(findsApplied.map((f) => f.watch).filter(Boolean))].sort(),
+    watches: findsSummary?.watches?.length
+      ? findsSummary.watches
+      : watchesFromFinds,
     veto_mode: mode,
     run: {
       finished_at: run.finished_at || null,
@@ -427,6 +439,10 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       indexed_count: indexedTotal,
       indexed_source: indexedSource,
       veto_count: Object.keys(vetoes || {}).length,
+      finds_total: findsSummary?.finds_total ?? findsApplied.length,
+      keeps_v2: findsSummary?.keeps_v2 ?? keepsV2,
+      keeps_legacy: findsSummary?.keeps_legacy ?? keepsLegacy,
+      finds_paged: true,
     },
   };
 }

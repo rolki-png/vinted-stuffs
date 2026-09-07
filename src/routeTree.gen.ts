@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiBrandsRouteImport } from './routes/api/brands'
 import { Route as ApiCronRouteImport } from './routes/api/cron'
 import { Route as ApiDashboardRouteImport } from './routes/api/dashboard'
+import { Route as ApiFindsRouteImport } from './routes/api/finds'
 import { Route as ApiHuntsRouteImport } from './routes/api/hunts'
 import { Route as ApiRunsRouteImport } from './routes/api/runs'
 import { Route as ApiSizeGroupsRouteImport } from './routes/api/size-groups'
@@ -37,6 +38,11 @@ const ApiCronRoute = ApiCronRouteImport.update({
 const ApiDashboardRoute = ApiDashboardRouteImport.update({
   id: '/api/dashboard',
   path: '/api/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiFindsRoute = ApiFindsRouteImport.update({
+  id: '/api/finds',
+  path: '/api/finds',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiHuntsRoute = ApiHuntsRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/finds': typeof ApiFindsRoute
   '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
   '/api/size-groups': typeof ApiSizeGroupsRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/finds': typeof ApiFindsRoute
   '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
   '/api/size-groups': typeof ApiSizeGroupsRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/api/brands': typeof ApiBrandsRoute
   '/api/cron': typeof ApiCronRoute
   '/api/dashboard': typeof ApiDashboardRoute
+  '/api/finds': typeof ApiFindsRoute
   '/api/hunts': typeof ApiHuntsRoute
   '/api/runs': typeof ApiRunsRoute
   '/api/size-groups': typeof ApiSizeGroupsRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/finds'
     | '/api/hunts'
     | '/api/runs'
     | '/api/size-groups'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/finds'
     | '/api/hunts'
     | '/api/runs'
     | '/api/size-groups'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/api/brands'
     | '/api/cron'
     | '/api/dashboard'
+    | '/api/finds'
     | '/api/hunts'
     | '/api/runs'
     | '/api/size-groups'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   ApiBrandsRoute: typeof ApiBrandsRoute
   ApiCronRoute: typeof ApiCronRoute
   ApiDashboardRoute: typeof ApiDashboardRoute
+  ApiFindsRoute: typeof ApiFindsRoute
   ApiHuntsRoute: typeof ApiHuntsRoute
   ApiRunsRoute: typeof ApiRunsRoute
   ApiSizeGroupsRoute: typeof ApiSizeGroupsRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/api/dashboard'
       fullPath: '/api/dashboard'
       preLoaderRoute: typeof ApiDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/finds': {
+      id: '/api/finds'
+      path: '/api/finds'
+      fullPath: '/api/finds'
+      preLoaderRoute: typeof ApiFindsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/hunts': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiBrandsRoute: ApiBrandsRoute,
   ApiCronRoute: ApiCronRoute,
   ApiDashboardRoute: ApiDashboardRoute,
+  ApiFindsRoute: ApiFindsRoute,
   ApiHuntsRoute: ApiHuntsRoute,
   ApiRunsRoute: ApiRunsRoute,
   ApiSizeGroupsRoute: ApiSizeGroupsRoute,
@@ -229,12 +250,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

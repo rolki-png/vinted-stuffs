@@ -220,29 +220,10 @@ delete process.env.GITHUB_REPO
 try {
   process.chdir(root)
   const snapshot = await buildSnapshot()
-  assert.deepEqual(
-    new Set(snapshot.finds.slice(0, 4).map((row) => row.id)),
-    new Set([1, 4, 5, 6]),
-  )
-  assert.deepEqual(snapshot.finds.slice(4).map((row) => row.id), [3, 2, 8, 7])
-  const upgraded = snapshot.finds.find((row) => row.id === 1)
-  assert.equal(upgraded.score_version, 2)
-  assert.equal(upgraded.buy_score, 88)
-  assert.equal(upgraded.legacy_score, false)
-  assert.equal(upgraded.source, "keep")
-  assert.equal(upgraded.deal_score, null)
-  assert.equal(upgraded.reason, undefined)
-  assert.deepEqual(upgraded.score_factors, { usefulness: 88 })
-
-  const standalone = snapshot.finds.find((row) => row.id === 6)
-  assert.equal(standalone.deal_score, null)
-  assert.equal(standalone.value_band, undefined)
-  assert.equal(standalone.reason, undefined)
-  assert.equal(standalone.verification_reason, "verify fabric")
-
-  const legacy = snapshot.finds.find((row) => row.id === 3)
-  assert.equal(legacy.deal_score, 10)
-  assert.equal(legacy.legacy_score, true)
+  assert.deepEqual(snapshot.finds, [])
+  assert.equal(snapshot.meta.finds_paged, true)
+  assert.ok(Number(snapshot.meta.finds_total) >= 1)
+  assert.ok(Array.isArray(snapshot.watches))
 
   const mixedSeller = snapshot.sellers.find((row) => row.seller_id === 10)
   assert.equal(mixedSeller.score_version, 2)

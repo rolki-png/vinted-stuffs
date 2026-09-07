@@ -1,7 +1,19 @@
 // @ts-nocheck
-import { loadIndexedFromDb, indexBundleOpportunities } from './scoredDb'
-import { loadVetoMap, applyToFinds, applyToBundles } from './listingVetoes'
+import { loadIndexedFromDb, indexBundleOpportunities } from './scoredDb.ts'
+import { loadVetoMap, applyToFinds, applyToBundles } from './listingVetoes.ts'
 import { jsonFromGithubContents } from './githubContents.js'
+import {
+  displayScore,
+  histogramBins,
+  isKeep,
+  isDeclaredV2,
+  isV2,
+  mergeScoreRows,
+  sanitizeScoreRow,
+  sellerScoreRows,
+  sortBundleScoreRows,
+  sortScoreRows,
+} from './scoreSemantics.js'
 import fs from "node:fs"
 import path from "node:path"
 
@@ -16,9 +28,10 @@ function num(v) {
   return Number.isFinite(n) ? n : null;
 }
 
-function score(v) {
+function legacyScore(v) {
+  if (v == null) return null;
   const n = parseInt(v, 10);
-  return Number.isFinite(n) ? n : 0;
+  return Number.isFinite(n) ? n : null;
 }
 
 async function fetchGithubJson(relPath) {
@@ -72,33 +85,81 @@ async function loadJson(name, fallback) {
   return readLocalJson(rel, fallback);
 }
 
-function bumpSeller(sellers, { sid, login, country, dealScore, band, isKeep, itemId, watch }) {
+function dashboardRow(row) {
+  const out = sanitizeScoreRow({
+    ...row,
+    deal_score: legacyScore(row?.deal_score),
+  });
+  if (isDeclaredV2(row)) {
+    if (out.source === "keep" && !isKeep(row)) out.source = "scored";
+  }
+  return out;
+}
+
+function mergeFindRow(current, incoming) {
+  if (!current) return dashboardRow(incoming);
+  const merged = mergeScoreRows(current, incoming);
+  return dashboardRow(merged);
+}
+
+function dashboardBundle(bundle) {
+  return {
+    ...bundle,
+    items: (bundle?.items || []).map((item) => dashboardRow(item)),
+  };
+}
+
+function mergeBundles(current, incoming) {
+  const items = new Map();
+  for (const item of [...(current?.items || []), ...(incoming?.items || [])]) {
+    if (item.id == null) continue;
+    const key = String(item.id);
+    items.set(key, mergeFindRow(items.get(key), item));
+  }
+  const currentHasV2 = (current?.items || []).some(isV2);
+  const incomingHasV2 = (incoming?.items || []).some(isV2);
+  const preferred =
+    incomingHasV2 && !currentHasV2
+      ? incoming
+      : currentHasV2 && !incomingHasV2
+        ? current
+        : incoming;
+  const other = preferred === current ? incoming : current;
+  return {
+    ...(other || {}),
+    ...(preferred || {}),
+    items: sortBundleScoreRows([...items.values()]),
+  };
+}
+
+function sellerEntry(sellers, { sid, login, country }) {
   if (sid == null && !login) return;
   const key = String(sid || login);
   const row = sellers.get(key) || {
     seller_id: sid || null,
     seller: login || null,
     country: country || null,
-    count: 0,
-    keeps: 0,
-    score_sum: 0,
-    best_score: 0,
-    bands: {},
     item_ids: new Set(),
     watches: new Set(),
+    score_rows: new Map(),
   };
   if (login && !row.seller) row.seller = login;
   if (sid && !row.seller_id) row.seller_id = sid;
   if (country && !row.country) row.country = country;
-  if (itemId != null) row.item_ids.add(String(itemId));
-  if (watch) row.watches.add(watch);
-  const s = score(dealScore);
-  row.count += 1;
-  row.score_sum += s;
-  row.best_score = Math.max(row.best_score, s);
-  if (isKeep || band === "steal") row.keeps += 1;
-  if (band) row.bands[band] = (row.bands[band] || 0) + 1;
   sellers.set(key, row);
+  return row;
+}
+
+function bumpSeller(sellers, { sid, login, country, scoreRow, itemId, watch }) {
+  const row = sellerEntry(sellers, { sid, login, country });
+  if (!row) return;
+  if (itemId != null) {
+    const key = String(itemId);
+    row.item_ids.add(key);
+    const current = row.score_rows.get(key);
+    row.score_rows.set(key, mergeFindRow(current, scoreRow || {}));
+  }
+  if (watch) row.watches.add(watch);
 }
 
 async function buildSnapshot({ vetoMode = "active" } = {}) {
@@ -134,22 +195,26 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
   const indexedSource = dbIndexed?.source || (indexed.length ? "indexed_scores.json" : "none");
   const indexedTotal = dbIndexed?.count ?? indexed.length;
 
-  let bundles = Array.isArray(bundlesRaw) ? [...bundlesRaw] : [];
+  let bundles = Array.isArray(bundlesRaw)
+    ? bundlesRaw.map(dashboardBundle)
+    : [];
   if (dbIndexed?.rows?.length) {
-    const indexOpps = indexBundleOpportunities(dbIndexed.rows);
-    // Prefer existing haul/keep rows; append index opps that don't duplicate seller+items loosely
-    const existingFp = new Set(
-      bundles.map((b) => {
+    const indexOpps = indexBundleOpportunities(dbIndexed.rows).map(dashboardBundle);
+    const existingByFp = new Map(
+      bundles.map((b, index) => {
         const ids = (b.items || []).map((it) => String(it.id)).filter(Boolean).sort().join(",");
-        return `${b.seller_id || ""}:${ids}`;
+        return [`${b.seller_id || ""}:${ids}`, index];
       })
     );
     for (const opp of indexOpps) {
       const ids = (opp.items || []).map((it) => String(it.id)).filter(Boolean).sort().join(",");
       const fp = `${opp.seller_id || ""}:${ids}`;
-      if (!existingFp.has(fp)) {
+      const existingIndex = existingByFp.get(fp);
+      if (existingIndex == null) {
         bundles.push(opp);
-        existingFp.add(fp);
+        existingByFp.set(fp, bundles.length - 1);
+      } else {
+        bundles[existingIndex] = mergeBundles(bundles[existingIndex], opp);
       }
     }
   }
@@ -158,51 +223,30 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 
   for (const row of Array.isArray(deals) ? deals : []) {
     if (row.id == null) continue;
-    findsById.set(String(row.id), {
+    findsById.set(String(row.id), dashboardRow({
       ...row,
       source: "keep",
       price_num: num(row.price),
-      deal_score: score(row.deal_score),
-    });
+    }));
   }
 
   for (const row of indexed) {
     if (row.id == null) continue;
     const id = String(row.id);
     const existing = findsById.get(id);
-    if (existing && existing.source === "keep") {
-      // Keep rows win on ranking fields, but fill brand/size gaps from cache.
-      findsById.set(id, {
-        ...existing,
-        brand: existing.brand ?? row.brand ?? null,
-        size: existing.size ?? row.size ?? null,
-        title: existing.title || row.title || existing.title,
-        url: existing.url || row.url || existing.url,
-      });
-      continue;
-    }
-    findsById.set(id, {
-      ...(existing || {}),
-      ...Object.fromEntries(Object.entries(row).filter(([, v]) => v != null)),
-      source: existing?.source === "scored" || existing?.source === "pool" ? existing.source : "index",
-      price_num: num(row.price != null ? row.price : existing?.price),
-      deal_score: score(row.deal_score != null ? row.deal_score : existing?.deal_score),
-      hunt_fit: row.hunt_fit != null ? row.hunt_fit : existing?.hunt_fit,
-    });
+    const merged = mergeFindRow(existing, { ...row, source: "index" });
+    merged.price_num = num(merged.price);
+    findsById.set(id, merged);
   }
 
   for (const row of run.top || []) {
     if (row.id == null) continue;
     const id = String(row.id);
     const base = findsById.get(id) || {};
-    findsById.set(id, {
-      ...base,
-      ...Object.fromEntries(Object.entries(row).filter(([, v]) => v != null)),
-      source: base.source === "keep" ? "keep" : base.source || "scored",
-      price_num: num(row.price != null ? row.price : base.price),
-      deal_score: score(row.deal_score != null ? row.deal_score : base.deal_score),
-      kept_at: base.kept_at || null,
-    });
+    const merged = mergeFindRow(base, { ...row, source: "scored" });
+    merged.price_num = num(merged.price);
+    merged.kept_at = base.kept_at || null;
+    findsById.set(id, merged);
   }
 
   for (const raw of Array.isArray(pool) ? pool : []) {
@@ -218,25 +262,21 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         ? item.price.currency_code
         : null;
     const existing = findsById.get(id) || {};
-    findsById.set(id, {
-      ...existing,
+    const merged = mergeFindRow(existing, {
       id: item.id,
       title: item.title || existing.title,
       price: price != null ? price : existing.price,
-      price_num: price != null ? num(price) : existing.price_num,
       currency: currency || existing.currency || "RON",
       url: item.url || existing.url,
       watch: raw.watch || existing.watch,
-      deal_score: score(sc.deal_score != null ? sc.deal_score : existing.deal_score),
-      value_band: sc.value_band || existing.value_band,
-      scam_risk: sc.scam_risk || existing.scam_risk,
-      hunt_fit: sc.hunt_fit != null ? sc.hunt_fit : existing.hunt_fit,
-      reason: sc.reason || existing.reason,
+      ...sc,
       seller_id: raw.seller_id || user.id || existing.seller_id,
       seller: user.login || raw.seller || existing.seller,
       seller_country: (item._profile && item._profile.country_code) || existing.seller_country,
-      source: existing.source || "pool",
+      source: "pool",
     });
+    merged.price_num = num(merged.price);
+    findsById.set(id, merged);
   }
 
   // Propagate known usernames onto finds/bundles that only have seller_id.
@@ -270,7 +310,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
     }
   }
 
-  const finds = [...findsById.values()];
+  const finds = sortScoreRows([...findsById.values()]);
 
   const dataSource =
     indexedSource === "cockroach"
@@ -283,7 +323,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
         ? `github:${process.env.GITHUB_REPO}@${process.env.GITHUB_REF || "main"}`
         : "local-filesystem";
 
-  const findsApplied = applyToFinds(finds, vetoes, { mode });
+  const findsApplied = sortScoreRows(applyToFinds(finds, vetoes, { mode }));
   const bundlesApplied = applyToBundles(
     Array.isArray(bundles) ? bundles : [],
     vetoes,
@@ -298,32 +338,23 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       sid: f.seller_id,
       login: f.seller,
       country: f.seller_country,
-      dealScore: f.deal_score,
-      band: f.value_band,
-      isKeep: f.source === "keep" || f.value_band === "steal" || f.value_band === "hunt",
+      scoreRow: f,
       itemId: f.id,
       watch: f.watch,
     });
   }
   for (const b of bundlesApplied) {
-    bumpSeller(sellers, {
+    sellerEntry(sellers, {
       sid: b.seller_id,
       login: b.seller,
       country: b.country,
-      dealScore: 0,
-      band: null,
-      isKeep: false,
-      itemId: null,
-      watch: null,
     });
     for (const it of b.items || []) {
       bumpSeller(sellers, {
-        sid: b.seller_id,
-        login: b.seller,
+        sid: it.seller_id || b.seller_id,
+        login: it.seller || b.seller,
         country: b.country,
-        dealScore: it.deal_score,
-        band: it.role === "keep" ? "steal" : "hunt",
-        isKeep: it.role === "keep",
+        scoreRow: it,
         itemId: it.id,
         watch: it.watch,
       });
@@ -332,23 +363,44 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 
   const sellerRows = [...sellers.values()]
     .map((row) => {
-      const n = Math.max(row.count, 1);
+      const allScoreRows = [...row.score_rows.values()];
+      const selected = sellerScoreRows(allScoreRows)
+        .filter((scoreRow) => displayScore(scoreRow) != null);
+      const scores = selected.map(displayScore);
+      const bands = {};
+      for (const scoreRow of selected) {
+        const band = isV2(scoreRow) ? scoreRow.buy_band : scoreRow.value_band;
+        if (band) bands[band] = (bands[band] || 0) + 1;
+      }
+      const hasV2 = selected.some(isV2);
+      const hasLegacy = selected.some((scoreRow) => !isDeclaredV2(scoreRow));
       return {
         seller_id: row.seller_id,
         seller: row.seller || `user ${row.seller_id}`,
         country: row.country,
-        listings: row.item_ids.size || row.count,
-        keeps: row.keeps,
-        avg_score: Math.round((row.score_sum / n) * 100) / 100,
-        best_score: row.best_score,
-        bands: row.bands,
+        listings: row.item_ids.size,
+        keeps: selected.filter(isKeep).length,
+        avg_score: scores.length
+          ? Math.round((scores.reduce((sum, value) => sum + value, 0) / scores.length) * 100) / 100
+          : null,
+        best_score: scores.length ? Math.max(...scores) : null,
+        score_version: hasV2 ? 2 : null,
+        legacy_score: hasLegacy,
+        score_tier: hasV2 ? 2 : hasLegacy ? 1 : 0,
+        bands,
         watches: [...row.watches].sort(),
         profile_url: row.seller_id
           ? `https://www.vinted.ro/member/${row.seller_id}`
           : null,
       };
     })
-    .sort((a, b) => b.best_score - a.best_score || b.avg_score - a.avg_score || b.keeps - a.keeps);
+    .sort(
+      (a, b) =>
+        b.score_tier - a.score_tier ||
+        (b.best_score ?? -Infinity) - (a.best_score ?? -Infinity) ||
+        (b.avg_score ?? -Infinity) - (a.avg_score ?? -Infinity) ||
+        b.keeps - a.keeps,
+    );
 
   return {
     finds: findsApplied,
@@ -363,6 +415,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
       bundles: run.bundles ?? null,
       alerts: run.alerts ?? null,
       score_histogram: run.score_histogram || {},
+      score_histogram_bins: histogramBins(run.score_histogram),
       seen_keys: (seen.seen_keys || []).length,
       run_count: seen.run_count ?? null,
       last_run: seen.last_run || null,

@@ -9,23 +9,61 @@ A saved search for one kind of thing the buyer wants (type, sizes, query, notes,
 _Avoid_: Watch (except as config key), alert, scrape
 
 **Keep**:
-A crème-de-la-crème listing: true hunt match, steal or hunt value, deal_score ≥ 9 (unless a hunt sets higher), not high scam risk. A merely good deal is not a keep.
+A crème-de-la-crème v2 listing: true hunt fit, `buy_score >= 85`,
+`score_confidence >= min_keep_confidence` (default 0.60, medium/high),
+and no blocking verification concern. Pairwise rank can order Keeps but cannot
+make a listing a Keep. A merely good listing is not a Keep.
 _Avoid_: Deal, hit, pass
 
 **Solo floor**:
-Optional listing-price gate for ordinary clothing sold alone (`solo_floor_clothing_ron`). Default is 0 (disabled) so underpriced premium pieces (e.g. John Smedley at 60 RON) are not killed by price alone — the scorer and min score decide. If set above 0, hunt-band clothing at or below the floor is never a keep; steal-band always bypasses. Sneakers and premium knitwear are not bound by this clothing floor.
+Legacy compatibility price gate for ordinary clothing sold alone
+(`solo_floor_clothing_ron`). V2 instead includes delivered cost in calculated
+utility and does not use this gate.
 _Avoid_: Min price, price_from (do not put a floor on search; the scorer judges cheap listings)
 
 **Hunt fit**:
 Whether a listing genuinely matches a hunt's type, sizes, query, and notes — not merely the brand or a keyword.
 _Avoid_: Relevant, match (unqualified)
 
+**Buy score**:
+The v2 calculated purchase utility on a 0–100 scale. It combines usefulness,
+quality, condition, versatility, and value; applies fit and duplication; and
+accounts for delivered cost. The LLM supplies structured evidence and
+confidence, while deterministic code calculates the score and uncertainty
+interval.
+_Avoid_: Deal score, LLM rating
+
+**Buy band**:
+The v2 label derived from `buy_score`: skip (0–59), bundle (60–74), good
+(75–84), keep (85–94), or exceptional (95–100). The band summarizes utility;
+hunt fit, confidence, and verification gates still apply separately.
+_Avoid_: Value band, discount
+
+**Pairwise rank**:
+An ordering among qualifying v2 candidates with overlapping uncertainty
+intervals. It helps choose between close options but never changes calculated
+utility or threshold qualification.
+_Avoid_: Score, promotion
+
+**Legacy score**:
+The historical 1–10 `deal_score` and its `value_band`. Legacy scores remain
+visible only as labelled display history; never average, pair-compare, or
+threshold-compare them with v2 scores.
+_Avoid_: Current score, v2 fallback
+
 **Bundle**:
-Two or more listings from the same seller in one checkout: at least one keep, plus extra hunt-fit pieces that score at least 7 and are not skip or high scam risk, such that one checkout extra makes the combined absolute saving worth it. Only alert when the cart meaningfully beats buying fewer better pieces. Prior keeps and extras stay in the bundle pool and can join a later checkout if they are still listed.
+Two or more listings from the same seller in one checkout: at least one Keep,
+plus extra hunt-fit pieces with `buy_score >= 60` and no blocking verification
+concern, such that one checkout extra makes the combined absolute saving worth
+it. Only alert when the cart meaningfully beats buying fewer better pieces.
+Prior Keeps and extras stay in the bundle pool and can join a later checkout if
+they are still listed.
 _Avoid_: Cart, lot, combo
 
 **Bundle extra**:
-A hunt-fit listing that is not a keep on its own, but is good enough to ride with a keep in a bundle (score at least 7, not skip, not high scam risk).
+A hunt-fit v2 listing that is not a Keep on its own, but has `buy_score >= 60`
+and no blocking verification concern, so it is good enough to ride with a Keep
+in a bundle.
 _Avoid_: Filler, add-on (unqualified)
 
 **Value haul**:
@@ -61,11 +99,18 @@ After at least one hunt-fit from a seller, fetch up to 12 more of their active l
 _Avoid_: Full scrape, monitor user (unqualified)
 
 **Value band**:
-steal, hunt, acceptable, or skip — price versus quality for that exact piece, after fees, not "under the search cap".
+The legacy 1–10 score label: steal, hunt, acceptable, or skip. It is
+display-only history after the v2 rollout; use Buy band for current decisions.
 _Avoid_: Discount, percentage off
 
 **Remove**:
-Permanent buyer tombstone of a listing id (typically sold/gone): omitted from Finds, Bundles, Top sellers, and one-off desk surfaces forever; suppressed from future alerts and persisted keeps. No Undo. Cockroach `listing_vetoes.status = removed`. Strong negative taste signal within the hunt family.
+Permanent buyer tombstone of a listing id (typically sold/gone): omitted from
+Finds, Bundles, Top sellers, and one-off desk surfaces forever; suppressed from
+future alerts and persisted Keeps. No Undo. Cockroach
+`listing_vetoes.status = removed`. Taste feedback is reason-scoped within the
+hunt family: wrong size affects fit, poor value affects value, and so on.
+Unexplained, Other, and Sold/unavailable Removes do not become negative taste
+evidence.
 _Avoid_: Hide (retired), Delete (UI may say Remove; do not hard-delete score rows in v1), ban, block
 
 **Park**:
@@ -81,5 +126,7 @@ Coarse taste bucket (maternity / gym / sneakers / knitwear / other) used to scop
 _Avoid_: Category (unqualified), watch group
 
 **Taste learning**:
-Hybrid use of desk outcomes — prompt few-shots from Bought/Remove plus conservative hard suppress of keep/alert for repeated Remove patterns with no Bought counter-example in-family.
+Hybrid use of desk outcomes: Bought is positive context, while repeated
+reasoned Removes adjust only their named factor within the hunt family. Park
+and unreasoned/non-learning Remove reasons are ignored.
 _Avoid_: ML model, preference engine (unqualified)

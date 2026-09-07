@@ -9,6 +9,9 @@ const ENRICHMENT_KEYS = [
   'price_ron',
   'value_band',
   'deal_score',
+  'score_version',
+  'buy_score',
+  'buy_band',
   'title',
 ] as const
 
@@ -52,6 +55,7 @@ async function handleVeto(request: Request) {
       itemId,
       body.status,
       enrichmentFromBody(body),
+      body.reason_code ?? body.reasonCode ?? null,
     )
     return Response.json(
       { ok: true, ...result },

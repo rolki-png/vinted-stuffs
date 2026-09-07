@@ -1,4 +1,4 @@
-"""Family-scoped taste learning: prompt few-shots + conservative hard suppress."""
+"""Family-scoped taste learning from explicit, factor-scoped feedback."""
 from __future__ import annotations
 
 from typing import Any
@@ -80,8 +80,15 @@ _FAMILY_RULES: list[tuple[str, tuple[str, ...]]] = [
 _DEFAULT_TASTE = {
     "enabled": True,
     "prompt_examples_per_polarity": 5,
-    "hard_suppress_min_removes": 3,
-    "hard_suppress_require_zero_bought": True,
+}
+
+REASON_SCOPES = {
+    "wrong_size": "fit_probability adjustment only",
+    "bad_fit_style": "fit_probability adjustment only",
+    "low_quality_condition": "quality/condition adjustment only",
+    "poor_value": "value adjustment only",
+    "rarely_useful": "usefulness adjustment only",
+    "already_own_similar": "duplication_probability adjustment only",
 }
 
 
@@ -94,10 +101,6 @@ def taste_config(config: dict | None) -> dict:
                 out[key] = raw[key]
     out["enabled"] = bool(out["enabled"])
     out["prompt_examples_per_polarity"] = int(out["prompt_examples_per_polarity"])
-    out["hard_suppress_min_removes"] = int(out["hard_suppress_min_removes"])
-    out["hard_suppress_require_zero_bought"] = bool(
-        out["hard_suppress_require_zero_bought"]
-    )
     return out
 
 
@@ -112,37 +115,20 @@ def resolve_family(hunt_name: str, watch: dict | None = None) -> str:
     return "other"
 
 
-def normalize_brand(brand: str | None) -> str:
-    if brand is None:
-        return ""
-    return " ".join(str(brand).strip().lower().split())
-
-
-def normalize_size(size: str | None) -> str:
-    if size is None:
-        return ""
-    return " ".join(str(size).strip().lower().split())
-
-
-def pattern_key(
-    family: str, brand: str | None, size: str | None
-) -> str | None:
-    b = normalize_brand(brand)
-    if not b:
-        return None
-    fam = (family or "other").strip().lower() or "other"
-    return f"{fam}|{b}|{normalize_size(size)}"
-
-
 def _format_outcome_line(row: dict) -> str:
     title = str(row.get("title") or "")[:80]
     brand = row.get("brand") or "?"
     size = row.get("size") or "?"
     price = row.get("price_ron")
     price_s = f"{price}" if price is not None else "?"
-    band = row.get("value_band") or "?"
-    score = row.get("deal_score")
-    score_s = f"{score}" if score is not None else "?"
+    if row.get("buy_score") is not None:
+        band = row.get("buy_band") or "?"
+        score = row.get("buy_score")
+        score_s = f"{score}/100" if score is not None else "?"
+    else:
+        band = row.get("value_band") or "?"
+        score = row.get("deal_score")
+        score_s = f"{score}/10 legacy" if score is not None else "?"
     return (
         f"- {title} | brand={brand} size={size} "
         f"price={price_s} band={band} score={score_s}"
@@ -153,62 +139,41 @@ def build_taste_prompt_block(
     outcomes: list[dict], *, per_polarity: int = 5
 ) -> str:
     bought = [r for r in outcomes if r.get("status") == "bought"]
-    removed = [r for r in outcomes if r.get("status") == "removed"]
+    removed_by_reason: dict[str, list[dict]] = {}
+    for row in outcomes:
+        if row.get("status") != "removed":
+            continue
+        reason = row.get("reason_code")
+        if reason in REASON_SCOPES:
+            removed_by_reason.setdefault(reason, []).append(row)
+
     # Prefer most recent first if updated_at present
     def _sort_key(r: dict) -> Any:
         return r.get("updated_at") or ""
 
-    bought = sorted(bought, key=_sort_key, reverse=True)[: max(0, int(per_polarity))]
-    removed = sorted(removed, key=_sort_key, reverse=True)[: max(0, int(per_polarity))]
-    if not bought and not removed:
+    limit = max(0, int(per_polarity))
+    bought = sorted(bought, key=_sort_key, reverse=True)[:limit]
+    negative_limit = max(3, limit)
+    reason_groups = [
+        (
+            reason,
+            sorted(rows, key=_sort_key, reverse=True)[:negative_limit],
+        )
+        for reason, rows in removed_by_reason.items()
+        if len(rows) >= 3
+    ]
+    if not bought and not reason_groups:
         return ""
 
     parts = [
         "Buyer taste from desk outcomes in this hunt family "
-        "(prefer Bought patterns; avoid Removed patterns; ignore Park):"
+        "(use Bought as positive context; apply reasoned Remove feedback only "
+        "to its named factor; ignore Park):"
     ]
     if bought:
         parts.append("Bought (strong positive):")
         parts.extend(_format_outcome_line(r) for r in bought)
-    if removed:
-        parts.append("Removed (strong negative):")
-        parts.extend(_format_outcome_line(r) for r in removed)
+    for reason, rows in reason_groups:
+        parts.append(f"Removed reason={reason} ({REASON_SCOPES[reason]}):")
+        parts.extend(_format_outcome_line(r) for r in rows)
     return "\n".join(parts)
-
-
-def hard_suppress(
-    candidate: dict,
-    outcomes: list[dict],
-    *,
-    min_removes: int = 3,
-    require_zero_bought: bool = True,
-) -> bool:
-    key = pattern_key(
-        candidate.get("hunt_family") or candidate.get("family") or "other",
-        candidate.get("brand"),
-        candidate.get("size"),
-    )
-    if key is None:
-        return False
-
-    removes = 0
-    boughts = 0
-    for row in outcomes:
-        st = row.get("status")
-        if st not in ("removed", "bought"):
-            continue
-        row_key = pattern_key(
-            row.get("hunt_family") or row.get("family") or "other",
-            row.get("brand"),
-            row.get("size"),
-        )
-        if row_key != key:
-            continue
-        if st == "removed":
-            removes += 1
-        elif st == "bought":
-            boughts += 1
-
-    if require_zero_bought and boughts > 0:
-        return False
-    return removes >= int(min_removes)

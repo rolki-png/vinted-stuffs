@@ -2,15 +2,19 @@ name: vinted-deal-bot
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       skip_scoring:
-        description: "Test mode: skip LLM scoring, fake-pass every new listing"
+        description: 'Test mode: skip LLM scoring, fake-pass every new listing'
         type: boolean
         default: false
       full_sweep:
-        description: "Paginate every hunt and score all unseen (slow, expensive)"
+        description: 'Paginate every hunt and score all unseen (slow, expensive)'
+        type: boolean
+        default: false
+      legacy_active_v2:
+        description: 'Rescore one bounded batch of active legacy dashboard rows'
         type: boolean
         default: false
 
@@ -32,15 +36,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: python/pyproject.toml
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
 
       - name: Install Python dependencies
-        run: pip install -r python/requirements.txt
+        run: uv sync --project python
 
       - name: Checkout Vinted CLI
         uses: actions/checkout@v4
@@ -59,6 +69,7 @@ jobs:
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
       - name: Run bot
+        if: ${{ !fromJSON(inputs.legacy_active_v2 || 'false') }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -68,7 +79,27 @@ jobs:
           SKIP_SCORING: ${{ inputs.skip_scoring }}
           FULL_SWEEP: ${{ inputs.full_sweep }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
-        run: python python/vinted_bot.py
+        run: uv run --project python python python/vinted_bot.py
+
+      - name: Run active legacy v2 rollout
+        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
+        timeout-minutes: 90
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+          AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+        run: |
+          set +e
+          uv run --project python python python/backfill_scored_listings.py \
+            --legacy-active-v2 --limit 200 --export
+          status=$?
+          set -e
+          echo "LEGACY_ACTIVE_V2_EXIT_CODE=$status" >> "$GITHUB_ENV"
+          if [[ "$status" -ne 0 && "$status" -ne 3 ]]; then
+            exit "$status"
+          fi
 
       - name: Commit updated state
         run: |
@@ -83,3 +114,16 @@ jobs:
           else
             echo "No state changes to commit"
           fi
+
+      - name: Check legacy rollout completion
+        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
+        run: |
+          if [[ "$LEGACY_ACTIVE_V2_EXIT_CODE" -eq 3 ]]; then
+            echo "Legacy v2 rollout is partial; dispatch legacy_active_v2 again."
+            exit 3
+          fi
+          if [[ "${LEGACY_ACTIVE_V2_STATUS}" == "exhausted" || "${LEGACY_ACTIVE_V2_STUCK:-0}" -gt 0 ]]; then
+            echo "Legacy v2 rollout exhausted with ${LEGACY_ACTIVE_V2_STUCK:-0} stuck live row(s) still on the desk. Exit 0 means no retryable gaps remain; inspect those pairs before treating the v2 migration as complete."
+            exit 0
+          fi
+          echo "Legacy v2 rollout is complete."

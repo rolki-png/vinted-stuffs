@@ -1,5 +1,8 @@
 import path_setup  # noqa: F401
+import io
+import inspect
 import unittest
+from unittest.mock import patch
 
 import vinted_bot as bot
 
@@ -9,16 +12,33 @@ CONFIG = {
     "keep_value_bands": ["steal", "hunt"],
     "solo_floor_clothing_ron": 0,
 }
-CONFIG_FLOOR = {
-    **CONFIG,
-    "solo_floor_clothing_ron": 100,
-}
+CONFIG_FLOOR = {**CONFIG, "solo_floor_clothing_ron": 100}
 GYM = {"target_type": "men's gym clothing", "min_deal_score": 9}
-KNIT = {"target_type": "men's premium knitwear", "min_deal_score": 9}
+
+
+def v2(score=88, confidence=0.8, concern="none", hunt_fit=True):
+    if score >= 95:
+        band = "exceptional"
+    elif score >= 85:
+        band = "keep"
+    elif score >= 75:
+        band = "good"
+    elif score >= 60:
+        band = "bundle"
+    else:
+        band = "skip"
+    return {
+        "score_version": 2,
+        "buy_score": score,
+        "buy_band": band,
+        "score_confidence": confidence,
+        "hunt_fit": hunt_fit,
+        "verification_concern": concern,
+    }
 
 
 class KeepRuleTests(unittest.TestCase):
-    def test_steal_clothing_under_old_floor_is_keep(self):
+    def test_legacy_cached_row_preserves_previous_keep_rules(self):
         item = {"price": {"amount": "80", "currency_code": "RON"}}
         score = {
             "deal_score": 9,
@@ -28,35 +48,30 @@ class KeepRuleTests(unittest.TestCase):
         }
         self.assertTrue(bot.is_keep(score, CONFIG_FLOOR, GYM, item))
 
-    def test_hunt_score_8_is_not_keep(self):
-        item = {"price": {"amount": "150", "currency_code": "RON"}}
+    def test_v2_keep_requires_score_confidence_fit_and_clear_verification(self):
+        watch = {"target_type": "men's gym clothing"}
+        self.assertTrue(bot.is_keep(v2(), CONFIG, watch, {}))
+        self.assertFalse(bot.is_keep(v2(score=84), CONFIG, watch, {}))
+        self.assertFalse(bot.is_keep(v2(confidence=0.59), CONFIG, watch, {}))
+        self.assertFalse(bot.is_keep(v2(concern="block"), CONFIG, watch, {}))
+        self.assertFalse(bot.is_keep(v2(hunt_fit=False), CONFIG, watch, {}))
+
+    def test_v2_bundle_extra_requires_threshold_fit_and_no_block(self):
+        self.assertTrue(bot.is_bundle_extra(v2(score=68), CONFIG))
+        self.assertFalse(bot.is_bundle_extra(v2(score=59), CONFIG))
+        self.assertFalse(bot.is_bundle_extra(v2(score=68, hunt_fit=False), CONFIG))
+        self.assertFalse(bot.is_bundle_extra(v2(score=68, concern="block"), CONFIG))
+
+    def test_legacy_bundle_extra_preserves_cached_row_rules(self):
         score = {
-            "deal_score": 8,
-            "value_band": "hunt",
+            "deal_score": 7,
+            "value_band": "acceptable",
             "hunt_fit": True,
             "scam_risk": "medium",
         }
-        self.assertFalse(bot.is_keep(score, CONFIG, GYM, item))
-
-    def test_premium_hunt_under_floor_passes_when_floor_disabled(self):
-        item = {"price": {"amount": "60", "currency_code": "RON"}}
-        score = {
-            "deal_score": 9,
-            "value_band": "hunt",
-            "hunt_fit": True,
-            "scam_risk": "low",
-        }
-        self.assertTrue(bot.is_keep(score, CONFIG, KNIT, item))
-
-    def test_hunt_clothing_under_floor_blocked_when_floor_set(self):
-        item = {"price": {"amount": "80", "currency_code": "RON"}}
-        score = {
-            "deal_score": 9,
-            "value_band": "hunt",
-            "hunt_fit": True,
-            "scam_risk": "medium",
-        }
-        self.assertFalse(bot.is_keep(score, CONFIG_FLOOR, GYM, item))
+        self.assertTrue(bot.is_bundle_extra(score, CONFIG))
+        self.assertFalse(bot.is_bundle_extra({**score, "deal_score": 6}, CONFIG))
+        self.assertFalse(bot.is_bundle_extra({**score, "scam_risk": "high"}, CONFIG))
 
     def test_checkout_fees_scale_with_listing_sum(self):
         cfg = {
@@ -75,32 +90,19 @@ class KeepRuleTests(unittest.TestCase):
 
     def test_bundle_hunt_watch_never_keep(self):
         item = {"price": {"amount": "200", "currency_code": "RON"}}
-        score = {
-            "deal_score": 10,
-            "value_band": "steal",
-            "hunt_fit": True,
-            "scam_risk": "low",
-        }
         watch = {
             "target_type": "men's gym clothing",
             "bundle_hunt": True,
             "min_deal_score": 8,
         }
-        self.assertFalse(bot.is_keep(score, CONFIG, watch, item))
+        self.assertFalse(bot.is_keep(v2(score=98), CONFIG, watch, item))
 
-    def test_maternity_score_8_is_keep_when_watch_allows(self):
-        item = {"price": {"amount": "150", "currency_code": "RON"}}
-        score = {
-            "deal_score": 8,
-            "value_band": "hunt",
-            "hunt_fit": True,
-            "scam_risk": "low",
+    def test_mens_gym_tee_remains_excluded_before_v2_qualification(self):
+        item = {
+            "title": "Nike Dri-FIT training T-shirt",
+            "price": {"amount": "120", "currency_code": "RON"},
         }
-        watch = {
-            "target_type": "women's premium maternity clothing",
-            "min_deal_score": 8,
-        }
-        self.assertTrue(bot.is_keep(score, CONFIG, watch, item))
+        self.assertFalse(bot.is_keep(v2(score=98), CONFIG, GYM, item))
 
     def test_value_haul_path_includes_maternity_excludes_sneakers(self):
         self.assertTrue(
@@ -113,56 +115,36 @@ class KeepRuleTests(unittest.TestCase):
             bot.is_value_haul_path_watch({"target_type": "men's sneakers"})
         )
 
-    def test_taste_hard_suppress_blocks_keep(self):
+    def test_candidate_helpers_have_no_taste_outcomes_plumbing(self):
+        self.assertFalse(hasattr(bot, "is_keep_with_taste"))
+        self.assertNotIn(
+            "taste_outcomes", inspect.signature(bot.pool_candidates).parameters
+        )
+        self.assertNotIn(
+            "taste_outcomes", inspect.signature(bot.assemble_bundles).parameters
+        )
+
+    def test_candidate_keep_uses_calculator_gate(self):
         item = {
             "id": 1,
             "brand_title": "Nike",
             "size_title": "L",
             "price": {"amount": "40", "currency_code": "RON"},
         }
-        score = {
-            "deal_score": 9,
-            "value_band": "steal",
-            "hunt_fit": True,
-            "scam_risk": "low",
-        }
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-        ]
-        self.assertTrue(bot.is_keep(score, CONFIG, watch, item))
-        self.assertFalse(
-            bot.is_keep_with_taste(score, CONFIG, watch, item, outcomes)
-        )
-        self.assertTrue(
-            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
-        )
+        self.assertTrue(bot.is_keep(v2(), CONFIG, watch, item))
+        self.assertFalse(hasattr(bot, "is_taste_hard_suppressed"))
 
-    def test_taste_hard_suppress_blocks_bundle_extra_path(self):
+    def test_bundle_assembly_accepts_v2_keep_and_extra(self):
         item = {
             "id": 2,
             "brand_title": "Nike",
             "size_title": "L",
             "price": {"amount": "40", "currency_code": "RON"},
         }
-        score = {
-            "deal_score": 8,
-            "value_band": "hunt",
-            "hunt_fit": True,
-            "scam_risk": "low",
-        }
+        score = v2(score=68)
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-        ]
         self.assertTrue(bot.is_bundle_extra(score, CONFIG))
-        self.assertTrue(
-            bot.is_taste_hard_suppressed(CONFIG, watch, item, outcomes)
-        )
         bundles, solos = bot.assemble_bundles(
             [
                 {
@@ -173,12 +155,7 @@ class KeepRuleTests(unittest.TestCase):
                         "price": {"amount": "90", "currency_code": "RON"},
                         "user": {"id": 9, "login": "s"},
                     },
-                    "score": {
-                        "deal_score": 9,
-                        "value_band": "steal",
-                        "hunt_fit": True,
-                        "scam_risk": "low",
-                    },
+                    "score": v2(),
                     "watch": watch["name"],
                     "watch_obj": watch,
                 },
@@ -190,13 +167,15 @@ class KeepRuleTests(unittest.TestCase):
                 },
             ],
             CONFIG,
-            outcomes,
         )
-        self.assertEqual(bundles, [])
-        self.assertEqual(len(solos), 1)
-        self.assertEqual(solos[0]["item"]["id"], 1)
+        self.assertEqual(len(bundles), 1)
+        self.assertEqual(
+            [row["item"]["id"] for row in bundles[0]["keeps"] + bundles[0]["extras"]],
+            [1, 2],
+        )
+        self.assertEqual(solos, [])
 
-    def test_scoring_prompt_appends_taste_block(self):
+    def test_extraction_prompt_appends_taste_block(self):
         watch = {
             "name": "Lululemon gym M-L",
             "query": "lululemon",
@@ -213,7 +192,7 @@ class KeepRuleTests(unittest.TestCase):
                 "price": {"amount": "40", "currency_code": "RON"},
             }
         ]
-        prompt = bot._scoring_prompt(
+        prompt = bot._extraction_prompt(
             watch,
             items,
             taste_block=(
@@ -223,6 +202,291 @@ class KeepRuleTests(unittest.TestCase):
         )
         self.assertIn("Buyer taste from desk outcomes", prompt)
         self.assertIn("Good", prompt)
+
+    def test_v2_selection_and_closet_ranking_prefer_buy_score(self):
+        low = {
+            "item": {"id": 1},
+            "score": v2(score=86),
+            "is_keep": True,
+            "sid": 1,
+        }
+        high = {
+            "item": {"id": 2},
+            "score": v2(score=92),
+            "is_keep": True,
+            "sid": 2,
+        }
+        legacy = {
+            "item": {"id": 3},
+            "score": {
+                "deal_score": 10,
+                "value_band": "steal",
+                "hunt_fit": True,
+                "scam_risk": "low",
+            },
+            "is_keep": True,
+            "sid": 3,
+        }
+        self.assertEqual(
+            [row["item"]["id"] for row in bot.select_best([low, high, legacy], CONFIG)],
+            [2, 1, 3],
+        )
+        self.assertEqual(
+            [
+                row["sid"]
+                for row in bot.select_closet_crawl_sellers(
+                    [low, high, legacy], {**CONFIG, "closet_crawl_max_sellers": 3}
+                )
+            ],
+            [2, 1, 3],
+        )
+
+    def test_declared_malformed_v2_sorts_below_legacy_without_deal_score_fallback(self):
+        legacy = {
+            "item": {"id": 2},
+            "score": {
+                "deal_score": 7,
+                "value_band": "acceptable",
+            },
+        }
+        malformed_scores = [
+            {"score_version": 2, "deal_score": 10, "value_band": "steal"},
+            {
+                "score_version": 2,
+                "buy_score": "not-a-score",
+                "deal_score": 10,
+                "value_band": "steal",
+            },
+        ]
+        for malformed_id, score in enumerate(malformed_scores, start=10):
+            with self.subTest(score=score):
+                malformed = {"item": {"id": malformed_id}, "score": score}
+                self.assertEqual(
+                    [
+                        row["item"]["id"]
+                        for row in bot.select_best([malformed, legacy], CONFIG)
+                    ],
+                    [2, malformed_id],
+                )
+
+    def test_v2_solo_notification_uses_only_v2_score_semantics(self):
+        item = {
+            "title": "Technical shorts",
+            "price": {"amount": "80", "currency_code": "RON"},
+            "brand_title": "Craft",
+            "url": "https://example.test/1",
+        }
+        score = {
+            **v2(score=91, concern="inspect"),
+            "score_interval_low": 86,
+            "score_interval_high": 95,
+            "reason": "Strong utility",
+        }
+        with patch.object(bot, "_ntfy_post") as send:
+            sent = bot.send_ntfy("topic", item, score, CONFIG)
+        self.assertTrue(sent)
+        title, body = send.call_args.args[1:3]
+        self.assertIn("91", title)
+        self.assertIn("86-95", title + body)
+        self.assertIn("keep", title + body)
+        self.assertIn("inspect", title + body)
+
+    def test_v2_solo_notification_priority_uses_configured_keep_threshold(self):
+        item = {
+            "title": "Technical shorts",
+            "price": {"amount": "80", "currency_code": "RON"},
+        }
+        score = {
+            **v2(score=91),
+            "score_interval_low": 86,
+            "score_interval_high": 95,
+        }
+        config = {"buy_scoring": {"keep_min_score": 95}}
+        with patch.object(bot, "_ntfy_post") as send:
+            sent = bot.send_ntfy("topic", item, score, config)
+        self.assertTrue(sent)
+        self.assertEqual(send.call_args.args[4], "default")
+
+    def test_malformed_v2_solo_notification_is_not_sent(self):
+        item = {
+            "id": 7,
+            "title": "Technical shorts",
+            "price": {"amount": "80", "currency_code": "RON"},
+        }
+        malformed = {
+            **v2(score=91),
+            "score_interval_low": "unknown",
+            "score_interval_high": 95,
+        }
+        stderr = io.StringIO()
+        with (
+            patch.object(bot, "_ntfy_post") as send,
+            patch("sys.stderr", new=stderr),
+        ):
+            sent = bot.send_ntfy("topic", item, malformed, CONFIG)
+        self.assertFalse(sent)
+        send.assert_not_called()
+        self.assertIn("malformed v2", stderr.getvalue().lower())
+        self.assertIn("7", stderr.getvalue())
+
+    def test_ntfy_timeout_is_logged_as_transport_failure(self):
+        stderr = io.StringIO()
+        with (
+            patch.object(
+                bot.urllib.request,
+                "urlopen",
+                side_effect=TimeoutError("request timed out"),
+            ),
+            patch("sys.stderr", new=stderr),
+        ):
+            sent = bot._ntfy_post(
+                "topic",
+                "title",
+                "body",
+                None,
+                "default",
+            )
+        self.assertFalse(sent)
+        self.assertIn("ntfy send failed", stderr.getvalue())
+        self.assertIn("request timed out", stderr.getvalue())
+
+    def test_v2_bundle_notification_uses_only_v2_score_semantics(self):
+        row = {
+            "item": {
+                "title": "Technical shorts",
+                "price": {"amount": "80", "currency_code": "RON"},
+                "url": "https://example.test/1",
+            },
+            "score": {
+                **v2(score=91, concern="inspect"),
+                "score_interval_low": 86,
+                "score_interval_high": 95,
+            },
+        }
+        bundle = {
+            "seller": "seller",
+            "seller_id": 4,
+            "country": "ro",
+            "listing_sum": 80,
+            "checkout_extra_ron": 22,
+            "checkout_total": 102,
+            "keeps": [row],
+            "extras": [],
+        }
+        with patch.object(bot, "_ntfy_post") as send:
+            sent = bot.send_ntfy_bundle("topic", bundle)
+        self.assertTrue(sent)
+        body = send.call_args.args[2]
+        self.assertIn("91", body)
+        self.assertIn("86-95", body)
+        self.assertIn("keep", body)
+        self.assertIn("inspect", body)
+
+    def test_malformed_v2_bundle_member_is_not_sent_for_either_role(self):
+        row = {
+            "item": {
+                "id": 8,
+                "title": "Technical shorts",
+                "price": {"amount": "80", "currency_code": "RON"},
+            },
+            "score": {
+                **v2(score=91),
+                "score_interval_low": None,
+                "score_interval_high": 95,
+            },
+        }
+        for role in ("keeps", "extras"):
+            with self.subTest(role=role):
+                bundle = {
+                    "seller": "seller",
+                    "seller_id": 4,
+                    "country": "ro",
+                    "listing_sum": 80,
+                    "checkout_extra_ron": 22,
+                    "checkout_total": 102,
+                    "keeps": [row] if role == "keeps" else [],
+                    "extras": [row] if role == "extras" else [],
+                }
+                stderr = io.StringIO()
+                with (
+                    patch.object(bot, "_ntfy_post") as send,
+                    patch("sys.stderr", new=stderr),
+                ):
+                    sent = bot.send_ntfy_bundle("topic", bundle)
+                self.assertFalse(sent)
+                send.assert_not_called()
+                self.assertIn("malformed v2", stderr.getvalue().lower())
+                self.assertIn("member 8", stderr.getvalue().lower())
+
+    def test_v2_snapshot_contains_v2_fields_without_legacy_score_fields(self):
+        score = {
+            **v2(score=91, concern="inspect"),
+            "score_interval_low": 86,
+            "score_interval_high": 95,
+            "score_factors": {"quality": 90},
+            "factor_evidence": {"quality": "technical fabric"},
+            "verification_reason": "inspect label",
+            "reason": "Strong utility",
+        }
+        snapshot = bot._score_snapshot(score)
+        self.assertEqual(snapshot["score_version"], 2)
+        self.assertEqual(snapshot["buy_score"], 91)
+        self.assertEqual(snapshot["score_interval_low"], 86)
+        self.assertNotIn("deal_score", snapshot)
+        self.assertNotIn("scam_risk", snapshot)
+
+    def test_v2_histogram_uses_ten_point_bins_and_ignores_legacy_rows(self):
+        rows = [
+            {"score": v2(score=0)},
+            {"score": v2(score=9)},
+            {"score": v2(score=10)},
+            {"score": v2(score=90)},
+            {"score": v2(score=100)},
+            {"score": {"deal_score": 9}},
+        ]
+        histogram = bot._v2_score_histogram(rows)
+        self.assertEqual(
+            list(histogram),
+            [
+                "0-9",
+                "10-19",
+                "20-29",
+                "30-39",
+                "40-49",
+                "50-59",
+                "60-69",
+                "70-79",
+                "80-89",
+                "90-100",
+            ],
+        )
+        self.assertEqual(histogram["0-9"], 2)
+        self.assertEqual(histogram["10-19"], 1)
+        self.assertEqual(histogram["90-100"], 2)
+
+    def test_test_mode_builds_factors_for_real_calculator(self):
+        watch = {"country": "ro"}
+        items = [
+            {
+                "id": 7,
+                "price": {"amount": "80", "currency_code": "RON"},
+            }
+        ]
+        config = {
+            "checkout_fees": {
+                "ro": {
+                    "estimated_shipping_ron": 15,
+                    "buyer_fee_fixed_ron": 3,
+                    "buyer_fee_pct": 0.05,
+                }
+            }
+        }
+        extractions = bot._test_mode_extractions(items, watch, config)
+        self.assertNotIn("buy_score", extractions[0])
+        self.assertTrue(bot._valid_extractions(extractions, items, config))
+        scores = bot.normalize_extractions(extractions, items, watch, config)
+        self.assertEqual(scores[0]["score_version"], 2)
+        self.assertEqual(scores[0]["score_factors"]["delivered_cost_ron"], 102)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,3 @@
+ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS score_version INT NULL;
+ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_score INT NULL;
+ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_band TEXT NULL;

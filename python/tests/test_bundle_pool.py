@@ -59,6 +59,36 @@ class BundlePoolTests(unittest.TestCase):
         self.assertEqual(ordered[-200:][0], "old-2")
         self.assertEqual(len(ordered), 202)
 
+    def test_bundle_fingerprint_is_recorded_only_after_notification_succeeds(self):
+        bundle = {
+            "seller_id": 99,
+            "seller": "seller",
+            "country": "ro",
+            "listing_sum": 230,
+            "checkout_extra_ron": 25,
+            "checkout_total": 255,
+            "keeps": [row(1, 9, "steal", 99)],
+            "extras": [row(2, 7, "acceptable", 99)],
+        }
+        ordered = []
+        membership = set()
+        with patch.object(bot, "_ntfy_post", side_effect=[False, True]) as send:
+            self.assertFalse(
+                bot.send_retryable_bundle_notification(
+                    "topic", bundle, ordered, membership
+                )
+            )
+            self.assertEqual(ordered, [])
+            self.assertEqual(membership, set())
+            self.assertTrue(
+                bot.send_retryable_bundle_notification(
+                    "topic", bundle, ordered, membership
+                )
+            )
+        self.assertEqual(send.call_count, 2)
+        self.assertEqual(ordered, ["99:1,2"])
+        self.assertEqual(membership, {"99:1,2"})
+
     def test_prior_extra_plus_new_keep_makes_bundle(self):
         keep = row(1, 9, "steal", 99)
         extra = row(2, 7, "acceptable", 99)

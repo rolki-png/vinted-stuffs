@@ -1,0 +1,1 @@
+ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL;

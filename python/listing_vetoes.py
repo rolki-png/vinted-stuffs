@@ -13,6 +13,16 @@ STATUS_BOUGHT = "bought"
 STATUS_HIDDEN_LEGACY = "hidden"
 VALID_STATUSES = frozenset({STATUS_REMOVED, STATUS_PARKED, STATUS_BOUGHT})
 VALID_MODES = frozenset({"active", "parked", "bought", "all"})
+VALID_REMOVE_REASONS = frozenset({
+    "sold_unavailable",
+    "wrong_size",
+    "bad_fit_style",
+    "low_quality_condition",
+    "poor_value",
+    "rarely_useful",
+    "already_own_similar",
+    "other",
+})
 
 ENRICHMENT_FIELDS = (
     "hunt_name",
@@ -22,13 +32,31 @@ ENRICHMENT_FIELDS = (
     "price_ron",
     "value_band",
     "deal_score",
+    "score_version",
+    "buy_score",
+    "buy_band",
     "title",
 )
+SCORE_CONTEXT_FIELDS = (
+    "value_band",
+    "deal_score",
+    "score_version",
+    "buy_score",
+    "buy_band",
+)
+ALLOWED_BUY_BANDS = frozenset({
+    "skip",
+    "bundle",
+    "good",
+    "keep",
+    "exceptional",
+})
 
 DDL = """
 CREATE TABLE IF NOT EXISTS listing_vetoes (
   item_id BIGINT NOT NULL PRIMARY KEY,
   status TEXT NOT NULL,
+  reason_code TEXT NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   hunt_name TEXT NULL,
   hunt_family TEXT NULL,
@@ -37,6 +65,9 @@ CREATE TABLE IF NOT EXISTS listing_vetoes (
   price_ron DOUBLE PRECISION NULL,
   value_band TEXT NULL,
   deal_score INT NULL,
+  score_version INT NULL,
+  buy_score INT NULL,
+  buy_band TEXT NULL,
   title TEXT NULL
 );
 """
@@ -46,6 +77,7 @@ MIGRATE_HIDDEN_SQL = (
 )
 
 ALTER_COLUMNS_SQL = [
+    "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_name TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_family TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS brand TEXT NULL",
@@ -53,36 +85,66 @@ ALTER_COLUMNS_SQL = [
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS price_ron DOUBLE PRECISION NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS value_band TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS deal_score INT NULL",
+    "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS score_version INT NULL",
+    "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_score INT NULL",
+    "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_band TEXT NULL",
     "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS title TEXT NULL",
 ]
 
 UPSERT_SQL = """
 INSERT INTO listing_vetoes (
-  item_id, status, updated_at,
-  hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score, title
+  item_id, status, reason_code, updated_at,
+  hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score,
+  score_version, buy_score, buy_band, title
 )
 VALUES (
-  %(item_id)s, %(status)s, %(updated_at)s,
+  %(item_id)s, %(status)s, %(reason_code)s, %(updated_at)s,
   %(hunt_name)s, %(hunt_family)s, %(brand)s, %(size)s, %(price_ron)s,
-  %(value_band)s, %(deal_score)s, %(title)s
+  %(value_band)s, %(deal_score)s, %(score_version)s, %(buy_score)s,
+  %(buy_band)s, %(title)s
 )
 ON CONFLICT (item_id) DO UPDATE SET
   status = EXCLUDED.status,
+  reason_code = EXCLUDED.reason_code,
   updated_at = EXCLUDED.updated_at,
   hunt_name = COALESCE(EXCLUDED.hunt_name, listing_vetoes.hunt_name),
   hunt_family = COALESCE(EXCLUDED.hunt_family, listing_vetoes.hunt_family),
   brand = COALESCE(EXCLUDED.brand, listing_vetoes.brand),
   size = COALESCE(EXCLUDED.size, listing_vetoes.size),
   price_ron = COALESCE(EXCLUDED.price_ron, listing_vetoes.price_ron),
-  value_band = COALESCE(EXCLUDED.value_band, listing_vetoes.value_band),
-  deal_score = COALESCE(EXCLUDED.deal_score, listing_vetoes.deal_score),
+  value_band = CASE %(score_update_kind)s
+    WHEN 'v2' THEN NULL
+    WHEN 'legacy' THEN EXCLUDED.value_band
+    ELSE listing_vetoes.value_band
+  END,
+  deal_score = CASE %(score_update_kind)s
+    WHEN 'v2' THEN NULL
+    WHEN 'legacy' THEN EXCLUDED.deal_score
+    ELSE listing_vetoes.deal_score
+  END,
+  score_version = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.score_version
+    WHEN 'legacy' THEN NULL
+    ELSE listing_vetoes.score_version
+  END,
+  buy_score = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.buy_score
+    WHEN 'legacy' THEN NULL
+    ELSE listing_vetoes.buy_score
+  END,
+  buy_band = CASE %(score_update_kind)s
+    WHEN 'v2' THEN EXCLUDED.buy_band
+    WHEN 'legacy' THEN NULL
+    ELSE listing_vetoes.buy_band
+  END,
   title = COALESCE(EXCLUDED.title, listing_vetoes.title)
 """
 
 DELETE_SQL = "DELETE FROM listing_vetoes WHERE item_id = %s"
 LOAD_SQL = """
-SELECT item_id, status, hunt_name, hunt_family, brand, size,
-       price_ron, value_band, deal_score, title, updated_at
+SELECT item_id, status, reason_code, hunt_name, hunt_family, brand, size,
+       price_ron, value_band, deal_score, score_version, buy_score, buy_band,
+       title, updated_at
 FROM listing_vetoes
 """
 LOAD_SUPPRESS_SQL = (
@@ -108,6 +170,19 @@ def coerce_write_status(status: str) -> str:
     if st not in VALID_STATUSES:
         raise ValueError(f"invalid veto status: {status}")
     return st
+
+
+def coerce_reason(status: str, reason_code: str | None) -> str | None:
+    if (
+        status != STATUS_REMOVED
+        or reason_code is None
+        or str(reason_code).strip() == ""
+    ):
+        return None
+    reason = str(reason_code).strip()
+    if reason not in VALID_REMOVE_REASONS:
+        raise ValueError(f"invalid remove reason: {reason}")
+    return reason
 
 
 def _item_id(row_or_id) -> int | None:
@@ -309,9 +384,14 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
                 out[key] = float(val)
             except (TypeError, ValueError):
                 out[key] = None
-        elif key == "deal_score":
+        elif key in {"deal_score", "score_version", "buy_score"}:
             try:
-                out[key] = int(val)
+                number = float(val)
+                out[key] = (
+                    int(number)
+                    if not isinstance(val, bool) and number.is_integer()
+                    else None
+                )
             except (TypeError, ValueError):
                 out[key] = None
         else:
@@ -320,9 +400,72 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
     return out
 
 
+def score_update_kind(enrichment: dict | None) -> str:
+    has_v2_input = bool(
+        enrichment
+        and any(
+            key in enrichment and enrichment[key] is not None
+            for key in ("score_version", "buy_score", "buy_band")
+        )
+    )
+    value = coerce_enrichment(enrichment)
+    if (
+        value["score_version"] == 2
+        and value["buy_score"] is not None
+        and 0 <= value["buy_score"] <= 100
+        and value["buy_band"] in ALLOWED_BUY_BANDS
+    ):
+        return "v2"
+    if has_v2_input:
+        return "preserve"
+    if (
+        value["deal_score"] is not None
+        and 1 <= value["deal_score"] <= 10
+        and value["value_band"] is not None
+    ):
+        return "legacy"
+    return "preserve"
+
+
+def prepare_enrichment_for_write(
+    enrichment: dict | None,
+) -> tuple[dict[str, Any], str]:
+    value = coerce_enrichment(enrichment)
+    update_kind = score_update_kind(enrichment)
+    if update_kind == "v2":
+        value["deal_score"] = None
+        value["value_band"] = None
+    elif update_kind == "legacy":
+        value["score_version"] = None
+        value["buy_score"] = None
+        value["buy_band"] = None
+    else:
+        for key in SCORE_CONTEXT_FIELDS:
+            value[key] = None
+    return value, update_kind
+
+
+def merge_enrichment(previous: dict | None, incoming: dict | None) -> dict[str, Any]:
+    current, _ = prepare_enrichment_for_write(previous)
+    new, update_kind = prepare_enrichment_for_write(incoming)
+    merged = {
+        key: new[key] if new[key] is not None else current[key]
+        for key in ENRICHMENT_FIELDS
+        if key not in SCORE_CONTEXT_FIELDS
+    }
+    score_source = current if update_kind == "preserve" else new
+    for key in SCORE_CONTEXT_FIELDS:
+        merged[key] = score_source[key]
+    return merged
+
+
 class VetoStore(Protocol):
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None: ...
     def clear(self, item_id: int) -> None: ...
     def load_map(self) -> dict[int, str]: ...
@@ -337,7 +480,11 @@ class MemoryVetoStore:
         self._rows: dict[int, dict] = {}
 
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
         iid = int(item_id)
         st = coerce_write_status(status)
@@ -346,10 +493,10 @@ class MemoryVetoStore:
         merged = {
             "item_id": iid,
             "status": st,
+            "reason_code": coerce_reason(st, reason_code),
             "updated_at": datetime.now(timezone.utc).isoformat(),
         }
-        for key in ENRICHMENT_FIELDS:
-            merged[key] = enr[key] if enr[key] is not None else prev.get(key)
+        merged.update(merge_enrichment(prev, enr))
         self._rows[iid] = merged
 
     def clear(self, item_id: int) -> None:
@@ -396,8 +543,13 @@ class MemoryVetoStore:
 
 class NullVetoStore:
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
+        coerce_reason(coerce_write_status(status), reason_code)
         return None
 
     def clear(self, item_id: int) -> None:
@@ -427,15 +579,21 @@ class PsycopgVetoStore:
         self._conn = conn
 
     def set_status(
-        self, item_id: int, status: str, enrichment: dict | None = None
+        self,
+        item_id: int,
+        status: str,
+        enrichment: dict | None = None,
+        reason_code: str | None = None,
     ) -> None:
         status = coerce_write_status(status)
         now = datetime.now(timezone.utc)
-        enr = coerce_enrichment(enrichment)
+        enr, update_kind = prepare_enrichment_for_write(enrichment)
         params = {
             "item_id": int(item_id),
             "status": status,
+            "reason_code": coerce_reason(status, reason_code),
             "updated_at": now,
+            "score_update_kind": update_kind,
             **enr,
         }
         with self._conn.cursor() as cur:
@@ -477,6 +635,7 @@ class PsycopgVetoStore:
             cols = [
                 "item_id",
                 "status",
+                "reason_code",
                 "hunt_name",
                 "hunt_family",
                 "brand",
@@ -484,6 +643,9 @@ class PsycopgVetoStore:
                 "price_ron",
                 "value_band",
                 "deal_score",
+                "score_version",
+                "buy_score",
+                "buy_band",
                 "title",
                 "updated_at",
             ]

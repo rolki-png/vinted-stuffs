@@ -29,7 +29,31 @@ class TestFamily(unittest.TestCase):
 
 
 class TestPrompt(unittest.TestCase):
-    def test_includes_bought_and_removed_not_parked(self):
+    def test_v2_outcome_line_uses_buy_score_and_band(self):
+        line = tl._format_outcome_line(
+            {
+                "title": "Technical shorts",
+                "score_version": 2,
+                "buy_score": 88,
+                "buy_band": "keep",
+                "deal_score": 1,
+                "value_band": "skip",
+            }
+        )
+        self.assertIn("band=keep score=88/100", line)
+        self.assertNotIn("band=skip score=1", line)
+
+    def test_legacy_outcome_line_uses_deal_score_and_value_band(self):
+        line = tl._format_outcome_line(
+            {
+                "title": "Technical shorts",
+                "deal_score": 9,
+                "value_band": "steal",
+            }
+        )
+        self.assertIn("band=steal score=9/10 legacy", line)
+
+    def test_includes_bought_not_parked(self):
         block = tl.build_taste_prompt_block(
             [
                 {
@@ -40,15 +64,6 @@ class TestPrompt(unittest.TestCase):
                     "price_ron": 40,
                     "value_band": "steal",
                     "deal_score": 9,
-                },
-                {
-                    "status": "removed",
-                    "title": "Trash tee",
-                    "brand": "NoName",
-                    "size": "M",
-                    "price_ron": 80,
-                    "value_band": "skip",
-                    "deal_score": 3,
                 },
                 {
                     "status": "parked",
@@ -62,57 +77,77 @@ class TestPrompt(unittest.TestCase):
             ]
         )
         self.assertIn("Good shorts", block)
-        self.assertIn("Trash tee", block)
         self.assertNotIn("Maybe", block)
         self.assertIn("Bought", block)
-        self.assertIn("Removed", block)
 
-    def test_empty_outcomes(self):
-        self.assertEqual(tl.build_taste_prompt_block([]), "")
-
-
-class TestHardSuppress(unittest.TestCase):
-    def test_suppress_after_threshold(self):
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "nike", "size": "L"},
-        ]
-        cand = {"hunt_family": "gym", "brand": "Nike", "size": "L"}
-        self.assertTrue(tl.hard_suppress(cand, outcomes, min_removes=3))
-
-    def test_bought_blocks_suppress(self):
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "removed", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-            {"status": "bought", "hunt_family": "gym", "brand": "Nike", "size": "L"},
-        ]
-        cand = {"hunt_family": "gym", "brand": "Nike", "size": "L"}
-        self.assertFalse(tl.hard_suppress(cand, outcomes, min_removes=3))
-
-    def test_no_brand_never_suppress(self):
-        outcomes = [
-            {"status": "removed", "hunt_family": "gym", "brand": "", "size": "L"}
-        ] * 5
-        self.assertFalse(
-            tl.hard_suppress({"hunt_family": "gym", "brand": "", "size": "L"}, outcomes)
+    def test_unreasoned_and_nonlearning_removes_are_excluded(self):
+        block = tl.build_taste_prompt_block(
+            [
+                {"status": "removed", "reason_code": None, "title": "unknown"},
+                {"status": "removed", "reason_code": "other", "title": "other"},
+                {
+                    "status": "removed",
+                    "reason_code": "sold_unavailable",
+                    "title": "sold",
+                },
+            ]
         )
+        self.assertEqual(block, "")
 
-    def test_cross_family_ignored(self):
-        outcomes = [
+    def test_three_consistent_reasons_emit_factor_scoped_guidance(self):
+        rows = [
             {
                 "status": "removed",
-                "hunt_family": "maternity",
+                "reason_code": "poor_value",
+                "hunt_family": "gym",
+                "title": f"shorts {i}",
                 "brand": "Nike",
                 "size": "L",
             }
-        ] * 5
-        self.assertFalse(
-            tl.hard_suppress(
-                {"hunt_family": "gym", "brand": "Nike", "size": "L"}, outcomes
-            )
-        )
+            for i in range(3)
+        ]
+        block = tl.build_taste_prompt_block(rows)
+        self.assertIn("poor_value", block)
+        self.assertIn("value adjustment only", block)
+
+    def test_two_same_reason_and_mixed_two_plus_one_do_not_emit_guidance(self):
+        two_poor_value = [
+            {
+                "status": "removed",
+                "reason_code": "poor_value",
+                "hunt_family": "gym",
+                "title": f"shorts {i}",
+            }
+            for i in range(2)
+        ]
+        self.assertEqual(tl.build_taste_prompt_block(two_poor_value), "")
+        mixed_reasons = [
+            *two_poor_value,
+            {
+                "status": "removed",
+                "reason_code": "rarely_useful",
+                "hunt_family": "gym",
+                "title": "leggings",
+            },
+        ]
+        self.assertEqual(tl.build_taste_prompt_block(mixed_reasons), "")
+
+    def test_qualifying_reason_shows_three_examples_below_display_limit(self):
+        rows = [
+            {
+                "status": "removed",
+                "reason_code": "poor_value",
+                "hunt_family": "gym",
+                "title": f"shorts {i}",
+            }
+            for i in range(3)
+        ]
+        block = tl.build_taste_prompt_block(rows, per_polarity=1)
+        for i in range(3):
+            self.assertIn(f"shorts {i}", block)
+
+    def test_empty_outcomes(self):
+        self.assertEqual(tl.build_taste_prompt_block([]), "")
 
 
 class TestTasteConfig(unittest.TestCase):
@@ -120,8 +155,9 @@ class TestTasteConfig(unittest.TestCase):
         cfg = tl.taste_config({})
         self.assertTrue(cfg["enabled"])
         self.assertEqual(cfg["prompt_examples_per_polarity"], 5)
-        self.assertEqual(cfg["hard_suppress_min_removes"], 3)
-        self.assertTrue(cfg["hard_suppress_require_zero_bought"])
+        self.assertNotIn("hard_suppress_min_removes", cfg)
+        self.assertNotIn("hard_suppress_require_zero_bought", cfg)
+        self.assertFalse(hasattr(tl, "hard_suppress"))
 
 
 if __name__ == "__main__":

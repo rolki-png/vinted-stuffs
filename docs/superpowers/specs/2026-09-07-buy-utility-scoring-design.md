@@ -70,7 +70,7 @@ short evidence, and any hard-gate facts:
 | `quality` | 0–100 | Material, construction, and expected durability |
 | `condition` | 0–100 | Remaining useful life based on stated and visible condition |
 | `versatility` | 0–100 | Breadth of realistic outfits, settings, or life stages |
-| `value` | 0–100 | Delivered price versus a realistic equivalent replacement |
+| `equivalent_replacement_cost` | money | Conservative cost of a realistic substitute |
 | `duplication_probability` | 0–1 | Probability the item adds little beyond owned items |
 
 Each factor includes:
@@ -84,10 +84,13 @@ shrunk toward neutral:
 
 ```text
 adjusted_factor = 50 + confidence × (raw_factor - 50)
+adjusted_fit = 0.5 + fit_confidence × (fit_probability - 0.5)
+adjusted_duplication = 0.5 + duplication_confidence × (duplication_probability - 0.5)
 ```
 
 This makes an unsupported claim less influential than a well-evidenced estimate.
-Unknown values use raw value 50 and confidence 0.
+Unknown 0–100 values use raw value 50 and confidence 0. Unknown probability
+values use raw value 0.5 and confidence 0.
 
 ### Product and price evidence
 
@@ -101,6 +104,23 @@ Unknown values use raw value 50 and confidence 0.
   item of similar function and quality, new or second-hand as appropriate.
 - Delivered cost includes listing price plus estimated buyer fee and shipping.
 - Absolute saving matters alongside percentage discount.
+
+The model estimates and explains equivalent replacement cost; code calculates the
+value factor after normalizing money to RON:
+
+```text
+saving = replacement_cost - delivered_cost
+relative_value = clamp(50 + 50 × saving / replacement_cost, 0, 100)
+absolute_value = clamp(50 + 50 × saving / 200 RON, 0, 100)
+value = 0.60 × relative_value + 0.40 × absolute_value
+```
+
+`200 RON` is a versioned initial full-scale absolute saving, not prompt text.
+Replacement cost at or below zero makes value invalid. This calculation makes
+value monotonically decrease as delivered cost rises while recognizing that a
+large absolute saving can matter more than the same percentage on a cheap basic.
+Value confidence is the replacement-cost confidence; known checkout arithmetic
+adds no model uncertainty.
 
 ### Deterministic utility calculation
 
@@ -118,8 +138,8 @@ The calculation is:
 
 ```text
 base = Σ(weight × adjusted_factor)
-fit_adjusted = fit_probability × base
-duplication_penalty = 15 × duplication_probability
+fit_adjusted = adjusted_fit × base
+duplication_penalty = 15 × adjusted_duplication
 raw_utility = fit_adjusted - duplication_penalty
 buy_score = round(clamp(raw_utility, 0, 100))
 ```
@@ -134,9 +154,29 @@ introducing a new `score_version`.
 
 ### Uncertainty
 
-The calculator propagates factor confidence into an overall standard error using
-first-order variance propagation. The API and desk expose a rounded 90% interval,
-for example `87 ± 5`, and an overall confidence label:
+Confidence maps to factor standard deviation:
+
+```text
+sigma_factor = 25 × (1 - confidence)
+sigma_probability = 0.25 × (1 - confidence)
+score_confidence = min(fit_confidence, Σ(weight × factor_confidence))
+```
+
+The calculator propagates those deviations through the utility formula using
+first-order variance propagation and an independence assumption:
+
+```text
+variance =
+  (base × sigma_fit)^2
+  + Σ((adjusted_fit × weight × sigma_factor)^2)
+  + (15 × sigma_duplication)^2
+
+interval_90 = clamp(raw_utility ± 1.645 × sqrt(variance), 0, 100)
+```
+
+The independence assumption is deliberately simple and documented; golden-example
+calibration can widen intervals if it proves optimistic. The API and desk expose
+the rounded 90% interval, for example `87 ± 5`, and an overall confidence label:
 
 - `low`: confidence below 0.60;
 - `medium`: 0.60–0.79;

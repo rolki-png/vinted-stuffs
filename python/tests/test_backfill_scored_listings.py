@@ -14,6 +14,22 @@ class FakeStore:
     def load_recent(self, limit):
         return [dict(row) for row in self.rows[:limit]]
 
+    def load_legacy_scored(self, limit=100000):
+        rows = [
+            dict(row)
+            for row in self.rows
+            if backfill.ss.is_legacy_scored_row(row)
+        ]
+        return rows[: max(0, int(limit))]
+
+    def load_legacy_scored(self, limit=100000):
+        rows = [
+            dict(row)
+            for row in self.rows
+            if backfill.ss.is_legacy_scored_row(row)
+        ]
+        return rows[: max(0, int(limit))]
+
     def upsert_many(self, rows):
         self.upserted.extend(rows)
         by_pair = {
@@ -174,6 +190,20 @@ class BackfillV2SelectionTests(unittest.TestCase):
 
         self.assertEqual(pairs, [("1", "Gym"), ("2", "Gym"), ("3", "Gym")])
 
+    def test_unscored_recent_rows_do_not_hide_older_legacy_scores(self):
+        class CrowdingStore(FakeStore):
+            def load_recent(self, limit):
+                return [dict(row) for row in self.rows[: min(limit, 3)]]
+
+        store = CrowdingStore(
+            [legacy_row(item_id, has_score=False) for item_id in range(10, 20)]
+            + [legacy_row(1, score=8)]
+        )
+
+        pairs = backfill.legacy_active_pairs(store, {"Gym": {"name": "Gym"}})
+
+        self.assertEqual(pairs, [("1", "Gym")])
+
     def test_bounded_batches_rotate_past_cursor_and_known_unavailable(self):
         pairs = [(str(item_id), "Gym") for item_id in range(1, 6)]
         progress = {
@@ -215,7 +245,9 @@ class BackfillV2SelectionTests(unittest.TestCase):
 
         self.assertEqual(complete["remaining"], 0)
         self.assertEqual(complete["stuck"], 1)
+        self.assertEqual(complete["status"], "exhausted")
         self.assertEqual(complete["exit_code"], 0)
+        self.assertNotEqual(complete["status"], "complete")
 
     def test_cli_exposes_explicit_legacy_mode(self):
         args = backfill.build_parser().parse_args(["--legacy-active-v2"])
@@ -409,6 +441,7 @@ class BackfillV2RunTests(unittest.TestCase):
 
         self.assertEqual(summary["stuck"], 1)
         self.assertEqual(summary["remaining"], 0)
+        self.assertEqual(summary["status"], "exhausted")
         self.assertEqual(summary["exit_code"], 0)
         self.assertEqual(state["legacy_active_v2"]["stuck_pairs"], [["1", "Gym"]])
 
@@ -460,6 +493,34 @@ class BackfillV2RunTests(unittest.TestCase):
 
         self.assertGreaterEqual(len(persisted), 2)
 
+    def test_legacy_run_caps_selection_to_rollout_batch_limit(self):
+        store = FakeStore([legacy_row(item_id) for item_id in range(1, 250)])
+
+        with (
+            patch.object(
+                backfill,
+                "fetch_items",
+                return_value=backfill.AvailabilityResult(
+                    items={}, checked_pairs=set(), available_pairs=set()
+                ),
+            ) as fetch,
+            patch.object(backfill.bot, "score_listings") as score,
+        ):
+            summary = backfill.run_legacy_active_v2(
+                store=store,
+                watch_by_name={"Gym": {"name": "Gym", "country": "ro"}},
+                config=CONFIG,
+                state={},
+                gateway="gateway-key",
+                gemini_client=None,
+                limit=500,
+                dry_run=True,
+            )
+
+        score.assert_not_called()
+        self.assertEqual(summary["selected"], backfill.ROLLOUT_BATCH_LIMIT)
+        self.assertEqual(len(fetch.call_args.args[0]), backfill.ROLLOUT_BATCH_LIMIT)
+
     def test_abandoned_default_retries_leave_the_pending_queue(self):
         progress = {"retry_counts": {"1:Gym": 2}}
         pairs = [("1", "Gym"), ("2", "Gym")]
@@ -495,6 +556,8 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("if: ${{ !fromJSON(inputs.legacy_active_v2 || 'false') }}", self.source)
         self.assertIn("if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}", self.source)
         self.assertIn("timeout-minutes: 90", self.source)
+        self.assertIn("LEGACY_ACTIVE_V2_STATUS", self.source)
+        self.assertIn("exhausted", self.source)
         self.assertIn(
             "uv run --project python python python/vinted_bot.py", self.source
         )

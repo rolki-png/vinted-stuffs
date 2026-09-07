@@ -68,7 +68,10 @@ AI gateway/Gemini, and Vinted CLI settings without exposing their values. Each
 dispatch availability-checks one bounded batch before any paid scoring call,
 commits the export and progress state, and reports:
 
-- exit `0`: no available active-hunt legacy gaps remain;
+- exit `0` with status `complete`: no available active-hunt legacy gaps remain
+  and no stuck live rows are left on the desk;
+- exit `0` with status `exhausted`: no retryable gaps remain, but stuck live
+  rows still show 1–10 scores until they are inspected and retried;
 - exit `3`: a partial batch was committed; dispatch the rollout again;
 - any other nonzero exit: an operational failure.
 
@@ -77,7 +80,8 @@ tracked outside the score row, so they do not consume later batches or count as
 active completion gaps. A batch response must mark `available: false` before a
 row is treated as gone; omitted ids stay retryable. Bought and Removed rows are
 skipped. A live row that cannot earn a v2 score is marked stuck after three
-consecutive attempts so dispatch-until-exit-0 can finish. Normal manual and
+consecutive attempts so dispatch-until-exit-0 can finish without looping, but
+that is `exhausted`, not a completed v2 migration. Normal manual and
 scheduled bot runs do not enter this rollout path. Each Actions dispatch scores
 at most 200 live rows and times out after 90 minutes.
 

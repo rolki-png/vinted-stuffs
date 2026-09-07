@@ -364,6 +364,20 @@ class ScoringPromptTests(unittest.TestCase):
             )
         self.assertEqual(scores, [])
 
+    def test_omitted_personal_adjustments_are_treated_as_empty(self):
+        payload = self.extraction_for(1)
+        payload.pop("personal_adjustments")
+        with patch.object(bot, "score_with_gateway", return_value=[payload]):
+            scores = bot.score_listings(
+                self.watch,
+                self.items,
+                "gateway-key",
+                None,
+                {},
+            )
+        self.assertEqual(len(scores), 1)
+        self.assertEqual(scores[0]["score_factors"]["personal_adjustments"]["quality"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

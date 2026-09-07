@@ -10,6 +10,10 @@ ALTER TABLE scored_listings ADD COLUMN IF NOT EXISTS verification_concern TEXT N
 ALTER TABLE scored_listings ADD COLUMN IF NOT EXISTS verification_reason TEXT NULL;
 ALTER TABLE scored_listings ADD COLUMN IF NOT EXISTS rank_position INT NULL;
 ALTER TABLE scored_listings ADD COLUMN IF NOT EXISTS rank_confidence TEXT NULL;
+ALTER TABLE scored_listings ALTER COLUMN deal_score DROP NOT NULL;
+ALTER TABLE scored_listings ALTER COLUMN value_band DROP NOT NULL;
+ALTER TABLE scored_listings ALTER COLUMN hunt_fit DROP NOT NULL;
+ALTER TABLE scored_listings ALTER COLUMN scam_risk DROP NOT NULL;
 
 CREATE INDEX IF NOT EXISTS scored_listings_v2_rank_idx
   ON scored_listings (score_version, rank_position)

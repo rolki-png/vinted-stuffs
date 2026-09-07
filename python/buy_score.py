@@ -137,7 +137,9 @@ def calculate_buy_score(
     applied["duplication_probability"] = duplicate_adjustment
     base = sum(cfg["factor_weights"][key] * values[key] for key in FACTOR_WEIGHTS)
     raw_utility = fit * base - float(cfg["duplication_penalty"]) * duplicate
-    score = 0 if invalid_value else round(clamp(raw_utility, 0.0, 100.0))
+    if invalid_value:
+        raw_utility = 0.0
+    score = round(clamp(raw_utility, 0.0, 100.0))
     sigma_fit = 0.25 * (1.0 - fit_confidence)
     sigma_duplicate = 0.25 * (1.0 - duplicate_confidence)
     variance = (base * sigma_fit) ** 2
@@ -146,11 +148,15 @@ def calculate_buy_score(
         for key in FACTOR_WEIGHTS
     )
     variance += (float(cfg["duplication_penalty"]) * sigma_duplicate) ** 2
+    if invalid_value:
+        variance = 0.0
     half_width = 1.645 * math.sqrt(variance)
     score_confidence = min(
         fit_confidence,
         sum(cfg["factor_weights"][key] * confidences[key] for key in FACTOR_WEIGHTS),
     )
+    if invalid_value:
+        score_confidence = 0.0
     verification = str(extraction.get("verification_concern") or "none").lower()
     verification = verification if verification in VALID_VERIFICATION else "block"
     if invalid_value:

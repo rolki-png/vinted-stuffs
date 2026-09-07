@@ -334,6 +334,101 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(row["title"], "dress updated")
         self.assertEqual(row["price"], 35.0)
 
+    def test_load_legacy_scored_skips_unscored_v2_and_tombstones(self):
+        store = ss.MemoryScoredStore()
+        old = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        recent = datetime(2026, 9, 1, tzinfo=timezone.utc)
+        for item_id, score, scored_at in (
+            (
+                1,
+                {
+                    "deal_score": 8,
+                    "value_band": "hunt",
+                    "hunt_fit": True,
+                    "scam_risk": "low",
+                    "reason": "legacy keep",
+                },
+                old,
+            ),
+            (
+                2,
+                {
+                    "score_version": 2,
+                    "buy_score": 88,
+                    "buy_band": "keep",
+                    "score_confidence": 0.8,
+                    "score_interval_low": 80,
+                    "score_interval_high": 90,
+                    "score_factors": {},
+                    "factor_evidence": {},
+                    "verification_concern": "none",
+                    "verification_reason": "",
+                    "hunt_fit": True,
+                    "reason": "v2",
+                },
+                recent,
+            ),
+        ):
+            store.upsert_score(
+                ss.row_from_item_score(
+                    {
+                        "id": item_id,
+                        "title": str(item_id),
+                        "price": {"amount": "10", "currency_code": "RON"},
+                        "user": {"id": 9, "login": "s"},
+                        "_profile": {"country_code": "ro"},
+                    },
+                    score,
+                    "H",
+                    "search",
+                    scored_at=scored_at,
+                )
+            )
+        store.upsert_score(
+            ss.row_from_item(
+                {
+                    "id": 3,
+                    "title": "unscored",
+                    "price": {"amount": "10", "currency_code": "RON"},
+                    "user": {"id": 9, "login": "s"},
+                    "_profile": {"country_code": "ro"},
+                },
+                "H",
+                "backfill",
+                scored_at=recent,
+            )
+        )
+        tombstone = ss.row_from_item_score(
+            {
+                "id": 4,
+                "title": "gone",
+                "price": {"amount": "10", "currency_code": "RON"},
+                "user": {"id": 9, "login": "s"},
+                "_profile": {"country_code": "ro"},
+            },
+            {
+                "deal_score": 1,
+                "value_band": "skip",
+                "hunt_fit": False,
+                "scam_risk": "medium",
+                "reason": "unavailable during backfill",
+            },
+            "H",
+            "backfill_gone",
+            scored_at=recent,
+        )
+        store.upsert_score(tombstone)
+
+        loaded = store.load_legacy_scored(10)
+
+        self.assertEqual([row["item_id"] for row in loaded], [1])
+        self.assertIn("has_score", ss.LOAD_LEGACY_SCORED_SQL)
+        self.assertIn("COALESCE(score_version, 0) <> 2", ss.LOAD_LEGACY_SCORED_SQL)
+        self.assertIn(
+            "reason IS DISTINCT FROM 'unavailable during backfill'",
+            ss.LOAD_LEGACY_SCORED_SQL,
+        )
+
     def test_v2_round_trip_preserves_structured_score(self):
         score = {
             "id": 99,

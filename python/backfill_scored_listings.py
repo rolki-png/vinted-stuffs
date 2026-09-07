@@ -152,6 +152,15 @@ def _dump_pairs(pairs: set[tuple[str, str]]) -> list[list[str]]:
     return [list(pair) for pair in sorted(pairs)]
 
 
+def emit_legacy_github_env(summary: dict) -> None:
+    path = os.environ.get("GITHUB_ENV")
+    if not path:
+        return
+    with open(path, "a", encoding="utf-8") as handle:
+        handle.write(f"LEGACY_ACTIVE_V2_STATUS={summary.get('status')}\n")
+        handle.write(f"LEGACY_ACTIVE_V2_STUCK={int(summary.get('stuck') or 0)}\n")
+
+
 def taste_block_for(watch: dict, config: dict, outcomes: list | None = None) -> str:
     import taste_learning as taste_mod
 
@@ -182,18 +191,16 @@ def legacy_active_pairs(
         if item_id is not None:
             suppressed.add(item_id)
     pairs = []
-    for row in store.load_recent(50000):
+    loader = getattr(store, "load_legacy_scored", None)
+    rows = loader(100000) if callable(loader) else store.load_recent(50000)
+    for row in rows:
         hunt = row.get("hunt_name")
         item_id = _as_int_id(row.get("item_id"))
-        if hunt not in watch_by_name or item_id is None or not row.get("has_score"):
+        if hunt not in watch_by_name or item_id is None:
             continue
         if item_id in suppressed:
             continue
-        try:
-            version = int(row.get("score_version") or 0)
-        except (TypeError, ValueError):
-            version = 0
-        if version == 2 or row.get("reason") == "unavailable during backfill":
+        if not ss.is_legacy_scored_row(row):
             continue
         pairs.append((str(item_id), str(hunt)))
     return sorted(set(pairs))
@@ -244,13 +251,19 @@ def legacy_completion(
     unavailable = _pair_set(progress.get("unavailable_pairs")) & remaining_pairs
     stuck = _pair_set(progress.get("stuck_pairs")) & remaining_pairs
     remaining = len(remaining_pairs - unavailable - stuck)
+    if remaining:
+        status, exit_code = "partial", PARTIAL_EXIT
+    elif stuck:
+        status, exit_code = "exhausted", 0
+    else:
+        status, exit_code = "complete", 0
     return {
         "legacy": len(remaining_pairs),
         "unavailable": len(unavailable),
         "stuck": len(stuck),
         "remaining": remaining,
-        "status": "complete" if remaining == 0 else "partial",
-        "exit_code": 0 if remaining == 0 else PARTIAL_EXIT,
+        "status": status,
+        "exit_code": exit_code,
     }
 
 
@@ -418,7 +431,7 @@ def unavailable_tombstone(item_id: str, hunt_name: str) -> dict:
         "value_band": "skip",
         "hunt_fit": False,
         "scam_risk": "medium",
-        "reason": "unavailable during backfill",
+        "reason": ss.UNAVAILABLE_TOMBSTONE_REASON,
         "has_score": True,
         "scored_at": datetime.now(timezone.utc),
         "source": "backfill_gone",
@@ -440,6 +453,7 @@ def run_legacy_active_v2(
     persist_progress=None,
 ) -> dict[str, int | str]:
     """Availability-check and rescore one rotating bounded batch of legacy rows."""
+    limit = min(max(int(limit), 0), ROLLOUT_BATCH_LIMIT)
     pairs = legacy_active_pairs(store, watch_by_name, suppress_ids=suppress_ids)
     progress = _legacy_progress(state)
     current_pairs = set(pairs)
@@ -678,6 +692,7 @@ def main() -> None:
         if args.export or summary["rescored"]:
             export_store(store)
         store.close()
+        emit_legacy_github_env(summary)
         if summary["exit_code"]:
             sys.exit(summary["exit_code"])
         return

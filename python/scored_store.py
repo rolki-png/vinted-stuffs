@@ -177,6 +177,24 @@ ORDER BY scored_at DESC
 LIMIT %s
 """
 
+UNAVAILABLE_TOMBSTONE_REASON = "unavailable during backfill"
+
+LOAD_LEGACY_SCORED_SQL = """
+SELECT item_id, hunt_name, title, price, currency, brand, size, condition, url,
+       favourite_count, seller_id, seller_login, seller_country,
+       deal_score, value_band, hunt_fit, scam_risk,
+       score_version, buy_score, buy_band, score_confidence,
+       score_interval_low, score_interval_high, score_factors, factor_evidence,
+       verification_concern, verification_reason, rank_position, rank_confidence,
+       reason, has_score, scored_at, source
+FROM scored_listings
+WHERE has_score
+  AND COALESCE(score_version, 0) <> 2
+  AND reason IS DISTINCT FROM 'unavailable during backfill'
+ORDER BY scored_at DESC
+LIMIT %s
+"""
+
 EXISTING_KEYS_SQL = """
 SELECT item_id::text || ':' || hunt_name AS seen_key FROM scored_listings
 """
@@ -224,6 +242,18 @@ def database_url() -> str | None:
         or os.environ.get("COCKROACH_DATABASE_URL")
         or ""
     ).strip() or None
+
+
+def is_legacy_scored_row(row: dict) -> bool:
+    if not row.get("has_score"):
+        return False
+    try:
+        version = int(row.get("score_version") or 0)
+    except (TypeError, ValueError):
+        version = 0
+    if version == 2:
+        return False
+    return row.get("reason") != UNAVAILABLE_TOMBSTONE_REASON
 
 
 def _json_object(value) -> dict:
@@ -614,6 +644,7 @@ class ScoredStore(Protocol):
     def replace_rankings(self, rows: list[dict]) -> None: ...
     def load_by_seller(self, seller_id: int) -> list[dict]: ...
     def load_recent(self, limit: int = 10000) -> list[dict]: ...
+    def load_legacy_scored(self, limit: int = 100000) -> list[dict]: ...
     def existing_keys(self) -> set[str]: ...
     def count(self) -> int: ...
     def close(self) -> None: ...
@@ -633,6 +664,9 @@ class NullScoredStore:
         return []
 
     def load_recent(self, limit: int = 10000) -> list[dict]:
+        return []
+
+    def load_legacy_scored(self, limit: int = 100000) -> list[dict]:
         return []
 
     def existing_keys(self) -> set[str]:
@@ -702,6 +736,14 @@ class MemoryScoredStore:
             reverse=True,
         )
         return [dict(r) for r in rows[:limit]]
+
+    def load_legacy_scored(self, limit: int = 100000) -> list[dict]:
+        rows = sorted(
+            (row for row in self._rows.values() if is_legacy_scored_row(row)),
+            key=lambda r: r.get("scored_at") or datetime.min.replace(tzinfo=timezone.utc),
+            reverse=True,
+        )
+        return [dict(r) for r in rows[: max(0, int(limit))]]
 
     def existing_keys(self) -> set[str]:
         return {f"{r['item_id']}:{r['hunt_name']}" for r in self._rows.values()}
@@ -783,6 +825,12 @@ class PsycopgScoredStore:
     def load_recent(self, limit: int = 10000) -> list[dict]:
         with self._conn.cursor() as cur:
             cur.execute(LOAD_RECENT_SQL, (int(limit),))
+            cols = [d.name for d in cur.description]
+            return [dict(zip(cols, r)) for r in cur.fetchall()]
+
+    def load_legacy_scored(self, limit: int = 100000) -> list[dict]:
+        with self._conn.cursor() as cur:
+            cur.execute(LOAD_LEGACY_SCORED_SQL, (max(0, int(limit)),))
             cols = [d.name for d in cur.description]
             return [dict(zip(cols, r)) for r in cur.fetchall()]
 

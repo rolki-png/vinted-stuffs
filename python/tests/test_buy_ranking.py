@@ -642,6 +642,12 @@ class RankingIntegrationTests(unittest.TestCase):
         self.assertLess(rank_call, rank_write)
         self.assertLess(rank_write, selection)
 
+    def test_main_marks_seen_only_after_a_successful_score(self):
+        source = inspect.getsource(bot.main)
+        loop = source.index("scores_by_id = {str(s[\"id\"]): s for s in scores")
+        snippet = source[loop : loop + 400]
+        self.assertLess(snippet.index("if not score:"), snippet.index("mark_seen("))
+
 
 if __name__ == "__main__":
     unittest.main()

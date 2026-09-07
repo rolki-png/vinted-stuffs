@@ -80,6 +80,10 @@ class BuyScoreTests(unittest.TestCase):
         )
         self.assertEqual(row["buy_band"], "skip")
         self.assertEqual(row["verification_concern"], "block")
+        self.assertEqual(row["buy_score"], 0)
+        self.assertEqual(row["score_interval_low"], 0)
+        self.assertEqual(row["score_interval_high"], 0)
+        self.assertEqual(row["score_confidence"], 0)
 
     def test_buy_bands(self):
         self.assertEqual(bs.buy_band(59), "skip")

@@ -124,10 +124,11 @@ def _format_outcome_line(row: dict) -> str:
     if row.get("buy_score") is not None:
         band = row.get("buy_band") or "?"
         score = row.get("buy_score")
+        score_s = f"{score}/100" if score is not None else "?"
     else:
         band = row.get("value_band") or "?"
         score = row.get("deal_score")
-    score_s = f"{score}" if score is not None else "?"
+        score_s = f"{score}/10 legacy" if score is not None else "?"
     return (
         f"- {title} | brand={brand} size={size} "
         f"price={price_s} band={band} score={score_s}"

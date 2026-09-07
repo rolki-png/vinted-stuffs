@@ -40,7 +40,7 @@ class TestPrompt(unittest.TestCase):
                 "value_band": "skip",
             }
         )
-        self.assertIn("band=keep score=88", line)
+        self.assertIn("band=keep score=88/100", line)
         self.assertNotIn("band=skip score=1", line)
 
     def test_legacy_outcome_line_uses_deal_score_and_value_band(self):
@@ -51,7 +51,7 @@ class TestPrompt(unittest.TestCase):
                 "value_band": "steal",
             }
         )
-        self.assertIn("band=steal score=9", line)
+        self.assertIn("band=steal score=9/10 legacy", line)
 
     def test_includes_bought_not_parked(self):
         block = tl.build_taste_prompt_block(

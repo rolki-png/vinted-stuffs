@@ -1525,6 +1525,8 @@ def _valid_extraction(extraction: dict, expected_ids: set[str], cap: float) -> b
     if not isinstance(extraction.get("reason"), str):
         return False
     adjustments = extraction.get("personal_adjustments")
+    if adjustments is None:
+        adjustments = {}
     if not isinstance(adjustments, dict) or any(
         not _bounded_number(value, -cap, cap) for value in adjustments.values()
     ):
@@ -2201,10 +2203,10 @@ def main() -> None:
                 )
             scores_by_id = {str(s["id"]): s for s in scores if s.get("id") is not None}
             for item in chunk:
-                mark_seen(state, item.get("id"), watch["name"])
                 score = scores_by_id.get(str(item.get("id")))
                 if not score:
                     continue
+                mark_seen(state, item.get("id"), watch["name"])
                 scored.append({
                     "item": item,
                     "score": score,

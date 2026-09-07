@@ -122,4 +122,8 @@ jobs:
             echo "Legacy v2 rollout is partial; dispatch legacy_active_v2 again."
             exit 3
           fi
+          if [[ "${LEGACY_ACTIVE_V2_STATUS}" == "exhausted" || "${LEGACY_ACTIVE_V2_STUCK:-0}" -gt 0 ]]; then
+            echo "Legacy v2 rollout exhausted with ${LEGACY_ACTIVE_V2_STUCK:-0} stuck live row(s) still on the desk. Exit 0 means no retryable gaps remain; inspect those pairs before treating the v2 migration as complete."
+            exit 0
+          fi
           echo "Legacy v2 rollout is complete."

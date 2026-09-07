@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kept_at": "2026-09-07T00:54:19.773104+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -42,7 +42,7 @@
     "offer_target_per_item_ron": 30.0
   },
   {
-    "kept_at": "2026-09-06T22:55:21.108917+00:00",
+    "kept_at": "2026-09-07T00:54:19.773104+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -80,6 +80,84 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T00:47:31.448525+00:00",
+    "seller": "dima_hontaruk26",
+    "seller_id": 90814365,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 123.22,
+    "checkout_total": 148.22,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9880120882,
+        "title": "Mens Shorts Nike Training Gym Running Sports Dri-Fit Soccer Athletic Szorty Męski Treningowe",
+        "price": 49.29,
+        "url": "https://www.vinted.ro/items/9880120882-mens-shorts-nike-training-gym-running-sports-dri-fit-soccer-athletic-szorty-meski-treningowe",
+        "watch": "Broad gym short EN M-L",
+        "deal_score": 8,
+        "seller_id": 90814365,
+        "seller": "dima_hontaruk26"
+      },
+      {
+        "role": "extra",
+        "id": 9859604020,
+        "title": "Mens Short Nike Valencia CF 00s Vintage Football Soccer Training Spain Męski Szorty Piłkarskie",
+        "price": 73.93,
+        "url": "https://www.vinted.ro/items/9859604020-mens-short-nike-valencia-cf-00s-vintage-football-soccer-training-spain-meski-szorty-pilkarskie",
+        "watch": "Gym seed Nike shorts M-L",
+        "deal_score": 6,
+        "seller_id": 90814365,
+        "seller": "dima_hontaruk26"
+      }
+    ],
+    "suggested_offer_ron": 80,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-07T00:47:13.312962+00:00",
+    "seller": "razvan360",
+    "seller_id": 266470292,
+    "country": "ro",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 30.0,
+    "checkout_total": 55.0,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9635957055,
+        "title": "Pantaloni scurți Adidas",
+        "price": 15.0,
+        "url": "https://www.vinted.ro/items/9635957055-pantaloni-scurti-adidas",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 6,
+        "seller_id": 266470292,
+        "seller": "razvan360"
+      },
+      {
+        "role": "extra",
+        "id": 9635912376,
+        "title": "Pantaloni scurți Adidas",
+        "price": 15.0,
+        "url": "https://www.vinted.ro/items/9635912376-pantaloni-scurti-adidas",
+        "watch": "Broad training shorts M-L",
+        "deal_score": 6,
+        "seller_id": 266470292,
+        "seller": "razvan360"
+      }
+    ],
+    "suggested_offer_ron": 27,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0
   },

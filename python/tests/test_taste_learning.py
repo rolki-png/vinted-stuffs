@@ -29,6 +29,30 @@ class TestFamily(unittest.TestCase):
 
 
 class TestPrompt(unittest.TestCase):
+    def test_v2_outcome_line_uses_buy_score_and_band(self):
+        line = tl._format_outcome_line(
+            {
+                "title": "Technical shorts",
+                "score_version": 2,
+                "buy_score": 88,
+                "buy_band": "keep",
+                "deal_score": 1,
+                "value_band": "skip",
+            }
+        )
+        self.assertIn("band=keep score=88", line)
+        self.assertNotIn("band=skip score=1", line)
+
+    def test_legacy_outcome_line_uses_deal_score_and_value_band(self):
+        line = tl._format_outcome_line(
+            {
+                "title": "Technical shorts",
+                "deal_score": 9,
+                "value_band": "steal",
+            }
+        )
+        self.assertIn("band=steal score=9", line)
+
     def test_includes_bought_not_parked(self):
         block = tl.build_taste_prompt_block(
             [

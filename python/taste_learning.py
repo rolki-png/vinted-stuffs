@@ -121,8 +121,12 @@ def _format_outcome_line(row: dict) -> str:
     size = row.get("size") or "?"
     price = row.get("price_ron")
     price_s = f"{price}" if price is not None else "?"
-    band = row.get("value_band") or "?"
-    score = row.get("deal_score")
+    if row.get("buy_score") is not None:
+        band = row.get("buy_band") or "?"
+        score = row.get("buy_score")
+    else:
+        band = row.get("value_band") or "?"
+        score = row.get("deal_score")
     score_s = f"{score}" if score is not None else "?"
     return (
         f"- {title} | brand={brand} size={size} "

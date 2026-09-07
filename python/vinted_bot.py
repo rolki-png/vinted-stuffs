@@ -527,7 +527,7 @@ one object per listing:
     "condition": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
     "versatility": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
     "equivalent_replacement_cost": {{
-      "value": <positive amount>,
+      "value": <positive amount, or 0 only when unknown>,
       "currency": "RON",
       "confidence": <0..1>,
       "evidence": "<conservative equivalent>"
@@ -661,6 +661,18 @@ def _as_int_score(value) -> int:
         return 0
 
 
+def _bounded_score_int(value) -> int | None:
+    if isinstance(value, bool):
+        return None
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(number) or not number.is_integer() or not 0 <= number <= 100:
+        return None
+    return int(number)
+
+
 def _is_declared_v2(score: dict) -> bool:
     try:
         return int(score.get("score_version") or 0) == 2
@@ -669,20 +681,25 @@ def _is_declared_v2(score: dict) -> bool:
 
 
 def _score_sort_key(score: dict) -> tuple[int, int, int]:
-    """Sort v2 scores together and ahead of explicitly legacy score rows."""
+    """Keep valid v2, legacy, and malformed declared-v2 rows in separate tiers."""
     import buy_score as buy_score_mod
 
-    try:
-        if buy_score_mod.is_v2_score(score):
+    if _is_declared_v2(score):
+        try:
+            if not buy_score_mod.is_v2_score(score):
+                return (0, 0, 0)
+            buy_score = _bounded_score_int(score.get("buy_score"))
+            if buy_score is None:
+                return (0, 0, 0)
             return (
-                1,
-                _as_int_score(score.get("buy_score")),
+                2,
+                buy_score,
                 1 if score.get("buy_band") == "exceptional" else 0,
             )
-    except (TypeError, ValueError):
-        pass
+        except (TypeError, ValueError):
+            return (0, 0, 0)
     return (
-        0,
+        1,
         _as_int_score(score.get("deal_score")),
         1 if score.get("value_band") == "steal" else 0,
     )
@@ -1230,67 +1247,93 @@ def _bounded_number(value, low: float, high: float) -> bool:
     return math.isfinite(number) and low <= number <= high
 
 
-def _valid_factor(field, low: float, high: float, *, positive: bool = False) -> bool:
+def _valid_factor(field, low: float, high: float) -> bool:
     if not isinstance(field, dict):
         return False
-    value = field.get("value")
-    if not _bounded_number(value, low, high):
-        return False
-    if positive and float(value) <= 0:
-        return False
     return (
-        _bounded_number(field.get("confidence"), 0, 1)
+        _bounded_number(field.get("value"), low, high)
+        and _bounded_number(field.get("confidence"), 0, 1)
         and isinstance(field.get("evidence"), str)
     )
 
 
-def _valid_extractions(extractions: list, items: list) -> bool:
-    """Accept only complete, bounded factor output for the requested listings."""
-    if not isinstance(extractions, list) or not extractions:
+def _valid_replacement_factor(field) -> bool:
+    if not isinstance(field, dict):
         return False
-    expected_ids = [str(item.get("id")) for item in items if item.get("id") is not None]
-    if len(extractions) != len(expected_ids):
+    value = field.get("value")
+    if not _bounded_number(value, 0, float("inf")):
         return False
-    seen_ids = []
-    for extraction in extractions:
-        if not isinstance(extraction, dict):
-            return False
-        seen_ids.append(str(extraction.get("id")))
-        if not isinstance(extraction.get("hunt_fit"), bool):
-            return False
-        if extraction.get("verification_concern") not in {
-            "none",
-            "inspect",
-            "block",
-        }:
-            return False
-        if not isinstance(extraction.get("verification_reason"), str):
-            return False
-        if not isinstance(extraction.get("reason"), str):
-            return False
-        adjustments = extraction.get("personal_adjustments")
-        if not isinstance(adjustments, dict) or any(
-            not _bounded_number(value, -10, 10) for value in adjustments.values()
-        ):
-            return False
-        factors = extraction.get("factors")
-        if not isinstance(factors, dict):
-            return False
-        if not _valid_factor(factors.get("fit_probability"), 0, 1):
-            return False
-        if not all(
+    if (
+        str(field.get("currency") or "").upper() != "RON"
+        or not _bounded_number(field.get("confidence"), 0, 1)
+        or not isinstance(field.get("evidence"), str)
+    ):
+        return False
+    if float(value) == 0:
+        return (
+            float(field["confidence"]) == 0
+            and field["evidence"].strip().lower() == "unknown"
+        )
+    return True
+
+
+def _valid_extraction(extraction: dict, expected_ids: set[str], cap: float) -> bool:
+    if not isinstance(extraction, dict):
+        return False
+    if str(extraction.get("id")) not in expected_ids:
+        return False
+    if not isinstance(extraction.get("hunt_fit"), bool):
+        return False
+    if extraction.get("verification_concern") not in {
+        "none",
+        "inspect",
+        "block",
+    }:
+        return False
+    if not isinstance(extraction.get("verification_reason"), str):
+        return False
+    if not isinstance(extraction.get("reason"), str):
+        return False
+    adjustments = extraction.get("personal_adjustments")
+    if not isinstance(adjustments, dict) or any(
+        not _bounded_number(value, -cap, cap) for value in adjustments.values()
+    ):
+        return False
+    factors = extraction.get("factors")
+    if not isinstance(factors, dict):
+        return False
+    return (
+        _valid_factor(factors.get("fit_probability"), 0, 1)
+        and all(
             _valid_factor(factors.get(key), 0, 100)
             for key in ("usefulness", "quality", "condition", "versatility")
-        ):
-            return False
-        replacement = factors.get("equivalent_replacement_cost")
-        if not _valid_factor(replacement, 0, float("inf"), positive=True):
-            return False
-        if str(replacement.get("currency") or "").upper() != "RON":
-            return False
-        if not _valid_factor(factors.get("duplication_probability"), 0, 1):
-            return False
-    return sorted(seen_ids) == sorted(expected_ids) and len(set(seen_ids)) == len(seen_ids)
+        )
+        and _valid_replacement_factor(factors.get("equivalent_replacement_cost"))
+        and _valid_factor(factors.get("duplication_probability"), 0, 1)
+    )
+
+
+def _valid_extractions(extractions: list, items: list, config: dict) -> list:
+    """Return valid extraction rows; malformed or omitted siblings stay unscored."""
+    import buy_score as buy_score_mod
+
+    if not isinstance(extractions, list):
+        return []
+    expected_ids = {
+        str(item.get("id")) for item in items if item.get("id") is not None
+    }
+    cap = float(buy_score_mod.score_config(config)["personal_adjustment_cap"])
+    valid = []
+    seen_ids = set()
+    for extraction in extractions:
+        if not _valid_extraction(extraction, expected_ids, cap):
+            continue
+        item_id = str(extraction.get("id"))
+        if item_id in seen_ids:
+            continue
+        seen_ids.add(item_id)
+        valid.append(extraction)
+    return valid
 
 
 def normalize_extractions(
@@ -1310,7 +1353,9 @@ def normalize_extractions(
         amount = listing_amount(item)
         if amount is None:
             continue
-        country = _country(watch)
+        profile = item.get("_profile")
+        profile = profile if isinstance(profile, dict) else {}
+        country = profile.get("country_code") or _country(watch)
         delivered = amount + checkout_extra_ron(country, config, amount)
         out.append(
             buy_score_mod.calculate_buy_score(
@@ -1327,7 +1372,10 @@ def _test_mode_extractions(items: list, watch: dict, config: dict) -> list:
     extractions = []
     for item in items:
         amount = listing_amount(item) or 0
-        delivered = amount + checkout_extra_ron(_country(watch), config, amount)
+        profile = item.get("_profile")
+        profile = profile if isinstance(profile, dict) else {}
+        country = profile.get("country_code") or _country(watch)
+        delivered = amount + checkout_extra_ron(country, config, amount)
         evidence = "TEST MODE - extraction skipped"
         extractions.append(
             {
@@ -1441,12 +1489,12 @@ def score_listings(
             extractions = score_with_gateway(
                 gateway_key, watch, items, taste_block=taste_block
             )
-            if _valid_extractions(extractions, items):
-                scores = normalize_extractions(extractions, items, watch, config)
-                if scores:
-                    print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
-                    return scores
-            errors.append("AI Gateway returned invalid or incomplete factor extraction")
+            valid_extractions = _valid_extractions(extractions, items, config)
+            if valid_extractions:
+                scores = normalize_extractions(valid_extractions, items, watch, config)
+                print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
+                return scores
+            errors.append("AI Gateway returned no valid factor extractions")
         except requests.RequestException as e:
             errors.append(f"AI Gateway failed: {e}")
             print(errors[-1], file=sys.stderr)
@@ -1455,12 +1503,12 @@ def score_listings(
             extractions = score_with_gemini(
                 gemini_client, watch, items, taste_block=taste_block
             )
-            if _valid_extractions(extractions, items):
-                scores = normalize_extractions(extractions, items, watch, config)
-                if scores:
-                    print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
-                    return scores
-            errors.append("Gemini returned invalid or incomplete factor extraction")
+            valid_extractions = _valid_extractions(extractions, items, config)
+            if valid_extractions:
+                scores = normalize_extractions(valid_extractions, items, watch, config)
+                print(f"Scored {len(scores)} listing(s) via Gemini ({GEMINI_MODEL})", file=sys.stderr)
+                return scores
+            errors.append("Gemini returned no valid factor extractions")
         except Exception as e:
             errors.append(f"Gemini failed: {e}")
             print(errors[-1], file=sys.stderr)
@@ -1588,27 +1636,49 @@ def _ntfy_post(topic: str, title: str, body: str, url: str | None, priority: str
         print(f"ntfy send failed: {e}", file=sys.stderr)
 
 
-def _v2_notification_score(score: dict) -> str:
+def _v2_notification_score(score: dict) -> str | None:
+    buy_score = _bounded_score_int(score.get("buy_score"))
+    low = _bounded_score_int(score.get("score_interval_low"))
+    high = _bounded_score_int(score.get("score_interval_high"))
+    band = score.get("buy_band")
+    concern = score.get("verification_concern")
+    if (
+        not _is_declared_v2(score)
+        or buy_score is None
+        or low is None
+        or high is None
+        or low > high
+        or band not in {"skip", "bundle", "good", "keep", "exceptional"}
+        or concern not in {"none", "inspect", "block"}
+    ):
+        return None
     return (
-        f"{_as_int_score(score.get('buy_score'))}/100 "
-        f"[{_as_int_score(score.get('score_interval_low'))}-"
-        f"{_as_int_score(score.get('score_interval_high'))}] "
-        f"{score.get('buy_band') or 'skip'} "
-        f"verification: {score.get('verification_concern') or 'block'}"
+        f"{buy_score}/100 [{low}-{high}] {band} "
+        f"verification: {concern}"
     )
 
 
-def send_ntfy(topic: str, item: dict, score: dict) -> None:
+def send_ntfy(
+    topic: str,
+    item: dict,
+    score: dict,
+    config: dict | None = None,
+) -> bool:
     price = (item.get("price") or {}).get("amount", "?")
     currency = (item.get("price") or {}).get("currency_code", "")
     if _is_declared_v2(score):
         score_text = _v2_notification_score(score)
+        if score_text is None:
+            return False
         title = _header_safe(f"{score_text}: {item.get('title', '')[:50]}")
         body = (
             f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
             f"- {score_text}\n{score.get('reason') or ''}"
         )
-        high_priority = _as_int_score(score.get("buy_score")) >= 85
+        import buy_score as buy_score_mod
+
+        keep_min = int(buy_score_mod.score_config(config)["keep_min_score"])
+        high_priority = _as_int_score(score.get("buy_score")) >= keep_min
     else:
         band = score.get("value_band") or "keep"
         title = _header_safe(
@@ -1626,12 +1696,15 @@ def send_ntfy(topic: str, item: dict, score: dict) -> None:
         item.get("url"),
         "high" if high_priority else "default",
     )
+    return True
 
 
-def _bundle_notification_line(role: str, row: dict) -> str:
+def _bundle_notification_line(role: str, row: dict) -> str | None:
     score = row["score"]
     if _is_declared_v2(score):
         score_text = _v2_notification_score(score)
+        if score_text is None:
+            return None
     else:
         score_text = f"{score.get('deal_score')}/10"
     return (
@@ -1640,7 +1713,7 @@ def _bundle_notification_line(role: str, row: dict) -> str:
     )
 
 
-def send_ntfy_bundle(topic: str, bundle: dict) -> None:
+def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
     n = len(bundle["keeps"]) + len(bundle["extras"])
     seller = bundle.get("seller") or bundle["seller_id"]
     title = _header_safe(
@@ -1655,14 +1728,21 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> None:
         weak = " (weak/stretch)" if bundle.get("offer_weak") else ""
         lines.append(f"offer ~{int(offer)} RON{weak}")
     for row in bundle["keeps"]:
-        lines.append(_bundle_notification_line("KEEP", row))
+        line = _bundle_notification_line("KEEP", row)
+        if line is None:
+            return False
+        lines.append(line)
     for row in bundle["extras"]:
-        lines.append(_bundle_notification_line("EXTRA", row))
+        line = _bundle_notification_line("EXTRA", row)
+        if line is None:
+            return False
+        lines.append(line)
     click = (bundle["keeps"][0]["item"].get("user") or {})
     profile = None
     if bundle.get("seller_id"):
         profile = f"https://www.vinted.ro/member/{bundle['seller_id']}"
     _ntfy_post(topic, title, "\n".join(lines), profile, "high")
+    return True
 
 
 def send_ntfy_value_haul(topic: str, haul: dict, score: dict, useful: list) -> None:
@@ -2278,11 +2358,11 @@ def main() -> None:
                 config=config,
             )
         )
-        send_ntfy_bundle(ntfy_topic, bundle)
-        alerts_sent += 1
+        if send_ntfy_bundle(ntfy_topic, bundle):
+            alerts_sent += 1
     for keep in keeps:
-        send_ntfy(ntfy_topic, keep["item"], keep["score"])
-        alerts_sent += 1
+        if send_ntfy(ntfy_topic, keep["item"], keep["score"], config):
+            alerts_sent += 1
     save_bundle_pool(pool_candidates(merged, config))
     bundles = new_bundles
 

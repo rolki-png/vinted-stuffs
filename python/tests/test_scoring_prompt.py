@@ -1,4 +1,5 @@
 import path_setup  # noqa: F401
+import copy
 import unittest
 from unittest.mock import patch
 
@@ -83,10 +84,16 @@ class ScoringPromptTests(unittest.TestCase):
             },
         }
 
+    def extraction_for(self, item_id):
+        extraction = copy.deepcopy(self.extracted)
+        extraction["id"] = item_id
+        return extraction
+
     def test_prompt_requests_factors_but_not_buy_score(self):
         prompt = bot._extraction_prompt(self.watch, self.items)
         self.assertIn("equivalent_replacement_cost", prompt)
         self.assertIn("duplication_probability", prompt)
+        self.assertIn("0 only when unknown", prompt)
         self.assertNotIn('"buy_score"', prompt)
         self.assertIn("brand alone", prompt.lower())
 
@@ -108,7 +115,7 @@ class ScoringPromptTests(unittest.TestCase):
         self.assertEqual(scores[0]["score_factors"]["delivered_cost_ron"], 102)
         self.assertEqual(scores[0]["score_version"], 2)
 
-    def test_malformed_gateway_factors_fall_through_to_gemini(self):
+    def test_gateway_with_zero_valid_rows_falls_through_to_gemini(self):
         malformed = [{"id": 1, "deal_score": 10, "hunt_fit": True}]
         with (
             patch.object(bot, "score_with_gateway", return_value=malformed),
@@ -125,6 +132,162 @@ class ScoringPromptTests(unittest.TestCase):
             )
         gemini.assert_called_once()
         self.assertEqual(scores[0]["score_version"], 2)
+
+    def test_gateway_keeps_valid_rows_when_siblings_are_missing_or_malformed(self):
+        items = [
+            self.items[0],
+            {**self.items[0], "id": 2},
+            {**self.items[0], "id": 3},
+        ]
+        gateway_rows = [
+            self.extracted,
+            {"id": 2, "factors": {"quality": "high"}},
+        ]
+        with (
+            patch.object(bot, "score_with_gateway", return_value=gateway_rows),
+            patch.object(bot, "score_with_gemini", return_value=[]) as gemini,
+        ):
+            scores = bot.score_listings(
+                self.watch,
+                items,
+                "gateway-key",
+                object(),
+                {},
+            )
+        gemini.assert_not_called()
+        self.assertEqual([score["id"] for score in scores], [1])
+
+    def test_gateway_does_not_fall_through_after_valid_but_unpriced_row(self):
+        unpriced = {
+            **self.items[0],
+            "price": {"amount": "unknown", "currency_code": "RON"},
+        }
+        with (
+            patch.object(
+                bot, "score_with_gateway", return_value=[self.extracted]
+            ),
+            patch.object(bot, "score_with_gemini", return_value=[]) as gemini,
+        ):
+            scores = bot.score_listings(
+                self.watch,
+                [unpriced],
+                "gateway-key",
+                object(),
+                {},
+            )
+        gemini.assert_not_called()
+        self.assertEqual(scores, [])
+
+    def test_gemini_may_return_valid_subset_after_empty_gateway_result(self):
+        items = [self.items[0], {**self.items[0], "id": 2}]
+        with (
+            patch.object(
+                bot,
+                "score_with_gateway",
+                return_value=[{"id": 1, "factors": {}}],
+            ),
+            patch.object(
+                bot,
+                "score_with_gemini",
+                return_value=[self.extracted],
+            ),
+        ):
+            scores = bot.score_listings(
+                self.watch,
+                items,
+                "gateway-key",
+                object(),
+                {},
+            )
+        self.assertEqual([score["id"] for score in scores], [1])
+
+    def test_zero_unknown_replacement_cost_reaches_calculator_block_path(self):
+        extraction = self.extraction_for(1)
+        extraction["factors"]["equivalent_replacement_cost"] = {
+            "value": 0,
+            "currency": "RON",
+            "confidence": 0,
+            "evidence": "unknown",
+        }
+        with patch.object(bot, "score_with_gateway", return_value=[extraction]):
+            scores = bot.score_listings(
+                self.watch,
+                self.items,
+                "gateway-key",
+                None,
+                {},
+            )
+        self.assertEqual(scores[0]["buy_score"], 0)
+        self.assertEqual(scores[0]["verification_concern"], "block")
+
+    def test_negative_and_nonfinite_replacement_costs_are_rejected(self):
+        invalid_rows = []
+        for value in (-1, float("inf")):
+            extraction = self.extraction_for(1)
+            extraction["factors"]["equivalent_replacement_cost"]["value"] = value
+            invalid_rows.append(extraction)
+        for extraction in invalid_rows:
+            with self.subTest(value=extraction["factors"]["equivalent_replacement_cost"]["value"]):
+                with patch.object(
+                    bot, "score_with_gateway", return_value=[extraction]
+                ):
+                    scores = bot.score_listings(
+                        self.watch,
+                        self.items,
+                        "gateway-key",
+                        None,
+                        {},
+                    )
+                self.assertEqual(scores, [])
+
+    def test_adjustment_validation_uses_configured_cap(self):
+        over_cap = self.extraction_for(1)
+        over_cap["personal_adjustments"]["quality"] = 6
+        fallback = self.extraction_for(1)
+        config = {"buy_scoring": {"personal_adjustment_cap": 5}}
+        with (
+            patch.object(bot, "score_with_gateway", return_value=[over_cap]),
+            patch.object(
+                bot, "score_with_gemini", return_value=[fallback]
+            ) as gemini,
+        ):
+            scores = bot.score_listings(
+                self.watch,
+                self.items,
+                "gateway-key",
+                object(),
+                config,
+            )
+        gemini.assert_called_once()
+        self.assertEqual(scores[0]["score_factors"]["personal_adjustments"]["quality"], 0)
+
+    def test_normalization_prefers_seller_country_for_solo_delivered_fees(self):
+        item = {
+            **self.items[0],
+            "_profile": {"country_code": "hu"},
+            "price": {"amount": "100", "currency_code": "RON"},
+        }
+        config = {
+            "checkout_fees": {
+                "ro": {
+                    "estimated_shipping_ron": 1,
+                    "buyer_fee_fixed_ron": 0,
+                    "buyer_fee_pct": 0,
+                },
+                "hu": {
+                    "estimated_shipping_ron": 18,
+                    "buyer_fee_fixed_ron": 3,
+                    "buyer_fee_pct": 0.05,
+                },
+            }
+        }
+        scores = bot.normalize_extractions(
+            [self.extracted],
+            [item],
+            self.watch,
+            config,
+        )
+        self.assertEqual(scores[0]["score_factors"]["delivered_cost_ron"], 126)
 
     def test_malformed_output_from_both_scorers_stays_unscored(self):
         malformed = [{"id": 1, "factors": {"quality": "high"}}]

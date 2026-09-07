@@ -83,9 +83,12 @@ active completion gaps. A batch response must mark `available: false` before a
 row is treated as gone; omitted ids stay retryable. Bought and Removed rows are
 skipped. A live row that cannot earn a v2 score is marked stuck after three
 consecutive attempts so dispatch-until-exit-0 can finish without looping, but
-that is `exhausted`, not a completed v2 migration. Normal manual and
-scheduled bot runs do not enter this rollout path. Each Actions dispatch scores
-at most 200 live rows and times out after 90 minutes.
+that is `exhausted`, not a completed v2 migration. Manual **Run hunt**
+dispatches still hunt. Scheduled runs continue a partial `legacy_active_v2`
+rollout instead of hunting, so the 15-minute cron cannot replace a queued
+rescore with a full hunt. After status `complete` or `exhausted`, the cron
+returns to the normal hunt. Each Actions dispatch scores at most 200 live rows
+and times out after 90 minutes.
 
 For a deliberate local rollout with the same database and provider environment
 configured:

@@ -1,5 +1,6 @@
 import path_setup  # noqa: F401
 import copy
+import io
 import unittest
 from unittest.mock import patch
 
@@ -93,9 +94,15 @@ class ScoringPromptTests(unittest.TestCase):
         prompt = bot._extraction_prompt(self.watch, self.items)
         self.assertIn("equivalent_replacement_cost", prompt)
         self.assertIn("duplication_probability", prompt)
-        self.assertIn("0 only when unknown", prompt)
+        self.assertIn(
+            '0 only with confidence 0 and evidence beginning "unknown"',
+            prompt,
+        )
         self.assertNotIn('"buy_score"', prompt)
         self.assertIn("brand alone", prompt.lower())
+
+    def test_removed_scoring_prompt_alias_has_no_branch_callers(self):
+        self.assertFalse(hasattr(bot, "_scoring_prompt"))
 
     def test_normalization_calculates_delivered_cost(self):
         scores = bot.normalize_extractions(
@@ -162,11 +169,13 @@ class ScoringPromptTests(unittest.TestCase):
             **self.items[0],
             "price": {"amount": "unknown", "currency_code": "RON"},
         }
+        stderr = io.StringIO()
         with (
             patch.object(
                 bot, "score_with_gateway", return_value=[self.extracted]
             ),
             patch.object(bot, "score_with_gemini", return_value=[]) as gemini,
+            patch("sys.stderr", new=stderr),
         ):
             scores = bot.score_listings(
                 self.watch,
@@ -177,6 +186,9 @@ class ScoringPromptTests(unittest.TestCase):
             )
         gemini.assert_not_called()
         self.assertEqual(scores, [])
+        self.assertNotIn("Scored 0", stderr.getvalue())
+        self.assertIn("valid factor extraction", stderr.getvalue())
+        self.assertIn("unpriced", stderr.getvalue())
 
     def test_gemini_may_return_valid_subset_after_empty_gateway_result(self):
         items = [self.items[0], {**self.items[0], "id": 2}]
@@ -207,7 +219,7 @@ class ScoringPromptTests(unittest.TestCase):
             "value": 0,
             "currency": "RON",
             "confidence": 0,
-            "evidence": "unknown",
+            "evidence": "  UnKnOwN: no comparable evidence",
         }
         with patch.object(bot, "score_with_gateway", return_value=[extraction]):
             scores = bot.score_listings(
@@ -219,6 +231,24 @@ class ScoringPromptTests(unittest.TestCase):
             )
         self.assertEqual(scores[0]["buy_score"], 0)
         self.assertEqual(scores[0]["verification_concern"], "block")
+
+    def test_zero_replacement_with_unrelated_evidence_is_rejected(self):
+        extraction = self.extraction_for(1)
+        extraction["factors"]["equivalent_replacement_cost"] = {
+            "value": 0,
+            "currency": "RON",
+            "confidence": 0,
+            "evidence": "not provided",
+        }
+        with patch.object(bot, "score_with_gateway", return_value=[extraction]):
+            scores = bot.score_listings(
+                self.watch,
+                self.items,
+                "gateway-key",
+                None,
+                {},
+            )
+        self.assertEqual(scores, [])
 
     def test_negative_and_nonfinite_replacement_costs_are_rejected(self):
         invalid_rows = []

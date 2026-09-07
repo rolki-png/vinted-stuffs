@@ -527,7 +527,7 @@ one object per listing:
     "condition": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
     "versatility": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
     "equivalent_replacement_cost": {{
-      "value": <positive amount, or 0 only when unknown>,
+      "value": <positive amount; 0 only with confidence 0 and evidence beginning "unknown">,
       "currency": "RON",
       "confidence": <0..1>,
       "evidence": "<conservative equivalent>"
@@ -641,9 +641,6 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
     if not block:
         return base
     return f"{base}\n\n{block}\n"
-
-
-_scoring_prompt = _extraction_prompt
 
 
 def _max_new_items_per_watch(config: dict) -> int:
@@ -1272,7 +1269,7 @@ def _valid_replacement_factor(field) -> bool:
     if float(value) == 0:
         return (
             float(field["confidence"]) == 0
-            and field["evidence"].strip().lower() == "unknown"
+            and field["evidence"].strip().lower().startswith("unknown")
         )
     return True
 
@@ -1492,7 +1489,19 @@ def score_listings(
             valid_extractions = _valid_extractions(extractions, items, config)
             if valid_extractions:
                 scores = normalize_extractions(valid_extractions, items, watch, config)
-                print(f"Scored {len(scores)} listing(s) via Vercel AI Gateway ({AI_GATEWAY_MODEL})", file=sys.stderr)
+                if scores:
+                    print(
+                        f"Scored {len(scores)} listing(s) via Vercel AI Gateway "
+                        f"({AI_GATEWAY_MODEL})",
+                        file=sys.stderr,
+                    )
+                else:
+                    print(
+                        f"Vercel AI Gateway returned {len(valid_extractions)} valid "
+                        "factor extraction(s), but matching rows were unpriced; "
+                        "leaving them unscored.",
+                        file=sys.stderr,
+                    )
                 return scores
             errors.append("AI Gateway returned no valid factor extractions")
         except requests.RequestException as e:
@@ -1620,7 +1629,13 @@ def _header_safe(text: str) -> str:
     return text.encode("latin-1", errors="ignore").decode("latin-1")
  
  
-def _ntfy_post(topic: str, title: str, body: str, url: str | None, priority: str) -> None:
+def _ntfy_post(
+    topic: str,
+    title: str,
+    body: str,
+    url: str | None,
+    priority: str,
+) -> bool:
     headers = {"Title": _header_safe(title), "Priority": priority}
     if url:
         headers["Click"] = _header_safe(url)
@@ -1634,6 +1649,8 @@ def _ntfy_post(topic: str, title: str, body: str, url: str | None, priority: str
         urllib.request.urlopen(req, timeout=10)
     except urllib.error.URLError as e:
         print(f"ntfy send failed: {e}", file=sys.stderr)
+        return False
+    return True
 
 
 def _v2_notification_score(score: dict) -> str | None:
@@ -1669,6 +1686,14 @@ def send_ntfy(
     if _is_declared_v2(score):
         score_text = _v2_notification_score(score)
         if score_text is None:
+            listing = item.get("id")
+            if listing is None:
+                listing = item.get("title") or "unknown"
+            print(
+                f"Suppressed solo notification for listing {listing}: "
+                "malformed v2 calculated score fields.",
+                file=sys.stderr,
+            )
             return False
         title = _header_safe(f"{score_text}: {item.get('title', '')[:50]}")
         body = (
@@ -1689,14 +1714,13 @@ def send_ntfy(
             f"- {band} - scam: {score['scam_risk']}\n{score['reason']}"
         )
         high_priority = _as_int_score(score.get("deal_score")) >= 9
-    _ntfy_post(
+    return _ntfy_post(
         topic,
         title,
         body,
         item.get("url"),
         "high" if high_priority else "default",
     )
-    return True
 
 
 def _bundle_notification_line(role: str, row: dict) -> str | None:
@@ -1730,18 +1754,48 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
     for row in bundle["keeps"]:
         line = _bundle_notification_line("KEEP", row)
         if line is None:
+            member = row["item"].get("id")
+            if member is None:
+                member = row["item"].get("title") or "unknown"
+            print(
+                f"Suppressed bundle notification: member {member} has malformed v2 "
+                "calculated score fields; whole bundle remains retryable.",
+                file=sys.stderr,
+            )
             return False
         lines.append(line)
     for row in bundle["extras"]:
         line = _bundle_notification_line("EXTRA", row)
         if line is None:
+            member = row["item"].get("id")
+            if member is None:
+                member = row["item"].get("title") or "unknown"
+            print(
+                f"Suppressed bundle notification: member {member} has malformed v2 "
+                "calculated score fields; whole bundle remains retryable.",
+                file=sys.stderr,
+            )
             return False
         lines.append(line)
     click = (bundle["keeps"][0]["item"].get("user") or {})
     profile = None
     if bundle.get("seller_id"):
         profile = f"https://www.vinted.ro/member/{bundle['seller_id']}"
-    _ntfy_post(topic, title, "\n".join(lines), profile, "high")
+    return _ntfy_post(topic, title, "\n".join(lines), profile, "high")
+
+
+def send_retryable_bundle_notification(
+    topic: str,
+    bundle: dict,
+    alerted_bundle_keys: list[str],
+    alerted_bundles: set[str],
+) -> bool:
+    key = bundle_fingerprint(bundle)
+    if key in alerted_bundles:
+        return False
+    if not send_ntfy_bundle(topic, bundle):
+        return False
+    add_alerted_bundle_key(alerted_bundle_keys, alerted_bundles, key)
     return True
 
 
@@ -2339,12 +2393,11 @@ def main() -> None:
         if key in alerted_bundles:
             continue
         new_bundles.append(bundle)
-        add_alerted_bundle_key(alerted_bundle_keys, alerted_bundles, key)
-    state["alerted_bundle_keys"] = alerted_bundle_keys[-200:]
     # Re-alert only this-run solos; prior keeps already went out as ntfy.
     this_run_solos = [r for r in solos if str(r["item"].get("id")) in this_run_ids]
     keeps = select_best(this_run_solos, config)
 
+    sent_bundles = []
     for bundle in new_bundles:
         members = bundle["keeps"] + bundle["extras"]
         watch_name = next((r.get("watch") for r in members if r.get("watch")), None)
@@ -2358,13 +2411,20 @@ def main() -> None:
                 config=config,
             )
         )
-        if send_ntfy_bundle(ntfy_topic, bundle):
+        if send_retryable_bundle_notification(
+            ntfy_topic,
+            bundle,
+            alerted_bundle_keys,
+            alerted_bundles,
+        ):
+            sent_bundles.append(bundle)
             alerts_sent += 1
+    state["alerted_bundle_keys"] = alerted_bundle_keys[-200:]
     for keep in keeps:
         if send_ntfy(ntfy_topic, keep["item"], keep["score"], config):
             alerts_sent += 1
     save_bundle_pool(pool_candidates(merged, config))
-    bundles = new_bundles
+    bundles = sent_bundles
 
     best_rows = load_best()
     now = datetime.now(timezone.utc).isoformat()

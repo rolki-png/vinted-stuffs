@@ -1,4 +1,5 @@
 import path_setup  # noqa: F401
+import io
 import inspect
 import unittest
 from unittest.mock import patch
@@ -308,6 +309,7 @@ class KeepRuleTests(unittest.TestCase):
 
     def test_malformed_v2_solo_notification_is_not_sent(self):
         item = {
+            "id": 7,
             "title": "Technical shorts",
             "price": {"amount": "80", "currency_code": "RON"},
         }
@@ -316,10 +318,16 @@ class KeepRuleTests(unittest.TestCase):
             "score_interval_low": "unknown",
             "score_interval_high": 95,
         }
-        with patch.object(bot, "_ntfy_post") as send:
+        stderr = io.StringIO()
+        with (
+            patch.object(bot, "_ntfy_post") as send,
+            patch("sys.stderr", new=stderr),
+        ):
             sent = bot.send_ntfy("topic", item, malformed, CONFIG)
         self.assertFalse(sent)
         send.assert_not_called()
+        self.assertIn("malformed v2", stderr.getvalue().lower())
+        self.assertIn("7", stderr.getvalue())
 
     def test_v2_bundle_notification_uses_only_v2_score_semantics(self):
         row = {
@@ -356,6 +364,7 @@ class KeepRuleTests(unittest.TestCase):
     def test_malformed_v2_bundle_notification_is_not_sent(self):
         row = {
             "item": {
+                "id": 8,
                 "title": "Technical shorts",
                 "price": {"amount": "80", "currency_code": "RON"},
             },
@@ -375,10 +384,16 @@ class KeepRuleTests(unittest.TestCase):
             "keeps": [row],
             "extras": [],
         }
-        with patch.object(bot, "_ntfy_post") as send:
+        stderr = io.StringIO()
+        with (
+            patch.object(bot, "_ntfy_post") as send,
+            patch("sys.stderr", new=stderr),
+        ):
             sent = bot.send_ntfy_bundle("topic", bundle)
         self.assertFalse(sent)
         send.assert_not_called()
+        self.assertIn("malformed v2", stderr.getvalue().lower())
+        self.assertIn("member 8", stderr.getvalue().lower())
 
     def test_v2_snapshot_contains_v2_fields_without_legacy_score_fields(self):
         score = {

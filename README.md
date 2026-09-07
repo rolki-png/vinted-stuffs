@@ -33,8 +33,9 @@ Unknown evidence is pulled toward neutral rather than treated as proof of risk.
 
 `buy_band` labels the calculated score: `skip` below 60, `bundle` at 60–74,
 `good` at 75–84, `keep` at 85–94, and `exceptional` at 95–100. A Keep also
-requires hunt fit, score confidence of at least 0.60, and no blocking
-verification concern. Pairwise comparisons rank only qualifying candidates
+requires hunt fit, score confidence of at least `min_keep_confidence`
+(default 0.60), and no blocking verification concern. Pairwise comparisons rank
+only qualifying candidates
 whose uncertainty intervals overlap; rank orders close choices but never
 changes `buy_score` or promotes a sub-threshold listing. Legacy 1–10 scores are
 shown only as labelled history and are never compared with v2 scores.
@@ -51,7 +52,12 @@ npm run dev
 
 ```bash
 uv run --project python python -m unittest discover -s python/tests -v
+npm run test:desk
 ```
+
+`npm test` runs the same Python discovery command through `uv` plus a small
+set of dashboard contracts. CI Python installs use `uv sync --project python`;
+`python/requirements.txt` mirrors those dependencies for non-uv environments.
 
 ## Legacy v2 rollout
 
@@ -68,15 +74,19 @@ commits the export and progress state, and reports:
 
 Confirmed unavailable rows keep their historical score and rationale and are
 tracked outside the score row, so they do not consume later batches or count as
-active completion gaps. Fetch failures remain retryable. Normal manual and
-scheduled bot runs do not enter this rollout path.
+active completion gaps. A batch response must mark `available: false` before a
+row is treated as gone; omitted ids stay retryable. Bought and Removed rows are
+skipped. A live row that cannot earn a v2 score is marked stuck after three
+consecutive attempts so dispatch-until-exit-0 can finish. Normal manual and
+scheduled bot runs do not enter this rollout path. Each Actions dispatch scores
+at most 200 live rows and times out after 90 minutes.
 
 For a deliberate local rollout with the same database and provider environment
 configured:
 
 ```bash
 uv run --project python python python/backfill_scored_listings.py \
-  --legacy-active-v2 --limit 10000 --export
+  --legacy-active-v2 --limit 200 --export
 ```
 
 This command can incur paid LLM usage.

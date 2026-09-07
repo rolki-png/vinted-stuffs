@@ -69,7 +69,7 @@ jobs:
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
       - name: Run bot
-        if: ${{ !inputs.legacy_active_v2 }}
+        if: ${{ !fromJSON(inputs.legacy_active_v2 || 'false') }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -82,7 +82,8 @@ jobs:
         run: uv run --project python python python/vinted_bot.py
 
       - name: Run active legacy v2 rollout
-        if: ${{ inputs.legacy_active_v2 }}
+        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
+        timeout-minutes: 90
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -92,7 +93,7 @@ jobs:
         run: |
           set +e
           uv run --project python python python/backfill_scored_listings.py \
-            --legacy-active-v2 --limit 10000 --export
+            --legacy-active-v2 --limit 200 --export
           status=$?
           set -e
           echo "LEGACY_ACTIVE_V2_EXIT_CODE=$status" >> "$GITHUB_ENV"
@@ -115,7 +116,7 @@ jobs:
           fi
 
       - name: Check legacy rollout completion
-        if: ${{ inputs.legacy_active_v2 }}
+        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
         run: |
           if [[ "$LEGACY_ACTIVE_V2_EXIT_CODE" -eq 3 ]]; then
             echo "Legacy v2 rollout is partial; dispatch legacy_active_v2 again."

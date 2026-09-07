@@ -10,9 +10,9 @@ _Avoid_: Watch (except as config key), alert, scrape
 
 **Keep**:
 A crème-de-la-crème v2 listing: true hunt fit, `buy_score >= 85`,
-`score_confidence >= 0.60` (medium/high confidence), and no blocking
-verification concern. Pairwise rank can order Keeps but cannot make a listing a
-Keep. A merely good listing is not a Keep.
+`score_confidence >= min_keep_confidence` (default 0.60, medium/high),
+and no blocking verification concern. Pairwise rank can order Keeps but cannot
+make a listing a Keep. A merely good listing is not a Keep.
 _Avoid_: Deal, hit, pass
 
 **Solo floor**:

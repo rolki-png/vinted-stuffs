@@ -33,6 +33,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Refresh to latest main
+        run: |
+          git fetch origin main
+          git checkout --force -B main origin/main
+          git log -1 --oneline
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

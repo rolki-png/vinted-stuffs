@@ -141,14 +141,22 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update hunt state [skip ci]"
             # Main can move while the bot runs (manual pushes); rebase then push.
-            git pull --rebase origin main
+            if ! git pull --rebase origin main; then
+              echo "Hunt-state rebase conflict; merging legacy progress and keeping this run's score export."
+              git show :2:data/seen_listings.json > /tmp/seen_main.json
+              git show :3:data/seen_listings.json > /tmp/seen_incoming.json
+              python3 python/merge_legacy_state.py /tmp/seen_main.json /tmp/seen_incoming.json data/seen_listings.json
+              git checkout --theirs data/indexed_scores.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json || true
+              git add data/seen_listings.json data/indexed_scores.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json
+              GIT_EDITOR=true git rebase --continue
+            fi
             git push
           else
             echo "No state changes to commit"
           fi
 
       - name: Queue next legacy v2 batch
-        if: ${{ env.RUN_LEGACY_V2 == 'true' && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3' }}
+        if: ${{ always() && env.RUN_LEGACY_V2 == 'true' && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3' }}
         continue-on-error: true
         run: |
           echo "Partial batch; queue the next legacy_active_v2 dispatch."
@@ -158,7 +166,7 @@ jobs:
             -d '{"legacy_active_v2":true,"full_sweep":false,"skip_scoring":false}'
 
       - name: Check legacy rollout completion
-        if: ${{ env.RUN_LEGACY_V2 == 'true' }}
+        if: ${{ always() && env.RUN_LEGACY_V2 == 'true' }}
         run: |
           if [[ "$LEGACY_ACTIVE_V2_EXIT_CODE" -eq 3 ]]; then
             echo "Legacy v2 rollout is partial; the next batch was queued."

@@ -327,6 +327,222 @@
   },
   {
     "item": {
+      "id": 9928149525,
+      "title": "Pantaloni scurti Nike pantalon scurt Marimea M barbati gri",
+      "price": {
+        "amount": "49.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928149525-pantaloni-scurti-nike-pantalon-scurt-marimea-m-barbati-gri",
+      "user": {
+        "id": 3130241352,
+        "login": "erzs1953"
+      },
+      "_profile": {
+        "username": "erzs1953",
+        "member_since": null,
+        "feedback_count": 47,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 329,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9928149525,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 62,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 78.0,
+        "condition": 82.0,
+        "versatility": 82.0,
+        "value": 54.009,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.18,
+        "delivered_cost_ron": 69.45,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard Nike training build",
+        "quality": "Nike performance fabric",
+        "condition": "Listed as very good",
+        "versatility": "Ideal for various gym activities",
+        "value": "Standard Nike training shorts price",
+        "fit_probability": "Listed as size M",
+        "duplication_probability": "Common Nike model"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Reliable Nike training shorts at a good price point."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 3130241352,
+    "seller": "erzs1953"
+  },
+  {
+    "item": {
+      "id": 9896095064,
+      "title": "Spodenki szorty Gymshark M",
+      "price": {
+        "amount": "117.16",
+        "currency_code": "RON"
+      },
+      "brand_title": "Gymshark",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9896095064-spodenki-szorty-gymshark-m",
+      "user": {
+        "id": 3143262300,
+        "login": "marcin8567"
+      },
+      "_profile": {
+        "username": "marcin8567",
+        "member_since": null,
+        "feedback_count": 327,
+        "feedback_reputation": 1,
+        "item_count": 55,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9896095064,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 58,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 70.0,
+        "condition": 78.0,
+        "versatility": 70.0,
+        "value": 41.04523826086957,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.44,
+        "delivered_cost_ron": 146.02,
+        "equivalent_replacement_cost_ron": 115.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Gym shorts.",
+        "quality": "Gymshark standard.",
+        "condition": "Good condition.",
+        "versatility": "Gym and casual use.",
+        "value": "Current resale pricing for Gymshark shorts.",
+        "fit_probability": "Size M matches target.",
+        "duplication_probability": "Moderate availability."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct size and type, but the price exceeds the hard search cap."
+    },
+    "watch": "Broad gym short EN M-L",
+    "seller_id": 3143262300,
+    "seller": "marcin8567"
+  },
+  {
+    "item": {
+      "id": 9879829232,
+      "title": "Spodenki szorty Gymshark L",
+      "price": {
+        "amount": "134.42",
+        "currency_code": "RON"
+      },
+      "brand_title": "Gymshark",
+      "size_title": "L",
+      "status": "Foarte bună",
+      "favourite_count": 24,
+      "url": "https://www.vinted.ro/items/9879829232-spodenki-szorty-gymshark-l",
+      "user": {
+        "id": 3143262300,
+        "login": "marcin8567"
+      },
+      "_profile": {
+        "username": "marcin8567",
+        "member_since": null,
+        "feedback_count": 327,
+        "feedback_reputation": 1,
+        "item_count": 55,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9879829232,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 57,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 70.0,
+        "condition": 78.0,
+        "versatility": 70.0,
+        "value": 35.81320695652174,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.44,
+        "delivered_cost_ron": 164.14,
+        "equivalent_replacement_cost_ron": 115.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Gym shorts.",
+        "quality": "Gymshark.",
+        "condition": "Good condition.",
+        "versatility": "Versatile athletic wear.",
+        "value": "Standard resale value for Gymshark shorts.",
+        "fit_probability": "Size L matches target.",
+        "duplication_probability": "Available in market."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct size and type, but the price is well above the hard search cap of 120 RON."
+    },
+    "watch": "Broad gym short EN M-L",
+    "seller_id": 3143262300,
+    "seller": "marcin8567"
+  },
+  {
+    "item": {
       "id": 9882077487,
       "title": "Spodenki biegowe / treningowe legginsy SaySky",
       "price": {
@@ -876,263 +1092,47 @@
   },
   {
     "item": {
-      "id": 9807107072,
-      "title": "Short Nike",
+      "id": 9928224403,
+      "title": "Spodenki Just don Miami Heat",
       "price": {
-        "amount": "60.0",
+        "amount": "86.32",
         "currency_code": "RON"
       },
-      "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 8,
-      "url": "https://www.vinted.ro/items/9807107072-short-nike",
-      "user": {
-        "id": 183683067,
-        "login": "marfademarfa9"
-      },
-      "_profile": {
-        "username": "marfademarfa9",
-        "member_since": null,
-        "feedback_count": 299,
-        "feedback_reputation": 1,
-        "item_count": 28,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9807107072,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.89,
-      "score_interval_low": 59,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 92.75,
-        "quality": 81.5,
-        "condition": 86.0,
-        "versatility": 86.0,
-        "value": 49.620000000000005,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 81.0,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Nike athletic tech.",
-        "quality": "Proven training performance.",
-        "condition": "Reported as very good.",
-        "versatility": "Excellent for varied training.",
-        "value": "Mid-tier athletic used replacement.",
-        "fit_probability": "Size L is within target.",
-        "duplication_probability": "Moderately common Nike model."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Nike training shorts are highly reliable for the gym, fitting perfectly within the budget and requirements."
-    },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 183683067,
-    "seller": "marfademarfa9"
-  },
-  {
-    "item": {
-      "id": 9928149525,
-      "title": "Pantaloni scurti Nike pantalon scurt Marimea M barbati gri",
-      "price": {
-        "amount": "49.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
+      "brand_title": "JUST DON",
       "size_title": "M",
-      "status": "Foarte bună",
+      "status": "Nou fără etichetă",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928149525-pantaloni-scurti-nike-pantalon-scurt-marimea-m-barbati-gri",
+      "url": "https://www.vinted.ro/items/9928224403-spodenki-just-don-miami-heat",
       "user": {
-        "id": 3130241352,
-        "login": "erzs1953"
+        "id": 138378663,
+        "login": "adrian53825"
       },
       "_profile": {
-        "username": "erzs1953",
+        "username": "adrian53825",
         "member_since": null,
-        "feedback_count": 47,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 329,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9928149525,
-      "score_version": 2,
-      "buy_score": 67,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 62,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 78.0,
-        "condition": 82.0,
-        "versatility": 82.0,
-        "value": 54.009,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.18,
-        "delivered_cost_ron": 69.45,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Standard Nike training build",
-        "quality": "Nike performance fabric",
-        "condition": "Listed as very good",
-        "versatility": "Ideal for various gym activities",
-        "value": "Standard Nike training shorts price",
-        "fit_probability": "Listed as size M",
-        "duplication_probability": "Common Nike model"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Reliable Nike training shorts at a good price point."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 3130241352,
-    "seller": "erzs1953"
-  },
-  {
-    "item": {
-      "id": 9928133528,
-      "title": "Salomon Running Shorts - Petrol Blue - Men M",
-      "price": {
-        "amount": "50.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Salomon",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
-      "user": {
-        "id": 188476168,
-        "login": "mirceaxvlad"
-      },
-      "_profile": {
-        "username": "mirceaxvlad",
-        "member_since": null,
-        "feedback_count": 71,
-        "feedback_reputation": 1,
-        "item_count": 18,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9928133528,
-      "score_version": 2,
-      "buy_score": 71,
-      "buy_band": "bundle",
-      "score_confidence": 0.85,
-      "score_interval_low": 67,
-      "score_interval_high": 76,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 90.5,
-        "condition": 82.0,
-        "versatility": 78.0,
-        "value": 69.08,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 70.5,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical running fabric",
-        "quality": "Salomon high-performance tech",
-        "condition": "Very good",
-        "versatility": "Running and gym",
-        "value": "Premium technical running apparel",
-        "fit_probability": "Listed as M",
-        "duplication_probability": "Premium technical brand"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "High-quality Salomon running shorts suitable for training."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 188476168,
-    "seller": "mirceaxvlad"
-  },
-  {
-    "item": {
-      "id": 9928133777,
-      "title": "Spodenki szorty Gymshark M",
-      "price": {
-        "amount": "109.76",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gymshark",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928133777-spodenki-szorty-gymshark-m",
-      "user": {
-        "id": 3143262300,
-        "login": "marcin8567"
-      },
-      "_profile": {
-        "username": "marcin8567",
-        "member_since": null,
-        "feedback_count": 327,
-        "feedback_reputation": 1,
-        "item_count": 55,
+        "feedback_count": 28,
+        "feedback_reputation": 0.8,
+        "item_count": 10,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9928133777,
+      "id": 9928224403,
       "score_version": 2,
-      "buy_score": 60,
+      "buy_score": 62,
       "buy_band": "bundle",
-      "score_confidence": 0.83,
+      "score_confidence": 0.69,
       "score_interval_low": 55,
-      "score_interval_high": 64,
+      "score_interval_high": 70,
       "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 82.0,
-        "versatility": 78.0,
-        "value": 37.76064,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 138.25,
+        "usefulness": 74.0,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 64.0,
+        "value": 47.272800000000004,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 113.64,
         "equivalent_replacement_cost_ron": 100.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -1145,66 +1145,282 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Designed for gym use",
-        "quality": "Standard Gymshark build",
-        "condition": "Very good",
-        "versatility": "Gym specific",
-        "value": "Gymshark resale market",
-        "fit_probability": "Size M",
-        "duplication_probability": "Common training brand"
+        "usefulness": "Basketball-style shorts suitable for training.",
+        "quality": "Just Don premium branding.",
+        "condition": "New without tags.",
+        "versatility": "Strong lifestyle crossover.",
+        "value": "Second-hand premium basketball shorts market.",
+        "fit_probability": "Size M fits.",
+        "duplication_probability": "Niche luxury item."
       },
-      "verification_concern": "none",
-      "verification_reason": "",
+      "verification_concern": "inspect",
+      "verification_reason": "Just Don items are heavily counterfeited; require authentication check.",
       "hunt_fit": true,
-      "reason": "Good quality Gymshark shorts, but near the upper limit of the budget."
+      "reason": "Premium aesthetic gym shorts, though verification is necessary due to high value/fakes."
     },
     "watch": "Broad training shorts M-L",
-    "seller_id": 3143262300,
-    "seller": "marcin8567"
+    "seller_id": 138378663,
+    "seller": "adrian53825"
   },
   {
     "item": {
-      "id": 9788051567,
-      "title": "Nike dri-fit",
+      "id": 9928183530,
+      "title": "Spodenki Eric Emmanuel",
       "price": {
-        "amount": "63.77",
+        "amount": "61.66",
+        "currency_code": "RON"
+      },
+      "brand_title": "Eric Emanuel",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928183530-spodenki-eric-emmanuel",
+      "user": {
+        "id": 284731364,
+        "login": "endriuskate"
+      },
+      "_profile": {
+        "username": "endriuskate",
+        "member_since": null,
+        "feedback_count": 73,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 1,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928183530,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.75,
+      "score_interval_low": 57,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 68.0,
+        "condition": 95.0,
+        "versatility": 74.0,
+        "value": 50.68462333333334,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 87.74,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard mesh training construction.",
+        "quality": "Standard mesh build.",
+        "condition": "New without tags.",
+        "versatility": "High crossover utility.",
+        "value": "Used market value for EE mesh shorts.",
+        "fit_probability": "Size M fits.",
+        "duplication_probability": "Widely replicated but common style."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Eric Emanuel shorts are frequently counterfeited; need tag inspection.",
+      "hunt_fit": true,
+      "reason": "Popular mesh gym shorts that fit the hunt profile well."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 284731364,
+    "seller": "endriuskate"
+  },
+  {
+    "item": {
+      "id": 9928174519,
+      "title": "Pantaloni scurti alergare barbati Nike M",
+      "price": {
+        "amount": "70.0",
         "currency_code": "RON"
       },
       "brand_title": "Nike",
       "size_title": "M",
-      "status": "Nou cu etichetă",
-      "favourite_count": 7,
-      "url": "https://www.vinted.ro/items/9788051567-nike-dri-fit",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928174519-pantaloni-scurti-alergare-barbati-nike-m",
       "user": {
-        "id": 3179636520,
-        "login": "vaggos93"
+        "id": 232240177,
+        "login": "d3xt3r93"
       },
       "_profile": {
-        "username": "vaggos93",
+        "username": "d3xt3r93",
         "member_since": null,
-        "feedback_count": 2,
+        "feedback_count": 147,
         "feedback_reputation": 1,
-        "item_count": 15,
-        "country_code": "gr"
+        "item_count": 71,
+        "country_code": "ro"
       }
     },
     "score": {
-      "id": 9788051567,
+      "id": 9928174519,
       "score_version": 2,
       "buy_score": 62,
       "buy_band": "bundle",
-      "score_confidence": 0.88,
-      "score_interval_low": 57,
-      "score_interval_high": 66,
+      "score_confidence": 0.83,
+      "score_interval_low": 58,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 95.0,
+        "quality": 82.0,
+        "condition": 78.0,
+        "versatility": 66.0,
+        "value": 45.63,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.58,
+        "delivered_cost_ron": 91.5,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Purpose-built for athletic performance.",
+        "quality": "Nike performance fabric.",
+        "condition": "Very good condition.",
+        "versatility": "Primarily athletic focus.",
+        "value": "Standard pricing for Nike shorts.",
+        "fit_probability": "Size M.",
+        "duplication_probability": "Common Nike model."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Nike running/training shorts are perfect for this hunt."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 232240177,
+    "seller": "d3xt3r93"
+  },
+  {
+    "item": {
+      "id": 9928029914,
+      "title": "Puma nowe szorty rozmiar M",
+      "price": {
+        "amount": "83.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Puma",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
+      "user": {
+        "id": 96967514,
+        "login": "benkati1"
+      },
+      "_profile": {
+        "username": "benkati1",
+        "member_since": null,
+        "feedback_count": 360,
+        "feedback_reputation": 1,
+        "item_count": 205,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928029914,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 59,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 78.0,
+        "value": 38.31557,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.43,
+        "delivered_cost_ron": 110.75,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Versatile gym gear.",
+        "quality": "Good standard Puma tech.",
+        "condition": "New.",
+        "versatility": "Athletic and casual wear.",
+        "value": "Standard Puma pricing.",
+        "fit_probability": "Size M.",
+        "duplication_probability": "Widely available."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "New Puma training shorts provide great value and condition for the price."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 96967514,
+    "seller": "benkati1"
+  },
+  {
+    "item": {
+      "id": 9928133528,
+      "title": "Salomon Running Shorts - Petrol Blue - Men M",
+      "price": {
+        "amount": "50.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Salomon",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
+      "user": {
+        "id": 188476168,
+        "login": "mirceaxvlad"
+      },
+      "_profile": {
+        "username": "mirceaxvlad",
+        "member_since": null,
+        "feedback_count": 71,
+        "feedback_reputation": 1,
+        "item_count": 20,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9928133528,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 59,
+      "score_interval_high": 71,
       "score_factors": {
         "usefulness": 86.0,
-        "quality": 81.5,
-        "condition": 100.0,
+        "quality": 78.0,
+        "condition": 71.0,
         "versatility": 66.0,
-        "value": 57.466919999999995,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 84.96,
+        "value": 60.30590909090909,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 70.5,
         "equivalent_replacement_cost_ron": 110.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -1217,165 +1433,21 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Dri-fit technology is ideal for the training purpose.",
-        "quality": "New with tags.",
-        "condition": "New with tags.",
-        "versatility": "Standard athletic design.",
-        "value": "Retail equivalent for new Nike training shorts.",
-        "fit_probability": "Size M fits target.",
-        "duplication_probability": "Commonly available model."
+        "usefulness": "High utility for training and running.",
+        "quality": "Salomon is a reliable technical apparel brand.",
+        "condition": "Listed as 'Foarte bună' (Very good).",
+        "versatility": "Specific to athletic/running use.",
+        "value": "Estimated used market price for entry-level Salomon shorts.",
+        "fit_probability": "Matches target size M exactly.",
+        "duplication_probability": "Generic shorts are common, but Salomon specific cuts are unique."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "Brand new Nike Dri-fit shorts at a competitive price, aligning perfectly with the technical requirements."
+      "reason": "Salomon technical running shorts in size M represent a high-quality gym-specific item well within the target budget."
     },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3179636520,
-    "seller": "vaggos93"
-  },
-  {
-    "item": {
-      "id": 9896095064,
-      "title": "Spodenki szorty Gymshark M",
-      "price": {
-        "amount": "117.16",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gymshark",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9896095064-spodenki-szorty-gymshark-m",
-      "user": {
-        "id": 3143262300,
-        "login": "marcin8567"
-      },
-      "_profile": {
-        "username": "marcin8567",
-        "member_since": null,
-        "feedback_count": 327,
-        "feedback_reputation": 1,
-        "item_count": 55,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9896095064,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 58,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 70.0,
-        "condition": 78.0,
-        "versatility": 70.0,
-        "value": 41.04523826086957,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.44,
-        "delivered_cost_ron": 146.02,
-        "equivalent_replacement_cost_ron": 115.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Gym shorts.",
-        "quality": "Gymshark standard.",
-        "condition": "Good condition.",
-        "versatility": "Gym and casual use.",
-        "value": "Current resale pricing for Gymshark shorts.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Moderate availability."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct size and type, but the price exceeds the hard search cap."
-    },
-    "watch": "Broad gym short EN M-L",
-    "seller_id": 3143262300,
-    "seller": "marcin8567"
-  },
-  {
-    "item": {
-      "id": 9879829232,
-      "title": "Spodenki szorty Gymshark L",
-      "price": {
-        "amount": "134.42",
-        "currency_code": "RON"
-      },
-      "brand_title": "Gymshark",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 24,
-      "url": "https://www.vinted.ro/items/9879829232-spodenki-szorty-gymshark-l",
-      "user": {
-        "id": 3143262300,
-        "login": "marcin8567"
-      },
-      "_profile": {
-        "username": "marcin8567",
-        "member_since": null,
-        "feedback_count": 327,
-        "feedback_reputation": 1,
-        "item_count": 55,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9879829232,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 57,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 70.0,
-        "condition": 78.0,
-        "versatility": 70.0,
-        "value": 35.81320695652174,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.44,
-        "delivered_cost_ron": 164.14,
-        "equivalent_replacement_cost_ron": 115.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Gym shorts.",
-        "quality": "Gymshark.",
-        "condition": "Good condition.",
-        "versatility": "Versatile athletic wear.",
-        "value": "Standard resale value for Gymshark shorts.",
-        "fit_probability": "Size L matches target.",
-        "duplication_probability": "Available in market."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct size and type, but the price is well above the hard search cap of 120 RON."
-    },
-    "watch": "Broad gym short EN M-L",
-    "seller_id": 3143262300,
-    "seller": "marcin8567"
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 188476168,
+    "seller": "mirceaxvlad"
   }
 ]

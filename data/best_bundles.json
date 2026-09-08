@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-08T06:32:25.002142+00:00",
+    "kept_at": "2026-09-08T07:01:53.650341+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-08T06:32:25.002142+00:00",
+    "kept_at": "2026-09-08T07:01:53.650341+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -94,7 +94,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-08T06:32:25.002142+00:00",
+    "kept_at": "2026-09-08T07:01:53.650341+00:00",
     "kind": "near_haul",
     "seller": "ochiul",
     "seller_id": 189522630,
@@ -104,7 +104,7 @@
     "checkout_total": 66.3,
     "deal_score": null,
     "value_band": "opportunity",
-    "reason": "The bundle consists only of unwanted items including cotton tees and non-gym shorts, failing to meet the requirement for gym-specific training shorts.",
+    "reason": "The bundle consists only of non-target items like a football jersey, a cotton tee, and hiking shorts, offering zero value for the specified gym shorts hunt.",
     "watch": "Gym seed short sport M-L",
     "effective_price_per_useful_item": 22.099999999999998,
     "items": [

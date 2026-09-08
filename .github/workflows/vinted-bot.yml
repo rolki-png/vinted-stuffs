@@ -33,6 +33,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Refresh to latest main
+        run: |
+          git fetch origin main
+          git checkout --force -B main origin/main
+          git log -1 --oneline
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -68,8 +74,40 @@ jobs:
           curl --create-dirs -o "$HOME/.postgresql/root.crt" \
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
+      - name: Choose hunt vs legacy v2 rollout
+        env:
+          LEGACY_INPUT: ${{ inputs.legacy_active_v2 }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          dispatch = str(os.environ.get("LEGACY_INPUT") or "").lower() in {
+              "true",
+              "1",
+          }
+          event = os.environ.get("EVENT_NAME") or ""
+          state_path = Path("data/seen_listings.json")
+          last = {}
+          if state_path.exists():
+              state = json.loads(state_path.read_text())
+              last = (state.get("legacy_active_v2") or {}).get("last_run") or {}
+          remaining = int(last.get("remaining") or 0)
+          status = str(last.get("status") or "")
+          incomplete = remaining > 0 and status not in {"complete", "exhausted"}
+          run_legacy = dispatch or (event == "schedule" and incomplete)
+          print(
+              f"event={event} dispatch={dispatch} remaining={remaining} "
+              f"status={status!r} run_legacy={run_legacy}",
+              flush=True,
+          )
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fh:
+              fh.write(f"RUN_LEGACY_V2={'true' if run_legacy else 'false'}\n")
+          PY
+
       - name: Run bot
-        if: ${{ !fromJSON(inputs.legacy_active_v2 || 'false') }}
+        if: ${{ env.RUN_LEGACY_V2 != 'true' }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -82,7 +120,7 @@ jobs:
         run: uv run --project python python python/vinted_bot.py
 
       - name: Run active legacy v2 rollout
-        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
+        if: ${{ env.RUN_LEGACY_V2 == 'true' }}
         timeout-minutes: 90
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
@@ -109,14 +147,22 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update hunt state [skip ci]"
             # Main can move while the bot runs (manual pushes); rebase then push.
-            git pull --rebase origin main
+            if ! git pull --rebase origin main; then
+              echo "Hunt-state rebase conflict; merging legacy progress and keeping this run's score export."
+              git show :2:data/seen_listings.json > /tmp/seen_main.json
+              git show :3:data/seen_listings.json > /tmp/seen_incoming.json
+              python3 python/merge_legacy_state.py /tmp/seen_main.json /tmp/seen_incoming.json data/seen_listings.json
+              git checkout --theirs data/indexed_scores.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json || true
+              git add data/seen_listings.json data/indexed_scores.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json
+              GIT_EDITOR=true git rebase --continue
+            fi
             git push
           else
             echo "No state changes to commit"
           fi
 
       - name: Queue next legacy v2 batch
-        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3' }}
+        if: ${{ always() && env.RUN_LEGACY_V2 == 'true' && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3' }}
         continue-on-error: true
         run: |
           echo "Partial batch; queue the next legacy_active_v2 dispatch."
@@ -126,7 +172,7 @@ jobs:
             -d '{"legacy_active_v2":true,"full_sweep":false,"skip_scoring":false}'
 
       - name: Check legacy rollout completion
-        if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}
+        if: ${{ always() && env.RUN_LEGACY_V2 == 'true' }}
         run: |
           if [[ "$LEGACY_ACTIVE_V2_EXIT_CODE" -eq 3 ]]; then
             echo "Legacy v2 rollout is partial; the next batch was queued."

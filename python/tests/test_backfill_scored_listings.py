@@ -553,8 +553,10 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("legacy_active_v2:", self.source)
         self.assertIn("uses: astral-sh/setup-uv@", self.source)
         self.assertNotIn("pip install", self.source)
-        self.assertIn("if: ${{ !fromJSON(inputs.legacy_active_v2 || 'false') }}", self.source)
-        self.assertIn("if: ${{ fromJSON(inputs.legacy_active_v2 || 'false') }}", self.source)
+        self.assertIn("if: ${{ env.RUN_LEGACY_V2 != 'true' }}", self.source)
+        self.assertIn("if: ${{ env.RUN_LEGACY_V2 == 'true' }}", self.source)
+        self.assertIn("git fetch origin main", self.source)
+        self.assertIn('event == "schedule" and incomplete', self.source)
         self.assertIn("timeout-minutes: 90", self.source)
         self.assertIn("LEGACY_ACTIVE_V2_STATUS", self.source)
         self.assertIn("exhausted", self.source)
@@ -600,6 +602,13 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("LEGACY_ACTIVE_V2_EXIT_CODE", self.source)
         self.assertIn("data/seen_listings.json", self.source)
         self.assertIn("data/indexed_scores.json", self.source)
+        queue = self.source.index("- name: Queue next legacy v2 batch")
+        self.assertLess(commit, queue)
+        self.assertLess(queue, completion)
+        self.assertIn(
+            "always() && env.RUN_LEGACY_V2 == 'true' && env.LEGACY_ACTIVE_V2_EXIT_CODE == '3'",
+            self.source,
+        )
 
 
 CONFIG = {

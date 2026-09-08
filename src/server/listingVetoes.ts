@@ -1,27 +1,27 @@
 // @ts-nocheck
-import fs from "node:fs"
-import path from "node:path"
-import os from "node:os"
-import pg from "pg"
-import { feedbackParams } from "./listingFeedback.js"
-import { resolveFamily } from "./tasteLearning.ts"
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import pg from "pg";
+import { feedbackParams } from "./listingFeedback.js";
 import {
-  ENRICHMENT_FIELDS,
-  coerceEnrichment as coerceVetoEnrichment,
-  prepareEnrichmentForWrite,
-} from "./listingVetoEnrichment.js"
+	coerceEnrichment as coerceVetoEnrichment,
+	ENRICHMENT_FIELDS,
+	prepareEnrichmentForWrite,
+} from "./listingVetoEnrichment.js";
+import { resolveFamily } from "./tasteLearning.ts";
 
 /**
  * Listing vetoes (Remove / Park / Bought) — Cockroach map + pure desk apply helpers.
  * Mirrors python/listing_vetoes.py.
  */
 
-const STATUS_REMOVED = "removed"
-const STATUS_PARKED = "parked"
-const STATUS_BOUGHT = "bought"
-const STATUS_HIDDEN_LEGACY = "hidden"
-const VALID = new Set([STATUS_REMOVED, STATUS_PARKED, STATUS_BOUGHT])
-const VALID_MODES = new Set(["active", "parked", "bought", "all"])
+const STATUS_REMOVED = "removed";
+const STATUS_PARKED = "parked";
+const STATUS_BOUGHT = "bought";
+const STATUS_HIDDEN_LEGACY = "hidden";
+const VALID = new Set([STATUS_REMOVED, STATUS_PARKED, STATUS_BOUGHT]);
+const VALID_MODES = new Set(["active", "parked", "bought", "all"]);
 
 const DDL = `
 CREATE TABLE IF NOT EXISTS listing_vetoes (
@@ -41,336 +41,329 @@ CREATE TABLE IF NOT EXISTS listing_vetoes (
   buy_band TEXT NULL,
   title TEXT NULL
 );
-`
+`;
 
 const MIGRATE_HIDDEN_SQL =
-  "UPDATE listing_vetoes SET status = 'removed' WHERE status = 'hidden'"
+	"UPDATE listing_vetoes SET status = 'removed' WHERE status = 'hidden'";
 
 const ALTER_COLUMNS_SQL = [
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_name TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_family TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS brand TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS size TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS price_ron DOUBLE PRECISION NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS value_band TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS deal_score INT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS score_version INT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_score INT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_band TEXT NULL",
-  "ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS title TEXT NULL",
-]
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS reason_code TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_name TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS hunt_family TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS brand TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS size TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS price_ron DOUBLE PRECISION NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS value_band TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS deal_score INT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS score_version INT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_score INT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS buy_band TEXT NULL",
+	"ALTER TABLE listing_vetoes ADD COLUMN IF NOT EXISTS title TEXT NULL",
+];
 
 function databaseUrl() {
-  return (
-    process.env.DATABASE_URL ||
-    process.env.COCKROACH_DATABASE_URL ||
-    ""
-  ).trim() || null
+	return (
+		(
+			process.env.DATABASE_URL ||
+			process.env.COCKROACH_DATABASE_URL ||
+			""
+		).trim() || null
+	);
 }
 
 function sslConfig() {
-  return { rejectUnauthorized: false }
+	return { rejectUnauthorized: false };
 }
 
 function normalizeStatus(status) {
-  if (status == null) return null
-  const st = String(status)
-  if (st === STATUS_HIDDEN_LEGACY) return STATUS_REMOVED
-  return st
+	if (status == null) return null;
+	const st = String(status);
+	if (st === STATUS_HIDDEN_LEGACY) return STATUS_REMOVED;
+	return st;
 }
 
 function coerceWriteStatus(status) {
-  const st = normalizeStatus(status)
-  if (!VALID.has(st)) {
-    const err = new Error("invalid_status")
-    err.status = 400
-    throw err
-  }
-  return st
+	const st = normalizeStatus(status);
+	if (!VALID.has(st)) {
+		const err = new Error("invalid_status");
+		err.status = 400;
+		throw err;
+	}
+	return st;
 }
 
 function coerceEnrichment(enrichment) {
-  const out = coerceVetoEnrichment(enrichment)
-  if (!out.hunt_family && out.hunt_name) {
-    out.hunt_family = resolveFamily(out.hunt_name)
-  }
-  return out
+	const out = coerceVetoEnrichment(enrichment);
+	if (!out.hunt_family && out.hunt_name) {
+		out.hunt_family = resolveFamily(out.hunt_name);
+	}
+	return out;
 }
 
 function itemId(rowOrId) {
-  const raw =
-    rowOrId && typeof rowOrId === "object"
-      ? rowOrId.id ?? rowOrId.item_id
-      : rowOrId
-  if (raw == null) return null
-  const n = Number(raw)
-  return Number.isFinite(n) ? n : null
+	const raw =
+		rowOrId && typeof rowOrId === "object"
+			? (rowOrId.id ?? rowOrId.item_id)
+			: rowOrId;
+	if (raw == null) return null;
+	const n = Number(raw);
+	return Number.isFinite(n) ? n : null;
 }
 
 function statusFor(vetoes, rowOrId) {
-  const id = itemId(rowOrId)
-  if (id == null) return null
-  return normalizeStatus(vetoes[id] || vetoes[String(id)] || null)
+	const id = itemId(rowOrId);
+	if (id == null) return null;
+	return normalizeStatus(vetoes[id] || vetoes[String(id)] || null);
 }
 
 function isRemoved(vetoes, rowOrId) {
-  return statusFor(vetoes, rowOrId) === STATUS_REMOVED
+	return statusFor(vetoes, rowOrId) === STATUS_REMOVED;
 }
 
 function isParked(vetoes, rowOrId) {
-  return statusFor(vetoes, rowOrId) === STATUS_PARKED
+	return statusFor(vetoes, rowOrId) === STATUS_PARKED;
 }
 
 function isBought(vetoes, rowOrId) {
-  return statusFor(vetoes, rowOrId) === STATUS_BOUGHT
+	return statusFor(vetoes, rowOrId) === STATUS_BOUGHT;
 }
 
-const isHidden = isRemoved
+const isHidden = isRemoved;
 
 function deskRank(st) {
-  if (st === STATUS_PARKED) return 1
-  if (st === STATUS_BOUGHT) return 2
-  return 0
+	if (st === STATUS_PARKED) return 1;
+	if (st === STATUS_BOUGHT) return 2;
+	return 0;
 }
 
 function applyToFinds(rows, vetoes, { mode = "active" } = {}) {
-  if (!VALID_MODES.has(mode)) {
-    throw new Error(`unknown veto mode: ${mode}`)
-  }
-  const out = []
-  for (const row of rows || []) {
-    const st = statusFor(vetoes, row)
-    if (st === STATUS_REMOVED) continue
-    if (mode === "parked" && st !== STATUS_PARKED) continue
-    if (mode === "bought" && st !== STATUS_BOUGHT) continue
-    if (mode === "active" && st === STATUS_BOUGHT) continue
-    const tagged = { ...row }
-    if (st) tagged.veto_status = st
-    else delete tagged.veto_status
-    out.push(tagged)
-  }
-  return out.sort((a, b) => deskRank(a.veto_status) - deskRank(b.veto_status))
+	if (!VALID_MODES.has(mode)) {
+		throw new Error(`unknown veto mode: ${mode}`);
+	}
+	const out = [];
+	for (const row of rows || []) {
+		const st = statusFor(vetoes, row);
+		if (st === STATUS_REMOVED) continue;
+		if (mode === "parked" && st !== STATUS_PARKED) continue;
+		if (mode === "bought" && st !== STATUS_BOUGHT) continue;
+		if (mode === "active" && st === STATUS_BOUGHT) continue;
+		const tagged = { ...row };
+		if (st) tagged.veto_status = st;
+		else delete tagged.veto_status;
+		out.push(tagged);
+	}
+	return out.sort((a, b) => deskRank(a.veto_status) - deskRank(b.veto_status));
 }
 
 function applyToBundles(rows, vetoes, { mode = "active" } = {}) {
-  if (!VALID_MODES.has(mode)) {
-    throw new Error(`unknown veto mode: ${mode}`)
-  }
-  const out = []
-  for (const bundle of rows || []) {
-    const items = Array.isArray(bundle.items) ? bundle.items : []
-    let kept = []
-    for (const it of items) {
-      const st = statusFor(vetoes, it)
-      if (st === STATUS_REMOVED) continue
-      if (st === STATUS_BOUGHT && (mode === "active" || mode === "parked")) continue
-      const tagged = { ...it }
-      if (st) tagged.veto_status = st
-      else delete tagged.veto_status
-      kept.push(tagged)
-    }
-    if (mode === "bought") {
-      kept = kept.filter((it) => it.veto_status === STATUS_BOUGHT)
-      if (kept.length < 1) continue
-    } else if (kept.length < 2) {
-      continue
-    }
-    if (
-      mode === "parked" &&
-      !kept.some((it) => it.veto_status === STATUS_PARKED)
-    ) {
-      continue
-    }
+	if (!VALID_MODES.has(mode)) {
+		throw new Error(`unknown veto mode: ${mode}`);
+	}
+	const out = [];
+	for (const bundle of rows || []) {
+		const items = Array.isArray(bundle.items) ? bundle.items : [];
+		let kept = [];
+		for (const it of items) {
+			const st = statusFor(vetoes, it);
+			if (st === STATUS_REMOVED) continue;
+			if (st === STATUS_BOUGHT && (mode === "active" || mode === "parked"))
+				continue;
+			const tagged = { ...it };
+			if (st) tagged.veto_status = st;
+			else delete tagged.veto_status;
+			kept.push(tagged);
+		}
+		if (mode === "bought") {
+			kept = kept.filter((it) => it.veto_status === STATUS_BOUGHT);
+			if (kept.length < 1) continue;
+		} else if (kept.length < 2) {
+			continue;
+		}
+		if (
+			mode === "parked" &&
+			!kept.some((it) => it.veto_status === STATUS_PARKED)
+		) {
+			continue;
+		}
 
-    const row = { ...bundle, items: kept }
-    let listingSum = 0
-    for (const it of kept) {
-      const p = Number(it.price)
-      if (Number.isFinite(p)) listingSum += p
-    }
-    row.listing_sum = listingSum
-    if (row.checkout_extra_ron != null) {
-      const extra = Number(row.checkout_extra_ron)
-      if (Number.isFinite(extra)) row.checkout_total = listingSum + extra
-    }
-    if (kept.some((it) => it.veto_status === STATUS_PARKED)) {
-      row.veto_status = STATUS_PARKED
-    } else if (kept.some((it) => it.veto_status === STATUS_BOUGHT)) {
-      row.veto_status = STATUS_BOUGHT
-    } else {
-      delete row.veto_status
-    }
-    out.push(row)
-  }
-  return out.sort((a, b) => deskRank(a.veto_status) - deskRank(b.veto_status))
+		const row = { ...bundle, items: kept };
+		let listingSum = 0;
+		for (const it of kept) {
+			const p = Number(it.price);
+			if (Number.isFinite(p)) listingSum += p;
+		}
+		row.listing_sum = listingSum;
+		if (row.checkout_extra_ron != null) {
+			const extra = Number(row.checkout_extra_ron);
+			if (Number.isFinite(extra)) row.checkout_total = listingSum + extra;
+		}
+		if (kept.some((it) => it.veto_status === STATUS_PARKED)) {
+			row.veto_status = STATUS_PARKED;
+		} else if (kept.some((it) => it.veto_status === STATUS_BOUGHT)) {
+			row.veto_status = STATUS_BOUGHT;
+		} else {
+			delete row.veto_status;
+		}
+		out.push(row);
+	}
+	return out.sort((a, b) => deskRank(a.veto_status) - deskRank(b.veto_status));
 }
 
 async function withClient(fn) {
-  const url = databaseUrl()
-  if (!url) return null
-  const { Client } = pg
-  let connectionString = url
-  if (!fs.existsSync(path.join(os.homedir(), ".postgresql", "root.crt"))) {
-    connectionString = url.replace(/sslmode=verify-full/gi, "sslmode=require")
-  }
-  const client = new Client({
-    connectionString,
-    ssl: sslConfig(),
-    connectionTimeoutMillis: 8000,
-    query_timeout: 15000,
-  })
-  try {
-    await client.connect()
-    await client.query(DDL)
-    for (const stmt of ALTER_COLUMNS_SQL) {
-      try {
-        await client.query(stmt)
-      } catch (err) {
-        console.error("listingVetoes alter note:", err.message || err)
-      }
-    }
-    try {
-      await client.query(MIGRATE_HIDDEN_SQL)
-    } catch (err) {
-      console.error("listingVetoes migrate note:", err.message || err)
-    }
-    return await fn(client)
-  } catch (err) {
-    console.error("listingVetoes:", err.message || err)
-    return null
-  } finally {
-    try {
-      await client.end()
-    } catch {
-      /* ignore */
-    }
-  }
+	const url = databaseUrl();
+	if (!url) return null;
+	const { Client } = pg;
+	let connectionString = url;
+	if (!fs.existsSync(path.join(os.homedir(), ".postgresql", "root.crt"))) {
+		connectionString = url.replace(/sslmode=verify-full/gi, "sslmode=require");
+	}
+	const client = new Client({
+		connectionString,
+		ssl: sslConfig(),
+		connectionTimeoutMillis: 8000,
+		query_timeout: 15000,
+	});
+	try {
+		await client.connect();
+		await client.query(DDL);
+		for (const stmt of ALTER_COLUMNS_SQL) {
+			try {
+				await client.query(stmt);
+			} catch (err) {
+				console.error("listingVetoes alter note:", err.message || err);
+			}
+		}
+		try {
+			await client.query(MIGRATE_HIDDEN_SQL);
+		} catch (err) {
+			console.error("listingVetoes migrate note:", err.message || err);
+		}
+		return await fn(client);
+	} catch (err) {
+		console.error("listingVetoes:", err.message || err);
+		return null;
+	} finally {
+		try {
+			await client.end();
+		} catch {
+			/* ignore */
+		}
+	}
 }
 
 async function loadVetoMap() {
-  const map = await withClient(async (client) => {
-    const res = await client.query("SELECT item_id, status FROM listing_vetoes")
-    const out = {}
-    for (const row of res.rows) {
-      out[Number(row.item_id)] = normalizeStatus(String(row.status))
-    }
-    return out
-  })
-  return map || {}
+	const map = await withClient(async (client) => {
+		const res = await client.query(
+			"SELECT item_id, status FROM listing_vetoes",
+		);
+		const out = {};
+		for (const row of res.rows) {
+			out[Number(row.item_id)] = normalizeStatus(String(row.status));
+		}
+		return out;
+	});
+	return map || {};
 }
 
-const V2_SCORE_FIELDS = ["score_version", "buy_score", "buy_band"]
-const LEGACY_SCORE_FIELDS = ["deal_score", "value_band"]
-const SCORE_FIELDS = [...LEGACY_SCORE_FIELDS, ...V2_SCORE_FIELDS]
+const V2_SCORE_FIELDS = ["score_version", "buy_score", "buy_band"];
+const LEGACY_SCORE_FIELDS = ["deal_score", "value_band"];
+const SCORE_FIELDS = [...LEGACY_SCORE_FIELDS, ...V2_SCORE_FIELDS];
 
 function hasAnyField(value, fields) {
-  return (
-    value &&
-    typeof value === "object" &&
-    fields.some((field) => Object.prototype.hasOwnProperty.call(value, field))
-  )
+	return (
+		value &&
+		typeof value === "object" &&
+		fields.some((field) => Object.hasOwn(value, field))
+	);
 }
 
 function scoreRequestIntent(enrichment) {
-  const prepared = prepareEnrichmentForWrite(enrichment)
-  if (prepared.scoreUpdateKind !== "preserve") {
-    return prepared.scoreUpdateKind
-  }
-  if (hasAnyField(enrichment, V2_SCORE_FIELDS)) return "partial-v2"
-  if (hasAnyField(enrichment, LEGACY_SCORE_FIELDS)) return "partial-legacy"
-  return "absent"
+	const prepared = prepareEnrichmentForWrite(enrichment);
+	if (prepared.scoreUpdateKind !== "preserve") {
+		return prepared.scoreUpdateKind;
+	}
+	if (hasAnyField(enrichment, V2_SCORE_FIELDS)) return "partial-v2";
+	return "absent";
 }
 
 async function fillEnrichmentFromScored(client, itemId, enr, scoreIntent) {
-  const needsScoreFill =
-    scoreIntent === "absent" || scoreIntent === "partial-legacy"
-  const needs =
-    !enr.brand ||
-    !enr.size ||
-    !enr.title ||
-    enr.price_ron == null ||
-    !enr.hunt_name ||
-    needsScoreFill
-  if (!needs) return enr
-  try {
-    const res = await client.query(
-      `SELECT hunt_name, title, price, brand, size, deal_score, value_band,
+	const needsScoreFill = scoreIntent === "absent";
+	const needs =
+		!enr.brand ||
+		!enr.size ||
+		!enr.title ||
+		enr.price_ron == null ||
+		!enr.hunt_name ||
+		needsScoreFill;
+	if (!needs) return enr;
+	try {
+		const res = await client.query(
+			`SELECT hunt_name, title, price, brand, size, deal_score, value_band,
               score_version, buy_score, buy_band
        FROM scored_listings
        WHERE item_id = $1
        ORDER BY scored_at DESC NULLS LAST
        LIMIT 1`,
-      [itemId],
-    )
-    const row = res.rows[0]
-    if (!row) return enr
-    const authoritative = coerceEnrichment({
-      hunt_name: row.hunt_name,
-      brand: row.brand,
-      size: row.size,
-      price_ron: row.price,
-      value_band: row.value_band,
-      deal_score: row.deal_score,
-      score_version: row.score_version,
-      buy_score: row.buy_score,
-      buy_band: row.buy_band,
-      title: row.title,
-    })
-    const out = coerceEnrichment(enr)
-    for (const key of ENRICHMENT_FIELDS.filter(
-      (field) => !SCORE_FIELDS.includes(field),
-    )) {
-      if (out[key] == null) out[key] = authoritative[key]
-    }
-    const authoritativePrepared =
-      prepareEnrichmentForWrite(authoritative)
-    if (
-      scoreIntent === "absent" &&
-      authoritativePrepared.scoreUpdateKind !== "preserve"
-    ) {
-      for (const key of SCORE_FIELDS) {
-        out[key] = authoritativePrepared.enrichment[key]
-      }
-    } else if (
-      scoreIntent === "partial-legacy" &&
-      authoritativePrepared.scoreUpdateKind === "legacy"
-    ) {
-      for (const key of LEGACY_SCORE_FIELDS) {
-        if (out[key] == null) {
-          out[key] = authoritativePrepared.enrichment[key]
-        }
-      }
-    }
-    return out
-  } catch (err) {
-    console.error("listingVetoes scored fill note:", err.message || err)
-    return enr
-  }
+			[itemId],
+		);
+		const row = res.rows[0];
+		if (!row) return enr;
+		const authoritative = coerceEnrichment({
+			hunt_name: row.hunt_name,
+			brand: row.brand,
+			size: row.size,
+			price_ron: row.price,
+			value_band: row.value_band,
+			deal_score: row.deal_score,
+			score_version: row.score_version,
+			buy_score: row.buy_score,
+			buy_band: row.buy_band,
+			title: row.title,
+		});
+		const out = coerceEnrichment(enr);
+		for (const key of ENRICHMENT_FIELDS.filter(
+			(field) => !SCORE_FIELDS.includes(field),
+		)) {
+			if (out[key] == null) out[key] = authoritative[key];
+		}
+		const authoritativePrepared = prepareEnrichmentForWrite(authoritative);
+		if (
+			scoreIntent === "absent" &&
+			authoritativePrepared.scoreUpdateKind !== "preserve"
+		) {
+			for (const key of SCORE_FIELDS) {
+				out[key] = authoritativePrepared.enrichment[key];
+			}
+		}
+		return out;
+	} catch (err) {
+		console.error("listingVetoes scored fill note:", err.message || err);
+		return enr;
+	}
 }
 
 async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
-  const [id, rawStatus, reason, rawEnrichment] = feedbackParams(
-    itemId,
-    status,
-    enrichment,
-    reasonCode,
-  )
-  const st = coerceWriteStatus(rawStatus)
-  const scoreIntent = scoreRequestIntent(rawEnrichment)
-  let enr = coerceEnrichment(rawEnrichment)
-  const ok = await withClient(async (client) => {
-    enr = coerceEnrichment(
-      await fillEnrichmentFromScored(client, id, enr, scoreIntent),
-    )
-    const filled = prepareEnrichmentForWrite(enr)
-    const scoreUpdateKind = filled.scoreUpdateKind
-    enr = filled.enrichment
-    if (!enr.hunt_family && enr.hunt_name) {
-      enr.hunt_family = resolveFamily(enr.hunt_name)
-    }
-    await client.query(
-      `INSERT INTO listing_vetoes (
+	const [id, rawStatus, reason, rawEnrichment] = feedbackParams(
+		itemId,
+		status,
+		enrichment,
+		reasonCode,
+	);
+	const st = coerceWriteStatus(rawStatus);
+	const scoreIntent = scoreRequestIntent(rawEnrichment);
+	let enr = coerceEnrichment(rawEnrichment);
+	const ok = await withClient(async (client) => {
+		enr = coerceEnrichment(
+			await fillEnrichmentFromScored(client, id, enr, scoreIntent),
+		);
+		const filled = prepareEnrichmentForWrite(enr);
+		const scoreUpdateKind = filled.scoreUpdateKind;
+		enr = filled.enrichment;
+		if (!enr.hunt_family && enr.hunt_name) {
+			enr.hunt_family = resolveFamily(enr.hunt_name);
+		}
+		await client.query(
+			`INSERT INTO listing_vetoes (
          item_id, status, reason_code, updated_at,
          hunt_name, hunt_family, brand, size, price_ron, value_band, deal_score,
          score_version, buy_score, buy_band, title
@@ -411,68 +404,68 @@ async function setVetoStatus(itemId, status, enrichment, reasonCode = null) {
            ELSE listing_vetoes.buy_band
          END,
          title = COALESCE(EXCLUDED.title, listing_vetoes.title)`,
-      [
-        id,
-        st,
-        reason,
-        enr.hunt_name,
-        enr.hunt_family,
-        enr.brand,
-        enr.size,
-        enr.price_ron,
-        enr.value_band,
-        enr.deal_score,
-        enr.score_version,
-        enr.buy_score,
-        enr.buy_band,
-        enr.title,
-        scoreUpdateKind,
-      ],
-    )
-    return true
-  })
-  if (!ok) {
-    const err = new Error("veto_db_unavailable")
-    err.status = 503
-    throw err
-  }
-  return { item_id: id, status: st, reason_code: reason }
+			[
+				id,
+				st,
+				reason,
+				enr.hunt_name,
+				enr.hunt_family,
+				enr.brand,
+				enr.size,
+				enr.price_ron,
+				enr.value_band,
+				enr.deal_score,
+				enr.score_version,
+				enr.buy_score,
+				enr.buy_band,
+				enr.title,
+				scoreUpdateKind,
+			],
+		);
+		return true;
+	});
+	if (!ok) {
+		const err = new Error("veto_db_unavailable");
+		err.status = 503;
+		throw err;
+	}
+	return { item_id: id, status: st, reason_code: reason };
 }
 
 async function clearVeto(itemId) {
-  const id = Number(itemId)
-  if (!Number.isFinite(id)) {
-    const err = new Error("invalid_item_id")
-    err.status = 400
-    throw err
-  }
-  const ok = await withClient(async (client) => {
-    await client.query("DELETE FROM listing_vetoes WHERE item_id = $1", [id])
-    return true
-  })
-  if (!ok) {
-    const err = new Error("veto_db_unavailable")
-    err.status = 503
-    throw err
-  }
-  return { item_id: id, cleared: true }
+	const id = Number(itemId);
+	if (!Number.isFinite(id)) {
+		const err = new Error("invalid_item_id");
+		err.status = 400;
+		throw err;
+	}
+	const ok = await withClient(async (client) => {
+		await client.query("DELETE FROM listing_vetoes WHERE item_id = $1", [id]);
+		return true;
+	});
+	if (!ok) {
+		const err = new Error("veto_db_unavailable");
+		err.status = 503;
+		throw err;
+	}
+	return { item_id: id, cleared: true };
 }
 
 export {
-  STATUS_REMOVED,
-  STATUS_PARKED,
-  STATUS_BOUGHT,
-  STATUS_HIDDEN_LEGACY,
-  databaseUrl,
-  isRemoved,
-  isHidden,
-  isParked,
-  isBought,
-  applyToFinds,
-  applyToBundles,
-  loadVetoMap,
-  setVetoStatus,
-  clearVeto,
-  normalizeStatus,
-  coerceEnrichment,
-}
+	applyToBundles,
+	applyToFinds,
+	clearVeto,
+	coerceEnrichment,
+	databaseUrl,
+	isBought,
+	isHidden,
+	isParked,
+	isRemoved,
+	loadVetoMap,
+	normalizeStatus,
+	STATUS_BOUGHT,
+	STATUS_HIDDEN_LEGACY,
+	STATUS_PARKED,
+	STATUS_REMOVED,
+	setVetoStatus,
+};

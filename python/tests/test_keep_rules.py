@@ -38,7 +38,7 @@ def v2(score=88, confidence=0.8, concern="none", hunt_fit=True):
 
 
 class KeepRuleTests(unittest.TestCase):
-    def test_legacy_cached_row_preserves_previous_keep_rules(self):
+    def test_cached_deal_score_row_is_not_a_keep(self):
         item = {"price": {"amount": "80", "currency_code": "RON"}}
         score = {
             "deal_score": 9,
@@ -46,7 +46,7 @@ class KeepRuleTests(unittest.TestCase):
             "hunt_fit": True,
             "scam_risk": "medium",
         }
-        self.assertTrue(bot.is_keep(score, CONFIG_FLOOR, GYM, item))
+        self.assertFalse(bot.is_keep(score, CONFIG_FLOOR, GYM, item))
 
     def test_v2_keep_requires_score_confidence_fit_and_clear_verification(self):
         watch = {"target_type": "men's gym clothing"}
@@ -62,14 +62,14 @@ class KeepRuleTests(unittest.TestCase):
         self.assertFalse(bot.is_bundle_extra(v2(score=68, hunt_fit=False), CONFIG))
         self.assertFalse(bot.is_bundle_extra(v2(score=68, concern="block"), CONFIG))
 
-    def test_legacy_bundle_extra_preserves_cached_row_rules(self):
+    def test_cached_deal_score_row_is_not_a_bundle_extra(self):
         score = {
             "deal_score": 7,
             "value_band": "acceptable",
             "hunt_fit": True,
             "scam_risk": "medium",
         }
-        self.assertTrue(bot.is_bundle_extra(score, CONFIG))
+        self.assertFalse(bot.is_bundle_extra(score, CONFIG))
         self.assertFalse(bot.is_bundle_extra({**score, "deal_score": 6}, CONFIG))
         self.assertFalse(bot.is_bundle_extra({**score, "scam_risk": "high"}, CONFIG))
 
@@ -261,13 +261,9 @@ class KeepRuleTests(unittest.TestCase):
         for malformed_id, score in enumerate(malformed_scores, start=10):
             with self.subTest(score=score):
                 malformed = {"item": {"id": malformed_id}, "score": score}
-                self.assertEqual(
-                    [
-                        row["item"]["id"]
-                        for row in bot.select_best([malformed, legacy], CONFIG)
-                    ],
-                    [2, malformed_id],
-                )
+                ranked = [row["item"]["id"] for row in bot.select_best([malformed, legacy, {"item": {"id": 1}, "score": v2(score=80)}], CONFIG)]
+                self.assertEqual(ranked[0], 1)
+                self.assertEqual(set(ranked[1:]), {2, malformed_id})
 
     def test_v2_solo_notification_uses_only_v2_score_semantics(self):
         item = {
@@ -326,7 +322,7 @@ class KeepRuleTests(unittest.TestCase):
             sent = bot.send_ntfy("topic", item, malformed, CONFIG)
         self.assertFalse(sent)
         send.assert_not_called()
-        self.assertIn("malformed v2", stderr.getvalue().lower())
+        self.assertIn("malformed calculated score fields", stderr.getvalue().lower())
         self.assertIn("7", stderr.getvalue())
 
     def test_ntfy_timeout_is_logged_as_transport_failure(self):
@@ -415,7 +411,7 @@ class KeepRuleTests(unittest.TestCase):
                     sent = bot.send_ntfy_bundle("topic", bundle)
                 self.assertFalse(sent)
                 send.assert_not_called()
-                self.assertIn("malformed v2", stderr.getvalue().lower())
+                self.assertIn("malformed", stderr.getvalue().lower())
                 self.assertIn("member 8", stderr.getvalue().lower())
 
     def test_v2_snapshot_contains_v2_fields_without_legacy_score_fields(self):

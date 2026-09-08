@@ -16,6 +16,21 @@ WATCH = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing", "coun
 
 
 def row(iid, score, band, seller, price="150", hunt_fit=True):
+    if score >= 85:
+        buy_band = "keep"
+        buy_score = score if score <= 100 else 88
+    elif score >= 60:
+        buy_band = "bundle"
+        buy_score = score
+    else:
+        buy_band = "skip"
+        buy_score = score
+    if band in {"steal", "hunt"} and score < 85:
+        buy_band = "keep"
+        buy_score = 88
+    if band == "acceptable":
+        buy_band = "bundle"
+        buy_score = 68
     return {
         "item": {
             "id": iid,
@@ -26,10 +41,15 @@ def row(iid, score, band, seller, price="150", hunt_fit=True):
             "_profile": {"country_code": "ro"},
         },
         "score": {
-            "deal_score": score,
-            "value_band": band,
+            "score_version": 2,
+            "buy_score": buy_score,
+            "buy_band": buy_band,
+            "score_confidence": 0.8,
+            "score_interval_low": max(0, buy_score - 4),
+            "score_interval_high": min(100, buy_score + 4),
             "hunt_fit": hunt_fit,
-            "scam_risk": "medium",
+            "verification_concern": "none",
+            "reason": "ok",
         },
         "watch": WATCH["name"],
         "watch_obj": WATCH,
@@ -103,7 +123,7 @@ class BundlePoolTests(unittest.TestCase):
         new = row(1, 9, "steal", 99)
         merged = bot.merge_scored([new], [old])
         self.assertEqual(len(merged), 1)
-        self.assertEqual(merged[0]["score"]["deal_score"], 9)
+        self.assertEqual(merged[0]["score"]["buy_score"], 88)
 
     def test_fingerprint_stable(self):
         keep = row(1, 9, "steal", 99)

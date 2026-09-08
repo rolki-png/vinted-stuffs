@@ -240,11 +240,11 @@ class MemoryStoreTests(unittest.TestCase):
             "poor_value",
         )
         legacy = store.load_outcomes()[0]
-        self.assertIsNone(legacy["score_version"])
-        self.assertIsNone(legacy["buy_score"])
-        self.assertIsNone(legacy["buy_band"])
-        self.assertEqual(legacy["deal_score"], 9)
-        self.assertEqual(legacy["value_band"], "steal")
+        self.assertEqual(legacy["score_version"], 2)
+        self.assertEqual(legacy["buy_score"], 88)
+        self.assertEqual(legacy["buy_band"], "keep")
+        self.assertIsNone(legacy["deal_score"])
+        self.assertIsNone(legacy["value_band"])
 
     def test_metadata_update_preserves_v2_score_context(self):
         store = lv.MemoryVetoStore()
@@ -279,8 +279,8 @@ class MemoryStoreTests(unittest.TestCase):
             "poor_value",
         )
         legacy = store.load_outcomes()[0]
-        self.assertEqual(legacy["deal_score"], 9)
-        self.assertEqual(legacy["value_band"], "steal")
+        self.assertIsNone(legacy["deal_score"])
+        self.assertIsNone(legacy["value_band"])
         self.assertIsNone(legacy["score_version"])
         self.assertEqual(legacy["title"], "partial v2")
 
@@ -343,7 +343,7 @@ class PsycopgStoreTests(unittest.TestCase):
             "poor_value",
         )
         params = cursor.execute.call_args.args[1]
-        self.assertEqual(params["score_update_kind"], "legacy")
+        self.assertEqual(params["score_update_kind"], "preserve")
 
     def test_v2_outcome_load_round_trip(self):
         conn = MagicMock()

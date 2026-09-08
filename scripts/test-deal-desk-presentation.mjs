@@ -11,8 +11,9 @@ const styles = fs.readFileSync(
 );
 
 assert.doesNotMatch(source, /#\/server\/scoreSemantics\.js/);
-assert.match(source, /Rescore legacy v2/);
-assert.match(source, /legacy_active_v2: legacyActiveV2/);
+assert.doesNotMatch(source, /Rescore legacy v2/);
+assert.doesNotMatch(source, /legacy_active_v2/);
+assert.match(source, /usableRank\(row\)/);
 assert.match(source, /usableRank\(row\)/);
 assert.match(source, /buyBandPresentation\(f\)/);
 assert.doesNotMatch(source, /f\.buy_band \|\| 'skip'/);

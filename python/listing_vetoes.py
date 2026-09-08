@@ -401,13 +401,6 @@ def coerce_enrichment(enrichment: dict | None) -> dict[str, Any]:
 
 
 def score_update_kind(enrichment: dict | None) -> str:
-    has_v2_input = bool(
-        enrichment
-        and any(
-            key in enrichment and enrichment[key] is not None
-            for key in ("score_version", "buy_score", "buy_band")
-        )
-    )
     value = coerce_enrichment(enrichment)
     if (
         value["score_version"] == 2
@@ -416,14 +409,6 @@ def score_update_kind(enrichment: dict | None) -> str:
         and value["buy_band"] in ALLOWED_BUY_BANDS
     ):
         return "v2"
-    if has_v2_input:
-        return "preserve"
-    if (
-        value["deal_score"] is not None
-        and 1 <= value["deal_score"] <= 10
-        and value["value_band"] is not None
-    ):
-        return "legacy"
     return "preserve"
 
 
@@ -435,10 +420,6 @@ def prepare_enrichment_for_write(
     if update_kind == "v2":
         value["deal_score"] = None
         value["value_band"] = None
-    elif update_kind == "legacy":
-        value["score_version"] = None
-        value["buy_score"] = None
-        value["buy_band"] = None
     else:
         for key in SCORE_CONTEXT_FIELDS:
             value[key] = None

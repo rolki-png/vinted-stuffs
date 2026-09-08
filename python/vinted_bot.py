@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 Vinted deal-bot.
- 
+
 For each configured "watch" (a saved search), this:
   1. searches Vinted via the vinted-mcp-cli (no ScrapeBadger)
   2. drops any listing we've already processed (dedup state in data/seen_listings.json)
-  3. extracts purchase factors and calculates v2 utility scores
-  4. pushes a ntfy alert for anything that clears v2 qualification
+  3. extracts purchase factors and calculates buy scores
+  4. pushes a ntfy alert for anything that clears keep qualification
   5. commits the updated dedup state back (handled by the GitHub Actions workflow)
- 
+
 Config lives in python/config.json — see that file for the schema.
 """
 import json
@@ -21,7 +21,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
- 
+
 import requests
 
 try:
@@ -30,7 +30,7 @@ try:
 except ImportError:  # Gemini is optional when Vercel AI Gateway is configured
     genai = None
     types = None
- 
+
 STATE_PATH = Path("data/seen_listings.json")
 BEST_PATH = Path("data/best_deals.json")
 BUNDLE_PATH = Path("data/best_bundles.json")
@@ -43,16 +43,16 @@ VERCEL_GATEWAY_BASE = "https://ai-gateway.vercel.sh/v1"
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL") or "gemini-3.6-flash"
 # Cheap default; override with AI_GATEWAY_MODEL (e.g. openai/gpt-4.1-mini)
 AI_GATEWAY_MODEL = os.environ.get("AI_GATEWAY_MODEL") or "google/gemini-3.1-flash-lite"
- 
- 
+
+
 # ---------- state ----------
- 
+
 def load_state() -> dict:
     if STATE_PATH.exists():
         return json.loads(STATE_PATH.read_text())
     return {"seen_ids": [], "seen_keys": [], "crawled_trigger_ids": [], "run_count": 0, "last_run": None}
- 
- 
+
+
 def save_state(state: dict) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     state["seen_ids"] = state.get("seen_ids", [])[-5000:]
@@ -78,12 +78,12 @@ def mark_seen(state: dict, item_id, hunt_name: str) -> None:
     key = _seen_key(item_id, hunt_name)
     if key not in keys:
         keys.append(key)
- 
- 
+
+
 def load_config() -> dict:
     return json.loads(CONFIG_PATH.read_text())
- 
- 
+
+
 # ---------- vinted-mcp-cli ----------
 
 def _vinted_argv() -> list:
@@ -487,8 +487,8 @@ def select_closet_crawl_sellers(candidates: list, config: dict) -> list:
         if len(picked) >= max_sellers:
             break
     return picked
- 
- 
+
+
 # ---------- scoring ----------
 #
 # Unattended cron scoring is a cheap JSON completion. Do not use the Cursor
@@ -500,7 +500,7 @@ def select_closet_crawl_sellers(candidates: list, config: dict) -> list:
 #   2. Gemini             (GEMINI_API_KEY)     — leftover fallback
 # ChatGPT Plus has no API. An OpenAI API key can be sent *through* the gateway
 # as BYOK; a chatgpt.com subscription cannot.
- 
+
 SCORING_PROMPT = """You are extracting purchase-utility factors from second-hand \
 Vinted listings. Return ONLY a JSON array (no prose or markdown fences), with \
 one object per listing:
@@ -678,7 +678,7 @@ def _is_declared_v2(score: dict) -> bool:
 
 
 def _score_sort_key(score: dict) -> tuple[int, int, int]:
-    """Keep valid v2, legacy, and malformed declared-v2 rows in separate tiers."""
+    """Rank valid buy scores ahead of unscored rows."""
     import buy_score as buy_score_mod
 
     if _is_declared_v2(score):
@@ -695,11 +695,7 @@ def _score_sort_key(score: dict) -> tuple[int, int, int]:
             )
         except (TypeError, ValueError):
             return (0, 0, 0)
-    return (
-        1,
-        _as_int_score(score.get("deal_score")),
-        1 if score.get("value_band") == "steal" else 0,
-    )
+    return (0, 0, 0)
 
 
 def _score_snapshot(score: dict) -> dict:
@@ -723,12 +719,7 @@ def _score_snapshot(score: dict) -> dict:
             "rank_position": score.get("rank_position"),
             "rank_confidence": score.get("rank_confidence"),
         }
-    return {
-        **common,
-        "deal_score": score.get("deal_score"),
-        "value_band": score.get("value_band"),
-        "scam_risk": score.get("scam_risk"),
-    }
+    return {**common}
 
 
 def _v2_score_histogram(rows: list) -> dict[str, int]:
@@ -760,7 +751,7 @@ def is_clothing_solo_bound(watch: dict) -> bool:
 
 
 def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) -> bool:
-    """Apply v2 utility gates, with explicit legacy cached-row fallback."""
+    """Apply buy-score keep gates."""
     if watch.get("bundle_hunt"):
         return False
     if not score:
@@ -773,72 +764,41 @@ def is_keep(score: dict, config: dict, watch: dict, item: dict | None = None) ->
     import buy_score as buy_score_mod
 
     try:
-        declared_v2 = int(score.get("score_version") or 0) == 2
-        calculated_v2 = buy_score_mod.is_v2_score(score)
+        declared = int(score.get("score_version") or 0) == 2
+        calculated = buy_score_mod.is_v2_score(score)
     except (TypeError, ValueError):
-        declared_v2 = False
-        calculated_v2 = False
-    if declared_v2:
-        if not calculated_v2:
-            return False
-        cfg = buy_score_mod.score_config(config)
-        try:
-            confidence = float(score.get("score_confidence") or 0)
-        except (TypeError, ValueError):
-            return False
-        return (
-            score.get("hunt_fit") is True
-            and _as_int_score(score.get("buy_score")) >= int(cfg["keep_min_score"])
-            and confidence >= float(cfg["min_keep_confidence"])
-            and score.get("verification_concern") != "block"
-        )
-    if score.get("scam_risk") == "high":
         return False
-    min_score = watch.get("min_deal_score", config.get("min_deal_score", 9))
-    if _as_int_score(score.get("deal_score")) < min_score:
+    if not declared or not calculated:
         return False
-    if config.get("require_hunt_fit", True) and score.get("hunt_fit") is not True:
+    cfg = buy_score_mod.score_config(config)
+    try:
+        confidence = float(score.get("score_confidence") or 0)
+    except (TypeError, ValueError):
         return False
-    allowed = set(config.get("keep_value_bands", ["steal", "hunt"]))
-    band = score.get("value_band") or "skip"
-    if band not in allowed:
-        return False
-    if item is not None and is_clothing_solo_bound(watch):
-        # Steal-band always bypasses the solo floor (premium underpriced pieces).
-        # Floor (if > 0) only blocks ordinary hunt-band clothing where fees eat value.
-        if band != "steal":
-            amount = listing_amount(item)
-            floor = float(config.get("solo_floor_clothing_ron", 0))
-            if floor > 0 and amount is not None and amount <= floor:
-                return False
-    return True
+    return (
+        score.get("hunt_fit") is True
+        and _as_int_score(score.get("buy_score")) >= int(cfg["keep_min_score"])
+        and confidence >= float(cfg["min_keep_confidence"])
+        and score.get("verification_concern") != "block"
+    )
 
 
 def is_bundle_extra(score: dict, config: dict) -> bool:
     import buy_score as buy_score_mod
 
     try:
-        declared_v2 = int(score.get("score_version") or 0) == 2
-        calculated_v2 = buy_score_mod.is_v2_score(score)
+        declared = int(score.get("score_version") or 0) == 2
+        calculated = buy_score_mod.is_v2_score(score)
     except (TypeError, ValueError):
-        declared_v2 = False
-        calculated_v2 = False
-    if declared_v2:
-        if not calculated_v2:
-            return False
-        cfg = buy_score_mod.score_config(config)
-        return (
-            score.get("hunt_fit") is True
-            and _as_int_score(score.get("buy_score")) >= int(cfg["bundle_min_score"])
-            and score.get("verification_concern") != "block"
-        )
-    if score.get("hunt_fit") is not True:
         return False
-    if score.get("scam_risk") == "high":
+    if not declared or not calculated:
         return False
-    if (score.get("value_band") or "skip") == "skip":
-        return False
-    return _as_int_score(score.get("deal_score")) >= int(config.get("bundle_extra_min_score", 7))
+    cfg = buy_score_mod.score_config(config)
+    return (
+        score.get("hunt_fit") is True
+        and _as_int_score(score.get("buy_score")) >= int(cfg["bundle_min_score"])
+        and score.get("verification_concern") != "block"
+    )
 
 
 def checkout_extra_ron(
@@ -888,7 +848,7 @@ def matching_watches(item: dict, watches: list) -> list:
 
 
 def select_best(candidates: list, config: dict) -> list:
-    """Rank v2 keeps together, ahead of legacy rows, and cap the whole run."""
+    """Rank keeps by buy score and cap the run."""
     ranked = sorted(
         candidates,
         key=lambda c: _score_sort_key(c["score"]),
@@ -1861,10 +1821,10 @@ def is_mens_gym_watch(watch: dict) -> bool:
         token in target
         for token in ("gym", "training", "sport", "running", "compression")
     )
- 
- 
+
+
 # ---------- ntfy ----------
- 
+
 def _header_safe(text: str) -> str:
     """HTTP headers are Latin-1 only. Listing titles often contain en dashes,
     em dashes, or curly quotes that aren't — swap common ones for ASCII
@@ -1879,8 +1839,8 @@ def _header_safe(text: str) -> str:
     for bad, good in replacements.items():
         text = text.replace(bad, good)
     return text.encode("latin-1", errors="ignore").decode("latin-1")
- 
- 
+
+
 def _ntfy_post(
     topic: str,
     title: str,
@@ -1935,37 +1895,36 @@ def send_ntfy(
 ) -> bool:
     price = (item.get("price") or {}).get("amount", "?")
     currency = (item.get("price") or {}).get("currency_code", "")
-    if _is_declared_v2(score):
-        score_text = _v2_notification_score(score)
-        if score_text is None:
-            listing = item.get("id")
-            if listing is None:
-                listing = item.get("title") or "unknown"
-            print(
-                f"Suppressed solo notification for listing {listing}: "
-                "malformed v2 calculated score fields.",
-                file=sys.stderr,
-            )
-            return False
-        title = _header_safe(f"{score_text}: {item.get('title', '')[:50]}")
-        body = (
-            f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
-            f"- {score_text}\n{score.get('reason') or ''}"
+    if not _is_declared_v2(score):
+        listing = item.get("id")
+        if listing is None:
+            listing = item.get("title") or "unknown"
+        print(
+            f"Suppressed solo notification for listing {listing}: "
+            "missing calculated score fields.",
+            file=sys.stderr,
         )
-        import buy_score as buy_score_mod
+        return False
+    score_text = _v2_notification_score(score)
+    if score_text is None:
+        listing = item.get("id")
+        if listing is None:
+            listing = item.get("title") or "unknown"
+        print(
+            f"Suppressed solo notification for listing {listing}: "
+            "malformed calculated score fields.",
+            file=sys.stderr,
+        )
+        return False
+    title = _header_safe(f"{score_text}: {item.get('title', '')[:50]}")
+    body = (
+        f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
+        f"- {score_text}\n{score.get('reason') or ''}"
+    )
+    import buy_score as buy_score_mod
 
-        keep_min = int(buy_score_mod.score_config(config)["keep_min_score"])
-        high_priority = _as_int_score(score.get("buy_score")) >= keep_min
-    else:
-        band = score.get("value_band") or "keep"
-        title = _header_safe(
-            f"{score['deal_score']}/10 {band}: {item.get('title', '')[:50]}"
-        )
-        body = (
-            f"{price} {currency} - {item.get('brand_title') or 'no brand'} "
-            f"- {band} - scam: {score['scam_risk']}\n{score['reason']}"
-        )
-        high_priority = _as_int_score(score.get("deal_score")) >= 9
+    keep_min = int(buy_score_mod.score_config(config)["keep_min_score"])
+    high_priority = _as_int_score(score.get("buy_score")) >= keep_min
     return _ntfy_post(
         topic,
         title,
@@ -1977,12 +1936,9 @@ def send_ntfy(
 
 def _bundle_notification_line(role: str, row: dict) -> str | None:
     score = row["score"]
-    if _is_declared_v2(score):
-        score_text = _v2_notification_score(score)
-        if score_text is None:
-            return None
-    else:
-        score_text = f"{score.get('deal_score')}/10"
+    score_text = _v2_notification_score(score)
+    if score_text is None:
+        return None
     return (
         f"{role} {score_text} {row['item'].get('title', '')[:70]} "
         f"({listing_amount(row['item'])} RON) {row['item'].get('url') or ''}"
@@ -2011,7 +1967,7 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
                 if member is None:
                     member = row["item"].get("title") or "unknown"
                 print(
-                    f"Suppressed bundle notification: member {member} has malformed v2 "
+                    f"Suppressed bundle notification: member {member} has malformed "
                     "calculated score fields; whole bundle remains retryable.",
                     file=sys.stderr,
                 )
@@ -2067,13 +2023,13 @@ def send_ntfy_value_haul(topic: str, haul: dict, score: dict, useful: list) -> N
 
 
 # ---------- main ----------
- 
+
 def main() -> None:
     gateway_key = os.environ.get("AI_GATEWAY_API_KEY", "")
     gemini_key = os.environ.get("GEMINI_API_KEY", "")
     ntfy_topic = os.environ.get("NTFY_TOPIC", "")
     test_mode = os.environ.get("SKIP_SCORING", "").strip().lower() in ("1", "true", "yes")
- 
+
     required = [("NTFY_TOPIC", ntfy_topic)]
     if not test_mode and not gateway_key and not gemini_key:
         print(
@@ -2085,10 +2041,10 @@ def main() -> None:
     if missing:
         print(f"Missing required secrets: {', '.join(missing)}", file=sys.stderr)
         sys.exit(1)
- 
+
     if test_mode:
         print("TEST MODE: skipping LLM scoring, fake-scoring every new listing as a pass", file=sys.stderr)
- 
+
     config = load_config()
     state = load_state()
     state.setdefault("seen_keys", [])
@@ -2148,7 +2104,7 @@ def main() -> None:
             print("GEMINI_API_KEY is set but google-genai is not installed; Gateway-only.", file=sys.stderr)
         else:
             gemini_client = genai.Client(api_key=gemini_key)
- 
+
     alerts_sent = 0
     scored = []
     scored_ids = set()
@@ -2869,7 +2825,7 @@ def main() -> None:
             for r in top
         ],
     }, indent=2, ensure_ascii=False) + "\n")
- 
+
     state["run_count"] = state.get("run_count", 0) + 1
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     state["last_alerts_sent"] = alerts_sent
@@ -2893,8 +2849,7 @@ def main() -> None:
         file=sys.stderr,
     )
     print(f"Run complete. {alerts_sent} alert(s) sent.")
- 
- 
+
+
 if __name__ == "__main__":
     main()
- 

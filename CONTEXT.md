@@ -9,16 +9,15 @@ A saved search for one kind of thing the buyer wants (type, sizes, query, notes,
 _Avoid_: Watch (except as config key), alert, scrape
 
 **Keep**:
-A crème-de-la-crème v2 listing: true hunt fit, `buy_score >= 85`,
+A crème-de-la-crème listing: true hunt fit, `buy_score >= 85`,
 `score_confidence >= min_keep_confidence` (default 0.60, medium/high),
 and no blocking verification concern. Pairwise rank can order Keeps but cannot
 make a listing a Keep. A merely good listing is not a Keep.
 _Avoid_: Deal, hit, pass
 
 **Solo floor**:
-Legacy compatibility price gate for ordinary clothing sold alone
-(`solo_floor_clothing_ron`). V2 instead includes delivered cost in calculated
-utility and does not use this gate.
+Delivered cost is already inside calculated utility; do not use a clothing-only
+price floor as a keep gate.
 _Avoid_: Min price, price_from (do not put a floor on search; the scorer judges cheap listings)
 
 **Hunt fit**:
@@ -26,7 +25,7 @@ Whether a listing genuinely matches a hunt's type, sizes, query, and notes — n
 _Avoid_: Relevant, match (unqualified)
 
 **Buy score**:
-The v2 calculated purchase utility on a 0–100 scale. It combines usefulness,
+The calculated purchase utility on a 0–100 scale. It combines usefulness,
 quality, condition, versatility, and value; applies fit and duplication; and
 accounts for delivered cost. The LLM supplies structured evidence and
 confidence, while deterministic code calculates the score and uncertainty
@@ -34,7 +33,7 @@ interval.
 _Avoid_: Deal score, LLM rating
 
 **Buy band**:
-The v2 label derived from `buy_score`: skip (0–59), bundle (60–74), good
+The label derived from `buy_score`: skip (0–59), bundle (60–74), good
 (75–84), keep (85–94), or exceptional (95–100). The band summarizes utility;
 hunt fit, confidence, and verification gates still apply separately.
 _Avoid_: Value band, discount
@@ -46,16 +45,10 @@ on the strongest Keep (or best haul item), plus a bounded extras/fee term.
 _Avoid_: Deal score for carts, LLM cart grade
 
 **Pairwise rank**:
-An ordering among qualifying v2 candidates with overlapping uncertainty
+An ordering among qualifying candidates with overlapping uncertainty
 intervals. It helps choose between close options but never changes calculated
 utility or threshold qualification.
 _Avoid_: Score, promotion
-
-**Legacy score**:
-The historical 1–10 `deal_score` and its `value_band`. Legacy scores remain
-visible only as labelled display history; never average, pair-compare, or
-threshold-compare them with v2 scores.
-_Avoid_: Current score, v2 fallback
 
 **Bundle**:
 Two or more listings from the same seller in one checkout: at least one Keep,
@@ -67,7 +60,7 @@ they are still listed.
 _Avoid_: Cart, lot, combo
 
 **Bundle extra**:
-A hunt-fit v2 listing that is not a Keep on its own, but has `buy_score >= 60`
+A hunt-fit listing that is not a Keep on its own, but has `buy_score >= 60`
 and no blocking verification concern, so it is good enough to ride with a Keep
 in a bundle.
 _Avoid_: Filler, add-on (unqualified)

@@ -59,44 +59,6 @@ npm run test:desk
 set of dashboard contracts. CI Python installs use `uv sync --project python`;
 `python/requirements.txt` mirrors those dependencies for non-uv environments.
 
-## Legacy v2 rollout
-
-The production legacy migration has not been run by this change. The preferred
-rollout is a manual **vinted-deal-bot** GitHub Actions dispatch with
-`legacy_active_v2` enabled. That path injects the repository's `DATABASE_URL`,
-AI gateway/Gemini, and Vinted CLI settings without exposing their values. Each
-dispatch availability-checks one bounded batch before any paid scoring call,
-commits the export and progress state, and reports:
-
-- exit `0` with status `complete`: no available active-hunt legacy gaps remain
-  and no stuck live rows are left on the desk;
-- exit `0` with status `exhausted`: no retryable gaps remain, but stuck live
-  rows still show 1–10 scores until they are inspected and retried;
-- exit `3`: a partial batch was committed; the workflow queues the next
-  `legacy_active_v2` dispatch automatically (desk **Rescore legacy v2** still
-  works if that queue call fails);
-- any other nonzero exit: an operational failure.
-
-Confirmed unavailable rows keep their historical score and rationale and are
-tracked outside the score row, so they do not consume later batches or count as
-active completion gaps. A batch response must mark `available: false` before a
-row is treated as gone; omitted ids stay retryable. Bought and Removed rows are
-skipped. A live row that cannot earn a v2 score is marked stuck after three
-consecutive attempts so dispatch-until-exit-0 can finish without looping, but
-that is `exhausted`, not a completed v2 migration. Normal manual and
-scheduled bot runs do not enter this rollout path. Each Actions dispatch scores
-at most 200 live rows and times out after 90 minutes.
-
-For a deliberate local rollout with the same database and provider environment
-configured:
-
-```bash
-uv run --project python python python/backfill_scored_listings.py \
-  --legacy-active-v2 --limit 200 --export
-```
-
-This command can incur paid LLM usage.
-
 ## Deploy dashboard to Vercel
 
 ```bash

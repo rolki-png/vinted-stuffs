@@ -127,10 +127,14 @@ class MemoryStoreTests(unittest.TestCase):
                     "_profile": {"country_code": "ro"},
                 },
                 score={
-                    "deal_score": 7,
-                    "value_band": "acceptable",
+                    "score_version": 2,
+                    "buy_score": 68,
+                    "buy_band": "bundle",
+                    "score_confidence": 0.8,
+                    "score_interval_low": 64,
+                    "score_interval_high": 72,
                     "hunt_fit": True,
-                    "scam_risk": "low",
+                    "verification_concern": "none",
                     "reason": "extra",
                 },
                 hunt_name=watch["name"],
@@ -149,10 +153,14 @@ class MemoryStoreTests(unittest.TestCase):
                 "_profile": {"country_code": "ro"},
             },
             "score": {
-                "deal_score": 9,
-                "value_band": "steal",
+                "score_version": 2,
+                "buy_score": 88,
+                "buy_band": "keep",
+                "score_confidence": 0.8,
+                "score_interval_low": 84,
+                "score_interval_high": 92,
                 "hunt_fit": True,
-                "scam_risk": "low",
+                "verification_concern": "none",
                 "reason": "keep",
             },
             "watch": watch["name"],
@@ -166,22 +174,27 @@ class MemoryStoreTests(unittest.TestCase):
     def test_index_bundle_opportunities(self):
         rows = [
             {
-                "id": 1, "watch": "H", "title": "a", "price": 40, "deal_score": 7,
-                "value_band": "acceptable", "hunt_fit": True, "seller_id": 9,
-                "seller": "s", "scored_at": "2026-09-05T01:00:00+00:00",
+                "id": 1, "watch": "H", "title": "a", "price": 40,
+                "score_version": 2, "buy_score": 70, "buy_band": "bundle",
+                "hunt_fit": True, "seller_id": 9, "seller": "s",
+                "verification_concern": "none",
+                "scored_at": "2026-09-05T01:00:00+00:00",
             },
             {
-                "id": 2, "watch": "H", "title": "b", "price": 50, "deal_score": 8,
-                "value_band": "hunt", "hunt_fit": True, "seller_id": 9,
-                "seller": "s", "scored_at": "2026-09-05T02:00:00+00:00",
+                "id": 2, "watch": "H", "title": "b", "price": 50,
+                "score_version": 2, "buy_score": 72, "buy_band": "bundle",
+                "hunt_fit": True, "seller_id": 9, "seller": "s",
+                "verification_concern": "none",
+                "scored_at": "2026-09-05T02:00:00+00:00",
             },
             {
-                "id": 3, "watch": "H", "title": "skip", "price": 10, "deal_score": 3,
-                "value_band": "skip", "hunt_fit": True, "seller_id": 9,
-                "seller": "s", "scored_at": "2026-09-05T03:00:00+00:00",
+                "id": 3, "watch": "H", "title": "skip", "price": 10,
+                "score_version": 2, "buy_score": 40, "buy_band": "skip",
+                "hunt_fit": True, "seller_id": 9, "seller": "s",
+                "scored_at": "2026-09-05T03:00:00+00:00",
             },
         ]
-        opps = ss.index_bundle_opportunities(rows, min_items=2, min_deal_score=6)
+        opps = ss.index_bundle_opportunities(rows, min_items=2)
         self.assertEqual(len(opps), 1)
         self.assertEqual(opps[0]["kind"], "index_near_bundle")
         self.assertEqual(len(opps[0]["items"]), 2)
@@ -226,10 +239,9 @@ class MemoryStoreTests(unittest.TestCase):
 
         opportunities = ss.index_bundle_opportunities(rows)
 
-        self.assertEqual(len(opportunities), 2)
+        self.assertEqual(len(opportunities), 1)
         item_groups = [opportunity["items"] for opportunity in opportunities]
-        self.assertIn([3, 4], [[item["id"] for item in items] for items in item_groups])
-        self.assertIn([1, 2], [[item["id"] for item in items] for items in item_groups])
+        self.assertEqual([[item["id"] for item in items] for items in item_groups], [[3, 4]])
         v2_items = next(items for items in item_groups if items[0]["id"] == 3)
         self.assertEqual(v2_items[0]["role"], "keep")
         self.assertEqual(v2_items[1]["role"], "extra")

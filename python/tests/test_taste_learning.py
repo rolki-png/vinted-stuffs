@@ -51,7 +51,8 @@ class TestPrompt(unittest.TestCase):
                 "value_band": "steal",
             }
         )
-        self.assertIn("band=steal score=9/10 legacy", line)
+        self.assertIn("score=?", line)
+        self.assertNotIn("/10", line)
 
     def test_includes_bought_not_parked(self):
         block = tl.build_taste_prompt_block(

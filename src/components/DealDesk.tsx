@@ -90,7 +90,6 @@ type Seller = {
 	keeps?: number;
 	listings?: number;
 	score_version?: number | null;
-	legacy_score?: boolean;
 	score_tier?: number;
 	bands?: Record<string, number>;
 	country?: string;
@@ -165,18 +164,18 @@ function fmtConfidence(value: unknown) {
 }
 
 function ScoreSummary({ row }: { row: ScoreFields & { deal_score?: number } }) {
-	const v2 = isV2(row);
+	const scored = isV2(row);
 	const rank = usableRank(row);
 	return (
 		<>
 			<div>
 				{scoreLabel(row)}
-				{v2 ? <span className="score-denominator"> /100</span> : null}
+				{scored ? <span className="score-denominator"> /100</span> : null}
 			</div>
-			<span className={v2 ? "score-meta" : "legacy-score"}>
+			<span className={scored ? "score-meta" : "score-unscored"}>
 				{scoreScaleLabel(row)}
 			</span>
-			{v2 ? (
+			{scored ? (
 				<>
 					<span className="score-meta">
 						Confidence {fmtConfidence(row.score_confidence)}
@@ -232,14 +231,9 @@ function VerificationSummary({ row }: { row: Find | BundleItem }) {
 		);
 	}
 	if (isDeclaredV2(row)) {
-		return <span className="verification-block">Invalid v2 score data</span>;
+		return <span className="verification-block">Invalid score data</span>;
 	}
-	const legacyRisk = "scam_risk" in row ? row.scam_risk : null;
-	return (
-		<span className="legacy-score">
-			Legacy risk: {legacyRisk || "not recorded"}
-		</span>
-	);
+	return <span className="score-unscored">Unscored</span>;
 }
 
 function VetoButtons({
@@ -444,17 +438,10 @@ export function DealDesk() {
 		return () => window.clearTimeout(t);
 	}, [toast]);
 
-	const triggerHunt = async ({
-		fullSweep = false,
-		legacyActiveV2 = false,
-	} = {}) => {
+	const triggerHunt = async ({ fullSweep = false } = {}) => {
 		setBusy(true);
 		setOpsMsg({
-			text: legacyActiveV2
-				? "Dispatching legacy v2 rescore…"
-				: fullSweep
-					? "Dispatching full sweep…"
-					: "Dispatching hunt…",
+			text: fullSweep ? "Dispatching full sweep…" : "Dispatching hunt…",
 		});
 		try {
 			const res = await fetch("/api/trigger", {
@@ -462,7 +449,6 @@ export function DealDesk() {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
 					full_sweep: fullSweep,
-					legacy_active_v2: legacyActiveV2,
 				}),
 			});
 			const json = await res.json().catch(() => ({}));
@@ -534,10 +520,7 @@ export function DealDesk() {
 	);
 
 	const run = data?.run || {};
-	const qualifiedKeeps = {
-		v2: data?.meta?.keeps_v2 ?? 0,
-		legacy: data?.meta?.keeps_legacy ?? 0,
-	};
+	const qualifiedKeeps = data?.meta?.keeps ?? data?.meta?.keeps_v2 ?? 0;
 	const lede = error
 		? error
 		: run.finished_at
@@ -555,8 +538,7 @@ export function DealDesk() {
 	const stats: Array<[string, string | number]> = [
 		["Scored last run", run.scored ?? "—"],
 		["Index (DB)", data?.meta?.indexed_count ?? "—"],
-		["V2 qualified keeps", qualifiedKeeps.v2],
-		["Legacy keeps /10", qualifiedKeeps.legacy],
+		["Qualified keeps", qualifiedKeeps],
 		["Bundles", bundles.length],
 		["Sellers tracked", (data?.sellers || []).length],
 		["Alerts last run", run.alerts ?? "—"],
@@ -590,14 +572,6 @@ export function DealDesk() {
 						onClick={() => triggerHunt({ fullSweep: true })}
 					>
 						Full sweep
-					</button>
-					<button
-						type="button"
-						className="btn"
-						disabled={busy}
-						onClick={() => triggerHunt({ legacyActiveV2: true })}
-					>
-						Rescore legacy v2
 					</button>
 					<button
 						type="button"
@@ -673,19 +647,11 @@ export function DealDesk() {
 							Band
 							<select value={band} onChange={(e) => setBand(e.target.value)}>
 								<option value="">All</option>
-								<optgroup label="V2 utility bands">
-									<option value="v2:exceptional">V2 exceptional</option>
-									<option value="v2:keep">V2 keep</option>
-									<option value="v2:good">V2 good</option>
-									<option value="v2:bundle">V2 bundle</option>
-									<option value="v2:skip">V2 skip</option>
-								</optgroup>
-								<optgroup label="Legacy history /10">
-									<option value="legacy:steal">Legacy steal</option>
-									<option value="legacy:hunt">Legacy hunt</option>
-									<option value="legacy:acceptable">Legacy acceptable</option>
-									<option value="legacy:skip">Legacy skip</option>
-								</optgroup>
+								<option value="exceptional">exceptional</option>
+								<option value="keep">keep</option>
+								<option value="good">good</option>
+								<option value="bundle">bundle</option>
+								<option value="skip">skip</option>
 							</select>
 						</label>
 						<label>
@@ -694,12 +660,11 @@ export function DealDesk() {
 								value={minScore}
 								onChange={(e) => setMinScore(e.target.value)}
 							>
-								<option value="">Any score version</option>
-								<option value="v2:60">V2 60+ /100</option>
-								<option value="v2:75">V2 75+ /100</option>
-								<option value="v2:85">V2 85+ /100</option>
-								<option value="v2:95">V2 95+ /100</option>
-								<option value="legacy">Legacy only /10</option>
+								<option value="">Any score</option>
+								<option value="60">60+</option>
+								<option value="75">75+</option>
+								<option value="85">85+</option>
+								<option value="95">95+</option>
 							</select>
 						</label>
 						<label>
@@ -743,8 +708,7 @@ export function DealDesk() {
 						{findsLoading ? "Loading…" : null}
 						{!findsLoading
 							? `Page ${findsPage.page || 1} of ${Math.max(findsPage.pages, 1)} · ${findsPage.total} listing${findsPage.total === 1 ? "" : "s"}`
-							: null}
-						{" "}
+							: null}{" "}
 						<button
 							type="button"
 							className="btn"
@@ -757,9 +721,7 @@ export function DealDesk() {
 							type="button"
 							className="btn"
 							disabled={
-								findsLoading ||
-								findsPage.pages === 0 ||
-								page >= findsPage.pages
+								findsLoading || findsPage.pages === 0 || page >= findsPage.pages
 							}
 							onClick={() => setPage((p) => p + 1)}
 						>
@@ -813,11 +775,9 @@ export function DealDesk() {
 															{buyBand.label}
 														</span>
 													) : isDeclaredV2(f) ? (
-														<span className="pill unknown">Invalid v2</span>
+														<span className="pill unknown">Invalid score</span>
 													) : (
-														<span className="legacy-score">
-															Legacy band: {f.value_band || "not recorded"}
-														</span>
+														<span className="score-unscored">Unscored</span>
 													)}{" "}
 													<span className={`pill ${f.source || ""}`}>
 														{f.source || ""}
@@ -831,9 +791,7 @@ export function DealDesk() {
 												<td>
 													<div className="title">{f.title || "—"}</div>
 													{!isDeclaredV2(f) && f.reason ? (
-														<span className="reason">
-															Legacy rationale: {f.reason}
-														</span>
+														<span className="reason">{f.reason}</span>
 													) : null}
 													<ScoreEvidence row={f} />
 												</td>
@@ -923,7 +881,7 @@ export function DealDesk() {
 							No wardrobe opportunities yet. Near hauls appear when a seller’s
 							closet clears the fee gate; index near/bundles come from the
 							Cockroach score cache when the same seller has multiple hunt-fits;
-							value hauls when the model confirms a steal/hunt.
+							value hauls when a closet clears the delivered-cost gate.
 						</div>
 					) : (
 						<div className="bundle-grid">
@@ -1104,11 +1062,10 @@ export function DealDesk() {
 							<tbody>
 								{sellers.length ? (
 									sellers.map((s, i) => {
-										const v2Seller =
+										const scoredSeller =
 											s.score_tier === 2 ||
 											(s.score_tier == null && s.score_version === 2);
-										const legacySeller = !v2Seller && s.legacy_score === true;
-										const scale = v2Seller ? "/100" : legacySeller ? "/10" : "";
+										const scale = scoredSeller ? "/100" : "";
 										return (
 											<tr key={String(s.seller_id || s.seller || i)}>
 												<td className="mono">{i + 1}</td>
@@ -1129,13 +1086,11 @@ export function DealDesk() {
 												<td className="score">
 													{s.best_score ?? "—"} {scale}
 													<span
-														className={v2Seller ? "score-meta" : "legacy-score"}
+														className={
+															scoredSeller ? "score-meta" : "score-unscored"
+														}
 													>
-														{v2Seller
-															? "V2 utility"
-															: legacySeller
-																? "Legacy history"
-																: "Unscored"}
+														{scoredSeller ? "Buy score" : "Unscored"}
 													</span>
 													<span className="seller-bands">
 														{Object.entries(s.bands || {}).map(
@@ -1153,13 +1108,11 @@ export function DealDesk() {
 												<td>
 													{s.keeps ?? 0}
 													<span
-														className={v2Seller ? "score-meta" : "legacy-score"}
+														className={
+															scoredSeller ? "score-meta" : "score-unscored"
+														}
 													>
-														{v2Seller
-															? "V2 qualified"
-															: legacySeller
-																? "Legacy rule"
-																: "No score family"}
+														{scoredSeller ? "Qualified keeps" : "No score"}
 													</span>
 												</td>
 												<td>{s.listings}</td>
@@ -1213,9 +1166,7 @@ export function DealDesk() {
 							solo keeps {run.solo_keeps ?? "—"} · bundles {run.bundles ?? "—"}{" "}
 							· alerts {run.alerts ?? "—"}
 						</p>
-						<p className="reason">
-							V2 utility histogram (/100, ten-point bins)
-						</p>
+						<p className="reason">Score histogram (/100, ten-point bins)</p>
 						{hist.length ? (
 							<div className="hist">
 								{hist.map(({ label, count }: HistogramRow) => {
@@ -1234,8 +1185,8 @@ export function DealDesk() {
 								})}
 							</div>
 						) : (
-							<p className="legacy-score">
-								No v2 histogram is available for this historical run.
+							<p className="score-unscored">
+								No score histogram is available for this run.
 							</p>
 						)}
 					</div>

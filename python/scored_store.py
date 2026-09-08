@@ -509,29 +509,21 @@ def export_row(row: dict) -> dict:
 
 
 def _bundle_eligible(row: dict) -> bool:
-    if int(row.get("score_version") or 0) == 2:
-        return (
-            row.get("hunt_fit") is True
-            and row.get("buy_band") in {"bundle", "good", "keep", "exceptional"}
-            and row.get("verification_concern") != "block"
-        )
     return (
-        row.get("hunt_fit") is not False
-        and row.get("value_band") != "skip"
-        and (not row.get("has_score") or int(row.get("deal_score") or 0) >= 6)
+        int(row.get("score_version") or 0) == 2
+        and row.get("hunt_fit") is True
+        and row.get("buy_band") in {"bundle", "good", "keep", "exceptional"}
+        and row.get("verification_concern") != "block"
+        and row.get("buy_score") is not None
     )
 
 
 def _bundle_is_keep(row: dict) -> bool:
-    if int(row.get("score_version") or 0) == 2:
-        return (
-            int(row.get("buy_score") or 0) >= 85
-            and float(row.get("score_confidence") or 0) >= 0.60
-            and row.get("verification_concern") != "block"
-        )
     return (
-        int(row.get("deal_score") or 0) >= 9
-        and row.get("value_band") in {"steal", "hunt"}
+        int(row.get("score_version") or 0) == 2
+        and int(row.get("buy_score") or 0) >= 85
+        and float(row.get("score_confidence") or 0) >= 0.60
+        and row.get("verification_concern") != "block"
     )
 
 
@@ -539,34 +531,25 @@ def index_bundle_opportunities(
     export_rows: list[dict],
     *,
     min_items: int = 2,
-    min_deal_score: int = 6,
     config: dict | None = None,
 ) -> list[dict]:
     """Group indexed hunt-fit rows by seller into dashboard near-bundle shapes."""
     import bundle_offer as bo
 
-    by_seller: dict[tuple[str, str], list] = {}
+    by_seller: dict[str, list] = {}
     for row in export_rows:
         if not _bundle_eligible(row):
             continue
-        is_v2 = int(row.get("score_version") or 0) == 2
-        if not is_v2 and row.get("has_score"):
-            try:
-                if int(row.get("deal_score") or 0) < min_deal_score:
-                    continue
-            except (TypeError, ValueError):
-                continue
         sid = row.get("seller_id")
         if sid is None:
             continue
-        score_kind = "v2" if is_v2 else "legacy"
-        by_seller.setdefault((str(sid), score_kind), []).append(row)
+        by_seller.setdefault(str(sid), []).append(row)
 
     offer_cfg = bo.bundle_offer_config(config)
     default_extra = float(offer_cfg.get("default_checkout_extra_ron", 25))
     out = []
-    for (sid, score_kind), rows in by_seller.items():
-        score_field = "buy_score" if score_kind == "v2" else "deal_score"
+    for sid, rows in by_seller.items():
+        score_field = "buy_score"
         best: dict[str, dict] = {}
         for r in rows:
             iid = str(r.get("id"))

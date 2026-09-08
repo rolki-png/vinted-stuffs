@@ -46,6 +46,6 @@
   },
   "description": "Vinted hunt bot + TanStack Start deal desk",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }

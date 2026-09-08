@@ -39,6 +39,150 @@
   },
   {
     "item": {
+      "id": 9792900050,
+      "title": "NIKE dri fit",
+      "price": {
+        "amount": "63.76",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou cu etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9792900050-nike-dri-fit",
+      "user": {
+        "id": 3179974933,
+        "login": "vasiliki877"
+      },
+      "_profile": {
+        "username": "vasiliki877",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 5,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9792900050,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 58,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 82.0,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 66.0,
+        "value": 51.53244,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 84.95,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dri-fit material for gym use",
+        "quality": "Standard Nike performance quality",
+        "condition": "New with tags",
+        "versatility": "Athletic use",
+        "value": "New retail equivalent for entry-level performance shorts",
+        "fit_probability": "Size M is within target range",
+        "duplication_probability": "Standard Nike product line"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Listing title is generic; requires visual confirmation that the item is indeed shorts and not a shirt.",
+      "hunt_fit": true,
+      "reason": "Assuming the listing is for gym shorts as requested, the price is fair for a new-with-tags item, though the title lacks detail."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 3179974933,
+    "seller": "vasiliki877"
+  },
+  {
+    "item": {
+      "id": 9873520148,
+      "title": "Buty Asics rozmiar 43,5.",
+      "price": {
+        "amount": "221.7",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "43,5",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9873520148-buty-asics-rozmiar-435",
+      "user": {
+        "id": 3180755943,
+        "login": "jacek357"
+      },
+      "_profile": {
+        "username": "jacek357",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 6,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9873520148,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.785,
+      "score_interval_low": 56,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 74.0,
+        "condition": 78.0,
+        "versatility": 86.0,
+        "value": 44.07920909090909,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 255.78,
+        "equivalent_replacement_cost_ron": 220.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Excellent daily runner.",
+        "quality": "Solid build, very good condition.",
+        "condition": "Listed as Very Good.",
+        "versatility": "Neutral color/style.",
+        "value": "Matches target hunt price point.",
+        "fit_probability": "Size 43.5 is exact match.",
+        "duplication_probability": "Common model."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Seller has no feedback; request tagged photos.",
+      "hunt_fit": true,
+      "reason": "Good price for target model and size in very good condition."
+    },
+    "watch": "ASICS Gel-1130 size 43",
+    "seller_id": 3180755943,
+    "seller": "jacek357"
+  },
+  {
+    "item": {
       "id": 9882077487,
       "title": "Spodenki biegowe / treningowe legginsy SaySky",
       "price": {
@@ -588,6 +732,78 @@
   },
   {
     "item": {
+      "id": 9883621128,
+      "title": "Nike shorts",
+      "price": {
+        "amount": "47.82",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "L",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9883621128-nike-shorts",
+      "user": {
+        "id": 3164276561,
+        "login": "steliosch77"
+      },
+      "_profile": {
+        "username": "steliosch77",
+        "member_since": null,
+        "feedback_count": 17,
+        "feedback_reputation": 0.9,
+        "item_count": 7,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9883621128,
+      "score_version": 2,
+      "buy_score": 68,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 64,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 66.0,
+        "condition": 100.0,
+        "versatility": 86.0,
+        "value": 46.551379999999995,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 68.21,
+        "equivalent_replacement_cost_ron": 60.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Core item for gym use",
+        "quality": "Nike standard training material",
+        "condition": "New with tags",
+        "versatility": "Essential gym wear",
+        "value": "Conservative estimate for new Nike shorts",
+        "fit_probability": "Matches target size L",
+        "duplication_probability": "Common item type"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "This listing is a Nike gym short in target size L that works as a potential seed for a shipping-efficient multi-item bundle."
+    },
+    "watch": "Gym seed Nike shorts M-L",
+    "seller_id": 3164276561,
+    "seller": "steliosch77"
+  },
+  {
+    "item": {
       "id": 9658279130,
       "title": "Short Nike Dri-Fit L",
       "price": {
@@ -615,93 +831,21 @@
     "score": {
       "id": 9658279130,
       "score_version": 2,
-      "buy_score": 67,
+      "buy_score": 66,
       "buy_band": "bundle",
       "score_confidence": 0.82,
       "score_interval_low": 61,
-      "score_interval_high": 72,
+      "score_interval_high": 71,
       "score_factors": {
         "usefulness": 86.0,
-        "quality": 74.0,
-        "condition": 90.5,
-        "versatility": 66.0,
-        "value": 57.8719375,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.32,
-        "delivered_cost_ron": 56.33,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dri-fit material is ideal for gym training",
-        "quality": "Standard Nike performance gear",
-        "condition": "New without tags",
-        "versatility": "Strictly athletic use",
-        "value": "Conservative retail for entry-level Nike shorts",
-        "fit_probability": "Size L is within target range",
-        "duplication_probability": "Common item but condition is excellent"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic Nike Dri-Fit shorts in size L are a perfect match for the technical gym shorts hunt at a very competitive price point."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3148413458,
-    "seller": "cristiani899"
-  },
-  {
-    "item": {
-      "id": 9792900050,
-      "title": "NIKE dri fit",
-      "price": {
-        "amount": "63.76",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Nou cu etichetă",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9792900050-nike-dri-fit",
-      "user": {
-        "id": 3179974933,
-        "login": "vasiliki877"
-      },
-      "_profile": {
-        "username": "vasiliki877",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 5,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9792900050,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.79,
-      "score_interval_low": 58,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 82.0,
         "quality": 74.0,
         "condition": 95.0,
         "versatility": 66.0,
-        "value": 51.53244,
+        "value": 46.90075,
         "fit_probability": 0.95,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 84.95,
-        "equivalent_replacement_cost_ron": 90.0,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 56.33,
+        "equivalent_replacement_cost_ron": 50.0,
         "personal_adjustments": {
           "usefulness": 0.0,
           "quality": 0.0,
@@ -713,597 +857,21 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Dri-fit material for gym use",
-        "quality": "Standard Nike performance quality",
-        "condition": "New with tags",
-        "versatility": "Athletic use",
-        "value": "New retail equivalent for entry-level performance shorts",
-        "fit_probability": "Size M is within target range",
-        "duplication_probability": "Standard Nike product line"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Listing title is generic; requires visual confirmation that the item is indeed shorts and not a shirt.",
-      "hunt_fit": true,
-      "reason": "Assuming the listing is for gym shorts as requested, the price is fair for a new-with-tags item, though the title lacks detail."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3179974933,
-    "seller": "vasiliki877"
-  },
-  {
-    "item": {
-      "id": 9924763853,
-      "title": "Spodenki sportowe Lululemon Pace Breaker",
-      "price": {
-        "amount": "142.87",
-        "currency_code": "RON"
-      },
-      "brand_title": "Lululemon",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9924763853-spodenki-sportowe-lululemon-pace-breaker",
-      "user": {
-        "id": 233433553,
-        "login": "i0p4uk"
-      },
-      "_profile": {
-        "username": "i0p4uk",
-        "member_since": null,
-        "feedback_count": 551,
-        "feedback_reputation": 1,
-        "item_count": 40,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9924763853,
-      "score_version": 2,
-      "buy_score": 66,
-      "buy_band": "bundle",
-      "score_confidence": 0.875,
-      "score_interval_low": 61,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 86.0,
-        "condition": 90.5,
-        "versatility": 86.0,
-        "value": 51.490453333333335,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.18,
-        "delivered_cost_ron": 173.01,
-        "equivalent_replacement_cost_ron": 180.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Primary hunt item.",
-        "quality": "Pace Breaker is a core technical model.",
+        "usefulness": "Technical fabric for training.",
+        "quality": "Nike Dri-Fit is a standard technical material.",
         "condition": "New without tags.",
-        "versatility": "Highly versatile gym gear.",
-        "value": "Current market value for new-without-tags secondary market.",
-        "fit_probability": "Size L matches target range.",
-        "duplication_probability": "Specific model fit."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct brand, model, and size for the training shorts hunt at an excellent price."
-    },
-    "watch": "Lululemon gym M-L",
-    "seller_id": 233433553,
-    "seller": "i0p4uk"
-  },
-  {
-    "item": {
-      "id": 9925827033,
-      "title": "Saysky spodnie sportowe rozmiar L",
-      "price": {
-        "amount": "97.3",
-        "currency_code": "RON"
-      },
-      "brand_title": "Saysky",
-      "size_title": "L",
-      "status": "Bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9925827033-saysky-spodnie-sportowe-rozmiar-l",
-      "user": {
-        "id": 179136150,
-        "login": "damus0604"
-      },
-      "_profile": {
-        "username": "damus0604",
-        "member_since": null,
-        "feedback_count": 1872,
-        "feedback_reputation": 1,
-        "item_count": 862,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9925827033,
-      "score_version": 2,
-      "buy_score": 65,
-      "buy_band": "bundle",
-      "score_confidence": 0.79,
-      "score_interval_low": 59,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 71.0,
-        "versatility": 74.0,
-        "value": 55.21535,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.32,
-        "delivered_cost_ron": 125.16,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical shorts are the primary target of the hunt.",
-        "quality": "Saysky is a premium technical running brand.",
-        "condition": "Listed as 'Buna' (Good) condition.",
-        "versatility": "Highly specialized for running but functional for general training.",
-        "value": "Estimated second-hand market value for Saysky shorts.",
+        "versatility": "Good for various gym and sport activities.",
+        "value": "Standard secondary market price for used Nike shorts.",
         "fit_probability": "Matches target size L.",
-        "duplication_probability": "Specific model variants are relatively uncommon on secondary market."
+        "duplication_probability": "High frequency of Nike listings on Vinted."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "This is a Saysky branded technical short in size L which perfectly matches the specific search criteria."
+      "reason": "This is a direct match for the hunt criteria as it is a men's technical gym short in the target size at a price well below the hard cap."
     },
-    "watch": "Saysky running M-L",
-    "seller_id": 179136150,
-    "seller": "damus0604"
-  },
-  {
-    "item": {
-      "id": 9924459857,
-      "title": "New Balance 991 - Bej/Maro/Negru - Sneakers Retro- Vinatge",
-      "price": {
-        "amount": "445.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "42,5",
-      "status": "Foarte bună",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9924459857-new-balance-991-bejmaronegru-sneakers-retro-vinatge",
-      "user": {
-        "id": 153586579,
-        "login": "fashionchic55"
-      },
-      "_profile": {
-        "username": "fashionchic55",
-        "member_since": null,
-        "feedback_count": 51,
-        "feedback_reputation": 0.96,
-        "item_count": 32,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9924459857,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.76,
-      "score_interval_low": 56,
-      "score_interval_high": 68,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 65.0,
-        "condition": 64.0,
-        "versatility": 86.0,
-        "value": 45.8875,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 485.25,
-        "equivalent_replacement_cost_ron": 450.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Everyday wear men's sneakers",
-        "quality": "Likely standard NB construction, pending MiUK confirmation",
-        "condition": "Foarte bună (Very good) condition stated",
-        "versatility": "Neutral colorway suits most casual outfits",
-        "value": "Conservative estimate for used NB 991 in this condition",
-        "fit_probability": "Matches target size 42.5",
-        "duplication_probability": "Specific colorways for 991 are model-run limited"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Seller labels as vintage/retro without specifying Made in UK provenance or providing clear photos of inner tag/model style code.",
-      "hunt_fit": true,
-      "reason": "This is a model-specific match in the correct size, though its provenance and authenticity require verification due to the vague vintage descriptor."
-    },
-    "watch": "New Balance 991 size 43",
-    "seller_id": 153586579,
-    "seller": "fashionchic55"
-  },
-  {
-    "item": {
-      "id": 9926525131,
-      "title": "New Ballance 2002r",
-      "price": {
-        "amount": "212.54",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "43",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9926525131-new-ballance-2002r",
-      "user": {
-        "id": 286689820,
-        "login": "andreasxa"
-      },
-      "_profile": {
-        "username": "andreasxa",
-        "member_since": null,
-        "feedback_count": 46,
-        "feedback_reputation": 0.96,
-        "item_count": 6,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9926525131,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.825,
-      "score_interval_low": 59,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 74.0,
-        "condition": 71.0,
-        "versatility": 86.0,
-        "value": 66.16947428571429,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 241.17,
-        "equivalent_replacement_cost_ron": 350.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "High utility daily driver sneaker",
-        "quality": "2002R platform reliability",
-        "condition": "Listed as very good",
-        "versatility": "Neutral sneaker style",
-        "value": "Conservative secondary market price for standard 2002R in good condition",
-        "fit_probability": "Size 43 is within target range",
-        "duplication_probability": "Standard colorways are common"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Seller misspelling of brand 'New Ballance' warrants verification of item authenticity.",
-      "hunt_fit": true,
-      "reason": "Correct model and size at an excellent price point relative to market standards."
-    },
-    "watch": "New Balance 2002R size 43",
-    "seller_id": 286689820,
-    "seller": "andreasxa"
-  },
-  {
-    "item": {
-      "id": 9905414819,
-      "title": "New Balance 2002r",
-      "price": {
-        "amount": "172.43",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "42",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9905414819-new-balance-2002r",
-      "user": {
-        "id": 114951354,
-        "login": "parusarina"
-      },
-      "_profile": {
-        "username": "parusarina",
-        "member_since": null,
-        "feedback_count": 27,
-        "feedback_reputation": 1,
-        "item_count": 6,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9905414819,
-      "score_version": 2,
-      "buy_score": 65,
-      "buy_band": "bundle",
-      "score_confidence": 0.825,
-      "score_interval_low": 60,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 74.0,
-        "condition": 71.0,
-        "versatility": 86.0,
-        "value": 71.68377714285714,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 204.05,
-        "equivalent_replacement_cost_ron": 350.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Reliable daily sneaker",
-        "quality": "2002R platform",
-        "condition": "Very good",
-        "versatility": "Neutral sneaker",
-        "value": "Market price",
-        "fit_probability": "Size 42 fits target range",
-        "duplication_probability": "Standard"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct model and size at a very attractive price."
-    },
-    "watch": "New Balance 2002R size 43",
-    "seller_id": 114951354,
-    "seller": "parusarina"
-  },
-  {
-    "item": {
-      "id": 9924974878,
-      "title": "New Balance buty do miasta 202R brązowe Brown",
-      "price": {
-        "amount": "246.33",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "42",
-      "status": "Foarte bună",
-      "favourite_count": 7,
-      "url": "https://www.vinted.ro/items/9924974878-new-balance-buty-do-miasta-202r-brazowe-brown",
-      "user": {
-        "id": 73211207,
-        "login": "8jjulia8"
-      },
-      "_profile": {
-        "username": "8jjulia8",
-        "member_since": null,
-        "feedback_count": 95,
-        "feedback_reputation": 0.96,
-        "item_count": 49,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9924974878,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.815,
-      "score_interval_low": 59,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 77.0,
-        "quality": 74.0,
-        "condition": 71.0,
-        "versatility": 74.0,
-        "value": 60.15537714285714,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 281.65,
-        "equivalent_replacement_cost_ron": 350.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Good utility",
-        "quality": "2002R",
-        "condition": "Very good",
-        "versatility": "Brown colorway",
-        "value": "Market rate",
-        "fit_probability": "Size 42 fits",
-        "duplication_probability": "Standard"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Matches model and size; price is within limits but unremarkable."
-    },
-    "watch": "New Balance 2002R size 43",
-    "seller_id": 73211207,
-    "seller": "8jjulia8"
-  },
-  {
-    "item": {
-      "id": 9891131770,
-      "title": "New Balance 2002R Protection Pack khaki 43 M2002RDN",
-      "price": {
-        "amount": "171.2",
-        "currency_code": "RON"
-      },
-      "brand_title": "New Balance",
-      "size_title": "43",
-      "status": "Foarte bună",
-      "favourite_count": 9,
-      "url": "https://www.vinted.ro/items/9891131770-new-balance-2002r-protection-pack-khaki-43-m2002rdn",
-      "user": {
-        "id": 91224933,
-        "login": "pszems0n"
-      },
-      "_profile": {
-        "username": "pszems0n",
-        "member_since": null,
-        "feedback_count": 246,
-        "feedback_reputation": 1,
-        "item_count": 71,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9891131770,
-      "score_version": 2,
-      "buy_score": 77,
-      "buy_band": "good",
-      "score_confidence": 0.835,
-      "score_interval_low": 73,
-      "score_interval_high": 81,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 86.0,
-        "condition": 71.0,
-        "versatility": 78.0,
-        "value": 85.26752,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 202.76,
-        "equivalent_replacement_cost_ron": 500.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 5.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "High comfort",
-        "quality": "Protection Pack premium build",
-        "condition": "Very good",
-        "versatility": "Unique aesthetic",
-        "value": "Protection Pack premium replacement value",
-        "fit_probability": "Size 43 fits",
-        "duplication_probability": "Less common variant"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Strong value for a Protection Pack variant at 171 RON."
-    },
-    "watch": "New Balance 2002R size 43",
-    "seller_id": 91224933,
-    "seller": "pszems0n"
-  },
-  {
-    "item": {
-      "id": 9873520148,
-      "title": "Buty Asics rozmiar 43,5.",
-      "price": {
-        "amount": "221.7",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9873520148-buty-asics-rozmiar-435",
-      "user": {
-        "id": 3180755943,
-        "login": "jacek357"
-      },
-      "_profile": {
-        "username": "jacek357",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 6,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9873520148,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.785,
-      "score_interval_low": 56,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 78.0,
-        "quality": 74.0,
-        "condition": 78.0,
-        "versatility": 86.0,
-        "value": 44.07920909090909,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.32,
-        "delivered_cost_ron": 255.78,
-        "equivalent_replacement_cost_ron": 220.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Excellent daily runner.",
-        "quality": "Solid build, very good condition.",
-        "condition": "Listed as Very Good.",
-        "versatility": "Neutral color/style.",
-        "value": "Matches target hunt price point.",
-        "fit_probability": "Size 43.5 is exact match.",
-        "duplication_probability": "Common model."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Seller has no feedback; request tagged photos.",
-      "hunt_fit": true,
-      "reason": "Good price for target model and size in very good condition."
-    },
-    "watch": "ASICS Gel-1130 size 43",
-    "seller_id": 3180755943,
-    "seller": "jacek357"
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 3148413458,
+    "seller": "cristiani899"
   }
 ]

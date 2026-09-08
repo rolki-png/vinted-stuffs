@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-07T23:32:18.795422+00:00",
+    "kept_at": "2026-09-08T01:29:02.696247+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-07T23:32:18.795422+00:00",
+    "kept_at": "2026-09-08T01:29:02.696247+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -85,6 +85,53 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-08T01:29:02.696247+00:00",
+    "kind": "near_haul",
+    "seller": "ochiul",
+    "seller_id": 189522630,
+    "country": "ro",
+    "checkout_extra_ron": 19.25,
+    "listing_sum": 25.0,
+    "checkout_total": 44.25,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "The bundle consists entirely of T-shirts, which are explicitly excluded from the buyer's needs, and contains no shorts.",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 22.125,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9767464198,
+        "title": "Men's Nike Dri-FIT Red Football / Sports Jersey (Size L) - SV Assenheim e.V.",
+        "price": 19.0,
+        "url": "https://www.vinted.ro/items/9767464198-mens-nike-dri-fit-red-football-sports-jersey-size-l-sv-assenheim-ev",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "ochiul",
+        "seller_id": 189522630
+      },
+      {
+        "role": "haul",
+        "id": 9669749294,
+        "title": "H&M Essentials No. 7 Mens Size M Light Blue Short Sleeve T-Shirt Regular Fit",
+        "price": 6.0,
+        "url": "https://www.vinted.ro/items/9669749294-hm-essentials-no-7-mens-size-m-light-blue-short-sleeve-t-shirt-regular-fit",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "ochiul",
+        "seller_id": 189522630
+      }
+    ],
+    "suggested_offer_ron": 22,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
@@ -132,53 +179,6 @@
       }
     ],
     "suggested_offer_ron": 39,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-07T23:32:18.795422+00:00",
-    "kind": "near_haul",
-    "seller": "ochiul",
-    "seller_id": 189522630,
-    "country": "ro",
-    "checkout_extra_ron": 19.25,
-    "listing_sum": 25.0,
-    "checkout_total": 44.25,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "The bundle consists entirely of T-shirts, which are explicitly excluded from the buyer's needs, and contains no gym shorts.",
-    "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 22.125,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9767464198,
-        "title": "Men's Nike Dri-FIT Red Football / Sports Jersey (Size L) - SV Assenheim e.V.",
-        "price": 19.0,
-        "url": "https://www.vinted.ro/items/9767464198-mens-nike-dri-fit-red-football-sports-jersey-size-l-sv-assenheim-ev",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "ochiul",
-        "seller_id": 189522630
-      },
-      {
-        "role": "haul",
-        "id": 9669749294,
-        "title": "H&M Essentials No. 7 Mens Size M Light Blue Short Sleeve T-Shirt Regular Fit",
-        "price": 6.0,
-        "url": "https://www.vinted.ro/items/9669749294-hm-essentials-no-7-mens-size-m-light-blue-short-sleeve-t-shirt-regular-fit",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "ochiul",
-        "seller_id": 189522630
-      }
-    ],
-    "suggested_offer_ron": 22,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,

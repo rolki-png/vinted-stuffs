@@ -111,78 +111,6 @@
   },
   {
     "item": {
-      "id": 9873520148,
-      "title": "Buty Asics rozmiar 43,5.",
-      "price": {
-        "amount": "221.7",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9873520148-buty-asics-rozmiar-435",
-      "user": {
-        "id": 3180755943,
-        "login": "jacek357"
-      },
-      "_profile": {
-        "username": "jacek357",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 6,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9873520148,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.785,
-      "score_interval_low": 56,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 78.0,
-        "quality": 74.0,
-        "condition": 78.0,
-        "versatility": 86.0,
-        "value": 44.07920909090909,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.32,
-        "delivered_cost_ron": 255.78,
-        "equivalent_replacement_cost_ron": 220.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Excellent daily runner.",
-        "quality": "Solid build, very good condition.",
-        "condition": "Listed as Very Good.",
-        "versatility": "Neutral color/style.",
-        "value": "Matches target hunt price point.",
-        "fit_probability": "Size 43.5 is exact match.",
-        "duplication_probability": "Common model."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Seller has no feedback; request tagged photos.",
-      "hunt_fit": true,
-      "reason": "Good price for target model and size in very good condition."
-    },
-    "watch": "ASICS Gel-1130 size 43",
-    "seller_id": 3180755943,
-    "seller": "jacek357"
-  },
-  {
-    "item": {
       "id": 9883621128,
       "title": "Nike shorts",
       "price": {
@@ -327,78 +255,6 @@
   },
   {
     "item": {
-      "id": 9928149525,
-      "title": "Pantaloni scurti Nike pantalon scurt Marimea M barbati gri",
-      "price": {
-        "amount": "49.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928149525-pantaloni-scurti-nike-pantalon-scurt-marimea-m-barbati-gri",
-      "user": {
-        "id": 3130241352,
-        "login": "erzs1953"
-      },
-      "_profile": {
-        "username": "erzs1953",
-        "member_since": null,
-        "feedback_count": 47,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 329,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9928149525,
-      "score_version": 2,
-      "buy_score": 67,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 62,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 78.0,
-        "condition": 82.0,
-        "versatility": 82.0,
-        "value": 54.009,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.18,
-        "delivered_cost_ron": 69.45,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Standard Nike training build",
-        "quality": "Nike performance fabric",
-        "condition": "Listed as very good",
-        "versatility": "Ideal for various gym activities",
-        "value": "Standard Nike training shorts price",
-        "fit_probability": "Listed as size M",
-        "duplication_probability": "Common Nike model"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Reliable Nike training shorts at a good price point."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 3130241352,
-    "seller": "erzs1953"
-  },
-  {
-    "item": {
       "id": 9896095064,
       "title": "Spodenki szorty Gymshark M",
       "price": {
@@ -471,6 +327,294 @@
   },
   {
     "item": {
+      "id": 9928183530,
+      "title": "Spodenki Eric Emmanuel",
+      "price": {
+        "amount": "61.66",
+        "currency_code": "RON"
+      },
+      "brand_title": "Eric Emanuel",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928183530-spodenki-eric-emmanuel",
+      "user": {
+        "id": 284731364,
+        "login": "endriuskate"
+      },
+      "_profile": {
+        "username": "endriuskate",
+        "member_since": null,
+        "feedback_count": 73,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 1,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928183530,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.75,
+      "score_interval_low": 57,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 68.0,
+        "condition": 95.0,
+        "versatility": 74.0,
+        "value": 50.68462333333334,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 87.74,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard mesh training construction.",
+        "quality": "Standard mesh build.",
+        "condition": "New without tags.",
+        "versatility": "High crossover utility.",
+        "value": "Used market value for EE mesh shorts.",
+        "fit_probability": "Size M fits.",
+        "duplication_probability": "Widely replicated but common style."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Eric Emanuel shorts are frequently counterfeited; need tag inspection.",
+      "hunt_fit": true,
+      "reason": "Popular mesh gym shorts that fit the hunt profile well."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 284731364,
+    "seller": "endriuskate"
+  },
+  {
+    "item": {
+      "id": 9928029914,
+      "title": "Puma nowe szorty rozmiar M",
+      "price": {
+        "amount": "83.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Puma",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
+      "user": {
+        "id": 96967514,
+        "login": "benkati1"
+      },
+      "_profile": {
+        "username": "benkati1",
+        "member_since": null,
+        "feedback_count": 360,
+        "feedback_reputation": 1,
+        "item_count": 205,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928029914,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 59,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 78.0,
+        "value": 38.31557,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.43,
+        "delivered_cost_ron": 110.75,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Versatile gym gear.",
+        "quality": "Good standard Puma tech.",
+        "condition": "New.",
+        "versatility": "Athletic and casual wear.",
+        "value": "Standard Puma pricing.",
+        "fit_probability": "Size M.",
+        "duplication_probability": "Widely available."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "New Puma training shorts provide great value and condition for the price."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 96967514,
+    "seller": "benkati1"
+  },
+  {
+    "item": {
+      "id": 9928133528,
+      "title": "Salomon Running Shorts - Petrol Blue - Men M",
+      "price": {
+        "amount": "50.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Salomon",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
+      "user": {
+        "id": 188476168,
+        "login": "mirceaxvlad"
+      },
+      "_profile": {
+        "username": "mirceaxvlad",
+        "member_since": null,
+        "feedback_count": 71,
+        "feedback_reputation": 1,
+        "item_count": 20,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9928133528,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 59,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 78.0,
+        "condition": 71.0,
+        "versatility": 66.0,
+        "value": 60.30590909090909,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 70.5,
+        "equivalent_replacement_cost_ron": 110.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High utility for training and running.",
+        "quality": "Salomon is a reliable technical apparel brand.",
+        "condition": "Listed as 'Foarte bună' (Very good).",
+        "versatility": "Specific to athletic/running use.",
+        "value": "Estimated used market price for entry-level Salomon shorts.",
+        "fit_probability": "Matches target size M exactly.",
+        "duplication_probability": "Generic shorts are common, but Salomon specific cuts are unique."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Salomon technical running shorts in size M represent a high-quality gym-specific item well within the target budget."
+    },
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 188476168,
+    "seller": "mirceaxvlad"
+  },
+  {
+    "item": {
+      "id": 9928149525,
+      "title": "Pantaloni scurti Nike pantalon scurt Marimea M barbati gri",
+      "price": {
+        "amount": "49",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928149525-pantaloni-scurti-nike-pantalon-scurt-marimea-m-barbati-gri",
+      "user": {
+        "id": 3130241352,
+        "login": "erzs1953"
+      },
+      "_profile": {
+        "username": "erzs1953",
+        "member_since": null,
+        "feedback_count": 47,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 329,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9928149525,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 62,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 78.0,
+        "condition": 82.0,
+        "versatility": 82.0,
+        "value": 54.009,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.18,
+        "delivered_cost_ron": 69.45,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard Nike training build",
+        "quality": "Nike performance fabric",
+        "condition": "Listed as very good",
+        "versatility": "Ideal for various gym activities",
+        "value": "Standard Nike training shorts price",
+        "fit_probability": "Listed as size M",
+        "duplication_probability": "Common Nike model"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Reliable Nike training shorts at a good price point."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 3130241352,
+    "seller": "erzs1953"
+  },
+  {
+    "item": {
       "id": 9879829232,
       "title": "Spodenki szorty Gymshark L",
       "price": {
@@ -478,9 +622,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Gymshark",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 24,
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9879829232-spodenki-szorty-gymshark-l",
       "user": {
         "id": 3143262300,
@@ -1016,195 +1160,47 @@
   },
   {
     "item": {
-      "id": 9904739295,
-      "title": "Odlo Logic Windproof L męska kurtka biegowa sportowa",
+      "id": 9930737287,
+      "title": "Nowe spodenki nike",
       "price": {
-        "amount": "159.08",
+        "amount": "43.16",
         "currency_code": "RON"
       },
-      "brand_title": "Odlo",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9904739295-odlo-logic-windproof-l-meska-kurtka-biegowa-sportowa",
-      "user": {
-        "id": 91049108,
-        "login": "monisia1701"
-      },
-      "_profile": {
-        "username": "monisia1701",
-        "member_since": null,
-        "feedback_count": 1274,
-        "feedback_reputation": 1,
-        "item_count": 58,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9904739295,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Functional windproof piece, but price is above the hunt target."
-    },
-    "watch": "Odlo technical M-L",
-    "seller_id": 91049108,
-    "seller": "monisia1701"
-  },
-  {
-    "item": {
-      "id": 9903614705,
-      "title": "Leginsy 2xu rozmiar m",
-      "price": {
-        "amount": "17.26",
-        "currency_code": "RON"
-      },
-      "brand_title": "2XU",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9903614705-leginsy-2xu-rozmiar-m",
-      "user": {
-        "id": 193003693,
-        "login": "alekravtsova"
-      },
-      "_profile": {
-        "username": "alekravtsova",
-        "member_since": null,
-        "feedback_count": 102,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 47,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9903614705,
-      "deal_score": 7,
-      "value_band": "acceptable",
-      "hunt_fit": true,
-      "scam_risk": "medium",
-      "reason": "Correct item and price, but missing seller history on account makes this a skip for high-end gear."
-    },
-    "watch": "2XU M-L",
-    "seller_id": 193003693,
-    "seller": "alekravtsova"
-  },
-  {
-    "item": {
-      "id": 9928224403,
-      "title": "Spodenki Just don Miami Heat",
-      "price": {
-        "amount": "86.32",
-        "currency_code": "RON"
-      },
-      "brand_title": "JUST DON",
-      "size_title": "M",
+      "brand_title": "Nike",
+      "size_title": "L",
       "status": "Nou fără etichetă",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928224403-spodenki-just-don-miami-heat",
+      "url": "https://www.vinted.ro/items/9930737287-nowe-spodenki-nike",
       "user": {
-        "id": 138378663,
-        "login": "adrian53825"
+        "id": 91083867,
+        "login": "karolinaa260689"
       },
       "_profile": {
-        "username": "adrian53825",
+        "username": "karolinaa260689",
         "member_since": null,
-        "feedback_count": 28,
-        "feedback_reputation": 0.8,
-        "item_count": 10,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9928224403,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.69,
-      "score_interval_low": 55,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 74.0,
-        "quality": 74.0,
-        "condition": 95.0,
-        "versatility": 64.0,
-        "value": 47.272800000000004,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.26,
-        "delivered_cost_ron": 113.64,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Basketball-style shorts suitable for training.",
-        "quality": "Just Don premium branding.",
-        "condition": "New without tags.",
-        "versatility": "Strong lifestyle crossover.",
-        "value": "Second-hand premium basketball shorts market.",
-        "fit_probability": "Size M fits.",
-        "duplication_probability": "Niche luxury item."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Just Don items are heavily counterfeited; require authentication check.",
-      "hunt_fit": true,
-      "reason": "Premium aesthetic gym shorts, though verification is necessary due to high value/fakes."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 138378663,
-    "seller": "adrian53825"
-  },
-  {
-    "item": {
-      "id": 9928183530,
-      "title": "Spodenki Eric Emmanuel",
-      "price": {
-        "amount": "61.66",
-        "currency_code": "RON"
-      },
-      "brand_title": "Eric Emanuel",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928183530-spodenki-eric-emmanuel",
-      "user": {
-        "id": 284731364,
-        "login": "endriuskate"
-      },
-      "_profile": {
-        "username": "endriuskate",
-        "member_since": null,
-        "feedback_count": 73,
+        "feedback_count": 354,
         "feedback_reputation": 0.9400000000000001,
-        "item_count": 1,
+        "item_count": 59,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9928183530,
+      "id": 9930737287,
       "score_version": 2,
-      "buy_score": 63,
+      "buy_score": 68,
       "buy_band": "bundle",
-      "score_confidence": 0.75,
-      "score_interval_low": 57,
-      "score_interval_high": 69,
+      "score_confidence": 0.87,
+      "score_interval_low": 63,
+      "score_interval_high": 72,
       "score_factors": {
-        "usefulness": 78.0,
-        "quality": 68.0,
-        "condition": 95.0,
-        "versatility": 74.0,
-        "value": 50.68462333333334,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.32,
-        "delivered_cost_ron": 87.74,
+        "usefulness": 90.5,
+        "quality": 78.0,
+        "condition": 100.0,
+        "versatility": 86.0,
+        "value": 57.51642666666667,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 68.32,
         "equivalent_replacement_cost_ron": 90.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -1217,138 +1213,66 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Standard mesh training construction.",
-        "quality": "Standard mesh build.",
+        "usefulness": "Training shorts.",
+        "quality": "Nike brand quality.",
         "condition": "New without tags.",
-        "versatility": "High crossover utility.",
-        "value": "Used market value for EE mesh shorts.",
-        "fit_probability": "Size M fits.",
-        "duplication_probability": "Widely replicated but common style."
+        "versatility": "Versatile training shorts.",
+        "value": "New Nike shorts retail base.",
+        "fit_probability": "Size L fits hunt.",
+        "duplication_probability": "Branded item."
       },
-      "verification_concern": "inspect",
-      "verification_reason": "Eric Emanuel shorts are frequently counterfeited; need tag inspection.",
+      "verification_concern": "none",
+      "verification_reason": "",
       "hunt_fit": true,
-      "reason": "Popular mesh gym shorts that fit the hunt profile well."
+      "reason": "New Nike shorts in size L, excellent value."
     },
     "watch": "Broad training shorts M-L",
-    "seller_id": 284731364,
-    "seller": "endriuskate"
+    "seller_id": 91083867,
+    "seller": "karolinaa260689"
   },
   {
     "item": {
-      "id": 9928174519,
-      "title": "Pantaloni scurti alergare barbati Nike M",
+      "id": 9930734231,
+      "title": "Spodenki Nike",
       "price": {
-        "amount": "70.0",
+        "amount": "30.83",
         "currency_code": "RON"
       },
       "brand_title": "Nike",
       "size_title": "M",
       "status": "Foarte bună",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928174519-pantaloni-scurti-alergare-barbati-nike-m",
+      "url": "https://www.vinted.ro/items/9930734231-spodenki-nike",
       "user": {
-        "id": 232240177,
-        "login": "d3xt3r93"
+        "id": 3174248482,
+        "login": "mroczek1"
       },
       "_profile": {
-        "username": "d3xt3r93",
+        "username": "mroczek1",
         "member_since": null,
-        "feedback_count": 147,
+        "feedback_count": 1,
         "feedback_reputation": 1,
-        "item_count": 71,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9928174519,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 58,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 95.0,
-        "quality": 82.0,
-        "condition": 78.0,
-        "versatility": 66.0,
-        "value": 45.63,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.58,
-        "delivered_cost_ron": 91.5,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Purpose-built for athletic performance.",
-        "quality": "Nike performance fabric.",
-        "condition": "Very good condition.",
-        "versatility": "Primarily athletic focus.",
-        "value": "Standard pricing for Nike shorts.",
-        "fit_probability": "Size M.",
-        "duplication_probability": "Common Nike model."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Nike running/training shorts are perfect for this hunt."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 232240177,
-    "seller": "d3xt3r93"
-  },
-  {
-    "item": {
-      "id": 9928029914,
-      "title": "Puma nowe szorty rozmiar M",
-      "price": {
-        "amount": "83.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Puma",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
-      "user": {
-        "id": 96967514,
-        "login": "benkati1"
-      },
-      "_profile": {
-        "username": "benkati1",
-        "member_since": null,
-        "feedback_count": 360,
-        "feedback_reputation": 1,
-        "item_count": 205,
+        "item_count": 2,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9928029914,
+      "id": 9930734231,
       "score_version": 2,
-      "buy_score": 63,
+      "buy_score": 60,
       "buy_band": "bundle",
-      "score_confidence": 0.845,
-      "score_interval_low": 59,
-      "score_interval_high": 68,
+      "score_confidence": 0.855,
+      "score_interval_low": 56,
+      "score_interval_high": 65,
       "score_factors": {
-        "usefulness": 90.5,
+        "usefulness": 86.0,
         "quality": 74.0,
-        "condition": 95.0,
-        "versatility": 78.0,
-        "value": 38.31557,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.43,
-        "delivered_cost_ron": 110.75,
+        "condition": 81.5,
+        "versatility": 86.0,
+        "value": 59.358830000000005,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 55.37,
         "equivalent_replacement_cost_ron": 80.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -1361,67 +1285,67 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Versatile gym gear.",
-        "quality": "Good standard Puma tech.",
-        "condition": "New.",
-        "versatility": "Athletic and casual wear.",
-        "value": "Standard Puma pricing.",
-        "fit_probability": "Size M.",
-        "duplication_probability": "Widely available."
+        "usefulness": "Training shorts.",
+        "quality": "Nike performance material.",
+        "condition": "Very good.",
+        "versatility": "General training use.",
+        "value": "Entry-level Nike shorts.",
+        "fit_probability": "Size M fits hunt.",
+        "duplication_probability": "Branded item."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "New Puma training shorts provide great value and condition for the price."
+      "reason": "Nike M shorts, good condition and competitive price."
     },
     "watch": "Broad training shorts M-L",
-    "seller_id": 96967514,
-    "seller": "benkati1"
+    "seller_id": 3174248482,
+    "seller": "mroczek1"
   },
   {
     "item": {
-      "id": 9928133528,
-      "title": "Salomon Running Shorts - Petrol Blue - Men M",
+      "id": 9930715120,
+      "title": "Under armour spodenki L",
       "price": {
-        "amount": "50.0",
+        "amount": "55.49",
         "currency_code": "RON"
       },
-      "brand_title": "Salomon",
-      "size_title": "M",
+      "brand_title": "Under Armour",
+      "size_title": "L",
       "status": "Foarte bună",
       "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
+      "url": "https://www.vinted.ro/items/9930715120-under-armour-spodenki-l",
       "user": {
-        "id": 188476168,
-        "login": "mirceaxvlad"
+        "id": 92900569,
+        "login": "potomek1"
       },
       "_profile": {
-        "username": "mirceaxvlad",
+        "username": "potomek1",
         "member_since": null,
-        "feedback_count": 71,
+        "feedback_count": 564,
         "feedback_reputation": 1,
-        "item_count": 20,
-        "country_code": "ro"
+        "item_count": 8,
+        "country_code": "pl"
       }
     },
     "score": {
-      "id": 9928133528,
+      "id": 9930715120,
       "score_version": 2,
       "buy_score": 65,
       "buy_band": "bundle",
-      "score_confidence": 0.79,
-      "score_interval_low": 59,
-      "score_interval_high": 71,
+      "score_confidence": 0.855,
+      "score_interval_low": 60,
+      "score_interval_high": 69,
       "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 71.0,
-        "versatility": 66.0,
-        "value": 60.30590909090909,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 70.5,
-        "equivalent_replacement_cost_ron": 110.0,
+        "usefulness": 90.5,
+        "quality": 82.0,
+        "condition": 81.5,
+        "versatility": 90.5,
+        "value": 51.3535694117647,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 81.26,
+        "equivalent_replacement_cost_ron": 85.0,
         "personal_adjustments": {
           "usefulness": 0.0,
           "quality": 0.0,
@@ -1433,21 +1357,525 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "High utility for training and running.",
-        "quality": "Salomon is a reliable technical apparel brand.",
-        "condition": "Listed as 'Foarte bună' (Very good).",
-        "versatility": "Specific to athletic/running use.",
-        "value": "Estimated used market price for entry-level Salomon shorts.",
-        "fit_probability": "Matches target size M exactly.",
-        "duplication_probability": "Generic shorts are common, but Salomon specific cuts are unique."
+        "usefulness": "Dedicated training gear.",
+        "quality": "Under Armour performance.",
+        "condition": "Very good.",
+        "versatility": "Ideal for gym.",
+        "value": "Standard UA training shorts.",
+        "fit_probability": "Size L fits hunt.",
+        "duplication_probability": "Branded item."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "Salomon technical running shorts in size M represent a high-quality gym-specific item well within the target budget."
+      "reason": "Under Armour training shorts are excellent for the hunt."
     },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 188476168,
-    "seller": "mirceaxvlad"
+    "watch": "Broad training shorts M-L",
+    "seller_id": 92900569,
+    "seller": "potomek1"
+  },
+  {
+    "item": {
+      "id": 9930653182,
+      "title": "Nowe spodenki nike",
+      "price": {
+        "amount": "43.16",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "L",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9930653182-nowe-spodenki-nike",
+      "user": {
+        "id": 91083867,
+        "login": "karolinaa260689"
+      },
+      "_profile": {
+        "username": "karolinaa260689",
+        "member_since": null,
+        "feedback_count": 354,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 59,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9930653182,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.87,
+      "score_interval_low": 56,
+      "score_interval_high": 64,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 66.0,
+        "condition": 100.0,
+        "versatility": 77.0,
+        "value": 50.71124571428571,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 68.32,
+        "equivalent_replacement_cost_ron": 70.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard gym gear",
+        "quality": "Nike standard polyester",
+        "condition": "New without tags",
+        "versatility": "Standard athletic design",
+        "value": "Sale price for new basic Nike gym shorts",
+        "fit_probability": "Standard L sizing",
+        "duplication_probability": "Common item"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "New Nike shorts in size L are a reliable utility acquisition for the target hunt."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 91083867,
+    "seller": "karolinaa260689"
+  },
+  {
+    "item": {
+      "id": 9928870747,
+      "title": "Nike Premium Shorts M – granatowe spodenki sportowe z subtelnym wzorem !",
+      "price": {
+        "amount": "85.09",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9928870747-nike-premium-shorts-m-granatowe-spodenki-sportowe-z-subtelnym-wzorem",
+      "user": {
+        "id": 3160341361,
+        "login": "mojaszafa2126"
+      },
+      "_profile": {
+        "username": "mojaszafa2126",
+        "member_since": null,
+        "feedback_count": 95,
+        "feedback_reputation": 1,
+        "item_count": 73,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928870747,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.865,
+      "score_interval_low": 57,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 86.0,
+        "condition": 95.0,
+        "versatility": 78.0,
+        "value": 42.253906666666666,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 112.34,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High quality training shorts.",
+        "quality": "Nike performance material.",
+        "condition": "New without tags.",
+        "versatility": "Subtle design allows multi-purpose use.",
+        "value": "Secondary market price for new Nike shorts.",
+        "fit_probability": "Size M matches target.",
+        "duplication_probability": "Brand is common but this specific model is nicer."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "High-quality Nike gym shorts in excellent condition, though above target hunt price."
+    },
+    "watch": "Broad gym short EN M-L",
+    "seller_id": 3160341361,
+    "seller": "mojaszafa2126"
+  },
+  {
+    "item": {
+      "id": 9929848898,
+      "title": "Nike Dri-Fit short",
+      "price": {
+        "amount": "86.32",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9929848898-nike-dri-fit-short",
+      "user": {
+        "id": 119768341,
+        "login": "sancipanci"
+      },
+      "_profile": {
+        "username": "sancipanci",
+        "member_since": null,
+        "feedback_count": 164,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 57,
+        "country_code": "hu"
+      }
+    },
+    "score": {
+      "id": 9929848898,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.855,
+      "score_interval_low": 57,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 46.74192,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 111.64,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dri-fit fabric is ideal for gym training.",
+        "quality": "Nike performance wear is durable.",
+        "condition": "New without tags.",
+        "versatility": "Neutral colorway suitable for various workouts.",
+        "value": "Comparable to outlet pricing for new Nike shorts.",
+        "fit_probability": "Size M fits target range.",
+        "duplication_probability": "High availability of this model."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "This is a standard Nike Dri-Fit training short in new condition that meets the size and function requirements."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 119768341,
+    "seller": "sancipanci"
+  },
+  {
+    "item": {
+      "id": 9883340486,
+      "title": "New Balance 2002R Craftwork Pack 42,5 EUR",
+      "price": {
+        "amount": "191.15",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "42,5",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9883340486-new-balance-2002r-craftwork-pack-425-eur",
+      "user": {
+        "id": 3167462887,
+        "login": "aleksander7221"
+      },
+      "_profile": {
+        "username": "aleksander7221",
+        "member_since": null,
+        "feedback_count": 93,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 108,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9883340486,
+      "score_version": 2,
+      "buy_score": 72,
+      "buy_band": "bundle",
+      "score_confidence": 0.805,
+      "score_interval_low": 68,
+      "score_interval_high": 77,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 78.0,
+        "condition": 78.0,
+        "versatility": 70.0,
+        "value": 74.56031666666667,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.43,
+        "delivered_cost_ron": 223.71,
+        "equivalent_replacement_cost_ron": 450.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Craftwork pack variation",
+        "quality": "Craftwork pack premium materials",
+        "condition": "Very good",
+        "versatility": "Detailed design",
+        "value": "Secondary market for Craftwork packs",
+        "fit_probability": "Size 42.5",
+        "duplication_probability": "Special pack"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct size and model at a strong price point for a desirable iteration."
+    },
+    "watch": "New Balance 2002R size 43",
+    "seller_id": 3167462887,
+    "seller": "aleksander7221"
+  },
+  {
+    "item": {
+      "id": 9929435221,
+      "title": "Buty New Balance 2002 R",
+      "price": {
+        "amount": "221.98",
+        "currency_code": "RON"
+      },
+      "brand_title": "New Balance",
+      "size_title": "42",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9929435221-buty-new-balance-2002-r",
+      "user": {
+        "id": 262900476,
+        "login": "pioo121"
+      },
+      "_profile": {
+        "username": "pioo121",
+        "member_since": null,
+        "feedback_count": 13,
+        "feedback_reputation": 1,
+        "item_count": 7,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9929435221,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.86,
+      "score_interval_low": 59,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 81.5,
+        "quality": 72.5,
+        "condition": 74.0,
+        "versatility": 86.0,
+        "value": 57.02736,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.74,
+        "delivered_cost_ron": 256.08,
+        "equivalent_replacement_cost_ron": 300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard 2002R daily driver",
+        "quality": "Standard 2002R build",
+        "condition": "Very good",
+        "versatility": "Highly versatile silhouette",
+        "value": "Used market valuation",
+        "fit_probability": "Size 42",
+        "duplication_probability": "Standard model"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct model and size with good condition at a reasonable price."
+    },
+    "watch": "New Balance 2002R size 43",
+    "seller_id": 262900476,
+    "seller": "pioo121"
+  },
+  {
+    "item": {
+      "id": 9930568711,
+      "title": "Asics Gel-Kayano 14",
+      "price": {
+        "amount": "369.96",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "43,5",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9930568711-asics-gel-kayano-14",
+      "user": {
+        "id": 93688670,
+        "login": "rusio420"
+      },
+      "_profile": {
+        "username": "rusio420",
+        "member_since": null,
+        "feedback_count": 8,
+        "feedback_reputation": 1,
+        "item_count": 8,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9930568711,
+      "score_version": 2,
+      "buy_score": 69,
+      "buy_band": "bundle",
+      "score_confidence": 0.9,
+      "score_interval_low": 65,
+      "score_interval_high": 73,
+      "score_factors": {
+        "usefulness": 90.0,
+        "quality": 81.5,
+        "condition": 74.0,
+        "versatility": 90.0,
+        "value": 55.13893333333334,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 411.46,
+        "equivalent_replacement_cost_ron": 450.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Matches specific model search for high-comfort lifestyle/running sneaker.",
+        "quality": "Asics Gel-Kayano 14 construction is well-regarded for durability.",
+        "condition": "Listed as 'Foarte bună' (Very good).",
+        "versatility": "Neutral sneaker design suitable for daily wear.",
+        "value": "Current market average for pre-owned condition in secondary market.",
+        "fit_probability": "Listed as 43.5, which is within the target size range.",
+        "duplication_probability": "Specific colorway availability varies; unlikely to be a duplicate of current wardrobe."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "High replica volume for Gel-Kayano 14; requires detailed outsole and heel counter photos.",
+      "hunt_fit": true,
+      "reason": "This is a direct model match in the target size range, offering solid utility at a price below the hard cap."
+    },
+    "watch": "ASICS Gel Kayano 14 size 43",
+    "seller_id": 93688670,
+    "seller": "rusio420"
+  },
+  {
+    "item": {
+      "id": 9930234987,
+      "title": "Asics-gel kayano 14",
+      "price": {
+        "amount": "443.96",
+        "currency_code": "RON"
+      },
+      "brand_title": "Asics",
+      "size_title": "42,5",
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9930234987-asics-gel-kayano-14",
+      "user": {
+        "id": 152056174,
+        "login": "user230000"
+      },
+      "_profile": {
+        "username": "user230000",
+        "member_since": null,
+        "feedback_count": 56,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 18,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9930234987,
+      "score_version": 2,
+      "buy_score": 76,
+      "buy_band": "good",
+      "score_confidence": 0.955,
+      "score_interval_low": 73,
+      "score_interval_high": 78,
+      "score_factors": {
+        "usefulness": 90.0,
+        "quality": 90.5,
+        "condition": 100.0,
+        "versatility": 90.0,
+        "value": 43.03253846501129,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 489.16,
+        "equivalent_replacement_cost_ron": 443.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Direct model match.",
+        "quality": "Condition is listed as new without tags.",
+        "condition": "New without tags condition.",
+        "versatility": "Highly wearable style.",
+        "value": "Matches seller price point.",
+        "fit_probability": "Matches target size 42.5.",
+        "duplication_probability": "Uncommon specific model colorway."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Authenticity check required; high price point for a private seller listing without tags.",
+      "hunt_fit": true,
+      "reason": "Matches size and model perfectly, though priced near the hard cap limit."
+    },
+    "watch": "ASICS Gel Kayano 14 size 43",
+    "seller_id": 152056174,
+    "seller": "user230000"
   }
 ]

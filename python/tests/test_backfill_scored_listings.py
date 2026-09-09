@@ -204,7 +204,7 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("uses: actions/checkout@v7", self.source)
         self.assertIn("uses: actions/setup-python@v7", self.source)
         self.assertIn("python-version: '3.13'", self.source)
-        self.assertIn("uses: astral-sh/setup-uv@v10", self.source)
+        self.assertIn("uses: astral-sh/setup-uv@v10.0.1", self.source)
         self.assertIn("uses: actions/setup-node@v7", self.source)
         self.assertIn("node-version: '24'", self.source)
         self.assertNotIn("pip install", self.source)

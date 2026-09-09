@@ -295,6 +295,39 @@ class PendingPairTests(unittest.TestCase):
             {"30", "40"},
         )
 
+    def test_desk_bundle_pairs_remap_l_xl_and_skip_already_v2(self):
+        watches = {
+            "H&M Mama bundle seed XL-L/XL": {"name": "H&M Mama bundle seed XL-L/XL"},
+            "Noppies maternity XL-L/XL": {"name": "Noppies maternity XL-L/XL"},
+        }
+        bundles = [
+            {
+                "kind": "value_haul",
+                "items": [
+                    {"id": 1, "watch": "H&M Mama bundle seed L-XL"},
+                    {"id": 2, "watch": "H&M Mama bundle seed XL-L/XL", "buy_score": 70, "score_version": 2},
+                ],
+            },
+            {
+                "kind": "keep_bundle",
+                "items": [
+                    {"id": 3, "watch": "Noppies maternity L-XL"},
+                ],
+            },
+        ]
+        pairs = backfill.pairs_from_desk_bundles(
+            bundles,
+            watches,
+            scored_v2_keys={"2:H&M Mama bundle seed XL-L/XL"},
+        )
+        self.assertEqual(
+            pairs,
+            [
+                ("1", "H&M Mama bundle seed XL-L/XL"),
+                ("3", "Noppies maternity XL-L/XL"),
+            ],
+        )
+
     def test_cached_payloads_rebuild_items_and_skip_tombstones(self):
         watch = {"name": "Mamalicious maternity XL-L/XL", "country": "ro"}
         items = backfill.items_from_cached_rows(

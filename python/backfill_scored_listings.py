@@ -169,6 +169,38 @@ def prioritize_multi_seller_pairs(
     return [pair for _rank, _index, pair in decorated]
 
 
+def pairs_from_desk_bundles(
+    bundles: list[dict],
+    watch_by_name: dict,
+    scored_v2_keys: set[str],
+) -> list[tuple[str, str]]:
+    """Force-score unscored members of keep/value/index carts on the desk."""
+    pending: list[tuple[str, str]] = []
+    queued: set[str] = set()
+    for bundle in bundles or []:
+        for item in bundle.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            item_id = _coerce_item_id(item.get("id"))
+            if not item_id:
+                continue
+            # Already a usable v2 score — leave it alone.
+            try:
+                if int(item.get("score_version") or 0) == 2 and item.get("buy_score") is not None:
+                    continue
+            except (TypeError, ValueError):
+                pass
+            resolved = resolve_active_hunt(str(item.get("watch") or ""), watch_by_name)
+            if not resolved:
+                continue
+            key = f"{item_id}:{resolved}"
+            if key in scored_v2_keys or key in queued:
+                continue
+            queued.add(key)
+            pending.append((item_id, resolved))
+    return pending
+
+
 def items_from_cached_rows(
     pending: list[tuple[str, str]],
     watch_by_name: dict,
@@ -478,6 +510,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Score stored listing payloads without refetching from Vinted",
     )
+    parser.add_argument(
+        "--score-desk-bundles",
+        action="store_true",
+        help="Prioritize unscored items from data/best_bundles.json (keep/value/index carts)",
+    )
     return parser
 
 
@@ -548,6 +585,26 @@ def main() -> None:
     scored_already = already_scored_keys(store)
     pending = select_pending_pairs(pairs, watch_by_name, scored_already)
     pending = filter_pending_by_hunt(pending, args.hunt)
+    if args.score_desk_bundles:
+        bundle_path = bot.BUNDLE_PATH if hasattr(bot, "BUNDLE_PATH") else Path("data/best_bundles.json")
+        desk_bundles = []
+        try:
+            if bundle_path.exists():
+                desk_bundles = json.loads(bundle_path.read_text())
+        except (OSError, json.JSONDecodeError) as e:
+            print(f"best_bundles score-desk skipped: {e}", file=sys.stderr)
+        desk_pairs = pairs_from_desk_bundles(desk_bundles, watch_by_name, scored_already)
+        if args.hunt:
+            desk_pairs = filter_pending_by_hunt(desk_pairs, args.hunt)
+        if desk_pairs:
+            # Desk cart members first, then the normal backlog (deduped).
+            seen = {f"{i}:{h}" for i, h in desk_pairs}
+            rest = [p for p in pending if f"{p[0]}:{p[1]}" not in seen]
+            pending = desk_pairs + rest
+            print(
+                f"score-desk-bundles: {len(desk_pairs)} unscored cart item(s) first",
+                file=sys.stderr,
+            )
     if args.prefer_multi_seller:
         index_rows = []
         indexed_path = bot.INDEXED_PATH if hasattr(bot, "INDEXED_PATH") else Path("data/indexed_scores.json")

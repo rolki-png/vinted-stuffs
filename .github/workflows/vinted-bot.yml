@@ -25,6 +25,10 @@ on:
         description: 'Max pending keys to score this backfill run'
         type: string
         default: '200'
+      score_desk_bundles:
+        description: 'Prioritize unscored items already on desk keep/value carts'
+        type: boolean
+        default: false
       crawl_haul_seeds:
         description: 'Closet-crawl sellers who already have one ≥60 hunt-fit listing'
         type: boolean
@@ -93,9 +97,14 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
         run: |
+          EXTRA_FLAGS=""
+          if [ "${{ inputs.score_desk_bundles }}" = "true" ]; then
+            EXTRA_FLAGS="--score-desk-bundles"
+          fi
           uv run --project python python python/backfill_scored_listings.py \
             --limit "${{ inputs.backfill_limit || 200 }}" \
             --hunt "${{ inputs.backfill_hunt }}" \
+            $EXTRA_FLAGS \
             --export
 
       - name: Crawl haul seed closets

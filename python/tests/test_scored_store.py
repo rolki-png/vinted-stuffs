@@ -203,6 +203,7 @@ class MemoryStoreTests(unittest.TestCase):
                 "score_version": 2, "buy_score": 70, "buy_band": "bundle",
                 "hunt_fit": True, "seller_id": 9, "seller": "s",
                 "verification_concern": "none",
+                "score_confidence": 0.8,
                 "scored_at": "2026-09-05T01:00:00+00:00",
             },
             {
@@ -210,6 +211,7 @@ class MemoryStoreTests(unittest.TestCase):
                 "score_version": 2, "buy_score": 72, "buy_band": "bundle",
                 "hunt_fit": True, "seller_id": 9, "seller": "s",
                 "verification_concern": "none",
+                "score_confidence": 0.8,
                 "scored_at": "2026-09-05T02:00:00+00:00",
             },
             {
@@ -223,10 +225,39 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(len(opps), 1)
         self.assertEqual(opps[0]["kind"], "index_near_bundle")
         self.assertEqual(len(opps[0]["items"]), 2)
-        self.assertIsNone(opps[0].get("bundle_score"))
+        self.assertEqual(opps[0]["family"], "other")
+        self.assertIsNotNone(opps[0].get("bundle_score"))
         self.assertIn("suggested_offer_ron", opps[0])
         self.assertEqual(opps[0]["checkout_extra_ron"], 25)
         self.assertTrue(opps[0].get("offer_weak"))
+
+    def test_index_bundles_split_by_family(self):
+        conf = {
+            "score_version": 2,
+            "buy_band": "bundle",
+            "hunt_fit": True,
+            "seller_id": 9,
+            "seller": "s",
+            "verification_concern": "none",
+            "score_confidence": 0.8,
+            "scored_at": "2026-09-05T02:00:00+00:00",
+        }
+        rows = [
+            {**conf, "id": 1, "watch": "Mamalicious maternity XL-L/XL", "title": "mama a", "price": 40, "buy_score": 71},
+            {**conf, "id": 2, "watch": "Seraphine maternity", "title": "mama b", "price": 50, "buy_score": 68},
+            {**conf, "id": 3, "watch": "Craft ADV M-L", "title": "gym a", "price": 30, "buy_score": 72},
+            {**conf, "id": 4, "watch": "Craft ADV M-L", "title": "gym b", "price": 30, "buy_score": 64},
+            {**conf, "id": 5, "watch": "Mamalicious maternity XL-L/XL", "title": "skip", "price": 10, "buy_score": 40, "buy_band": "skip"},
+        ]
+        opps = ss.index_bundle_opportunities(rows, min_items=2)
+        families = sorted(o["family"] for o in opps)
+        self.assertEqual(families, ["gym", "maternity"])
+        mama = next(o for o in opps if o["family"] == "maternity")
+        self.assertEqual(sorted(it["id"] for it in mama["items"]), [1, 2])
+        self.assertEqual(mama["kind"], "index_near_bundle")
+        self.assertIsNotNone(mama["bundle_score"])
+        gym = next(o for o in opps if o["family"] == "gym")
+        self.assertEqual(sorted(it["id"] for it in gym["items"]), [3, 4])
 
     def test_index_bundles_keep_v2_and_legacy_scores_separate(self):
         common = {

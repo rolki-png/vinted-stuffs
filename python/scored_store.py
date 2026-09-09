@@ -540,20 +540,22 @@ def index_bundle_opportunities(
 ) -> list[dict]:
     """Group indexed hunt-fit rows by seller into dashboard near-bundle shapes."""
     import bundle_offer as bo
+    import taste_learning as tl
 
-    by_seller: dict[str, list] = {}
+    by_group: dict[tuple[str, str], list] = {}
     for row in export_rows:
         if not _bundle_eligible(row):
             continue
         sid = row.get("seller_id")
         if sid is None:
             continue
-        by_seller.setdefault(str(sid), []).append(row)
+        family = tl.resolve_family(row.get("watch") or row.get("hunt_name") or "")
+        by_group.setdefault((str(sid), family), []).append(row)
 
     offer_cfg = bo.bundle_offer_config(config)
     default_extra = float(offer_cfg.get("default_checkout_extra_ron", 25))
     out = []
-    for sid, rows in by_seller.items():
+    for (sid, family), rows in by_group.items():
         score_field = "buy_score"
         best: dict[str, dict] = {}
         for r in rows:
@@ -621,6 +623,7 @@ def index_bundle_opportunities(
                 config=config,
             )
         )
+        row["family"] = family
         import bundle_score as bscore
 
         out.append(bscore.apply_to_row(row, config))

@@ -47,9 +47,13 @@ assert.match(source, /\/api\/finds/);
 assert.match(source, /Prev/);
 
 assert.match(source, /function bundleHuntFamily/);
-assert.match(source, /bundleHuntFamily\(b\) === family/);
+assert.match(source, /bundleHuntFamily\(b\) !== family/);
+assert.match(source, /showNearHauls/);
+assert.match(source, /Show near hauls/);
+assert.match(source, /kind \|\| ""\) === "near_haul"/);
 const bundlesTab = source.slice(source.indexOf('{tab === "bundles"'));
 assert.match(bundlesTab, /Family/);
 assert.match(bundlesTab, /<option value="maternity">/);
+assert.match(bundlesTab, /Best → worst/);
 
 console.log("ok deal-desk-presentation");

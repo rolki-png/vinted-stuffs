@@ -145,6 +145,21 @@ function mergeBundles(current, incoming) {
 	});
 }
 
+/** Rehydrate hunt-time cart members from live Finds so legacy deal_score rows pick up buy_score. */
+function enrichBundlesFromFinds(bundles, findsById) {
+	return (bundles || []).map((bundle) => {
+		const items = (bundle?.items || []).map((item) => {
+			if (item?.id == null) return item;
+			const find = findsById.get(String(item.id));
+			return find ? mergeFindRow(item, find) : item;
+		});
+		return applyToRow({
+			...bundle,
+			items: sortBundleScoreRows(items),
+		});
+	});
+}
+
 function sellerEntry(sellers, { sid, login, country }) {
 	if (sid == null && !login) return;
 	const key = String(sid || login);
@@ -371,6 +386,10 @@ async function buildSnapshot({
 	}
 
 	const finds = sortScoreRows([...findsById.values()]);
+	const bundlesEnriched = enrichBundlesFromFinds(
+		Array.isArray(bundles) ? bundles : [],
+		findsById,
+	);
 
 	const dataSource =
 		indexedSource === "cockroach"
@@ -387,8 +406,8 @@ async function buildSnapshot({
 	const keeps = findsApplied.filter((row) => isKeep(row)).length;
 	const watchesFromFinds = v2WatchNames(findsApplied);
 	const bundlesApplied = assignBundleRanks(
-		applyToBundles(Array.isArray(bundles) ? bundles : [], vetoes, { mode }).map(
-			(row) => applyToRow(row),
+		applyToBundles(bundlesEnriched, vetoes, { mode }).map((row) =>
+			applyToRow(row),
 		),
 	);
 

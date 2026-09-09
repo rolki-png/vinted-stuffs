@@ -272,6 +272,29 @@ class PendingPairTests(unittest.TestCase):
             [("1", "Mamalicious maternity XL-L/XL")],
         )
 
+    def test_multi_seller_closet_pairs_are_scored_before_singletons(self):
+        pending = [
+            ("10", "Mamalicious maternity XL-L/XL"),
+            ("20", "Mamalicious maternity XL-L/XL"),
+            ("30", "Mamalicious maternity XL-L/XL"),
+            ("40", "Mamalicious maternity XL-L/XL"),
+        ]
+        seller_by_item = {
+            "10": "seller-a",
+            "20": "seller-a",
+            "30": "seller-b",
+            # 40 unknown / singleton
+        }
+        ordered = backfill.prioritize_multi_seller_pairs(pending, seller_by_item)
+        self.assertEqual(
+            [item_id for item_id, _hunt in ordered[:2]],
+            ["10", "20"],
+        )
+        self.assertEqual(
+            {item_id for item_id, _hunt in ordered[2:]},
+            {"30", "40"},
+        )
+
     def test_cached_payloads_rebuild_items_and_skip_tombstones(self):
         watch = {"name": "Mamalicious maternity XL-L/XL", "country": "ro"}
         items = backfill.items_from_cached_rows(

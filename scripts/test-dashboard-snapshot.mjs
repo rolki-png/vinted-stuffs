@@ -416,4 +416,99 @@ try {
 	}
 }
 
+{
+	const enrichRoot = fs.mkdtempSync(
+		path.join(os.tmpdir(), "dashboard-snapshot-enrich-bundles-"),
+	);
+	const enrichData = path.join(enrichRoot, "data");
+	fs.mkdirSync(enrichData);
+	for (const name of [
+		"best_deals.json",
+		"indexed_scores.json",
+		"bundle_pool.json",
+		"seen_listings.json",
+	]) {
+		fs.writeFileSync(
+			path.join(enrichData, name),
+			name === "seen_listings.json" ? "{}" : "[]",
+		);
+	}
+	fs.writeFileSync(path.join(enrichData, "last_run.json"), "{}");
+	fs.writeFileSync(
+		path.join(enrichData, "best_bundles.json"),
+		JSON.stringify([
+			{
+				kind: "keep_bundle",
+				seller_id: 77,
+				seller: "legacy-cart",
+				items: [
+					{
+						role: "keep",
+						id: 701,
+						title: "legacy keep",
+						price: 40,
+						deal_score: 8,
+						watch: "Mamalicious maternity XL-L/XL",
+					},
+					{
+						role: "extra",
+						id: 702,
+						title: "legacy extra",
+						price: 35,
+						deal_score: 7,
+						watch: "Mamalicious maternity XL-L/XL",
+					},
+				],
+			},
+		]),
+	);
+	const enrichCwd = process.cwd();
+	delete process.env.DATABASE_URL;
+	delete process.env.COCKROACH_DATABASE_URL;
+	delete process.env.GITHUB_TOKEN;
+	delete process.env.GITHUB_REPO;
+	try {
+		process.chdir(enrichRoot);
+		const snapshot = await buildSnapshot({
+			dbIndexed: {
+				rows: [
+					v2(701, 88, 1, {
+						buy_band: "keep",
+						watch: "Mamalicious maternity XL-L/XL",
+						seller_id: 77,
+						seller: "legacy-cart",
+						score_confidence: 0.82,
+					}),
+					v2(702, 66, 2, {
+						buy_band: "bundle",
+						watch: "Mamalicious maternity XL-L/XL",
+						seller_id: 77,
+						seller: "legacy-cart",
+						score_confidence: 0.8,
+					}),
+				],
+				count: 2,
+				source: "cockroach",
+			},
+		});
+		const cart = snapshot.bundles.find(
+			(b) =>
+				b.seller_id === 77 &&
+				(b.items || []).some((it) => it.id === 701) &&
+				(b.items || []).some((it) => it.id === 702),
+		);
+		assert.ok(cart);
+		const byId = Object.fromEntries(
+			(cart.items || []).map((it) => [String(it.id), it]),
+		);
+		assert.equal(byId["701"].buy_score, 88);
+		assert.equal(byId["702"].buy_score, 66);
+		assert.ok(cart.bundle_score != null);
+		assert.ok(cart.bundle_rank_position != null);
+	} finally {
+		process.chdir(enrichCwd);
+		fs.rmSync(enrichRoot, { recursive: true, force: true });
+	}
+}
+
 console.log("ok dashboard-snapshot");

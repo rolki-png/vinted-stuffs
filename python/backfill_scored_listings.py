@@ -133,6 +133,42 @@ def filter_pending_by_hunt(
     return [pair for pair in pending if text in pair[1].casefold()]
 
 
+def seller_ids_from_index_rows(rows: list[dict]) -> dict[str, str]:
+    """Map listing id → seller_id from indexed/export rows (string keys)."""
+    out: dict[str, str] = {}
+    for row in rows or []:
+        item_id = _coerce_item_id(row.get("id") if "id" in row else row.get("item_id"))
+        sid = row.get("seller_id")
+        if not item_id or sid is None:
+            continue
+        out[item_id] = str(sid)
+    return out
+
+
+def prioritize_multi_seller_pairs(
+    pending: list[tuple[str, str]],
+    seller_by_item: dict[str, str],
+) -> list[tuple[str, str]]:
+    """Score same-seller closet members before singleton listings.
+
+    Sellers with two or more known listing ids (from the score index / cache)
+    are wardrobe-haul candidates; putting their pending pairs first fills
+    index_near_bundle carts faster than random backlog order.
+    """
+    closet_size: dict[str, int] = defaultdict(int)
+    for sid in (seller_by_item or {}).values():
+        closet_size[str(sid)] += 1
+
+    decorated: list[tuple[int, int, tuple[str, str]]] = []
+    for index, pair in enumerate(pending or []):
+        item_id = str(pair[0])
+        sid = (seller_by_item or {}).get(item_id)
+        multi = bool(sid) and closet_size.get(str(sid), 0) >= 2
+        decorated.append((0 if multi else 1, index, pair))
+    decorated.sort(key=lambda row: (row[0], row[1]))
+    return [pair for _rank, _index, pair in decorated]
+
+
 def items_from_cached_rows(
     pending: list[tuple[str, str]],
     watch_by_name: dict,
@@ -426,6 +462,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="Only process hunts whose current name contains this substring",
     )
     parser.add_argument(
+        "--prefer-multi-seller",
+        action="store_true",
+        default=True,
+        help="Score same-seller closet members before singletons (default on)",
+    )
+    parser.add_argument(
+        "--no-prefer-multi-seller",
+        action="store_false",
+        dest="prefer_multi_seller",
+        help="Keep pending queue order without closet prioritization",
+    )
+    parser.add_argument(
         "--from-cache",
         action="store_true",
         help="Score stored listing payloads without refetching from Vinted",
@@ -500,6 +548,35 @@ def main() -> None:
     scored_already = already_scored_keys(store)
     pending = select_pending_pairs(pairs, watch_by_name, scored_already)
     pending = filter_pending_by_hunt(pending, args.hunt)
+    if args.prefer_multi_seller:
+        index_rows = []
+        indexed_path = bot.INDEXED_PATH if hasattr(bot, "INDEXED_PATH") else Path("data/indexed_scores.json")
+        try:
+            if indexed_path.exists():
+                index_rows = json.loads(indexed_path.read_text())
+        except (OSError, json.JSONDecodeError) as e:
+            print(f"indexed_scores prefer-multi skipped: {e}", file=sys.stderr)
+            index_rows = []
+        try:
+            index_rows.extend(store.load_recent(20000))
+        except Exception as e:
+            print(f"store prefer-multi skipped: {e}", file=sys.stderr)
+        seller_by_item = seller_ids_from_index_rows(index_rows)
+        before = list(pending)
+        pending = prioritize_multi_seller_pairs(pending, seller_by_item)
+        multi_n = sum(
+            1
+            for item_id, _hunt in pending
+            if seller_by_item.get(item_id)
+            and sum(1 for sid in seller_by_item.values() if sid == seller_by_item[item_id])
+            >= 2
+        )
+        if pending != before:
+            print(
+                f"prefer-multi-seller: reordered {len(pending)} pending "
+                f"({multi_n} known multi-closet ids first)",
+                file=sys.stderr,
+            )
     print(
         f"already scored in CRDB: {len(scored_already)}; pending: {len(pending)}"
         + (f" (hunt={args.hunt!r})" if args.hunt else ""),

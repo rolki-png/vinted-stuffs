@@ -13,6 +13,18 @@ on:
         description: 'Paginate every hunt and score all unseen (slow, expensive)'
         type: boolean
         default: false
+      backfill_scored:
+        description: 'Run scored_listings backfill instead of the hunt bot'
+        type: boolean
+        default: false
+      backfill_hunt:
+        description: 'Backfill only hunts whose name contains this (e.g. Mamalicious)'
+        type: string
+        default: 'Mamalicious'
+      backfill_limit:
+        description: 'Max pending keys to score this backfill run'
+        type: string
+        default: '200'
 
 concurrency:
   group: vinted-deal-bot
@@ -64,7 +76,22 @@ jobs:
           curl --create-dirs -o "$HOME/.postgresql/root.crt" \
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
+      - name: Backfill scored listings
+        if: ${{ inputs.backfill_scored == true }}
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+          AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+        run: |
+          uv run --project python python python/backfill_scored_listings.py \
+            --limit "${{ inputs.backfill_limit || 200 }}" \
+            --hunt "${{ inputs.backfill_hunt }}" \
+            --export
+
       - name: Run bot
+        if: ${{ inputs.backfill_scored != true }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -77,6 +104,7 @@ jobs:
         run: uv run --project python python python/vinted_bot.py
 
       - name: Commit updated state
+        if: ${{ inputs.backfill_scored != true || success() }}
         run: |
           git config user.name "vinted-bot"
           git config user.email "vinted-bot@users.noreply.github.com"

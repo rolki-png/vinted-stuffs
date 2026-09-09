@@ -277,7 +277,7 @@ function VetoButtons({
 		return (
 			<button
 				type="button"
-				className="btn veto-btn"
+				className="btn btn-ghost veto-btn"
 				onClick={() => setStatus(null)}
 			>
 				Undo
@@ -288,13 +288,20 @@ function VetoButtons({
 		return null;
 	}
 	return (
-		<>
+		<div className="veto-row">
 			<button
 				type="button"
-				className="btn veto-btn"
+				className="btn btn-success veto-btn"
 				onClick={() => setStatus("bought")}
 			>
 				Bought
+			</button>
+			<button
+				type="button"
+				className="btn btn-ghost veto-btn"
+				onClick={() => setStatus("parked")}
+			>
+				Park
 			</button>
 			<span className="remove-controls">
 				<select
@@ -311,7 +318,7 @@ function VetoButtons({
 				</select>
 				<button
 					type="button"
-					className="btn veto-btn"
+					className="btn btn-danger veto-btn"
 					onClick={() => setStatus("removed", reasonCode || undefined)}
 				>
 					Remove
@@ -320,14 +327,7 @@ function VetoButtons({
 					Other and Sold/unavailable do not affect taste learning.
 				</small>
 			</span>
-			<button
-				type="button"
-				className="btn veto-btn"
-				onClick={() => setStatus("parked")}
-			>
-				Park
-			</button>
-		</>
+		</div>
 	);
 }
 
@@ -365,7 +365,8 @@ export function DealDesk() {
 	const [veto, setVeto] = useState<VetoMode>("active");
 	const [sort, setSort] = useState("score-desc");
 	const [page, setPage] = useState(1);
-	const [bundleSort, setBundleSort] = useState("new-desc");
+	const [bundleSort, setBundleSort] = useState("best-desc");
+	const [showNearHauls, setShowNearHauls] = useState(false);
 	const [sellerSort, setSellerSort] = useState("best");
 
 	const loadRuns = useCallback(async () => {
@@ -527,11 +528,14 @@ export function DealDesk() {
 	}, [data, sellerSort]);
 
 	const bundles = useMemo(() => {
-		const rows = (data?.bundles || []).filter(
-			(b) => !family || bundleHuntFamily(b) === family,
-		);
+		const rows = (data?.bundles || []).filter((b) => {
+			if (family && bundleHuntFamily(b) !== family) return false;
+			// Hunt-time near_haul stays unscored by design — hide unless asked.
+			if (!showNearHauls && (b.kind || "") === "near_haul") return false;
+			return true;
+		});
 		return sortBundles(rows, bundleSort);
-	}, [data, bundleSort, family]);
+	}, [data, bundleSort, family, showNearHauls]);
 
 	const run = data?.run || {};
 	const qualifiedKeeps = data?.meta?.keeps ?? data?.meta?.keeps_v2 ?? 0;
@@ -581,7 +585,7 @@ export function DealDesk() {
 					</button>
 					<button
 						type="button"
-						className="btn"
+						className="btn btn-ghost"
 						disabled={busy}
 						onClick={() => triggerHunt({ fullSweep: true })}
 					>
@@ -589,7 +593,7 @@ export function DealDesk() {
 					</button>
 					<button
 						type="button"
-						className="btn"
+						className="btn btn-ghost"
 						onClick={() => load().catch(console.error)}
 					>
 						Refresh
@@ -598,11 +602,13 @@ export function DealDesk() {
 				</div>
 			</header>
 
-			<section className="ops">
-				<p className={`ops-msg${opsMsg?.kind ? ` ${opsMsg.kind}` : ""}`}>
-					{opsMsg?.text || ""}
-				</p>
-			</section>
+			{opsMsg?.text ? (
+				<section className="ops" aria-live="polite">
+					<p className={`ops-msg${opsMsg.kind ? ` ${opsMsg.kind}` : ""}`}>
+						{opsMsg.text}
+					</p>
+				</section>
+			) : null}
 
 			<section className="stats" aria-label="Run summary">
 				{stats.map(([k, v]) => (
@@ -613,7 +619,7 @@ export function DealDesk() {
 				))}
 			</section>
 
-			<nav className="tabs" role="tablist">
+			<nav className="tabs" role="tablist" aria-label="Deal desk sections">
 				{(
 					[
 						["finds", "Finds"],
@@ -626,6 +632,8 @@ export function DealDesk() {
 					<button
 						key={id}
 						type="button"
+						role="tab"
+						aria-selected={tab === id}
 						className={`tab${tab === id ? " active" : ""}`}
 						onClick={() => setTab(id)}
 					>
@@ -737,46 +745,44 @@ export function DealDesk() {
 							</select>
 						</label>
 					</div>
-					<p className="count">
-						{findsLoading ? "Loading…" : null}
-						{!findsLoading
-							? `Page ${findsPage.page || 1} of ${Math.max(findsPage.pages, 1)} · ${findsPage.total} listing${findsPage.total === 1 ? "" : "s"}`
-							: null}{" "}
-						<button
-							type="button"
-							className="btn"
-							disabled={findsLoading || page <= 1}
-							onClick={() => setPage((p) => Math.max(1, p - 1))}
-						>
-							Prev
-						</button>{" "}
-						<button
-							type="button"
-							className="btn"
-							disabled={
-								findsLoading || findsPage.pages === 0 || page >= findsPage.pages
-							}
-							onClick={() => setPage((p) => p + 1)}
-						>
-							Next
-						</button>
-					</p>
-					{toast ? (
-						<p className="ops-msg ok">
-							{toast.text}{" "}
-							{toast.undoId != null ? (
-								<button
-									type="button"
-									className="btn"
-									onClick={() =>
-										setVetoStatus(toast.undoId!, null).catch(console.error)
-									}
-								>
-									Undo
-								</button>
-							) : null}
+					<div className="list-chrome">
+						<p className="count">
+							{findsLoading ? (
+								<>
+									<span className="spinner" aria-hidden="true" />
+									<span>Loading finds…</span>
+								</>
+							) : (
+								<span>
+									Page {findsPage.page || 1} of {Math.max(findsPage.pages, 1)} ·{" "}
+									{findsPage.total} listing
+									{findsPage.total === 1 ? "" : "s"}
+								</span>
+							)}
 						</p>
-					) : null}
+						<div className="pagination">
+							<button
+								type="button"
+								className="btn btn-ghost"
+								disabled={findsLoading || page <= 1}
+								onClick={() => setPage((p) => Math.max(1, p - 1))}
+							>
+								Prev
+							</button>
+							<button
+								type="button"
+								className="btn btn-ghost"
+								disabled={
+									findsLoading ||
+									findsPage.pages === 0 ||
+									page >= findsPage.pages
+								}
+								onClick={() => setPage((p) => p + 1)}
+							>
+								Next
+							</button>
+						</div>
+					</div>
 					<div className="table-wrap">
 						<table>
 							<thead>
@@ -850,24 +856,26 @@ export function DealDesk() {
 													<VerificationSummary row={f} />
 												</td>
 												<td className="actions">
-													{f.url ? (
-														<a
-															className="link"
-															href={f.url}
-															target="_blank"
-															rel="noreferrer"
-														>
-															Open
-														</a>
-													) : null}
-													<VetoButtons
-														itemId={f.id}
-														status={f.veto_status}
-														onSet={setVetoStatus}
-														onError={(msg) =>
-															setOpsMsg({ text: msg, kind: "err" })
-														}
-													/>
+													<div className="actions-stack">
+														{f.url ? (
+															<a
+																className="link"
+																href={f.url}
+																target="_blank"
+																rel="noreferrer"
+															>
+																Open
+															</a>
+														) : null}
+														<VetoButtons
+															itemId={f.id}
+															status={f.veto_status}
+															onSet={setVetoStatus}
+															onError={(msg) =>
+																setOpsMsg({ text: msg, kind: "err" })
+															}
+														/>
+													</div>
 												</td>
 											</tr>
 										);
@@ -920,17 +928,25 @@ export function DealDesk() {
 								value={bundleSort}
 								onChange={(e) => setBundleSort(e.target.value)}
 							>
-								<option value="new-desc">Newest → oldest</option>
 								<option value="best-desc">Best → worst</option>
+								<option value="new-desc">Newest → oldest</option>
 							</select>
+						</label>
+						<label className="checkbox">
+							<input
+								type="checkbox"
+								checked={showNearHauls}
+								onChange={(e) => setShowNearHauls(e.target.checked)}
+							/>
+							Show near hauls
 						</label>
 					</div>
 					{!bundles.length ? (
 						<div className="empty">
-							No wardrobe opportunities yet. Near hauls appear when a seller’s
-							closet clears the fee gate; index near/bundles come from the
-							Cockroach score cache when the same seller has multiple hunt-fits;
-							value hauls when a closet clears the delivered-cost gate.
+							No scored wardrobe carts yet. Index hauls need two same-seller
+							hunt-fit pieces at buy_score ≥ 60. Keep-bundles need a Keep plus
+							extras; value hauls clear the delivered-cost gate. Near hauls stay
+							hidden until you enable “Show near hauls” (they’re unscored).
 						</div>
 					) : (
 						<div className="bundle-grid">
@@ -1046,7 +1062,7 @@ export function DealDesk() {
 														</div>
 														<ScoreEvidence row={it} />
 													</div>
-													<div>
+													<div className="actions-stack">
 														<div className="mono">{fmtPrice(it.price)}</div>
 														{it.url ? (
 															<a
@@ -1293,6 +1309,23 @@ export function DealDesk() {
 						</div>
 					</div>
 				</section>
+			) : null}
+
+			{toast ? (
+				<div className="toast" role="status" aria-live="polite">
+					<span>{toast.text}</span>
+					{toast.undoId != null ? (
+						<button
+							type="button"
+							className="btn"
+							onClick={() =>
+								setVetoStatus(toast.undoId!, null).catch(console.error)
+							}
+						>
+							Undo
+						</button>
+					) : null}
+				</div>
 			) : null}
 		</div>
 	);

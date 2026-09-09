@@ -19193,11 +19193,9 @@
   },
   "default_backfill": {
     "cursor": [
-      "9815617727",
-      "Mamalicious maternity XL-L/XL"
+      "8976093945",
+      "Mamalicious leggings XL-L/XL"
     ],
-    "retry_counts": {
-      "9914848191:Mamalicious maternity XL-L/XL": 1
-    }
+    "retry_counts": {}
   }
 }

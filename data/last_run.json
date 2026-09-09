@@ -71,56 +71,6 @@
       "seller": "tulipan2312"
     },
     {
-      "id": 9930968175,
-      "title": "Sukienka bawełniana do karmienia",
-      "price": 43.12,
-      "url": "https://www.vinted.ro/items/9930968175-sukienka-bawelniana-do-karmienia",
-      "watch": "Mamalicious maternity XL-L/XL",
-      "score_version": 2,
-      "hunt_fit": true,
-      "reason": "This is a nursing-friendly cotton dress in size XL, which aligns well with the hunt requirements.",
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.785,
-      "score_interval_low": 59,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 89.5,
-        "quality": 62.0,
-        "condition": 66.0,
-        "versatility": 79.0,
-        "value": 55.637879999999996,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.44,
-        "delivered_cost_ron": 68.28,
-        "equivalent_replacement_cost_ron": 70.0,
-        "personal_adjustments": {
-          "usefulness": 8.0,
-          "quality": 5.0,
-          "condition": 0.0,
-          "versatility": 5.0,
-          "value": 5.0,
-          "fit_probability": 10.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Nursing dress has high utility.",
-        "quality": "Cotton, maternity/nursing specific.",
-        "condition": "Very good.",
-        "versatility": "Daywear/nursing.",
-        "value": "Fair market value.",
-        "fit_probability": "XL target size met.",
-        "duplication_probability": "Moderate."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "rank_position": null,
-      "rank_confidence": null,
-      "seller_id": 94464194,
-      "seller": "nurse666"
-    },
-    {
       "id": 9937808668,
       "title": "Szorty Nike Dri Fit",
       "price": 49.28,

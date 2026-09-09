@@ -1,9 +1,9 @@
 # Family index hauls (scored same-seller carts)
 
-Date: 2026-09-09  
-Status: approved for planning  
-Repo: `vinted-stuffs`  
-Depends on: `2026-09-07-bundle-checkout-ranking-design.md`, hunt-family resolution (`tasteLearning` / `taste_learning`)  
+Date: 2026-09-09
+Status: approved for planning
+Repo: `vinted-stuffs`
+Depends on: `2026-09-07-bundle-checkout-ranking-design.md`, hunt-family resolution (`tasteLearning` / `taste_learning`)
 Supersedes (partial): checkout-ranking non-goal “do not score `index_near_bundle`”.
 
 ## Problem

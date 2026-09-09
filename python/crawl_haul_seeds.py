@@ -113,6 +113,24 @@ def select_haul_seeds(
     return seeds
 
 
+def order_watches_for_seed(matches: list[dict], *, seed_watch: str | None) -> list[dict]:
+    """Put the seed hunt first so closet pieces are judged on the right watch."""
+    ordered: list[dict] = []
+    seen: set[str] = set()
+    if seed_watch:
+        for watch in matches or []:
+            name = str(watch.get("name") or "")
+            if name == seed_watch and name not in seen:
+                ordered.append(watch)
+                seen.add(name)
+    for watch in matches or []:
+        name = str(watch.get("name") or "")
+        if name and name not in seen:
+            ordered.append(watch)
+            seen.add(name)
+    return ordered
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--hunt", default="Mamalicious", help="Hunt name substring")
@@ -213,6 +231,7 @@ def main() -> None:
             file=sys.stderr,
         )
         by_watch: dict[str, list] = {}
+        seed_watch_name = str(seed.get("watch") or "")
         for raw in closet:
             iid = raw.get("id")
             if iid is None:
@@ -220,11 +239,11 @@ def main() -> None:
             matches = bot.matching_watches(raw, branded)
             if not matches:
                 continue
-            watch = matches[0]
-            key = f"{iid}:{watch['name']}"
-            if key in already:
-                continue
-            by_watch.setdefault(watch["name"], []).append(raw)
+            for watch in order_watches_for_seed(matches, seed_watch=seed_watch_name)[:2]:
+                key = f"{iid}:{watch['name']}"
+                if key in already:
+                    continue
+                by_watch.setdefault(watch["name"], []).append(raw)
         for hunt_name, items in by_watch.items():
             watch = watch_by_name.get(hunt_name)
             if not watch or not items:

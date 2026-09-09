@@ -58,6 +58,22 @@ class HaulSeedSelectionTests(unittest.TestCase):
             [(10, "alpha", "pl")],
         )
 
+    def test_seed_watch_is_preferred_when_ordering_matches(self):
+        matches = [
+            {"name": "Mamalicious leggings XL-L/XL"},
+            {"name": "Mamalicious maternity XL-L/XL"},
+        ]
+        ordered = chs.order_watches_for_seed(
+            matches, seed_watch="Mamalicious maternity XL-L/XL"
+        )
+        self.assertEqual(
+            [w["name"] for w in ordered],
+            [
+                "Mamalicious maternity XL-L/XL",
+                "Mamalicious leggings XL-L/XL",
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

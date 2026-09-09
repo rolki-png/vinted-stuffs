@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-09T07:00:54.224935+00:00",
+    "kept_at": "2026-09-09T12:06:32.885747+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-09T07:00:54.224935+00:00",
+    "kept_at": "2026-09-09T12:06:32.885747+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -85,6 +85,75 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-09T12:06:32.885747+00:00",
+    "kind": "near_haul",
+    "seller": "olaf1309",
+    "seller_id": 135384997,
+    "country": "pl",
+    "checkout_extra_ron": 25.7725,
+    "listing_sum": 55.45,
+    "checkout_total": 81.2225,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Two items are undersized or unsuitable, leaving only two useful shorts with a high effective price per unit.",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 20.305625,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9940982712,
+        "title": "Krótkie spodenki sportowe Nike Dri-FIT czarne r. 137-147 cm",
+        "price": 9.86,
+        "url": "https://www.vinted.ro/items/9940982712-krotkie-spodenki-sportowe-nike-dri-fit-czarne-r-137-147-cm",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "olaf1309",
+        "seller_id": 135384997
+      },
+      {
+        "role": "haul",
+        "id": 9940298857,
+        "title": "Krótkie spodenki sportowe Nike Dri-FIT czarne r. M",
+        "price": 17.25,
+        "url": "https://www.vinted.ro/items/9940298857-krotkie-spodenki-sportowe-nike-dri-fit-czarne-r-m",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "olaf1309",
+        "seller_id": 135384997
+      },
+      {
+        "role": "haul",
+        "id": 9940580310,
+        "title": "Czarne krótkie spodenki sportowe Kipsta r. L / szorty WF",
+        "price": 4.93,
+        "url": "https://www.vinted.ro/items/9940580310-czarne-krotkie-spodenki-sportowe-kipsta-r-l-szorty-wf",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "olaf1309",
+        "seller_id": 135384997
+      },
+      {
+        "role": "haul",
+        "id": 9931351253,
+        "title": "Bluza H&M Regular Fit M czarna z kapturem koszykarska z nadrukiem.",
+        "price": 23.41,
+        "url": "https://www.vinted.ro/items/9931351253-bluza-hm-regular-fit-m-czarna-z-kapturem-koszykarska-z-nadrukiem",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "olaf1309",
+        "seller_id": 135384997
+      }
+    ],
+    "suggested_offer_ron": 49,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
@@ -147,11 +216,12 @@
     "suggested_offer_ron": 68,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
+    "family": "gym",
+    "bundle_score": 67,
     "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
+    "bundle_confidence": 0.8425,
+    "bundle_anchor_item_id": 9937803302,
+    "bundle_rank_position": 5
   },
   {
     "kept_at": "2026-09-09T03:26:04.473568+00:00",
@@ -210,7 +280,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.705,
     "bundle_anchor_item_id": 9936321313,
-    "bundle_rank_position": 1
+    "bundle_rank_position": 6
   },
   {
     "kept_at": "2026-09-09T03:26:04.473568+00:00",
@@ -407,11 +477,12 @@
     "suggested_offer_ron": 100,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
+    "family": "gym",
+    "bundle_score": 68,
     "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
+    "bundle_confidence": 0.845,
+    "bundle_anchor_item_id": 9937160382,
+    "bundle_rank_position": 3
   },
   {
     "kind": "index_near_bundle",
@@ -467,11 +538,11 @@
     "suggested_offer_ron": 214,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
+    "bundle_score": 78,
     "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
+    "bundle_confidence": 0.825,
+    "bundle_anchor_item_id": 9934687729,
+    "bundle_rank_position": 1
   },
   {
     "kept_at": "2026-09-08T11:50:42.457169+00:00",
@@ -574,11 +645,12 @@
     "suggested_offer_ron": 56,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
+    "family": "gym",
+    "bundle_score": 72,
     "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
+    "bundle_confidence": 0.87,
+    "bundle_anchor_item_id": 9930737287,
+    "bundle_rank_position": 2
   },
   {
     "kept_at": "2026-09-08T07:01:53.650341+00:00",
@@ -711,11 +783,12 @@
     "suggested_offer_ron": 234,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
+    "family": "gym",
+    "bundle_score": 68,
     "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
+    "bundle_confidence": 0.83,
+    "bundle_anchor_item_id": 9896095064,
+    "bundle_rank_position": 4
   },
   {
     "kept_at": "2026-09-08T01:29:02.696247+00:00",

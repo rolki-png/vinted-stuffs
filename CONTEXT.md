@@ -41,7 +41,7 @@ _Avoid_: Value band, discount
 **Bundle score**:
 Calculated checkout purchase utility (0–100) for a multi-item cart. Keep-anchored
 on the strongest Keep (or best haul item), plus a bounded extras/fee term.
-`near_haul` / `index_near_bundle` stay null. Desk can sort Newest or Best.
+`index_near_bundle` is scored; hunt-time `near_haul` stays null. Desk can sort Newest or Best.
 _Avoid_: Deal score for carts, LLM cart grade
 
 **Pairwise rank**:

@@ -13,7 +13,7 @@ DEFAULTS = {
     "extras_term_min": -8.0,
     "extras_term_max": 12.0,
 }
-UNRANKED_KINDS = frozenset({"near_haul", "index_near_bundle"})
+UNRANKED_KINDS = frozenset({"near_haul"})
 
 
 def clamp(value: float, low: float, high: float) -> float:

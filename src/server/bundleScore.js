@@ -11,7 +11,7 @@ const DEFAULTS = {
   extras_term_max: 12,
   score_version: BUNDLE_SCORE_VERSION,
 }
-const UNRANKED_KINDS = new Set(['near_haul', 'index_near_bundle'])
+const UNRANKED_KINDS = new Set(['near_haul'])
 
 function clamp(value, low, high) {
   return Math.max(low, Math.min(high, Number(value)))

@@ -56,12 +56,15 @@ class BundleScoreTests(unittest.TestCase):
         self.assertIsNone(result["bundle_score"])
         self.assertIsNone(result["bundle_confidence"])
 
-    def test_index_near_always_null(self):
+    def test_index_near_is_scored(self):
         result = bs.calculate_bundle_score(
-            [member(1, 90, role="keep"), member(2, 70)],
+            [member(1, 71), member(2, 64)],
             kind="index_near_bundle",
         )
-        self.assertIsNone(result["bundle_score"])
+        self.assertIsNotNone(result["bundle_score"])
+        self.assertGreaterEqual(result["bundle_score"], 60)
+        self.assertLessEqual(result["bundle_score"], 100)
+        self.assertEqual(result["bundle_anchor_item_id"], 1)
 
     def test_legacy_members_yield_null(self):
         result = bs.calculate_bundle_score(

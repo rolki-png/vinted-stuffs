@@ -87,4 +87,21 @@ function resolveFamily(huntName, watch) {
   return "other"
 }
 
-export { resolveFamily }
+function huntFamilySql(column) {
+  const whens = FAMILY_RULES.map(([family, needles]) => {
+    const ors = needles.map((needle) => {
+      const escaped = String(needle).replace(/'/g, "''")
+      return `${column} ILIKE '%${escaped}%'`
+    })
+    return `WHEN ${ors.join(" OR ")} THEN '${family}'`
+  })
+  return `CASE ${whens.join(" ")} ELSE 'other' END`
+}
+
+function matchesHuntFamily(huntName, family, watch) {
+  const wanted = String(family || "").trim().toLowerCase()
+  if (!wanted) return true
+  return resolveFamily(huntName, watch) === wanted
+}
+
+export { FAMILY_RULES, huntFamilySql, matchesHuntFamily, resolveFamily }

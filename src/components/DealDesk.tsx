@@ -19,6 +19,7 @@ import {
 	usableRank,
 	vetoPayload,
 } from "#/components/scoreView.js";
+import { resolveFamily } from "#/server/tasteLearning.ts";
 
 type VetoMode = "active" | "parked" | "bought" | "all";
 type Tab = "finds" | "bundles" | "sellers" | "run" | "hunts";
@@ -101,6 +102,7 @@ type Snapshot = {
 	bundles?: Bundle[];
 	sellers?: Seller[];
 	watches?: string[];
+	families?: string[];
 	run?: Record<string, any>;
 	meta?: Record<string, any>;
 };
@@ -348,6 +350,7 @@ export function DealDesk() {
 	const [q, setQ] = useState("");
 	const [qDebounced, setQDebounced] = useState("");
 	const [watch, setWatch] = useState("");
+	const [family, setFamily] = useState("");
 	const [band, setBand] = useState("");
 	const [minScore, setMinScore] = useState("");
 	const [source, setSource] = useState("");
@@ -388,6 +391,7 @@ export function DealDesk() {
 			params.set("veto", veto);
 			params.set("sort", sort);
 			if (qDebounced) params.set("q", qDebounced);
+			if (family) params.set("family", family);
 			if (watch) params.set("watch", watch);
 			if (band) params.set("band", band);
 			if (minScore) params.set("min_score", minScore);
@@ -408,7 +412,7 @@ export function DealDesk() {
 		} finally {
 			setFindsLoading(false);
 		}
-	}, [page, veto, sort, qDebounced, watch, band, minScore, source]);
+	}, [page, veto, sort, qDebounced, family, watch, band, minScore, source]);
 
 	useEffect(() => {
 		load().catch((err) => {
@@ -425,7 +429,7 @@ export function DealDesk() {
 
 	useEffect(() => {
 		setPage(1);
-	}, [veto, sort, qDebounced, watch, band, minScore, source]);
+	}, [veto, sort, qDebounced, family, watch, band, minScore, source]);
 
 	useEffect(() => {
 		if (tab !== "finds") return;
@@ -633,14 +637,33 @@ export function DealDesk() {
 							/>
 						</label>
 						<label>
+							Family
+							<select
+								value={family}
+								onChange={(e) => {
+									setFamily(e.target.value);
+									setWatch("");
+								}}
+							>
+								<option value="">All</option>
+								<option value="maternity">maternity</option>
+								<option value="gym">gym</option>
+								<option value="sneakers">sneakers</option>
+								<option value="knitwear">knitwear</option>
+								<option value="other">other</option>
+							</select>
+						</label>
+						<label>
 							Hunt
 							<select value={watch} onChange={(e) => setWatch(e.target.value)}>
 								<option value="">All</option>
-								{(data?.watches || []).map((w) => (
-									<option key={w} value={w}>
-										{w}
-									</option>
-								))}
+								{(data?.watches || [])
+									.filter((w) => !family || resolveFamily(w) === family)
+									.map((w) => (
+										<option key={w} value={w}>
+											{w}
+										</option>
+									))}
 							</select>
 						</label>
 						<label>

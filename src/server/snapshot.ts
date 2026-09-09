@@ -18,7 +18,9 @@ import {
 	sellerScoreRows,
 	sortBundleScoreRows,
 	sortScoreRows,
+	v2WatchNames,
 } from "./scoreSemantics.js";
+import { resolveFamily } from "./tasteLearning.ts";
 
 /**
  * Shared snapshot builder for Vercel APIs and local Node tooling.
@@ -363,9 +365,7 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 
 	const findsApplied = sortScoreRows(applyToFinds(finds, vetoes, { mode }));
 	const keeps = findsApplied.filter((row) => isKeep(row)).length;
-	const watchesFromFinds = [
-		...new Set(findsApplied.map((f) => f.watch).filter(Boolean)),
-	].sort();
+	const watchesFromFinds = v2WatchNames(findsApplied);
 	const bundlesApplied = assignBundleRanks(
 		applyToBundles(Array.isArray(bundles) ? bundles : [], vetoes, { mode }).map(
 			(row) => applyToRow(row),
@@ -446,13 +446,19 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 				b.keeps - a.keeps,
 		);
 
+	const watches = findsSummary?.watches?.length
+		? findsSummary.watches
+		: watchesFromFinds;
+	const families = [
+		...new Set(watches.map((name) => resolveFamily(name)).filter(Boolean)),
+	].sort();
+
 	return {
 		finds: [],
 		bundles: bundlesApplied,
 		sellers: sellerRows,
-		watches: findsSummary?.watches?.length
-			? findsSummary.watches
-			: watchesFromFinds,
+		watches,
+		families,
 		veto_mode: mode,
 		run: {
 			finished_at: run.finished_at || null,

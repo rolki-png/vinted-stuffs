@@ -71,20 +71,99 @@ def parse_seen_keys(state: dict) -> list[tuple[str, str]]:
 
 
 def already_scored_keys(store) -> set[str]:
-    """Keys that already have an LLM score in CRDB."""
+    """Keys that already have a v2 score or an unavailable tombstone in CRDB."""
     scored = set()
-    # Prefer scanning recent rows; for full set use existing_keys + has_score filter.
     try:
         with store._conn.cursor() as cur:  # type: ignore[attr-defined]
             cur.execute(
-                "SELECT item_id::text || ':' || hunt_name FROM scored_listings WHERE has_score = true"
+                """
+                SELECT item_id::text || ':' || hunt_name FROM scored_listings
+                WHERE has_score = true
+                  AND (score_version = 2 OR reason = %s)
+                """,
+                (ss.UNAVAILABLE_TOMBSTONE_REASON,),
             )
             scored = {r[0] for r in cur.fetchall()}
     except Exception:
         for row in store.load_recent(50000):
-            if row.get("has_score"):
+            if ss.is_already_scored_row(row):
                 scored.add(f"{row['item_id']}:{row['hunt_name']}")
     return scored
+
+
+def resolve_active_hunt(hunt_name: str, watch_by_name: dict) -> str | None:
+    """Map a seen/indexed hunt name onto a watch that still exists in config."""
+    if hunt_name in watch_by_name:
+        return hunt_name
+    if hunt_name.endswith(" L-XL"):
+        renamed = hunt_name[: -len(" L-XL")] + " XL-L/XL"
+        if renamed in watch_by_name:
+            return renamed
+    return None
+
+
+def select_pending_pairs(
+    seen_pairs: list[tuple[str, str]],
+    watch_by_name: dict,
+    scored_v2_keys: set[str],
+) -> list[tuple[str, str]]:
+    """Queue unseen (or legacy-only) pairs under the current hunt name."""
+    pending: list[tuple[str, str]] = []
+    queued: set[str] = set()
+    for item_id, hunt in seen_pairs:
+        resolved = resolve_active_hunt(hunt, watch_by_name)
+        if not resolved:
+            continue
+        key = f"{item_id}:{resolved}"
+        if key in scored_v2_keys or key in queued:
+            continue
+        queued.add(key)
+        pending.append((item_id, resolved))
+    return pending
+
+
+def filter_pending_by_hunt(
+    pending: list[tuple[str, str]],
+    needle: str,
+) -> list[tuple[str, str]]:
+    """Keep remapped pairs whose current hunt name contains needle (case-insensitive)."""
+    text = str(needle or "").strip().casefold()
+    if not text:
+        return pending
+    return [pair for pair in pending if text in pair[1].casefold()]
+
+
+def items_from_cached_rows(
+    pending: list[tuple[str, str]],
+    watch_by_name: dict,
+    cached_rows: list[dict],
+) -> dict[str, list[dict]]:
+    """Rebuild scoreable items from stored listing payloads; skip empty tombstones."""
+    by_id: dict[str, dict] = {}
+    for row in cached_rows:
+        item_id = _coerce_item_id(row.get("item_id"))
+        if not item_id:
+            continue
+        if row.get("reason") == ss.UNAVAILABLE_TOMBSTONE_REASON:
+            continue
+        if not str(row.get("title") or "").strip():
+            continue
+        by_id.setdefault(item_id, row)
+    out: dict[str, list[dict]] = defaultdict(list)
+    for item_id, hunt in pending:
+        row = by_id.get(item_id)
+        watch = watch_by_name.get(hunt)
+        if not row or not watch:
+            continue
+        item = ss.candidate_from_cached(row, watch)["item"]
+        price = item.get("price")
+        if isinstance(price, dict) and price.get("amount") is not None:
+            try:
+                price["amount"] = float(price["amount"])
+            except (TypeError, ValueError):
+                pass
+        out[hunt].append(item)
+    return out
 
 
 def _pair_key(pair: tuple[str, str]) -> str:
@@ -341,6 +420,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--dry-run", action="store_true", help="Fetch only; no LLM / no upsert")
     parser.add_argument("--fetch-only", action="store_true", help="Upsert listing rows without LLM")
     parser.add_argument("--export", action="store_true", help="Rewrite data/indexed_scores.json at end")
+    parser.add_argument(
+        "--hunt",
+        default="",
+        help="Only process hunts whose current name contains this substring",
+    )
+    parser.add_argument(
+        "--from-cache",
+        action="store_true",
+        help="Score stored listing payloads without refetching from Vinted",
+    )
     return parser
 
 
@@ -399,14 +488,21 @@ def main() -> None:
     veto_store.close()
 
     pairs = parse_seen_keys(state)
-    # Only hunts still in config (user may have removed watches).
-    pairs = [(i, h) for i, h in pairs if h in watch_by_name]
-    print(f"seen_keys for active hunts: {len(pairs)}", file=sys.stderr)
+    try:
+        for row in store.load_legacy_scored():
+            item_id = _coerce_item_id(row.get("item_id"))
+            hunt = row.get("hunt_name")
+            if item_id and hunt:
+                pairs.append((item_id, str(hunt)))
+    except Exception as e:
+        print(f"load_legacy_scored skipped: {e}", file=sys.stderr)
 
     scored_already = already_scored_keys(store)
-    pending = [(i, h) for i, h in pairs if f"{i}:{h}" not in scored_already]
+    pending = select_pending_pairs(pairs, watch_by_name, scored_already)
+    pending = filter_pending_by_hunt(pending, args.hunt)
     print(
-        f"already scored in CRDB: {len(scored_already)}; pending: {len(pending)}",
+        f"already scored in CRDB: {len(scored_already)}; pending: {len(pending)}"
+        + (f" (hunt={args.hunt!r})" if args.hunt else ""),
         file=sys.stderr,
     )
     default_progress = _default_progress(state)
@@ -427,22 +523,45 @@ def main() -> None:
     for item_id, hunt in pending:
         by_hunt[hunt].append(item_id)
 
-    print("Fetching item details…", file=sys.stderr)
-    availability = fetch_items(pending, watch_by_name)
-    fresh = availability.items
-    print(f"Live payloads: {len(fresh)} / {len(pending)}", file=sys.stderr)
     pending_set = set(pending)
-    confirmed_unavailable = availability.unavailable_pairs & pending_set
-    completed = set(confirmed_unavailable)
-    retryable = pending_set - availability.checked_pairs
-
-    gone = [
-        unavailable_tombstone(item_id, hunt)
-        for item_id, hunt in sorted(confirmed_unavailable)
-    ]
-    if gone and not args.dry_run:
-        store.upsert_many(gone)
-        print(f"Marked {len(gone)} unavailable as skip tombstones.", file=sys.stderr)
+    if args.from_cache:
+        print("Scoring from cached listing payloads (no Vinted refetch).", file=sys.stderr)
+        cached_rows = []
+        try:
+            cached_rows = store.load_legacy_scored()
+        except Exception as e:
+            print(f"load_legacy_scored skipped: {e}", file=sys.stderr)
+        cached_by_hunt = items_from_cached_rows(pending, watch_by_name, cached_rows)
+        fresh = {}
+        have: set[tuple[str, str]] = set()
+        for hunt_name, cached_items in cached_by_hunt.items():
+            for item in cached_items:
+                iid = str(item.get("id"))
+                if not iid:
+                    continue
+                fresh[iid] = item
+                have.add((iid, hunt_name))
+        print(f"Cached payloads: {len(fresh)} / {len(pending)}", file=sys.stderr)
+        confirmed_unavailable: set[tuple[str, str]] = set()
+        completed: set[tuple[str, str]] = set()
+        # Missing cache is not a Vinted miss — don't burn retry budget / tombstone.
+        retryable: set[tuple[str, str]] = set()
+        gone: list[dict] = []
+    else:
+        print("Fetching item details…", file=sys.stderr)
+        availability = fetch_items(pending, watch_by_name)
+        fresh = availability.items
+        print(f"Live payloads: {len(fresh)} / {len(pending)}", file=sys.stderr)
+        confirmed_unavailable = availability.unavailable_pairs & pending_set
+        completed = set(confirmed_unavailable)
+        retryable = pending_set - availability.checked_pairs
+        gone = [
+            unavailable_tombstone(item_id, hunt)
+            for item_id, hunt in sorted(confirmed_unavailable)
+        ]
+        if gone and not args.dry_run:
+            store.upsert_many(gone)
+            print(f"Marked {len(gone)} unavailable as skip tombstones.", file=sys.stderr)
 
     upserted = len(gone) if not args.dry_run else 0
     scored_n = 0
@@ -470,7 +589,12 @@ def main() -> None:
             print(f"fetch-only upsert {hunt_name}: {len(rows)}", file=sys.stderr)
             continue
 
-        bot.attach_seller_profiles(items, bot._country(watch))
+        if args.from_cache:
+            for item in items:
+                if not item.get("_profile"):
+                    item["_profile"] = {"country_code": bot._country(watch)}
+        else:
+            bot.attach_seller_profiles(items, bot._country(watch))
         taste_block = taste_block_for(watch, config, taste_outcomes)
         chunk_size = 10
         for offset in range(0, len(items), chunk_size):
@@ -516,11 +640,13 @@ def main() -> None:
             retryable=retryable - completed,
         )
         abandoned = _abandoned_default_pairs(default_progress)
-        extra_gone = [
-            unavailable_tombstone(item_id, hunt)
-            for item_id, hunt in sorted(abandoned & pending_set)
-            if (item_id, hunt) not in confirmed_unavailable
-        ]
+        extra_gone = []
+        if not args.from_cache:
+            extra_gone = [
+                unavailable_tombstone(item_id, hunt)
+                for item_id, hunt in sorted(abandoned & pending_set)
+                if (item_id, hunt) not in confirmed_unavailable
+            ]
         if extra_gone:
             store.upsert_many(extra_gone)
             upserted += len(extra_gone)

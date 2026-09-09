@@ -24,6 +24,8 @@ from pathlib import Path
 
 import requests
 
+import hunt_catalog
+
 try:
     from google import genai
     from google.genai import types
@@ -96,6 +98,9 @@ def _vinted_argv() -> list:
     sibling = REPO_ROOT.parent / "vinted-mcp-cli" / "dist" / "cli.js"
     if sibling.exists():
         return [os.environ.get("VINTED_NODE", "node"), str(sibling)]
+    local_bin = REPO_ROOT / "node_modules" / ".bin" / "vinted"
+    if local_bin.exists():
+        return [str(local_bin)]
     return ["npx", "--yes", "@googlarz/vinted-client"]
 
 
@@ -149,10 +154,16 @@ def _normalize_item(raw: dict) -> dict:
         if not sid or sid <= 0:
             sid = None
         login = _clean_login(seller.get("username") or seller.get("login"))
+    brand_id = raw.get("brand_id") or raw.get("brandId")
+    try:
+        brand_id = int(brand_id) if brand_id is not None else None
+    except (TypeError, ValueError):
+        brand_id = None
     return {
         "id": raw.get("id"),
         "title": raw.get("title", ""),
         "price": {"amount": amount, "currency_code": currency},
+        "brand_id": brand_id,
         "brand_title": raw.get("brand") or raw.get("brand_title"),
         "size_title": raw.get("size") or raw.get("size_title"),
         "status": raw.get("condition") or raw.get("status"),
@@ -165,11 +176,19 @@ def _normalize_item(raw: dict) -> dict:
     }
 
 
+catalog_search_text = hunt_catalog.catalog_search_text
+item_matches_hunt_catalog = hunt_catalog.item_matches_hunt_catalog
+
+
+def _keep_catalog_items(watch: dict, items: list) -> list:
+    return [it for it in items if item_matches_hunt_catalog(it, watch)]
+
+
 def search_vinted(watch: dict) -> list:
     country = _country(watch)
     args = [
         "search",
-        watch["query"],
+        catalog_search_text(watch),
         "-c",
         country,
         "--sort",
@@ -192,7 +211,10 @@ def search_vinted(watch: dict) -> list:
         args += ["--condition", ",".join(cond) if isinstance(cond, list) else str(cond)]
     data = _vinted_json(args)
     items = data.get("items", data if isinstance(data, list) else [])
-    return [_normalize_item(it) for it in items if it.get("id") is not None]
+    return _keep_catalog_items(
+        watch,
+        [_normalize_item(it) for it in items if it.get("id") is not None],
+    )
 
 
 def _full_sweep() -> bool:
@@ -202,7 +224,7 @@ def _full_sweep() -> bool:
 def _watch_search_plan(watch: dict, full: bool = False) -> dict:
     plan = {
         "name": watch["name"],
-        "query": watch["query"],
+        "query": catalog_search_text(watch),
         "country": _country(watch),
         "sort": watch.get("order", "newest_first"),
         "limit": 96 if full else watch.get("per_page", 24),
@@ -239,8 +261,9 @@ def search_all_watches(watches: list, full: bool = False) -> dict[str, list]:
         name = row.get("name")
         if row.get("error"):
             print(f"Search failed for watch '{name}': {row['error']}", file=sys.stderr)
+        watch = next((w for w in watches if w.get("name") == name), None)
         items = [_normalize_item(it) for it in (row.get("items") or []) if it.get("id") is not None]
-        found[name] = items
+        found[name] = _keep_catalog_items(watch or {}, items)
     return found
 
 
@@ -841,6 +864,10 @@ def matching_watches(item: dict, watches: list) -> list:
     blob = f"{item.get('title', '')} {item.get('brand_title', '')}".lower()
     hits = []
     for watch in watches:
+        if watch.get("brand_ids"):
+            if item_matches_hunt_catalog(item, watch):
+                hits.append(watch)
+            continue
         tokens = [t for t in watch["query"].lower().replace("-", " ").split() if len(t) >= 3]
         if tokens and any(token in blob for token in tokens):
             hits.append(watch)
@@ -2109,6 +2136,25 @@ def main() -> None:
     scored = []
     scored_ids = set()
     watches = config["watches"]
+    try:
+        dropped_scores = score_db.delete_off_catalog(watches)
+        if dropped_scores:
+            print(f"Purged {dropped_scores} off-catalog scored listing(s).", file=sys.stderr)
+    except Exception as e:
+        print(f"scored_store off-catalog purge failed: {e}", file=sys.stderr)
+    try:
+        dropped_vetoes = veto_store.delete_off_catalog(watches)
+        if dropped_vetoes:
+            print(f"Purged {dropped_vetoes} off-catalog listing veto(es).", file=sys.stderr)
+    except Exception as e:
+        print(f"listing_vetoes off-catalog purge failed: {e}", file=sys.stderr)
+    try:
+        json_stats = hunt_catalog.rewrite_desk_json(REPO_ROOT, watches)
+        dropped_json = sum(json_stats.values())
+        if dropped_json:
+            print(f"Purged off-catalog desk JSON: {json_stats}", file=sys.stderr)
+    except Exception as e:
+        print(f"desk JSON off-catalog purge failed: {e}", file=sys.stderr)
     bundle_hunts = [watch for watch in watches if watch.get("bundle_hunt")]
     premium = [watch for watch in watches if not watch.get("bundle_hunt")]
     value_haul_seeds = []

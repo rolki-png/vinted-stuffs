@@ -453,6 +453,7 @@ class VetoStore(Protocol):
     def load_removed_ids(self) -> set[int]: ...
     def load_suppress_ids(self) -> set[int]: ...
     def load_outcomes(self, family: str | None = None) -> list[dict]: ...
+    def delete_off_catalog(self, watches: list) -> int: ...
     def close(self) -> None: ...
 
 
@@ -518,6 +519,19 @@ class MemoryVetoStore:
     def load_hidden_ids(self) -> set[int]:
         return self.load_removed_ids()
 
+    def delete_off_catalog(self, watches: list) -> int:
+        import hunt_catalog as hc
+
+        by_name = hc.watches_by_name(watches)
+        drop = []
+        for iid, row in self._rows.items():
+            watch = by_name.get(row.get("hunt_name"))
+            if watch and not hc.scored_row_matches_hunt_catalog(row, watch):
+                drop.append(iid)
+        for iid in drop:
+            del self._rows[iid]
+        return len(drop)
+
     def close(self) -> None:
         return None
 
@@ -547,6 +561,9 @@ class NullVetoStore:
 
     def load_outcomes(self, family: str | None = None) -> list[dict]:
         return []
+
+    def delete_off_catalog(self, watches: list) -> int:
+        return 0
 
     def load_hidden_ids(self) -> set[int]:
         return set()
@@ -585,6 +602,28 @@ class PsycopgVetoStore:
         with self._conn.cursor() as cur:
             cur.execute(DELETE_SQL, (int(item_id),))
         self._conn.commit()
+
+    def delete_off_catalog(self, watches: list) -> int:
+        import hunt_catalog as hc
+
+        total = 0
+        with self._conn.cursor() as cur:
+            for watch in hc.branded_hunts(watches):
+                needles = [n for n in hc.catalog_brand_needles(watch["query"]) if len(n) >= 2]
+                if not needles:
+                    continue
+                clauses = " OR ".join(["COALESCE(brand, '') ILIKE %s"] * len(needles))
+                sql = (
+                    "DELETE FROM listing_vetoes WHERE hunt_name = %s "
+                    f"AND NOT ({clauses})"
+                )
+                cur.execute(
+                    sql,
+                    (watch["name"], *[hc.ilike_contains(n) for n in needles]),
+                )
+                total += cur.rowcount or 0
+        self._conn.commit()
+        return total
 
     def load_map(self) -> dict[int, str]:
         with self._conn.cursor() as cur:

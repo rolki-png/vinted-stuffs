@@ -61,6 +61,17 @@ function sellerScoreRows(rows) {
 	return (rows || []).filter(isV2);
 }
 
+function v2WatchNames(rows) {
+	return [
+		...new Set(
+			(rows || [])
+				.filter(isV2)
+				.map((row) => row.watch)
+				.filter(Boolean),
+		),
+	].sort();
+}
+
 function preferredScoreRow(current, incoming) {
 	if (!current) return incoming;
 	if (!incoming) return current;
@@ -242,5 +253,6 @@ export {
 	sellerScoreRows,
 	sortBundleScoreRows,
 	sortScoreRows,
+	v2WatchNames,
 	V2_FIELDS,
 };

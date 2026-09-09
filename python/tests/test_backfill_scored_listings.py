@@ -1,5 +1,6 @@
 import path_setup  # noqa: F401
 import unittest
+from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
@@ -188,6 +189,122 @@ class DefaultBackfillQueueTests(unittest.TestCase):
         self.assertEqual(progress["retry_counts"]["1:Gym"], 3)
         self.assertEqual(abandoned, {("1", "Gym")})
         self.assertEqual(next_batch, [("2", "Gym")])
+
+
+class PendingPairTests(unittest.TestCase):
+    watches = {
+        "Mamalicious maternity XL-L/XL": {"name": "Mamalicious maternity XL-L/XL"},
+    }
+
+    def test_renamed_l_xl_hunt_is_queued_under_current_name(self):
+        pending = backfill.select_pending_pairs(
+            [("9572667753", "Mamalicious maternity L-XL")],
+            self.watches,
+            scored_v2_keys=set(),
+        )
+        self.assertEqual(
+            pending,
+            [("9572667753", "Mamalicious maternity XL-L/XL")],
+        )
+
+    def test_legacy_has_score_does_not_count_as_already_scored(self):
+        store = FakeStore(
+            [legacy_row(1, hunt="Mamalicious maternity XL-L/XL")]
+        )
+        self.assertEqual(backfill.already_scored_keys(store), set())
+
+    def test_unavailable_tombstone_still_counts_as_already_scored(self):
+        store = FakeStore(
+            [
+                legacy_row(
+                    2,
+                    hunt="Mamalicious maternity XL-L/XL",
+                    reason=backfill.ss.UNAVAILABLE_TOMBSTONE_REASON,
+                )
+            ]
+        )
+        self.assertEqual(
+            backfill.already_scored_keys(store),
+            {"2:Mamalicious maternity XL-L/XL"},
+        )
+
+    def test_v2_row_counts_as_already_scored(self):
+        store = FakeStore(
+            [
+                {
+                    "item_id": 1,
+                    "hunt_name": "Mamalicious maternity XL-L/XL",
+                    "has_score": True,
+                    "score_version": 2,
+                    "buy_score": 0,
+                }
+            ]
+        )
+        self.assertEqual(
+            backfill.already_scored_keys(store),
+            {"1:Mamalicious maternity XL-L/XL"},
+        )
+
+    def test_already_v2_scored_under_new_name_is_not_queued_again(self):
+        pending = backfill.select_pending_pairs(
+            [("1", "Mamalicious maternity L-XL")],
+            self.watches,
+            scored_v2_keys={"1:Mamalicious maternity XL-L/XL"},
+        )
+        self.assertEqual(pending, [])
+
+    def test_hunt_filter_keeps_mamalicious_after_rename(self):
+        pending = backfill.select_pending_pairs(
+            [
+                ("1", "Mamalicious maternity L-XL"),
+                ("2", "Seraphine maternity XL-L/XL"),
+            ],
+            {
+                **self.watches,
+                "Seraphine maternity XL-L/XL": {
+                    "name": "Seraphine maternity XL-L/XL"
+                },
+            },
+            scored_v2_keys=set(),
+        )
+        self.assertEqual(
+            backfill.filter_pending_by_hunt(pending, "Mamalicious"),
+            [("1", "Mamalicious maternity XL-L/XL")],
+        )
+
+    def test_cached_payloads_rebuild_items_and_skip_tombstones(self):
+        watch = {"name": "Mamalicious maternity XL-L/XL", "country": "ro"}
+        items = backfill.items_from_cached_rows(
+            [
+                ("2", "Mamalicious maternity XL-L/XL"),
+                ("3", "Mamalicious maternity XL-L/XL"),
+            ],
+            {"Mamalicious maternity XL-L/XL": watch},
+            [
+                legacy_row(
+                    3,
+                    hunt="Mamalicious maternity L-XL",
+                    reason=backfill.ss.UNAVAILABLE_TOMBSTONE_REASON,
+                    title="",
+                ),
+                legacy_row(
+                    2,
+                    hunt="Mamalicious maternity L-XL",
+                    title="Rochie lungă de vară alăptat L",
+                    price=Decimal("15.00"),
+                    currency="RON",
+                    brand="Mamalicious",
+                    seller_id=1,
+                    seller_login="cosinna29",
+                    seller_country="ro",
+                ),
+            ],
+        )
+        rebuilt = items["Mamalicious maternity XL-L/XL"]
+        self.assertEqual(len(rebuilt), 1)
+        self.assertEqual(rebuilt[0]["title"], "Rochie lungă de vară alăptat L")
+        self.assertEqual(rebuilt[0]["id"], 2)
+        self.assertEqual(rebuilt[0]["price"]["amount"], 15.0)
 
 
 class WorkflowContractTests(unittest.TestCase):

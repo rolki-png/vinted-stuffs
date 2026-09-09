@@ -37,6 +37,8 @@ assert.match(styles, /\.pill\.unknown\s*\{/);
 assert.match(styles, /\.remove-learning-note\s*\{/);
 assert.doesNotMatch(styles, /\.risk-(?:high|medium|low)\s*\{/);
 
+assert.match(source, /Family/);
+assert.match(source, /<option value="maternity">/);
 assert.match(source, /Newest → oldest/);
 assert.match(source, /Best → worst/);
 assert.match(source, /bundleSort/);

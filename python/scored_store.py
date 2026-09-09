@@ -256,6 +256,11 @@ def is_legacy_scored_row(row: dict) -> bool:
     return row.get("reason") != UNAVAILABLE_TOMBSTONE_REASON
 
 
+def is_already_scored_row(row: dict) -> bool:
+    """True for v2 scores and gone-listing tombstones; false for legacy deal_score rows."""
+    return bool(row.get("has_score")) and not is_legacy_scored_row(row)
+
+
 def _json_object(value) -> dict:
     if isinstance(value, dict):
         return value
@@ -623,10 +628,27 @@ def index_bundle_opportunities(
     return out
 
 
+def delete_off_catalog_rows(rows_by_key: dict, watches: list) -> int:
+    """Remove in-memory scored rows that fail brand catalog. Mutates rows_by_key."""
+    import hunt_catalog as hc
+
+    by_name = hc.watches_by_name(watches)
+    drop = [
+        key
+        for key, row in rows_by_key.items()
+        if (watch := by_name.get(row.get("hunt_name")))
+        and not hc.scored_row_matches_hunt_catalog(row, watch)
+    ]
+    for key in drop:
+        del rows_by_key[key]
+    return len(drop)
+
+
 class ScoredStore(Protocol):
     def upsert_score(self, row: dict) -> None: ...
     def upsert_many(self, rows: list[dict]) -> None: ...
     def replace_rankings(self, rows: list[dict]) -> None: ...
+    def delete_off_catalog(self, watches: list) -> int: ...
     def load_by_seller(self, seller_id: int) -> list[dict]: ...
     def load_recent(self, limit: int = 10000) -> list[dict]: ...
     def load_legacy_scored(self, limit: int = 100000) -> list[dict]: ...
@@ -644,6 +666,9 @@ class NullScoredStore:
 
     def replace_rankings(self, rows: list[dict]) -> None:
         return None
+
+    def delete_off_catalog(self, watches: list) -> int:
+        return 0
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         return []
@@ -710,6 +735,9 @@ class MemoryScoredStore:
                 continue
             stored["rank_position"] = ranking.get("rank_position")
             stored["rank_confidence"] = ranking.get("rank_confidence")
+
+    def delete_off_catalog(self, watches: list) -> int:
+        return delete_off_catalog_rows(self._rows, watches)
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         return [dict(r) for r in self._rows.values() if r.get("seller_id") == seller_id]
@@ -800,6 +828,28 @@ class PsycopgScoredStore:
                     f"scored_store rank replace retry {attempt + 1}: {e}",
                     file=sys.stderr,
                 )
+
+    def delete_off_catalog(self, watches: list) -> int:
+        import hunt_catalog as hc
+
+        total = 0
+        with self._conn.cursor() as cur:
+            for watch in hc.branded_hunts(watches):
+                needles = [n for n in hc.catalog_brand_needles(watch["query"]) if len(n) >= 2]
+                if not needles:
+                    continue
+                clauses = " OR ".join(["COALESCE(brand, '') ILIKE %s"] * len(needles))
+                sql = (
+                    "DELETE FROM scored_listings WHERE hunt_name = %s "
+                    f"AND NOT ({clauses})"
+                )
+                cur.execute(
+                    sql,
+                    (watch["name"], *[hc.ilike_contains(n) for n in needles]),
+                )
+                total += cur.rowcount or 0
+        self._conn.commit()
+        return total
 
     def load_by_seller(self, seller_id: int) -> list[dict]:
         with self._conn.cursor() as cur:

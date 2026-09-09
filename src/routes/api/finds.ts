@@ -20,6 +20,7 @@ export const Route = createFileRoute('/api/finds')({
               url.searchParams.get('min_score') ||
               url.searchParams.get('minScore'),
             source: url.searchParams.get('source'),
+            family: url.searchParams.get('family'),
             q: url.searchParams.get('q'),
             sort: url.searchParams.get('sort'),
           })

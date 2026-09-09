@@ -10,6 +10,7 @@ import {
 	sellerScoreRows,
 	sortBundleScoreRows,
 	sortScoreRows,
+	v2WatchNames,
 } from "../src/server/scoreSemantics.js";
 
 const v2 = {
@@ -238,4 +239,17 @@ assert.deepEqual(histogramBins({ "80-89": 4, "90-100": 2 }), [
 	{ label: "80–89", count: 4 },
 	{ label: "90–100", count: 2 },
 ]);
+assert.deepEqual(
+	v2WatchNames([
+		{
+			watch: "Mamalicious maternity L-XL",
+			deal_score: 8,
+			has_score: true,
+			reason: "Correct brand, right size (XL), and good price for knitwear.",
+		},
+		{ watch: "Mamalicious maternity XL-L/XL", ...v2 },
+		{ watch: "Mamalicious maternity XL-L/XL", ...v2, id: 2 },
+	]),
+	["Mamalicious maternity XL-L/XL"],
+);
 console.log("ok score-semantics");

@@ -72,6 +72,31 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(loaded[0]["deal_score"], 8)
         self.assertEqual(loaded[0]["reason"], "new")
 
+    def test_delete_off_catalog_drops_keyword_junk_for_brand_hunts(self):
+        store = ss.MemoryScoredStore()
+        store.upsert_score({
+            "item_id": 1,
+            "hunt_name": "Ten Thousand gym M-L",
+            "title": "book",
+            "brand": "Penguin",
+            "has_score": True,
+        })
+        store.upsert_score({
+            "item_id": 2,
+            "hunt_name": "Ten Thousand gym M-L",
+            "title": "shorts",
+            "brand": "Ten Thousand",
+            "has_score": True,
+        })
+        dropped = store.delete_off_catalog([{
+            "name": "Ten Thousand gym M-L",
+            "query": "ten thousand",
+            "brand_ids": [3162601],
+        }])
+        self.assertEqual(dropped, 1)
+        self.assertEqual(store.count(), 1)
+        self.assertEqual(store.load_recent()[0]["item_id"], 2)
+
     def test_candidate_from_cached_rebuilds_bot_row(self):
         row = {
             "item_id": 42,

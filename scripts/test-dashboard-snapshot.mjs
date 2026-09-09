@@ -148,6 +148,7 @@ fs.writeFileSync(
 		{
 			id: 3,
 			title: "legacy only seller",
+			watch: "Mamalicious maternity L-XL",
 			seller_id: 20,
 			seller: "legacy-seller",
 			deal_score: 10,
@@ -216,6 +217,7 @@ try {
 	assert.equal(snapshot.meta.finds_paged, true);
 	assert.ok(Number(snapshot.meta.finds_total) >= 1);
 	assert.ok(Array.isArray(snapshot.watches));
+	assert.deepEqual(snapshot.watches, ["Gym"]);
 
 	const mixedSeller = snapshot.sellers.find((row) => row.seller_id === 10);
 	assert.equal(mixedSeller.score_version, 2);

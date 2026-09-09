@@ -11,12 +11,31 @@ import {
 	sortFinds,
 } from "../components/scoreView.js";
 import { jsonFromGithubContents } from "./githubContents.js";
+import {
+	catalogBrandSql,
+	filterRowsToHuntCatalog,
+	loadHuntsFromConfig,
+} from "./huntCatalog.js";
 import { applyToFinds, loadVetoMap } from "./listingVetoes.ts";
 import { databaseUrl, exportRow, loadIndexedFromDb } from "./scoredDb.ts";
-import { mergeScoreRows } from "./scoreSemantics.js";
+import { mergeScoreRows, isV2 } from "./scoreSemantics.js";
+import { huntFamilySql, matchesHuntFamily } from "./tasteLearning.ts";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 100;
+
+function watchNameAliases(watch) {
+	const name = String(watch || "").trim();
+	if (!name) return [];
+	const names = new Set([name]);
+	if (name.endsWith(" L-XL")) {
+		names.add(`${name.slice(0, -" L-XL".length)} XL-L/XL`);
+	}
+	if (name.endsWith(" XL-L/XL")) {
+		names.add(`${name.slice(0, -" XL-L/XL".length)} L-XL`);
+	}
+	return [...names];
+}
 
 function sslConfig() {
 	const caPath =
@@ -66,7 +85,16 @@ function clampLimit(limit) {
 	return Math.min(MAX_LIMIT, n);
 }
 
+const HUNT_FAMILIES = new Set([
+	"maternity",
+	"gym",
+	"sneakers",
+	"knitwear",
+	"other",
+]);
+
 function parseFilters(raw = {}) {
+	const family = String(raw.family || "").trim().toLowerCase();
 	return {
 		page: clampPage(raw.page),
 		limit: clampLimit(raw.limit),
@@ -74,6 +102,7 @@ function parseFilters(raw = {}) {
 			? raw.veto
 			: "active",
 		watch: String(raw.watch || "").trim(),
+		family: HUNT_FAMILIES.has(family) ? family : "",
 		band: String(raw.band || "").trim(),
 		minScore: String(raw.min_score || raw.minScore || "").trim(),
 		source: String(raw.source || "").trim(),
@@ -153,16 +182,28 @@ async function queryFindsFromDb(filters) {
 		const where = [
 			`has_score = true`,
 			`COALESCE(reason, '') <> 'unavailable during backfill'`,
+			`score_version = 2 AND buy_score IS NOT NULL AND buy_score BETWEEN 0 AND 100`,
 		];
 		if (filters.watch) {
-			params.push(filters.watch);
-			where.push(`hunt_name = $${params.length}`);
+			const aliases = watchNameAliases(filters.watch);
+			const start = params.length;
+			for (const alias of aliases) params.push(alias);
+			const placeholders = aliases
+				.map((_, index) => `$${start + index + 1}`)
+				.join(", ");
+			where.push(`hunt_name IN (${placeholders})`);
+		}
+		if (filters.family) {
+			params.push(filters.family);
+			where.push(`${huntFamilySql("hunt_name")} = $${params.length}`);
 		}
 
 		const bestWhere = where.join(" AND ");
 		const band = bandSql(filters.band, params);
 		const minScore = minScoreSql(filters.minScore, params);
 		const veto = vetoSql(filters.veto, params);
+		const hunts = loadHuntsFromConfig();
+		const catalog = catalogBrandSql(hunts, params);
 
 		const qParams = [...params];
 		let qClause = "TRUE";
@@ -190,6 +231,7 @@ async function queryFindsFromDb(filters) {
         WHERE ${veto}
           AND (${band})
           AND (${minScore})
+          AND (${catalog})
           AND (${qClause})
       )
     `;
@@ -324,8 +366,15 @@ function buildMemoryCorpus({ deals, indexed, pool, run, vetoes, mode }) {
 
 function filterMemoryRows(rows, filters) {
 	const query = filters.q.toLowerCase();
-	return rows.filter((f) => {
-		if (filters.watch && f.watch !== filters.watch) return false;
+	const hunts = loadHuntsFromConfig();
+	const cataloged = filterRowsToHuntCatalog(rows, hunts);
+	return cataloged.filter((f) => {
+		if (filters.watch) {
+			const aliases = new Set(watchNameAliases(filters.watch));
+			if (!aliases.has(f.watch)) return false;
+		}
+		if (!matchesHuntFamily(f.watch, filters.family)) return false;
+		if (!isV2(f)) return false;
 		if (!matchesBandFilter(f, filters.band)) return false;
 		if (!matchesScoreFilter(f, filters.minScore)) return false;
 		if (filters.source && f.source !== filters.source) return false;
@@ -466,6 +515,7 @@ async function queryFindsSummary(vetoMode = "active") {
           FROM scored_listings
           WHERE has_score = true
             AND COALESCE(reason, '') <> 'unavailable during backfill'
+            AND score_version = 2 AND buy_score IS NOT NULL AND buy_score BETWEEN 0 AND 100
           ORDER BY item_id,
             CASE WHEN score_version = 2 AND buy_score IS NOT NULL AND buy_score BETWEEN 0 AND 100 THEN 2 ELSE 0 END DESC,
             COALESCE(buy_score, -1) DESC
@@ -489,6 +539,7 @@ async function queryFindsSummary(vetoMode = "active") {
 			const watchesRes = await client.query(
 				`SELECT DISTINCT hunt_name AS watch FROM scored_listings
          WHERE has_score = true AND COALESCE(hunt_name, '') <> ''
+           AND score_version = 2 AND buy_score IS NOT NULL AND buy_score BETWEEN 0 AND 100
          ORDER BY 1`,
 			);
 			const row = res.rows[0] || {};

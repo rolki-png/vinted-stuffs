@@ -25,6 +25,14 @@ on:
         description: 'Max pending keys to score this backfill run'
         type: string
         default: '200'
+      crawl_haul_seeds:
+        description: 'Closet-crawl sellers who already have one ≥60 hunt-fit listing'
+        type: boolean
+        default: false
+      crawl_hunt:
+        description: 'Hunt substring for haul-seed closet crawl (e.g. Mamalicious)'
+        type: string
+        default: 'Mamalicious'
 
 concurrency:
   group: vinted-deal-bot
@@ -77,7 +85,7 @@ jobs:
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
       - name: Backfill scored listings
-        if: ${{ inputs.backfill_scored == true }}
+        if: ${{ inputs.backfill_scored == true && inputs.crawl_haul_seeds != true }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -90,8 +98,23 @@ jobs:
             --hunt "${{ inputs.backfill_hunt }}" \
             --export
 
+      - name: Crawl haul seed closets
+        if: ${{ inputs.crawl_haul_seeds == true }}
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+          AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+        run: |
+          uv run --project python python python/crawl_haul_seeds.py \
+            --hunt "${{ inputs.crawl_hunt || inputs.backfill_hunt || 'Mamalicious' }}" \
+            --closet-limit 36 \
+            --max-sellers 20 \
+            --export
+
       - name: Run bot
-        if: ${{ inputs.backfill_scored != true }}
+        if: ${{ inputs.backfill_scored != true && inputs.crawl_haul_seeds != true }}
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
           AI_GATEWAY_MODEL: ${{ vars.AI_GATEWAY_MODEL }}
@@ -104,7 +127,7 @@ jobs:
         run: uv run --project python python python/vinted_bot.py
 
       - name: Commit updated state
-        if: ${{ inputs.backfill_scored != true || success() }}
+        if: success()
         run: |
           git config user.name "vinted-bot"
           git config user.email "vinted-bot@users.noreply.github.com"

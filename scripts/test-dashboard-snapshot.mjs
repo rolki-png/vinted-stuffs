@@ -276,4 +276,144 @@ try {
 	fs.rmSync(root, { recursive: true, force: true });
 }
 
+{
+	const staleRoot = fs.mkdtempSync(
+		path.join(os.tmpdir(), "dashboard-snapshot-stale-index-"),
+	);
+	const staleData = path.join(staleRoot, "data");
+	fs.mkdirSync(staleData);
+	const huntKeep = v2(31, 91, 1, {
+		seller_id: 7,
+		seller: "hunt-keep",
+		buy_band: "keep",
+	});
+	const huntExtra = v2(32, 70, 2, {
+		seller_id: 7,
+		seller: "hunt-keep",
+		buy_band: "bundle",
+	});
+	const valueA = v2(41, 72, 1, {
+		seller_id: 8,
+		seller: "value-seller",
+		buy_band: "bundle",
+	});
+	const valueB = v2(42, 66, 2, {
+		seller_id: 8,
+		seller: "value-seller",
+		buy_band: "bundle",
+	});
+	const nearA = v2(51, 61, 1, {
+		seller_id: 9,
+		seller: "near-seller",
+		buy_band: "bundle",
+	});
+	const nearB = v2(52, 62, 2, {
+		seller_id: 9,
+		seller: "near-seller",
+		buy_band: "bundle",
+	});
+	const mamaA = v2(21, 71, 1, {
+		buy_band: "bundle",
+		watch: "Mamalicious maternity XL-L/XL",
+		seller_id: 99,
+	});
+	const mamaB = v2(22, 68, 2, {
+		buy_band: "bundle",
+		watch: "Seraphine maternity",
+		seller_id: 99,
+	});
+	const gymA = v2(23, 72, 1, {
+		buy_band: "bundle",
+		watch: "Craft ADV M-L",
+		seller_id: 99,
+	});
+	const gymB = v2(24, 64, 2, {
+		buy_band: "bundle",
+		watch: "Craft ADV M-L",
+		seller_id: 99,
+	});
+	for (const name of [
+		"best_deals.json",
+		"indexed_scores.json",
+		"bundle_pool.json",
+		"seen_listings.json",
+	]) {
+		fs.writeFileSync(path.join(staleData, name), name === "seen_listings.json" ? "{}" : "[]");
+	}
+	fs.writeFileSync(path.join(staleData, "last_run.json"), "{}");
+	fs.writeFileSync(
+		path.join(staleData, "best_bundles.json"),
+		JSON.stringify([
+			{
+				kind: "keep_bundle",
+				seller_id: 7,
+				seller: "hunt-keep",
+				items: [huntKeep, huntExtra],
+			},
+			{
+				kind: "value_haul",
+				seller_id: 8,
+				seller: "value-seller",
+				items: [valueA, valueB],
+			},
+			{
+				kind: "near_haul",
+				seller_id: 9,
+				seller: "near-seller",
+				items: [nearA, nearB],
+			},
+			{
+				kind: "index_near_bundle",
+				seller_id: 99,
+				seller: "mixed-seller",
+				items: [mamaA, mamaB, gymA, gymB],
+			},
+			{
+				kind: "index_keep_bundle",
+				seller_id: 99,
+				seller: "mixed-seller",
+				items: [mamaA, gymA],
+			},
+		]),
+	);
+	const staleCwd = process.cwd();
+	delete process.env.DATABASE_URL;
+	delete process.env.COCKROACH_DATABASE_URL;
+	delete process.env.GITHUB_TOKEN;
+	delete process.env.GITHUB_REPO;
+	try {
+		process.chdir(staleRoot);
+		const snapshot = await buildSnapshot({
+			dbIndexed: {
+				rows: [mamaA, mamaB, gymA, gymB],
+				count: 4,
+				source: "cockroach",
+			},
+		});
+		const gitIndexKinds = snapshot.bundles.filter(
+			(b) =>
+				b.kind === "index_keep_bundle" || b.kind === "index_near_bundle",
+		);
+		assert.equal(
+			gitIndexKinds.some((b) => b.items.map((i) => i.id).sort().join(",") === "21,22,23,24"),
+			false,
+		);
+		assert.equal(
+			gitIndexKinds.some((b) => b.items.map((i) => i.id).sort().join(",") === "21,23"),
+			false,
+		);
+		assert.equal(gitIndexKinds.length, 2);
+		assert.deepEqual(
+			gitIndexKinds.map((b) => b.family).sort(),
+			["gym", "maternity"],
+		);
+		assert.ok(snapshot.bundles.some((b) => b.kind === "keep_bundle"));
+		assert.ok(snapshot.bundles.some((b) => b.kind === "value_haul"));
+		assert.ok(snapshot.bundles.some((b) => b.kind === "near_haul"));
+	} finally {
+		process.chdir(staleCwd);
+		fs.rmSync(staleRoot, { recursive: true, force: true });
+	}
+}
+
 console.log("ok dashboard-snapshot");

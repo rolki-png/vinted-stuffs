@@ -51,18 +51,20 @@ utility or threshold qualification.
 _Avoid_: Score, promotion
 
 **Bundle**:
-Two or more listings from the same seller in one checkout: at least one Keep,
-plus extra hunt-fit pieces with `buy_score >= 60` and no blocking verification
-concern, such that one checkout extra makes the combined absolute saving worth
-it. Only alert when the cart meaningfully beats buying fewer better pieces.
-Prior Keeps and extras stay in the bundle pool and can join a later checkout if
-they are still listed.
+Two or more listings from the same seller in one checkout. Keep-plus-extras
+is `keep_bundle` / `index_keep_bundle`. A no-Keep scored family haul is
+`index_near_bundle`. Hunt-time `near_haul` stays unscored. Extras are hunt-fit
+pieces with `buy_score >= 60` and no blocking verification concern, such that
+one checkout extra makes the combined absolute saving worth it. Only alert
+when the cart meaningfully beats buying fewer better pieces. Prior Keeps and
+extras stay in the bundle pool and can join a later checkout if they are still
+listed.
 _Avoid_: Cart, lot, combo
 
 **Bundle extra**:
 A hunt-fit listing that is not a Keep on its own, but has `buy_score >= 60`
-and no blocking verification concern, so it is good enough to ride with a Keep
-in a bundle.
+and no blocking verification concern, so it is good enough to ride in a Keep
+cart (`keep_bundle` / `index_keep_bundle`) or a scored `index_near_bundle`.
 _Avoid_: Filler, add-on (unqualified)
 
 **Value haul**:

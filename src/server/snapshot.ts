@@ -175,14 +175,20 @@ function bumpSeller(sellers, { sid, login, country, scoreRow, itemId, watch }) {
 	if (watch) row.watches.add(watch);
 }
 
-async function buildSnapshot({ vetoMode = "active" } = {}) {
+async function buildSnapshot({
+	vetoMode = "active",
+	dbIndexed: dbIndexedOverride,
+} = {}) {
 	const mode = ["active", "parked", "bought", "all"].includes(vetoMode)
 		? vetoMode
 		: "active";
 
 	// Prefer Cockroach for indexed finds. Skip the GitHub export when DB has rows —
 	// indexed_scores.json often exceeds GitHub's 1MB Contents inline limit (~4MB+).
-	const dbIndexedPromise = loadIndexedFromDb(10000);
+	const dbIndexedPromise =
+		dbIndexedOverride !== undefined
+			? Promise.resolve(dbIndexedOverride)
+			: loadIndexedFromDb(10000);
 	const summaryPromise = queryFindsSummary(mode);
 	const [deals, bundlesRaw, pool, run, seen, dbIndexed, vetoes, findsSummary] =
 		await Promise.all([
@@ -218,6 +224,14 @@ async function buildSnapshot({ vetoMode = "active" } = {}) {
 		const indexOpps = indexBundleOpportunities(dbIndexed.rows).map(
 			dashboardBundle,
 		);
+		// Live family-split index carts replace seller-wide git index_* rows.
+		// Hunt-time keep_bundle / value_haul / near_haul stay and fingerprint-merge.
+		for (let i = bundles.length - 1; i >= 0; i--) {
+			const kind = bundles[i]?.kind;
+			if (kind === "index_keep_bundle" || kind === "index_near_bundle") {
+				bundles.splice(i, 1);
+			}
+		}
 		const existingByFp = new Map(
 			bundles.map((b, index) => {
 				const ids = (b.items || [])

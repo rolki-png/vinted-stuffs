@@ -43,8 +43,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = Path(os.environ.get("VINTED_CONFIG", str(REPO_ROOT / "python" / "config.json")))
 VERCEL_GATEWAY_BASE = "https://ai-gateway.vercel.sh/v1"
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL") or "gemini-3.6-flash"
-# Cheap default; override with AI_GATEWAY_MODEL (e.g. openai/gpt-4.1-mini)
-AI_GATEWAY_MODEL = os.environ.get("AI_GATEWAY_MODEL") or "google/gemini-3.1-flash-lite"
+# Cheap default (Meta contributor tier; inputs/outputs may be used for training)
+AI_GATEWAY_MODEL = os.environ.get("AI_GATEWAY_MODEL") or "meta/muse-spark-1.3-contributor"
 
 
 # ---------- state ----------

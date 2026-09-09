@@ -793,6 +793,78 @@
   },
   {
     "item": {
+      "id": 9940967087,
+      "title": "Nowe spodenki męskie Adidas r M",
+      "price": {
+        "amount": "22.18",
+        "currency_code": "RON"
+      },
+      "brand_title": "adidas",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9940967087-nowe-spodenki-meskie-adidas-r-m",
+      "user": {
+        "id": 91609892,
+        "login": "magdwla"
+      },
+      "_profile": {
+        "username": "magdwla",
+        "member_since": null,
+        "feedback_count": 617,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 3,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9940967087,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.86,
+      "score_interval_low": 58,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 81.5,
+        "quality": 74.0,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 70.15314666666666,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 46.29,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 5.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Gym shorts.",
+        "quality": "Standard Adidas quality.",
+        "condition": "New without tags.",
+        "versatility": "Versatile athletic short.",
+        "value": "Standard new athletic short price.",
+        "fit_probability": "Size M fits.",
+        "duplication_probability": "Common item."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Exceptional steal for new Adidas shorts, very high value."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 91609892,
+    "seller": "magdwla"
+  },
+  {
+    "item": {
       "id": 9913786869,
       "title": "nike dna short",
       "price": {
@@ -1729,161 +1801,17 @@
   },
   {
     "item": {
-      "id": 9933545179,
-      "title": "Pursue Fitness παντελονι Large",
-      "price": {
-        "amount": "21.26",
-        "currency_code": "RON"
-      },
-      "brand_title": "PURSUE FITNESS",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9933545179-pursue-fitness-panteloni-large",
-      "user": {
-        "id": 3171871380,
-        "login": "evae4335"
-      },
-      "_profile": {
-        "username": "evae4335",
-        "member_since": null,
-        "feedback_count": 5,
-        "feedback_reputation": 1,
-        "item_count": 9,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9933545179,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.8,
-      "score_interval_low": 56,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 78.0,
-        "condition": 95.0,
-        "versatility": 78.0,
-        "value": 68.17936272727272,
-        "fit_probability": 0.82,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 40.32,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Fitness dedicated piece",
-        "quality": "Performance build",
-        "condition": "New without tags",
-        "versatility": "Excellent for gym",
-        "value": "Performance brand new retail",
-        "fit_probability": "Stated size L",
-        "duplication_probability": "Niche fitness brand"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Exceptional value for a brand-new training short from a reputable fitness brand."
-    },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 3171871380,
-    "seller": "evae4335"
-  },
-  {
-    "item": {
-      "id": 9940967087,
-      "title": "Nowe spodenki męskie Adidas r M",
-      "price": {
-        "amount": "22.18",
-        "currency_code": "RON"
-      },
-      "brand_title": "adidas",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9940967087-nowe-spodenki-meskie-adidas-r-m",
-      "user": {
-        "id": 91609892,
-        "login": "magdwla"
-      },
-      "_profile": {
-        "username": "magdwla",
-        "member_since": null,
-        "feedback_count": 617,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 3,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9940967087,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.86,
-      "score_interval_low": 58,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 74.0,
-        "condition": 100.0,
-        "versatility": 74.0,
-        "value": 70.15314666666666,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 46.29,
-        "equivalent_replacement_cost_ron": 90.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 5.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Gym shorts.",
-        "quality": "Standard Adidas quality.",
-        "condition": "New without tags.",
-        "versatility": "Versatile athletic short.",
-        "value": "Standard new athletic short price.",
-        "fit_probability": "Size M fits.",
-        "duplication_probability": "Common item."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Exceptional steal for new Adidas shorts, very high value."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 91609892,
-    "seller": "magdwla"
-  },
-  {
-    "item": {
       "id": 9738110380,
       "title": "Nike Dri-FIT Wild Run Flex Stride 7\" Ανδρικό Σορτς Τρεξίματος - Μπλε - L",
       "price": {
-        "amount": "79.73",
-        "currency_code": "RON"
+        "amount": "15",
+        "currency_code": "EUR"
       },
       "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Foarte bună",
+      "size_title": null,
+      "status": "Used",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9738110380-nike-dri-fit-wild-run-flex-stride-7-andriko-sorts-treksimatos-mple-l",
+      "url": "https://www.vinted.ro/items/9738110380-nike-dri-fit-wild-run-flex-stride-7-andriko-sorts-treximatos-mple-l",
       "user": {
         "id": 228906776,
         "login": "kir_royal123"
@@ -1948,14 +1876,14 @@
       "id": 9939533890,
       "title": "Ποδοσφαιρικό/αθλητικό σορτσάκι",
       "price": {
-        "amount": "53.15",
-        "currency_code": "RON"
+        "amount": "10",
+        "currency_code": "EUR"
       },
       "brand_title": "adidas",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9939533890-podosphairikoathlitiko-sortsaki",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9939533890-podosfairikoathlitiko-sortsaki",
       "user": {
         "id": 287709674,
         "login": "agniiiiiiiii"
@@ -2017,263 +1945,119 @@
   },
   {
     "item": {
-      "id": 9940839383,
-      "title": "Asics gel-kayano 14",
+      "id": 9941481627,
+      "title": "Spodenki treningowe Nike",
       "price": {
-        "amount": "409.44",
+        "amount": "30.8",
         "currency_code": "RON"
       },
-      "brand_title": "Asics",
-      "size_title": "43",
-      "status": "Foarte bună",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9940839383-asics-gel-kayano-14",
-      "user": {
-        "id": 222152575,
-        "login": "somlo123"
-      },
-      "_profile": {
-        "username": "somlo123",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 1,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9940839383,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.855,
-      "score_interval_low": 58,
-      "score_interval_high": 64,
-      "score_factors": {
-        "usefulness": 90.0,
-        "quality": 78.0,
-        "condition": 71.0,
-        "versatility": 81.5,
-        "value": 49.8784,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.86,
-        "delivered_cost_ron": 450.91,
-        "equivalent_replacement_cost_ron": 450.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Core lifestyle sneaker",
-        "quality": "Known stable construction for Kayano series",
-        "condition": "Foarte bună (very good)",
-        "versatility": "Neutral/versatile tech-runner aesthetic",
-        "value": "Market average for secondary Kayano 14",
-        "fit_probability": "Size 43 is target match",
-        "duplication_probability": "Highly replicated model"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "High-risk model for replicas; requires tag and sole inspection.",
-      "hunt_fit": true,
-      "reason": "Correct model and size match for the hunt, price is within the hard cap."
-    },
-    "watch": "ASICS Gel Kayano 14 size 43",
-    "seller_id": 222152575,
-    "seller": "somlo123"
-  },
-  {
-    "item": {
-      "id": 9938462991,
-      "title": "Asics gel gt-2160 beżowe sneakersy klasyczne z siatką",
-      "price": {
-        "amount": "160.15",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9938462991-asics-gel-gt-2160-bezowe-sneakersy-klasyczne-z-siatka",
-      "user": {
-        "id": 156141603,
-        "login": "sellerxd"
-      },
-      "_profile": {
-        "username": "sellerxd",
-        "member_since": null,
-        "feedback_count": 203,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 18,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9938462991,
-      "score_version": 2,
-      "buy_score": 77,
-      "buy_band": "good",
-      "score_confidence": 0.885,
-      "score_interval_low": 73,
-      "score_interval_high": 81,
-      "score_factors": {
-        "usefulness": 95.0,
-        "quality": 78.0,
-        "condition": 74.0,
-        "versatility": 74.0,
-        "value": 81.54938928571428,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.4,
-        "delivered_cost_ron": 191.16,
-        "equivalent_replacement_cost_ron": 350.0,
-        "personal_adjustments": {
-          "usefulness": 5.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 5.0,
-          "fit_probability": 10.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "GT-2160 is the exact target model",
-        "quality": "High build quality for GT series",
-        "condition": "Foarte bună condition reported",
-        "versatility": "Neutral colorway, versatile",
-        "value": "Conservative estimate for clean used pair",
-        "fit_probability": "Size 43.5 is perfect match",
-        "duplication_probability": "Moderately common model"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Perfect match for size, model, and price requirements."
-    },
-    "watch": "ASICS GT-2160 size 43",
-    "seller_id": 156141603,
-    "seller": "sellerxd"
-  },
-  {
-    "item": {
-      "id": 9940842967,
-      "title": "Asics gel 1130 kremowe sneakersy 42,5",
-      "price": {
-        "amount": "269.82",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "42,5",
+      "brand_title": "Nike",
+      "size_title": "L",
       "status": "Foarte bună",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9940842967-asics-gel-1130-kremowe-sneakersy-425",
+      "url": "https://www.vinted.ro/items/9941481627-spodenki-treningowe-nike",
       "user": {
-        "id": 3160387054,
-        "login": "yuulka33"
+        "id": 91663070,
+        "login": "kkiller"
       },
       "_profile": {
-        "username": "yuulka33",
+        "username": "kkiller",
         "member_since": null,
-        "feedback_count": 55,
+        "feedback_count": 320,
         "feedback_reputation": 0.9800000000000001,
-        "item_count": 49,
+        "item_count": 53,
         "country_code": "pl"
       }
     },
     "score": {
-      "id": 9940842967,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.815,
-      "score_interval_low": 59,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 81.5,
-        "quality": 70.0,
-        "condition": 74.0,
-        "versatility": 86.0,
-        "value": 44.63404111111112,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 306.31,
-        "equivalent_replacement_cost_ron": 270.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Daily wear sneaker",
-        "quality": "Standard Asics build",
-        "condition": "Foarte bună condition",
-        "versatility": "Neutral colorway",
-        "value": "Market rate for used Gel 1130 in good condition",
-        "fit_probability": "Size 42.5 matches target range",
-        "duplication_probability": "Common general release model"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct model and size for the hunt with fair condition and pricing."
-    },
-    "watch": "ASICS Gel-1130 size 43",
-    "seller_id": 3160387054,
-    "seller": "yuulka33"
-  },
-  {
-    "item": {
-      "id": 9937858681,
-      "title": "Męskie Spodenki Kompresyjne Nike Jordan Dri-FIT Kieszeń CV8486-657 M",
-      "price": {
-        "amount": "72.69",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": "M",
-      "status": "Nou cu etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9937858681-meskie-spodenki-kompresyjne-nike-jordan-dri-fit-kieszen-cv8486-657-m",
-      "user": {
-        "id": 91399415,
-        "login": "tulipan2312"
-      },
-      "_profile": {
-        "username": "tulipan2312",
-        "member_since": null,
-        "feedback_count": 131,
-        "feedback_reputation": 0.9400000000000001,
-        "item_count": 11,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9937858681,
+      "id": 9941481627,
       "score_version": 2,
       "buy_score": 60,
       "buy_band": "bundle",
       "score_confidence": 0.825,
       "score_interval_low": 55,
-      "score_interval_high": 66,
+      "score_interval_high": 64,
       "score_factors": {
         "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 100.0,
-        "versatility": 64.0,
-        "value": 52.785335,
+        "quality": 74.0,
+        "condition": 71.0,
+        "versatility": 81.5,
+        "value": 56.199085714285715,
         "fit_probability": 0.86,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 99.32,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 55.34,
+        "equivalent_replacement_cost_ron": 70.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dedicated training gear.",
+        "quality": "Reliable Nike quality.",
+        "condition": "Stated very good.",
+        "versatility": "Great for training.",
+        "value": "Market price for standard Nike training shorts.",
+        "fit_probability": "Size L fits.",
+        "duplication_probability": "Very common."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Very well priced Nike technical training shorts."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 91663070,
+    "seller": "kkiller"
+  },
+  {
+    "item": {
+      "id": 9941415039,
+      "title": "Nowe grantowe spodenki szorty Nike Dri-Fit DriFit Mlb Houston Astros rozmiar L",
+      "price": {
+        "amount": "104.72",
+        "currency_code": "RON"
+      },
+      "brand_title": null,
+      "size_title": "L",
+      "status": "Nou cu etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9941415039-nowe-grantowe-spodenki-szorty-nike-dri-fit-drifit-mlb-houston-astros-rozmiar-l",
+      "user": {
+        "id": 111875777,
+        "login": "slakra"
+      },
+      "_profile": {
+        "username": "slakra",
+        "member_since": null,
+        "feedback_count": 441,
+        "feedback_reputation": 1,
+        "item_count": 292,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9941415039,
+      "score_version": 2,
+      "buy_score": 66,
+      "buy_band": "bundle",
+      "score_confidence": 0.88,
+      "score_interval_low": 62,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 43.15493818181819,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 132.96,
         "equivalent_replacement_cost_ron": 110.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -2286,21 +2070,309 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Technical compression shorts for training",
-        "quality": "Jordan Dri-FIT technical material",
-        "condition": "New with tags",
-        "versatility": "Training-specific utility",
-        "value": "Market price for new Jordan Dri-FIT shorts",
-        "fit_probability": "Size M matches target range",
-        "duplication_probability": "Specific model reduces overlap"
+        "usefulness": "Technical fabric suitable for high-intensity training.",
+        "quality": "Nike Dri-Fit construction.",
+        "condition": "New with tags.",
+        "versatility": "Sport-focused design limits non-gym casual use.",
+        "value": "Conservative retail pricing for basic Nike training shorts.",
+        "fit_probability": "Size L is within target range.",
+        "duplication_probability": "Common brand, but MLB edition makes it slightly more unique."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "These are technical Nike Jordan compression gym shorts in new condition that perfectly match the hunt requirements."
+      "reason": "Authentic Nike Dri-Fit training shorts in size L, meeting the specific hunt requirements for technical gym wear."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 111875777,
+    "seller": "slakra"
+  },
+  {
+    "item": {
+      "id": 9941408680,
+      "title": "Spodenki Jordan",
+      "price": {
+        "amount": "45.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Jordan",
+      "size_title": "L",
+      "status": "Nou fără etichetă",
+      "favourite_count": 10,
+      "url": "https://www.vinted.ro/items/9941408680-spodenki-jordan",
+      "user": {
+        "id": 90727309,
+        "login": "alinadudek1234"
+      },
+      "_profile": {
+        "username": "alinadudek1234",
+        "member_since": null,
+        "feedback_count": 48,
+        "feedback_reputation": 1,
+        "item_count": 13,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9941408680,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.78,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 74.0,
+        "condition": 86.0,
+        "versatility": 64.0,
+        "value": 49.678284999999995,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.44,
+        "delivered_cost_ron": 70.87,
+        "equivalent_replacement_cost_ron": 70.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Good for training.",
+        "quality": "Standard performance materials.",
+        "condition": "New without tags.",
+        "versatility": "Sport styling.",
+        "value": "Market average for secondary Nike/Jordan items.",
+        "fit_probability": "Size L.",
+        "duplication_probability": "Commonly available."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Jordan branded gym shorts in L, priced well for the condition."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 90727309,
+    "seller": "alinadudek1234"
+  },
+  {
+    "item": {
+      "id": 9941172235,
+      "title": "Krótkie Spodenki Nike Shorts Swoosh Dri-FIT Running Gym Sportswear Original Vintage Y2K",
+      "price": {
+        "amount": "97.33",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9941172235-krotkie-spodenki-nike-shorts-swoosh-dri-fit-running-gym-sportswear-original-vintage-y2k",
+      "user": {
+        "id": 92031225,
+        "login": "matatek"
+      },
+      "_profile": {
+        "username": "matatek",
+        "member_since": null,
+        "feedback_count": 1237,
+        "feedback_reputation": 1,
+        "item_count": 154,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9941172235,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.84,
+      "score_interval_low": 57,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 74.0,
+        "condition": 78.0,
+        "versatility": 77.0,
+        "value": 41.93712,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 125.2,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dri-FIT tech is highly functional for gym/running.",
+        "quality": "Nike performance line indicates durable technical fabric.",
+        "condition": "Stated as Very Good.",
+        "versatility": "Appropriate for both gym and running.",
+        "value": "Estimated market price for used Nike technical shorts.",
+        "fit_probability": "Size M matches target.",
+        "duplication_probability": "Nike shorts are common, but this specific vintage Y2K model is less frequent."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "These Nike Dri-FIT shorts are specifically designed for running and gym use, meeting the hunt criteria for size and technical utility."
+    },
+    "watch": "Broad gym short EN M-L",
+    "seller_id": 92031225,
+    "seller": "matatek"
+  },
+  {
+    "item": {
+      "id": 9729799225,
+      "title": "Nike dri-fit",
+      "price": {
+        "amount": "106.3",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Nou cu etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9729799225-nike-dri-fit",
+      "user": {
+        "id": 3169629765,
+        "login": "gymboy12"
+      },
+      "_profile": {
+        "username": "gymboy12",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 5,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9729799225,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.9,
+      "score_interval_low": 57,
+      "score_interval_high": 64,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 77.0,
+        "condition": 100.0,
+        "versatility": 77.0,
+        "value": 43.420059090909085,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 129.62,
+        "equivalent_replacement_cost_ron": 110.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "New technical shorts offer high longevity.",
+        "quality": "New condition implies optimal performance.",
+        "condition": "New with tags.",
+        "versatility": "Standard training use.",
+        "value": "Reflects NWT price segment.",
+        "fit_probability": "Size M matches target.",
+        "duplication_probability": "Low likelihood of duplicating existing gear."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Must verify exact product type as listing title is vague.",
+      "hunt_fit": true,
+      "reason": "New with tags Nike Dri-FIT shorts, though at the higher end of the budget."
     },
     "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 91399415,
-    "seller": "tulipan2312"
+    "seller_id": 3169629765,
+    "seller": "gymboy12"
+  },
+  {
+    "item": {
+      "id": 9903593658,
+      "title": "Baggy Nike Lab Solo Swoosh Shorts Spodenki Streetwear Sportswear Original",
+      "price": {
+        "amount": "183.58",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9903593658-baggy-nike-lab-solo-swoosh-shorts-spodenki-streetwear-sportswear-original",
+      "user": {
+        "id": 92031225,
+        "login": "matatek"
+      },
+      "_profile": {
+        "username": "matatek",
+        "member_since": null,
+        "feedback_count": 1237,
+        "feedback_reputation": 1,
+        "item_count": 154,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9903593658,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.865,
+      "score_interval_low": 57,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 81.5,
+        "quality": 81.5,
+        "condition": 81.5,
+        "versatility": 74.0,
+        "value": 32.17542999999999,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 215.76,
+        "equivalent_replacement_cost_ron": 160.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": -5.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Technical sportswear.",
+        "quality": "Nike Lab line quality.",
+        "condition": "Listed as very good.",
+        "versatility": "Functional training and lifestyle.",
+        "value": "Market resale price for Nike Lab shorts.",
+        "fit_probability": "Matches target size M.",
+        "duplication_probability": "Premium Nike line."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Meets sizing and sport-wear criteria, though exceeds the soft budget cap."
+    },
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 92031225,
+    "seller": "matatek"
   }
 ]

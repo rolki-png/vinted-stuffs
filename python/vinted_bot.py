@@ -221,6 +221,40 @@ def _full_sweep() -> bool:
     return os.environ.get("FULL_SWEEP", "").strip().lower() in ("1", "true", "yes")
 
 
+def brand_sweep_fingerprint(watch: dict) -> str | None:
+    """Stable id for which brand catalog a hunt has already paginated."""
+    ids = watch.get("brand_ids") or []
+    if not ids:
+        return None
+    out = []
+    for raw in ids:
+        try:
+            n = int(raw)
+        except (TypeError, ValueError):
+            continue
+        if n > 0:
+            out.append(n)
+    if not out:
+        return None
+    return ",".join(str(i) for i in sorted(set(out)))
+
+
+def hunt_needs_brand_sweep(watch: dict, state: dict) -> bool:
+    fp = brand_sweep_fingerprint(watch)
+    if not fp:
+        return False
+    swept = (state or {}).get("swept_brand_hunts") or {}
+    return swept.get(watch.get("name")) != fp
+
+
+def mark_brand_swept(state: dict, watch: dict) -> None:
+    fp = brand_sweep_fingerprint(watch)
+    name = watch.get("name")
+    if not fp or not name:
+        return
+    state.setdefault("swept_brand_hunts", {})[name] = fp
+
+
 def _watch_search_plan(watch: dict, full: bool = False) -> dict:
     plan = {
         "name": watch["name"],
@@ -249,18 +283,27 @@ def _watch_search_plan(watch: dict, full: bool = False) -> dict:
     return plan
 
 
-def search_all_watches(watches: list, full: bool = False) -> dict[str, list]:
+def search_all_watches(
+    watches: list, full: bool = False, sweep_names: set | None = None
+) -> dict[str, list]:
     """One CLI process / one Vinted bootstrap for every hunt search."""
+    sweep = set(sweep_names or [])
+    any_full = full or bool(sweep)
     data = _vinted_json(
         ["batch"],
-        timeout=600 if full else 180,
-        stdin_payload={"searches": [_watch_search_plan(w, full=full) for w in watches]},
+        timeout=600 if any_full else 180,
+        stdin_payload={
+            "searches": [
+                _watch_search_plan(w, full=full or w.get("name") in sweep) for w in watches
+            ]
+        },
     )
     found = {}
     for row in (data or {}).get("searches") or []:
         name = row.get("name")
         if row.get("error"):
             print(f"Search failed for watch '{name}': {row['error']}", file=sys.stderr)
+            continue
         watch = next((w for w in watches if w.get("name") == name), None)
         items = [_normalize_item(it) for it in (row.get("items") or []) if it.get("id") is not None]
         found[name] = _keep_catalog_items(watch or {}, items)
@@ -2245,8 +2288,18 @@ def main() -> None:
     if full_sweep:
         print("FULL SWEEP: paginate every hunt, no 10-item cap. Later runs only score unseen.", file=sys.stderr)
 
+    sweep_names = {w["name"] for w in watches if hunt_needs_brand_sweep(w, state)}
+    if sweep_names and not full_sweep:
+        print(
+            "BRAND SWEEP: paginate new/changed brand catalogs: "
+            + ", ".join(sorted(sweep_names)),
+            file=sys.stderr,
+        )
+
+    sweep_ok = False
     try:
-        found = search_all_watches(watches, full=full_sweep)
+        found = search_all_watches(watches, full=full_sweep, sweep_names=sweep_names)
+        sweep_ok = True
     except (RuntimeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
         print(f"Batched search failed, falling back per hunt: {e}", file=sys.stderr)
         found = {}
@@ -2258,11 +2311,14 @@ def main() -> None:
                 found[watch["name"]] = []
     for watch in watches:
         items = found.get(watch["name"], [])
+        sweeping = full_sweep or watch["name"] in sweep_names
+        if sweeping and sweep_ok and watch["name"] in found:
+            mark_brand_swept(state, watch)
         new_items = [
             it for it in items
             if not already_seen(state, it["id"], watch["name"])
         ]
-        if not full_sweep:
+        if not sweeping:
             new_items = new_items[: _max_new_items_per_watch(config)]
         if watch in bundle_hunts:
             seed_cap = int(

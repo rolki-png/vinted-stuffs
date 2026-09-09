@@ -36,6 +36,29 @@ class HuntSearchTests(unittest.TestCase):
         self.assertEqual(plan["query"], "adidas short")
         self.assertNotIn("brandIds", plan)
 
+    def test_new_brand_ids_need_a_catalog_sweep(self):
+        state = {}
+        self.assertTrue(bot.hunt_needs_brand_sweep(TEN_THOUSAND, state))
+        self.assertFalse(bot.hunt_needs_brand_sweep(KEYWORD_HUNT, state))
+        bot.mark_brand_swept(state, TEN_THOUSAND)
+        self.assertFalse(bot.hunt_needs_brand_sweep(TEN_THOUSAND, state))
+        changed = {**TEN_THOUSAND, "brand_ids": [3162601, 99]}
+        self.assertTrue(bot.hunt_needs_brand_sweep(changed, state))
+
+    def test_new_brand_hunt_paginates_in_mixed_batch(self):
+        def fake_vinted(args, timeout=60, stdin_payload=None):
+            searches = stdin_payload["searches"]
+            by_name = {s["name"]: s for s in searches}
+            self.assertTrue(by_name[TEN_THOUSAND["name"]].get("all"))
+            self.assertNotIn("all", by_name[KEYWORD_HUNT["name"]])
+            return {"searches": [{"name": n, "items": []} for n in by_name]}
+
+        with patch.object(bot, "_vinted_json", side_effect=fake_vinted):
+            bot.search_all_watches(
+                [TEN_THOUSAND, KEYWORD_HUNT],
+                sweep_names={TEN_THOUSAND["name"]},
+            )
+
     def test_brand_hunt_drops_keyword_hits_that_are_not_that_brand(self):
         junk = {
             "id": 1,

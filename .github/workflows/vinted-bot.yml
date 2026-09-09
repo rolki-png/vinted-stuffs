@@ -37,6 +37,10 @@ on:
         description: 'Hunt substring for haul-seed closet crawl (e.g. Mamalicious)'
         type: string
         default: 'Mamalicious'
+      hunt:
+        description: 'Only search/score hunts whose name contains this (empty = all)'
+        type: string
+        default: ''
 
 concurrency:
   group: vinted-deal-bot
@@ -132,6 +136,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           SKIP_SCORING: ${{ inputs.skip_scoring }}
           FULL_SWEEP: ${{ inputs.full_sweep }}
+          HUNT: ${{ inputs.hunt }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
         run: uv run --project python python python/vinted_bot.py
 

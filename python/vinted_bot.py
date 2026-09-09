@@ -239,12 +239,23 @@ def brand_sweep_fingerprint(watch: dict) -> str | None:
     return ",".join(str(i) for i in sorted(set(out)))
 
 
+def hunt_has_seen_keys(state: dict, hunt_name: str) -> bool:
+    name = str(hunt_name or "")
+    if not name:
+        return False
+    suffix = f":{name}"
+    return any(str(k).endswith(suffix) for k in (state or {}).get("seen_keys") or [])
+
+
 def hunt_needs_brand_sweep(watch: dict, state: dict) -> bool:
     fp = brand_sweep_fingerprint(watch)
     if not fp:
         return False
+    name = watch.get("name")
     swept = (state or {}).get("swept_brand_hunts") or {}
-    return swept.get(watch.get("name")) != fp
+    if name in swept:
+        return swept.get(name) != fp
+    return not hunt_has_seen_keys(state, name)
 
 
 def mark_brand_swept(state: dict, watch: dict) -> None:
@@ -2285,6 +2296,20 @@ def main() -> None:
                     )
 
     full_sweep = _full_sweep()
+    hunt_needle = os.environ.get("HUNT", "").strip().lower()
+    if hunt_needle:
+        watches = [
+            w for w in watches if hunt_needle in str(w.get("name") or "").lower()
+        ]
+        print(
+            f"HUNT filter {hunt_needle!r}: {len(watches)} hunt(s)",
+            file=sys.stderr,
+        )
+        if not watches:
+            print("No hunts match HUNT filter; exiting.", file=sys.stderr)
+            return
+        bundle_hunts = [watch for watch in watches if watch.get("bundle_hunt")]
+        premium = [watch for watch in watches if not watch.get("bundle_hunt")]
     if full_sweep:
         print("FULL SWEEP: paginate every hunt, no 10-item cap. Later runs only score unseen.", file=sys.stderr)
 

@@ -45,6 +45,11 @@ class HuntSearchTests(unittest.TestCase):
         changed = {**TEN_THOUSAND, "brand_ids": [3162601, 99]}
         self.assertTrue(bot.hunt_needs_brand_sweep(changed, state))
 
+    def test_existing_brand_hunt_with_seen_keys_skips_first_fingerprint_sweep(self):
+        state = {"seen_keys": [f"99:{TEN_THOUSAND['name']}"]}
+        self.assertFalse(bot.hunt_needs_brand_sweep(TEN_THOUSAND, state))
+        self.assertTrue(bot.hunt_needs_brand_sweep(TEN_THOUSAND, {}))
+
     def test_new_brand_hunt_paginates_in_mixed_batch(self):
         def fake_vinted(args, timeout=60, stdin_payload=None):
             searches = stdin_payload["searches"]

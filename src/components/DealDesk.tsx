@@ -80,6 +80,7 @@ type Bundle = {
 	bundle_rank_position?: number | null;
 	bundle_anchor_item_id?: number | string | null;
 	items?: BundleItem[];
+	family?: string | null;
 };
 
 type Seller = {
@@ -137,6 +138,13 @@ const REMOVE_REASONS = [
 	["already_own_similar", "Already own similar"],
 	["other", "Other"],
 ] as const;
+
+function bundleHuntFamily(bundle: Bundle): string {
+	if (bundle.family) return String(bundle.family);
+	const watch =
+		(bundle.items || []).find((item) => item.watch)?.watch || "";
+	return resolveFamily(watch);
+}
 
 function fmtPrice(n: unknown, currency = "RON") {
 	if (n == null || Number.isNaN(Number(n))) return "—";
@@ -518,10 +526,12 @@ export function DealDesk() {
 		return rows;
 	}, [data, sellerSort]);
 
-	const bundles = useMemo(
-		() => sortBundles(data?.bundles || [], bundleSort),
-		[data, bundleSort],
-	);
+	const bundles = useMemo(() => {
+		const rows = (data?.bundles || []).filter(
+			(b) => !family || bundleHuntFamily(b) === family,
+		);
+		return sortBundles(rows, bundleSort);
+	}, [data, bundleSort, family]);
 
 	const run = data?.run || {};
 	const qualifiedKeeps = data?.meta?.keeps ?? data?.meta?.keeps_v2 ?? 0;
@@ -877,6 +887,22 @@ export function DealDesk() {
 				<section className="panel active">
 					<div className="toolbar">
 						<label>
+							Family
+							<select
+								value={family}
+								onChange={(e) => {
+									setFamily(e.target.value);
+								}}
+							>
+								<option value="">All</option>
+								<option value="maternity">maternity</option>
+								<option value="gym">gym</option>
+								<option value="sneakers">sneakers</option>
+								<option value="knitwear">knitwear</option>
+								<option value="other">other</option>
+							</select>
+						</label>
+						<label>
 							Status
 							<select
 								value={veto}
@@ -963,7 +989,8 @@ export function DealDesk() {
 											) : null}
 										</h3>
 										<p className="bundle-meta">
-											{b.country || "?"} · listings{" "}
+											{b.family || bundleHuntFamily(b)} · {b.country || "?"} ·
+											listings{" "}
 											{Number(b.listing_sum || 0).toFixed(0)} + extra{" "}
 											{b.checkout_extra_ron ?? "?"} ={" "}
 											<strong>

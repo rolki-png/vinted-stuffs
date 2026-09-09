@@ -65,7 +65,7 @@ function normalizeHunt(raw, base = null) {
   }
 
   const name = String(src.name ?? "").trim()
-  const query = String(src.query ?? "").trim()
+  const query = String(src.query ?? "").trim() || name
   const target_type = String(src.target_type ?? "").trim()
   const notes = src.notes != null ? String(src.notes) : out.notes != null ? String(out.notes) : ""
   const order = String(src.order ?? out.order ?? "newest_first").trim() || "newest_first"
@@ -147,8 +147,9 @@ function validateHuntMutation(hunt, watches, opts) {
 
   if (!hunt || typeof hunt !== "object") return { ok: false, error: "hunt is required" }
   if (!hunt.name) return { ok: false, error: "name is required" }
-  if (!hunt.query) return { ok: false, error: "query is required" }
-  if (!hunt.target_type) return { ok: false, error: "target_type is required" }
+  if (!hunt.query && !(Array.isArray(hunt.brand_ids) && hunt.brand_ids.length)) {
+    return { ok: false, error: "query is required unless brand_ids are set" }
+  }
   if (hunt.country !== "ro") return { ok: false, error: "country must be ro" }
 
   if (mode === "add") {

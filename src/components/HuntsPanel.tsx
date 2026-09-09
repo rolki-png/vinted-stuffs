@@ -63,7 +63,11 @@ function sizeHint(h: Hunt) {
 }
 
 function formValid(h: Hunt) {
-  return Boolean(String(h.name || '').trim() && String(h.query || '').trim() && String(h.target_type || '').trim())
+  const name = String(h.name || '').trim()
+  if (!name) return false
+  const query = String(h.query || '').trim()
+  const brands = Array.isArray(h.brand_ids) ? h.brand_ids.length : 0
+  return Boolean(query || brands)
 }
 
 export function HuntsPanel({ onOps }: Props) {
@@ -277,7 +281,13 @@ export function HuntsPanel({ onOps }: Props) {
   }
 
   const save = async () => {
-    if (!draft || !sha || !formValid(draft)) return
+    if (!draft || !sha) return
+    const hunt = {
+      ...draft,
+      country: 'ro' as const,
+      brand_ids: selectedBrands.map((b) => b.id),
+    }
+    if (!formValid(hunt)) return
     setBusy(true)
     try {
       const isNew = selectedKey === '__new__' || originalName == null
@@ -285,11 +295,7 @@ export function HuntsPanel({ onOps }: Props) {
         mode: isNew ? 'add' : 'replace',
         sha,
         originalName: isNew ? undefined : originalName,
-        hunt: {
-          ...draft,
-          country: 'ro',
-          brand_ids: selectedBrands.map((b) => b.id),
-        },
+        hunt,
       }
       const res = await fetch('/api/hunts', {
         method: 'POST',
@@ -373,7 +379,13 @@ export function HuntsPanel({ onOps }: Props) {
     selectedKey !== '__new__' &&
     String(draft.name || '').trim() !== originalName
 
-  const canSave = Boolean(draft && sha && dirty && formValid(draft) && !busy)
+  const canSave = Boolean(
+    draft &&
+      sha &&
+      dirty &&
+      formValid({ ...draft, brand_ids: selectedBrands.map((b) => b.id) }) &&
+      !busy,
+  )
 
   return (
     <section className="panel active hunts-panel">
@@ -477,6 +489,12 @@ export function HuntsPanel({ onOps }: Props) {
                   history stays orphaned.
                 </p>
               ) : null}
+              {draft && !formValid({ ...draft, brand_ids: selectedBrands.map((b) => b.id) }) ? (
+                <p className="reason">
+                  Save needs a name plus a query or at least one brand. Target type and size are
+                  optional.
+                </p>
+              ) : null}
 
               <div className="hunts-fields">
                 <label>
@@ -491,6 +509,7 @@ export function HuntsPanel({ onOps }: Props) {
                   <input
                     value={String(draft.query || '')}
                     onChange={(e) => patchDraft({ query: e.target.value })}
+                    placeholder="optional if brands are set — defaults to name"
                   />
                 </label>
                 <label>
@@ -563,14 +582,15 @@ export function HuntsPanel({ onOps }: Props) {
                   />
                 </label>
                 <label>
-                  Target type
+                  Target type (optional)
                   <input
                     value={String(draft.target_type || '')}
                     onChange={(e) => patchDraft({ target_type: e.target.value })}
+                    placeholder="e.g. bracelet, ring, accessories"
                   />
                 </label>
                 <label>
-                  Target sizes (scorer text)
+                  Target sizes (optional)
                   <input
                     value={(draft.target_sizes || []).join(', ')}
                     onChange={(e) =>
@@ -581,7 +601,7 @@ export function HuntsPanel({ onOps }: Props) {
                           .filter(Boolean),
                       })
                     }
-                    placeholder="M, L"
+                    placeholder="leave blank for any / one-size"
                   />
                 </label>
                 <label>
@@ -663,7 +683,8 @@ export function HuntsPanel({ onOps }: Props) {
                 </div>
 
                 <div className="hunts-span">
-                  <div className="hunts-subhead">Sizes</div>
+                  <div className="hunts-subhead">Sizes (optional)</div>
+                  <p className="reason">Skip for jewelry and accessories.</p>
                   {sizeWarn ? <p className="reason">{sizeWarn}</p> : null}
                   <select value={sizeGroupId} onChange={(e) => setSizeGroupId(e.target.value)}>
                     <option value="">Choose size group…</option>

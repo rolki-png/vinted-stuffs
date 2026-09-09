@@ -130,9 +130,43 @@ async function testValidationRequired() {
   assert.match(res.error, /name/i)
 }
 
+async function testAddHuntWithoutSizes() {
+  const cfg = baseConfig([])
+  const res = applyWatchMutation(cfg, {
+    mode: "add",
+    hunt: {
+      name: "Cerruti 1881 accessories",
+      query: "cerruti 1881",
+      target_type: "accessories",
+    },
+  })
+  assert.equal(res.ok, true)
+  const w = res.config.watches[0]
+  assert.equal("size_ids" in w, false)
+  assert.deepEqual(w.target_sizes, [])
+}
+
+async function testAddBrandHuntWithoutQueryTypeOrSize() {
+  const cfg = baseConfig([])
+  const res = applyWatchMutation(cfg, {
+    mode: "add",
+    hunt: {
+      name: "cerruti",
+      brand_ids: [1, 2],
+    },
+  })
+  assert.equal(res.ok, true, res.error)
+  const w = res.config.watches[0]
+  assert.equal(w.query, "cerruti")
+  assert.equal(w.target_type, "")
+  assert.equal("size_ids" in w, false)
+}
+
 await testNormalizeOmitsEmptyAndForcesRo()
 await testPreserveUnknownKeysOnReplace()
 await testAddReplaceRemoveAndUniqueName()
 await testSerializeAnd409()
 await testValidationRequired()
+await testAddHuntWithoutSizes()
+await testAddBrandHuntWithoutQueryTypeOrSize()
 console.log("ok hunt-config")

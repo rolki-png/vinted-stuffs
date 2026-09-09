@@ -100,7 +100,7 @@ h1 {
 }
 .btn:disabled {
 	opacity: 0.55;
-	cursor: wait;
+	cursor: not-allowed;
 }
 .btn-accent {
 	background: var(--accent);

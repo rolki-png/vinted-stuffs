@@ -1077,6 +1077,22 @@
       ],
       "notes": "Bundle seed: never solo-alert; closet-hunt for multi-piece XL/L-XL maternity value hauls, especially leggings. Prefer several useful XL or L/XL maternity pieces from the same seller.",
       "bundle_hunt": true
+    },
+    {
+      "name": "Cerruti 1881 accessories",
+      "query": "cerruti 1881",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 24,
+      "price_to": 200,
+      "hunt_price": 100,
+      "target_type": "accessories",
+      "target_sizes": [],
+      "notes": "Bracelets, rings, watches, cufflinks, belts, wallets, bags, sunglasses, pens. Skip clothing and perfume unless an exceptional steal. No size filter — one-size and unsized pieces are hunt-fit when they are genuine Cerruti accessories.",
+      "brand_ids": [
+        5975,
+        6185
+      ]
     }
   ],
   "bundle_offer": {

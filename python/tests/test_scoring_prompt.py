@@ -101,6 +101,18 @@ class ScoringPromptTests(unittest.TestCase):
         self.assertNotIn('"buy_score"', prompt)
         self.assertIn("brand alone", prompt.lower())
 
+    def test_unspecified_sizes_do_not_reject_accessories(self):
+        watch = {**self.watch, "target_sizes": []}
+        prompt = bot._extraction_prompt(watch, self.items)
+        self.assertIn("Target sizes: unspecified", prompt)
+        self.assertIn("do not reject for size", prompt.lower())
+        self.assertIn("accessories", prompt.lower())
+
+    def test_specified_sizes_still_reject_wrong_size(self):
+        prompt = bot._extraction_prompt(self.watch, self.items)
+        self.assertIn("incorrect sizes", prompt.lower())
+        self.assertNotIn("do not reject for size", prompt.lower())
+
     def test_removed_scoring_prompt_alias_has_no_branch_callers(self):
         self.assertFalse(hasattr(bot, "_scoring_prompt"))
 

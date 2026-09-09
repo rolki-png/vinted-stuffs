@@ -576,7 +576,8 @@ Extra instructions: {notes}
 Hunt price: {hunt_price} {currency}
 Hard search cap: {price_to} {currency}
 
-For men's clothing hunts, reject women's/kids pieces and incorrect sizes.
+{size_policy}
+For men's clothing hunts, reject women's/kids pieces{size_reject_clause}.
 For maternity or women's hunts, reject men's and kids pieces.
 For sneakers, use the stated EU size and allow equivalent nearby manufacturer \
 sizes only when they realistically fit the target.
@@ -644,10 +645,20 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
             "regardless of price or brand. Prefer gym/training shorts; other non-tee "
             "technical pieces only if exceptional."
         )
+    sizes = watch.get("target_sizes") or []
+    if sizes:
+        size_policy = "Reject listings that do not match the target sizes above."
+        size_reject_clause = " and incorrect sizes"
+    else:
+        size_policy = (
+            "Target sizes are unspecified: do not reject for size. "
+            "Jewelry, accessories, and one-size items often have no size."
+        )
+        size_reject_clause = ""
     base = SCORING_PROMPT.format(
-        query=watch["query"],
-        target_type=watch.get("target_type", "men's item"),
-        target_sizes=", ".join(watch.get("target_sizes", [])) or "unspecified",
+        query=watch.get("query") or watch.get("name") or "",
+        target_type=watch.get("target_type") or "item",
+        target_sizes=", ".join(sizes) or "unspecified",
         notes=watch.get("notes", "None"),
         hunt_price=watch.get("hunt_price", watch.get("price_to", "any")),
         price_to=watch.get("price_to", "any"),
@@ -656,6 +667,8 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
             _listing_payload(items),
             ensure_ascii=False,
         ),
+        size_policy=size_policy,
+        size_reject_clause=size_reject_clause,
         maternity_rules="\n".join(
             part for part in (maternity_rules, gym_tee_rules) if part
         ),

@@ -40,6 +40,9 @@ _FAMILY_RULES: list[tuple[str, tuple[str, ...]]] = [
         (
             "gym",
             "running",
+            "dri-fit",
+            "dri fit",
+            "training",
             "gorewear",
             "2xu",
             "craft",

@@ -36,6 +36,9 @@ const FAMILY_RULES = [
     [
       "gym",
       "running",
+      "dri-fit",
+      "dri fit",
+      "training",
       "gorewear",
       "2xu",
       "craft",

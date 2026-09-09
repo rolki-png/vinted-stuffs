@@ -14,6 +14,8 @@ class TestFamily(unittest.TestCase):
 
     def test_gym(self):
         self.assertEqual(tl.resolve_family("Lululemon gym M-L"), "gym")
+        self.assertEqual(tl.resolve_family("Broad dri-fit shorts M-L"), "gym")
+        self.assertEqual(tl.resolve_family("Broad training shorts M-L"), "gym")
 
     def test_knitwear(self):
         self.assertEqual(tl.resolve_family("Johnstons of Elgin M-L"), "knitwear")

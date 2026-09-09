@@ -177,7 +177,12 @@ def pairs_from_desk_bundles(
     """Force-score unscored members of keep/value/index carts on the desk."""
     pending: list[tuple[str, str]] = []
     queued: set[str] = set()
+    # near_haul stays intentionally thin until closet crawl — don't burn quota.
+    skip_kinds = frozenset({"near_haul"})
     for bundle in bundles or []:
+        kind = bundle.get("kind") or "keep_bundle"
+        if kind in skip_kinds:
+            continue
         for item in bundle.get("items") or []:
             if not isinstance(item, dict):
                 continue

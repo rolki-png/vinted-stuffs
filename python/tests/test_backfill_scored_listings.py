@@ -309,6 +309,12 @@ class PendingPairTests(unittest.TestCase):
                 ],
             },
             {
+                "kind": "near_haul",
+                "items": [
+                    {"id": 9, "watch": "H&M Mama bundle seed XL-L/XL"},
+                ],
+            },
+            {
                 "kind": "keep_bundle",
                 "items": [
                     {"id": 3, "watch": "Noppies maternity L-XL"},

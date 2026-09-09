@@ -110,8 +110,14 @@ function mergeFindRow(current, incoming) {
 }
 
 function dashboardBundle(bundle) {
+	const watch =
+		bundle?.family ||
+		(bundle?.items || []).find((item) => item?.watch)?.watch ||
+		bundle?.watch ||
+		"";
 	return applyToRow({
 		...bundle,
+		family: bundle?.family || resolveFamily(watch),
 		items: (bundle?.items || []).map((item) => dashboardRow(item)),
 	});
 }

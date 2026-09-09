@@ -90,9 +90,42 @@ assert.deepEqual(
 	opportunities[0].items.map((item) => item.id),
 	[11, 12],
 );
+assert.equal(opportunities[0].family, "gym");
 const v2Bundle = opportunities.find((bundle) => bundle.items[0].id === 11);
 assert.equal(v2Bundle.items[0].buy_score, 90);
 assert.equal(v2Bundle.items[0].legacy_score, undefined);
+assert.ok(v2Bundle.bundle_score != null);
+
+const familySplit = indexBundleOpportunities([
+	v2(21, 71, 1, {
+		buy_band: "bundle",
+		watch: "Mamalicious maternity XL-L/XL",
+		seller_id: 99,
+	}),
+	v2(22, 68, 2, {
+		buy_band: "bundle",
+		watch: "Seraphine maternity",
+		seller_id: 99,
+	}),
+	v2(23, 72, 1, {
+		buy_band: "bundle",
+		watch: "Craft ADV M-L",
+		seller_id: 99,
+	}),
+	v2(24, 64, 2, {
+		buy_band: "bundle",
+		watch: "Craft ADV M-L",
+		seller_id: 99,
+	}),
+]);
+assert.equal(familySplit.length, 2);
+assert.deepEqual(
+	familySplit.map((b) => b.family).sort(),
+	["gym", "maternity"],
+);
+const mama = familySplit.find((b) => b.family === "maternity");
+assert.deepEqual(mama.items.map((i) => i.id).sort(), [21, 22]);
+assert.ok(mama.bundle_score != null);
 
 fs.writeFileSync(
 	path.join(data, "best_deals.json"),

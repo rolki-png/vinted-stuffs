@@ -14,6 +14,7 @@ import {
 	scoreFields,
 	sortBundleScoreRows,
 } from "./scoreSemantics.js";
+import { resolveFamily } from "./tasteLearning.ts";
 
 /**
  * Live scored_listings from Cockroach / Postgres (DATABASE_URL).
@@ -78,14 +79,17 @@ function indexBundleOpportunities(exportRows, { minItems = 2 } = {}) {
 			continue;
 		if (row.verification_concern === "block") continue;
 		if (row.seller_id == null) continue;
-		const key = String(row.seller_id);
+		const family = resolveFamily(row.watch);
+		const key = `${row.seller_id}:${family}`;
 		if (!bySeller.has(key)) bySeller.set(key, []);
 		bySeller.get(key).push(row);
 	}
 
 	const out = [];
 	const defaultExtra = DEFAULTS.default_checkout_extra_ron;
-	for (const [sid, rows] of bySeller) {
+	for (const [groupKey, rows] of bySeller) {
+		const sid = String(groupKey).split(":")[0];
+		const family = String(groupKey).slice(sid.length + 1);
 		const best = new Map();
 		for (const r of rows) {
 			const id = String(r.id);
@@ -113,6 +117,7 @@ function indexBundleOpportunities(exportRows, { minItems = 2 } = {}) {
 		const extra = defaultExtra;
 		const row = {
 			kind,
+			family,
 			kept_at:
 				members
 					.map((r) => r.scored_at || "")

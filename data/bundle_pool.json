@@ -1,78 +1,6 @@
 [
   {
     "item": {
-      "id": 9792900050,
-      "title": "NIKE dri fit",
-      "price": {
-        "amount": "63.76",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Nou cu etichetă",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9792900050-nike-dri-fit",
-      "user": {
-        "id": 3179974933,
-        "login": "vasiliki877"
-      },
-      "_profile": {
-        "username": "vasiliki877",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 5,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9792900050,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.79,
-      "score_interval_low": 58,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 82.0,
-        "quality": 74.0,
-        "condition": 95.0,
-        "versatility": 66.0,
-        "value": 51.53244,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 84.95,
-        "equivalent_replacement_cost_ron": 90.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dri-fit material for gym use",
-        "quality": "Standard Nike performance quality",
-        "condition": "New with tags",
-        "versatility": "Athletic use",
-        "value": "New retail equivalent for entry-level performance shorts",
-        "fit_probability": "Size M is within target range",
-        "duplication_probability": "Standard Nike product line"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Listing title is generic; requires visual confirmation that the item is indeed shorts and not a shirt.",
-      "hunt_fit": true,
-      "reason": "Assuming the listing is for gym shorts as requested, the price is fair for a new-with-tags item, though the title lacks detail."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3179974933,
-    "seller": "vasiliki877"
-  },
-  {
-    "item": {
       "id": 9658279130,
       "title": "Short Nike Dri-Fit L",
       "price": {
@@ -142,150 +70,6 @@
     "watch": "Broad gym shorts M-L",
     "seller_id": 3148413458,
     "seller": "cristiani899"
-  },
-  {
-    "item": {
-      "id": 9928029914,
-      "title": "Puma nowe szorty rozmiar M",
-      "price": {
-        "amount": "83.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Puma",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
-      "user": {
-        "id": 96967514,
-        "login": "benkati1"
-      },
-      "_profile": {
-        "username": "benkati1",
-        "member_since": null,
-        "feedback_count": 360,
-        "feedback_reputation": 1,
-        "item_count": 205,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9928029914,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.845,
-      "score_interval_low": 59,
-      "score_interval_high": 68,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 74.0,
-        "condition": 95.0,
-        "versatility": 78.0,
-        "value": 38.31557,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.43,
-        "delivered_cost_ron": 110.75,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Versatile gym gear.",
-        "quality": "Good standard Puma tech.",
-        "condition": "New.",
-        "versatility": "Athletic and casual wear.",
-        "value": "Standard Puma pricing.",
-        "fit_probability": "Size M.",
-        "duplication_probability": "Widely available."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "New Puma training shorts provide great value and condition for the price."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 96967514,
-    "seller": "benkati1"
-  },
-  {
-    "item": {
-      "id": 9928133528,
-      "title": "Salomon Running Shorts - Petrol Blue - Men M",
-      "price": {
-        "amount": "50.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Salomon",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
-      "user": {
-        "id": 188476168,
-        "login": "mirceaxvlad"
-      },
-      "_profile": {
-        "username": "mirceaxvlad",
-        "member_since": null,
-        "feedback_count": 71,
-        "feedback_reputation": 1,
-        "item_count": 20,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9928133528,
-      "score_version": 2,
-      "buy_score": 65,
-      "buy_band": "bundle",
-      "score_confidence": 0.79,
-      "score_interval_low": 59,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 71.0,
-        "versatility": 66.0,
-        "value": 60.30590909090909,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 70.5,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "High utility for training and running.",
-        "quality": "Salomon is a reliable technical apparel brand.",
-        "condition": "Listed as 'Foarte bună' (Very good).",
-        "versatility": "Specific to athletic/running use.",
-        "value": "Estimated used market price for entry-level Salomon shorts.",
-        "fit_probability": "Matches target size M exactly.",
-        "duplication_probability": "Generic shorts are common, but Salomon specific cuts are unique."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Salomon technical running shorts in size M represent a high-quality gym-specific item well within the target budget."
-    },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 188476168,
-    "seller": "mirceaxvlad"
   },
   {
     "item": {
@@ -505,78 +289,6 @@
   },
   {
     "item": {
-      "id": 8715175660,
-      "title": "Białe spodenki szorty mesh Jordan Sport Dri-FIT Diamond M stan bdb",
-      "price": {
-        "amount": "109.64",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/8715175660-biale-spodenki-szorty-mesh-jordan-sport-dri-fit-diamond-m-stan-bdb",
-      "user": {
-        "id": 3140884272,
-        "login": "adix7348"
-      },
-      "_profile": {
-        "username": "adix7348",
-        "member_since": null,
-        "feedback_count": 2,
-        "feedback_reputation": 0.9,
-        "item_count": 5,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 8715175660,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.795,
-      "score_interval_low": 58,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 78.0,
-        "versatility": 64.0,
-        "value": 52.49437999999999,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 138.12,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dedicated gym shorts.",
-        "quality": "Jordan Sport mesh construction.",
-        "condition": "Listed as very good.",
-        "versatility": "Sports specific style.",
-        "value": "New retail for premium Jordan training shorts.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Common brand, specific model variant."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Jordan mesh shorts are high-quality technical gym wear in the requested size and material."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3140884272,
-    "seller": "adix7348"
-  },
-  {
-    "item": {
       "id": 9933716663,
       "title": "New balance 990v4",
       "price": {
@@ -721,15 +433,375 @@
   },
   {
     "item": {
+      "id": 9941415039,
+      "title": "Nowe grantowe spodenki szorty Nike Dri-Fit DriFit Mlb Houston Astros rozmiar L",
+      "price": {
+        "amount": "104.72",
+        "currency_code": "RON"
+      },
+      "brand_title": null,
+      "size_title": "L",
+      "status": "Nou cu etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9941415039-nowe-grantowe-spodenki-szorty-nike-dri-fit-drifit-mlb-houston-astros-rozmiar-l",
+      "user": {
+        "id": 111875777,
+        "login": "slakra"
+      },
+      "_profile": {
+        "username": "slakra",
+        "member_since": null,
+        "feedback_count": 441,
+        "feedback_reputation": 1,
+        "item_count": 292,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9941415039,
+      "score_version": 2,
+      "buy_score": 66,
+      "buy_band": "bundle",
+      "score_confidence": 0.88,
+      "score_interval_low": 62,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 43.15493818181819,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 132.96,
+        "equivalent_replacement_cost_ron": 110.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Technical fabric suitable for high-intensity training.",
+        "quality": "Nike Dri-Fit construction.",
+        "condition": "New with tags.",
+        "versatility": "Sport-focused design limits non-gym casual use.",
+        "value": "Conservative retail pricing for basic Nike training shorts.",
+        "fit_probability": "Size L is within target range.",
+        "duplication_probability": "Common brand, but MLB edition makes it slightly more unique."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic Nike Dri-Fit training shorts in size L, meeting the specific hunt requirements for technical gym wear."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 111875777,
+    "seller": "slakra"
+  },
+  {
+    "item": {
+      "id": 9792900050,
+      "title": "NIKE dri fit",
+      "price": {
+        "amount": "12",
+        "currency_code": "EUR"
+      },
+      "brand_title": "Nike",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9792900050-nike-dri-fit",
+      "user": {
+        "id": 3179974933,
+        "login": "vasiliki877"
+      },
+      "_profile": {
+        "username": "vasiliki877",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 5,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9792900050,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 58,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 82.0,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 66.0,
+        "value": 51.53244,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 84.95,
+        "equivalent_replacement_cost_ron": 90.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dri-fit material for gym use",
+        "quality": "Standard Nike performance quality",
+        "condition": "New with tags",
+        "versatility": "Athletic use",
+        "value": "New retail equivalent for entry-level performance shorts",
+        "fit_probability": "Size M is within target range",
+        "duplication_probability": "Standard Nike product line"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Listing title is generic; requires visual confirmation that the item is indeed shorts and not a shirt.",
+      "hunt_fit": true,
+      "reason": "Assuming the listing is for gym shorts as requested, the price is fair for a new-with-tags item, though the title lacks detail."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 3179974933,
+    "seller": "vasiliki877"
+  },
+  {
+    "item": {
+      "id": 9928029914,
+      "title": "Puma nowe szorty rozmiar M",
+      "price": {
+        "amount": "67.77",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Puma",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
+      "user": {
+        "id": 96967514,
+        "login": "benkati1"
+      },
+      "_profile": {
+        "username": "benkati1",
+        "member_since": null,
+        "feedback_count": 360,
+        "feedback_reputation": 1,
+        "item_count": 205,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9928029914,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 59,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 78.0,
+        "value": 38.31557,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.43,
+        "delivered_cost_ron": 110.75,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Versatile gym gear.",
+        "quality": "Good standard Puma tech.",
+        "condition": "New.",
+        "versatility": "Athletic and casual wear.",
+        "value": "Standard Puma pricing.",
+        "fit_probability": "Size M.",
+        "duplication_probability": "Widely available."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "New Puma training shorts provide great value and condition for the price."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 96967514,
+    "seller": "benkati1"
+  },
+  {
+    "item": {
+      "id": 9928133528,
+      "title": "Salomon Running Shorts - Petrol Blue - Men M",
+      "price": {
+        "amount": "50",
+        "currency_code": "RON"
+      },
+      "brand_title": "Salomon",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9928133528-salomon-running-shorts-petrol-blue-men-m",
+      "user": {
+        "id": 188476168,
+        "login": "mirceaxvlad"
+      },
+      "_profile": {
+        "username": "mirceaxvlad",
+        "member_since": null,
+        "feedback_count": 71,
+        "feedback_reputation": 1,
+        "item_count": 20,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9928133528,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 59,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 78.0,
+        "condition": 71.0,
+        "versatility": 66.0,
+        "value": 60.30590909090909,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 70.5,
+        "equivalent_replacement_cost_ron": 110.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High utility for training and running.",
+        "quality": "Salomon is a reliable technical apparel brand.",
+        "condition": "Listed as 'Foarte bună' (Very good).",
+        "versatility": "Specific to athletic/running use.",
+        "value": "Estimated used market price for entry-level Salomon shorts.",
+        "fit_probability": "Matches target size M exactly.",
+        "duplication_probability": "Generic shorts are common, but Salomon specific cuts are unique."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Salomon technical running shorts in size M represent a high-quality gym-specific item well within the target budget."
+    },
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 188476168,
+    "seller": "mirceaxvlad"
+  },
+  {
+    "item": {
+      "id": 8715175660,
+      "title": "Białe spodenki szorty mesh Jordan Sport Dri-FIT Diamond M stan bdb",
+      "price": {
+        "amount": "88.99",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Jordan",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/8715175660-biale-spodenki-szorty-mesh-jordan-sport-dri-fit-diamond-m-stan-bdb",
+      "user": {
+        "id": 3140884272,
+        "login": "adix7348"
+      },
+      "_profile": {
+        "username": "adix7348",
+        "member_since": null,
+        "feedback_count": 2,
+        "feedback_reputation": 0.9,
+        "item_count": 5,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 8715175660,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.795,
+      "score_interval_low": 58,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 78.0,
+        "condition": 78.0,
+        "versatility": 64.0,
+        "value": 52.49437999999999,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 138.12,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dedicated gym shorts.",
+        "quality": "Jordan Sport mesh construction.",
+        "condition": "Listed as very good.",
+        "versatility": "Sports specific style.",
+        "value": "New retail for premium Jordan training shorts.",
+        "fit_probability": "Size M matches target.",
+        "duplication_probability": "Common brand, specific model variant."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Jordan mesh shorts are high-quality technical gym wear in the requested size and material."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 3140884272,
+    "seller": "adix7348"
+  },
+  {
+    "item": {
       "id": 9934623228,
       "title": "Pantaloni Nike",
       "price": {
-        "amount": "155.0",
+        "amount": "155",
         "currency_code": "RON"
       },
       "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Nou cu etichetă",
+      "size_title": null,
+      "status": "New",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9934623228-pantaloni-nike",
       "user": {
@@ -796,13 +868,13 @@
       "id": 9940967087,
       "title": "Nowe spodenki męskie Adidas r M",
       "price": {
-        "amount": "22.18",
-        "currency_code": "RON"
+        "amount": "18",
+        "currency_code": "PLN"
       },
       "brand_title": "adidas",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 2,
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9940967087-nowe-spodenki-meskie-adidas-r-m",
       "user": {
         "id": 91609892,
@@ -1513,695 +1585,105 @@
   },
   {
     "item": {
-      "id": 9931958474,
-      "title": "Sukienka mamalicious ciążowa do karmienia r. XL",
+      "id": 9939041841,
+      "title": "Luksusowe pióro Cerruti 1881",
       "price": {
-        "amount": "30",
-        "currency_code": "PLN"
+        "amount": "121.97",
+        "currency_code": "RON"
       },
-      "brand_title": "Mamalicious",
+      "brand_title": "Cerruti 1881",
       "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9931958474-sukienka-mamalicious-ciazowa-do-karmienia-r-xl",
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9939041841-luksusowe-pioro-cerruti-1881",
       "user": {
-        "id": 91511784,
-        "login": "metallove92"
+        "id": 97261676,
+        "login": "x_t.w_x"
       },
-      "_profile": {
-        "username": "metallove92",
-        "member_since": null,
-        "feedback_count": 585,
-        "feedback_reputation": 1,
-        "item_count": 10,
-        "country_code": "pl"
-      }
+      "_profile": {}
     },
     "score": {
-      "id": 9931958474,
+      "id": 9939041841,
       "score_version": 2,
-      "buy_score": 61,
+      "buy_score": 64,
       "buy_band": "bundle",
-      "score_confidence": 0.825,
-      "score_interval_low": 56,
-      "score_interval_high": 66,
+      "score_confidence": 0.76,
+      "score_interval_low": 58,
+      "score_interval_high": 69,
       "score_factors": {
-        "usefulness": 86.5,
-        "quality": 57.0,
-        "condition": 77.0,
+        "usefulness": 62.0,
+        "quality": 75.0,
+        "condition": 91.0,
         "versatility": 79.0,
-        "value": 74.65970285714286,
-        "fit_probability": 0.91,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 61.81,
-        "equivalent_replacement_cost_ron": 140.0,
+        "value": 51.27952423076923,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 130.0,
         "personal_adjustments": {
           "usefulness": 5.0,
-          "quality": 0.0,
-          "condition": 0.0,
+          "quality": 5.0,
+          "condition": 5.0,
           "versatility": 5.0,
           "value": 5.0,
-          "fit_probability": 5.0,
+          "fit_probability": 10.0,
           "duplication_probability": 0.0
         }
       },
       "factor_evidence": {
-        "usefulness": "Maternity and nursing-friendly dress.",
-        "quality": "Standard Mamalicious build.",
-        "condition": "Very good.",
-        "versatility": "Multi-stage utility: maternity and nursing.",
-        "value": "Estimated market value for nursing dresses.",
-        "fit_probability": "Listed as XL.",
-        "duplication_probability": "Nursing-specific models are slightly rarer."
+        "usefulness": "utility pen",
+        "quality": "metal construction expected",
+        "condition": "near new",
+        "versatility": "everyday carry",
+        "value": "resale market for branded pens",
+        "fit_probability": "branded writing instrument",
+        "duplication_probability": "specific vintage model"
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "Correct size (XL) and suitable nursing-friendly maternity dress."
+      "reason": "This is a branded Cerruti 1881 pen, falling directly within the target accessory list."
     },
-    "watch": "Mamalicious maternity XL-L/XL",
-    "seller_id": 91511784,
-    "seller": "metallove92"
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
   },
   {
     "item": {
-      "id": 9938018630,
-      "title": "Pantaloni scurti adidas",
-      "price": {
-        "amount": "30",
-        "currency_code": "RON"
-      },
-      "brand_title": "adidas",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9938018630-pantaloni-scurti-adidas",
-      "user": {
-        "id": 163992628,
-        "login": "matrescu_yulia_20"
-      },
-      "_profile": {
-        "username": "matrescu_yulia_20",
-        "member_since": null,
-        "feedback_count": 157,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 127,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9938018630,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.83,
-      "score_interval_low": 57,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 70.0,
-        "condition": 78.0,
-        "versatility": 82.0,
-        "value": 61.589999999999996,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 49.5,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Ideal for gym/training.",
-        "quality": "Standard Adidas synthetic performance material.",
-        "condition": "Very good condition.",
-        "versatility": "Highly versatile for training.",
-        "value": "Retail price of entry-level Adidas shorts.",
-        "fit_probability": "Matches target size M.",
-        "duplication_probability": "Basic training shorts useful as staples."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Standard Adidas gym shorts in the target size and price range."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 163992628,
-    "seller": "matrescu_yulia_20"
-  },
-  {
-    "item": {
-      "id": 9937724976,
-      "title": "Jordan Jumpman Basketball Shorts Black Red | Men’s Gym Streetwear Summer Shorts | Brand New | Size L",
-      "price": {
-        "amount": "70",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9937724976-jordan-jumpman-basketball-shorts-black-red-mens-gym-streetwear-summer-shorts-brand-new-size-l",
-      "user": {
-        "id": 3157121117,
-        "login": "maninder96"
-      },
-      "_profile": {
-        "username": "maninder96",
-        "member_since": null,
-        "feedback_count": 25,
-        "feedback_reputation": 1,
-        "item_count": 14,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9937724976,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.845,
-      "score_interval_low": 56,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 95.0,
-        "versatility": 74.0,
-        "value": 45.63,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 91.5,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical gym shorts.",
-        "quality": "Jordan brand gym wear.",
-        "condition": "New without tags.",
-        "versatility": "Athletic and casual streetwear utility.",
-        "value": "Current secondary market price for Jordan shorts.",
-        "fit_probability": "Size L.",
-        "duplication_probability": "Specific model variation."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Strong performance piece at the upper limit of the price range."
-    },
-    "watch": "Gym seed gym shorts M-L",
-    "seller_id": 3157121117,
-    "seller": "maninder96"
-  },
-  {
-    "item": {
-      "id": 9760781920,
-      "title": "Αθλητική βερμούδα Dri-Fit",
-      "price": {
-        "amount": "8",
-        "currency_code": "EUR"
-      },
-      "brand_title": "Nike",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9760781920-athlitiki-vermoyda-dri-fit",
-      "user": {
-        "id": 234385849,
-        "login": "irinisootd"
-      },
-      "_profile": {
-        "username": "irinisootd",
-        "member_since": null,
-        "feedback_count": 5,
-        "feedback_reputation": 1,
-        "item_count": 42,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9760781920,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.855,
-      "score_interval_low": 58,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 74.0,
-        "condition": 86.0,
-        "versatility": 81.5,
-        "value": 61.95327999999999,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 62.65,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dri-fit gym shorts are core utility items.",
-        "quality": "Nike standard technical training gear.",
-        "condition": "New without tags.",
-        "versatility": "Highly versatile for all gym activities.",
-        "value": "Typical mid-range retail price for technical gym shorts.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "High frequency listing item, but individual availability varies."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "The item is a Nike Dri-Fit training short in size M, fitting all search criteria."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 234385849,
-    "seller": "irinisootd"
-  },
-  {
-    "item": {
-      "id": 9738110380,
-      "title": "Nike Dri-FIT Wild Run Flex Stride 7\" Ανδρικό Σορτς Τρεξίματος - Μπλε - L",
-      "price": {
-        "amount": "15",
-        "currency_code": "EUR"
-      },
-      "brand_title": "Nike",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9738110380-nike-dri-fit-wild-run-flex-stride-7-andriko-sorts-treximatos-mple-l",
-      "user": {
-        "id": 228906776,
-        "login": "kir_royal123"
-      },
-      "_profile": {
-        "username": "kir_royal123",
-        "member_since": null,
-        "feedback_count": 184,
-        "feedback_reputation": 1,
-        "item_count": 597,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9738110380,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.85,
-      "score_interval_low": 57,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 86.0,
-        "condition": 74.0,
-        "versatility": 82.0,
-        "value": 49.450720000000004,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 101.72,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "High-end running/training spec",
-        "quality": "Nike Flex Stride premium line",
-        "condition": "Foarte bună",
-        "versatility": "Good for intensive training",
-        "value": "Used market value for high-spec model",
-        "fit_probability": "Size L",
-        "duplication_probability": "Specific model variation"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Specific Nike Flex Stride model in good condition; slightly over target but excellent quality."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 228906776,
-    "seller": "kir_royal123"
-  },
-  {
-    "item": {
-      "id": 9939533890,
-      "title": "Ποδοσφαιρικό/αθλητικό σορτσάκι",
-      "price": {
-        "amount": "10",
-        "currency_code": "EUR"
-      },
-      "brand_title": "adidas",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9939533890-podosfairikoathlitiko-sortsaki",
-      "user": {
-        "id": 287709674,
-        "login": "agniiiiiiiii"
-      },
-      "_profile": {
-        "username": "agniiiiiiiii",
-        "member_since": null,
-        "feedback_count": 100,
-        "feedback_reputation": 0.9199999999999999,
-        "item_count": 77,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9939533890,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.805,
-      "score_interval_low": 55,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 74.0,
-        "quality": 64.0,
-        "condition": 95.0,
-        "versatility": 86.0,
-        "value": 40.28849090909091,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 73.81,
-        "equivalent_replacement_cost_ron": 55.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Core gym training gear.",
-        "quality": "New without tags adds value.",
-        "condition": "New without tags.",
-        "versatility": "High utility for gym/casual.",
-        "value": "Reflects new condition.",
-        "fit_probability": "Size L matches target.",
-        "duplication_probability": "Common item."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Good condition (new without tags) gym short in L."
-    },
-    "watch": "Gym seed Adidas shorts M-L",
-    "seller_id": 287709674,
-    "seller": "agniiiiiiiii"
-  },
-  {
-    "item": {
-      "id": 9941481627,
-      "title": "Spodenki treningowe Nike",
-      "price": {
-        "amount": "30.8",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9941481627-spodenki-treningowe-nike",
-      "user": {
-        "id": 91663070,
-        "login": "kkiller"
-      },
-      "_profile": {
-        "username": "kkiller",
-        "member_since": null,
-        "feedback_count": 320,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 53,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9941481627,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.825,
-      "score_interval_low": 55,
-      "score_interval_high": 64,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 74.0,
-        "condition": 71.0,
-        "versatility": 81.5,
-        "value": 56.199085714285715,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 55.34,
-        "equivalent_replacement_cost_ron": 70.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dedicated training gear.",
-        "quality": "Reliable Nike quality.",
-        "condition": "Stated very good.",
-        "versatility": "Great for training.",
-        "value": "Market price for standard Nike training shorts.",
-        "fit_probability": "Size L fits.",
-        "duplication_probability": "Very common."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Very well priced Nike technical training shorts."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 91663070,
-    "seller": "kkiller"
-  },
-  {
-    "item": {
-      "id": 9941415039,
-      "title": "Nowe grantowe spodenki szorty Nike Dri-Fit DriFit Mlb Houston Astros rozmiar L",
+      "id": 9928228375,
+      "title": "Pióro wieczne Cerruti 1881",
       "price": {
         "amount": "104.72",
         "currency_code": "RON"
       },
-      "brand_title": null,
-      "size_title": "L",
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
       "status": "Nou cu etichetă",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9941415039-nowe-grantowe-spodenki-szorty-nike-dri-fit-drifit-mlb-houston-astros-rozmiar-l",
-      "user": {
-        "id": 111875777,
-        "login": "slakra"
-      },
-      "_profile": {
-        "username": "slakra",
-        "member_since": null,
-        "feedback_count": 441,
-        "feedback_reputation": 1,
-        "item_count": 292,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9941415039,
-      "score_version": 2,
-      "buy_score": 66,
-      "buy_band": "bundle",
-      "score_confidence": 0.88,
-      "score_interval_low": 62,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 81.5,
-        "condition": 100.0,
-        "versatility": 74.0,
-        "value": 43.15493818181819,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 132.96,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical fabric suitable for high-intensity training.",
-        "quality": "Nike Dri-Fit construction.",
-        "condition": "New with tags.",
-        "versatility": "Sport-focused design limits non-gym casual use.",
-        "value": "Conservative retail pricing for basic Nike training shorts.",
-        "fit_probability": "Size L is within target range.",
-        "duplication_probability": "Common brand, but MLB edition makes it slightly more unique."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic Nike Dri-Fit training shorts in size L, meeting the specific hunt requirements for technical gym wear."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 111875777,
-    "seller": "slakra"
-  },
-  {
-    "item": {
-      "id": 9941408680,
-      "title": "Spodenki Jordan",
-      "price": {
-        "amount": "45.59",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
       "favourite_count": 10,
-      "url": "https://www.vinted.ro/items/9941408680-spodenki-jordan",
+      "url": "https://www.vinted.ro/items/9928228375-pioro-wieczne-cerruti-1881",
       "user": {
-        "id": 90727309,
-        "login": "alinadudek1234"
+        "id": 91450189,
+        "login": "helenka0306"
       },
-      "_profile": {
-        "username": "alinadudek1234",
-        "member_since": null,
-        "feedback_count": 48,
-        "feedback_reputation": 1,
-        "item_count": 13,
-        "country_code": "pl"
-      }
+      "_profile": {}
     },
     "score": {
-      "id": 9941408680,
+      "id": 9928228375,
       "score_version": 2,
       "buy_score": 60,
       "buy_band": "bundle",
-      "score_confidence": 0.78,
-      "score_interval_low": 54,
-      "score_interval_high": 66,
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
       "score_factors": {
-        "usefulness": 78.0,
-        "quality": 74.0,
-        "condition": 86.0,
-        "versatility": 64.0,
-        "value": 49.678284999999995,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.44,
-        "delivered_cost_ron": 70.87,
-        "equivalent_replacement_cost_ron": 70.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Good for training.",
-        "quality": "Standard performance materials.",
-        "condition": "New without tags.",
-        "versatility": "Sport styling.",
-        "value": "Market average for secondary Nike/Jordan items.",
-        "fit_probability": "Size L.",
-        "duplication_probability": "Commonly available."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Jordan branded gym shorts in L, priced well for the condition."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 90727309,
-    "seller": "alinadudek1234"
-  },
-  {
-    "item": {
-      "id": 9941172235,
-      "title": "Krótkie Spodenki Nike Shorts Swoosh Dri-FIT Running Gym Sportswear Original Vintage Y2K",
-      "price": {
-        "amount": "97.33",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9941172235-krotkie-spodenki-nike-shorts-swoosh-dri-fit-running-gym-sportswear-original-vintage-y2k",
-      "user": {
-        "id": 92031225,
-        "login": "matatek"
-      },
-      "_profile": {
-        "username": "matatek",
-        "member_since": null,
-        "feedback_count": 1237,
-        "feedback_reputation": 1,
-        "item_count": 154,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9941172235,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.84,
-      "score_interval_low": 57,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 74.0,
-        "condition": 78.0,
-        "versatility": 77.0,
-        "value": 41.93712,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 125.2,
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 100.0,
+        "versatility": 57.0,
+        "value": 41.05408,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 127.96,
         "equivalent_replacement_cost_ron": 100.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -2214,66 +1696,514 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "Dri-FIT tech is highly functional for gym/running.",
-        "quality": "Nike performance line indicates durable technical fabric.",
-        "condition": "Stated as Very Good.",
-        "versatility": "Appropriate for both gym and running.",
-        "value": "Estimated market price for used Nike technical shorts.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Nike shorts are common, but this specific vintage Y2K model is less frequent."
+        "usefulness": "writing instrument",
+        "quality": "branded stationery",
+        "condition": "new with tag",
+        "versatility": "office accessory",
+        "value": "market value of mid-range branded pens",
+        "fit_probability": "accessory item",
+        "duplication_probability": "pen models are common"
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "These Nike Dri-FIT shorts are specifically designed for running and gym use, meeting the hunt criteria for size and technical utility."
+      "reason": "A genuine fountain pen fits the Cerruti 1881 accessories hunt criteria."
     },
-    "watch": "Broad gym short EN M-L",
-    "seller_id": 92031225,
-    "seller": "matatek"
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 91450189,
+    "seller": "helenka0306"
   },
   {
     "item": {
-      "id": 9729799225,
-      "title": "Nike dri-fit",
+      "id": 9909836748,
+      "title": "Pióro i długopis marki Cerruti 1881 w pudełku prezentowym",
       "price": {
-        "amount": "106.3",
+        "amount": "123.21",
         "currency_code": "RON"
       },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Nou cu etichetă",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9729799225-nike-dri-fit",
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9909836748-pioro-i-dlugopis-marki-cerruti-1881-w-pudelku-prezentowym",
       "user": {
-        "id": 3169629765,
-        "login": "gymboy12"
+        "id": 91766881,
+        "login": "adusiadusia"
       },
-      "_profile": {
-        "username": "gymboy12",
-        "member_since": null,
-        "feedback_count": null,
-        "feedback_reputation": null,
-        "item_count": 5,
-        "country_code": "gr"
-      }
+      "_profile": {}
     },
     "score": {
-      "id": 9729799225,
+      "id": 9909836748,
       "score_version": 2,
       "buy_score": 61,
       "buy_band": "bundle",
-      "score_confidence": 0.9,
-      "score_interval_low": 57,
-      "score_interval_high": 64,
+      "score_confidence": 0.725,
+      "score_interval_low": 54,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 50.473310000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 147.37,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Desk accessory",
+        "quality": "Cerruti 1881 branded set",
+        "condition": "New without tags",
+        "versatility": "Niche utility",
+        "value": "Typical value for branded pen sets",
+        "fit_probability": "Accessory item",
+        "duplication_probability": "Moderate rarity for gift sets"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Check for authenticity markings on the pens to ensure they are not generic promotional items.",
+      "hunt_fit": true,
+      "reason": "Luxury writing instruments are part of the accessories hunt and are priced well."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 91766881,
+    "seller": "adusiadusia"
+  },
+  {
+    "item": {
+      "id": 9904891301,
+      "title": "Pióro wieczne Cerruti 1881 nowe w pudełku",
+      "price": {
+        "amount": "123.21",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9904891301-pioro-wieczne-cerruti-1881-nowe-w-pudelku",
+      "user": {
+        "id": 3174458929,
+        "login": "papaja1599"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9904891301,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.75,
+      "score_interval_low": 56,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 70.0,
+        "quality": 74.5,
+        "condition": 90.5,
+        "versatility": 56.0,
+        "value": 50.552195000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.4,
+        "delivered_cost_ron": 147.37,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional writing instrument.",
+        "quality": "Cerruti stationery is generally well-regarded.",
+        "condition": "New in box.",
+        "versatility": "Daily office tool.",
+        "value": "Typical resale for entry-level luxury pens.",
+        "fit_probability": "Pen is an accessory.",
+        "duplication_probability": "Model specific, harder to find identical."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic Cerruti 1881 fountain pen is a high-utility accessory that fits the hunt perfectly within budget."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 3174458929,
+    "seller": "papaja1599"
+  },
+  {
+    "item": {
+      "id": 9894165996,
+      "title": "Nowy Portfel i Cerutti 1881",
+      "price": {
+        "amount": "163.86",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9894165996-nowy-portfel-i-cerutti-1881",
+      "user": {
+        "id": 144880385,
+        "login": "misiatko555"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9894165996,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.795,
+      "score_interval_low": 62,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 71.0,
+        "condition": 78.0,
+        "versatility": 86.0,
+        "value": 48.123439999999995,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 190.05,
+        "equivalent_replacement_cost_ron": 180.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High daily utility.",
+        "quality": "Cerruti leather goods typically decent.",
+        "condition": "New without tags.",
+        "versatility": "Essential everyday item.",
+        "value": "Market for mid-tier luxury wallets.",
+        "fit_probability": "Wallet is listed as accessory.",
+        "duplication_probability": "Moderate scarcity."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Wallet is a high-utility accessory item fitting the search criteria."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 144880385,
+    "seller": "misiatko555"
+  },
+  {
+    "item": {
+      "id": 9878678052,
+      "title": "Piękny notes Cerutti czarny",
+      "price": {
+        "amount": "30.8",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9878678052-piekny-notes-cerutti-czarny",
+      "user": {
+        "id": 92209481,
+        "login": "sandra.muzalewska"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9878678052,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.74,
+      "score_interval_low": 54,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 74.0,
+        "quality": 70.0,
+        "condition": 91.0,
+        "versatility": 57.0,
+        "value": 39.3382,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 50.34,
+        "equivalent_replacement_cost_ron": 30.0,
+        "personal_adjustments": {
+          "usefulness": 8.0,
+          "quality": 5.0,
+          "condition": 5.0,
+          "versatility": 0.0,
+          "value": 5.0,
+          "fit_probability": 10.0,
+          "duplication_probability": -5.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Daily office tool",
+        "quality": "Brand notebook",
+        "condition": "New without tags",
+        "versatility": "Office utility",
+        "value": "Similar branded notebooks",
+        "fit_probability": "Official accessory",
+        "duplication_probability": "Unique branded item"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "This is a genuine Cerruti stationary accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 92209481,
+    "seller": "sandra.muzalewska"
+  },
+  {
+    "item": {
+      "id": 9878306319,
+      "title": "Długopis Cerruti",
+      "price": {
+        "amount": "61.6",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9878306319-dlugopis-cerruti",
+      "user": {
+        "id": 3143640470,
+        "login": "inezm2026"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9878306319,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.79,
+      "score_interval_low": 61,
+      "score_interval_high": 73,
+      "score_factors": {
+        "usefulness": 85.0,
+        "quality": 79.0,
+        "condition": 91.0,
+        "versatility": 50.0,
+        "value": 45.474399999999996,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 82.68,
+        "equivalent_replacement_cost_ron": 60.0,
+        "personal_adjustments": {
+          "usefulness": 8.0,
+          "quality": 8.0,
+          "condition": 5.0,
+          "versatility": 0.0,
+          "value": 5.0,
+          "fit_probability": 10.0,
+          "duplication_probability": -5.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional stationery",
+        "quality": "Brand writing instrument",
+        "condition": "New without tags",
+        "versatility": "Pen",
+        "value": "Equivalent brand pen market",
+        "fit_probability": "Official accessory",
+        "duplication_probability": "Niche accessory"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "A Cerruti pen is a core accessory item matching the hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 3143640470,
+    "seller": "inezm2026"
+  },
+  {
+    "item": {
+      "id": 9872154318,
+      "title": "Nowa Cerruti 1881 Torebka 100% Skóra Cielęca | Burgundy Snake |",
+      "price": {
+        "amount": "183.58",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Nou cu etichetă",
+      "favourite_count": 14,
+      "url": "https://www.vinted.ro/items/9872154318-nowa-cerruti-1881-torebka-100-skora-cieleca-burgundy-snake",
+      "user": {
+        "id": 93687352,
+        "login": "xnataliax44"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9872154318,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.89,
+      "score_interval_low": 63,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 77.0,
+        "value": 35.41784,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 210.76,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional leather bag.",
+        "quality": "Calf leather material.",
+        "condition": "New with tags.",
+        "versatility": "Burgundy neutral color.",
+        "value": "Comparable leather handbags.",
+        "fit_probability": "Handbag is an accessory.",
+        "duplication_probability": "Specific style/snake finish."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "High-quality leather handbag fits the accessories criteria perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 93687352,
+    "seller": "xnataliax44"
+  },
+  {
+    "item": {
+      "id": 9867145613,
+      "title": "Męska torba na ramię / listonoszka Cerruti 1881 czarna skórzana",
+      "price": {
+        "amount": "160.17",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9867145613-meska-torba-na-ramie-listonoszka-cerruti-1881-czarna-skorzana",
+      "user": {
+        "id": 176122205,
+        "login": "ponczos"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9867145613,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.875,
+      "score_interval_low": 64,
+      "score_interval_high": 70,
       "score_factors": {
         "usefulness": 86.0,
         "quality": 77.0,
-        "condition": 100.0,
-        "versatility": 77.0,
-        "value": 43.420059090909085,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 129.62,
+        "condition": 77.0,
+        "versatility": 81.5,
+        "value": 46.421696470588245,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 186.18,
+        "equivalent_replacement_cost_ron": 170.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Very functional.",
+        "quality": "Leather material.",
+        "condition": "Foarte bună.",
+        "versatility": "Versatile black leather.",
+        "value": "Used leather bag equivalent.",
+        "fit_probability": "Messenger bag.",
+        "duplication_probability": "Specific model."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Leather messenger bag matches the accessories hunt criteria."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 176122205,
+    "seller": "ponczos"
+  },
+  {
+    "item": {
+      "id": 9855400235,
+      "title": "Pix Cerruti 1881 Original – Nou în Cutie cu Certificat de Autenticitate",
+      "price": {
+        "amount": "120.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9855400235-pix-cerruti-1881-original-nou-in-cutie-cu-certificat-de-autenticitate",
+      "user": {
+        "id": 3180958694,
+        "login": "valentinh939"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9855400235,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.835,
+      "score_interval_low": 57,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 70.0,
+        "quality": 81.5,
+        "condition": 95.0,
+        "versatility": 58.0,
+        "value": 39.86181818181818,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 144.0,
         "equivalent_replacement_cost_ron": 110.0,
         "personal_adjustments": {
           "usefulness": 0.0,
@@ -2286,93 +2216,1711 @@
         }
       },
       "factor_evidence": {
-        "usefulness": "New technical shorts offer high longevity.",
-        "quality": "New condition implies optimal performance.",
-        "condition": "New with tags.",
-        "versatility": "Standard training use.",
-        "value": "Reflects NWT price segment.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Low likelihood of duplicating existing gear."
+        "usefulness": "stationery",
+        "quality": "branded writing instrument",
+        "condition": "new in box",
+        "versatility": "desk accessory",
+        "value": "second-hand gift market",
+        "fit_probability": "accessory",
+        "duplication_probability": "branded gift item"
       },
-      "verification_concern": "inspect",
-      "verification_reason": "Must verify exact product type as listing title is vague.",
+      "verification_concern": "none",
+      "verification_reason": "",
       "hunt_fit": true,
-      "reason": "New with tags Nike Dri-FIT shorts, though at the higher end of the budget."
+      "reason": "Cerruti 1881 pen is a valid accessory and fits within the price range."
     },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3169629765,
-    "seller": "gymboy12"
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 3180958694,
+    "seller": "valentinh939"
   },
   {
     "item": {
-      "id": 9903593658,
-      "title": "Baggy Nike Lab Solo Swoosh Shorts Spodenki Streetwear Sportswear Original",
+      "id": 9827613827,
+      "title": "Skórzany męski portfel etui na karty Cerruti 1881",
       "price": {
         "amount": "183.58",
         "currency_code": "RON"
       },
-      "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Foarte bună",
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Nou fără etichetă",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9903593658-baggy-nike-lab-solo-swoosh-shorts-spodenki-streetwear-sportswear-original",
+      "url": "https://www.vinted.ro/items/9827613827-skorzany-meski-portfel-etui-na-karty-cerruti-1881",
       "user": {
-        "id": 92031225,
-        "login": "matatek"
+        "id": 167072129,
+        "login": "mona.bing"
       },
-      "_profile": {
-        "username": "matatek",
-        "member_since": null,
-        "feedback_count": 1237,
-        "feedback_reputation": 1,
-        "item_count": 154,
-        "country_code": "pl"
-      }
+      "_profile": {}
     },
     "score": {
-      "id": 9903593658,
+      "id": 9827613827,
       "score_version": 2,
-      "buy_score": 61,
+      "buy_score": 65,
       "buy_band": "bundle",
-      "score_confidence": 0.865,
-      "score_interval_low": 57,
-      "score_interval_high": 65,
+      "score_confidence": 0.85,
+      "score_interval_low": 60,
+      "score_interval_high": 70,
       "score_factors": {
-        "usefulness": 81.5,
-        "quality": 81.5,
-        "condition": 81.5,
-        "versatility": 74.0,
-        "value": 32.17542999999999,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.26,
-        "delivered_cost_ron": 215.76,
+        "usefulness": 86.0,
+        "quality": 71.0,
+        "condition": 95.0,
+        "versatility": 86.0,
+        "value": 38.32543,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 210.76,
         "equivalent_replacement_cost_ron": 160.0,
         "personal_adjustments": {
           "usefulness": 0.0,
           "quality": 0.0,
           "condition": 0.0,
           "versatility": 0.0,
-          "value": -5.0,
+          "value": 0.0,
           "fit_probability": 0.0,
           "duplication_probability": 0.0
         }
       },
       "factor_evidence": {
-        "usefulness": "Technical sportswear.",
-        "quality": "Nike Lab line quality.",
-        "condition": "Listed as very good.",
-        "versatility": "Functional training and lifestyle.",
-        "value": "Market resale price for Nike Lab shorts.",
-        "fit_probability": "Matches target size M.",
-        "duplication_probability": "Premium Nike line."
+        "usefulness": "High daily utility.",
+        "quality": "Leather construction.",
+        "condition": "New without tags.",
+        "versatility": "Universal utility.",
+        "value": "Consistent with branded leather goods.",
+        "fit_probability": "Card wallet is a primary accessory type.",
+        "duplication_probability": "Classic black wallet design."
       },
       "verification_concern": "none",
       "verification_reason": "",
       "hunt_fit": true,
-      "reason": "Meets sizing and sport-wear criteria, though exceeds the soft budget cap."
+      "reason": "Compact leather card wallet is a standard utility accessory fitting the hunt."
     },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 92031225,
-    "seller": "matatek"
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 167072129,
+    "seller": "mona.bing"
+  },
+  {
+    "item": {
+      "id": 9806084717,
+      "title": "Elegancki długopis Cerruti 1881 Bicolore Chrome (NS2954) w pudełku",
+      "price": {
+        "amount": "104.72",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9806084717-elegancki-dlugopis-cerruti-1881-bicolore-chrome-ns2954-w-pudelku",
+      "user": {
+        "id": 144390056,
+        "login": "barbarazawalska"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9806084717,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.835,
+      "score_interval_low": 58,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 57.0,
+        "value": 47.77231999999999,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 127.96,
+        "equivalent_replacement_cost_ron": 120.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional writing instrument.",
+        "quality": "Branded writing instrument.",
+        "condition": "New without tags.",
+        "versatility": "Professional desk accessory.",
+        "value": "Consistent with branded pen market pricing.",
+        "fit_probability": "Specified accessory category.",
+        "duplication_probability": "Standard production model."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a valid accessory and fits the pricing constraint."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 144390056,
+    "seller": "barbarazawalska"
+  },
+  {
+    "item": {
+      "id": 9803793656,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9803793656-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9803793656,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 50.825615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Practical writing instrument.",
+        "quality": "Luxury branding suggests decent construction.",
+        "condition": "New without tags.",
+        "versatility": "Standard office accessory.",
+        "value": "Market rate for pre-owned branded pens.",
+        "fit_probability": "Pen is a listed category accessory.",
+        "duplication_probability": "Pens are relatively common secondary market items."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9792220439,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9792220439-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9792220439,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 50.825615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument.",
+        "quality": "Branded pen.",
+        "condition": "New without tags.",
+        "versatility": "Standard desk accessory.",
+        "value": "Estimated market price for Cerruti pen.",
+        "fit_probability": "Pen is an accessory.",
+        "duplication_probability": "Relatively unique."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9772892980,
+      "title": "Duża Nowa torebka tote bag Cerruti 1881 canvas i Skóra naturalna monogram",
+      "price": {
+        "amount": "171.26",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 20,
+      "url": "https://www.vinted.ro/items/9772892980-duza-nowa-torebka-tote-bag-cerruti-1881-canvas-i-skora-naturalna-monogram",
+      "user": {
+        "id": 3162561588,
+        "login": "123anna-ciuszek"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9772892980,
+      "score_version": 2,
+      "buy_score": 72,
+      "buy_band": "bundle",
+      "score_confidence": 0.825,
+      "score_interval_low": 67,
+      "score_interval_high": 77,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 74.5,
+        "condition": 100.0,
+        "versatility": 86.0,
+        "value": 50.38097500000001,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 197.82,
+        "equivalent_replacement_cost_ron": 200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High utility tote.",
+        "quality": "Canvas and natural leather.",
+        "condition": "New without tags.",
+        "versatility": "Very versatile bag.",
+        "value": "Valuation for canvas/leather bag.",
+        "fit_probability": "Bag accessory.",
+        "duplication_probability": "Specific monogram bag."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 tote bag is a valid accessory; within hard cap limit."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 3162561588,
+    "seller": "123anna-ciuszek"
+  },
+  {
+    "item": {
+      "id": 9784107965,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "98.56",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9784107965-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9784107965,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9784077531,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "98.56",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9784077531-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9784077531,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9783907596,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "98.56",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9783907596-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9783907596,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9783133253,
+      "title": "Torebka marki Cerruti 1881",
+      "price": {
+        "amount": "146.61",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Foarte bună",
+      "favourite_count": 19,
+      "url": "https://www.vinted.ro/items/9783133253-torebka-marki-cerruti-1881",
+      "user": {
+        "id": 230169995,
+        "login": "dorism135"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9783133253,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.765,
+      "score_interval_low": 55,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 81.5,
+        "quality": 62.0,
+        "condition": 74.0,
+        "versatility": 74.0,
+        "value": 42.97309,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 171.94,
+        "equivalent_replacement_cost_ron": 140.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High utility item",
+        "quality": "Standard accessory build",
+        "condition": "Very good",
+        "versatility": "Daily carry",
+        "value": "Mid-tier brand bag average",
+        "fit_probability": "Handbag is an accessory",
+        "duplication_probability": "Unique model"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify material and authenticity of the handbag.",
+      "hunt_fit": true,
+      "reason": "Handbags are explicitly included in the accessories hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 230169995,
+    "seller": "dorism135"
+  },
+  {
+    "item": {
+      "id": 9771495154,
+      "title": "Torebka Cerruti 1881 NOWA",
+      "price": {
+        "amount": "129.37",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Nou cu etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9771495154-torebka-cerruti-1881-nowa",
+      "user": {
+        "id": 92510775,
+        "login": "pansy777"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9771495154,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.765,
+      "score_interval_low": 58,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 55.0,
+        "condition": 100.0,
+        "versatility": 71.0,
+        "value": 49.193915,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.42,
+        "delivered_cost_ron": 153.84,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Daily carry item",
+        "quality": "New item, brand standard",
+        "condition": "New with tag",
+        "versatility": "Practical size",
+        "value": "Comparable new accessory market price",
+        "fit_probability": "Accessory type",
+        "duplication_probability": "Typical bag model"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "A bag is a primary target for the accessories hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 92510775,
+    "seller": "pansy777"
+  },
+  {
+    "item": {
+      "id": 9754179499,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "98.56",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9754179499-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9754179499,
+      "score_version": 2,
+      "buy_score": 72,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 67,
+      "score_interval_high": 77,
+      "score_factors": {
+        "usefulness": 82.0,
+        "quality": 76.0,
+        "condition": 91.0,
+        "versatility": 71.0,
+        "value": 65.98752,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.33,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 5.0,
+          "condition": 5.0,
+          "versatility": 5.0,
+          "value": 10.0,
+          "fit_probability": 10.0,
+          "duplication_probability": -5.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "functional office accessory",
+        "quality": "luxury branding",
+        "condition": "new without tags",
+        "versatility": "office and daily carry",
+        "value": "equivalent branded writing instrument",
+        "fit_probability": "Cerruti 1881 pen",
+        "duplication_probability": "less common than clothing"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify pen authenticity as these are commonly counterfeited.",
+      "hunt_fit": true,
+      "reason": "Luxury pens are high-utility accessories that align perfectly with the hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9751167809,
+      "title": "Cerruti 1881 pix",
+      "price": {
+        "amount": "120.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9751167809-cerruti-1881-pix",
+      "user": {
+        "id": 288771367,
+        "login": "anab619"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9751167809,
+      "score_version": 2,
+      "buy_score": 73,
+      "buy_band": "bundle",
+      "score_confidence": 0.835,
+      "score_interval_low": 69,
+      "score_interval_high": 78,
+      "score_factors": {
+        "usefulness": 82.0,
+        "quality": 83.0,
+        "condition": 100.0,
+        "versatility": 71.0,
+        "value": 56.26,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.27,
+        "delivered_cost_ron": 144.0,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 5.0,
+          "condition": 5.0,
+          "versatility": 5.0,
+          "value": 5.0,
+          "fit_probability": 10.0,
+          "duplication_probability": -5.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "functional accessory",
+        "quality": "new with tags",
+        "condition": "new with tags",
+        "versatility": "office accessory",
+        "value": "comparable luxury pen",
+        "fit_probability": "Cerruti 1881 pen",
+        "duplication_probability": "niche item"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify pen authenticity.",
+      "hunt_fit": true,
+      "reason": "Genuine pen from hunt brand."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 288771367,
+    "seller": "anab619"
+  },
+  {
+    "item": {
+      "id": 9729053287,
+      "title": "Cerruti 1881 Shopper táska",
+      "price": {
+        "amount": "43.87",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9729053287-cerruti-1881-shopper-taska",
+      "user": {
+        "id": 135346904,
+        "login": "klau810614"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9729053287,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.775,
+      "score_interval_low": 59,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 59.0,
+        "condition": 58.0,
+        "versatility": 86.0,
+        "value": 60.062219999999996,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 64.06,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "daily utility bag",
+        "quality": "brand accessory",
+        "condition": "used condition",
+        "versatility": "high capacity bag",
+        "value": "secondary market shopper bag value",
+        "fit_probability": "accessory type",
+        "duplication_probability": "generic shopper style"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Shopper bags require verification of authenticity and wear state.",
+      "hunt_fit": true,
+      "reason": "This is a shopper bag, which fits the accessory hunt perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 135346904,
+    "seller": "klau810614"
+  },
+  {
+    "item": {
+      "id": 9732214977,
+      "title": "Szara męska torebka kosmetyczka saszetka skorzana",
+      "price": {
+        "amount": "184.81",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou cu etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9732214977-szara-meska-torebka-kosmetyczka-saszetka-skorzana",
+      "user": {
+        "id": 167072129,
+        "login": "mona.bing"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9732214977,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.84,
+      "score_interval_low": 63,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 81.5,
+        "quality": 71.0,
+        "condition": 100.0,
+        "versatility": 66.0,
+        "value": 47.5899,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 212.05,
+        "equivalent_replacement_cost_ron": 200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "utility pouch",
+        "quality": "leather material",
+        "condition": "new with tags",
+        "versatility": "travel or daily use",
+        "value": "leather accessory market price",
+        "fit_probability": "accessory bag",
+        "duplication_probability": "leather item style"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Leather goods authenticity check required.",
+      "hunt_fit": true,
+      "reason": "This is a leather pouch, fitting the Cerruti 1881 accessory hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 167072129,
+    "seller": "mona.bing"
+  },
+  {
+    "item": {
+      "id": 9716924608,
+      "title": "Luksusowe pióro Cerruti 1881",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 5,
+      "url": "https://www.vinted.ro/items/9716924608-luksusowe-pioro-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9716924608,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 74.5,
+        "condition": 95.0,
+        "versatility": 58.0,
+        "value": 43.6132175,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 120.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "High quality stationary accessory.",
+        "quality": "Cerruti branded writing instruments are standard gifts/accessories.",
+        "condition": "New without tags.",
+        "versatility": "Limited to writing tasks.",
+        "value": "Typical market for branded base-model pens.",
+        "fit_probability": "Item is a writing instrument.",
+        "duplication_probability": "Common promotional style pen."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Luxury branding on writing instruments requires verification of authenticity labels or model numbers.",
+      "hunt_fit": true,
+      "reason": "This is a Cerruti 1881 accessory fitting the hunt, though priced slightly above the target budget."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9720352034,
+      "title": "Luksusowy matowy długopis Cerruti 1881",
+      "price": {
+        "amount": "98.56",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9720352034-luksusowy-matowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9720352034,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 60,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 74.5,
+        "condition": 100.0,
+        "versatility": 64.0,
+        "value": 43.12384,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Daily use pen.",
+        "quality": "High quality finish.",
+        "condition": "New.",
+        "versatility": "Writing utility.",
+        "value": "Aligned with market.",
+        "fit_probability": "Pen accessory.",
+        "duplication_probability": "Distinctive matte finish."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Branded pen authenticity needs to be validated.",
+      "hunt_fit": true,
+      "reason": "Matte Cerruti 1881 pen fits the target accessory hunt and is within budget."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9695451624,
+      "title": "Cerruti 1881 watch - model cra249 - gold / brown leather",
+      "price": {
+        "amount": "116.93",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": "30–38 mm",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9695451624-cerruti-1881-watch-model-cra249-gold-brown-leather",
+      "user": {
+        "id": 293571664,
+        "login": "gkotseri"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9695451624,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.87,
+      "score_interval_low": 57,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 70.0,
+        "condition": 86.0,
+        "versatility": 66.0,
+        "value": 43.455402500000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.4,
+        "delivered_cost_ron": 140.78,
+        "equivalent_replacement_cost_ron": 120.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional timepiece.",
+        "quality": "Standard quartz Cerruti watch.",
+        "condition": "Listed as very good.",
+        "versatility": "Dress watch.",
+        "value": "Used market price for Cerruti fashion watches.",
+        "fit_probability": "Fits hunt category (watch).",
+        "duplication_probability": "Specific model identifier present."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic branded accessory fitting the hunt criteria and price cap."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 293571664,
+    "seller": "gkotseri"
+  },
+  {
+    "item": {
+      "id": 9699742590,
+      "title": "Poșetă Cerruti",
+      "price": {
+        "amount": "53.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9699742590-poseta-cerruti",
+      "user": {
+        "id": 280018964,
+        "login": "carlarusu74"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9699742590,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.715,
+      "score_interval_low": 56,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 74.0,
+        "quality": 62.0,
+        "condition": 86.0,
+        "versatility": 64.0,
+        "value": 63.743,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 73.65,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Handbag is a functional everyday accessory.",
+        "quality": "Brand prestige suggests good materials.",
+        "condition": "Stated as new without tags.",
+        "versatility": "General handbag utility.",
+        "value": "Conservative estimate for entry-level designer accessories.",
+        "fit_probability": "Accessory type is a match.",
+        "duplication_probability": "Generic poșetă branding."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Listing lacks interior photos or brand stamp confirmation to verify authenticity of bag material.",
+      "hunt_fit": true,
+      "reason": "Authentic Cerruti 1881 bags at this price point are excellent utility finds."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 280018964,
+    "seller": "carlarusu74"
+  },
+  {
+    "item": {
+      "id": 9658505169,
+      "title": "Okulary przeciwsłoneczne Cerruti 1881",
+      "price": {
+        "amount": "123.21",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Foarte bună",
+      "favourite_count": 13,
+      "url": "https://www.vinted.ro/items/9658505169-okulary-przeciwsloneczne-cerruti-1881",
+      "user": {
+        "id": 148754451,
+        "login": "mmaroo"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9658505169,
+      "score_version": 2,
+      "buy_score": 68,
+      "buy_band": "bundle",
+      "score_confidence": 0.805,
+      "score_interval_low": 64,
+      "score_interval_high": 73,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 74.0,
+        "condition": 74.0,
+        "versatility": 74.0,
+        "value": 59.2101625,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 147.37,
+        "equivalent_replacement_cost_ron": 200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Highly functional accessory.",
+        "quality": "Cerruti optics typically reliable.",
+        "condition": "Very good condition.",
+        "versatility": "Everyday accessory.",
+        "value": "Standard used luxury eyewear pricing.",
+        "fit_probability": "Accessory is sunglasses.",
+        "duplication_probability": "Specific model variation."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Sunglasses are a strong accessory fit for the hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 148754451,
+    "seller": "mmaroo"
+  },
+  {
+    "item": {
+      "id": 9705087933,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 10,
+      "url": "https://www.vinted.ro/items/9705087933-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9705087933,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.775,
+      "score_interval_low": 56,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 74.5,
+        "condition": 90.5,
+        "versatility": 56.0,
+        "value": 45.748027692307694,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 130.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Useful writing instrument",
+        "quality": "Luxury branded pen",
+        "condition": "New without tags",
+        "versatility": "Office/personal utility",
+        "value": "Used branded pen market valuation",
+        "fit_probability": "Cerruti pen is a hunt accessory",
+        "duplication_probability": "Branded pen not mass-produced"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen which fits the accessories hunt category perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9683204731,
+      "title": "Unikatowy Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "123.21",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9683204731-unikatowy-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9683204731,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 73.0,
+        "quality": 67.5,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 45.97806115384615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 147.37,
+        "equivalent_replacement_cost_ron": 130.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 5.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional writing instrument",
+        "quality": "Brand luxury positioning",
+        "condition": "New without tags",
+        "versatility": "Useful desk accessory",
+        "value": "Current market value for branded metal pens",
+        "fit_probability": "Genuine accessory category",
+        "duplication_probability": "Branded luxury stationery"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify authenticity of Cerruti stationery/pen branding.",
+      "hunt_fit": true,
+      "reason": "Pen matches the accessory hunt criteria."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9683082231,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9683082231-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9683082231,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 73.0,
+        "quality": 67.5,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 46.27952423076923,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 130.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 5.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional item",
+        "quality": "Brand luxury segment",
+        "condition": "New without tags",
+        "versatility": "Desk accessory",
+        "value": "Consistent with branded pen market",
+        "fit_probability": "Accessory type",
+        "duplication_probability": "Branded item"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify authenticity of branding.",
+      "hunt_fit": true,
+      "reason": "Pen matches accessory hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9645848213,
+      "title": "Cerruti okulary przeciwsłoneczne",
+      "price": {
+        "amount": "135.53",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "Foarte bună",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9645848213-cerruti-okulary-przeciwsloneczne",
+      "user": {
+        "id": 96510323,
+        "login": "mandarynka123xx"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9645848213,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 56,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 67.5,
+        "condition": 71.0,
+        "versatility": 74.0,
+        "value": 45.53257,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.45,
+        "delivered_cost_ron": 160.31,
+        "equivalent_replacement_cost_ron": 140.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "eyewear",
+        "quality": "eyewear standard",
+        "condition": "good",
+        "versatility": "everyday item",
+        "value": "preowned designer sunglasses",
+        "fit_probability": "sunglasses",
+        "duplication_probability": "standard eyewear"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify authenticity of Cerruti eyewear branding.",
+      "hunt_fit": true,
+      "reason": "Sunglasses are valid accessories within the hunt parameters."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 96510323,
+    "seller": "mandarynka123xx"
+  },
+  {
+    "item": {
+      "id": 9657125388,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "110.88",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9657125388-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9657125388,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 56,
+      "score_interval_high": 67,
+      "score_factors": {
+        "usefulness": 64.0,
+        "quality": 78.0,
+        "condition": 100.0,
+        "versatility": 50.0,
+        "value": 45.96128,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 134.42,
+        "equivalent_replacement_cost_ron": 120.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "office accessory",
+        "quality": "luxury stationery",
+        "condition": "new without tag",
+        "versatility": "specialty item",
+        "value": "preowned luxury pen",
+        "fit_probability": "pen",
+        "duplication_probability": "rare item"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Check for authenticity of the writing instrument.",
+      "hunt_fit": true,
+      "reason": "A luxury pen is a classic Cerruti accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9507188425,
+      "title": "Portofel Cerruti",
+      "price": {
+        "amount": "100.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9507188425-portofel-cerruti",
+      "user": {
+        "id": 264304676,
+        "login": "itsc7ys"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9507188425,
+      "score_version": 2,
+      "buy_score": 68,
+      "buy_band": "bundle",
+      "score_confidence": 0.85,
+      "score_interval_low": 64,
+      "score_interval_high": 73,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 71.0,
+        "condition": 95.0,
+        "versatility": 86.0,
+        "value": 42.64,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 123.0,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Everyday accessory",
+        "quality": "Standard luxury goods brand",
+        "condition": "New without tags",
+        "versatility": "Essential accessory",
+        "value": "Secondary market wallet pricing",
+        "fit_probability": "Wallet",
+        "duplication_probability": "Common accessory type"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Genuine Cerruti 1881 wallet at target price point, fits hunt criteria perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 264304676,
+    "seller": "itsc7ys"
+  },
+  {
+    "item": {
+      "id": 9488794548,
+      "title": "Cerruti 1881 klips do banknotów",
+      "price": {
+        "amount": "121.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Nou fără etichetă",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9488794548-cerruti-1881-klips-do-banknotow",
+      "user": {
+        "id": 235342387,
+        "login": "pelnaszafa_8811"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9488794548,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.785,
+      "score_interval_low": 58,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 70.0,
+        "quality": 74.5,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 43.6132175,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 120.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Edc accessory",
+        "quality": "Branded steel/metal accessory",
+        "condition": "New without tags",
+        "versatility": "High utility for cash users",
+        "value": "Equivalent designer money clip",
+        "fit_probability": "Money clip",
+        "duplication_probability": "Low frequency find"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "A money clip is a quintessential Cerruti 1881 accessory fitting the hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 235342387,
+    "seller": "pelnaszafa_8811"
   }
 ]

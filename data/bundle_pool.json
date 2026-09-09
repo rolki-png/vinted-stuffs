@@ -937,6 +937,78 @@
   },
   {
     "item": {
+      "id": 9937160382,
+      "title": "jordan diamond short",
+      "price": {
+        "amount": "69.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Jordan",
+      "size_title": "M",
+      "status": "Nou fără etichetă",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9937160382-jordan-diamond-short",
+      "user": {
+        "id": 307684024,
+        "login": "hoodplug2006"
+      },
+      "_profile": {
+        "username": "hoodplug2006",
+        "member_since": null,
+        "feedback_count": 19,
+        "feedback_reputation": 0.8400000000000001,
+        "item_count": 2,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9937160382,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 55,
+      "score_interval_high": 64,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 66.0,
+        "value": 55.798145454545455,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 90.55,
+        "equivalent_replacement_cost_ron": 110.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dedicated training shorts are highly functional for gym use.",
+        "quality": "Jordan performance line typically uses durable technical fabrics.",
+        "condition": "New without tags condition.",
+        "versatility": "Primarily gym-focused; limited for non-sport settings.",
+        "value": "Conservative retail estimate for mid-range basketball shorts.",
+        "fit_probability": "Labeled size M is consistent with hunt requirements.",
+        "duplication_probability": "Jordan items are moderately common on secondary markets."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Jordan Diamond shorts are high-quality technical gym shorts that fit the size and style requirements within the target budget."
+    },
+    "watch": "Broad gym shorts M-L",
+    "seller_id": 307684024,
+    "seller": "hoodplug2006"
+  },
+  {
+    "item": {
       "id": 9928149525,
       "title": "Pantaloni scurti Nike pantalon scurt Marimea M barbati gri",
       "price": {
@@ -1588,12 +1660,12 @@
       "id": 9938018630,
       "title": "Pantaloni scurti adidas",
       "price": {
-        "amount": "30.0",
+        "amount": "30",
         "currency_code": "RON"
       },
       "brand_title": "adidas",
-      "size_title": "M",
-      "status": "Foarte bună",
+      "size_title": null,
+      "status": "Used",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9938018630-pantaloni-scurti-adidas",
       "user": {
@@ -1660,12 +1732,12 @@
       "id": 9937724976,
       "title": "Jordan Jumpman Basketball Shorts Black Red | Men’s Gym Streetwear Summer Shorts | Brand New | Size L",
       "price": {
-        "amount": "70.0",
+        "amount": "70",
         "currency_code": "RON"
       },
       "brand_title": "Jordan",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
+      "size_title": null,
+      "status": "New",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9937724976-jordan-jumpman-basketball-shorts-black-red-mens-gym-streetwear-summer-shorts-brand-new-size-l",
       "user": {
@@ -1729,78 +1801,6 @@
   },
   {
     "item": {
-      "id": 9932177874,
-      "title": "Nowe męskie spodenki adidas krótkie L szorty sportowe trening siłownia gym Man short shorts czarne",
-      "price": {
-        "amount": "104.72",
-        "currency_code": "RON"
-      },
-      "brand_title": "adidas",
-      "size_title": "L",
-      "status": "Nou cu etichetă",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9932177874-nowe-meskie-spodenki-adidas-krotkie-l-szorty-sportowe-trening-silownia-gym-man-short-shorts-czarne",
-      "user": {
-        "id": 3135789694,
-        "login": "pieknaszafa8866"
-      },
-      "_profile": {
-        "username": "pieknaszafa8866",
-        "member_since": null,
-        "feedback_count": 297,
-        "feedback_reputation": 1,
-        "item_count": 234,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9932177874,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.835,
-      "score_interval_low": 58,
-      "score_interval_high": 67,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 78.0,
-        "condition": 95.0,
-        "versatility": 71.0,
-        "value": 42.15493818181819,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 132.96,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": -1.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical gym apparel",
-        "quality": "Adidas athletic series",
-        "condition": "New with tags",
-        "versatility": "Standard training style",
-        "value": "Retail price for similar Adidas shorts",
-        "fit_probability": "Specific gym/training shorts",
-        "duplication_probability": "Common model"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Brand new Adidas training shorts, perfect for the hunt, but priced slightly above the target budget, though still within cap."
-    },
-    "watch": "Broad gym short EN M-L",
-    "seller_id": 3135789694,
-    "seller": "pieknaszafa8866"
-  },
-  {
-    "item": {
       "id": 9760781920,
       "title": "Αθλητική βερμούδα Dri-Fit",
       "price": {
@@ -1808,9 +1808,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Nike",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 1,
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9760781920-athlitiki-bermouda-dri-fit",
       "user": {
         "id": 234385849,
@@ -1873,78 +1873,6 @@
   },
   {
     "item": {
-      "id": 9937160382,
-      "title": "jordan diamond short",
-      "price": {
-        "amount": "69.1",
-        "currency_code": "RON"
-      },
-      "brand_title": "Jordan",
-      "size_title": "M",
-      "status": "Nou fără etichetă",
-      "favourite_count": 7,
-      "url": "https://www.vinted.ro/items/9937160382-jordan-diamond-short",
-      "user": {
-        "id": 307684024,
-        "login": "hoodplug2006"
-      },
-      "_profile": {
-        "username": "hoodplug2006",
-        "member_since": null,
-        "feedback_count": 19,
-        "feedback_reputation": 0.8400000000000001,
-        "item_count": 2,
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9937160382,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.845,
-      "score_interval_low": 55,
-      "score_interval_high": 64,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 78.0,
-        "condition": 90.5,
-        "versatility": 66.0,
-        "value": 55.798145454545455,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 90.55,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dedicated training shorts are highly functional for gym use.",
-        "quality": "Jordan performance line typically uses durable technical fabrics.",
-        "condition": "New without tags condition.",
-        "versatility": "Primarily gym-focused; limited for non-sport settings.",
-        "value": "Conservative retail estimate for mid-range basketball shorts.",
-        "fit_probability": "Labeled size M is consistent with hunt requirements.",
-        "duplication_probability": "Jordan items are moderately common on secondary markets."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Jordan Diamond shorts are high-quality technical gym shorts that fit the size and style requirements within the target budget."
-    },
-    "watch": "Broad gym shorts M-L",
-    "seller_id": 307684024,
-    "seller": "hoodplug2006"
-  },
-  {
-    "item": {
       "id": 9936269518,
       "title": "Nike air running run short",
       "price": {
@@ -1952,9 +1880,9 @@
         "currency_code": "RON"
       },
       "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Nou cu etichetă",
-      "favourite_count": 11,
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9936269518-nike-air-running-run-short",
       "user": {
         "id": 91552554,
@@ -2014,5 +1942,293 @@
     "watch": "Broad gym shorts M-L",
     "seller_id": 91552554,
     "seller": "marta97685"
+  },
+  {
+    "item": {
+      "id": 9937858681,
+      "title": "Męskie Spodenki Kompresyjne Nike Jordan Dri-FIT Kieszeń CV8486-657 M",
+      "price": {
+        "amount": "72.69",
+        "currency_code": "RON"
+      },
+      "brand_title": "Jordan",
+      "size_title": "M",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9937858681-meskie-spodenki-kompresyjne-nike-jordan-dri-fit-kieszen-cv8486-657-m",
+      "user": {
+        "id": 91399415,
+        "login": "tulipan2312"
+      },
+      "_profile": {
+        "username": "tulipan2312",
+        "member_since": null,
+        "feedback_count": 131,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 13,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9937858681,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.88,
+      "score_interval_low": 59,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 86.0,
+        "condition": 100.0,
+        "versatility": 74.0,
+        "value": 50.21616,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 99.32,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Compression tech",
+        "quality": "Jordan technical gear",
+        "condition": "New with tags",
+        "versatility": "High performance",
+        "value": "Technical compression gear",
+        "fit_probability": "Size M",
+        "duplication_probability": "Specific model"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "High-quality compression shorts, new condition."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 91399415,
+    "seller": "tulipan2312"
+  },
+  {
+    "item": {
+      "id": 9937808668,
+      "title": "Szorty Nike Dri Fit",
+      "price": {
+        "amount": "49.28",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "M",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9937808668-szorty-nike-dri-fit",
+      "user": {
+        "id": 228167834,
+        "login": "nazarshop1"
+      },
+      "_profile": {
+        "username": "nazarshop1",
+        "member_since": null,
+        "feedback_count": 507,
+        "feedback_reputation": 1,
+        "item_count": 17,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9937808668,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.84,
+      "score_interval_low": 58,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 90.5,
+        "quality": 74.0,
+        "condition": 82.0,
+        "versatility": 81.5,
+        "value": 51.99728,
+        "fit_probability": 0.86,
+        "duplication_probability": 0.18,
+        "delivered_cost_ron": 74.74,
+        "equivalent_replacement_cost_ron": 80.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Standard gym gear",
+        "quality": "Dri-Fit performance tech",
+        "condition": "Very good",
+        "versatility": "Ideal for all training",
+        "value": "Newer Nike Dri-Fit shorts pricing",
+        "fit_probability": "Size M matches",
+        "duplication_probability": "Essential gym staple"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Excellent value for Nike Dri-Fit shorts in very good condition."
+    },
+    "watch": "Broad training shorts M-L",
+    "seller_id": 228167834,
+    "seller": "nazarshop1"
+  },
+  {
+    "item": {
+      "id": 9930968175,
+      "title": "Sukienka bawełniana do karmienia",
+      "price": {
+        "amount": "43.12",
+        "currency_code": "RON"
+      },
+      "brand_title": "Mamalicious",
+      "size_title": "XL / 42 / 14",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9930968175-sukienka-bawelniana-do-karmienia",
+      "user": {
+        "id": 94464194,
+        "login": "nurse666"
+      },
+      "_profile": {
+        "username": "nurse666",
+        "member_since": null,
+        "feedback_count": 101,
+        "feedback_reputation": 1,
+        "item_count": 30,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9930968175,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.785,
+      "score_interval_low": 59,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 89.5,
+        "quality": 62.0,
+        "condition": 66.0,
+        "versatility": 79.0,
+        "value": 55.637879999999996,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.44,
+        "delivered_cost_ron": 68.28,
+        "equivalent_replacement_cost_ron": 70.0,
+        "personal_adjustments": {
+          "usefulness": 8.0,
+          "quality": 5.0,
+          "condition": 0.0,
+          "versatility": 5.0,
+          "value": 5.0,
+          "fit_probability": 10.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Nursing dress has high utility.",
+        "quality": "Cotton, maternity/nursing specific.",
+        "condition": "Very good.",
+        "versatility": "Daywear/nursing.",
+        "value": "Fair market value.",
+        "fit_probability": "XL target size met.",
+        "duplication_probability": "Moderate."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "This is a nursing-friendly cotton dress in size XL, which aligns well with the hunt requirements."
+    },
+    "watch": "Mamalicious maternity XL-L/XL",
+    "seller_id": 94464194,
+    "seller": "nurse666"
+  },
+  {
+    "item": {
+      "id": 9937803302,
+      "title": "Szorty Nike Dri Fit",
+      "price": {
+        "amount": "55.44",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nike",
+      "size_title": "L",
+      "status": "Nou fără etichetă",
+      "favourite_count": 14,
+      "url": "https://www.vinted.ro/items/9937803302-szorty-nike-dri-fit",
+      "user": {
+        "id": 228167834,
+        "login": "nazarshop1"
+      },
+      "_profile": {
+        "username": "nazarshop1",
+        "member_since": null,
+        "feedback_count": 507,
+        "feedback_reputation": 1,
+        "item_count": 17,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9937803302,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.845,
+      "score_interval_low": 57,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 74.0,
+        "condition": 90.5,
+        "versatility": 66.0,
+        "value": 45.258925714285716,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.4,
+        "delivered_cost_ron": 81.21,
+        "equivalent_replacement_cost_ron": 70.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Technical gym shorts are highly useful for training.",
+        "quality": "Nike Dri-Fit is standard durable gym material.",
+        "condition": "Condition listed as new without tags.",
+        "versatility": "Good for gym or casual home wear.",
+        "value": "Similar used Nike shorts market value.",
+        "fit_probability": "Size L matches target range.",
+        "duplication_probability": "Common item but condition adds value."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct size and material for the gym short hunt at a good price point."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 228167834,
+    "seller": "nazarshop1"
   }
 ]

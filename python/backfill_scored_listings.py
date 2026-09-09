@@ -593,9 +593,9 @@ def main() -> None:
                 desk_bundles = json.loads(bundle_path.read_text())
         except (OSError, json.JSONDecodeError) as e:
             print(f"best_bundles score-desk skipped: {e}", file=sys.stderr)
+        # Do not hunt-filter desk pairs — cart members may be Noppies/H&M while
+        # the backlog filter is Mamalicious.
         desk_pairs = pairs_from_desk_bundles(desk_bundles, watch_by_name, scored_already)
-        if args.hunt:
-            desk_pairs = filter_pending_by_hunt(desk_pairs, args.hunt)
         if desk_pairs:
             # Desk cart members first, then the normal backlog (deduped).
             seen = {f"{i}:{h}" for i, h in desk_pairs}

@@ -18,9 +18,9 @@ on:
         type: boolean
         default: false
       backfill_hunt:
-        description: 'Backfill only hunts whose name contains this (e.g. Mamalicious)'
+        description: 'Backfill only hunts whose name contains this (empty = all hunts)'
         type: string
-        default: 'Mamalicious'
+        default: ''
       backfill_limit:
         description: 'Max pending keys to score this backfill run'
         type: string
@@ -144,7 +144,13 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update hunt state [skip ci]"
             # Main can move while the bot runs (manual pushes); rebase then push.
-            git pull --rebase origin main
+            # indexed_scores.json is a regenerated export — on conflict, prefer ours.
+            if ! git pull --rebase origin main; then
+              echo "rebase conflict — keeping this run's export"
+              git checkout --ours data/indexed_scores.json data/seen_listings.json || true
+              git add data/indexed_scores.json data/seen_listings.json data/best_deals.json data/best_bundles.json data/bundle_pool.json data/last_run.json || true
+              GIT_EDITOR=true git rebase --continue || git rebase --abort
+            fi
             git push
           else
             echo "No state changes to commit"

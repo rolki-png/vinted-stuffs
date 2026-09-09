@@ -19349,9 +19349,15 @@
   },
   "default_backfill": {
     "cursor": [
-      "8976093945",
-      "Mamalicious leggings XL-L/XL"
+      "9913303642",
+      "Broad training shorts M-L"
     ],
-    "retry_counts": {}
+    "retry_counts": {
+      "9922762868:Gym seed Adidas shorts M-L": 1,
+      "9873963942:Gym seed Adidas shorts M-L": 1,
+      "9873963566:Gym seed Adidas shorts M-L": 1,
+      "9923264159:Gym seed Adidas shorts M-L": 1,
+      "9875037693:Gym seed Adidas shorts M-L": 1
+    }
   }
 }

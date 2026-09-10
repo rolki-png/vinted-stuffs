@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-10T00:23:58.809798+00:00",
+    "kept_at": "2026-09-10T04:06:45.541711+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,25 +47,25 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-10T00:23:58.809798+00:00",
+    "kept_at": "2026-09-10T04:06:45.541711+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
     "country": "hu",
-    "checkout_extra_ron": 23.486,
-    "listing_sum": 49.72,
-    "checkout_total": 73.206,
+    "checkout_extra_ron": 23.482,
+    "listing_sum": 49.64,
+    "checkout_total": 73.122,
     "deal_score": null,
     "value_band": "opportunity",
     "reason": "Fee-gated closet match (not LLM-confirmed)",
     "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 36.603,
+    "effective_price_per_useful_item": 36.561,
     "items": [
       {
         "role": "haul",
         "id": 9778362672,
         "title": "Piros Nike ujjatlan trikó / sportfelső - M",
-        "price": 24.86,
+        "price": 24.82,
         "url": "https://www.vinted.ro/items/9778362672-piros-nike-ujjatlan-triko-sportfelso-m",
         "watch": "Gym seed short sport M-L",
         "deal_score": null,
@@ -76,7 +76,7 @@
         "role": "haul",
         "id": 9778317100,
         "title": "Fekete Nike Sportswear ujjatlan trikó / felső - M (22.2)",
-        "price": 24.86,
+        "price": 24.82,
         "url": "https://www.vinted.ro/items/9778317100-fekete-nike-sportswear-ujjatlan-triko-felso-m-222",
         "watch": "Gym seed short sport M-L",
         "deal_score": null,

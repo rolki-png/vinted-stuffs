@@ -289,78 +289,6 @@
   },
   {
     "item": {
-      "id": 9931321121,
-      "title": "Sneakersy Asics GT-2160 Biało Srebrne 43.5",
-      "price": {
-        "amount": "368.38",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "43,5",
-      "status": "Nou cu etichetă",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9931321121-sneakersy-asics-gt-2160-bialo-srebrne-435",
-      "user": {
-        "id": 3178469284,
-        "login": "franeksantana"
-      },
-      "_profile": {
-        "username": "franeksantana",
-        "member_since": null,
-        "feedback_count": 2,
-        "feedback_reputation": 1,
-        "item_count": 9,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9931321121,
-      "score_version": 2,
-      "buy_score": 73,
-      "buy_band": "bundle",
-      "score_confidence": 0.92,
-      "score_interval_low": 69,
-      "score_interval_high": 77,
-      "score_factors": {
-        "usefulness": 95.0,
-        "quality": 90.5,
-        "condition": 100.0,
-        "versatility": 81.5,
-        "value": 39.11557714285715,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.45,
-        "delivered_cost_ron": 409.8,
-        "equivalent_replacement_cost_ron": 350.0,
-        "personal_adjustments": {
-          "usefulness": 5.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": -2.0,
-          "fit_probability": 10.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Matches hunt",
-        "quality": "New with tags",
-        "condition": "New",
-        "versatility": "Neutral colorway",
-        "value": "Retail market check",
-        "fit_probability": "Size 43.5 fits target range",
-        "duplication_probability": "Moderate availability"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Correct model and size, but the price is at the higher end of the search cap."
-    },
-    "watch": "ASICS GT-2160 size 43",
-    "seller_id": 3178469284,
-    "seller": "franeksantana"
-  },
-  {
-    "item": {
       "id": 9939041841,
       "title": "Luksusowe pióro Cerruti 1881",
       "price": {
@@ -1473,78 +1401,6 @@
   },
   {
     "item": {
-      "id": 9941415039,
-      "title": "Nowe grantowe spodenki szorty Nike Dri-Fit DriFit Mlb Houston Astros rozmiar L",
-      "price": {
-        "amount": "85",
-        "currency_code": "PLN"
-      },
-      "brand_title": null,
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9941415039-nowe-grantowe-spodenki-szorty-nike-dri-fit-drifit-mlb-houston-astros-rozmiar-l",
-      "user": {
-        "id": 111875777,
-        "login": "slakra"
-      },
-      "_profile": {
-        "username": "slakra",
-        "member_since": null,
-        "feedback_count": 441,
-        "feedback_reputation": 1,
-        "item_count": 292,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9941415039,
-      "score_version": 2,
-      "buy_score": 66,
-      "buy_band": "bundle",
-      "score_confidence": 0.88,
-      "score_interval_low": 62,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 81.5,
-        "condition": 100.0,
-        "versatility": 74.0,
-        "value": 43.15493818181819,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 132.96,
-        "equivalent_replacement_cost_ron": 110.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Technical fabric suitable for high-intensity training.",
-        "quality": "Nike Dri-Fit construction.",
-        "condition": "New with tags.",
-        "versatility": "Sport-focused design limits non-gym casual use.",
-        "value": "Conservative retail pricing for basic Nike training shorts.",
-        "fit_probability": "Size L is within target range.",
-        "duplication_probability": "Common brand, but MLB edition makes it slightly more unique."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic Nike Dri-Fit training shorts in size L, meeting the specific hunt requirements for technical gym wear."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 111875777,
-    "seller": "slakra"
-  },
-  {
-    "item": {
       "id": 9792900050,
       "title": "NIKE dri fit",
       "price": {
@@ -1758,6 +1614,78 @@
     "watch": "Broad gym shorts M-L",
     "seller_id": 188476168,
     "seller": "mirceaxvlad"
+  },
+  {
+    "item": {
+      "id": 9931321121,
+      "title": "Sneakersy Asics GT-2160 Biało Srebrne 43.5",
+      "price": {
+        "amount": "299",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Asics",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9931321121-sneakersy-asics-gt-2160-bialo-srebrne-435",
+      "user": {
+        "id": 3178469284,
+        "login": "franeksantana"
+      },
+      "_profile": {
+        "username": "franeksantana",
+        "member_since": null,
+        "feedback_count": 2,
+        "feedback_reputation": 1,
+        "item_count": 9,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9931321121,
+      "score_version": 2,
+      "buy_score": 73,
+      "buy_band": "bundle",
+      "score_confidence": 0.92,
+      "score_interval_low": 69,
+      "score_interval_high": 77,
+      "score_factors": {
+        "usefulness": 95.0,
+        "quality": 90.5,
+        "condition": 100.0,
+        "versatility": 81.5,
+        "value": 39.11557714285715,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.45,
+        "delivered_cost_ron": 409.8,
+        "equivalent_replacement_cost_ron": 350.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": -2.0,
+          "fit_probability": 10.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Matches hunt",
+        "quality": "New with tags",
+        "condition": "New",
+        "versatility": "Neutral colorway",
+        "value": "Retail market check",
+        "fit_probability": "Size 43.5 fits target range",
+        "duplication_probability": "Moderate availability"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Correct model and size, but the price is at the higher end of the search cap."
+    },
+    "watch": "ASICS GT-2160 size 43",
+    "seller_id": 3178469284,
+    "seller": "franeksantana"
   },
   {
     "item": {
@@ -2518,6 +2446,71 @@
       "verification_reason": "",
       "hunt_fit": true,
       "reason": "Authentic-appearing Cerruti 1881 pen which fits the accessories hunt category perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9720352034,
+      "title": "Luksusowy matowy długopis Cerruti 1881",
+      "price": {
+        "amount": "80",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9720352034-luksusowy-matowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9720352034,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.83,
+      "score_interval_low": 60,
+      "score_interval_high": 69,
+      "score_factors": {
+        "condition": 100.0,
+        "delivered_cost_ron": 121.49,
+        "duplication_probability": 0.38,
+        "equivalent_replacement_cost_ron": 100.0,
+        "fit_probability": 1.0,
+        "personal_adjustments": {
+          "condition": 0.0,
+          "duplication_probability": 0.0,
+          "fit_probability": 0.0,
+          "quality": 0.0,
+          "usefulness": 0.0,
+          "value": 0.0,
+          "versatility": 0.0
+        },
+        "quality": 74.5,
+        "usefulness": 77.0,
+        "value": 43.12384,
+        "versatility": 64.0
+      },
+      "factor_evidence": {
+        "condition": "New.",
+        "duplication_probability": "Distinctive matte finish.",
+        "fit_probability": "Pen accessory.",
+        "quality": "High quality finish.",
+        "usefulness": "Daily use pen.",
+        "value": "Aligned with market.",
+        "versatility": "Writing utility."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Branded pen authenticity needs to be validated.",
+      "hunt_fit": true,
+      "reason": "Matte Cerruti 1881 pen fits the target accessory hunt and is within budget."
     },
     "watch": "Cerruti 1881 accessories",
     "seller_id": 97261676,

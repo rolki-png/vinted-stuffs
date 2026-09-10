@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-10T20:17:18.319956+00:00",
+    "kept_at": "2026-09-10T22:26:58.281376+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-10T20:17:18.319956+00:00",
+    "kept_at": "2026-09-10T22:26:58.281376+00:00",
     "kind": "near_haul",
     "seller": "melinadlk",
     "seller_id": 3145387474,
@@ -58,7 +58,7 @@
     "deal_score": null,
     "value_band": "opportunity",
     "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed gym shorts M-L",
+    "watch": "Broad gym short EN M-L",
     "effective_price_per_useful_item": 39.702,
     "items": [
       {
@@ -67,7 +67,7 @@
         "title": "Arena gym shorts",
         "price": 26.58,
         "url": "https://www.vinted.ro/items/9956483333-arena-gym-shorts",
-        "watch": "Gym seed gym shorts M-L",
+        "watch": "Broad gym short EN M-L",
         "deal_score": null,
         "seller": "melinadlk",
         "seller_id": 3145387474
@@ -78,7 +78,7 @@
         "title": "Nike shorts",
         "price": 31.9,
         "url": "https://www.vinted.ro/items/9956753951-nike-shorts",
-        "watch": "Gym seed gym shorts M-L",
+        "watch": "Broad gym short EN M-L",
         "deal_score": null,
         "seller": "melinadlk",
         "seller_id": 3145387474
@@ -86,6 +86,53 @@
     ],
     "suggested_offer_ron": 39,
     "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-10T22:26:58.281376+00:00",
+    "kind": "near_haul",
+    "seller": "dollclosett",
+    "seller_id": 3177271604,
+    "country": "pl",
+    "checkout_extra_ron": 25.71,
+    "listing_sum": 54.2,
+    "checkout_total": 79.91,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 39.955,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9958499901,
+        "title": "męskie sportowe piłkarskie spodnie Nike",
+        "price": 27.1,
+        "url": "https://www.vinted.ro/items/9958499901-meskie-sportowe-pilkarskie-spodnie-nike",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dollclosett",
+        "seller_id": 3177271604
+      },
+      {
+        "role": "haul",
+        "id": 9951166196,
+        "title": "męskie sportowe piłkarskie spodnie Nike",
+        "price": 27.1,
+        "url": "https://www.vinted.ro/items/9951166196-meskie-sportowe-pilkarskie-spodnie-nike",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "dollclosett",
+        "seller_id": 3177271604
+      }
+    ],
+    "suggested_offer_ron": 35,
+    "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
     "bundle_score_version": 1,
@@ -4544,97 +4591,6 @@
     "suggested_offer_ron": 27,
     "offer_weak": false,
     "offer_target_per_item_ron": 50.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-06T10:46:09.796618+00:00",
-    "kind": "near_haul",
-    "seller": "hainefaine111",
-    "seller_id": 244375158,
-    "country": "ro",
-    "checkout_extra_ron": 22.0,
-    "listing_sum": 80.0,
-    "checkout_total": 102.0,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "The bundle consists mostly of women's apparel which does not match the target criteria for men's gym wear.",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 17.0,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9905656819,
-        "title": "Tricou fitness workout de barbati Cona sports marimea L",
-        "price": 10.0,
-        "url": "https://www.vinted.ro/items/9905656819-tricou-fitness-workout-de-barbati-cona-sports-marimea-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      },
-      {
-        "role": "haul",
-        "id": 9905473760,
-        "title": "Bluza fitness workout de dama Sports marimea M",
-        "price": 13.0,
-        "url": "https://www.vinted.ro/items/9905473760-bluza-fitness-workout-de-dama-sports-marimea-m",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      },
-      {
-        "role": "haul",
-        "id": 9905561271,
-        "title": "Bluza fitness workout de dama Adidas marimea M",
-        "price": 15.0,
-        "url": "https://www.vinted.ro/items/9905561271-bluza-fitness-workout-de-dama-adidas-marimea-m",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      },
-      {
-        "role": "haul",
-        "id": 9905622239,
-        "title": "Maieu fitness workout de dama Kingsfield marimea M",
-        "price": 12.0,
-        "url": "https://www.vinted.ro/items/9905622239-maieu-fitness-workout-de-dama-kingsfield-marimea-m",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      },
-      {
-        "role": "haul",
-        "id": 9905832668,
-        "title": "Bluza fitness workout de dama mare in Italy",
-        "price": 20.0,
-        "url": "https://www.vinted.ro/items/9905832668-bluza-fitness-workout-de-dama-mare-in-italy",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      },
-      {
-        "role": "haul",
-        "id": 9905875302,
-        "title": "Tricou fitness alergat barbati Crivit marimea L",
-        "price": 10.0,
-        "url": "https://www.vinted.ro/items/9905875302-tricou-fitness-alergat-barbati-crivit-marimea-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "hainefaine111",
-        "seller_id": 244375158
-      }
-    ],
-    "suggested_offer_ron": 72,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
     "bundle_score_version": 1,
     "bundle_confidence": null,

@@ -1624,71 +1624,6 @@
   },
   {
     "item": {
-      "id": 9872154318,
-      "title": "Nowa Cerruti 1881 Torebka 100% Skóra Cielęca | Burgundy Snake |",
-      "price": {
-        "amount": "149",
-        "currency_code": "PLN"
-      },
-      "brand_title": "Cerruti",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9872154318-nowa-cerruti-1881-torebka-100-skora-cieleca-burgundy-snake",
-      "user": {
-        "id": 93687352,
-        "login": "xnataliax44"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9872154318,
-      "score_version": 2,
-      "buy_score": 67,
-      "buy_band": "bundle",
-      "score_confidence": 0.89,
-      "score_interval_low": 63,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 77.0,
-        "quality": 81.5,
-        "condition": 100.0,
-        "versatility": 77.0,
-        "value": 35.41784,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 210.76,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Functional leather bag.",
-        "quality": "Calf leather material.",
-        "condition": "New with tags.",
-        "versatility": "Burgundy neutral color.",
-        "value": "Comparable leather handbags.",
-        "fit_probability": "Handbag is an accessory.",
-        "duplication_probability": "Specific style/snake finish."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "High-quality leather handbag fits the accessories criteria perfectly."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 93687352,
-    "seller": "xnataliax44"
-  },
-  {
-    "item": {
       "id": 9934623228,
       "title": "Pantaloni Nike",
       "price": {
@@ -1758,6 +1693,71 @@
     "watch": "Broad training shorts M-L",
     "seller_id": 188377747,
     "seller": "utu_88"
+  },
+  {
+    "item": {
+      "id": 9872154318,
+      "title": "Nowa Cerruti 1881 Torebka 100% Skóra Cielęca | Burgundy Snake |",
+      "price": {
+        "amount": "149",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9872154318-nowa-cerruti-1881-torebka-100-skora-cieleca-burgundy-snake",
+      "user": {
+        "id": 93687352,
+        "login": "xnataliax44"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9872154318,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.89,
+      "score_interval_low": 63,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 77.0,
+        "value": 35.41784,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 210.76,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional leather bag.",
+        "quality": "Calf leather material.",
+        "condition": "New with tags.",
+        "versatility": "Burgundy neutral color.",
+        "value": "Comparable leather handbags.",
+        "fit_probability": "Handbag is an accessory.",
+        "duplication_probability": "Specific style/snake finish."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "High-quality leather handbag fits the accessories criteria perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 93687352,
+    "seller": "xnataliax44"
   },
   {
     "item": {

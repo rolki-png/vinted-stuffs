@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-10T17:46:25.665148+00:00",
+    "kept_at": "2026-09-10T20:17:18.319956+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -35,6 +35,53 @@
         "deal_score": null,
         "seller": "nikolson5",
         "seller_id": 3147122815
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-10T20:17:18.319956+00:00",
+    "kind": "near_haul",
+    "seller": "melinadlk",
+    "seller_id": 3145387474,
+    "country": "gr",
+    "checkout_extra_ron": 20.924,
+    "listing_sum": 58.48,
+    "checkout_total": 79.404,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 39.702,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9956483333,
+        "title": "Arena gym shorts",
+        "price": 26.58,
+        "url": "https://www.vinted.ro/items/9956483333-arena-gym-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "melinadlk",
+        "seller_id": 3145387474
+      },
+      {
+        "role": "haul",
+        "id": 9956753951,
+        "title": "Nike shorts",
+        "price": 31.9,
+        "url": "https://www.vinted.ro/items/9956753951-nike-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "melinadlk",
+        "seller_id": 3145387474
       }
     ],
     "suggested_offer_ron": 39,
@@ -4586,53 +4633,6 @@
       }
     ],
     "suggested_offer_ron": 72,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-06T10:46:09.796618+00:00",
-    "kind": "near_haul",
-    "seller": "mdsd33",
-    "seller_id": 3153288817,
-    "country": "pl",
-    "checkout_extra_ron": 25.403,
-    "listing_sum": 48.06,
-    "checkout_total": 73.463,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 36.7315,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9749648801,
-        "title": "Dwie koszulki  sportowe",
-        "price": 11.09,
-        "url": "https://www.vinted.ro/items/9749648801-dwie-koszulki-sportowe",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "mdsd33",
-        "seller_id": 3153288817
-      },
-      {
-        "role": "haul",
-        "id": 9905058325,
-        "title": "NIKE bluza L",
-        "price": 36.97,
-        "url": "https://www.vinted.ro/items/9905058325-nike-bluza-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "mdsd33",
-        "seller_id": 3153288817
-      }
-    ],
-    "suggested_offer_ron": 34,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,

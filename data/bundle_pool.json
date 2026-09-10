@@ -145,78 +145,6 @@
   },
   {
     "item": {
-      "id": 9930234987,
-      "title": "Asics-gel kayano 14",
-      "price": {
-        "amount": "443.96",
-        "currency_code": "RON"
-      },
-      "brand_title": "Asics",
-      "size_title": "42,5",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9930234987-asics-gel-kayano-14",
-      "user": {
-        "id": 152056174,
-        "login": "user230000"
-      },
-      "_profile": {
-        "username": "user230000",
-        "member_since": null,
-        "feedback_count": 56,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 18,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9930234987,
-      "score_version": 2,
-      "buy_score": 76,
-      "buy_band": "good",
-      "score_confidence": 0.955,
-      "score_interval_low": 73,
-      "score_interval_high": 78,
-      "score_factors": {
-        "usefulness": 90.0,
-        "quality": 90.5,
-        "condition": 100.0,
-        "versatility": 90.0,
-        "value": 43.03253846501129,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 489.16,
-        "equivalent_replacement_cost_ron": 443.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Direct model match.",
-        "quality": "Condition is listed as new without tags.",
-        "condition": "New without tags condition.",
-        "versatility": "Highly wearable style.",
-        "value": "Matches seller price point.",
-        "fit_probability": "Matches target size 42.5.",
-        "duplication_probability": "Uncommon specific model colorway."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Authenticity check required; high price point for a private seller listing without tags.",
-      "hunt_fit": true,
-      "reason": "Matches size and model perfectly, though priced near the hard cap limit."
-    },
-    "watch": "ASICS Gel Kayano 14 size 43",
-    "seller_id": 152056174,
-    "seller": "user230000"
-  },
-  {
-    "item": {
       "id": 9933716663,
       "title": "New balance 990v4",
       "price": {
@@ -481,71 +409,6 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 3143640470,
     "seller": "inezm2026"
-  },
-  {
-    "item": {
-      "id": 9872154318,
-      "title": "Nowa Cerruti 1881 Torebka 100% Skóra Cielęca | Burgundy Snake |",
-      "price": {
-        "amount": "183.58",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti",
-      "size_title": null,
-      "status": "Nou cu etichetă",
-      "favourite_count": 14,
-      "url": "https://www.vinted.ro/items/9872154318-nowa-cerruti-1881-torebka-100-skora-cieleca-burgundy-snake",
-      "user": {
-        "id": 93687352,
-        "login": "xnataliax44"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9872154318,
-      "score_version": 2,
-      "buy_score": 67,
-      "buy_band": "bundle",
-      "score_confidence": 0.89,
-      "score_interval_low": 63,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 77.0,
-        "quality": 81.5,
-        "condition": 100.0,
-        "versatility": 77.0,
-        "value": 35.41784,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.29,
-        "delivered_cost_ron": 210.76,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Functional leather bag.",
-        "quality": "Calf leather material.",
-        "condition": "New with tags.",
-        "versatility": "Burgundy neutral color.",
-        "value": "Comparable leather handbags.",
-        "fit_probability": "Handbag is an accessory.",
-        "duplication_probability": "Specific style/snake finish."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "High-quality leather handbag fits the accessories criteria perfectly."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 93687352,
-    "seller": "xnataliax44"
   },
   {
     "item": {
@@ -1758,6 +1621,71 @@
     "watch": "Broad dri-fit shorts M-L",
     "seller_id": 3140884272,
     "seller": "adix7348"
+  },
+  {
+    "item": {
+      "id": 9872154318,
+      "title": "Nowa Cerruti 1881 Torebka 100% Skóra Cielęca | Burgundy Snake |",
+      "price": {
+        "amount": "149",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9872154318-nowa-cerruti-1881-torebka-100-skora-cieleca-burgundy-snake",
+      "user": {
+        "id": 93687352,
+        "login": "xnataliax44"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9872154318,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.89,
+      "score_interval_low": 63,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 77.0,
+        "quality": 81.5,
+        "condition": 100.0,
+        "versatility": 77.0,
+        "value": 35.41784,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.29,
+        "delivered_cost_ron": 210.76,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Functional leather bag.",
+        "quality": "Calf leather material.",
+        "condition": "New with tags.",
+        "versatility": "Burgundy neutral color.",
+        "value": "Comparable leather handbags.",
+        "fit_probability": "Handbag is an accessory.",
+        "duplication_probability": "Specific style/snake finish."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "High-quality leather handbag fits the accessories criteria perfectly."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 93687352,
+    "seller": "xnataliax44"
   },
   {
     "item": {

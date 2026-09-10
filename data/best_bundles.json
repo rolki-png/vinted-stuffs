@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-10T09:22:02.514823+00:00",
+    "kept_at": "2026-09-10T14:02:56.086395+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-10T09:22:02.514823+00:00",
+    "kept_at": "2026-09-10T14:02:56.086395+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -85,6 +85,64 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-10T14:02:56.086395+00:00",
+    "kind": "near_haul",
+    "seller": "luciann05",
+    "seller_id": 181552495,
+    "country": "ro",
+    "checkout_extra_ron": 22.5,
+    "listing_sum": 90.0,
+    "checkout_total": 112.5,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 37.5,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9943667931,
+        "title": "Pantaloni scurți sport H&M bărbați",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9943667931-pantaloni-scurti-sport-hm-barbati",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "luciann05",
+        "seller_id": 181552495
+      },
+      {
+        "role": "haul",
+        "id": 9943647136,
+        "title": "Pantaloni scurți sport H&M bărbați",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9943647136-pantaloni-scurti-sport-hm-barbati",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "luciann05",
+        "seller_id": 181552495
+      },
+      {
+        "role": "haul",
+        "id": 9943623840,
+        "title": "Pantaloni scurți sport H&M bărbați",
+        "price": 30.0,
+        "url": "https://www.vinted.ro/items/9943623840-pantaloni-scurti-sport-hm-barbati",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "luciann05",
+        "seller_id": 181552495
+      }
+    ],
+    "suggested_offer_ron": 67,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
@@ -4575,53 +4633,6 @@
       }
     ],
     "suggested_offer_ron": 34,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-06T09:38:26.762787+00:00",
-    "kind": "near_haul",
-    "seller": "liamihaela",
-    "seller_id": 148743860,
-    "country": "ro",
-    "checkout_extra_ron": 18.9,
-    "listing_sum": 18.0,
-    "checkout_total": 36.9,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Both items are functional for gym use, in good condition, and priced well below the 25 RON threshold per item.",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 18.45,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9868981766,
-        "title": "Hanorac cu fermoar și glugă Crane Sports, mărimea L",
-        "price": 8.0,
-        "url": "https://www.vinted.ro/items/9868981766-hanorac-cu-fermoar-si-gluga-crane-sports-marimea-l",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "liamihaela",
-        "seller_id": 148743860
-      },
-      {
-        "role": "haul",
-        "id": 9864085017,
-        "title": "Bluză trening / Jachetă sport neagră Well Uomo mărimea M cu buzunare",
-        "price": 10.0,
-        "url": "https://www.vinted.ro/items/9864085017-bluza-trening-jacheta-sport-neagra-well-uomo-marimea-m-cu-buzunare",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "liamihaela",
-        "seller_id": 148743860
-      }
-    ],
-    "suggested_offer_ron": 16,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,

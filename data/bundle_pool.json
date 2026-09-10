@@ -2515,5 +2515,70 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 97261676,
     "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9716924608,
+      "title": "Luksusowe pióro Cerruti 1881",
+      "price": {
+        "amount": "99",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9716924608-luksusowe-pioro-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9716924608,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "condition": 95.0,
+        "delivered_cost_ron": 146.07,
+        "duplication_probability": 0.38,
+        "equivalent_replacement_cost_ron": 120.0,
+        "fit_probability": 1.0,
+        "personal_adjustments": {
+          "condition": 0.0,
+          "duplication_probability": 0.0,
+          "fit_probability": 0.0,
+          "quality": 0.0,
+          "usefulness": 0.0,
+          "value": 0.0,
+          "versatility": 0.0
+        },
+        "quality": 74.5,
+        "usefulness": 66.0,
+        "value": 43.6132175,
+        "versatility": 58.0
+      },
+      "factor_evidence": {
+        "condition": "New without tags.",
+        "duplication_probability": "Common promotional style pen.",
+        "fit_probability": "Item is a writing instrument.",
+        "quality": "Cerruti branded writing instruments are standard gifts/accessories.",
+        "usefulness": "High quality stationary accessory.",
+        "value": "Typical market for branded base-model pens.",
+        "versatility": "Limited to writing tasks."
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Luxury branding on writing instruments requires verification of authenticity labels or model numbers.",
+      "hunt_fit": true,
+      "reason": "This is a Cerruti 1881 accessory fitting the hunt, though priced slightly above the target budget."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
   }
 ]

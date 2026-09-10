@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-10T04:06:45.541711+00:00",
+    "kept_at": "2026-09-10T07:24:59.176283+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -47,7 +47,7 @@
     "bundle_rank_position": null
   },
   {
-    "kept_at": "2026-09-10T04:06:45.541711+00:00",
+    "kept_at": "2026-09-10T07:24:59.176283+00:00",
     "kind": "near_haul",
     "seller": "vargadod",
     "seller_id": 292690466,
@@ -85,6 +85,53 @@
       }
     ],
     "suggested_offer_ron": 36,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-10T07:24:59.176283+00:00",
+    "kind": "near_haul",
+    "seller": "verastyl",
+    "seller_id": 3167655029,
+    "country": "gr",
+    "checkout_extra_ron": 20.126,
+    "listing_sum": 42.52,
+    "checkout_total": 62.646,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 31.323,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9949076865,
+        "title": "Black striped joggers",
+        "price": 21.26,
+        "url": "https://www.vinted.ro/items/9949076865-black-striped-joggers",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "verastyl",
+        "seller_id": 3167655029
+      },
+      {
+        "role": "haul",
+        "id": 9949069913,
+        "title": "Red short adidas",
+        "price": 21.26,
+        "url": "https://www.vinted.ro/items/9949069913-red-short-adidas",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "verastyl",
+        "seller_id": 3167655029
+      }
+    ],
+    "suggested_offer_ron": 38,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
@@ -4575,53 +4622,6 @@
       }
     ],
     "suggested_offer_ron": 16,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-06T09:38:26.762787+00:00",
-    "kind": "near_haul",
-    "seller": "roxaqqa",
-    "seller_id": 254544547,
-    "country": "ro",
-    "checkout_extra_ron": 19.75,
-    "listing_sum": 35.0,
-    "checkout_total": 54.75,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "The bundle consists of lifestyle casual wear rather than gym-appropriate gear and fails the useful item count requirement.",
-    "watch": "Gym bundle seeds M-L",
-    "effective_price_per_useful_item": 27.375,
-    "items": [
-      {
-        "role": "haul",
-        "id": 6515714022,
-        "title": "top y2k",
-        "price": 5.0,
-        "url": "https://www.vinted.ro/items/6515714022-top-y2k",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "roxaqqa",
-        "seller_id": 254544547
-      },
-      {
-        "role": "haul",
-        "id": 9904513284,
-        "title": "Hanorac zip up cu Snoopy",
-        "price": 30.0,
-        "url": "https://www.vinted.ro/items/9904513284-hanorac-zip-up-cu-snoopy",
-        "watch": "Gym bundle seeds M-L",
-        "deal_score": null,
-        "seller": "roxaqqa",
-        "seller_id": 254544547
-      }
-    ],
-    "suggested_offer_ron": 31,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,

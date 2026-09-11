@@ -412,71 +412,6 @@
   },
   {
     "item": {
-      "id": 9867145613,
-      "title": "Męska torba na ramię / listonoszka Cerruti 1881 czarna skórzana",
-      "price": {
-        "amount": "160.17",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Foarte bună",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9867145613-meska-torba-na-ramie-listonoszka-cerruti-1881-czarna-skorzana",
-      "user": {
-        "id": 176122205,
-        "login": "ponczos"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9867145613,
-      "score_version": 2,
-      "buy_score": 67,
-      "buy_band": "bundle",
-      "score_confidence": 0.875,
-      "score_interval_low": 64,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 77.0,
-        "condition": 77.0,
-        "versatility": 81.5,
-        "value": 46.421696470588245,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 186.18,
-        "equivalent_replacement_cost_ron": 170.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Very functional.",
-        "quality": "Leather material.",
-        "condition": "Foarte bună.",
-        "versatility": "Versatile black leather.",
-        "value": "Used leather bag equivalent.",
-        "fit_probability": "Messenger bag.",
-        "duplication_probability": "Specific model."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Leather messenger bag matches the accessories hunt criteria."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 176122205,
-    "seller": "ponczos"
-  },
-  {
-    "item": {
       "id": 9827613827,
       "title": "Skórzany męski portfel etui na karty Cerruti 1881",
       "price": {
@@ -1693,6 +1628,71 @@
     "watch": "Broad training shorts M-L",
     "seller_id": 188377747,
     "seller": "utu_88"
+  },
+  {
+    "item": {
+      "id": 9867145613,
+      "title": "Męska torba na ramię / listonoszka Cerruti 1881 czarna skórzana",
+      "price": {
+        "amount": "130",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9867145613-meska-torba-na-ramie-listonoszka-cerruti-1881-czarna-skorzana",
+      "user": {
+        "id": 176122205,
+        "login": "ponczos"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9867145613,
+      "score_version": 2,
+      "buy_score": 67,
+      "buy_band": "bundle",
+      "score_confidence": 0.875,
+      "score_interval_low": 64,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 86.0,
+        "quality": 77.0,
+        "condition": 77.0,
+        "versatility": 81.5,
+        "value": 46.421696470588245,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.36,
+        "delivered_cost_ron": 186.18,
+        "equivalent_replacement_cost_ron": 170.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Very functional.",
+        "quality": "Leather material.",
+        "condition": "Foarte bună.",
+        "versatility": "Versatile black leather.",
+        "value": "Used leather bag equivalent.",
+        "fit_probability": "Messenger bag.",
+        "duplication_probability": "Specific model."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Leather messenger bag matches the accessories hunt criteria."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 176122205,
+    "seller": "ponczos"
   },
   {
     "item": {

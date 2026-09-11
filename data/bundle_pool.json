@@ -1905,78 +1905,6 @@
   },
   {
     "item": {
-      "id": 9934546277,
-      "title": "Nike Dri-FIT rövidnadrág navy / blue",
-      "price": {
-        "amount": "4990",
-        "currency_code": "HUF"
-      },
-      "brand_title": "Nike",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9934546277-nike-dri-fit-rovidnadrag-navy-blue",
-      "user": {
-        "id": 193808938,
-        "login": "3egesz14szazad"
-      },
-      "_profile": {
-        "username": "3egesz14szazad",
-        "member_since": null,
-        "feedback_count": 169,
-        "feedback_reputation": 1,
-        "item_count": 99,
-        "country_code": "hu"
-      }
-    },
-    "score": {
-      "id": 9934546277,
-      "score_version": 2,
-      "buy_score": 66,
-      "buy_band": "bundle",
-      "score_confidence": 0.82,
-      "score_interval_low": 61,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 70.0,
-        "condition": 78.0,
-        "versatility": 71.0,
-        "value": 50.762080000000005,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 97.62,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Core training equipment.",
-        "quality": "Standard Dri-FIT material.",
-        "condition": "Listed as very good.",
-        "versatility": "Neutral color and design.",
-        "value": "Standard Nike training shorts retail pricing.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Highly ubiquitous item."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Standard Nike Dri-FIT shorts that align perfectly with the hunt requirements at a reasonable price."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 193808938,
-    "seller": "3egesz14szazad"
-  },
-  {
-    "item": {
       "id": 9695787774,
       "title": "Nike dri-fit short pants",
       "price": {
@@ -2371,5 +2299,72 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 97261676,
     "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9788051567,
+      "title": "Nike dri-fit",
+      "price": {
+        "amount": "12",
+        "currency_code": "EUR"
+      },
+      "brand_title": "Nike",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9788051567-nike-dri-fit",
+      "user": {
+        "id": 3179636520,
+        "login": "vaggos93"
+      },
+      "_profile": {
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9788051567,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.88,
+      "score_interval_low": 57,
+      "score_interval_high": 66,
+      "score_factors": {
+        "condition": 100.0,
+        "delivered_cost_ron": 84.96,
+        "duplication_probability": 0.36,
+        "equivalent_replacement_cost_ron": 110.0,
+        "fit_probability": 0.86,
+        "personal_adjustments": {
+          "condition": 0.0,
+          "duplication_probability": 0.0,
+          "fit_probability": 0.0,
+          "quality": 0.0,
+          "usefulness": 0.0,
+          "value": 0.0,
+          "versatility": 0.0
+        },
+        "quality": 81.5,
+        "usefulness": 86.0,
+        "value": 57.466919999999995,
+        "versatility": 66.0
+      },
+      "factor_evidence": {
+        "condition": "New with tags.",
+        "duplication_probability": "Commonly available model.",
+        "fit_probability": "Size M fits target.",
+        "quality": "New with tags.",
+        "usefulness": "Dri-fit technology is ideal for the training purpose.",
+        "value": "Retail equivalent for new Nike training shorts.",
+        "versatility": "Standard athletic design."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Brand new Nike Dri-fit shorts at a competitive price, aligning perfectly with the technical requirements."
+    },
+    "watch": "Broad dri-fit shorts M-L",
+    "seller_id": 3179636520,
+    "seller": "vaggos93"
   }
 ]

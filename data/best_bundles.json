@@ -1,6 +1,6 @@
 [
   {
-    "kept_at": "2026-09-11T07:21:29.383150+00:00",
+    "kept_at": "2026-09-11T09:37:01.437691+00:00",
     "kind": "near_haul",
     "seller": "nikolson5",
     "seller_id": 3147122815,
@@ -40,6 +40,53 @@
     "suggested_offer_ron": 39,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-11T09:37:01.437691+00:00",
+    "kind": "near_haul",
+    "seller": "nana_316",
+    "seller_id": 90609876,
+    "country": "pl",
+    "checkout_extra_ron": 26.073,
+    "listing_sum": 61.46,
+    "checkout_total": 87.533,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 43.7665,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9960831852,
+        "title": "Koszula ciążowa",
+        "price": 24.58,
+        "url": "https://www.vinted.ro/items/9960831852-koszula-ciazowa",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "nana_316",
+        "seller_id": 90609876
+      },
+      {
+        "role": "haul",
+        "id": 9960859026,
+        "title": "Sukienka ciążowa",
+        "price": 36.88,
+        "url": "https://www.vinted.ro/items/9960859026-sukienka-ciazowa",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "nana_316",
+        "seller_id": 90609876
+      }
+    ],
+    "suggested_offer_ron": 55,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0,
     "bundle_score": null,
     "bundle_score_version": 1,
     "bundle_confidence": null,
@@ -4566,61 +4613,6 @@
       }
     ],
     "suggested_offer_ron": 73,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 50.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-06T13:11:43.436255+00:00",
-    "seller": "mymdm",
-    "seller_id": 224819493,
-    "country": "ro",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 84.0,
-    "checkout_total": 109.0,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9906844012,
-        "title": "Blugi gravida xl",
-        "price": 29.0,
-        "url": "https://www.vinted.ro/items/9906844012-blugi-gravida-xl",
-        "watch": "Mamalicious maternity XL-L/XL",
-        "deal_score": 8,
-        "seller_id": 224819493,
-        "seller": "mymdm"
-      },
-      {
-        "role": "extra",
-        "id": 9900766745,
-        "title": "Blugi gravida xl",
-        "price": 25.0,
-        "url": "https://www.vinted.ro/items/9900766745-blugi-gravida-xl",
-        "watch": "Mamalicious maternity XL-L/XL",
-        "deal_score": 8,
-        "seller_id": 224819493,
-        "seller": "mymdm"
-      },
-      {
-        "role": "extra",
-        "id": 9903695852,
-        "title": "Pantalonii McKinley M",
-        "price": 30.0,
-        "url": "https://www.vinted.ro/items/9903695852-pantalonii-mckinley-m",
-        "watch": "Broad training shorts M-L",
-        "deal_score": 6,
-        "seller_id": 224819493,
-        "seller": "mymdm"
-      }
-    ],
-    "suggested_offer_ron": 75,
     "offer_weak": false,
     "offer_target_per_item_ron": 50.0,
     "bundle_score": null,

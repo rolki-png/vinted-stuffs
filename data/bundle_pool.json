@@ -73,78 +73,6 @@
   },
   {
     "item": {
-      "id": 9930653182,
-      "title": "Nowe spodenki nike",
-      "price": {
-        "amount": "43.16",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9930653182-nowe-spodenki-nike",
-      "user": {
-        "id": 91083867,
-        "login": "karolinaa260689"
-      },
-      "_profile": {
-        "username": "karolinaa260689",
-        "member_since": null,
-        "feedback_count": 354,
-        "feedback_reputation": 0.9400000000000001,
-        "item_count": 59,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9930653182,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.87,
-      "score_interval_low": 56,
-      "score_interval_high": 64,
-      "score_factors": {
-        "usefulness": 86.0,
-        "quality": 66.0,
-        "condition": 100.0,
-        "versatility": 77.0,
-        "value": 50.71124571428571,
-        "fit_probability": 0.86,
-        "duplication_probability": 0.26,
-        "delivered_cost_ron": 68.32,
-        "equivalent_replacement_cost_ron": 70.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Standard gym gear",
-        "quality": "Nike standard polyester",
-        "condition": "New without tags",
-        "versatility": "Standard athletic design",
-        "value": "Sale price for new basic Nike gym shorts",
-        "fit_probability": "Standard L sizing",
-        "duplication_probability": "Common item"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "New Nike shorts in size L are a reliable utility acquisition for the target hunt."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 91083867,
-    "seller": "karolinaa260689"
-  },
-  {
-    "item": {
       "id": 9933716663,
       "title": "New balance 990v4",
       "price": {
@@ -1271,78 +1199,6 @@
   },
   {
     "item": {
-      "id": 9928029914,
-      "title": "Puma nowe szorty rozmiar M",
-      "price": {
-        "amount": "67.77",
-        "currency_code": "PLN"
-      },
-      "brand_title": "Puma",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
-      "user": {
-        "id": 96967514,
-        "login": "benkati1"
-      },
-      "_profile": {
-        "username": "benkati1",
-        "member_since": null,
-        "feedback_count": 360,
-        "feedback_reputation": 1,
-        "item_count": 205,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9928029914,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.845,
-      "score_interval_low": 59,
-      "score_interval_high": 68,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 74.0,
-        "condition": 95.0,
-        "versatility": 78.0,
-        "value": 38.31557,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.43,
-        "delivered_cost_ron": 110.75,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Versatile gym gear.",
-        "quality": "Good standard Puma tech.",
-        "condition": "New.",
-        "versatility": "Athletic and casual wear.",
-        "value": "Standard Puma pricing.",
-        "fit_probability": "Size M.",
-        "duplication_probability": "Widely available."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "New Puma training shorts provide great value and condition for the price."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 96967514,
-    "seller": "benkati1"
-  },
-  {
-    "item": {
       "id": 9928133528,
       "title": "Salomon Running Shorts - Petrol Blue - Men M",
       "price": {
@@ -1559,75 +1415,75 @@
   },
   {
     "item": {
-      "id": 9934623228,
-      "title": "Pantaloni Nike",
+      "id": 9928029914,
+      "title": "Puma nowe szorty rozmiar M",
       "price": {
-        "amount": "155",
-        "currency_code": "RON"
+        "amount": "67.77",
+        "currency_code": "PLN"
       },
-      "brand_title": "Nike",
+      "brand_title": "Puma",
       "size_title": null,
       "status": "New",
       "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9934623228-pantaloni-nike",
+      "url": "https://www.vinted.ro/items/9928029914-puma-nowe-szorty-rozmiar-m",
       "user": {
-        "id": 188377747,
-        "login": "utu_88"
+        "id": 96967514,
+        "login": "benkati1"
       },
       "_profile": {
-        "username": "utu_88",
+        "username": "benkati1",
         "member_since": null,
-        "feedback_count": 637,
-        "feedback_reputation": 0.9800000000000001,
-        "item_count": 11,
-        "country_code": "ro"
+        "feedback_count": 360,
+        "feedback_reputation": 1,
+        "item_count": 205,
+        "country_code": "pl"
       }
     },
     "score": {
-      "id": 9934623228,
+      "id": 9928029914,
       "score_version": 2,
       "buy_score": 63,
       "buy_band": "bundle",
-      "score_confidence": 0.915,
-      "score_interval_low": 61,
-      "score_interval_high": 66,
+      "score_confidence": 0.845,
+      "score_interval_low": 59,
+      "score_interval_high": 68,
       "score_factors": {
-        "usefulness": 77.0,
-        "quality": 81.5,
-        "condition": 100.0,
-        "versatility": 77.0,
-        "value": 35.19701612903226,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 180.75,
-        "equivalent_replacement_cost_ron": 155.0,
+        "usefulness": 90.5,
+        "quality": 74.0,
+        "condition": 95.0,
+        "versatility": 78.0,
+        "value": 38.31557,
+        "fit_probability": 0.95,
+        "duplication_probability": 0.43,
+        "delivered_cost_ron": 110.75,
+        "equivalent_replacement_cost_ron": 80.0,
         "personal_adjustments": {
           "usefulness": 0.0,
           "quality": 0.0,
           "condition": 0.0,
           "versatility": 0.0,
-          "value": -8.0,
+          "value": 0.0,
           "fit_probability": 0.0,
           "duplication_probability": 0.0
         }
       },
       "factor_evidence": {
-        "usefulness": "Training shorts are core gym utility.",
-        "quality": "New with tags.",
-        "condition": "New with tags.",
-        "versatility": "Technical training gear.",
-        "value": "Current listing price.",
-        "fit_probability": "Matches target size M and gym category.",
-        "duplication_probability": "Common brand, but NWT increases specific scarcity."
+        "usefulness": "Versatile gym gear.",
+        "quality": "Good standard Puma tech.",
+        "condition": "New.",
+        "versatility": "Athletic and casual wear.",
+        "value": "Standard Puma pricing.",
+        "fit_probability": "Size M.",
+        "duplication_probability": "Widely available."
       },
-      "verification_concern": "inspect",
-      "verification_reason": "Price exceeds hard search cap of 120 RON.",
+      "verification_concern": "none",
+      "verification_reason": "",
       "hunt_fit": true,
-      "reason": "The item fits the category and size, but the price is significantly above the hard search cap."
+      "reason": "New Puma training shorts provide great value and condition for the price."
     },
     "watch": "Broad training shorts M-L",
-    "seller_id": 188377747,
-    "seller": "utu_88"
+    "seller_id": 96967514,
+    "seller": "benkati1"
   },
   {
     "item": {

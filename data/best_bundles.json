@@ -1,5 +1,52 @@
 [
   {
+    "kept_at": "2026-09-12T05:27:22.875588+00:00",
+    "kind": "near_haul",
+    "seller": "nikolson5",
+    "seller_id": 3147122815,
+    "country": "ro",
+    "checkout_extra_ron": 20.95,
+    "listing_sum": 59.0,
+    "checkout_total": 79.95,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed short sport M-L",
+    "effective_price_per_useful_item": 39.975,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9895892413,
+        "title": "Jachetă Sport Active Sport  Retro Y2K | Zip-Up | Training",
+        "price": 24.0,
+        "url": "https://www.vinted.ro/items/9895892413-jacheta-sport-active-sport-retro-y2k-zip-up-training",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolson5",
+        "seller_id": 3147122815
+      },
+      {
+        "role": "haul",
+        "id": 9895945023,
+        "title": "Puma Sturm Graz Football Shorts  | Alb/Negru/Galben | Retro",
+        "price": 35.0,
+        "url": "https://www.vinted.ro/items/9895945023-puma-sturm-graz-football-shorts-albnegrugalben-retro",
+        "watch": "Gym seed short sport M-L",
+        "deal_score": null,
+        "seller": "nikolson5",
+        "seller_id": 3147122815
+      }
+    ],
+    "suggested_offer_ron": 39,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
     "kept_at": "2026-09-12T00:52:39.098520+00:00",
     "kind": "value_haul",
     "seller": "zsuzskaboldog",
@@ -68,53 +115,6 @@
     "bundle_confidence": 0.545,
     "bundle_anchor_item_id": 9967632006,
     "bundle_rank_position": 12
-  },
-  {
-    "kept_at": "2026-09-11T22:57:24.890496+00:00",
-    "kind": "near_haul",
-    "seller": "nikolson5",
-    "seller_id": 3147122815,
-    "country": "ro",
-    "checkout_extra_ron": 20.95,
-    "listing_sum": 59.0,
-    "checkout_total": 79.95,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 39.975,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9895892413,
-        "title": "Jachetă Sport Active Sport  Retro Y2K | Zip-Up | Training",
-        "price": 24.0,
-        "url": "https://www.vinted.ro/items/9895892413-jacheta-sport-active-sport-retro-y2k-zip-up-training",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "nikolson5",
-        "seller_id": 3147122815
-      },
-      {
-        "role": "haul",
-        "id": 9895945023,
-        "title": "Puma Sturm Graz Football Shorts  | Alb/Negru/Galben | Retro",
-        "price": 35.0,
-        "url": "https://www.vinted.ro/items/9895945023-puma-sturm-graz-football-shorts-albnegrugalben-retro",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "nikolson5",
-        "seller_id": 3147122815
-      }
-    ],
-    "suggested_offer_ron": 39,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
   },
   {
     "kept_at": "2026-09-11T17:51:48.006815+00:00",

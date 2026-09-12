@@ -405,136 +405,6 @@
   },
   {
     "item": {
-      "id": 9803793656,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "121.97",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9803793656-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9803793656,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.77,
-      "score_interval_low": 54,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 66.0,
-        "quality": 71.0,
-        "condition": 86.0,
-        "versatility": 58.0,
-        "value": 50.825615,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 146.07,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Practical writing instrument.",
-        "quality": "Luxury branding suggests decent construction.",
-        "condition": "New without tags.",
-        "versatility": "Standard office accessory.",
-        "value": "Market rate for pre-owned branded pens.",
-        "fit_probability": "Pen is a listed category accessory.",
-        "duplication_probability": "Pens are relatively common secondary market items."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9792220439,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "121.97",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9792220439-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9792220439,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.77,
-      "score_interval_low": 54,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 66.0,
-        "quality": 71.0,
-        "condition": 86.0,
-        "versatility": 58.0,
-        "value": 50.825615,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 146.07,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Writing instrument.",
-        "quality": "Branded pen.",
-        "condition": "New without tags.",
-        "versatility": "Standard desk accessory.",
-        "value": "Estimated market price for Cerruti pen.",
-        "fit_probability": "Pen is an accessory.",
-        "duplication_probability": "Relatively unique."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
       "id": 9772892980,
       "title": "Duża Nowa torebka tote bag Cerruti 1881 canvas i Skóra naturalna monogram",
       "price": {
@@ -597,266 +467,6 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 3162561588,
     "seller": "123anna-ciuszek"
-  },
-  {
-    "item": {
-      "id": 9784107965,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "98.56",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 1,
-      "url": "https://www.vinted.ro/items/9784107965-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9784107965,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.8,
-      "score_interval_low": 55,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 68.0,
-        "quality": 78.0,
-        "condition": 90.5,
-        "versatility": 50.0,
-        "value": 43.983360000000005,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 121.49,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Writing instrument",
-        "quality": "Cerruti stationery",
-        "condition": "New without tags",
-        "versatility": "Office accessory",
-        "value": "Retail price point for branded pen",
-        "fit_probability": "Pen is one-size",
-        "duplication_probability": "Available online"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9784077531,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "98.56",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 4,
-      "url": "https://www.vinted.ro/items/9784077531-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9784077531,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.8,
-      "score_interval_low": 55,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 68.0,
-        "quality": 78.0,
-        "condition": 90.5,
-        "versatility": 50.0,
-        "value": 43.983360000000005,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 121.49,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Writing instrument",
-        "quality": "Cerruti stationery",
-        "condition": "New without tags",
-        "versatility": "Office accessory",
-        "value": "Retail price point for branded pen",
-        "fit_probability": "Pen is one-size",
-        "duplication_probability": "Available online"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9783907596,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "98.56",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 7,
-      "url": "https://www.vinted.ro/items/9783907596-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9783907596,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.8,
-      "score_interval_low": 55,
-      "score_interval_high": 65,
-      "score_factors": {
-        "usefulness": 68.0,
-        "quality": 78.0,
-        "condition": 90.5,
-        "versatility": 50.0,
-        "value": 43.983360000000005,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.38,
-        "delivered_cost_ron": 121.49,
-        "equivalent_replacement_cost_ron": 100.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Writing instrument",
-        "quality": "Cerruti stationery",
-        "condition": "New without tags",
-        "versatility": "Office accessory",
-        "value": "Retail price point for branded pen",
-        "fit_probability": "Pen is one-size",
-        "duplication_probability": "Available online"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9754179499,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "98.56",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "Nou fără etichetă",
-      "favourite_count": 3,
-      "url": "https://www.vinted.ro/items/9754179499-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9754179499,
-      "score_version": 2,
-      "buy_score": 72,
-      "buy_band": "bundle",
-      "score_confidence": 0.8,
-      "score_interval_low": 67,
-      "score_interval_high": 77,
-      "score_factors": {
-        "usefulness": 82.0,
-        "quality": 76.0,
-        "condition": 91.0,
-        "versatility": 71.0,
-        "value": 65.98752,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.33,
-        "delivered_cost_ron": 121.49,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 5.0,
-          "quality": 5.0,
-          "condition": 5.0,
-          "versatility": 5.0,
-          "value": 10.0,
-          "fit_probability": 10.0,
-          "duplication_probability": -5.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "functional office accessory",
-        "quality": "luxury branding",
-        "condition": "new without tags",
-        "versatility": "office and daily carry",
-        "value": "equivalent branded writing instrument",
-        "fit_probability": "Cerruti 1881 pen",
-        "duplication_probability": "less common than clothing"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Verify pen authenticity as these are commonly counterfeited.",
-      "hunt_fit": true,
-      "reason": "Luxury pens are high-utility accessories that align perfectly with the hunt."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
   },
   {
     "item": {
@@ -1415,6 +1025,396 @@
   },
   {
     "item": {
+      "id": 9803793656,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "90",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9803793656-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9803793656,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 50.825615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Practical writing instrument.",
+        "quality": "Luxury branding suggests decent construction.",
+        "condition": "New without tags.",
+        "versatility": "Standard office accessory.",
+        "value": "Market rate for pre-owned branded pens.",
+        "fit_probability": "Pen is a listed category accessory.",
+        "duplication_probability": "Pens are relatively common secondary market items."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9792220439,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "99",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9792220439-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9792220439,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 50.825615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument.",
+        "quality": "Branded pen.",
+        "condition": "New without tags.",
+        "versatility": "Standard desk accessory.",
+        "value": "Estimated market price for Cerruti pen.",
+        "fit_probability": "Pen is an accessory.",
+        "duplication_probability": "Relatively unique."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9784107965,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "80",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9784107965-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9784107965,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9784077531,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "80",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9784077531-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9784077531,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9783907596,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "80",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9783907596-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9783907596,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 55,
+      "score_interval_high": 65,
+      "score_factors": {
+        "usefulness": 68.0,
+        "quality": 78.0,
+        "condition": 90.5,
+        "versatility": 50.0,
+        "value": 43.983360000000005,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.38,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 100.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Writing instrument",
+        "quality": "Cerruti stationery",
+        "condition": "New without tags",
+        "versatility": "Office accessory",
+        "value": "Retail price point for branded pen",
+        "fit_probability": "Pen is one-size",
+        "duplication_probability": "Available online"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cerruti 1881 pen is a direct hunt-fit accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9754179499,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "80",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9754179499-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9754179499,
+      "score_version": 2,
+      "buy_score": 72,
+      "buy_band": "bundle",
+      "score_confidence": 0.8,
+      "score_interval_low": 67,
+      "score_interval_high": 77,
+      "score_factors": {
+        "usefulness": 82.0,
+        "quality": 76.0,
+        "condition": 91.0,
+        "versatility": 71.0,
+        "value": 65.98752,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.33,
+        "delivered_cost_ron": 121.49,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 5.0,
+          "quality": 5.0,
+          "condition": 5.0,
+          "versatility": 5.0,
+          "value": 10.0,
+          "fit_probability": 10.0,
+          "duplication_probability": -5.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "functional office accessory",
+        "quality": "luxury branding",
+        "condition": "new without tags",
+        "versatility": "office and daily carry",
+        "value": "equivalent branded writing instrument",
+        "fit_probability": "Cerruti 1881 pen",
+        "duplication_probability": "less common than clothing"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "Verify pen authenticity as these are commonly counterfeited.",
+      "hunt_fit": true,
+      "reason": "Luxury pens are high-utility accessories that align perfectly with the hunt."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
       "id": 9928029914,
       "title": "Puma nowe szorty rozmiar M",
       "price": {
@@ -1761,78 +1761,6 @@
   },
   {
     "item": {
-      "id": 9695787774,
-      "title": "Nike dri-fit short pants",
-      "price": {
-        "amount": "30",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": null,
-      "status": "Used",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9695787774-nike-dri-fit-short-pants",
-      "user": {
-        "id": 3175432509,
-        "login": "vasile904"
-      },
-      "_profile": {
-        "username": "vasile904",
-        "member_since": null,
-        "feedback_count": 11,
-        "feedback_reputation": 1,
-        "item_count": 21,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9695787774,
-      "score_version": 2,
-      "buy_score": 61,
-      "buy_band": "bundle",
-      "score_confidence": 0.69,
-      "score_interval_low": 54,
-      "score_interval_high": 68,
-      "score_factors": {
-        "usefulness": 82.0,
-        "quality": 64.0,
-        "condition": 56.0,
-        "versatility": 71.0,
-        "value": 58.692499999999995,
-        "fit_probability": 0.95,
-        "duplication_probability": 0.22,
-        "delivered_cost_ron": 49.5,
-        "equivalent_replacement_cost_ron": 80.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Basic training shorts.",
-        "quality": "Nike standard.",
-        "condition": "Listed as good.",
-        "versatility": "Functional athletic wear.",
-        "value": "Entry-level Nike shorts.",
-        "fit_probability": "Size M matches target.",
-        "duplication_probability": "Common item."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Low price and limited listing detail suggest potential wear concerns.",
-      "hunt_fit": true,
-      "reason": "Very affordable Nike training shorts, good entry-level value."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3175432509,
-    "seller": "vasile904"
-  },
-  {
-    "item": {
       "id": 9683082231,
       "title": "Luksusowy długopis Cerruti 1881",
       "price": {
@@ -1966,7 +1894,7 @@
       "id": 9705087933,
       "title": "Luksusowy długopis Cerruti 1881",
       "price": {
-        "amount": "99",
+        "amount": "90",
         "currency_code": "PLN"
       },
       "brand_title": "Cerruti 1881",
@@ -2031,12 +1959,12 @@
       "id": 9720352034,
       "title": "Luksusowy matowy długopis Cerruti 1881",
       "price": {
-        "amount": "80",
+        "amount": "50",
         "currency_code": "PLN"
       },
       "brand_title": "Cerruti 1881",
       "size_title": null,
-      "status": "New",
+      "status": "Used",
       "favourite_count": 0,
       "url": "https://www.vinted.ro/items/9720352034-luksusowy-matowy-dlugopis-cerruti-1881",
       "user": {
@@ -2090,137 +2018,5 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 97261676,
     "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9716924608,
-      "title": "Luksusowe pióro Cerruti 1881",
-      "price": {
-        "amount": "99",
-        "currency_code": "PLN"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9716924608-luksusowe-pioro-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9716924608,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.77,
-      "score_interval_low": 55,
-      "score_interval_high": 65,
-      "score_factors": {
-        "condition": 95.0,
-        "delivered_cost_ron": 146.07,
-        "duplication_probability": 0.38,
-        "equivalent_replacement_cost_ron": 120.0,
-        "fit_probability": 1.0,
-        "personal_adjustments": {
-          "condition": 0.0,
-          "duplication_probability": 0.0,
-          "fit_probability": 0.0,
-          "quality": 0.0,
-          "usefulness": 0.0,
-          "value": 0.0,
-          "versatility": 0.0
-        },
-        "quality": 74.5,
-        "usefulness": 66.0,
-        "value": 43.6132175,
-        "versatility": 58.0
-      },
-      "factor_evidence": {
-        "condition": "New without tags.",
-        "duplication_probability": "Common promotional style pen.",
-        "fit_probability": "Item is a writing instrument.",
-        "quality": "Cerruti branded writing instruments are standard gifts/accessories.",
-        "usefulness": "High quality stationary accessory.",
-        "value": "Typical market for branded base-model pens.",
-        "versatility": "Limited to writing tasks."
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "Luxury branding on writing instruments requires verification of authenticity labels or model numbers.",
-      "hunt_fit": true,
-      "reason": "This is a Cerruti 1881 accessory fitting the hunt, though priced slightly above the target budget."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
-  },
-  {
-    "item": {
-      "id": 9788051567,
-      "title": "Nike dri-fit",
-      "price": {
-        "amount": "12",
-        "currency_code": "EUR"
-      },
-      "brand_title": "Nike",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9788051567-nike-dri-fit",
-      "user": {
-        "id": 3179636520,
-        "login": "vaggos93"
-      },
-      "_profile": {
-        "country_code": "gr"
-      }
-    },
-    "score": {
-      "id": 9788051567,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.88,
-      "score_interval_low": 57,
-      "score_interval_high": 66,
-      "score_factors": {
-        "condition": 100.0,
-        "delivered_cost_ron": 84.96,
-        "duplication_probability": 0.36,
-        "equivalent_replacement_cost_ron": 110.0,
-        "fit_probability": 0.86,
-        "personal_adjustments": {
-          "condition": 0.0,
-          "duplication_probability": 0.0,
-          "fit_probability": 0.0,
-          "quality": 0.0,
-          "usefulness": 0.0,
-          "value": 0.0,
-          "versatility": 0.0
-        },
-        "quality": 81.5,
-        "usefulness": 86.0,
-        "value": 57.466919999999995,
-        "versatility": 66.0
-      },
-      "factor_evidence": {
-        "condition": "New with tags.",
-        "duplication_probability": "Commonly available model.",
-        "fit_probability": "Size M fits target.",
-        "quality": "New with tags.",
-        "usefulness": "Dri-fit technology is ideal for the training purpose.",
-        "value": "Retail equivalent for new Nike training shorts.",
-        "versatility": "Standard athletic design."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Brand new Nike Dri-fit shorts at a competitive price, aligning perfectly with the technical requirements."
-    },
-    "watch": "Broad dri-fit shorts M-L",
-    "seller_id": 3179636520,
-    "seller": "vaggos93"
   }
 ]

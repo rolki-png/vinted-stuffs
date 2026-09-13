@@ -953,6 +953,150 @@
   },
   {
     "item": {
+      "id": 9865761195,
+      "title": "Cybex Cloud T I Size Plus",
+      "price": {
+        "amount": "750.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 11,
+      "url": "https://www.vinted.ro/items/9865761195-cybex-cloud-t-i-size-plus",
+      "user": {
+        "id": 3167532896,
+        "login": "alexgalenco"
+      },
+      "_profile": {
+        "username": "alexgalenco",
+        "member_since": null,
+        "feedback_count": 5,
+        "feedback_reputation": 1,
+        "item_count": 2,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9865761195,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.7,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 80.4,
+        "condition": 68.0,
+        "versatility": 76.25,
+        "value": 69.64357142857142,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 805.5,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install i-Size shell, very-good",
+        "quality": "Cloud T Plus high-end shell",
+        "condition": "Listed Foarte buna, no crash photos",
+        "versatility": "Belt + Base T, recline",
+        "value": "New Cloud T ~1400-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T i-Size 45-87 cm",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T Plus at 750 RON over 520 RON hunt price needs insert and expiry verification."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 3167532896,
+    "seller": "alexgalenco"
+  },
+  {
+    "item": {
+      "id": 9835862792,
+      "title": "Scoică auto CYBEX Cloud T i-Size",
+      "price": {
+        "amount": "450.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 9,
+      "url": "https://www.vinted.ro/items/9835862792-scoica-auto-cybex-cloud-t-i-size",
+      "user": {
+        "id": 270790505,
+        "login": "abn2025"
+      },
+      "_profile": {
+        "username": "abn2025",
+        "member_since": null,
+        "feedback_count": 9,
+        "feedback_reputation": 0.9199999999999999,
+        "item_count": 17,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9835862792,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.696,
+      "score_interval_low": 56,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 78.08,
+        "condition": 68.0,
+        "versatility": 76.25,
+        "value": 73.46,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 490.5,
+        "equivalent_replacement_cost_ron": 1350.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install i-Size shell",
+        "quality": "Cloud T high-end shell",
+        "condition": "Listed Foarte buna",
+        "versatility": "Belt + Base T compatible",
+        "value": "New Cloud T ~1350-1650 RON conservative",
+        "fit_probability": "0-13 kg Cloud T i-Size scoica",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T i-Size at 450 RON under 520 RON hunt price is strong value pending insert check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 270790505,
+    "seller": "abn2025"
+  },
+  {
+    "item": {
       "id": 9803793656,
       "title": "Luksusowy długopis Cerruti 1881",
       "price": {
@@ -1805,222 +1949,6 @@
   },
   {
     "item": {
-      "id": 9899446536,
-      "title": "Scoică auto Cybex Aton S2 i-Size NEW",
-      "price": {
-        "amount": "450.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Nou cu etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9899446536-scoica-auto-cybex-aton-s2-i-size-new",
-      "user": {
-        "id": 3145368643,
-        "login": "jhon110282"
-      },
-      "_profile": {
-        "username": "jhon110282",
-        "member_since": null,
-        "feedback_count": 1,
-        "feedback_reputation": 1,
-        "item_count": 8,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9899446536,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.66,
-      "score_interval_low": 50,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 78.0,
-        "quality": 74.7,
-        "condition": 82.9,
-        "versatility": 72.75,
-        "value": 72.6425,
-        "fit_probability": 0.8825,
-        "duplication_probability": 0.5,
-        "delivered_cost_ron": 490.5,
-        "equivalent_replacement_cost_ron": 1200.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "top-model dual-install shell new under hunt price",
-        "quality": "Cybex Aton S2 premium i-Size",
-        "condition": "seller states Nou cu eticheta",
-        "versatility": "belt + ISOFIX base, travel system",
-        "value": "Aton S2 i-Size new ~1300-1500 RON conservative",
-        "fit_probability": "size 0-13 kg, Aton S2 40-87cm i-Size",
-        "duplication_probability": "unknown"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "New Cybex Aton S2 i-Size top-model shell at 450 RON under hunt price is an ideal dual-install match."
-    },
-    "watch": "Broad scoică auto i-Size",
-    "seller_id": 3145368643,
-    "seller": "jhon110282"
-  },
-  {
-    "item": {
-      "id": 9865761195,
-      "title": "Cybex Cloud T I Size Plus",
-      "price": {
-        "amount": "750.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 11,
-      "url": "https://www.vinted.ro/items/9865761195-cybex-cloud-t-i-size-plus",
-      "user": {
-        "id": 3167532896,
-        "login": "alexgalenco"
-      },
-      "_profile": {
-        "username": "alexgalenco",
-        "member_since": null,
-        "feedback_count": 5,
-        "feedback_reputation": 1,
-        "item_count": 2,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9865761195,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.7,
-      "score_interval_low": 55,
-      "score_interval_high": 70,
-      "score_factors": {
-        "usefulness": 78.5,
-        "quality": 80.4,
-        "condition": 68.0,
-        "versatility": 76.25,
-        "value": 69.64357142857142,
-        "fit_probability": 0.8825,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 805.5,
-        "equivalent_replacement_cost_ron": 1400.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dual-install i-Size shell, very-good",
-        "quality": "Cloud T Plus high-end shell",
-        "condition": "Listed Foarte buna, no crash photos",
-        "versatility": "Belt + Base T, recline",
-        "value": "New Cloud T ~1400-1700 RON conservative",
-        "fit_probability": "0-13 kg Cloud T i-Size 45-87 cm",
-        "duplication_probability": "Single seat hunt, no duplicate"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "no manufacture date, crash history or insert photos",
-      "hunt_fit": true,
-      "reason": "Very-good Cloud T Plus at 750 RON over 520 RON hunt price needs insert and expiry verification."
-    },
-    "watch": "Cybex Cloud T scoică",
-    "seller_id": 3167532896,
-    "seller": "alexgalenco"
-  },
-  {
-    "item": {
-      "id": 9835862792,
-      "title": "Scoică auto CYBEX Cloud T i-Size",
-      "price": {
-        "amount": "450.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 9,
-      "url": "https://www.vinted.ro/items/9835862792-scoica-auto-cybex-cloud-t-i-size",
-      "user": {
-        "id": 270790505,
-        "login": "abn2025"
-      },
-      "_profile": {
-        "username": "abn2025",
-        "member_since": null,
-        "feedback_count": 9,
-        "feedback_reputation": 0.9199999999999999,
-        "item_count": 17,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9835862792,
-      "score_version": 2,
-      "buy_score": 63,
-      "buy_band": "bundle",
-      "score_confidence": 0.696,
-      "score_interval_low": 56,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 78.5,
-        "quality": 78.08,
-        "condition": 68.0,
-        "versatility": 76.25,
-        "value": 73.46,
-        "fit_probability": 0.8825,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 490.5,
-        "equivalent_replacement_cost_ron": 1350.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dual-install i-Size shell",
-        "quality": "Cloud T high-end shell",
-        "condition": "Listed Foarte buna",
-        "versatility": "Belt + Base T compatible",
-        "value": "New Cloud T ~1350-1650 RON conservative",
-        "fit_probability": "0-13 kg Cloud T i-Size scoica",
-        "duplication_probability": "Single seat hunt, no duplicate"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "no manufacture date, crash history or insert photos",
-      "hunt_fit": true,
-      "reason": "Very-good Cloud T i-Size at 450 RON under 520 RON hunt price is strong value pending insert check."
-    },
-    "watch": "Cybex Cloud T scoică",
-    "seller_id": 270790505,
-    "seller": "abn2025"
-  },
-  {
-    "item": {
       "id": 9699016155,
       "title": "Scoică auto Nuna PIPA Next Caviar (0-13 kg / i-Size) + Insert Nou-Născut",
       "price": {
@@ -2090,78 +2018,6 @@
     "watch": "Nuna Pipa Next scoică",
     "seller_id": 257831683,
     "seller": "cristina271707"
-  },
-  {
-    "item": {
-      "id": 9951137047,
-      "title": "Scoica auto cloud G i size plus",
-      "price": {
-        "amount": "750.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9951137047-scoica-auto-cloud-g-i-size-plus",
-      "user": {
-        "id": 308359678,
-        "login": "evghenian"
-      },
-      "_profile": {
-        "username": "evghenian",
-        "member_since": null,
-        "feedback_count": 1,
-        "feedback_reputation": 1,
-        "item_count": 15,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9951137047,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.6525,
-      "score_interval_low": 52,
-      "score_interval_high": 68,
-      "score_factors": {
-        "usefulness": 76.6,
-        "quality": 76.6,
-        "condition": 66.5,
-        "versatility": 74.5,
-        "value": 69.64357142857142,
-        "fit_probability": 0.8825,
-        "duplication_probability": 0.3,
-        "delivered_cost_ron": 805.5,
-        "equivalent_replacement_cost_ron": 1400.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "dual-install i-Size newborn carrier",
-        "quality": "Cloud G Plus build, Plus fabrics",
-        "condition": "listed Foarte buna",
-        "versatility": "seatbelt + Base G, stroller use",
-        "value": "new Cloud G Plus ~1500-1800 RON, conservative",
-        "fit_probability": "0-13kg Cloud G Plus matches 40-87cm",
-        "duplication_probability": "no duplicate signals"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "needs manufacture date, crash history and newborn insert confirmation",
-      "hunt_fit": true,
-      "reason": "Very good Cloud G Plus at 750 RON fits the hunt but needs insert, date and crash check."
-    },
-    "watch": "Cybex Cloud G scoică",
-    "seller_id": 308359678,
-    "seller": "evghenian"
   },
   {
     "item": {
@@ -3029,78 +2885,6 @@
   },
   {
     "item": {
-      "id": 9929010203,
-      "title": "Scoica cloud t plus",
-      "price": {
-        "amount": "750.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9929010203-scoica-cloud-t-plus",
-      "user": {
-        "id": 178699843,
-        "login": "patriii0808"
-      },
-      "_profile": {
-        "username": "patriii0808",
-        "member_since": null,
-        "feedback_count": 155,
-        "feedback_reputation": 1,
-        "item_count": 4,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9929010203,
-      "score_version": 2,
-      "buy_score": 62,
-      "buy_band": "bundle",
-      "score_confidence": 0.6475,
-      "score_interval_low": 54,
-      "score_interval_high": 69,
-      "score_factors": {
-        "usefulness": 75.9,
-        "quality": 76.6,
-        "condition": 69.2,
-        "versatility": 74.5,
-        "value": 68.6395,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.3,
-        "delivered_cost_ron": 805.5,
-        "equivalent_replacement_cost_ron": 1500.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "dual-install Cloud T Plus very-good",
-        "quality": "Cloud T Plus shell",
-        "condition": "listed Foarte bună",
-        "versatility": "belt + base compatible",
-        "value": "new Cloud T Plus ~1900 RON; conservative 1500",
-        "fit_probability": "0-13kg Cloud T Plus",
-        "duplication_probability": "no duplicate signals"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
-      "hunt_fit": true,
-      "reason": "Cloud T Plus in very-good condition at 750 RON under cap but well over target, verify insert and date."
-    },
-    "watch": "Cybex Cloud T scoică",
-    "seller_id": 178699843,
-    "seller": "patriii0808"
-  },
-  {
-    "item": {
       "id": 9851920417,
       "title": "Beżowy fotelik samochodowy Cybex Cloud T 0-13 kg",
       "price": {
@@ -3170,78 +2954,6 @@
     "watch": "Cybex Cloud T scoică",
     "seller_id": 91718745,
     "seller": "kiepka1"
-  },
-  {
-    "item": {
-      "id": 9858125816,
-      "title": "Łupina fotelik Cybex cloud t plus z wkładką noworodkową",
-      "price": {
-        "amount": "676.61",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 9,
-      "url": "https://www.vinted.ro/items/9858125816-lupina-fotelik-cybex-cloud-t-plus-z-wkladka-noworodkowa",
-      "user": {
-        "id": 110390643,
-        "login": "mariuszl80"
-      },
-      "_profile": {
-        "username": "mariuszl80",
-        "member_since": null,
-        "feedback_count": 16,
-        "feedback_reputation": 1,
-        "item_count": 4,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9858125816,
-      "score_version": 2,
-      "buy_score": 65,
-      "buy_band": "bundle",
-      "score_confidence": 0.712,
-      "score_interval_low": 58,
-      "score_interval_high": 72,
-      "score_factors": {
-        "usefulness": 81.2,
-        "quality": 80.4,
-        "condition": 68.6,
-        "versatility": 76.25,
-        "value": 70.57005071428571,
-        "fit_probability": 0.9048,
-        "duplication_probability": 0.23,
-        "delivered_cost_ron": 733.44,
-        "equivalent_replacement_cost_ron": 1400.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Dual-install shell, insert included",
-        "quality": "Cloud T Plus high-end shell",
-        "condition": "Listed Foarte buna",
-        "versatility": "Belt + Base T, recline",
-        "value": "New Plus ~1400-1700 RON conservative",
-        "fit_probability": "0-13 kg Cloud T Plus with insert",
-        "duplication_probability": "Single seat hunt, no duplicate"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "no manufacture date or crash history photos despite insert shown",
-      "hunt_fit": true,
-      "reason": "Very-good Cloud T Plus with newborn insert at 676.61 RON matches hunt pending expiry and crash check."
-    },
-    "watch": "Cybex Cloud T scoică",
-    "seller_id": 110390643,
-    "seller": "mariuszl80"
   },
   {
     "item": {
@@ -4826,5 +4538,77 @@
     "watch": "Avionaut Pixel Pro scoică",
     "seller_id": 266537625,
     "seller": "wisienka9529"
+  },
+  {
+    "item": {
+      "id": 9961972056,
+      "title": "Fotelik cybex Aton S2 i-Size 45 cm-87 cm +baza",
+      "price": {
+        "amount": "307.55",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "9–18 kg",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9961972056-fotelik-cybex-aton-s2-i-size-45-cm-87-cm-baza",
+      "user": {
+        "id": 93653483,
+        "login": "anna2520"
+      },
+      "_profile": {
+        "username": "anna2520",
+        "member_since": null,
+        "feedback_count": 411,
+        "feedback_reputation": 0.96,
+        "item_count": 50,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9961972056,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.675,
+      "score_interval_low": 54,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 80.0,
+        "quality": 71.0,
+        "condition": 66.8,
+        "versatility": 74.5,
+        "value": 75.01864400000001,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.275,
+        "delivered_cost_ron": 345.93,
+        "equivalent_replacement_cost_ron": 1250.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install shell + base for car change",
+        "quality": "Aton S2 i-Size, very good per seller",
+        "condition": "listed Foarte buna",
+        "versatility": "belt or ISOFIX base + stroller compatible",
+        "value": "new Aton S2 ~800 + base ~450 conservative",
+        "fit_probability": "title 45-87 cm Aton S2 matches hunt",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Aton S2 i-Size 45-87 cm with base in very good condition well under hunt price is a strong match pending expiry/insert check."
+    },
+    "watch": "Cybex Aton S2 scoică",
+    "seller_id": 93653483,
+    "seller": "anna2520"
   }
 ]

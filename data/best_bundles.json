@@ -1,18 +1,18 @@
 [
   {
-    "kept_at": "2026-09-13T11:17:11.364286+00:00",
+    "kept_at": "2026-09-13T15:41:56.471333+00:00",
     "kind": "near_haul",
     "seller": "kolodziej2389",
     "seller_id": 96606629,
-    "country": "ro",
-    "checkout_extra_ron": 20.2755,
+    "country": "pl",
+    "checkout_extra_ron": 25.2755,
     "listing_sum": 45.51,
-    "checkout_total": 65.7855,
+    "checkout_total": 70.7855,
     "deal_score": null,
     "value_band": "opportunity",
     "reason": "Fee-gated closet match (not LLM-confirmed)",
     "watch": "Gym seed gym shorts M-L",
-    "effective_price_per_useful_item": 32.89275,
+    "effective_price_per_useful_item": 35.39275,
     "items": [
       {
         "role": "haul",
@@ -37,7 +37,7 @@
         "seller_id": 96606629
       }
     ],
-    "suggested_offer_ron": 39,
+    "suggested_offer_ron": 34,
     "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
@@ -45,6 +45,195 @@
     "bundle_confidence": null,
     "bundle_anchor_item_id": null,
     "bundle_rank_position": null
+  },
+  {
+    "kept_at": "2026-09-13T15:41:56.471333+00:00",
+    "kind": "value_haul",
+    "seller": "ionmp18",
+    "seller_id": 293149389,
+    "country": "gr",
+    "checkout_extra_ron": 21.5375,
+    "listing_sum": 70.75,
+    "checkout_total": 92.2875,
+    "deal_score": 8,
+    "value_band": "steal",
+    "reason": "4 M/L Nike/Adidas/Reebok gym pieces at ~23 RON delivered each in one shipment.",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 23.07,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9987963888,
+        "title": "Reebok men gym shorts",
+        "price": 12.23,
+        "url": "https://www.vinted.ro/items/9987963888-reebok-men-gym-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "ionmp18",
+        "seller_id": 293149389,
+        "score_version": 2,
+        "buy_score": 33,
+        "buy_band": "skip",
+        "score_confidence": 0.555,
+        "score_interval_low": 21,
+        "score_interval_high": 44,
+        "verification_concern": "none",
+        "verification_reason": "",
+        "hunt_fit": true,
+        "rank_position": null,
+        "rank_confidence": null,
+        "value_band": null
+      },
+      {
+        "role": "haul",
+        "id": 9987897705,
+        "title": "Adidas men shorts",
+        "price": 18.62,
+        "url": "https://www.vinted.ro/items/9987897705-adidas-men-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller": "ionmp18",
+        "seller_id": 293149389
+      },
+      {
+        "role": "haul",
+        "id": 8766716527,
+        "title": "Nike men Nike men sweatshirt",
+        "price": 18.62,
+        "url": "https://www.vinted.ro/items/8766716527-nike-men-nike-men-sweatshirt",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller": "ionmp18",
+        "seller_id": 293149389
+      },
+      {
+        "role": "haul",
+        "id": 9988030272,
+        "title": "Nike men shorts",
+        "price": 21.28,
+        "url": "https://www.vinted.ro/items/9988030272-nike-men-shorts",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": 8,
+        "seller": "ionmp18",
+        "seller_id": 293149389
+      }
+    ],
+    "suggested_offer_ron": 63,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": 33,
+    "bundle_score_version": 1,
+    "bundle_confidence": 0.555,
+    "bundle_anchor_item_id": 9987963888,
+    "bundle_rank_position": 14
+  },
+  {
+    "kept_at": "2026-09-13T15:41:56.471333+00:00",
+    "kind": "near_haul",
+    "seller": "karolszef17",
+    "seller_id": 203568503,
+    "country": "pl",
+    "checkout_extra_ron": 25.214,
+    "listing_sum": 44.28,
+    "checkout_total": 69.494,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "Gym seed gym shorts M-L",
+    "effective_price_per_useful_item": 34.747,
+    "items": [
+      {
+        "role": "haul",
+        "id": 9983374079,
+        "title": "Czarne spodenki sportowe",
+        "price": 22.14,
+        "url": "https://www.vinted.ro/items/9983374079-czarne-spodenki-sportowe",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "karolszef17",
+        "seller_id": 203568503
+      },
+      {
+        "role": "haul",
+        "id": 9983343123,
+        "title": "Czarne spodenki sportowe",
+        "price": 22.14,
+        "url": "https://www.vinted.ro/items/9983343123-czarne-spodenki-sportowe",
+        "watch": "Gym seed gym shorts M-L",
+        "deal_score": null,
+        "seller": "karolszef17",
+        "seller_id": 203568503
+      }
+    ],
+    "suggested_offer_ron": 34,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 30.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-13T15:30:42.827569+00:00",
+    "seller": "malunia68",
+    "seller_id": 175016122,
+    "country": "pl",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 1016.1299999999999,
+    "checkout_total": 1041.1299999999999,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9987238019,
+        "title": "🌸 fotelik Britax Römer Baby-Safe 3 i-Size wraz z bazą Flex Base iSense 🌸",
+        "price": 524.05,
+        "url": "https://www.vinted.ro/items/9987238019-fotelik-britax-romer-baby-safe-3-i-size-wraz-z-baza-flex-base-isense",
+        "watch": "Britax Baby-Safe i-Size scoică",
+        "deal_score": null,
+        "score_version": 2,
+        "buy_score": 61,
+        "buy_band": "bundle",
+        "score_confidence": 0.6425,
+        "score_interval_low": 52,
+        "score_interval_high": 69,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 175016122,
+        "seller": "malunia68"
+      },
+      {
+        "role": "extra",
+        "id": 9876883679,
+        "title": "🌸fotelik samochodowy Britax Römer Baby-Safe 3 i-Size wraz z bazą Flex Base iSense Isofix🌸",
+        "price": 492.08,
+        "url": "https://www.vinted.ro/items/9876883679-fotelik-samochodowy-britax-romer-baby-safe-3-i-size-wraz-z-baza-flex-base-isense-isofix",
+        "watch": "Britax Baby-Safe i-Size scoică",
+        "deal_score": null,
+        "score_version": 2,
+        "buy_score": 60,
+        "buy_band": "bundle",
+        "score_confidence": 0.625,
+        "score_interval_low": 52,
+        "score_interval_high": 68,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 175016122,
+        "seller": "malunia68"
+      }
+    ],
+    "suggested_offer_ron": 660,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0,
+    "family": "scoica",
+    "bundle_score": 65,
+    "bundle_score_version": 1,
+    "bundle_confidence": 0.6338,
+    "bundle_anchor_item_id": 9987238019,
+    "bundle_rank_position": 9
   },
   {
     "kept_at": "2026-09-13T05:59:11.313819+00:00",
@@ -392,7 +581,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.6533,
     "bundle_anchor_item_id": 9976413925,
-    "bundle_rank_position": 10
+    "bundle_rank_position": 11
   },
   {
     "kept_at": "2026-09-12T16:57:58.217879+00:00",
@@ -625,7 +814,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.545,
     "bundle_anchor_item_id": 9967632006,
-    "bundle_rank_position": 13
+    "bundle_rank_position": 15
   },
   {
     "kept_at": "2026-09-11T17:51:48.006815+00:00",
@@ -1007,7 +1196,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.55,
     "bundle_anchor_item_id": 9956799746,
-    "bundle_rank_position": 14
+    "bundle_rank_position": 16
   },
   {
     "kept_at": "2026-09-11T04:47:30.707343+00:00",
@@ -1370,7 +1559,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.845,
     "bundle_anchor_item_id": 9944171768,
-    "bundle_rank_position": 11
+    "bundle_rank_position": 12
   },
   {
     "kind": "index_near_bundle",
@@ -2061,7 +2250,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.8575,
     "bundle_anchor_item_id": 9913786869,
-    "bundle_rank_position": 9
+    "bundle_rank_position": 10
   },
   {
     "kept_at": "2026-09-09T03:26:04.473568+00:00",
@@ -2120,7 +2309,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.705,
     "bundle_anchor_item_id": 9936321313,
-    "bundle_rank_position": 12
+    "bundle_rank_position": 13
   },
   {
     "kept_at": "2026-09-09T03:26:04.473568+00:00",
@@ -4512,179 +4701,6 @@
     ],
     "suggested_offer_ron": 83,
     "offer_weak": true,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-06T20:59:46.434189+00:00",
-    "seller": "dominikdlug",
-    "seller_id": 224190745,
-    "country": "pl",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 49.28,
-    "checkout_total": 74.28,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9872852072,
-        "title": "Nike running gym shorts",
-        "price": 24.64,
-        "url": "https://www.vinted.ro/items/9872852072-nike-running-gym-shorts",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": 8,
-        "seller_id": 224190745,
-        "seller": "dominikdlug"
-      },
-      {
-        "role": "extra",
-        "id": 9511506467,
-        "title": "Adidas navy blue sport shorts",
-        "price": 24.64,
-        "url": "https://www.vinted.ro/items/9511506467-adidas-navy-blue-sport-shorts",
-        "watch": "Broad gym shorts M-L",
-        "deal_score": 6,
-        "seller_id": 224190745,
-        "seller": "dominikdlug"
-      }
-    ],
-    "suggested_offer_ron": 35,
-    "offer_weak": false,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-06T20:56:33.064383+00:00",
-    "seller": "vintvib",
-    "seller_id": 253589201,
-    "country": "pl",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 219.32,
-    "checkout_total": 244.32,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "keep",
-        "id": 9914848191,
-        "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
-        "price": 109.66,
-        "url": "https://www.vinted.ro/items/9914848191-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
-        "watch": "Mamalicious maternity XL-L/XL",
-        "deal_score": 9,
-        "score_version": null,
-        "buy_score": null,
-        "buy_band": null,
-        "score_confidence": null,
-        "score_interval_low": null,
-        "score_interval_high": null,
-        "rank_position": null,
-        "rank_confidence": null,
-        "seller_id": 253589201,
-        "seller": "vintvib"
-      },
-      {
-        "role": "keep",
-        "id": 9900831865,
-        "title": "Mamalicious sukienka before after ciążowa do karmienia XL 42 długa wiskozowa maxi",
-        "price": 109.66,
-        "url": "https://www.vinted.ro/items/9900831865-mamalicious-sukienka-before-after-ciazowa-do-karmienia-xl-42-dluga-wiskozowa-maxi",
-        "watch": "Mamalicious maternity XL-L/XL",
-        "deal_score": 9,
-        "score_version": null,
-        "buy_score": null,
-        "buy_band": null,
-        "score_confidence": null,
-        "score_interval_low": null,
-        "score_interval_high": null,
-        "rank_position": null,
-        "rank_confidence": null,
-        "seller_id": 253589201,
-        "seller": "vintvib"
-      }
-    ],
-    "suggested_offer_ron": 142,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 50.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kept_at": "2026-09-06T18:46:39.165526+00:00",
-    "kind": "near_haul",
-    "seller": "k_oliver19",
-    "seller_id": 199564331,
-    "country": "hu",
-    "checkout_extra_ron": 27.2285,
-    "listing_sum": 124.57,
-    "checkout_total": 151.7985,
-    "deal_score": null,
-    "value_band": "opportunity",
-    "reason": "Fee-gated closet match (not LLM-confirmed)",
-    "watch": "Gym seed short sport M-L",
-    "effective_price_per_useful_item": 37.949625,
-    "items": [
-      {
-        "role": "haul",
-        "id": 9889400261,
-        "title": "Under Armour Tech férfi sportpóló (L)",
-        "price": 25.65,
-        "url": "https://www.vinted.ro/items/9889400261-under-armour-tech-ferfi-sportpolo-l",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "k_oliver19",
-        "seller_id": 199564331
-      },
-      {
-        "role": "haul",
-        "id": 9912440260,
-        "title": "Adidas Aeroready férfi sport short (L)",
-        "price": 29.31,
-        "url": "https://www.vinted.ro/items/9912440260-adidas-aeroready-ferfi-sport-short-l",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "k_oliver19",
-        "seller_id": 199564331
-      },
-      {
-        "role": "haul",
-        "id": 9897722071,
-        "title": "Adidas Climalite Sport Rövidnadrág (M)",
-        "price": 36.64,
-        "url": "https://www.vinted.ro/items/9897722071-adidas-climalite-sport-rovidnadrag-m",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "k_oliver19",
-        "seller_id": 199564331
-      },
-      {
-        "role": "haul",
-        "id": 9910473946,
-        "title": "Lonsdale London fekete férfi cargo sport shorts / rövidnadrág (M)",
-        "price": 32.97,
-        "url": "https://www.vinted.ro/items/9910473946-lonsdale-london-fekete-ferfi-cargo-sport-shorts-rovidnadrag-m",
-        "watch": "Gym seed short sport M-L",
-        "deal_score": null,
-        "seller": "k_oliver19",
-        "seller_id": 199564331
-      }
-    ],
-    "suggested_offer_ron": 92,
-    "offer_weak": false,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,
     "bundle_score_version": 1,

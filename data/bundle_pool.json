@@ -1,78 +1,6 @@
 [
   {
     "item": {
-      "id": 9930737287,
-      "title": "Nowe spodenki nike",
-      "price": {
-        "amount": "43.16",
-        "currency_code": "RON"
-      },
-      "brand_title": "Nike",
-      "size_title": "L",
-      "status": "Nou fără etichetă",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9930737287-nowe-spodenki-nike",
-      "user": {
-        "id": 91083867,
-        "login": "karolinaa260689"
-      },
-      "_profile": {
-        "username": "karolinaa260689",
-        "member_since": null,
-        "feedback_count": 354,
-        "feedback_reputation": 0.9400000000000001,
-        "item_count": 59,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9930737287,
-      "score_version": 2,
-      "buy_score": 68,
-      "buy_band": "bundle",
-      "score_confidence": 0.87,
-      "score_interval_low": 63,
-      "score_interval_high": 72,
-      "score_factors": {
-        "usefulness": 90.5,
-        "quality": 78.0,
-        "condition": 100.0,
-        "versatility": 86.0,
-        "value": 57.51642666666667,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.36,
-        "delivered_cost_ron": 68.32,
-        "equivalent_replacement_cost_ron": 90.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Training shorts.",
-        "quality": "Nike brand quality.",
-        "condition": "New without tags.",
-        "versatility": "Versatile training shorts.",
-        "value": "New Nike shorts retail base.",
-        "fit_probability": "Size L fits hunt.",
-        "duplication_probability": "Branded item."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "New Nike shorts in size L, excellent value."
-    },
-    "watch": "Broad training shorts M-L",
-    "seller_id": 91083867,
-    "seller": "karolinaa260689"
-  },
-  {
-    "item": {
       "id": 9933716663,
       "title": "New balance 990v4",
       "price": {
@@ -1874,5 +1802,3029 @@
     "watch": "Cerruti 1881 accessories",
     "seller_id": 97261676,
     "seller": "x_t.w_x"
+  },
+  {
+    "item": {
+      "id": 9899446536,
+      "title": "Scoică auto Cybex Aton S2 i-Size NEW",
+      "price": {
+        "amount": "450.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Nou cu etichetă",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9899446536-scoica-auto-cybex-aton-s2-i-size-new",
+      "user": {
+        "id": 3145368643,
+        "login": "jhon110282"
+      },
+      "_profile": {
+        "username": "jhon110282",
+        "member_since": null,
+        "feedback_count": 1,
+        "feedback_reputation": 1,
+        "item_count": 8,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9899446536,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.66,
+      "score_interval_low": 50,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 74.7,
+        "condition": 82.9,
+        "versatility": 72.75,
+        "value": 72.6425,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 490.5,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "top-model dual-install shell new under hunt price",
+        "quality": "Cybex Aton S2 premium i-Size",
+        "condition": "seller states Nou cu eticheta",
+        "versatility": "belt + ISOFIX base, travel system",
+        "value": "Aton S2 i-Size new ~1300-1500 RON conservative",
+        "fit_probability": "size 0-13 kg, Aton S2 40-87cm i-Size",
+        "duplication_probability": "unknown"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "New Cybex Aton S2 i-Size top-model shell at 450 RON under hunt price is an ideal dual-install match."
+    },
+    "watch": "Broad scoică auto i-Size",
+    "seller_id": 3145368643,
+    "seller": "jhon110282"
+  },
+  {
+    "item": {
+      "id": 9865761195,
+      "title": "Cybex Cloud T I Size Plus",
+      "price": {
+        "amount": "750.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 11,
+      "url": "https://www.vinted.ro/items/9865761195-cybex-cloud-t-i-size-plus",
+      "user": {
+        "id": 3167532896,
+        "login": "alexgalenco"
+      },
+      "_profile": {
+        "username": "alexgalenco",
+        "member_since": null,
+        "feedback_count": 5,
+        "feedback_reputation": 1,
+        "item_count": 2,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9865761195,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.7,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 80.4,
+        "condition": 68.0,
+        "versatility": 76.25,
+        "value": 69.64357142857142,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 805.5,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install i-Size shell, very-good",
+        "quality": "Cloud T Plus high-end shell",
+        "condition": "Listed Foarte buna, no crash photos",
+        "versatility": "Belt + Base T, recline",
+        "value": "New Cloud T ~1400-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T i-Size 45-87 cm",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T Plus at 750 RON over 520 RON hunt price needs insert and expiry verification."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 3167532896,
+    "seller": "alexgalenco"
+  },
+  {
+    "item": {
+      "id": 9835862792,
+      "title": "Scoică auto CYBEX Cloud T i-Size",
+      "price": {
+        "amount": "450.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 9,
+      "url": "https://www.vinted.ro/items/9835862792-scoica-auto-cybex-cloud-t-i-size",
+      "user": {
+        "id": 270790505,
+        "login": "abn2025"
+      },
+      "_profile": {
+        "username": "abn2025",
+        "member_since": null,
+        "feedback_count": 9,
+        "feedback_reputation": 0.9199999999999999,
+        "item_count": 17,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9835862792,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.696,
+      "score_interval_low": 56,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 78.08,
+        "condition": 68.0,
+        "versatility": 76.25,
+        "value": 73.46,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 490.5,
+        "equivalent_replacement_cost_ron": 1350.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install i-Size shell",
+        "quality": "Cloud T high-end shell",
+        "condition": "Listed Foarte buna",
+        "versatility": "Belt + Base T compatible",
+        "value": "New Cloud T ~1350-1650 RON conservative",
+        "fit_probability": "0-13 kg Cloud T i-Size scoica",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T i-Size at 450 RON under 520 RON hunt price is strong value pending insert check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 270790505,
+    "seller": "abn2025"
+  },
+  {
+    "item": {
+      "id": 9699016155,
+      "title": "Scoică auto Nuna PIPA Next Caviar (0-13 kg / i-Size) + Insert Nou-Născut",
+      "price": {
+        "amount": "490.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Nuna",
+      "size_title": "0–13 kg",
+      "status": "Bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9699016155-scoica-auto-nuna-pipa-next-caviar-0-13-kg-i-size-insert-nou-nascut",
+      "user": {
+        "id": 257831683,
+        "login": "cristina271707"
+      },
+      "_profile": {
+        "username": "cristina271707",
+        "member_since": null,
+        "feedback_count": 6,
+        "feedback_reputation": 1,
+        "item_count": 6,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9699016155,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.675,
+      "score_interval_low": 54,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 76.25,
+        "quality": 74.5,
+        "condition": 59.0,
+        "versatility": 71.0,
+        "value": 73.15357142857144,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 532.5,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier with insert incl",
+        "quality": "Nuna Pipa Next premium shell",
+        "condition": "Buna condition, insert incl",
+        "versatility": "Pipa Next dual belt/base install",
+        "value": "new Pipa Next Caviar ~1800 RON, conservative 1400",
+        "fit_probability": "0-13 kg PIPA Next i-Size matches",
+        "duplication_probability": "unknown collection"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date or crash history to confirm expiry and safety",
+      "hunt_fit": true,
+      "reason": "Nuna PIPA Next Caviar i-Size 0-13 kg with newborn insert at 490 RON matches hunt."
+    },
+    "watch": "Nuna Pipa Next scoică",
+    "seller_id": 257831683,
+    "seller": "cristina271707"
+  },
+  {
+    "item": {
+      "id": 9951137047,
+      "title": "Scoica auto cloud G i size plus",
+      "price": {
+        "amount": "750.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9951137047-scoica-auto-cloud-g-i-size-plus",
+      "user": {
+        "id": 308359678,
+        "login": "evghenian"
+      },
+      "_profile": {
+        "username": "evghenian",
+        "member_since": null,
+        "feedback_count": 1,
+        "feedback_reputation": 1,
+        "item_count": 15,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9951137047,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.6525,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 76.6,
+        "condition": 66.5,
+        "versatility": 74.5,
+        "value": 69.64357142857142,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 805.5,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install i-Size newborn carrier",
+        "quality": "Cloud G Plus build, Plus fabrics",
+        "condition": "listed Foarte buna",
+        "versatility": "seatbelt + Base G, stroller use",
+        "value": "new Cloud G Plus ~1500-1800 RON, conservative",
+        "fit_probability": "0-13kg Cloud G Plus matches 40-87cm",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "needs manufacture date, crash history and newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G Plus at 750 RON fits the hunt but needs insert, date and crash check."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 308359678,
+    "seller": "evghenian"
+  },
+  {
+    "item": {
+      "id": 9941413639,
+      "title": "Scoică auto Cybex Cloud G i-size plus Stone Grey",
+      "price": {
+        "amount": "850.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9941413639-scoica-auto-cybex-cloud-g-i-size-plus-stone-grey",
+      "user": {
+        "id": 3125346289,
+        "login": "oanaaur"
+      },
+      "_profile": {
+        "username": "oanaaur",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 1,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9941413639,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.645,
+      "score_interval_low": 51,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 76.6,
+        "condition": 65.0,
+        "versatility": 74.5,
+        "value": 68.69724137931034,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 910.5,
+        "equivalent_replacement_cost_ron": 1450.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install i-Size newborn carrier",
+        "quality": "Cloud G Plus build",
+        "condition": "listed Foarte buna",
+        "versatility": "seatbelt + Base G, stroller use",
+        "value": "new Cloud G Plus Stone Grey ~1500+ RON",
+        "fit_probability": "0-13kg Cloud G Plus matches hunt",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "needs manufacture date, crash history and newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G Plus Stone Grey at cap 850 RON fits but is priced well above the 550 RON hunt price."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 3125346289,
+    "seller": "oanaaur"
+  },
+  {
+    "item": {
+      "id": 9940945720,
+      "title": "Fotelik Cybex Cloud G i size",
+      "price": {
+        "amount": "442.87",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 17,
+      "url": "https://www.vinted.ro/items/9940945720-fotelik-cybex-cloud-g-i-size",
+      "user": {
+        "id": 95368463,
+        "login": "melka1430"
+      },
+      "_profile": {
+        "username": "melka1430",
+        "member_since": null,
+        "feedback_count": 173,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 44,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9940945720,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.6525,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 75.9,
+        "condition": 66.5,
+        "versatility": 74.5,
+        "value": 73.24288999999999,
+        "fit_probability": 0.874,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 488.01,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install i-Size newborn carrier",
+        "quality": "Cloud G i-Size build",
+        "condition": "listed Foarte buna",
+        "versatility": "seatbelt + Base G, stroller use",
+        "value": "new Cloud G ~1300-1700 RON, conservative",
+        "fit_probability": "0-13kg Cloud G matches hunt",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "needs manufacture date, crash history and newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G at ~443 RON is the strongest price-fit in the set pending insert and safety checks."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 95368463,
+    "seller": "melka1430"
+  },
+  {
+    "item": {
+      "id": 9929420741,
+      "title": "Cybex Cloud T i-Size fotelik",
+      "price": {
+        "amount": "490.85",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 76,
+      "url": "https://www.vinted.ro/items/9929420741-cybex-cloud-t-i-size-fotelik",
+      "user": {
+        "id": 180782639,
+        "login": "fyrr"
+      },
+      "_profile": {
+        "username": "fyrr",
+        "member_since": null,
+        "feedback_count": 23,
+        "feedback_reputation": 1,
+        "item_count": 5,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9929420741,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.6475,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.5,
+        "value": 71.15465982142857,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 538.39,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install Cloud T very-good",
+        "quality": "Cloud T shell very-good",
+        "condition": "listed Foarte bună",
+        "versatility": "belt + base compatible",
+        "value": "new Cloud T ~1800 RON; conservative 1400",
+        "fit_probability": "0-13kg Cloud T i-Size",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T at 491 RON under 520 target, best price-fit pending insert and date check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 180782639,
+    "seller": "fyrr"
+  },
+  {
+    "item": {
+      "id": 9592737087,
+      "title": "Cybex cloud G Magic Black baby car seat",
+      "price": {
+        "amount": "405.97",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 5,
+      "url": "https://www.vinted.ro/items/9592737087-cybex-cloud-g-magic-black-baby-car-seat",
+      "user": {
+        "id": 263509120,
+        "login": "margowest95"
+      },
+      "_profile": {
+        "username": "margowest95",
+        "member_since": null,
+        "feedback_count": 57,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 44,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9592737087,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.655,
+      "score_interval_low": 53,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 75.2,
+        "quality": 76.6,
+        "condition": 68.0,
+        "versatility": 70.8,
+        "value": 73.2609725,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.395,
+        "delivered_cost_ron": 449.27,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier 40-87cm rear-facing dual-install",
+        "quality": "Cybex Cloud G i-Size R129 shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "seatbelt + Base G, stroller compatible",
+        "value": "new Cloud G ~1300-1500 RON, conservative 1200",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate cues"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G at 406 RON well under 550 RON hunt price is strong utility if insert and expiry check out."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 263509120,
+    "seller": "margowest95"
+  },
+  {
+    "item": {
+      "id": 9562639131,
+      "title": "Cybex cloud G fotelik",
+      "price": {
+        "amount": "467.48",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 15,
+      "url": "https://www.vinted.ro/items/9562639131-cybex-cloud-g-fotelik",
+      "user": {
+        "id": 172358209,
+        "login": "madziks0"
+      },
+      "_profile": {
+        "username": "madziks0",
+        "member_since": null,
+        "feedback_count": 10,
+        "feedback_reputation": 1,
+        "item_count": 18,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9562639131,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.655,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 75.2,
+        "quality": 76.6,
+        "condition": 68.0,
+        "versatility": 70.8,
+        "value": 72.29219,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.395,
+        "delivered_cost_ron": 513.85,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier 40-87cm rear-facing dual-install",
+        "quality": "Cybex Cloud G i-Size R129 shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "seatbelt + Base G, stroller compatible",
+        "value": "new Cloud G ~1300-1500 RON, conservative 1200",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate cues"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G at 467 RON under 550 RON hunt price is strong utility if insert and expiry check out."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 172358209,
+    "seller": "madziks0"
+  },
+  {
+    "item": {
+      "id": 9632069518,
+      "title": "Scoica Cybex g cloud",
+      "price": {
+        "amount": "650.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9632069518-scoica-cybex-g-cloud",
+      "user": {
+        "id": 3145296749,
+        "login": "annevyk"
+      },
+      "_profile": {
+        "username": "annevyk",
+        "member_since": null,
+        "feedback_count": 31,
+        "feedback_reputation": 1,
+        "item_count": 7,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9632069518,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.655,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 74.5,
+        "quality": 76.6,
+        "condition": 68.0,
+        "versatility": 70.8,
+        "value": 69.49249999999999,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.395,
+        "delivered_cost_ron": 700.5,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier 40-87cm rear-facing dual-install",
+        "quality": "Cybex Cloud G i-Size R129 shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "seatbelt + Base G, stroller compatible",
+        "value": "new Cloud G ~1300-1500 RON, conservative 1200",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate cues"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G at 650 RON over 550 RON hunt price is usable if insert and expiry check out."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 3145296749,
+    "seller": "annevyk"
+  },
+  {
+    "item": {
+      "id": 9611267697,
+      "title": "Fotelik samochodowy Cybex Cloud G 0-13kg Lava Grey",
+      "price": {
+        "amount": "553.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9611267697-fotelik-samochodowy-cybex-cloud-g-0-13kg-lava-grey",
+      "user": {
+        "id": 3133957813,
+        "login": "iryna_stretinska"
+      },
+      "_profile": {
+        "username": "iryna_stretinska",
+        "member_since": null,
+        "feedback_count": 39,
+        "feedback_reputation": 1,
+        "item_count": 23,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9611267697,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.655,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 75.2,
+        "quality": 76.6,
+        "condition": 68.0,
+        "versatility": 70.8,
+        "value": 70.9359575,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.395,
+        "delivered_cost_ron": 604.27,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier 40-87cm rear-facing dual-install",
+        "quality": "Cybex Cloud G i-Size R129 shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "seatbelt + Base G, stroller compatible",
+        "value": "new Cloud G ~1300-1500 RON, conservative 1200",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate cues"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G Lava Grey at 554 RON near 550 RON hunt price is solid utility if insert and expiry check out."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 3133957813,
+    "seller": "iryna_stretinska"
+  },
+  {
+    "item": {
+      "id": 9590778796,
+      "title": "Cybex cloud G i-size",
+      "price": {
+        "amount": "492.08",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 6,
+      "url": "https://www.vinted.ro/items/9590778796-cybex-cloud-g-i-size",
+      "user": {
+        "id": 228835735,
+        "login": "krzy321"
+      },
+      "_profile": {
+        "username": "krzy321",
+        "member_since": null,
+        "feedback_count": null,
+        "feedback_reputation": null,
+        "item_count": 1,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9590778796,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.655,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 75.2,
+        "quality": 76.6,
+        "condition": 68.0,
+        "versatility": 70.8,
+        "value": 71.90474,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.395,
+        "delivered_cost_ron": 539.68,
+        "equivalent_replacement_cost_ron": 1200.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "newborn carrier 40-87cm rear-facing dual-install",
+        "quality": "Cybex Cloud G i-Size R129 shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "seatbelt + Base G, stroller compatible",
+        "value": "new Cloud G ~1300-1500 RON, conservative 1200",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate cues"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert confirmation",
+      "hunt_fit": true,
+      "reason": "Very good Cloud G i-Size at 492 RON under 550 RON hunt price is strong utility if insert and expiry check out."
+    },
+    "watch": "Cybex Cloud G scoică",
+    "seller_id": 228835735,
+    "seller": "krzy321"
+  },
+  {
+    "item": {
+      "id": 9939556502,
+      "title": "Cybex Cloud T i-SIZE Fotelik Samochodowy 0-13 kg Platinum white plus",
+      "price": {
+        "amount": "713.52",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 9,
+      "url": "https://www.vinted.ro/items/9939556502-cybex-cloud-t-i-size-fotelik-samochodowy-0-13-kg-platinum-white-plus",
+      "user": {
+        "id": 91689527,
+        "login": "otwartaszafa95"
+      },
+      "_profile": {
+        "username": "otwartaszafa95",
+        "member_since": null,
+        "feedback_count": 206,
+        "feedback_reputation": 1,
+        "item_count": 46,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9939556502,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.6475,
+      "score_interval_low": 54,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.5,
+        "value": 69.005844,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 772.2,
+        "equivalent_replacement_cost_ron": 1500.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install i-Size Cloud T very-good",
+        "quality": "Cloud T Plus Platinum shell",
+        "condition": "listed Foarte bună",
+        "versatility": "belt + ISOFIX base compatible",
+        "value": "new Cloud T ~1800 RON; conservative equiv 1500",
+        "fit_probability": "0-13kg Cloud T i-Size ~45-87cm",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T Plus at 714 RON over 520 target but under cap, dual-install i-Size carrier worth verifying."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91689527,
+    "seller": "otwartaszafa95"
+  },
+  {
+    "item": {
+      "id": 9938749912,
+      "title": "Cybex Cloud T i-Size – fotelik samochodowy + adaptery do Priam 4.0",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 4,
+      "url": "https://www.vinted.ro/items/9938749912-cybex-cloud-t-i-size-fotelik-samochodowy-adaptery-do-priam-40",
+      "user": {
+        "id": 234348033,
+        "login": "madreehijo"
+      },
+      "_profile": {
+        "username": "madreehijo",
+        "member_since": null,
+        "feedback_count": 28,
+        "feedback_reputation": 1,
+        "item_count": 2,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9938749912,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.6475,
+      "score_interval_low": 54,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 75.2,
+        "condition": 69.2,
+        "versatility": 78.0,
+        "value": 69.61706607142858,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install Cloud T very-good",
+        "quality": "Cloud T i-Size shell",
+        "condition": "listed Foarte bună",
+        "versatility": "belt+base plus Priam adapters",
+        "value": "new Cloud T ~1800 RON; conservative equiv 1400",
+        "fit_probability": "0-13kg Cloud T i-Size ~45-87cm",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T with Priam adapters at 615 RON near target, dual-install carrier to verify insert and date."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 234348033,
+    "seller": "madreehijo"
+  },
+  {
+    "item": {
+      "id": 9935429163,
+      "title": "CYBEX Cloud T i-Size Plus – fotelik samochodowy bezwypadkowy dla maluszków od 0–13 kg",
+      "price": {
+        "amount": "675.38",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 28,
+      "url": "https://www.vinted.ro/items/9935429163-cybex-cloud-t-i-size-plus-fotelik-samochodowy-bezwypadkowy-dla-maluszkow-od-0-13-kg",
+      "user": {
+        "id": 99031138,
+        "login": "ro177"
+      },
+      "_profile": {
+        "username": "ro177",
+        "member_since": null,
+        "feedback_count": 50,
+        "feedback_reputation": 1,
+        "item_count": 295,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9935429163,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.6625,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.5,
+        "value": 69.446361,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 732.15,
+        "equivalent_replacement_cost_ron": 1500.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install Cloud T Plus bezwypadkowy",
+        "quality": "Cloud T Plus shell",
+        "condition": "listed Foarte bună",
+        "versatility": "belt + ISOFIX base compatible",
+        "value": "new Cloud T Plus ~1900 RON; conservative 1500",
+        "fit_probability": "0-13kg Cloud T Plus i-Size",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "listed accident-free but confirm mfg date and newborn insert included",
+      "hunt_fit": true,
+      "reason": "Accident-free Cloud T Plus in very-good condition at 675 RON, strong Cloud T match pending date and insert check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 99031138,
+    "seller": "ro177"
+  },
+  {
+    "item": {
+      "id": 9930639075,
+      "title": "Fotelik cybex cloud T i-size",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 42,
+      "url": "https://www.vinted.ro/items/9930639075-fotelik-cybex-cloud-t-i-size",
+      "user": {
+        "id": 200657836,
+        "login": "jamelcaa"
+      },
+      "_profile": {
+        "username": "jamelcaa",
+        "member_since": null,
+        "feedback_count": 169,
+        "feedback_reputation": 1,
+        "item_count": 122,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9930639075,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.6475,
+      "score_interval_low": 54,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 75.2,
+        "condition": 69.2,
+        "versatility": 74.5,
+        "value": 69.61706607142858,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install Cloud T very-good",
+        "quality": "Cloud T i-Size shell",
+        "condition": "listed Foarte bună",
+        "versatility": "belt + base compatible",
+        "value": "new Cloud T ~1800 RON; conservative 1400",
+        "fit_probability": "0-13kg Cloud T i-Size",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T i-Size at 615 RON near target, dual-install match pending insert and date check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 200657836,
+    "seller": "jamelcaa"
+  },
+  {
+    "item": {
+      "id": 9929010203,
+      "title": "Scoica cloud t plus",
+      "price": {
+        "amount": "750.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9929010203-scoica-cloud-t-plus",
+      "user": {
+        "id": 178699843,
+        "login": "patriii0808"
+      },
+      "_profile": {
+        "username": "patriii0808",
+        "member_since": null,
+        "feedback_count": 155,
+        "feedback_reputation": 1,
+        "item_count": 4,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9929010203,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.6475,
+      "score_interval_low": 54,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 75.9,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.5,
+        "value": 68.6395,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 805.5,
+        "equivalent_replacement_cost_ron": 1500.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install Cloud T Plus very-good",
+        "quality": "Cloud T Plus shell",
+        "condition": "listed Foarte bună",
+        "versatility": "belt + base compatible",
+        "value": "new Cloud T Plus ~1900 RON; conservative 1500",
+        "fit_probability": "0-13kg Cloud T Plus",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "confirm mfg date, no crash, newborn insert and pads included",
+      "hunt_fit": true,
+      "reason": "Cloud T Plus in very-good condition at 750 RON under cap but well over target, verify insert and date."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 178699843,
+    "seller": "patriii0808"
+  },
+  {
+    "item": {
+      "id": 9851920417,
+      "title": "Beżowy fotelik samochodowy Cybex Cloud T 0-13 kg",
+      "price": {
+        "amount": "799.63",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 53,
+      "url": "https://www.vinted.ro/items/9851920417-bezowy-fotelik-samochodowy-cybex-cloud-t-0-13-kg",
+      "user": {
+        "id": 91718745,
+        "login": "kiepka1"
+      },
+      "_profile": {
+        "username": "kiepka1",
+        "member_since": null,
+        "feedback_count": 307,
+        "feedback_reputation": 1,
+        "item_count": 45,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9851920417,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.7,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 80.4,
+        "condition": 69.2,
+        "versatility": 76.25,
+        "value": 69.29171931034483,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 862.61,
+        "equivalent_replacement_cost_ron": 1450.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install i-Size, very-good",
+        "quality": "Cloud T high-end shell",
+        "condition": "Listed Foarte buna",
+        "versatility": "Belt + Base T, recline",
+        "value": "New Cloud T ~1450-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T 45-87 cm",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T at 799.63 RON matches hunt but is well over 520 RON hunt price."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91718745,
+    "seller": "kiepka1"
+  },
+  {
+    "item": {
+      "id": 9858125816,
+      "title": "Łupina fotelik Cybex cloud t plus z wkładką noworodkową",
+      "price": {
+        "amount": "676.61",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 9,
+      "url": "https://www.vinted.ro/items/9858125816-lupina-fotelik-cybex-cloud-t-plus-z-wkladka-noworodkowa",
+      "user": {
+        "id": 110390643,
+        "login": "mariuszl80"
+      },
+      "_profile": {
+        "username": "mariuszl80",
+        "member_since": null,
+        "feedback_count": 16,
+        "feedback_reputation": 1,
+        "item_count": 4,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9858125816,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.712,
+      "score_interval_low": 58,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 81.2,
+        "quality": 80.4,
+        "condition": 68.6,
+        "versatility": 76.25,
+        "value": 70.57005071428571,
+        "fit_probability": 0.9048,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 733.44,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install shell, insert included",
+        "quality": "Cloud T Plus high-end shell",
+        "condition": "Listed Foarte buna",
+        "versatility": "Belt + Base T, recline",
+        "value": "New Plus ~1400-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T Plus with insert",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date or crash history photos despite insert shown",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T Plus with newborn insert at 676.61 RON matches hunt pending expiry and crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 110390643,
+    "seller": "mariuszl80"
+  },
+  {
+    "item": {
+      "id": 9859682407,
+      "title": "Fotelik samochodowy Cybex Cloud T+",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9859682407-fotelik-samochodowy-cybex-cloud-t",
+      "user": {
+        "id": 308421872,
+        "login": "natallia1312"
+      },
+      "_profile": {
+        "username": "natallia1312",
+        "member_since": null,
+        "feedback_count": 32,
+        "feedback_reputation": 0.9199999999999999,
+        "item_count": 13,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9859682407,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.694,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 76.28,
+        "quality": 80.4,
+        "condition": 68.0,
+        "versatility": 76.25,
+        "value": 71.40043571428572,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install shell, very-good",
+        "quality": "Cloud T Plus high-end shell",
+        "condition": "Listed Foarte buna",
+        "versatility": "Belt + Base T compatible",
+        "value": "New Plus ~1400-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T Plus i-Size",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T Plus at 615.10 RON matches hunt pending insert and expiry verification."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 308421872,
+    "seller": "natallia1312"
+  },
+  {
+    "item": {
+      "id": 9833069739,
+      "title": "Cybex cloud T -na gwarancji",
+      "price": {
+        "amount": "676.61",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 30,
+      "url": "https://www.vinted.ro/items/9833069739-cybex-cloud-t-na-gwarancji",
+      "user": {
+        "id": 91103819,
+        "login": "karolina5646"
+      },
+      "_profile": {
+        "username": "karolina5646",
+        "member_since": null,
+        "feedback_count": 246,
+        "feedback_reputation": 0.96,
+        "item_count": 12,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9833069739,
+      "score_version": 2,
+      "buy_score": 63,
+      "buy_band": "bundle",
+      "score_confidence": 0.699,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 78.86,
+        "condition": 69.84,
+        "versatility": 76.25,
+        "value": 70.57005071428571,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.23,
+        "delivered_cost_ron": 733.44,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Dual-install shell, warranty noted",
+        "quality": "Cloud T high-end shell",
+        "condition": "Listed Foarte buna, warranty",
+        "versatility": "Belt + Base T compatible",
+        "value": "New Cloud T ~1400-1700 RON conservative",
+        "fit_probability": "0-13 kg Cloud T 45-87 cm",
+        "duplication_probability": "Single seat hunt, no duplicate"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert photos despite warranty claim",
+      "hunt_fit": true,
+      "reason": "Very-good Cloud T under warranty at 676.61 RON matches hunt pending insert and expiry proof."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91103819,
+    "seller": "karolina5646"
+  },
+  {
+    "item": {
+      "id": 9850869279,
+      "title": "Fotelik Cybex Cloud T i-Size",
+      "price": {
+        "amount": "553.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9850869279-fotelik-cybex-cloud-t-i-size",
+      "user": {
+        "id": 92446477,
+        "login": "madzialeen"
+      },
+      "_profile": {
+        "username": "madzialeen",
+        "member_since": null,
+        "feedback_count": 48,
+        "feedback_reputation": 1,
+        "item_count": 101,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9850869279,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.6375,
+      "score_interval_low": 53,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 71.0,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 69.83042557692309,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 604.27,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size newborn carrier, belt+base capable",
+        "quality": "Cloud T i-Size shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base/stroller compatible",
+        "value": "conservative new Cloud T i-Size",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T i-Size in 0-13kg and very good condition near hunt price, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 92446477,
+    "seller": "madzialeen"
+  },
+  {
+    "item": {
+      "id": 9828235478,
+      "title": "Scoica auto Cybex Platinum Cloud T i-Size pentru copii, Rockstar by Alec Voelkel, 0-24 luni",
+      "price": {
+        "amount": "750.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 11,
+      "url": "https://www.vinted.ro/items/9828235478-scoica-auto-cybex-platinum-cloud-t-i-size-pentru-copii-rockstar-by-alec-voelkel-0-24-luni",
+      "user": {
+        "id": 3141605518,
+        "login": "ralucap298"
+      },
+      "_profile": {
+        "username": "ralucap298",
+        "member_since": null,
+        "feedback_count": 7,
+        "feedback_reputation": 0.8800000000000001,
+        "item_count": 11,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9828235478,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.625,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 71.0,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 66.945,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 805.5,
+        "equivalent_replacement_cost_ron": 1500.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size newborn carrier, belt+base capable",
+        "quality": "Cloud T Platinum shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base compatible",
+        "value": "conservative new Cloud T special edition",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T i-Size in 0-13kg in very good condition but priced above hunt price, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 3141605518,
+    "seller": "ralucap298"
+  },
+  {
+    "item": {
+      "id": 9838946058,
+      "title": "Fotelik Cybex Cloud T i-size Mirage Grey",
+      "price": {
+        "amount": "627.4",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9838946058-fotelik-cybex-cloud-t-i-size-mirage-grey",
+      "user": {
+        "id": 92629075,
+        "login": "duzaszafa93"
+      },
+      "_profile": {
+        "username": "duzaszafa93",
+        "member_since": null,
+        "feedback_count": 190,
+        "feedback_reputation": 1,
+        "item_count": 21,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9838946058,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.6375,
+      "score_interval_low": 53,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 71.0,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 68.8467653846154,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 681.77,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size newborn carrier, belt+base capable",
+        "quality": "Cloud T i-Size shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base compatible",
+        "value": "conservative new Cloud T i-Size",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T i-Size Mirage Grey in 0-13kg very good condition, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 92629075,
+    "seller": "duzaszafa93"
+  },
+  {
+    "item": {
+      "id": 9809544375,
+      "title": "Cybex Cloud T i-size plus + beige",
+      "price": {
+        "amount": "725.82",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 11,
+      "url": "https://www.vinted.ro/items/9809544375-cybex-cloud-t-i-size-plus-beige",
+      "user": {
+        "id": 3130190863,
+        "login": "leia_na"
+      },
+      "_profile": {
+        "username": "leia_na",
+        "member_since": null,
+        "feedback_count": 92,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 100,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9809544375,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.625,
+      "score_interval_low": 53,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 79.25,
+        "quality": 72.8,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 67.14889,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 785.11,
+        "equivalent_replacement_cost_ron": 1500.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Plus i-Size carrier, belt+base capable",
+        "quality": "Cloud T Plus shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base compatible",
+        "value": "conservative new Cloud T Plus",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T Plus i-Size in 0-13kg very good condition but above hunt price, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 3130190863,
+    "seller": "leia_na"
+  },
+  {
+    "item": {
+      "id": 9825140541,
+      "title": "Fotelik samochodowy Cybex Cloud T i-Size",
+      "price": {
+        "amount": "738.12",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 12,
+      "url": "https://www.vinted.ro/items/9825140541-fotelik-samochodowy-cybex-cloud-t-i-size",
+      "user": {
+        "id": 274078465,
+        "login": "alisha_alyaa"
+      },
+      "_profile": {
+        "username": "alisha_alyaa",
+        "member_since": null,
+        "feedback_count": 55,
+        "feedback_reputation": 1,
+        "item_count": 59,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9825140541,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.6375,
+      "score_interval_low": 53,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 71.0,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 67.37120846153846,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 798.03,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size newborn carrier, belt+base capable",
+        "quality": "Cloud T i-Size shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base compatible",
+        "value": "conservative new Cloud T i-Size",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T i-Size in 0-13kg very good condition but above hunt price, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 274078465,
+    "seller": "alisha_alyaa"
+  },
+  {
+    "item": {
+      "id": 9810284095,
+      "title": "Fotelik CYBEX Platinum (630) Cloud T i-Size",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 8,
+      "url": "https://www.vinted.ro/items/9810284095-fotelik-cybex-platinum-630-cloud-t-i-size",
+      "user": {
+        "id": 91296591,
+        "login": "padbiarezskaya"
+      },
+      "_profile": {
+        "username": "padbiarezskaya",
+        "member_since": null,
+        "feedback_count": 751,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 45,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9810284095,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.6375,
+      "score_interval_low": 53,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 71.0,
+        "condition": 68.0,
+        "versatility": 69.5,
+        "value": 69.01068653846154,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size newborn carrier, belt+base capable",
+        "quality": "Cloud T i-Size shell type",
+        "condition": "listed Foarte buna",
+        "versatility": "belt install + base compatible",
+        "value": "conservative new Cloud T i-Size",
+        "fit_probability": "0-13 kg matches 0-13 kg",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Matches Cloud T i-Size Platinum in 0-13kg very good condition, pending insert/date/crash check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91296591,
+    "seller": "padbiarezskaya"
+  },
+  {
+    "item": {
+      "id": 9814715845,
+      "title": "Fotelik cybex cloud t i-size",
+      "price": {
+        "amount": "553.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9814715845-fotelik-cybex-cloud-t-i-size",
+      "user": {
+        "id": 91071859,
+        "login": "mambuch"
+      },
+      "_profile": {
+        "username": "mambuch",
+        "member_since": null,
+        "feedback_count": 489,
+        "feedback_reputation": 1,
+        "item_count": 10,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9814715845,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.67,
+      "score_interval_low": 51,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 68.2,
+        "value": 72.23082071428571,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 604.27,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size Cloud T dual belt+base install",
+        "quality": "Cybex Platinum shell high-end",
+        "condition": "listed Foarte bună",
+        "versatility": "belt install + base/stroller compatible",
+        "value": "new Cloud T ~1400-1600 RON",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "unknown - no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "manufacture date, crash history and newborn insert not shown",
+      "hunt_fit": true,
+      "reason": "Cloud T i-Size in very good condition at 554 RON near hunt price is a strong dual-install candidate pending insert/date check."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91071859,
+    "seller": "mambuch"
+  },
+  {
+    "item": {
+      "id": 9803544025,
+      "title": "Cybex Cloud T i-size Plus Sepia Black 0-13 kg plus adaptery",
+      "price": {
+        "amount": "553.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 5,
+      "url": "https://www.vinted.ro/items/9803544025-cybex-cloud-t-i-size-plus-sepia-black-0-13-kg-plus-adaptery",
+      "user": {
+        "id": 91892052,
+        "login": "emememka"
+      },
+      "_profile": {
+        "username": "emememka",
+        "member_since": null,
+        "feedback_count": 78,
+        "feedback_reputation": 0.9800000000000001,
+        "item_count": 6,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9803544025,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.67,
+      "score_interval_low": 52,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 80.0,
+        "quality": 78.0,
+        "condition": 69.2,
+        "versatility": 70.8,
+        "value": 72.98267677419355,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 604.27,
+        "equivalent_replacement_cost_ron": 1550.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size Plus dual install + adapters",
+        "quality": "Cybex Cloud T Plus premium line",
+        "condition": "listed Foarte bună",
+        "versatility": "belt+base plus stroller adapters included",
+        "value": "new Cloud T Plus ~1500-1700 RON",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "unknown - no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "manufacture date, crash history and newborn insert not shown",
+      "hunt_fit": true,
+      "reason": "Cloud T Plus Sepia Black with adapters in very good condition at 554 RON matches hunt and adds versatility."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91892052,
+    "seller": "emememka"
+  },
+  {
+    "item": {
+      "id": 9796874455,
+      "title": "Cybex Cloud T i-Size - Cozy Beige Plus",
+      "price": {
+        "amount": "736.89",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9796874455-cybex-cloud-t-i-size-cozy-beige-plus",
+      "user": {
+        "id": 93780654,
+        "login": "maxck16"
+      },
+      "_profile": {
+        "username": "maxck16",
+        "member_since": null,
+        "feedback_count": 67,
+        "feedback_reputation": 0.9400000000000001,
+        "item_count": 4,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9796874455,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.67,
+      "score_interval_low": 51,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 78.0,
+        "condition": 69.2,
+        "versatility": 68.2,
+        "value": 71.036736875,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 796.73,
+        "equivalent_replacement_cost_ron": 1600.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size Plus dual belt+base install",
+        "quality": "Cybex Cloud T Plus premium",
+        "condition": "listed Foarte bună",
+        "versatility": "belt+base, Plus fabrics",
+        "value": "new Cloud T Plus ~1500-1700 RON",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "unknown - no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "manufacture date, crash history and newborn insert not shown",
+      "hunt_fit": true,
+      "reason": "Cloud T Plus Cozy Beige in very good condition matches hunt but 737 RON is well above target."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 93780654,
+    "seller": "maxck16"
+  },
+  {
+    "item": {
+      "id": 9782024993,
+      "title": "Fotelik Cybex cloud T",
+      "price": {
+        "amount": "492.08",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 10,
+      "url": "https://www.vinted.ro/items/9782024993-fotelik-cybex-cloud-t",
+      "user": {
+        "id": 91395800,
+        "login": "justynajagoda26"
+      },
+      "_profile": {
+        "username": "justynajagoda26",
+        "member_since": null,
+        "feedback_count": 160,
+        "feedback_reputation": 0.96,
+        "item_count": 44,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9782024993,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.67,
+      "score_interval_low": 51,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 79.25,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 68.2,
+        "value": 73.0612057142857,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 539.68,
+        "equivalent_replacement_cost_ron": 1400.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size Cloud T dual belt+base install",
+        "quality": "Cybex Platinum shell high-end",
+        "condition": "listed Foarte bună",
+        "versatility": "belt install + base/stroller compatible",
+        "value": "new Cloud T ~1400-1600 RON",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "unknown - no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "manufacture date, crash history and newborn insert not shown",
+      "hunt_fit": true,
+      "reason": "Cloud T in very good condition at 492 RON under hunt price is the strongest value match pending checks."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91395800,
+    "seller": "justynajagoda26"
+  },
+  {
+    "item": {
+      "id": 9775268821,
+      "title": "Fotelik samochodowy Cybex Cloud T i-Size Plus | Peach Pink | Rozkładany 0-13 kg",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 45,
+      "url": "https://www.vinted.ro/items/9775268821-fotelik-samochodowy-cybex-cloud-t-i-size-plus-peach-pink-rozkladany-0-13-kg",
+      "user": {
+        "id": 91664271,
+        "login": "natacha0707"
+      },
+      "_profile": {
+        "username": "natacha0707",
+        "member_since": null,
+        "feedback_count": 194,
+        "feedback_reputation": 1,
+        "item_count": 52,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9775268821,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.679,
+      "score_interval_low": 52,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 81.2,
+        "quality": 78.0,
+        "condition": 70.4,
+        "versatility": 69.5,
+        "value": 72.47538125,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.5,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1600.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "i-Size Plus dual install recline",
+        "quality": "Cybex Cloud T Plus premium",
+        "condition": "listed Foarte bună high interest",
+        "versatility": "belt+base plus lie-flat",
+        "value": "new Cloud T Plus ~1500-1700 RON",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "unknown - no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "manufacture date, crash history and newborn insert not shown",
+      "hunt_fit": true,
+      "reason": "Cloud T Plus Peach Pink reclining i-Size in very good condition at 615 RON is a strong hunt match."
+    },
+    "watch": "Cybex Cloud T scoică",
+    "seller_id": 91664271,
+    "seller": "natacha0707"
+  },
+  {
+    "item": {
+      "id": 9061591581,
+      "title": "Cybex κάθισμα αυτοκινήτου aton s2 i-size grey",
+      "price": {
+        "amount": "531.88",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": "0–13 kg",
+      "status": "Nou fără etichetă",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9061591581-cybex-kathisma-autokinitou-aton-s2-i-size-grey",
+      "user": {
+        "id": 269633039,
+        "login": "mystaffforyou"
+      },
+      "_profile": {
+        "username": "mystaffforyou",
+        "member_since": null,
+        "feedback_count": 31,
+        "feedback_reputation": 1,
+        "item_count": 53,
+        "country_code": "gr"
+      }
+    },
+    "score": {
+      "id": 9061591581,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.6675,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.0,
+        "quality": 76.6,
+        "condition": 79.25,
+        "versatility": 74.5,
+        "value": 60.58794285714285,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.32,
+        "delivered_cost_ron": 576.47,
+        "equivalent_replacement_cost_ron": 700.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install i-Size newborn shell",
+        "quality": "Cybex Aton S2 i-Size line",
+        "condition": "listed Nou fără etichetă",
+        "versatility": "seatbelt + ISOFIX base compatible",
+        "value": "conservative new Aton S2 equivalent",
+        "fit_probability": "0-13 kg Aton S2 i-Size ~45-87 cm",
+        "duplication_probability": "no ownership info"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date or crash history shown, insert presence unconfirmed",
+      "hunt_fit": true,
+      "reason": "Matching Cybex Aton S2 i-Size in like-new condition, pending date/crash verification despite higher price."
+    },
+    "watch": "Cybex Aton S2 scoică",
+    "seller_id": 269633039,
+    "seller": "mystaffforyou"
+  },
+  {
+    "item": {
+      "id": 9876883679,
+      "title": "🌸fotelik samochodowy Britax Römer Baby-Safe 3 i-Size wraz z bazą Flex Base iSense Isofix🌸",
+      "price": {
+        "amount": "492.08",
+        "currency_code": "RON"
+      },
+      "brand_title": "Britax Römer",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 84,
+      "url": "https://www.vinted.ro/items/9876883679-fotelik-samochodowy-britax-romer-baby-safe-3-i-size-wraz-z-baza-flex-base-isense-isofix",
+      "user": {
+        "id": 175016122,
+        "login": "malunia68"
+      },
+      "_profile": {
+        "username": "malunia68",
+        "member_since": null,
+        "feedback_count": 108,
+        "feedback_reputation": 1,
+        "item_count": 237,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9876883679,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.625,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 76.6,
+        "quality": 72.75,
+        "condition": 66.5,
+        "versatility": 74.7,
+        "value": 70.3761712,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.26,
+        "delivered_cost_ron": 539.68,
+        "equivalent_replacement_cost_ron": 1250.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "dual-install shell + Flex Base iSense very good",
+        "quality": "dual-install 3 i-Size platform very good",
+        "condition": "seller condition Foarte buna",
+        "versatility": "belt + Flex Base ISOFIX; ideal for car change",
+        "value": "3 i-Size + Flex Base new higher; conservative 1250 RON",
+        "fit_probability": "0-13 kg matches target; 3 i-Size + Flex Base",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert close-up confirmed",
+      "hunt_fit": true,
+      "reason": "Baby-Safe 3 i-Size with Flex Base iSense in very good condition matches hunt exactly with dual install at 492 RON."
+    },
+    "watch": "Britax Baby-Safe i-Size scoică",
+    "seller_id": 175016122,
+    "seller": "malunia68"
+  },
+  {
+    "item": {
+      "id": 9957599471,
+      "title": "Sprzedam fotelik avionaut Pixel",
+      "price": {
+        "amount": "123.02",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9957599471-sprzedam-fotelik-avionaut-pixel",
+      "user": {
+        "id": 161034354,
+        "login": "mikolaj8888"
+      },
+      "_profile": {
+        "username": "mikolaj8888",
+        "member_since": null,
+        "feedback_count": 13,
+        "feedback_reputation": 1,
+        "item_count": 24,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9957599471,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.6425,
+      "score_interval_low": 53,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 74.0,
+        "quality": 69.5,
+        "condition": 69.2,
+        "versatility": 66.8,
+        "value": 74.71019833333334,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 152.17,
+        "equivalent_replacement_cost_ron": 900.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel i-Size infant carrier, belt+base capable",
+        "quality": "Avionaut Pixel known lightweight shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "infant shell for belt and base use",
+        "value": "conservative new Pixel shell equivalent",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown; verify before use",
+      "hunt_fit": true,
+      "reason": "Very-good Avionaut Pixel shell well under 400 RON hunt price, verify insert and expiry before buying."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 161034354,
+    "seller": "mikolaj8888"
+  },
+  {
+    "item": {
+      "id": 9956170844,
+      "title": "Avionaut Pixel Pro z bazą",
+      "price": {
+        "amount": "430.57",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9956170844-avionaut-pixel-pro-z-baza",
+      "user": {
+        "id": 116509832,
+        "login": "karo_duszczi"
+      },
+      "_profile": {
+        "username": "karo_duszczi",
+        "member_since": null,
+        "feedback_count": 212,
+        "feedback_reputation": 1,
+        "item_count": 20,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9956170844,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.6725,
+      "score_interval_low": 57,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 83.6,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.7,
+        "value": 72.88874985294117,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 475.1,
+        "equivalent_replacement_cost_ron": 1700.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel Pro + base, dual install",
+        "quality": "Pixel Pro i-Size dual-install shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt + ISOFIX base included",
+        "value": "conservative new Pixel Pro + base set",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert detail shown; verify base model and expiry",
+      "hunt_fit": true,
+      "reason": "Very-good Pixel Pro with base near hunt price, verify insert, base compatibility and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 116509832,
+    "seller": "karo_duszczi"
+  },
+  {
+    "item": {
+      "id": 9953737162,
+      "title": "Fotelik samochodowy łupina pixel pro 2.0 Avionaut",
+      "price": {
+        "amount": "615.1",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9953737162-fotelik-samochodowy-lupina-pixel-pro-20-avionaut",
+      "user": {
+        "id": 105886461,
+        "login": "kangyurma"
+      },
+      "_profile": {
+        "username": "kangyurma",
+        "member_since": null,
+        "feedback_count": 112,
+        "feedback_reputation": 1,
+        "item_count": 77,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9953737162,
+      "score_version": 2,
+      "buy_score": 61,
+      "buy_band": "bundle",
+      "score_confidence": 0.6525,
+      "score_interval_low": 54,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 76.25,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 69.2,
+        "value": 69.01068653846154,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 668.86,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel Pro 2.0 dual-install infant shell",
+        "quality": "Pixel Pro 2.0 i-Size shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt + base capable, no base listed",
+        "value": "conservative new Pixel Pro 2.0 shell",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, insert or crash history shown; verify before use",
+      "hunt_fit": true,
+      "reason": "Very-good Pixel Pro 2.0 shell under 700 RON cap but above hunt price, verify insert and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 105886461,
+    "seller": "kangyurma"
+  },
+  {
+    "item": {
+      "id": 9952003064,
+      "title": "Lekki fotelik samochodowy Avionaut Pixel (0-13 kg)",
+      "price": {
+        "amount": "196.83",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 7,
+      "url": "https://www.vinted.ro/items/9952003064-lekki-fotelik-samochodowy-avionaut-pixel-0-13-kg",
+      "user": {
+        "id": 274195090,
+        "login": "iryna554"
+      },
+      "_profile": {
+        "username": "iryna554",
+        "member_since": null,
+        "feedback_count": 45,
+        "feedback_reputation": 0.96,
+        "item_count": 291,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9952003064,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.6425,
+      "score_interval_low": 53,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 74.0,
+        "quality": 69.5,
+        "condition": 69.2,
+        "versatility": 66.8,
+        "value": 73.28935583333333,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 229.67,
+        "equivalent_replacement_cost_ron": 900.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "lightweight Pixel infant carrier",
+        "quality": "Avionaut Pixel shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt and base capable shell",
+        "value": "conservative new Pixel shell equivalent",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, insert or crash history shown; verify before use",
+      "hunt_fit": true,
+      "reason": "Very-good lightweight Pixel shell well under hunt price, verify insert and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 274195090,
+    "seller": "iryna554"
+  },
+  {
+    "item": {
+      "id": 9950128312,
+      "title": "Scoica auto Avionaut Pixel Pro 2",
+      "price": {
+        "amount": "500.0",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 3,
+      "url": "https://www.vinted.ro/items/9950128312-scoica-auto-avionaut-pixel-pro-2",
+      "user": {
+        "id": 215861867,
+        "login": "dianarotaru17"
+      },
+      "_profile": {
+        "username": "dianarotaru17",
+        "member_since": null,
+        "feedback_count": 6,
+        "feedback_reputation": 0.86,
+        "item_count": 16,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9950128312,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.6525,
+      "score_interval_low": 54,
+      "score_interval_high": 69,
+      "score_factors": {
+        "usefulness": 76.25,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 69.2,
+        "value": 70.60807692307692,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 543.0,
+        "equivalent_replacement_cost_ron": 1300.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel Pro 2 dual-install infant shell",
+        "quality": "Pixel Pro 2 i-Size shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt + base capable, no base listed",
+        "value": "conservative new Pixel Pro 2 shell",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, insert or crash history shown; verify before use",
+      "hunt_fit": true,
+      "reason": "Very-good Pixel Pro 2 shell near hunt price, verify newborn insert and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 215861867,
+    "seller": "dianarotaru17"
+  },
+  {
+    "item": {
+      "id": 9949142345,
+      "title": "Avionaut Pixel AV304 z bazą",
+      "price": {
+        "amount": "553.59",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 1,
+      "url": "https://www.vinted.ro/items/9949142345-avionaut-pixel-av304-z-baza",
+      "user": {
+        "id": 284743576,
+        "login": "agatkaaaaa12345"
+      },
+      "_profile": {
+        "username": "agatkaaaaa12345",
+        "member_since": null,
+        "feedback_count": 34,
+        "feedback_reputation": 1,
+        "item_count": 28,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9949142345,
+      "score_version": 2,
+      "buy_score": 62,
+      "buy_band": "bundle",
+      "score_confidence": 0.644,
+      "score_interval_low": 55,
+      "score_interval_high": 70,
+      "score_factors": {
+        "usefulness": 81.2,
+        "quality": 72.75,
+        "condition": 69.2,
+        "versatility": 73.4,
+        "value": 69.3349734375,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 604.27,
+        "equivalent_replacement_cost_ron": 1600.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel with base, dual install",
+        "quality": "Avionaut Pixel i-Size shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt + ISOFIX base included",
+        "value": "conservative new Pixel + base set",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, insert or crash history shown; verify base model and expiry",
+      "hunt_fit": true,
+      "reason": "Very-good Pixel AV304 with base under cap, verify insert, base function and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 284743576,
+    "seller": "agatkaaaaa12345"
+  },
+  {
+    "item": {
+      "id": 9960221915,
+      "title": "Fotelik samochodowy Avionaut pixel pro 0-13kg",
+      "price": {
+        "amount": "246.04",
+        "currency_code": "RON"
+      },
+      "brand_title": "Avionaut Pixel Pro",
+      "size_title": "0–13 kg",
+      "status": "Foarte bună",
+      "favourite_count": 2,
+      "url": "https://www.vinted.ro/items/9960221915-fotelik-samochodowy-avionaut-pixel-pro-0-13kg",
+      "user": {
+        "id": 266537625,
+        "login": "wisienka9529"
+      },
+      "_profile": {
+        "username": "wisienka9529",
+        "member_since": null,
+        "feedback_count": 61,
+        "feedback_reputation": 1,
+        "item_count": 83,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9960221915,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.665,
+      "score_interval_low": 52,
+      "score_interval_high": 68,
+      "score_factors": {
+        "usefulness": 78.5,
+        "quality": 70.8,
+        "condition": 68.0,
+        "versatility": 64.0,
+        "value": 74.37315999999998,
+        "fit_probability": 0.8825,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 281.34,
+        "equivalent_replacement_cost_ron": 900.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel Pro dual-install i-Size scoica, very good",
+        "quality": "Pixel Pro shell, Avionaut build",
+        "condition": "listed Foarte buna",
+        "versatility": "belt + base install, newborn only",
+        "value": "conservative used Pixel Pro equiv, new higher",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate signals"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or newborn insert shown",
+      "hunt_fit": true,
+      "reason": "Very good Pixel Pro well under hunt price is strong utility if date/insert/crash check passes."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 266537625,
+    "seller": "wisienka9529"
   }
 ]

@@ -1776,7 +1776,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.84,
     "bundle_anchor_item_id": 9941172235,
-    "bundle_rank_position": 8
+    "bundle_rank_position": 7
   },
   {
     "kept_at": "2026-09-09T12:06:32.885747+00:00",
@@ -1906,6 +1906,67 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.8425,
     "bundle_anchor_item_id": 9937803302,
+    "bundle_rank_position": 8
+  },
+  {
+    "kind": "index_near_bundle",
+    "kept_at": "2026-09-09T06:52:05.663143+00:00",
+    "seller": "hoodplug2006",
+    "seller_id": 307684024,
+    "country": "gr",
+    "checkout_extra_ron": 25.0,
+    "listing_sum": 154.14,
+    "checkout_total": 179.14,
+    "value_band": "opportunity",
+    "reason": "Indexed same-seller listings (score cache rediscovery)",
+    "items": [
+      {
+        "role": "extra",
+        "id": 9913786869,
+        "title": "nike dna short",
+        "price": 85.04,
+        "url": "https://www.vinted.ro/items/9913786869-nike-dna-short",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": null,
+        "score_version": 2,
+        "buy_score": 61,
+        "buy_band": "bundle",
+        "score_confidence": 0.87,
+        "score_interval_low": 57,
+        "score_interval_high": 66,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 307684024,
+        "seller": "hoodplug2006"
+      },
+      {
+        "role": "extra",
+        "id": 9937160382,
+        "title": "jordan diamond short",
+        "price": 69.1,
+        "url": "https://www.vinted.ro/items/9937160382-jordan-diamond-short",
+        "watch": "Broad gym shorts M-L",
+        "deal_score": null,
+        "score_version": 2,
+        "buy_score": 60,
+        "buy_band": "bundle",
+        "score_confidence": 0.845,
+        "score_interval_low": 55,
+        "score_interval_high": 64,
+        "rank_position": null,
+        "rank_confidence": null,
+        "seller_id": 307684024,
+        "seller": "hoodplug2006"
+      }
+    ],
+    "suggested_offer_ron": 100,
+    "offer_weak": true,
+    "offer_target_per_item_ron": 30.0,
+    "family": "gym",
+    "bundle_score": 65,
+    "bundle_score_version": 1,
+    "bundle_confidence": 0.8575,
+    "bundle_anchor_item_id": 9913786869,
     "bundle_rank_position": 9
   },
   {
@@ -2107,67 +2168,6 @@
     "bundle_confidence": null,
     "bundle_anchor_item_id": null,
     "bundle_rank_position": null
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-09T03:24:09.185725+00:00",
-    "seller": "hoodplug2006",
-    "seller_id": 307684024,
-    "country": "gr",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 154.14,
-    "checkout_total": 179.14,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9937160382,
-        "title": "jordan diamond short",
-        "price": 69.1,
-        "url": "https://www.vinted.ro/items/9937160382-jordan-diamond-short",
-        "watch": "Broad training shorts M-L",
-        "deal_score": null,
-        "score_version": 2,
-        "buy_score": 63,
-        "buy_band": "bundle",
-        "score_confidence": 0.845,
-        "score_interval_low": 59,
-        "score_interval_high": 68,
-        "rank_position": null,
-        "rank_confidence": null,
-        "seller_id": 307684024,
-        "seller": "hoodplug2006"
-      },
-      {
-        "role": "extra",
-        "id": 9913786869,
-        "title": "nike dna short",
-        "price": 85.04,
-        "url": "https://www.vinted.ro/items/9913786869-nike-dna-short",
-        "watch": "Broad gym shorts M-L",
-        "deal_score": null,
-        "score_version": 2,
-        "buy_score": 61,
-        "buy_band": "bundle",
-        "score_confidence": 0.87,
-        "score_interval_low": 57,
-        "score_interval_high": 66,
-        "rank_position": null,
-        "rank_confidence": null,
-        "seller_id": 307684024,
-        "seller": "hoodplug2006"
-      }
-    ],
-    "suggested_offer_ron": 100,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0,
-    "family": "gym",
-    "bundle_score": 68,
-    "bundle_score_version": 1,
-    "bundle_confidence": 0.845,
-    "bundle_anchor_item_id": 9937160382,
-    "bundle_rank_position": 6
   },
   {
     "kind": "index_near_bundle",
@@ -2473,7 +2473,7 @@
     "bundle_score_version": 1,
     "bundle_confidence": 0.83,
     "bundle_anchor_item_id": 9896095064,
-    "bundle_rank_position": 7
+    "bundle_rank_position": 6
   },
   {
     "kept_at": "2026-09-08T01:29:02.696247+00:00",

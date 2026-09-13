@@ -1,5 +1,52 @@
 [
   {
+    "kept_at": "2026-09-13T05:59:11.313819+00:00",
+    "kind": "near_haul",
+    "seller": "pitete55",
+    "seller_id": 189146309,
+    "country": "hu",
+    "checkout_extra_ron": 23.562,
+    "listing_sum": 51.24,
+    "checkout_total": 74.802,
+    "deal_score": null,
+    "value_band": "opportunity",
+    "reason": "Fee-gated closet match (not LLM-confirmed)",
+    "watch": "H&M Mama bundle seed XL-L/XL",
+    "effective_price_per_useful_item": 37.401,
+    "items": [
+      {
+        "role": "haul",
+        "id": 8285944728,
+        "title": "Kismama vászonnadrág XL es méret",
+        "price": 21.96,
+        "url": "https://www.vinted.ro/items/8285944728-kismama-vaszonnadrag-xl-es-meret",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "pitete55",
+        "seller_id": 189146309
+      },
+      {
+        "role": "haul",
+        "id": 8285906038,
+        "title": "C&A Kismama nadrág - XL",
+        "price": 29.28,
+        "url": "https://www.vinted.ro/items/8285906038-ca-kismama-nadrag-xl",
+        "watch": "H&M Mama bundle seed XL-L/XL",
+        "deal_score": null,
+        "seller": "pitete55",
+        "seller_id": 189146309
+      }
+    ],
+    "suggested_offer_ron": 46,
+    "offer_weak": false,
+    "offer_target_per_item_ron": 50.0,
+    "bundle_score": null,
+    "bundle_score_version": 1,
+    "bundle_confidence": null,
+    "bundle_anchor_item_id": null,
+    "bundle_rank_position": null
+  },
+  {
     "kept_at": "2026-09-12T23:21:47.836277+00:00",
     "kind": "near_haul",
     "seller": "patrycjaona",
@@ -4634,72 +4681,6 @@
       }
     ],
     "suggested_offer_ron": 42,
-    "offer_weak": true,
-    "offer_target_per_item_ron": 30.0,
-    "bundle_score": null,
-    "bundle_score_version": 1,
-    "bundle_confidence": null,
-    "bundle_anchor_item_id": null,
-    "bundle_rank_position": null
-  },
-  {
-    "kind": "index_near_bundle",
-    "kept_at": "2026-09-06T18:35:18.730572+00:00",
-    "seller": "thriftzoneromania",
-    "seller_id": 246162485,
-    "country": "ro",
-    "checkout_extra_ron": 25.0,
-    "listing_sum": 160.0,
-    "checkout_total": 185.0,
-    "value_band": "opportunity",
-    "reason": "Indexed same-seller listings (score cache rediscovery)",
-    "items": [
-      {
-        "role": "extra",
-        "id": 9897610025,
-        "title": "Nike Șorturi Sport Bărbați – Albastru – Mărimea L – Originale",
-        "price": 40.0,
-        "url": "https://www.vinted.ro/items/9897610025-nike-sorturi-sport-barbati-albastru-marimea-l-originale",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": 8,
-        "seller_id": 246162485,
-        "seller": "thriftzoneromania"
-      },
-      {
-        "role": "extra",
-        "id": 9897670357,
-        "title": "Nike Dri-FIT Șorturi Sport Negre – Swoosh Alb – Mărimea L",
-        "price": 40.0,
-        "url": "https://www.vinted.ro/items/9897670357-nike-dri-fit-sorturi-sport-negre-swoosh-alb-marimea-l",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": 8,
-        "seller_id": 246162485,
-        "seller": "thriftzoneromania"
-      },
-      {
-        "role": "extra",
-        "id": 9897582671,
-        "title": "Puma Șorturi Sport Roșii – Performance – Mărimea L – Originale",
-        "price": 40.0,
-        "url": "https://www.vinted.ro/items/9897582671-puma-sorturi-sport-rosii-performance-marimea-l-originale",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": 8,
-        "seller_id": 246162485,
-        "seller": "thriftzoneromania"
-      },
-      {
-        "role": "extra",
-        "id": 9897713882,
-        "title": "Adidas ClimaLite Șorturi Sport Vintage Y2K Negre cu Alb – Mărimea M",
-        "price": 40.0,
-        "url": "https://www.vinted.ro/items/9897713882-adidas-climalite-sorturi-sport-vintage-y2k-negre-cu-alb-marimea-m",
-        "watch": "Gym seed gym shorts M-L",
-        "deal_score": 8,
-        "seller_id": 246162485,
-        "seller": "thriftzoneromania"
-      }
-    ],
-    "suggested_offer_ron": 104,
     "offer_weak": true,
     "offer_target_per_item_ron": 30.0,
     "bundle_score": null,

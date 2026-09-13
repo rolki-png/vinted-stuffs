@@ -32,7 +32,7 @@ type Props = {
   onOps: (msg: { text: string; kind?: 'ok' | 'err' }) => void
 }
 
-const FAMILIES = ['', 'maternity', 'gym', 'sneakers', 'knitwear', 'other'] as const
+const FAMILIES = ['', 'maternity', 'gym', 'sneakers', 'knitwear', 'scoica', 'other'] as const
 
 function blankHunt(): Hunt {
   return {

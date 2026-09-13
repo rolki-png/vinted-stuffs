@@ -20,6 +20,10 @@ class TestFamily(unittest.TestCase):
     def test_knitwear(self):
         self.assertEqual(tl.resolve_family("Johnstons of Elgin M-L"), "knitwear")
 
+    def test_scoica(self):
+        self.assertEqual(tl.resolve_family("Cybex Cloud G scoică"), "scoica")
+        self.assertEqual(tl.resolve_family("Broad scoică auto i-Size"), "scoica")
+
     def test_watch_override(self):
         self.assertEqual(
             tl.resolve_family("Weird name", {"family": "gym"}),

@@ -4,7 +4,7 @@
  */
 
 const CONFIG_PATH = "python/config.json"
-const FAMILIES = new Set(["maternity", "gym", "sneakers", "knitwear", "other"])
+const FAMILIES = new Set(["maternity", "gym", "sneakers", "knitwear", "scoica", "other"])
 const FORM_KEYS = new Set([
   "name",
   "query",

@@ -113,6 +113,25 @@ class ScoringPromptTests(unittest.TestCase):
         self.assertIn("incorrect sizes", prompt.lower())
         self.assertNotIn("do not reject for size", prompt.lower())
 
+    def test_scoica_prompt_mentions_isize_and_isofix(self):
+        watch = {
+            "name": "Broad scoică auto i-Size",
+            "query": "scoica auto i-size",
+            "target_type": "newborn infant car seat / scoică auto i-Size",
+            "family": "scoica",
+            "target_sizes": ["40-87 cm", "0-13 kg"],
+            "notes": "dedicated infant carrier",
+            "hunt_price": 520,
+            "price_to": 850,
+        }
+        prompt = bot._extraction_prompt(watch, self.items)
+        self.assertIn("i-Size", prompt)
+        self.assertIn("ISOFIX", prompt)
+        self.assertIn("0–36 kg", prompt)
+        self.assertTrue(bot.is_scoica_watch(watch))
+        self.assertFalse(bot.is_value_haul_path_watch(watch))
+        self.assertFalse(bot.is_clothing_solo_bound(watch))
+
     def test_removed_scoring_prompt_alias_has_no_branch_callers(self):
         self.assertFalse(hasattr(bot, "_scoring_prompt"))
 

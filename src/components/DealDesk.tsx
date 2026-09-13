@@ -668,6 +668,7 @@ export function DealDesk() {
 								<option value="gym">gym</option>
 								<option value="sneakers">sneakers</option>
 								<option value="knitwear">knitwear</option>
+								<option value="scoica">scoica</option>
 								<option value="other">other</option>
 							</select>
 						</label>
@@ -907,6 +908,7 @@ export function DealDesk() {
 								<option value="gym">gym</option>
 								<option value="sneakers">sneakers</option>
 								<option value="knitwear">knitwear</option>
+								<option value="scoica">scoica</option>
 								<option value="other">other</option>
 							</select>
 						</label>

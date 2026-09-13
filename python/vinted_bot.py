@@ -699,6 +699,24 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
             "regardless of price or brand. Prefer gym/training shorts; other non-tee "
             "technical pieces only if exceptional."
         )
+    scoica_rules = ""
+    if is_scoica_watch(watch):
+        scoica_rules = (
+            "For infant car seats / scoică auto: hunt_fit only for a dedicated newborn "
+            "infant carrier (scoică), not a 0–36 kg / 0–12 year combo seat, not a booster, "
+            "not a stroller carrycot without car approval, not covers/adapters/bases sold alone. "
+            "Prefer UN R129 / i-Size, rear-facing, 3- or 5-point harness, height from ~40 cm "
+            "to ~83–87 cm. Prefer shells that install with the car's 3-point seatbelt AND "
+            "click onto an ISOFIX base (buyer is changing cars). ISOFIX-only shells "
+            "(e.g. Joie Sprint, ~40–75 cm) are a weaker fit — hunt_fit only if outstanding "
+            "price and very-good+ condition. Reject expired seats (check manufacture date; "
+            "typical life 5–8 years), crash history, missing newborn insert/inlay or harness "
+            "pads, and R44-only. A matching ISOFIX base included raises usefulness/value, "
+            "but is not required. Raise usefulness and quality for dual-install i-Size shells "
+            "(Cybex Cloud G / Cloud G Plus, Maxi-Cosi Pebble S, Cybex Cloud T, Cybex Aton S2, "
+            "Britax Baby-Safe 3/5Z i-Size, Nuna Pipa Next, Avionaut Pixel Pro) in very-good+ "
+            "or unused condition."
+        )
     sizes = watch.get("target_sizes") or []
     if sizes:
         size_policy = "Reject listings that do not match the target sizes above."
@@ -724,7 +742,7 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
         size_policy=size_policy,
         size_reject_clause=size_reject_clause,
         maternity_rules="\n".join(
-            part for part in (maternity_rules, gym_tee_rules) if part
+            part for part in (maternity_rules, gym_tee_rules, scoica_rules) if part
         ),
     )
     block = (taste_block or "").strip()
@@ -834,9 +852,29 @@ def listing_amount(item: dict):
         return None
 
 
+def is_scoica_watch(watch: dict) -> bool:
+    if (watch.get("family") or "").strip().lower() == "scoica":
+        return True
+    target = (watch.get("target_type") or "").lower()
+    name = (watch.get("name") or "").lower()
+    return any(
+        token in target or token in name
+        for token in ("scoic", "infant car", "infant carrier")
+    )
+
+
 def is_clothing_solo_bound(watch: dict) -> bool:
     target = (watch.get("target_type") or "").lower()
-    exempt = ("sneaker", "knitwear", "cashmere", "premium knit")
+    exempt = (
+        "sneaker",
+        "knitwear",
+        "cashmere",
+        "premium knit",
+        "scoic",
+        "infant car",
+        "infant carrier",
+        "car seat",
+    )
     return not any(token in target for token in exempt)
 
 
@@ -1898,6 +1936,8 @@ def is_value_haul_path_watch(watch: dict) -> bool:
     name = (watch.get("name") or "").lower()
     if any(token in target for token in ("sneaker", "knit", "cashmere")):
         return False
+    if is_scoica_watch(watch):
+        return False
     if "maternity" in target or "maternity" in name or "mama" in name:
         return True
     return any(
@@ -1909,7 +1949,10 @@ def is_value_haul_path_watch(watch: dict) -> bool:
 def is_mens_gym_watch(watch: dict) -> bool:
     """Back-compat: men's gym Path B eligibility (excludes maternity)."""
     target = (watch.get("target_type") or "").lower()
-    if any(token in target for token in ("maternity", "sneaker", "knit", "cashmere")):
+    if any(
+        token in target
+        for token in ("maternity", "sneaker", "knit", "cashmere", "scoic", "infant car")
+    ):
         return False
     return any(
         token in target

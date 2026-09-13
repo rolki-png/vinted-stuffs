@@ -6,6 +6,21 @@ from typing import Any
 # First match wins (case-insensitive substring on hunt name).
 _FAMILY_RULES: list[tuple[str, tuple[str, ...]]] = [
     (
+        "scoica",
+        (
+            "scoica",
+            "scoică",
+            "infant carrier",
+            "cloud g",
+            "pebble s",
+            "joie sprint",
+            "pipa next",
+            "baby-safe",
+            "aton s2",
+            "avionaut pixel",
+        ),
+    ),
+    (
         "maternity",
         (
             "maternity",

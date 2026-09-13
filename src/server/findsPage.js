@@ -90,6 +90,7 @@ const HUNT_FAMILIES = new Set([
 	"gym",
 	"sneakers",
 	"knitwear",
+	"scoica",
 	"other",
 ]);
 

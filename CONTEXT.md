@@ -123,7 +123,7 @@ Buyer-confirmed purchase of a listing id. Off Active Finds; listed under the Bou
 _Avoid_: Purchased (ok synonym in UI copy), Keep (different — Keep is scorer output)
 
 **Hunt family**:
-Coarse taste bucket (maternity / gym / sneakers / knitwear / other) used to scope learning so maternity Removes do not affect gym scoring.
+Coarse taste bucket (maternity / gym / sneakers / knitwear / scoica / other) used to scope learning so maternity Removes do not affect gym scoring.
 _Avoid_: Category (unqualified), watch group
 
 **Taste learning**:

@@ -1093,6 +1093,188 @@
         5975,
         6185
       ]
+    },
+    {
+      "name": "Broad scoică auto i-Size",
+      "query": "scoica auto i-size",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 40,
+      "price_to": 850,
+      "hunt_price": 520,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-87 cm",
+        "40-83 cm",
+        "0-13 kg"
+      ],
+      "notes": "Dedicated newborn infant carrier (scoică auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer shells that install with the car's 3-point belt AND click onto an ISOFIX base (changing cars). Top models: Cybex Cloud G / Cloud G Plus, Maxi-Cosi Pebble S, Cybex Cloud T, Cybex Aton S2 i-Size, Britax Baby-Safe 3/5Z i-Size, Nuna Pipa Next, Avionaut Pixel Pro. Joie Sprint is acceptable but ISOFIX-only and only ~40–75 cm — deprioritize. Skip 0–36 kg / 0–12 year combo seats, boosters, stroller carrycots without car approval, R44-only, expired seats (check manufacture date; typically 5–8 years), crash history, missing newborn inlay/insert or harness pads, covers/adapters/bases sold alone. Shell + matching ISOFIX base is extra value. Hunt is price-quality: very good+ condition under hunt price.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Broad scoică auto 40-87",
+      "query": "scoica auto 40",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 40,
+      "price_to": 850,
+      "hunt_price": 520,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-87 cm",
+        "40-83 cm",
+        "0-13 kg"
+      ],
+      "notes": "Dedicated newborn infant carrier (scoică auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer dual belt+ISOFIX install. Skip combo 0–36 kg seats, boosters, carrycots, expired/crashed seats, missing newborn insert. Joie Sprint / i-Snug / i-Gemm are weaker (shorter range, often ISOFIX-only).",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Cybex Cloud G scoică",
+      "query": "cybex cloud g",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 850,
+      "hunt_price": 550,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-87 cm",
+        "0-13 kg"
+      ],
+      "notes": "Cybex Cloud G or Cloud G Plus i-Size only (40–87 cm). Dual install: seatbelt or Base G. Skip covers, adapters, stroller cots, Cloud Z/T unless listed as Cloud G. Shell + Base G is extra value. Reject expired/crash/missing newborn insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Maxi-Cosi Pebble S scoică",
+      "query": "pebble s",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 750,
+      "hunt_price": 480,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-83 cm",
+        "0-13 kg"
+      ],
+      "notes": "Maxi-Cosi Pebble S only (40–83 cm). Dual install: seatbelt or FamilyFix S. Skip Pebble 360 / Coral 360 (ISOFIX-only), Cabriofix unless it is clearly i-Size and dual-install. Skip covers and bases sold alone. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Joie Sprint scoică",
+      "query": "joie sprint",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 24,
+      "price_to": 700,
+      "hunt_price": 400,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-75 cm",
+        "0-13 kg"
+      ],
+      "notes": "Joie Sprint Signature / Sprint i-Size. ISOFIX-only and only ~40–75 cm (~first year) — weaker fit than dual-install 40–83/87 cm shells. Keep only if outstanding price and very-good+ condition. Skip i-Gemm/i-Snug unless they clearly match Sprint. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 60
+    },
+    {
+      "name": "Cybex Cloud T scoică",
+      "query": "cybex cloud t",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 850,
+      "hunt_price": 520,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "45-87 cm",
+        "0-13 kg"
+      ],
+      "notes": "Cybex Cloud T / Cloud T Plus i-Size only. Dual install preferred. Skip summer covers, rain covers, adapters, and Cloud G/Z unless this listing is Cloud T. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Cybex Aton S2 scoică",
+      "query": "aton s2",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 700,
+      "hunt_price": 420,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "45-87 cm",
+        "0-13 kg"
+      ],
+      "notes": "Cybex Aton S2 i-Size only (~45–87 cm). Dual install: seatbelt or ISOFIX base. Shell + matching base is extra value. Skip Aton 5 / Sirona / covers. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Britax Baby-Safe i-Size scoică",
+      "query": "baby-safe",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 30,
+      "price_to": 800,
+      "hunt_price": 480,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-87 cm",
+        "0-13 kg"
+      ],
+      "notes": "Britax Römer Baby-Safe 3 i-Size, 5Z / 5Z2, or Baby-Safe Pro i-Size. Dual install preferred. Shell + Flex Base is extra value. Skip older R44 Baby-Safe Plus SHR, bases/covers sold alone, and combo seats. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 80
+    },
+    {
+      "name": "Nuna Pipa Next scoică",
+      "query": "pipa next",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 24,
+      "price_to": 900,
+      "hunt_price": 550,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-83 cm",
+        "0-13 kg"
+      ],
+      "notes": "Nuna Pipa Next i-Size only. Dual install: seatbelt or NEXT/Pipa base. Skip Arra Next (ISOFIX-only), strollers, adapters, bases sold alone, Pipa Icon unless clearly dual-install i-Size. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 60
+    },
+    {
+      "name": "Avionaut Pixel Pro scoică",
+      "query": "avionaut pixel",
+      "country": "ro",
+      "order": "newest_first",
+      "per_page": 24,
+      "price_to": 700,
+      "hunt_price": 400,
+      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_sizes": [
+        "40-86 cm",
+        "0-13 kg"
+      ],
+      "notes": "Avionaut Pixel / Pixel Pro i-Size infant carrier. Dual install preferred. Skip IQ bases sold alone and non-infant Avionaut seats. Reject expired/crash/missing insert.",
+      "family": "scoica",
+      "min_deal_score": 8,
+      "full_sweep_max": 60
     }
   ],
   "bundle_offer": {

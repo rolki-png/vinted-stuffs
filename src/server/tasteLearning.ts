@@ -5,6 +5,21 @@
 
 const FAMILY_RULES = [
   [
+    "scoica",
+    [
+      "scoica",
+      "scoică",
+      "infant carrier",
+      "cloud g",
+      "pebble s",
+      "joie sprint",
+      "pipa next",
+      "baby-safe",
+      "aton s2",
+      "avionaut pixel",
+    ],
+  ],
+  [
     "maternity",
     [
       "maternity",

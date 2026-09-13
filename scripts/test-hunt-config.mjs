@@ -162,6 +162,34 @@ async function testAddBrandHuntWithoutQueryTypeOrSize() {
   assert.equal("size_ids" in w, false)
 }
 
+async function testScoicaFamilyAccepted() {
+  const cfg = baseConfig([])
+  const res = applyWatchMutation(cfg, {
+    mode: "add",
+    hunt: {
+      name: "Cybex Cloud G scoică",
+      query: "cybex cloud g",
+      target_type: "newborn infant car seat",
+      family: "scoica",
+      notes: "i-Size",
+    },
+  })
+  assert.equal(res.ok, true)
+  assert.equal(res.config.watches[0].family, "scoica")
+
+  const bad = applyWatchMutation(cfg, {
+    mode: "add",
+    hunt: {
+      name: "Bad family",
+      query: "q",
+      target_type: "t",
+      family: "not-a-family",
+    },
+  })
+  assert.equal(bad.ok, false)
+  assert.match(bad.error, /family/)
+}
+
 await testNormalizeOmitsEmptyAndForcesRo()
 await testPreserveUnknownKeysOnReplace()
 await testAddReplaceRemoveAndUniqueName()
@@ -169,4 +197,5 @@ await testSerializeAnd409()
 await testValidationRequired()
 await testAddHuntWithoutSizes()
 await testAddBrandHuntWithoutQueryTypeOrSize()
+await testScoicaFamilyAccepted()
 console.log("ok hunt-config")

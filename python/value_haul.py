@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import re
 
+import market_defaults
+
 GYM_TOKENS = (
     "sport", "training", "gym", "running", "workout", "fitness",
     "nike", "adidas", "lululemon", "under armour", "underarmour",
@@ -233,7 +235,7 @@ def build_haul_payload(seller, seller_country, checkout_extra, items, watch):
     return {
         "kind": "value_haul",
         "seller": seller,
-        "seller_country": seller_country or "ro",
+        "seller_country": seller_country or market_defaults.default_country(),
         "checkout_extra_ron": float(checkout_extra),
         "matching_items": n,
         "total_listing_price": listing_sum,
@@ -278,10 +280,11 @@ def value_haul_prompt(payload: dict, vh: dict) -> str:
         brand_line = "For ordinary gym brands:"
         reject_line = (
             "Reject bundles where the apparent low price is achieved by including wrong sizes, "
-            "worn-out pieces, men's gym T-shirts / koszulki / tricouri (buyer is saturated on tees), "
+            "worn-out pieces, men's gym T-shirts (buyer is saturated on tees), "
             "casual cotton tops with little gym value, or items the buyer is unlikely to use. "
             "Prefer gym/training shorts as useful items."
         )
+    ccy = market_defaults.default_currency()
     return f"""This is a BUNDLE / value haul hunt.
 
 Do not judge the items only by individual resale value.
@@ -295,9 +298,9 @@ A bundle can be an outstanding deal when:
 - there is little filler or junk
 
 {brand_line}
-- under ~{strong} RON delivered per useful item = strong (value_band hunt if score high enough)
-- under ~{excellent} RON = excellent
-- around ~{steal} RON or less = steal
+- under ~{strong} {ccy} delivered per useful item = strong (value_band hunt if score high enough)
+- under ~{excellent} {ccy} = excellent
+- around ~{steal} {ccy} or less = steal
 
 {reject_line}
 

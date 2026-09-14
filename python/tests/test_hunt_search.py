@@ -8,7 +8,7 @@ import vinted_bot as bot
 TEN_THOUSAND = {
     "name": "Ten Thousand gym M-L",
     "query": "ten thousand",
-    "country": "ro",
+    "country": "uk",
     "order": "newest_first",
     "per_page": 24,
     "price_to": 250,
@@ -18,7 +18,7 @@ TEN_THOUSAND = {
 KEYWORD_HUNT = {
     "name": "Gym seed Adidas shorts M-L",
     "query": "adidas short",
-    "country": "ro",
+    "country": "uk",
     "order": "newest_first",
     "per_page": 50,
 }
@@ -69,14 +69,14 @@ class HuntSearchTests(unittest.TestCase):
             "id": 1,
             "title": "An Abundance of Katherines - John Green",
             "brand": "Penguin",
-            "price": {"amount": "55", "currency_code": "RON"},
+            "price": {"amount": "55", "currency_code": "GBP"},
         }
         hit = {
             "id": 2,
             "title": "Interval Shorts",
             "brand": "Ten Thousand",
             "brand_id": 3162601,
-            "price": {"amount": "90", "currency_code": "RON"},
+            "price": {"amount": "90", "currency_code": "GBP"},
         }
 
         def fake_vinted(args, timeout=60, stdin_payload=None):

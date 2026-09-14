@@ -20,6 +20,7 @@ import {
 	sortScoreRows,
 	v2WatchNames,
 } from "./scoreSemantics.js";
+import { defaultCurrency, memberUrl } from "./marketDefaults.js";
 import { resolveFamily } from "./tasteLearning.ts";
 
 /**
@@ -326,7 +327,7 @@ async function buildSnapshot({
 			id: item.id,
 			title: item.title || existing.title,
 			price: price != null ? price : existing.price,
-			currency: currency || existing.currency || "RON",
+			currency: currency || existing.currency || defaultCurrency(),
 			url: item.url || existing.url,
 			watch: raw.watch || existing.watch,
 			...sc,
@@ -473,7 +474,7 @@ async function buildSnapshot({
 				bands,
 				watches: [...row.watches].sort(),
 				profile_url: row.seller_id
-					? `https://www.vinted.ro/member/${row.seller_id}`
+					? memberUrl(row.seller_id)
 					: null,
 			};
 		})

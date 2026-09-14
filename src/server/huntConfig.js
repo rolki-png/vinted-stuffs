@@ -3,8 +3,18 @@
  * Pure helpers for desk hunt config: validate, serialize, mutate watches[].
  */
 
+import { defaultCountry } from "./marketDefaults.js"
+
 const CONFIG_PATH = "python/config.json"
-const FAMILIES = new Set(["maternity", "gym", "sneakers", "knitwear", "scoica", "other"])
+const FAMILIES = new Set([
+  "maternity",
+  "gym",
+  "sneakers",
+  "knitwear",
+  "car_seat",
+  "scoica",
+  "other",
+])
 const FORM_KEYS = new Set([
   "name",
   "query",
@@ -49,7 +59,7 @@ function nonNegNumber(v, label, { required = false } = {}) {
 }
 
 /**
- * Normalize a hunt object for write: force country ro, omit empties, keep extras if provided via base.
+ * Normalize a hunt object for write: force catalog country from env (UK default), omit empties, keep extras if provided via base.
  * @param {object} raw form fields
  * @param {object|null} base existing watch to preserve unknown keys
  */
@@ -81,7 +91,7 @@ function normalizeHunt(raw, base = null) {
 
   out.name = name
   out.query = query
-  out.country = "ro"
+  out.country = defaultCountry()
   out.order = order
   out.target_type = target_type
   out.target_sizes = target_sizes
@@ -150,7 +160,10 @@ function validateHuntMutation(hunt, watches, opts) {
   if (!hunt.query && !(Array.isArray(hunt.brand_ids) && hunt.brand_ids.length)) {
     return { ok: false, error: "query is required unless brand_ids are set" }
   }
-  if (hunt.country !== "ro") return { ok: false, error: "country must be ro" }
+  const catalogCountry = defaultCountry()
+  if (hunt.country !== catalogCountry) {
+    return { ok: false, error: `country must be ${catalogCountry}` }
+  }
 
   if (mode === "add") {
     if (list.some((w) => w && w.name === hunt.name)) {

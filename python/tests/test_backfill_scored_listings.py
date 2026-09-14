@@ -72,7 +72,7 @@ def v2_score(item_id=1):
 
 
 class FetchItemsTests(unittest.TestCase):
-    watches = {"Gym": {"name": "Gym", "country": "ro"}}
+    watches = {"Gym": {"name": "Gym", "country": "uk"}}
 
     def test_partial_response_omission_is_unknown_and_retryable(self):
         response = {
@@ -335,7 +335,7 @@ class PendingPairTests(unittest.TestCase):
         )
 
     def test_cached_payloads_rebuild_items_and_skip_tombstones(self):
-        watch = {"name": "Mamalicious maternity XL-L/XL", "country": "ro"}
+        watch = {"name": "Mamalicious maternity XL-L/XL", "country": "uk"}
         items = backfill.items_from_cached_rows(
             [
                 ("2", "Mamalicious maternity XL-L/XL"),
@@ -354,11 +354,11 @@ class PendingPairTests(unittest.TestCase):
                     hunt="Mamalicious maternity L-XL",
                     title="Rochie lungă de vară alăptat L",
                     price=Decimal("15.00"),
-                    currency="RON",
+                    currency="GBP",
                     brand="Mamalicious",
                     seller_id=1,
                     seller_login="cosinna29",
-                    seller_country="ro",
+                    seller_country="uk",
                 ),
             ],
         )
@@ -391,10 +391,11 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn(
             "uv run --project python python python/vinted_bot.py", self.source
         )
-        self.assertNotIn(
-            "uv run --project python python python/backfill_scored_listings.py",
-            self.source,
+        run_bot = self.source.split("- name: Run bot", 1)[1].split("- name:", 1)[0]
+        self.assertIn(
+            "uv run --project python python python/vinted_bot.py", run_bot
         )
+        self.assertNotIn("backfill_scored_listings.py", run_bot)
 
     def test_workflow_never_interpolates_secrets_inside_shell_source(self):
         import re

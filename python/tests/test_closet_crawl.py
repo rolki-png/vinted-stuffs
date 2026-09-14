@@ -24,7 +24,7 @@ class ClosetCrawlTests(unittest.TestCase):
             }
 
         with patch.object(bot, "_vinted_json", side_effect=fake_vinted):
-            out = bot.get_seller_closets(list(range(1, 12)), "ro", 12)
+            out = bot.get_seller_closets(list(range(1, 12)), "uk", 12)
 
         self.assertEqual(len(calls), 3)
         self.assertEqual(len(calls[0][1]["closets"]["ids"]), 5)

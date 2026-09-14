@@ -210,7 +210,7 @@ fs.writeFileSync(
 			item: {
 				id: 4,
 				title: "stale pool copy",
-				price: { amount: 50, currency_code: "RON" },
+				price: { amount: 50, currency_code: "GBP" },
 				user: { id: 10, login: "mixed-seller" },
 			},
 			watch: "Gym",

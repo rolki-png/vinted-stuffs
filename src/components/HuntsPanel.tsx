@@ -32,13 +32,21 @@ type Props = {
   onOps: (msg: { text: string; kind?: 'ok' | 'err' }) => void
 }
 
-const FAMILIES = ['', 'maternity', 'gym', 'sneakers', 'knitwear', 'scoica', 'other'] as const
+const FAMILIES = ['', 'maternity', 'gym', 'sneakers', 'knitwear', 'car_seat', 'scoica', 'other'] as const
 
-function blankHunt(): Hunt {
+type Market = { country: string; currency: string; siteHost: string }
+
+const DEFAULT_MARKET: Market = {
+  country: 'uk',
+  currency: 'GBP',
+  siteHost: 'www.vinted.co.uk',
+}
+
+function blankHunt(country = DEFAULT_MARKET.country): Hunt {
   return {
     name: '',
     query: '',
-    country: 'ro',
+    country,
     order: 'newest_first',
     per_page: 24,
     price_to: 200,
@@ -90,6 +98,7 @@ export function HuntsPanel({ onOps }: Props) {
   const [sizeGroups, setSizeGroups] = useState<SizeGroup[]>([])
   const [sizeGroupId, setSizeGroupId] = useState<string>('')
   const [sizeWarn, setSizeWarn] = useState<string | null>(null)
+  const [market, setMarket] = useState<Market>(DEFAULT_MARKET)
 
   const brandTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -120,6 +129,13 @@ export function HuntsPanel({ onOps }: Props) {
     }
     setSha(json.sha || null)
     setWatches(Array.isArray(json.watches) ? json.watches : [])
+    if (json.market && typeof json.market === 'object') {
+      setMarket({
+        country: String(json.market.country || DEFAULT_MARKET.country),
+        currency: String(json.market.currency || DEFAULT_MARKET.currency),
+        siteHost: String(json.market.siteHost || DEFAULT_MARKET.siteHost),
+      })
+    }
     return json
   }, [onOps])
 
@@ -128,7 +144,7 @@ export function HuntsPanel({ onOps }: Props) {
   }, [load])
 
   useEffect(() => {
-    fetch('/api/size-groups?country=ro', { cache: 'force-cache' })
+    fetch(`/api/size-groups?country=${encodeURIComponent(market.country)}`, { cache: 'force-cache' })
       .then(async (res) => {
         const json = await res.json()
         if (!res.ok) {
@@ -143,7 +159,7 @@ export function HuntsPanel({ onOps }: Props) {
         setSizeWarn(String(e.message || e))
         setSizeGroups([])
       })
-  }, [])
+  }, [market.country])
 
   useEffect(() => {
     if (brandTimer.current) clearTimeout(brandTimer.current)
@@ -153,7 +169,7 @@ export function HuntsPanel({ onOps }: Props) {
       return
     }
     brandTimer.current = setTimeout(() => {
-      fetch(`/api/brands?q=${encodeURIComponent(brandQ.trim())}&country=ro&limit=10`, {
+      fetch(`/api/brands?q=${encodeURIComponent(brandQ.trim())}&country=${encodeURIComponent(market.country)}&limit=10`, {
         cache: 'no-store',
       })
         .then(async (res) => {
@@ -174,7 +190,7 @@ export function HuntsPanel({ onOps }: Props) {
     return () => {
       if (brandTimer.current) clearTimeout(brandTimer.current)
     }
-  }, [brandQ])
+  }, [brandQ, market.country])
 
   const applySelection = useCallback((hunt: Hunt | null, key: string | null, isNew: boolean) => {
     if (!hunt) {
@@ -186,7 +202,7 @@ export function HuntsPanel({ onOps }: Props) {
       return
     }
     const d = cloneHunt(hunt)
-    d.country = 'ro'
+    d.country = market.country
     if (!Array.isArray(d.target_sizes)) d.target_sizes = []
     setSelectedKey(key)
     setOriginalName(isNew ? null : String(hunt.name || ''))
@@ -197,7 +213,7 @@ export function HuntsPanel({ onOps }: Props) {
         ? d.brand_ids.map((id) => ({ id, title: `#${id}` }))
         : [],
     )
-  }, [])
+  }, [market.country])
 
   const guardDirty = useCallback(() => {
     if (!dirty) return true
@@ -211,7 +227,7 @@ export function HuntsPanel({ onOps }: Props) {
 
   const startNew = () => {
     if (!guardDirty()) return
-    applySelection(blankHunt(), '__new__', true)
+    applySelection(blankHunt(market.country), '__new__', true)
   }
 
   const startDuplicate = () => {
@@ -223,7 +239,7 @@ export function HuntsPanel({ onOps }: Props) {
   }
 
   const patchDraft = (patch: Partial<Hunt>) => {
-    setDraft((prev) => (prev ? { ...prev, ...patch, country: 'ro' } : prev))
+    setDraft((prev) => (prev ? { ...prev, ...patch, country: market.country } : prev))
   }
 
   const addBrand = (b: BrandHit) => {
@@ -284,7 +300,7 @@ export function HuntsPanel({ onOps }: Props) {
     if (!draft || !sha) return
     const hunt = {
       ...draft,
-      country: 'ro' as const,
+      country: market.country,
       brand_ids: selectedBrands.map((b) => b.id),
     }
     if (!formValid(hunt)) return
@@ -514,7 +530,7 @@ export function HuntsPanel({ onOps }: Props) {
                 </label>
                 <label>
                   Country
-                  <input value="RO catalog" disabled readOnly />
+                  <input value={`${market.country.toUpperCase()} catalog`} disabled readOnly />
                 </label>
                 <label>
                   Order

@@ -15,7 +15,7 @@ def extraction(**overrides):
         "versatility": {"value": 90, "confidence": 0.8, "evidence": "several settings"},
         "equivalent_replacement_cost": {
             "value": 450,
-            "currency": "RON",
+            "currency": "GBP",
             "confidence": 0.8,
             "evidence": "conservative equivalent",
         },
@@ -69,7 +69,7 @@ class BuyScoreTests(unittest.TestCase):
                 factors={
                     "equivalent_replacement_cost": {
                         "value": 0,
-                        "currency": "RON",
+                        "currency": "GBP",
                         "confidence": 1,
                         "evidence": "invalid",
                     }

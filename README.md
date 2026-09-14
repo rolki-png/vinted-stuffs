@@ -67,15 +67,28 @@ npx vercel
 
 Project env vars (Production):
 
-| Var                | Purpose                                                                        |
-| ------------------ | ------------------------------------------------------------------------------ |
-| `GITHUB_TOKEN`     | PAT: `repo` + `actions:write` (also Contents write for Hunts tab)              |
-| `GITHUB_REPO`      | `owner/repo`                                                                   |
-| `GITHUB_REF`       | usually `main`                                                                 |
-| `GITHUB_WORKFLOW`  | `vinted-bot.yml`                                                               |
-| `CRON_SECRET`      | optional; Vercel Cron `Authorization: Bearer …`                                |
-| `DATABASE_URL`     | optional Cockroach / Postgres for live score index + vetoes                    |
-| `VINTED_PROXY_URL` | optional; catalogue brand/size lookups from Vercel if direct egress is blocked |
+| Var                     | Purpose                                                                 |
+| ----------------------- | ----------------------------------------------------------------------- |
+| `GITHUB_TOKEN`          | PAT: `repo` + `actions:write` (also Contents write for Hunts tab)       |
+| `GITHUB_REPO`           | `owner/repo`                                                            |
+| `GITHUB_REF`            | usually `main`                                                          |
+| `GITHUB_WORKFLOW`       | `vinted-bot.yml`                                                        |
+| `CRON_SECRET`           | optional; Vercel Cron `Authorization: Bearer …`                         |
+| `DATABASE_URL`          | optional Cockroach / Postgres for live score index + vetoes             |
+| `VINTED_PROXY_URL`      | optional; catalogue brand/size lookups from Vercel if direct egress is blocked |
+| `VINTED_COUNTRY`        | Catalog country code. Default `uk`. Desk brand/size APIs and hunt writes use this. |
+| `VINTED_FORCE_COUNTRY`  | If set, every hunt search uses this country even when config says otherwise. |
+| `VINTED_CURRENCY`       | Fallback currency in prompts, ntfy, and score rows. Default `GBP`.      |
+| `VINTED_SITE_HOST`      | Host for member profile links. Default `www.vinted.co.uk`.              |
+
+GitHub Actions (bot) extra:
+
+| Var                  | Purpose |
+| -------------------- | ------- |
+| `VINTED_CONFIG`      | Optional path to a private hunt config JSON (replaces committed `python/config.json` for the bot). |
+| `VINTED_CONFIG_JSON` | **Secret**: full config JSON written to a temp file at job start. Do not commit this. Set the same market vars as Vercel if the live catalog is not UK. |
+
+Committed hunts, fees, and copy default to the UK catalog. To run a different catalog, set the env vars above and keep that catalog’s hunt list in `VINTED_CONFIG` / `VINTED_CONFIG_JSON` — do not put non-UK defaults back into the public tree. `data/*` snapshots follow whichever catalog the bot last ran.
 
 After deploy: open the Vercel URL → **Run hunt** / **Remove** / **Park** / **Hunts** work with no pasted secret. Data updates when Actions commits `data/*`; hunt list updates when the Hunts tab saves `python/config.json`. Hit Refresh for finds.
 

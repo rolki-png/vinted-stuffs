@@ -25,6 +25,7 @@ from pathlib import Path
 import requests
 
 import hunt_catalog
+import market_defaults
 
 try:
     from google import genai
@@ -124,7 +125,7 @@ def _vinted_json(args: list, timeout: int = 60, stdin_payload=None) -> dict | li
 
 
 def _country(watch: dict) -> str:
-    return watch.get("country") or watch.get("market") or "ro"
+    return market_defaults.watch_country(watch)
 
 
 def _clean_login(value) -> str | None:
@@ -451,13 +452,14 @@ def seller_login(item: dict) -> str | None:
     return _clean_login(profile.get("username"))
 
 
-def ensure_seller_fields(item: dict, country: str = "ro") -> dict:
+def ensure_seller_fields(item: dict, country: str | None = None) -> dict:
     """Fill user.id / user.login via item detail when search omitted the seller."""
     if seller_id(item) and seller_login(item):
         return item
     iid = item.get("id")
     if iid is None:
         return item
+    country = country or market_defaults.default_country()
     try:
         raw = _vinted_json(["item", str(iid), "-c", country, "--no-cache"], timeout=90)
     except (RuntimeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
@@ -605,7 +607,7 @@ one object per listing:
     "versatility": {{"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"}},
     "equivalent_replacement_cost": {{
       "value": <positive amount; 0 only with confidence 0 and evidence beginning "unknown">,
-      "currency": "RON",
+      "currency": "{currency}",
       "confidence": <0..1>,
       "evidence": "<conservative equivalent>"
     }},
@@ -669,9 +671,9 @@ def _listing_payload(items: list) -> list:
 
 def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> str:
     currency = (
-        (items[0].get("price") or {}).get("currency_code", "RON")
-        if items else "RON"
-    )
+        (items[0].get("price") or {}).get("currency_code")
+        if items else None
+    ) or market_defaults.default_currency()
     target = (watch.get("target_type") or "").lower()
     maternity_rules = ""
     if "maternity" in target:
@@ -687,23 +689,23 @@ def _extraction_prompt(watch: dict, items: list, *, taste_block: str = "") -> st
             "Skip wool, merino, cashmere, and other hard-care knitwear. "
             "Only mark a true XL or L/XL as hunt-fit when it is genuinely useful "
             "maternity/nursing wear. "
-            "A 30-50 RON basic maternity T-shirt sold individually is a skip. "
+            "A cheap basic maternity T-shirt sold individually is a skip. "
             "Size target is women's XL and L/XL only (also accept clear text equivalents "
             "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
         )
     gym_tee_rules = ""
     if is_mens_gym_watch(watch):
         gym_tee_rules = (
-            "For this men's gym/training hunt, men's gym T-shirts / tees / koszulki / "
-            "tricouri / polos / basic tops are ALWAYS hunt_fit false "
+            "For this men's gym/training hunt, men's gym T-shirts / tees / "
+            "polos / basic tops are ALWAYS hunt_fit false "
             "regardless of price or brand. Prefer gym/training shorts; other non-tee "
             "technical pieces only if exceptional."
         )
     scoica_rules = ""
     if is_scoica_watch(watch):
         scoica_rules = (
-            "For infant car seats / scoică auto: hunt_fit only for a dedicated newborn "
-            "infant carrier (scoică), not a 0–36 kg / 0–12 year combo seat, not a booster, "
+            "For infant car seats: hunt_fit only for a dedicated newborn "
+            "infant carrier, not a 0–36 kg / 0–12 year combo seat, not a booster, "
             "not a stroller carrycot without car approval, not covers/adapters/bases sold alone. "
             "Prefer UN R129 / i-Size, rear-facing, 3- or 5-point harness, height from ~40 cm "
             "to ~83–87 cm. Prefer shells that install with the car's 3-point seatbelt AND "
@@ -853,7 +855,8 @@ def listing_amount(item: dict):
 
 
 def is_scoica_watch(watch: dict) -> bool:
-    if (watch.get("family") or "").strip().lower() == "scoica":
+    family = (watch.get("family") or "").strip().lower()
+    if family in ("scoica", "car_seat"):
         return True
     target = (watch.get("target_type") or "").lower()
     name = (watch.get("name") or "").lower()
@@ -939,7 +942,7 @@ def checkout_extra_ron(
     Prefer checkout_fees (shipping + fixed + pct of listing sum) when present;
     fall back to flat checkout_extra_ron by country.
     """
-    cc = (seller_country or "ro").lower()
+    cc = (seller_country or market_defaults.default_country()).lower()
     fees_table = config.get("checkout_fees") or {}
     row = fees_table.get(cc) or fees_table.get("default")
     if row:
@@ -1218,7 +1221,10 @@ def seed_pool_from_history(watches: list) -> list:
         item = {
             "id": raw.get("id"),
             "title": raw.get("title"),
-            "price": {"amount": raw.get("price"), "currency_code": raw.get("currency") or "RON"},
+            "price": {
+                "amount": raw.get("price"),
+                "currency_code": raw.get("currency") or market_defaults.default_currency(),
+            },
             "url": raw.get("url"),
             "user": {},
         }
@@ -1283,7 +1289,7 @@ def assemble_bundles(scored: list, config: dict) -> tuple[list, list]:
         if keeps and extras:
             country = (
                 (keeps[0]["item"].get("_profile") or {}).get("country_code")
-                or "ro"
+                or market_defaults.default_country()
             )
             members = keeps + extras
             listing_sum = sum(listing_amount(r["item"]) or 0 for r in members)
@@ -1586,7 +1592,7 @@ def _valid_replacement_factor(field) -> bool:
     if not _bounded_number(value, 0, float("inf")):
         return False
     if (
-        str(field.get("currency") or "").upper() != "RON"
+        str(field.get("currency") or "").upper() != market_defaults.default_currency()
         or not _bounded_number(field.get("confidence"), 0, 1)
         or not isinstance(field.get("evidence"), str)
     ):
@@ -1745,7 +1751,7 @@ def _test_mode_extractions(items: list, watch: dict, config: dict) -> list:
                     },
                     "equivalent_replacement_cost": {
                         "value": delivered + 1000,
-                        "currency": "RON",
+                        "currency": market_defaults.default_currency(),
                         "confidence": 1,
                         "evidence": evidence,
                     },
@@ -2078,24 +2084,26 @@ def _bundle_notification_line(role: str, row: dict) -> str | None:
         return None
     return (
         f"{role} {score_text} {row['item'].get('title', '')[:70]} "
-        f"({listing_amount(row['item'])} RON) {row['item'].get('url') or ''}"
+        f"({listing_amount(row['item'])} {market_defaults.default_currency()}) "
+        f"{row['item'].get('url') or ''}"
     )
 
 
 def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
     n = len(bundle["keeps"]) + len(bundle["extras"])
     seller = bundle.get("seller") or bundle["seller_id"]
+    ccy = market_defaults.default_currency()
     title = _header_safe(
-        f"bundle {n} @ {seller}: {bundle['checkout_total']:.0f} RON incl extra"
+        f"bundle {n} @ {seller}: {bundle['checkout_total']:.0f} {ccy} incl extra"
     )
     lines = [
         f"{bundle['listing_sum']:.0f} + {bundle['checkout_extra_ron']:.0f} checkout extra "
-        f"= {bundle['checkout_total']:.0f} RON ({bundle.get('country') or '?'})"
+        f"= {bundle['checkout_total']:.0f} {ccy} ({bundle.get('country') or '?'})"
     ]
     offer = bundle.get("suggested_offer_ron")
     if offer is not None:
         weak = " (weak/stretch)" if bundle.get("offer_weak") else ""
-        lines.append(f"offer ~{int(offer)} RON{weak}")
+        lines.append(f"offer ~{int(offer)} {ccy}{weak}")
     for role, rows in (("KEEP", bundle["keeps"]), ("EXTRA", bundle["extras"])):
         for row in rows:
             line = _bundle_notification_line(role, row)
@@ -2113,7 +2121,7 @@ def send_ntfy_bundle(topic: str, bundle: dict) -> bool:
     click = (bundle["keeps"][0]["item"].get("user") or {})
     profile = None
     if bundle.get("seller_id"):
-        profile = f"https://www.vinted.ro/member/{bundle['seller_id']}"
+        profile = market_defaults.member_url(bundle['seller_id'])
     return _ntfy_post(topic, title, "\n".join(lines), profile, "high")
 
 
@@ -2137,25 +2145,26 @@ def send_ntfy_value_haul(topic: str, haul: dict, score: dict, useful: list) -> N
     seller = haul.get("seller") or haul.get("seller_id")
     per = score.get("effective_price_per_useful_item")
     total = haul.get("checkout_total")
+    ccy = market_defaults.default_currency()
     if per is not None and total is not None:
         title = _header_safe(
-            f"value haul {n} @ {seller}: ~{float(per):.0f} RON/item ({total:.0f} total)"
+            f"value haul {n} @ {seller}: ~{float(per):.0f} {ccy}/item ({total:.0f} total)"
         )
     else:
         title = _header_safe(f"value haul {n} @ {seller}")
     lines = [
         score.get("reason") or "",
-        f"{haul.get('listing_sum', 0):.0f} + {haul.get('checkout_extra_ron', 0):.0f} = {haul.get('checkout_total', 0):.0f} RON",
+        f"{haul.get('listing_sum', 0):.0f} + {haul.get('checkout_extra_ron', 0):.0f} = {haul.get('checkout_total', 0):.0f} {ccy}",
     ]
     offer = haul.get("suggested_offer_ron")
     if offer is not None:
         weak = " (weak/stretch)" if haul.get("offer_weak") else ""
-        lines.append(f"offer ~{int(offer)} RON{weak}")
+        lines.append(f"offer ~{int(offer)} {ccy}{weak}")
     for it in useful:
-        lines.append(f"- {it.get('title')} ({listing_amount(it)} RON)")
+        lines.append(f"- {it.get('title')} ({listing_amount(it)} {ccy})")
     profile = None
     if haul.get("seller_id"):
-        profile = f"https://www.vinted.ro/member/{haul['seller_id']}"
+        profile = market_defaults.member_url(haul['seller_id'])
     _ntfy_post(topic, title, "\n".join(lines), profile, "high")
 
 
@@ -2765,7 +2774,7 @@ def main() -> None:
         if len(members) < 2 or not keeps:
             continue
         listing_sum = sum(listing_amount(r["item"]) or 0 for r in members)
-        country = bundle.get("country") or "ro"
+        country = bundle.get("country") or market_defaults.default_country()
         extra = checkout_extra_ron(country, config, listing_sum)
         pruned_bundles.append({
             **bundle,
@@ -2821,7 +2830,7 @@ def main() -> None:
     for keep in keeps:
         item = keep["item"]
         score = keep["score"]
-        ensure_seller_fields(item, _country(keep.get("watch_obj") or {"country": "ro"}))
+        ensure_seller_fields(item, _country(keep.get("watch_obj") or {}))
         best_rows.insert(
             0,
             {

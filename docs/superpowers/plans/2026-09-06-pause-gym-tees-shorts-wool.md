@@ -13,7 +13,7 @@
 - Spec: `docs/superpowers/specs/2026-09-06-pause-gym-tees-shorts-wool-design.md`
 - Keep Zimmerli / Hanro / Merz / CDLP; sneakers unchanged
 - Tee reject applies only to men’s gym / training / value-haul gym paths
-- Country `ro`; men’s M/L `size_ids: [1739, 1740]`
+- Country `uk`; men’s M/L `size_ids: [1739, 1740]`
 
 ---
 

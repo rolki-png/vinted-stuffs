@@ -80,7 +80,7 @@ The existing bundle shape: at least one keep plus extras from the same seller. S
 _Avoid_: Value haul
 
 **Checkout extra**:
-The assumed buyer cost once per checkout for shipping plus Vinted fees, on top of listing prices. Prefer `checkout_fees` (estimated shipping + fixed buyer fee + percent of listing sum) so a 50 RON and a 300 RON cart are not charged the same overhead; else fall back to flat `checkout_extra_ron` by country. One extra per seller checkout, not per item.
+The assumed buyer cost once per checkout for shipping plus Vinted fees, on top of listing prices. Prefer `checkout_fees` (estimated shipping + fixed buyer fee + percent of listing sum) so a cheap cart and an expensive cart are not charged the same overhead; else fall back to flat `checkout_extra_ron` by country. One extra per seller checkout, not per item.
 _Avoid_: Shipping (alone), fee, postage
 
 **Bundle offer**:
@@ -123,7 +123,7 @@ Buyer-confirmed purchase of a listing id. Off Active Finds; listed under the Bou
 _Avoid_: Purchased (ok synonym in UI copy), Keep (different — Keep is scorer output)
 
 **Hunt family**:
-Coarse taste bucket (maternity / gym / sneakers / knitwear / scoica / other) used to scope learning so maternity Removes do not affect gym scoring.
+Coarse taste bucket (maternity / gym / sneakers / knitwear / car_seat / other) used to scope learning so maternity Removes do not affect gym scoring.
 _Avoid_: Category (unqualified), watch group
 
 **Taste learning**:

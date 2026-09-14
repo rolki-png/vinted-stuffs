@@ -14,14 +14,14 @@ class MemoryStoreTests(unittest.TestCase):
             item={
                 "id": 111,
                 "title": "Craft tee",
-                "price": {"amount": "40", "currency_code": "RON"},
+                "price": {"amount": "40", "currency_code": "GBP"},
                 "brand_title": "Craft",
                 "size_title": "M",
                 "status": "Very good",
-                "url": "https://www.vinted.ro/items/111",
+                "url": "https://www.vinted.co.uk/items/111",
                 "favourite_count": 2,
                 "user": {"id": 99, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             score={
                 "id": 111,
@@ -48,7 +48,7 @@ class MemoryStoreTests(unittest.TestCase):
             item={
                 "id": 1,
                 "title": "a",
-                "price": {"amount": "10", "currency_code": "RON"},
+                "price": {"amount": "10", "currency_code": "GBP"},
                 "user": {"id": 5, "login": "x"},
                 "_profile": {},
             },
@@ -103,15 +103,15 @@ class MemoryStoreTests(unittest.TestCase):
             "hunt_name": "Craft ADV M-L",
             "title": "Craft ADV",
             "price": 55.0,
-            "currency": "RON",
+            "currency": "GBP",
             "brand": "Craft",
             "size": "L",
             "condition": "New without tags",
-            "url": "https://www.vinted.ro/items/42",
+            "url": "https://www.vinted.co.uk/items/42",
             "favourite_count": 1,
             "seller_id": 7,
             "seller_login": "bob",
-            "seller_country": "ro",
+            "seller_country": "uk",
             "deal_score": 7,
             "value_band": "acceptable",
             "hunt_fit": True,
@@ -120,7 +120,7 @@ class MemoryStoreTests(unittest.TestCase):
             "has_score": True,
             "source": "closet_crawl",
         }
-        watch = {"name": "Craft ADV M-L", "country": "ro", "target_type": "men's"}
+        watch = {"name": "Craft ADV M-L", "country": "uk", "target_type": "men's"}
         cand = ss.candidate_from_cached(row, watch)
         self.assertEqual(cand["watch"], "Craft ADV M-L")
         self.assertIs(cand["watch_obj"], watch)
@@ -138,18 +138,18 @@ class MemoryStoreTests(unittest.TestCase):
             "keep_value_bands": ["steal", "hunt"],
             "solo_floor_clothing_ron": 0,
             "bundle_extra_min_score": 7,
-            "checkout_extra_ron": {"ro": 25, "default": 25},
+            "checkout_extra_ron": {"uk": 25, "default": 25},
         }
-        watch = {"name": "Craft ADV M-L", "target_type": "men's gym", "country": "ro"}
+        watch = {"name": "Craft ADV M-L", "target_type": "men's gym", "country": "uk"}
         store = ss.MemoryScoredStore()
         store.upsert_score(
             ss.row_from_item_score(
                 item={
                     "id": 2,
                     "title": "extra",
-                    "price": {"amount": "80", "currency_code": "RON"},
+                    "price": {"amount": "80", "currency_code": "GBP"},
                     "user": {"id": 99, "login": "seller"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "score_version": 2,
@@ -172,10 +172,10 @@ class MemoryStoreTests(unittest.TestCase):
             "item": {
                 "id": 1,
                 "title": "keep",
-                "price": {"amount": "150", "currency_code": "RON"},
-                "url": "https://www.vinted.ro/items/1",
+                "price": {"amount": "150", "currency_code": "GBP"},
+                "url": "https://www.vinted.co.uk/items/1",
                 "user": {"id": 99, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             "score": {
                 "score_version": 2,
@@ -317,16 +317,16 @@ class MemoryStoreTests(unittest.TestCase):
         import vinted_bot as bot
 
         store = ss.MemoryScoredStore()
-        watch = {"name": "Craft ADV M-L", "country": "ro"}
+        watch = {"name": "Craft ADV M-L", "country": "uk"}
         store.upsert_score(
             ss.row_from_item_score(
                 item={
                     "id": 10,
                     "title": "a",
-                    "price": {"amount": "1", "currency_code": "RON"},
-                    "url": "https://www.vinted.ro/items/10",
+                    "price": {"amount": "1", "currency_code": "GBP"},
+                    "url": "https://www.vinted.co.uk/items/10",
                     "user": {"id": 1, "login": "s"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "deal_score": 7,
@@ -344,10 +344,10 @@ class MemoryStoreTests(unittest.TestCase):
                 item={
                     "id": 11,
                     "title": "b",
-                    "price": {"amount": "1", "currency_code": "RON"},
-                    "url": "https://www.vinted.ro/items/11",
+                    "price": {"amount": "1", "currency_code": "GBP"},
+                    "url": "https://www.vinted.co.uk/items/11",
                     "user": {"id": 1, "login": "s"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "deal_score": 7,
@@ -377,9 +377,9 @@ class MemoryStoreTests(unittest.TestCase):
             item={
                 "id": 1,
                 "title": "dress",
-                "price": {"amount": "40", "currency_code": "RON"},
+                "price": {"amount": "40", "currency_code": "GBP"},
                 "user": {"id": 9, "login": "s"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             score={
                 "deal_score": 8,
@@ -396,9 +396,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 1,
                 "title": "dress updated",
-                "price": {"amount": "35", "currency_code": "RON"},
+                "price": {"amount": "35", "currency_code": "GBP"},
                 "user": {"id": 9, "login": "s"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             "H",
             "backfill",
@@ -451,9 +451,9 @@ class MemoryStoreTests(unittest.TestCase):
                     {
                         "id": item_id,
                         "title": str(item_id),
-                        "price": {"amount": "10", "currency_code": "RON"},
+                        "price": {"amount": "10", "currency_code": "GBP"},
                         "user": {"id": 9, "login": "s"},
-                        "_profile": {"country_code": "ro"},
+                        "_profile": {"country_code": "uk"},
                     },
                     score,
                     "H",
@@ -466,9 +466,9 @@ class MemoryStoreTests(unittest.TestCase):
                 {
                     "id": 3,
                     "title": "unscored",
-                    "price": {"amount": "10", "currency_code": "RON"},
+                    "price": {"amount": "10", "currency_code": "GBP"},
                     "user": {"id": 9, "login": "s"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 "H",
                 "backfill",
@@ -479,9 +479,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 4,
                 "title": "gone",
-                "price": {"amount": "10", "currency_code": "RON"},
+                "price": {"amount": "10", "currency_code": "GBP"},
                 "user": {"id": 9, "login": "s"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             {
                 "deal_score": 1,
@@ -528,9 +528,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 99,
                 "title": "technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "user": {"id": 7, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             score,
             "Gym",
@@ -555,9 +555,9 @@ class MemoryStoreTests(unittest.TestCase):
                     {
                         "id": item_id,
                         "title": f"item {item_id}",
-                        "price": {"amount": "80", "currency_code": "RON"},
+                        "price": {"amount": "80", "currency_code": "GBP"},
                         "user": {"id": 7, "login": "seller"},
-                        "_profile": {"country_code": "ro"},
+                        "_profile": {"country_code": "uk"},
                     },
                     {
                         "score_version": 2,
@@ -677,9 +677,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 100,
                 "title": "technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "user": {"id": 7, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             {
                 "score_version": 2,
@@ -709,9 +709,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 100,
                 "title": "technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "user": {"id": 7, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             {
                 "deal_score": 8,
@@ -746,9 +746,9 @@ class MemoryStoreTests(unittest.TestCase):
             {
                 "id": 101,
                 "title": "dress",
-                "price": {"amount": "90", "currency_code": "RON"},
+                "price": {"amount": "90", "currency_code": "GBP"},
                 "user": {"id": 8, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             {
                 "score_version": 2,
@@ -773,9 +773,9 @@ class MemoryStoreTests(unittest.TestCase):
                 {
                     "id": 101,
                     "title": "dress updated",
-                    "price": {"amount": "85", "currency_code": "RON"},
+                    "price": {"amount": "85", "currency_code": "GBP"},
                     "user": {"id": 8, "login": "seller"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 "Maternity",
                 "backfill",
@@ -790,9 +790,9 @@ class MemoryStoreTests(unittest.TestCase):
         item = {
             "id": 102,
             "title": "dress",
-            "price": {"amount": "90", "currency_code": "RON"},
+            "price": {"amount": "90", "currency_code": "GBP"},
             "user": {"id": 8, "login": "seller"},
-            "_profile": {"country_code": "ro"},
+            "_profile": {"country_code": "uk"},
         }
         store.upsert_score(
             ss.row_from_item_score(

@@ -43,17 +43,12 @@
     "prompt_examples_per_polarity": 5
   },
   "checkout_extra_ron": {
-    "ro": 25,
     "hu": 30,
     "pl": 35,
-    "default": 25
+    "default": 25,
+    "uk": 25
   },
   "checkout_fees": {
-    "ro": {
-      "estimated_shipping_ron": 15,
-      "buyer_fee_fixed_ron": 3,
-      "buyer_fee_pct": 0.05
-    },
     "hu": {
       "estimated_shipping_ron": 18,
       "buyer_fee_fixed_ron": 3,
@@ -65,6 +60,11 @@
       "buyer_fee_pct": 0.05
     },
     "default": {
+      "estimated_shipping_ron": 15,
+      "buyer_fee_fixed_ron": 3,
+      "buyer_fee_pct": 0.05
+    },
+    "uk": {
       "estimated_shipping_ron": 15,
       "buyer_fee_fixed_ron": 3,
       "buyer_fee_pct": 0.05
@@ -95,7 +95,7 @@
     {
       "name": "Broad gym shorts M-L",
       "query": "short sport",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 120,
@@ -105,7 +105,7 @@
         "M",
         "L"
       ],
-      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops.",
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / polos / basic tops.",
       "size_ids": [
         1739,
         1740,
@@ -120,8 +120,8 @@
     },
     {
       "name": "Broad training shorts M-L",
-      "query": "pantaloni scurti sport",
-      "country": "ro",
+      "query": "sports shorts",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 120,
@@ -131,7 +131,7 @@
         "M",
         "L"
       ],
-      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops.",
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / polos / basic tops.",
       "size_ids": [
         1739,
         1740,
@@ -142,7 +142,7 @@
     {
       "name": "Broad gym short EN M-L",
       "query": "gym shorts",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 120,
@@ -152,7 +152,7 @@
         "M",
         "L"
       ],
-      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops.",
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / polos / basic tops.",
       "size_ids": [
         1739,
         1740,
@@ -163,7 +163,7 @@
     {
       "name": "Broad dri-fit shorts M-L",
       "query": "dri fit short",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 120,
@@ -173,7 +173,7 @@
         "M",
         "L"
       ],
-      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / koszulki / tricouri / polos / basic tops.",
+      "notes": "Prefer technical training / gym shorts in good condition. Skip kickboxing/football kits, casual cargo, and non-gym fashion shorts unless an exceptional steal. Brand-agnostic: Nike, Adidas, UA, Decathlon/Domyos, Hummel, Craft, etc. all valid. Skip all T-shirts / polos / basic tops.",
       "size_ids": [
         1739,
         1740,
@@ -184,7 +184,7 @@
     {
       "name": "Gym seed short sport M-L",
       "query": "short sport",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
@@ -194,7 +194,7 @@
         "M",
         "L"
       ],
-      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / tees are NOT useful. Individual cheap items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
       "size_ids": [
         1739,
         1740,
@@ -206,7 +206,7 @@
     {
       "name": "Gym seed gym shorts M-L",
       "query": "gym shorts",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
@@ -216,7 +216,7 @@
         "M",
         "L"
       ],
-      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / tees are NOT useful. Individual cheap items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
       "size_ids": [
         1739,
         1740,
@@ -230,7 +230,7 @@
     {
       "name": "Gym seed Nike shorts M-L",
       "query": "nike short",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
@@ -240,7 +240,7 @@
         "M",
         "L"
       ],
-      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / tees are NOT useful. Individual cheap items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
       "size_ids": [
         1739,
         1740,
@@ -252,7 +252,7 @@
     {
       "name": "Gym seed Adidas shorts M-L",
       "query": "adidas short",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
@@ -262,7 +262,7 @@
         "M",
         "L"
       ],
-      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / koszulki / tricouri are NOT useful. Individual 20–50 RON items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
+      "notes": "Seeds only — never solo-alert. Prefer sellers with several useful M/L gym SHORTS. T-shirts / tees are NOT useful. Individual cheap items are weak alone; same-seller multi-piece shorts haul + one shipping is the goal. bundle_hunt seed.",
       "size_ids": [
         1739,
         1740,
@@ -274,7 +274,7 @@
     {
       "name": "Lululemon gym M-L",
       "query": "lululemon",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 250,
@@ -284,7 +284,7 @@
         "M",
         "L"
       ],
-      "notes": "Men's gym/training SHORTS only (Pace Breaker and similar). Skip all T-shirts / Metal Vent Tech tees / koszulki / tricouri. Casual non-gym pieces are skips.",
+      "notes": "Men's gym/training SHORTS only (Pace Breaker and similar). Skip all T-shirts / Metal Vent Tech tees / tees. Casual non-gym pieces are skips.",
       "brand_ids": [
         198238
       ],
@@ -298,7 +298,7 @@
     {
       "name": "Ten Thousand gym M-L",
       "query": "ten thousand",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 250,
@@ -308,7 +308,7 @@
         "M",
         "L"
       ],
-      "notes": "Ten Thousand training SHORTS only. Skip all T-shirts / koszulki / tricouri / basic tops.",
+      "notes": "Ten Thousand training SHORTS only. Skip all T-shirts / basic tops.",
       "brand_ids": [
         3162601
       ],
@@ -322,7 +322,7 @@
     {
       "name": "Rhone gym M-L",
       "query": "rhone",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 250,
@@ -332,7 +332,7 @@
         "M",
         "L"
       ],
-      "notes": "Rhone training SHORTS only. Skip all T-shirts / koszulki / tricouri / basic tops.",
+      "notes": "Rhone training SHORTS only. Skip all T-shirts / basic tops.",
       "brand_ids": [
         602053
       ],
@@ -346,7 +346,7 @@
     {
       "name": "Tracksmith gym M-L",
       "query": "tracksmith",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 280,
@@ -356,7 +356,7 @@
         "M",
         "L"
       ],
-      "notes": "Tracksmith running/training SHORTS preferred. Skip all T-shirts / koszulki / tricouri.",
+      "notes": "Tracksmith running/training SHORTS preferred. Skip all T-shirts / tees.",
       "brand_ids": [
         1313649
       ],
@@ -370,7 +370,7 @@
     {
       "name": "Saysky running M-L",
       "query": "saysky",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 220,
@@ -380,7 +380,7 @@
         "M",
         "L"
       ],
-      "notes": "Saysky technical running SHORTS preferred. Skip basic logo tees and all T-shirts / koszulki.",
+      "notes": "Saysky technical running SHORTS preferred. Skip basic logo tees and all T-shirts.",
       "brand_ids": [
         2227047
       ],
@@ -394,7 +394,7 @@
     {
       "name": "Falke ESS M-L",
       "query": "falke ess",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 220,
@@ -404,7 +404,7 @@
         "M",
         "L"
       ],
-      "notes": "Falke ESS technical pieces; prefer shorts/tights over tops. Skip ordinary socks alone and all T-shirts / koszulki.",
+      "notes": "Falke ESS technical pieces; prefer shorts/tights over tops. Skip ordinary socks alone and all T-shirts.",
       "brand_ids": [
         256450
       ],
@@ -418,7 +418,7 @@
     {
       "name": "Craft ADV M-L",
       "query": "craft adv",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 180,
@@ -428,7 +428,7 @@
         "M",
         "L"
       ],
-      "notes": "Craft ADV/PRO SHORTS preferred. Skip all T-shirts / koszulki / tricouri — tees are always a skip.",
+      "notes": "Craft ADV/PRO SHORTS preferred. Skip all T-shirts / tees — tees are always a skip.",
       "brand_ids": [
         120326
       ],
@@ -442,7 +442,7 @@
     {
       "name": "Odlo technical M-L",
       "query": "odlo",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 200,
@@ -452,7 +452,7 @@
         "M",
         "L"
       ],
-      "notes": "Odlo technical SHORTS preferred. Skip base-layer wool pieces and all T-shirts / koszulki.",
+      "notes": "Odlo technical SHORTS preferred. Skip base-layer wool pieces and all T-shirts.",
       "brand_ids": [
         26843
       ],
@@ -464,7 +464,7 @@
     {
       "name": "GOREWEAR M-L",
       "query": "gorewear",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 240,
@@ -474,7 +474,7 @@
         "M",
         "L"
       ],
-      "notes": "GOREWEAR technical SHORTS preferred. Skip basic logo tees and all T-shirts / koszulki.",
+      "notes": "GOREWEAR technical SHORTS preferred. Skip basic logo tees and all T-shirts.",
       "brand_ids": [
         603808
       ],
@@ -486,7 +486,7 @@
     {
       "name": "2XU M-L",
       "query": "2xu",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 220,
@@ -496,7 +496,7 @@
         "M",
         "L"
       ],
-      "notes": "2XU compression tights and SHORTS. Skip T-shirts / koszulki / tricouri.",
+      "notes": "2XU compression tights and SHORTS. Skip T-shirts / tees.",
       "brand_ids": [
         334691
       ],
@@ -508,7 +508,7 @@
     {
       "name": "New Balance 990 size 43",
       "query": "new balance 990",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 500,
@@ -527,7 +527,7 @@
     {
       "name": "New Balance 991 size 43",
       "query": "new balance 991",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 550,
@@ -547,7 +547,7 @@
     {
       "name": "New Balance 993 size 43",
       "query": "new balance 993",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 550,
@@ -567,7 +567,7 @@
     {
       "name": "New Balance 2002R size 43",
       "query": "new balance 2002r",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 400,
@@ -587,7 +587,7 @@
     {
       "name": "New Balance 1906R size 43",
       "query": "new balance 1906r",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 400,
@@ -607,7 +607,7 @@
     {
       "name": "ASICS Gel Kayano 14 size 43",
       "query": "gel kayano 14",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 450,
@@ -624,7 +624,7 @@
     {
       "name": "ASICS GT-2160 size 43",
       "query": "gt 2160",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 380,
@@ -641,7 +641,7 @@
     {
       "name": "ASICS Gel-1130 size 43",
       "query": "gel 1130",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 350,
@@ -658,7 +658,7 @@
     {
       "name": "Diadora Heritage size 43",
       "query": "diadora heritage",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 400,
@@ -675,7 +675,7 @@
     {
       "name": "Zimmerli polo M-L",
       "query": "zimmerli",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 350,
@@ -690,7 +690,7 @@
     {
       "name": "Hanro polo M-L",
       "query": "hanro",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 320,
@@ -708,7 +708,7 @@
     {
       "name": "Merz b. Schwanen M-L",
       "query": "merz schwanen",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 320,
@@ -723,7 +723,7 @@
     {
       "name": "CDLP M-L",
       "query": "cdlp",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 280,
@@ -736,9 +736,9 @@
       "notes": "Premium basics. Skip multipacks of low interest; favour exceptional single pieces."
     },
     {
-      "name": "Broad maternity leggings RO XL-L/XL",
-      "query": "colanti maternity",
-      "country": "ro",
+      "name": "Broad maternity leggings XL-L/XL",
+      "query": "maternity leggings",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 180,
@@ -754,7 +754,7 @@
     {
       "name": "Broad maternity leggings EN XL-L/XL",
       "query": "maternity leggings",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 180,
@@ -770,7 +770,7 @@
     {
       "name": "Mamalicious leggings XL-L/XL",
       "query": "mamalicious leggings",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 180,
@@ -789,7 +789,7 @@
     {
       "name": "Seraphine leggings XL-L/XL",
       "query": "seraphine leggings",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 220,
@@ -808,7 +808,7 @@
     {
       "name": "H&M Mama leggings XL-L/XL",
       "query": "h&m mama leggings",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 120,
@@ -827,7 +827,7 @@
     {
       "name": "Seraphine maternity XL-L/XL",
       "query": "seraphine maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 350,
@@ -837,7 +837,7 @@
         "L/XL",
         "XL"
       ],
-      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High-priority brand. A 70 RON true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, trousers, easy-care pieces and nursing-compatible pieces.",
+      "notes": "Prioritise maternity/over-bump or nursing-friendly leggings suitable for gym and everyday. Size target is XL or L/XL only — reject plain L and M/L. High-priority brand. A well-priced true Seraphine dress in great condition can be a keep. Prefer dresses, workwear, coats, trousers, easy-care pieces and nursing-compatible pieces.",
       "min_deal_score": 8,
       "brand_ids": [
         133550
@@ -846,7 +846,7 @@
     {
       "name": "Isabella Oliver maternity XL-L/XL",
       "query": "isabella oliver",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 380,
@@ -865,7 +865,7 @@
     {
       "name": "Pietro Brunelli maternity XL-L/XL",
       "query": "pietro brunelli",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 450,
@@ -884,7 +884,7 @@
     {
       "name": "Tiffany Rose maternity dress XL-L/XL",
       "query": "tiffany rose maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 500,
@@ -903,7 +903,7 @@
     {
       "name": "Boob Design maternity XL-L/XL",
       "query": "boob design",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 350,
@@ -922,7 +922,7 @@
     {
       "name": "Ripe Maternity XL-L/XL",
       "query": "ripe maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 300,
@@ -938,7 +938,7 @@
     {
       "name": "Noppies maternity XL-L/XL",
       "query": "noppies maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 260,
@@ -957,7 +957,7 @@
     {
       "name": "Mamalicious maternity XL-L/XL",
       "query": "mamalicious",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 220,
@@ -976,7 +976,7 @@
     {
       "name": "Envie de Fraise maternity XL-L/XL",
       "query": "envie de fraise",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 280,
@@ -995,7 +995,7 @@
     {
       "name": "JoJo Maman Bebe maternity XL-L/XL",
       "query": "jojo maman bebe maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 280,
@@ -1014,7 +1014,7 @@
     {
       "name": "Hatch Collection maternity XL-L/XL",
       "query": "hatch collection maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 450,
@@ -1030,7 +1030,7 @@
     {
       "name": "Beyond Nine maternity XL-L/XL",
       "query": "beyond nine",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 400,
@@ -1049,7 +1049,7 @@
     {
       "name": "H&M Mama bundle seed XL-L/XL",
       "query": "h&m mama",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 120,
@@ -1065,7 +1065,7 @@
     {
       "name": "Next Maternity bundle seed XL-L/XL",
       "query": "next maternity",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 140,
@@ -1081,7 +1081,7 @@
     {
       "name": "Cerruti 1881 accessories",
       "query": "cerruti 1881",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 200,
@@ -1095,184 +1095,184 @@
       ]
     },
     {
-      "name": "Broad scoică auto i-Size",
-      "query": "scoica auto i-size",
-      "country": "ro",
+      "name": "Broad infant car seat i-Size",
+      "query": "infant car seat i-size",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 40,
       "price_to": 850,
       "hunt_price": 520,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
         "40-83 cm",
         "0-13 kg"
       ],
-      "notes": "Dedicated newborn infant carrier (scoică auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer shells that install with the car's 3-point belt AND click onto an ISOFIX base (changing cars). Top models: Cybex Cloud G / Cloud G Plus, Maxi-Cosi Pebble S, Cybex Cloud T, Cybex Aton S2 i-Size, Britax Baby-Safe 3/5Z i-Size, Nuna Pipa Next, Avionaut Pixel Pro. Joie Sprint is acceptable but ISOFIX-only and only ~40–75 cm — deprioritize. Skip 0–36 kg / 0–12 year combo seats, boosters, stroller carrycots without car approval, R44-only, expired seats (check manufacture date; typically 5–8 years), crash history, missing newborn inlay/insert or harness pads, covers/adapters/bases sold alone. Shell + matching ISOFIX base is extra value. Hunt is price-quality: very good+ condition under hunt price.",
-      "family": "scoica",
+      "notes": "Dedicated newborn infant carrier (infant car seat auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer shells that install with the car's 3-point belt AND click onto an ISOFIX base (changing cars). Top models: Cybex Cloud G / Cloud G Plus, Maxi-Cosi Pebble S, Cybex Cloud T, Cybex Aton S2 i-Size, Britax Baby-Safe 3/5Z i-Size, Nuna Pipa Next, Avionaut Pixel Pro. Joie Sprint is acceptable but ISOFIX-only and only ~40–75 cm — deprioritize. Skip 0–36 kg / 0–12 year combo seats, boosters, stroller carrycots without car approval, R44-only, expired seats (check manufacture date; typically 5–8 years), crash history, missing newborn inlay/insert or harness pads, covers/adapters/bases sold alone. Shell + matching ISOFIX base is extra value. Hunt is price-quality: very good+ condition under hunt price.",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Broad scoică auto 40-87",
-      "query": "scoica auto 40",
-      "country": "ro",
+      "name": "Broad infant car seat 40-87",
+      "query": "infant car seat 40",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 40,
       "price_to": 850,
       "hunt_price": 520,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
         "40-83 cm",
         "0-13 kg"
       ],
-      "notes": "Dedicated newborn infant carrier (scoică auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer dual belt+ISOFIX install. Skip combo 0–36 kg seats, boosters, carrycots, expired/crashed seats, missing newborn insert. Joie Sprint / i-Snug / i-Gemm are weaker (shorter range, often ISOFIX-only).",
-      "family": "scoica",
+      "notes": "Dedicated newborn infant carrier (infant car seat auto), UN R129 / i-Size, typically 40–83/87 cm, rear-facing, 3- or 5-point harness. Prefer dual belt+ISOFIX install. Skip combo 0–36 kg seats, boosters, carrycots, expired/crashed seats, missing newborn insert. Joie Sprint / i-Snug / i-Gemm are weaker (shorter range, often ISOFIX-only).",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Cybex Cloud G scoică",
+      "name": "Cybex Cloud G",
       "query": "cybex cloud g",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 850,
       "hunt_price": 550,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
         "0-13 kg"
       ],
       "notes": "Cybex Cloud G or Cloud G Plus i-Size only (40–87 cm). Dual install: seatbelt or Base G. Skip covers, adapters, stroller cots, Cloud Z/T unless listed as Cloud G. Shell + Base G is extra value. Reject expired/crash/missing newborn insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Maxi-Cosi Pebble S scoică",
+      "name": "Maxi-Cosi Pebble S",
       "query": "pebble s",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 750,
       "hunt_price": 480,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-83 cm",
         "0-13 kg"
       ],
       "notes": "Maxi-Cosi Pebble S only (40–83 cm). Dual install: seatbelt or FamilyFix S. Skip Pebble 360 / Coral 360 (ISOFIX-only), Cabriofix unless it is clearly i-Size and dual-install. Skip covers and bases sold alone. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Joie Sprint scoică",
+      "name": "Joie Sprint",
       "query": "joie sprint",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 700,
       "hunt_price": 400,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-75 cm",
         "0-13 kg"
       ],
       "notes": "Joie Sprint Signature / Sprint i-Size. ISOFIX-only and only ~40–75 cm (~first year) — weaker fit than dual-install 40–83/87 cm shells. Keep only if outstanding price and very-good+ condition. Skip i-Gemm/i-Snug unless they clearly match Sprint. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 60
     },
     {
-      "name": "Cybex Cloud T scoică",
+      "name": "Cybex Cloud T",
       "query": "cybex cloud t",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 850,
       "hunt_price": 520,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "45-87 cm",
         "0-13 kg"
       ],
       "notes": "Cybex Cloud T / Cloud T Plus i-Size only. Dual install preferred. Skip summer covers, rain covers, adapters, and Cloud G/Z unless this listing is Cloud T. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Cybex Aton S2 scoică",
+      "name": "Cybex Aton S2",
       "query": "aton s2",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 700,
       "hunt_price": 420,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "45-87 cm",
         "0-13 kg"
       ],
       "notes": "Cybex Aton S2 i-Size only (~45–87 cm). Dual install: seatbelt or ISOFIX base. Shell + matching base is extra value. Skip Aton 5 / Sirona / covers. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Britax Baby-Safe i-Size scoică",
+      "name": "Britax Baby-Safe i-Size",
       "query": "baby-safe",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 30,
       "price_to": 800,
       "hunt_price": 480,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
         "0-13 kg"
       ],
       "notes": "Britax Römer Baby-Safe 3 i-Size, 5Z / 5Z2, or Baby-Safe Pro i-Size. Dual install preferred. Shell + Flex Base is extra value. Skip older R44 Baby-Safe Plus SHR, bases/covers sold alone, and combo seats. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 80
     },
     {
-      "name": "Nuna Pipa Next scoică",
+      "name": "Nuna Pipa Next",
       "query": "pipa next",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 900,
       "hunt_price": 550,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-83 cm",
         "0-13 kg"
       ],
       "notes": "Nuna Pipa Next i-Size only. Dual install: seatbelt or NEXT/Pipa base. Skip Arra Next (ISOFIX-only), strollers, adapters, bases sold alone, Pipa Icon unless clearly dual-install i-Size. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 60
     },
     {
-      "name": "Avionaut Pixel Pro scoică",
+      "name": "Avionaut Pixel Pro",
       "query": "avionaut pixel",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 24,
       "price_to": 700,
       "hunt_price": 400,
-      "target_type": "newborn infant car seat / scoică auto i-Size",
+      "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-86 cm",
         "0-13 kg"
       ],
       "notes": "Avionaut Pixel / Pixel Pro i-Size infant carrier. Dual install preferred. Skip IQ bases sold alone and non-infant Avionaut seats. Reject expired/crash/missing insert.",
-      "family": "scoica",
+      "family": "car_seat",
       "min_deal_score": 8,
       "full_sweep_max": 60
     }

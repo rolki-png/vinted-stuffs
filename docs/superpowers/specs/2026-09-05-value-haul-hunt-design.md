@@ -8,11 +8,11 @@ Repo: `vinted-stuffs` (bot in `scripts/vinted_bot.py`)
 
 The bot already finds **premium steals** (one listing worth shipping alone) and **keep-bundles** (at least one keep plus ride-along extras from the same seller).
 
-It does **not** find **value hauls**: several ordinary gym pieces from one seller that become a strong deal only because shipping and buyer protection are paid once. Example: six H&M Sport tees at 100 RON listing + ~27 RON fees ≈ 21 RON delivered per useful item — excellent wardrobe-building, weak as six solo scores.
+It does **not** find **value hauls**: several ordinary gym pieces from one seller that become a strong deal only because shipping and buyer protection are paid once. Example: six H&M Sport tees at 100 GBP listing + ~27 GBP fees ≈ 21 GBP delivered per useful item — excellent wardrobe-building, weak as six solo scores.
 
 Today that haul never alerts:
 
-- Ordinary clothing at or under the solo floor (100 RON) is not a keep unless `value_band` is `steal`.
+- Ordinary clothing at or under the solo floor (100 GBP) is not a keep unless `value_band` is `steal`.
 - `assemble_bundles` requires at least one keep plus extras.
 - Closet crawl exists, but everything still runs through the premium keep / extra rules.
 
@@ -115,7 +115,7 @@ Watch flag example (v1: one or two such watches):
 {
   "name": "Gym bundle seeds M-L",
   "query": "sport",
-  "country": "ro",
+  "country": "uk",
   "order": "newest_first",
   "per_page": 50,
   "price_to": 80,
@@ -198,7 +198,7 @@ One LLM request per gated seller cart (not per item).
 
 - This is a BUNDLE / value haul hunt. Do not judge only by individual resale value.
 - A haul can be outstanding when: at least three useful pieces fit the buyer (or two if delivered per useful item is steal-level); one shipping charge; low delivered cost per useful item; condition very good or better; pieces genuinely usable for gym/training; little filler.
-- Ordinary gym brands: under ~30 RON delivered per useful item = strong; under ~25 = excellent; around ~20 or less = steal.
+- Ordinary gym brands: under ~30 GBP delivered per useful item = strong; under ~25 = excellent; around ~20 or less = steal.
 - Reject hauls whose low price depends on wrong sizes, worn-out pieces, casual cotton tees with little gym value, or items the buyer is unlikely to use.
 
 **Output**
@@ -228,7 +228,7 @@ All of:
 
 ## Alerts and persistence
 
-- **ntfy**: dedicated copy, e.g. `value haul 6 @ robert_k2000: ~21 RON/item (127 total)`, short reason, profile URL, item titles. Distinct from keep-bundle notifications.
+- **ntfy**: dedicated copy, e.g. `value haul 6 @ robert_k2000: ~21 GBP/item (127 total)`, short reason, profile URL, item titles. Distinct from keep-bundle notifications.
 - **`data/best_bundles.json`**: add `kind: "value_haul" | "keep_bundle"`. Existing rows without `kind` treat as `keep_bundle`.
 - **Dedup**: reuse `alerted_bundle_keys` with fingerprint `seller_id:sorted_useful_ids` (exclude `reject_ids`).
 - **Seen keys**: seed listings still recorded as `listing_id + hunt_name` so they are not re-processed as solo score targets; haul fingerprint is independent.
@@ -251,15 +251,15 @@ Cap alerts with `max_value_hauls_per_run` (default 3), separate from `max_bundle
 
 Unit tests (no live Vinted/LLM):
 
-1. Gate: 3 candidates → eligible; 2 at 18 RON rough/item → eligible; 2 at 35 → not; 1 → not.
+1. Gate: 3 candidates → eligible; 2 at 18 GBP rough/item → eligible; 2 at 35 → not; 1 → not.
 2. `bundle_hunt` seeds never satisfy `is_keep`.
 3. Fingerprint uses useful ids only (`reject_ids` dropped).
 4. Payload/prompt builder smoke test with fixed fixture items.
 
 ## Success criteria
 
-- A robert_k2000-style cart (several M/L gym tees, ~20–25 RON delivered each) can alert as a value haul with no keep.
-- A lone 35 RON H&M tee from a bundle-hunt watch never alerts.
+- A robert_k2000-style cart (several M/L gym tees, ~20–25 GBP delivered each) can alert as a value haul with no keep.
+- A lone 35 GBP H&M tee from a bundle-hunt watch never alerts.
 - Existing premium solo keeps and keep-bundles behave as today.
 - Value-haul and keep-bundle alerts are distinguishable in ntfy and the dashboard.
 

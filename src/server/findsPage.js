@@ -20,6 +20,7 @@ import { applyToFinds, loadVetoMap } from "./listingVetoes.ts";
 import { databaseUrl, exportRow, loadIndexedFromDb } from "./scoredDb.ts";
 import { mergeScoreRows, isV2 } from "./scoreSemantics.js";
 import { huntFamilySql, matchesHuntFamily } from "./tasteLearning.ts";
+import { defaultCurrency } from "./marketDefaults.js";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 100;
@@ -91,6 +92,7 @@ const HUNT_FAMILIES = new Set([
 	"sneakers",
 	"knitwear",
 	"scoica",
+	"car_seat",
 	"other",
 ]);
 
@@ -351,7 +353,7 @@ function buildMemoryCorpus({ deals, indexed, pool, run, vetoes, mode }) {
 			id: item.id,
 			title: item.title || existing.title,
 			price: price != null ? price : existing.price,
-			currency: currency || existing.currency || "RON",
+			currency: currency || existing.currency || defaultCurrency(),
 			url: item.url || existing.url,
 			watch: raw.watch || existing.watch,
 			...sc,

@@ -83,14 +83,14 @@ class MemoryStoreTests(unittest.TestCase):
             item={
                 "id": 111,
                 "title": "Craft tee",
-                "price": {"amount": "40", "currency_code": "RON"},
+                "price": {"amount": "40", "currency_code": "GBP"},
                 "brand_title": "Craft",
                 "size_title": "M",
                 "status": "Very good",
-                "url": "https://www.vinted.ro/items/111",
+                "url": "https://www.vinted.co.uk/items/111",
                 "favourite_count": 2,
                 "user": {"id": 99, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             score={
                 "id": 111,
@@ -117,7 +117,7 @@ class MemoryStoreTests(unittest.TestCase):
             item={
                 "id": 1,
                 "title": "a",
-                "price": {"amount": "10", "currency_code": "RON"},
+                "price": {"amount": "10", "currency_code": "GBP"},
                 "user": {"id": 5, "login": "x"},
                 "_profile": {},
             },
@@ -147,11 +147,11 @@ class MemoryStoreTests(unittest.TestCase):
             "hunt_name": "Craft ADV M-L",
             "title": "Craft ADV",
             "price": 55.0,
-            "currency": "RON",
+            "currency": "GBP",
             "brand": "Craft",
             "size": "L",
             "condition": "New without tags",
-            "url": "https://www.vinted.ro/items/42",
+            "url": "https://www.vinted.co.uk/items/42",
             "favourite_count": 1,
             "seller_id": 7,
             "seller_login": "bob",
@@ -163,7 +163,7 @@ class MemoryStoreTests(unittest.TestCase):
             "reason": "bundle extra",
             "source": "closet_crawl",
         }
-        watch = {"name": "Craft ADV M-L", "country": "ro", "target_type": "men's"}
+        watch = {"name": "Craft ADV M-L", "country": "uk", "target_type": "men's"}
         cand = ss.candidate_from_cached(row, watch)
         self.assertEqual(cand["watch"], "Craft ADV M-L")
         self.assertIs(cand["watch_obj"], watch)
@@ -183,16 +183,16 @@ class MemoryStoreTests(unittest.TestCase):
             "bundle_extra_min_score": 7,
             "checkout_extra_ron": {"ro": 25, "default": 25},
         }
-        watch = {"name": "Craft ADV M-L", "target_type": "men's gym", "country": "ro"}
+        watch = {"name": "Craft ADV M-L", "target_type": "men's gym", "country": "uk"}
         store = ss.MemoryScoredStore()
         store.upsert_score(
             ss.row_from_item_score(
                 item={
                     "id": 2,
                     "title": "extra",
-                    "price": {"amount": "80", "currency_code": "RON"},
+                    "price": {"amount": "80", "currency_code": "GBP"},
                     "user": {"id": 99, "login": "seller"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "deal_score": 7,
@@ -211,10 +211,10 @@ class MemoryStoreTests(unittest.TestCase):
             "item": {
                 "id": 1,
                 "title": "keep",
-                "price": {"amount": "150", "currency_code": "RON"},
-                "url": "https://www.vinted.ro/items/1",
+                "price": {"amount": "150", "currency_code": "GBP"},
+                "url": "https://www.vinted.co.uk/items/1",
                 "user": {"id": 99, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             "score": {
                 "deal_score": 9,
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS scored_listings (
   hunt_name TEXT NOT NULL,
   title TEXT NOT NULL DEFAULT '',
   price DECIMAL NULL,
-  currency TEXT NOT NULL DEFAULT 'RON',
+  currency TEXT NOT NULL DEFAULT 'GBP',
   brand TEXT NULL,
   size TEXT NULL,
   condition TEXT NULL,
@@ -300,7 +300,7 @@ CREATE TABLE IF NOT EXISTS scored_listings (
   hunt_name TEXT NOT NULL,
   title TEXT NOT NULL DEFAULT '',
   price DECIMAL NULL,
-  currency TEXT NOT NULL DEFAULT 'RON',
+  currency TEXT NOT NULL DEFAULT 'GBP',
   brand TEXT NULL,
   size TEXT NULL,
   condition TEXT NULL,
@@ -416,7 +416,7 @@ def row_from_item_score(
         "hunt_name": hunt_name,
         "title": item.get("title") or "",
         "price": _price_amount(item),
-        "currency": (item.get("price") or {}).get("currency_code") or "RON",
+        "currency": (item.get("price") or {}).get("currency_code") or "GBP",
         "brand": item.get("brand_title"),
         "size": item.get("size_title"),
         "condition": item.get("status"),
@@ -437,7 +437,7 @@ def row_from_item_score(
 
 def candidate_from_cached(row: dict, watch_obj: dict, fresh_item: dict | None = None) -> dict:
     price = row.get("price")
-    currency = row.get("currency") or "RON"
+    currency = row.get("currency") or "GBP"
     if fresh_item and isinstance(fresh_item.get("price"), dict):
         amount = fresh_item["price"].get("amount", price)
         currency = fresh_item["price"].get("currency_code") or currency
@@ -781,16 +781,16 @@ Append to `scripts/test_scored_store.py`:
         import vinted_bot as bot
 
         store = ss.MemoryScoredStore()
-        watch = {"name": "Craft ADV M-L", "country": "ro"}
+        watch = {"name": "Craft ADV M-L", "country": "uk"}
         store.upsert_score(
             ss.row_from_item_score(
                 item={
                     "id": 10,
                     "title": "a",
-                    "price": {"amount": "1", "currency_code": "RON"},
-                    "url": "https://www.vinted.ro/items/10",
+                    "price": {"amount": "1", "currency_code": "GBP"},
+                    "url": "https://www.vinted.co.uk/items/10",
                     "user": {"id": 1, "login": "s"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "deal_score": 7,
@@ -808,10 +808,10 @@ Append to `scripts/test_scored_store.py`:
                 item={
                     "id": 11,
                     "title": "b",
-                    "price": {"amount": "1", "currency_code": "RON"},
-                    "url": "https://www.vinted.ro/items/11",
+                    "price": {"amount": "1", "currency_code": "GBP"},
+                    "url": "https://www.vinted.co.uk/items/11",
                     "user": {"id": 1, "login": "s"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 score={
                     "deal_score": 7,
@@ -931,8 +931,8 @@ from datetime import datetime, timezone
 s = ss.open_store()
 assert type(s).__name__ == "PsycopgScoredStore", type(s)
 s.upsert_score(ss.row_from_item_score(
-    {"id": 1, "title": "smoke", "price": {"amount": "1", "currency_code": "RON"},
-     "user": {"id": 1, "login": "smoke"}, "_profile": {"country_code": "ro"}},
+    {"id": 1, "title": "smoke", "price": {"amount": "1", "currency_code": "GBP"},
+     "user": {"id": 1, "login": "smoke"}, "_profile": {"country_code": "uk"}},
     {"deal_score": 1, "value_band": "skip", "hunt_fit": False, "scam_risk": "low", "reason": "smoke"},
     "smoke-hunt", "search", datetime.now(timezone.utc),
 ))

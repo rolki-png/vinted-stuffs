@@ -381,7 +381,7 @@ def fetch_items(
     """Fetch live payloads. Only explicit available true/false is classified."""
     by_country: dict[str, list[tuple[tuple[str, str], dict]]] = defaultdict(list)
     for item_id, hunt in pairs:
-        watch = watch_by_name.get(hunt) or {"country": "ro"}
+        watch = watch_by_name.get(hunt) or {}
         country = bot._country(watch)
         pair = (item_id, hunt)
         by_country[country].append(
@@ -466,7 +466,7 @@ def unavailable_tombstone(item_id: str, hunt_name: str) -> dict:
         "hunt_name": hunt_name,
         "title": "",
         "price": None,
-        "currency": "RON",
+        "currency": bot.market_defaults.default_currency(),
         "brand": None,
         "size": None,
         "condition": None,

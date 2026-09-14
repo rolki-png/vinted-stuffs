@@ -6,6 +6,7 @@ import {
   serializeConfigJson,
   classifyContents409,
 } from "./huntConfig.js"
+import { marketFromEnv } from "./marketDefaults.js"
 
 function ghEnv() {
   const repo = process.env.GITHUB_REPO
@@ -141,7 +142,7 @@ async function putConfigJson({ config, sha, message, fetchFn = fetch }) {
 async function loadHunts({ fetchFn = fetch } = {}) {
   const { config, sha, ref } = await getConfigJson({ fetchFn })
   const watches = Array.isArray(config.watches) ? config.watches : []
-  return { sha, watches, ref, path: CONFIG_PATH }
+  return { sha, watches, ref, path: CONFIG_PATH, market: marketFromEnv() }
 }
 
 /**

@@ -39,7 +39,7 @@ me?** and a desk control to switch between chronological and best→worst order.
 
 | Topic | Decision |
 |---|---|
-| Primary meaning | Checkout purchase utility (not pure RON/item density) |
+| Primary meaning | Checkout purchase utility (not pure GBP/item density) |
 | Scale | Calculated integer 0–100; LLM never emits it |
 | Aggregation | Keep-anchored: max Keep (or haul best item) + bounded extras/fee term |
 | Who is ranked | `keep_bundle`, `value_haul`, `index_keep_bundle`, and carts with a usable v2 anchor |

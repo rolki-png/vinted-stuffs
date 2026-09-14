@@ -19,7 +19,8 @@ import {
 import { applyToFinds, loadVetoMap } from "./listingVetoes.ts";
 import { databaseUrl, exportRow, loadIndexedFromDb } from "./scoredDb.ts";
 import { mergeScoreRows, isV2 } from "./scoreSemantics.js";
-import { huntFamilySql, matchesHuntFamily } from "./tasteLearning.ts";
+import { huntFamilySql, matchesHuntFamily, canonFamily } from "./tasteLearning.ts";
+import { defaultCurrency } from "./marketDefaults.js";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 100;
@@ -91,6 +92,7 @@ const HUNT_FAMILIES = new Set([
 	"sneakers",
 	"knitwear",
 	"scoica",
+	"car_seat",
 	"other",
 ]);
 
@@ -103,7 +105,7 @@ function parseFilters(raw = {}) {
 			? raw.veto
 			: "active",
 		watch: String(raw.watch || "").trim(),
-		family: HUNT_FAMILIES.has(family) ? family : "",
+		family: HUNT_FAMILIES.has(family) ? canonFamily(family) : "",
 		band: String(raw.band || "").trim(),
 		minScore: String(raw.min_score || raw.minScore || "").trim(),
 		source: String(raw.source || "").trim(),
@@ -351,7 +353,7 @@ function buildMemoryCorpus({ deals, indexed, pool, run, vetoes, mode }) {
 			id: item.id,
 			title: item.title || existing.title,
 			price: price != null ? price : existing.price,
-			currency: currency || existing.currency || "RON",
+			currency: currency || existing.currency || defaultCurrency(),
 			url: item.url || existing.url,
 			watch: raw.watch || existing.watch,
 			...sc,

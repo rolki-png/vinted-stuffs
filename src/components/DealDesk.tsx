@@ -146,9 +146,26 @@ function bundleHuntFamily(bundle: Bundle): string {
 	return resolveFamily(watch);
 }
 
-function fmtPrice(n: unknown, currency = "RON") {
+function fmtPrice(n: unknown, currency = "GBP") {
 	if (n == null || Number.isNaN(Number(n))) return "—";
-	return `${Number(n).toFixed(0)} ${currency || "RON"}`;
+	return `${Number(n).toFixed(0)} ${currency || "GBP"}`;
+}
+
+function hostFromUrl(url?: string | null) {
+	try {
+		if (url) return new URL(url).host;
+	} catch {
+		/* ignore malformed listing urls */
+	}
+	return "www.vinted.co.uk";
+}
+
+function memberHref(sellerId: unknown, hintUrl?: string | null) {
+	return `https://${hostFromUrl(hintUrl)}/member/${sellerId}`;
+}
+
+function rowCurrency(row: { currency?: string; items?: Array<{ currency?: string; url?: string }> } | null | undefined) {
+	return row?.currency || row?.items?.[0]?.currency || "GBP";
 }
 
 function fmtWhen(iso?: string | null) {
@@ -843,7 +860,7 @@ export function DealDesk() {
 													{f.seller_id ? (
 														<a
 															className="link"
-															href={`https://www.vinted.ro/member/${f.seller_id}`}
+															href={memberHref(f.seller_id, f.url)}
 															target="_blank"
 															rel="noreferrer"
 														>
@@ -977,7 +994,10 @@ export function DealDesk() {
 											{b.seller_id ? (
 												<a
 													className="link"
-													href={`https://www.vinted.ro/member/${b.seller_id}`}
+													href={memberHref(
+														b.seller_id,
+														b.items?.[0]?.url,
+													)}
 													target="_blank"
 													rel="noreferrer"
 												>
@@ -1017,10 +1037,10 @@ export function DealDesk() {
 														Number(b.listing_sum || 0) +
 															Number(b.checkout_extra_ron || 0),
 												).toFixed(0)}{" "}
-												RON
+												{rowCurrency(b)}
 											</strong>
 											{b.effective_price_per_useful_item != null
-												? ` · ~${Number(b.effective_price_per_useful_item).toFixed(0)} RON/item`
+												? ` · ~${Number(b.effective_price_per_useful_item).toFixed(0)} ${rowCurrency(b)}/item`
 												: ""}
 											{b.suggested_offer_ron != null ? (
 												<>
@@ -1028,7 +1048,7 @@ export function DealDesk() {
 													·{" "}
 													<strong>
 														offer ~{Number(b.suggested_offer_ron).toFixed(0)}{" "}
-														RON
+														{rowCurrency(b)}
 													</strong>
 													{b.offer_weak ? (
 														<span className="pill near"> weak</span>

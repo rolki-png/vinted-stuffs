@@ -580,7 +580,7 @@ class RankingIntegrationTests(unittest.TestCase):
     def test_rank_persistence_follows_initial_score_write(self):
         store = scored_store.MemoryScoredStore()
         row = candidate(1, 90, 85, 95)
-        row["item"]["price"] = {"amount": 100, "currency_code": "RON"}
+        row["item"]["price"] = {"amount": 100, "currency_code": "GBP"}
         scored_at = datetime(2026, 9, 7, tzinfo=timezone.utc)
         store.upsert_score(
             scored_store.row_from_item_score(

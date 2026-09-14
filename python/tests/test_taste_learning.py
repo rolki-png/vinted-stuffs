@@ -21,8 +21,8 @@ class TestFamily(unittest.TestCase):
         self.assertEqual(tl.resolve_family("Johnstons of Elgin M-L"), "knitwear")
 
     def test_scoica(self):
-        self.assertEqual(tl.resolve_family("Cybex Cloud G scoică"), "scoica")
-        self.assertEqual(tl.resolve_family("Broad scoică auto i-Size"), "scoica")
+        self.assertEqual(tl.resolve_family("Cybex Cloud G infant car seat"), "scoica")
+        self.assertEqual(tl.resolve_family("Broad infant car seat i-Size"), "scoica")
 
     def test_watch_override(self):
         self.assertEqual(

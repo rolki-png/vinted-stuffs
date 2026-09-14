@@ -10,6 +10,8 @@ _FAMILY_RULES: list[tuple[str, tuple[str, ...]]] = [
         (
             "scoica",
             "scoică",
+            "car_seat",
+            "infant car",
             "infant carrier",
             "cloud g",
             "pebble s",
@@ -122,9 +124,16 @@ def taste_config(config: dict | None) -> dict:
     return out
 
 
+def _canon_family(family: str | None) -> str:
+    value = str(family or "").strip().lower()
+    if value == "car_seat":
+        return "scoica"
+    return value
+
+
 def resolve_family(hunt_name: str, watch: dict | None = None) -> str:
     if watch and watch.get("family"):
-        return str(watch["family"]).strip().lower() or "other"
+        return _canon_family(watch["family"]) or "other"
     name = (hunt_name or "").lower()
     for family, needles in _FAMILY_RULES:
         for needle in needles:

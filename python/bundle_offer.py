@@ -5,12 +5,12 @@ from __future__ import annotations
 import math
 
 DEFAULTS = {
-    "gym_target_delivered_per_item_ron": 30,
-    "maternity_target_delivered_per_item_ron": 50,
+    "gym_target_delivered_per_item_ron": 5,
+    "maternity_target_delivered_per_item_ron": 8,
     "min_haircut": 0.10,
     "max_haircut_alerted": 0.25,
     "max_haircut_near": 0.35,
-    "default_checkout_extra_ron": 25,
+    "default_checkout_extra_ron": 4,
 }
 
 NEAR_KINDS = frozenset({"near_haul", "index_near_bundle"})

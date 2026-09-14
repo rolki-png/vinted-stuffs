@@ -105,7 +105,7 @@ In `_scoring_prompt`, replace the maternity_rules assignment with:
             "absolute savings versus retail. "
             "Give 8 for a true XL or L/XL hunt-fit in very-good+ condition at or under "
             "hunt price when the piece is genuinely useful maternity/nursing wear. "
-            "A 30-50 RON basic maternity T-shirt sold individually is a skip. "
+            "A 30-50 GBP basic maternity T-shirt sold individually is a skip. "
             "Size target is women's XL and L/XL only (also accept clear text equivalents "
             "like L-XL, L / XL, LXL). Plain L, M, M/L, S/M, XL/XXL, and XXL never qualify."
         )
@@ -206,7 +206,7 @@ NEW = [
     {
         "name": "Broad maternity leggings RO XL-L/XL",
         "query": "colanti maternity",
-        "country": "ro",
+        "country": "uk",
         "order": "newest_first",
         "per_page": 30,
         "price_to": 180,
@@ -219,7 +219,7 @@ NEW = [
     {
         "name": "Broad maternity leggings EN XL-L/XL",
         "query": "maternity leggings",
-        "country": "ro",
+        "country": "uk",
         "order": "newest_first",
         "per_page": 30,
         "price_to": 180,
@@ -232,7 +232,7 @@ NEW = [
     {
         "name": "Mamalicious leggings XL-L/XL",
         "query": "mamalicious leggings",
-        "country": "ro",
+        "country": "uk",
         "order": "newest_first",
         "per_page": 30,
         "price_to": 180,
@@ -246,7 +246,7 @@ NEW = [
     {
         "name": "Seraphine leggings XL-L/XL",
         "query": "seraphine leggings",
-        "country": "ro",
+        "country": "uk",
         "order": "newest_first",
         "per_page": 30,
         "price_to": 220,
@@ -260,7 +260,7 @@ NEW = [
     {
         "name": "H&M Mama leggings XL-L/XL",
         "query": "h&m mama leggings",
-        "country": "ro",
+        "country": "uk",
         "order": "newest_first",
         "per_page": 30,
         "price_to": 120,

@@ -24,7 +24,7 @@ Add a **Hunts** tab on the Deal desk that loads and mutates the live `watches` a
 5. As a buyer, I want **Remove** to stop searching a hunt without erasing score/seen history, so that identity cleanup is intentional and separate.
 6. As a buyer, I want a rename warning when `name` changes, so that I know seen-key identity will start fresh.
 7. As a buyer, I want brand typeahead and size-group pickers from Vinted, so that I do not hand-edit numeric IDs.
-8. As a buyer, I want country locked to the RO catalog, so that I am not switching marketplaces by accident.
+8. As a buyer, I want country locked to the UK catalog, so that I am not switching marketplaces by accident.
 9. As a buyer, I want clear conflict/reload behavior when config changed under me, so that I do not silently overwrite another edit.
 10. As a developer, I want Contents PUT to mutate only `watches` and preserve all other top-level keys, so that scoring/`value_haul`/checkout config cannot be wiped by a desk save.
 
@@ -58,18 +58,18 @@ Add a **Hunts** tab on the Deal desk that loads and mutates the live `watches` a
 ### Form fields and validation
 
 17. **Visible fields:** `name`, `query`, `order`, `per_page`, `price_to`, `hunt_price`, `target_type`, `target_sizes`, `notes`, `bundle_hunt`, `family` (maternity | gym | sneakers | knitwear | other | empty), optional `min_deal_score`.
-18. **Country:** Always persist `country: "ro"`. Hide control or show read-only “RO catalog”. No PL/HU site switcher; no seller-origin filter.
+18. **Country:** Always persist `country: "uk"`. Hide control or show read-only catalog label from env (UK default). No PL/HU site switcher; no seller-origin filter.
 19. **Brands:** Debounced typeahead → desk brands API → explicit multi-select chips → `brand_ids`. No first-hit auto-fill. Empty → omit key. Catalogue failure → inline warning; Save still allowed.
 20. **Sizes:** Size-groups API → choose group (men’s / women’s / shoes / kids / …) → multi-select chips → `size_ids`. Optional. No raw-ID escape hatch in v1. `target_sizes` stays free-text for the scorer.
 21. **Omit from UI:** `price_from`, `category_id`, `condition`, `full_sweep_max`. **Preserve unknown keys** on replace of an existing hunt object.
 22. **Write style:** Omit unset optionals; `bundle_hunt: true` only when checked (match existing config).
-23. **Validation (client + server before PUT):** Required non-empty `name`, `query`, `target_type`; unique `name` among watches (case-sensitive as stored); positive int IDs; numerics ≥ 0 where set; force `country: "ro"`.
+23. **Validation (client + server before PUT):** Required non-empty `name`, `query`, `target_type`; unique `name` among watches (case-sensitive as stored); positive int IDs; numerics ≥ 0 where set; force `country: "uk"`.
 
 ### Catalogue APIs (first Vercel→Vinted calls)
 
 24. Add dependency on `@googlarz/vinted-client`. Server routes only (no browser→Vinted).
-25. **Brands:** e.g. `/api/brands?q=&country=ro` → `opBrands` / `GET /api/v2/brands?keyword=`. Anonymous catalog cookies; rate limit ~3 req/s/country; 60s cache; honor `VINTED_PROXY_URL` for cloud egress/403.
-26. **Size groups:** e.g. `/api/size-groups?country=ro` → library size-groups (`/api/v2/size_groups`), longer cache OK (static catalogue).
+25. **Brands:** e.g. `/api/brands?q=&country=uk` → `opBrands` / `GET /api/v2/brands?keyword=`. Anonymous catalog cookies; rate limit ~3 req/s/country; 60s cache; honor `VINTED_PROXY_URL` for cloud egress/403.
+26. **Size groups:** e.g. `/api/size-groups?country=uk` → library size-groups (`/api/v2/size_groups`), longer cache OK (static catalogue).
 27. Update README: Vercel remains non-scraping for listings; **catalogue lookup** (brands/sizes) is the intentional exception.
 
 ### Hunt write API shape

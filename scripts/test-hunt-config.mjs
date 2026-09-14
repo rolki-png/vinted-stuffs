@@ -18,7 +18,7 @@ function baseConfig(watches) {
   }
 }
 
-async function testNormalizeOmitsEmptyAndForcesRo() {
+async function testNormalizeOmitsEmptyAndForcesUk() {
   const { ok, hunt } = normalizeHunt({
     name: "  Foo ",
     query: " bar ",
@@ -36,7 +36,7 @@ async function testNormalizeOmitsEmptyAndForcesRo() {
     notes: "n",
   })
   assert.equal(ok, true)
-  assert.equal(hunt.country, "ro")
+  assert.equal(hunt.country, "uk")
   assert.equal(hunt.name, "Foo")
   assert.deepEqual(hunt.size_ids, [1739, 1740])
   assert.equal("brand_ids" in hunt, false)
@@ -50,7 +50,7 @@ async function testPreserveUnknownKeysOnReplace() {
   const existing = {
     name: "A",
     query: "q",
-    country: "ro",
+    country: "uk",
     target_type: "t",
     target_sizes: ["M"],
     notes: "old",
@@ -79,11 +79,11 @@ async function testPreserveUnknownKeysOnReplace() {
   assert.equal(w.query, "q2")
   assert.equal(w.full_sweep_max, 99)
   assert.equal(w.mystery, true)
-  assert.equal(w.country, "ro")
+  assert.equal(w.country, "uk")
 }
 
 async function testAddReplaceRemoveAndUniqueName() {
-  let cfg = baseConfig([{ name: "A", query: "q", country: "ro", target_type: "t", notes: "" }])
+  let cfg = baseConfig([{ name: "A", query: "q", country: "uk", target_type: "t", notes: "" }])
   let res = applyWatchMutation(cfg, {
     mode: "add",
     hunt: { name: "B", query: "q", target_type: "t", notes: "" },
@@ -167,15 +167,15 @@ async function testScoicaFamilyAccepted() {
   const res = applyWatchMutation(cfg, {
     mode: "add",
     hunt: {
-      name: "Cybex Cloud G scoică",
+      name: "Cybex Cloud G infant car seat",
       query: "cybex cloud g",
       target_type: "newborn infant car seat",
-      family: "scoica",
+      family: "car_seat",
       notes: "i-Size",
     },
   })
   assert.equal(res.ok, true)
-  assert.equal(res.config.watches[0].family, "scoica")
+  assert.equal(res.config.watches[0].family, "car_seat")
 
   const bad = applyWatchMutation(cfg, {
     mode: "add",
@@ -190,7 +190,7 @@ async function testScoicaFamilyAccepted() {
   assert.match(bad.error, /family/)
 }
 
-await testNormalizeOmitsEmptyAndForcesRo()
+await testNormalizeOmitsEmptyAndForcesUk()
 await testPreserveUnknownKeysOnReplace()
 await testAddReplaceRemoveAndUniqueName()
 await testSerializeAnd409()

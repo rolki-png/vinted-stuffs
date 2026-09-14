@@ -92,6 +92,15 @@ jobs:
           curl --create-dirs -o "$HOME/.postgresql/root.crt" \
             'https://cockroachlabs.cloud/clusters/70432b9f-d784-4414-a25a-25c752c4b17c/cert'
 
+      - name: Apply private hunt config overlay
+        env:
+          VINTED_CONFIG_JSON: ${{ secrets.VINTED_CONFIG_JSON }}
+        run: |
+          if [ -n "$VINTED_CONFIG_JSON" ]; then
+            printf '%s\n' "$VINTED_CONFIG_JSON" > "$RUNNER_TEMP/vinted-config.json"
+            echo "VINTED_CONFIG=$RUNNER_TEMP/vinted-config.json" >> "$GITHUB_ENV"
+          fi
+
       - name: Backfill scored listings
         if: ${{ inputs.backfill_scored == true && inputs.crawl_haul_seeds != true }}
         env:
@@ -100,6 +109,10 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+          VINTED_COUNTRY: ${{ vars.VINTED_COUNTRY }}
+          VINTED_FORCE_COUNTRY: ${{ vars.VINTED_FORCE_COUNTRY }}
+          VINTED_CURRENCY: ${{ vars.VINTED_CURRENCY }}
+          VINTED_SITE_HOST: ${{ vars.VINTED_SITE_HOST }}
         run: |
           EXTRA_FLAGS=""
           if [ "${{ inputs.score_desk_bundles }}" = "true" ]; then
@@ -119,6 +132,10 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+          VINTED_COUNTRY: ${{ vars.VINTED_COUNTRY }}
+          VINTED_FORCE_COUNTRY: ${{ vars.VINTED_FORCE_COUNTRY }}
+          VINTED_CURRENCY: ${{ vars.VINTED_CURRENCY }}
+          VINTED_SITE_HOST: ${{ vars.VINTED_SITE_HOST }}
         run: |
           uv run --project python python python/crawl_haul_seeds.py \
             --hunt "${{ inputs.crawl_hunt || inputs.backfill_hunt || 'Mamalicious' }}" \
@@ -138,6 +155,10 @@ jobs:
           FULL_SWEEP: ${{ inputs.full_sweep }}
           HUNT: ${{ inputs.hunt }}
           VINTED_BIN: ${{ github.workspace }}/vinted-mcp-cli/dist/cli.js
+          VINTED_COUNTRY: ${{ vars.VINTED_COUNTRY }}
+          VINTED_FORCE_COUNTRY: ${{ vars.VINTED_FORCE_COUNTRY }}
+          VINTED_CURRENCY: ${{ vars.VINTED_CURRENCY }}
+          VINTED_SITE_HOST: ${{ vars.VINTED_SITE_HOST }}
         run: uv run --project python python python/vinted_bot.py
 
       - name: Commit updated state

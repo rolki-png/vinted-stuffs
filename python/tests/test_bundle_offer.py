@@ -91,6 +91,13 @@ class OfferFieldsTests(unittest.TestCase):
             5,
             kind="value_haul",
             watch_name="Mamalicious maternity XL-L/XL",
+            config={
+                "bundle_offer": {
+                    "gym_target_delivered_per_item_ron": 30,
+                    "maternity_target_delivered_per_item_ron": 50,
+                    "default_checkout_extra_ron": 25,
+                }
+            },
         )
         self.assertEqual(fields["suggested_offer_ron"], 187)
         self.assertEqual(fields["offer_target_per_item_ron"], 50.0)

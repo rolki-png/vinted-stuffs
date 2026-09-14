@@ -9,6 +9,8 @@ const FAMILY_RULES = [
     [
       "scoica",
       "scoică",
+      "car_seat",
+      "infant car",
       "infant carrier",
       "cloud g",
       "pebble s",
@@ -91,10 +93,15 @@ const FAMILY_RULES = [
   ],
 ]
 
+function canonFamily(family) {
+  const wanted = String(family || "").trim().toLowerCase()
+  if (wanted === "car_seat") return "scoica"
+  return wanted
+}
+
 function resolveFamily(huntName, watch) {
   if (watch && watch.family) {
-    const f = String(watch.family).trim().toLowerCase()
-    return f || "other"
+    return canonFamily(watch.family) || "other"
   }
   const name = String(huntName || "").toLowerCase()
   for (const [family, needles] of FAMILY_RULES) {
@@ -117,9 +124,9 @@ function huntFamilySql(column) {
 }
 
 function matchesHuntFamily(huntName, family, watch) {
-  const wanted = String(family || "").trim().toLowerCase()
+  const wanted = canonFamily(family)
   if (!wanted) return true
   return resolveFamily(huntName, watch) === wanted
 }
 
-export { FAMILY_RULES, huntFamilySql, matchesHuntFamily, resolveFamily }
+export { FAMILY_RULES, huntFamilySql, matchesHuntFamily, resolveFamily, canonFamily }

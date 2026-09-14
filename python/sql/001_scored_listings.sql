@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS scored_listings (
   hunt_name TEXT NOT NULL,
   title TEXT NOT NULL DEFAULT '',
   price DECIMAL NULL,
-  currency TEXT NOT NULL DEFAULT 'RON',
+  currency TEXT NOT NULL DEFAULT 'GBP',
   brand TEXT NULL,
   size TEXT NULL,
   condition TEXT NULL,

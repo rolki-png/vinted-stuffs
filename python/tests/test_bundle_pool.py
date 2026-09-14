@@ -10,9 +10,9 @@ CONFIG = {
     "keep_value_bands": ["steal", "hunt"],
     "solo_floor_clothing_ron": 0,
     "bundle_extra_min_score": 7,
-    "checkout_extra_ron": {"ro": 25, "default": 25},
+    "checkout_extra_ron": {"uk": 25, "default": 25},
 }
-WATCH = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing", "country": "ro"}
+WATCH = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing", "country": "uk"}
 
 
 def row(iid, score, band, seller, price="150", hunt_fit=True):
@@ -35,10 +35,10 @@ def row(iid, score, band, seller, price="150", hunt_fit=True):
         "item": {
             "id": iid,
             "title": f"item {iid}",
-            "price": {"amount": price, "currency_code": "RON"},
-            "url": f"https://www.vinted.ro/items/{iid}",
+            "price": {"amount": price, "currency_code": "GBP"},
+            "url": f"https://www.vinted.co.uk/items/{iid}",
             "user": {"id": seller, "login": "seller"},
-            "_profile": {"country_code": "ro"},
+            "_profile": {"country_code": "uk"},
         },
         "score": {
             "score_version": 2,
@@ -65,7 +65,7 @@ class BundlePoolTests(unittest.TestCase):
             ]
         }
         with patch.object(bot, "_vinted_json", return_value=response):
-            closets = bot.get_seller_closets([10, 20], "ro", 12)
+            closets = bot.get_seller_closets([10, 20], "uk", 12)
         self.assertNotIn("10", closets)
         self.assertEqual(closets["20"], [])
 
@@ -83,7 +83,7 @@ class BundlePoolTests(unittest.TestCase):
         bundle = {
             "seller_id": 99,
             "seller": "seller",
-            "country": "ro",
+            "country": "uk",
             "listing_sum": 230,
             "checkout_extra_ron": 25,
             "checkout_total": 255,

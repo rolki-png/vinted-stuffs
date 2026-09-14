@@ -60,7 +60,7 @@ def extraction(**overrides):
         "versatility": {"value": 90, "confidence": 0.8, "evidence": "several settings"},
         "equivalent_replacement_cost": {
             "value": 450,
-            "currency": "RON",
+            "currency": "GBP",
             "confidence": 0.8,
             "evidence": "conservative equivalent",
         },
@@ -114,7 +114,7 @@ class BuyScoreTests(unittest.TestCase):
                 factors={
                     "equivalent_replacement_cost": {
                         "value": 0,
-                        "currency": "RON",
+                        "currency": "GBP",
                         "confidence": 1,
                         "evidence": "invalid",
                     }
@@ -176,7 +176,7 @@ anchors:
         "quality": {"value": 70, "confidence": 1, "evidence": "adequate construction"},
         "condition": {"value": 95, "confidence": 1, "evidence": "unused"},
         "versatility": {"value": 90, "confidence": 1, "evidence": "many settings"},
-        "equivalent_replacement_cost": {"value": 150, "currency": "RON", "confidence": 1, "evidence": "equivalent daily item"},
+        "equivalent_replacement_cost": {"value": 150, "currency": "GBP", "confidence": 1, "evidence": "equivalent daily item"},
         "duplication_probability": {"value": 0.1, "confidence": 1, "evidence": "distinct role"}
       }
     }
@@ -196,7 +196,7 @@ anchors:
         "quality": {"value": 75, "confidence": 1, "evidence": "older technical line"},
         "condition": {"value": 40, "confidence": 1, "evidence": "visible wear"},
         "versatility": {"value": 70, "confidence": 1, "evidence": "gym only"},
-        "equivalent_replacement_cost": {"value": 300, "currency": "RON", "confidence": 1, "evidence": "equivalent used piece"},
+        "equivalent_replacement_cost": {"value": 300, "currency": "GBP", "confidence": 1, "evidence": "equivalent used piece"},
         "duplication_probability": {"value": 0.2, "confidence": 1, "evidence": "similar item owned"}
       }
     }
@@ -216,7 +216,7 @@ anchors:
         "quality": {"value": 90, "confidence": 1, "evidence": "maternity construction"},
         "condition": {"value": 95, "confidence": 1, "evidence": "unused"},
         "versatility": {"value": 95, "confidence": 1, "evidence": "pregnancy and nursing"},
-        "equivalent_replacement_cost": {"value": 450, "currency": "RON", "confidence": 1, "evidence": "conservative equivalent"},
+        "equivalent_replacement_cost": {"value": 450, "currency": "GBP", "confidence": 1, "evidence": "conservative equivalent"},
         "duplication_probability": {"value": 0, "confidence": 1, "evidence": "needed role"}
       }
     }
@@ -237,7 +237,7 @@ anchors:
         "quality": {"value": 95, "confidence": 1, "evidence": "durable construction"},
         "condition": {"value": 98, "confidence": 1, "evidence": "near new"},
         "versatility": {"value": 90, "confidence": 1, "evidence": "daily outfits"},
-        "equivalent_replacement_cost": {"value": 700, "currency": "RON", "confidence": 1, "evidence": "same-tier replacement"},
+        "equivalent_replacement_cost": {"value": 700, "currency": "GBP", "confidence": 1, "evidence": "same-tier replacement"},
         "duplication_probability": {"value": 0.02, "confidence": 1, "evidence": "needed rotation"}
       }
     }
@@ -531,9 +531,9 @@ Extend `python/tests/test_scored_store.py`:
             {
                 "id": 99,
                 "title": "technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "user": {"id": 7, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             score,
             "Gym",
@@ -555,9 +555,9 @@ Extend `python/tests/test_scored_store.py`:
             {
                 "id": 101,
                 "title": "dress",
-                "price": {"amount": "90", "currency_code": "RON"},
+                "price": {"amount": "90", "currency_code": "GBP"},
                 "user": {"id": 8, "login": "seller"},
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             },
             {
                 "score_version": 2,
@@ -582,9 +582,9 @@ Extend `python/tests/test_scored_store.py`:
                 {
                     "id": 101,
                     "title": "dress updated",
-                    "price": {"amount": "85", "currency_code": "RON"},
+                    "price": {"amount": "85", "currency_code": "GBP"},
                     "user": {"id": 8, "login": "seller"},
-                    "_profile": {"country_code": "ro"},
+                    "_profile": {"country_code": "uk"},
                 },
                 "Maternity",
                 "backfill",
@@ -1010,16 +1010,16 @@ class ScoringPromptTests(unittest.TestCase):
             "notes": "technical shorts",
             "hunt_price": 100,
             "price_to": 180,
-            "country": "ro",
+            "country": "uk",
         }
         self.items = [{
             "id": 1,
             "title": "Lululemon shorts",
-            "price": {"amount": "80", "currency_code": "RON"},
+            "price": {"amount": "80", "currency_code": "GBP"},
             "brand_title": "Lululemon",
             "size_title": "L",
             "status": "Very good",
-            "_profile": {"country_code": "ro"},
+            "_profile": {"country_code": "uk"},
         }]
 
     def test_prompt_requests_factors_but_not_buy_score(self):
@@ -1044,7 +1044,7 @@ class ScoringPromptTests(unittest.TestCase):
                 "condition": {"value": 90, "confidence": 1, "evidence": "very good"},
                 "versatility": {"value": 90, "confidence": 1, "evidence": "broad"},
                 "equivalent_replacement_cost": {
-                    "value": 400, "currency": "RON", "confidence": 1, "evidence": "equivalent"
+                    "value": 400, "currency": "GBP", "confidence": 1, "evidence": "equivalent"
                 },
                 "duplication_probability": {"value": 0, "confidence": 1, "evidence": "none"},
             },
@@ -1141,7 +1141,7 @@ Return one object per listing:
     "versatility": {"value": <0..100>, "confidence": <0..1>, "evidence": "<short>"},
     "equivalent_replacement_cost": {
       "value": <positive amount>,
-      "currency": "RON",
+      "currency": "GBP",
       "confidence": <0..1>,
       "evidence": "<conservative equivalent>"
     },

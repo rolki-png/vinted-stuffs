@@ -8,6 +8,7 @@ VH = {
     "min_items_steal": 2,
     "steal_max_delivered_per_item_ron": 30,
     "max_candidates_to_score": 12,
+    "max_candidate_price_ron": 80,
 }
 WATCH = {
     "target_sizes": ["M", "L"],
@@ -22,7 +23,7 @@ def item(iid, title, brand="H&M", size="M", price="20"):
         "title": title,
         "brand_title": brand,
         "size_title": size,
-        "price": {"amount": price, "currency_code": "RON"},
+        "price": {"amount": price, "currency_code": "GBP"},
         "status": "Very good",
     }
 
@@ -38,7 +39,7 @@ class GateTests(unittest.TestCase):
         self.assertTrue(vh.passes_value_haul_gate(2, 18.0, VH))
 
     def test_two_near_fee_inclusive_pass(self):
-        # Real H&M Sport haul was ~21 RON/item delivered; gate must clear that.
+        # Real H&M Sport haul was ~21 per item delivered; gate must clear that.
         self.assertTrue(vh.passes_value_haul_gate(2, 22.0, VH))
 
     def test_two_expensive_fail(self):
@@ -156,7 +157,7 @@ class PrefilterTests(unittest.TestCase):
     def test_maternity_prompt_mentions_nursing(self):
         payload = vh.build_haul_payload(
             "seller",
-            "ro",
+            "uk",
             25.0,
             [item(1, "H&M Mama top", brand="H&M", size="XL")],
             {
@@ -248,11 +249,17 @@ class NearHaulTests(unittest.TestCase):
     def test_value_haul_record_includes_offer(self):
         items = [item(1, "a", price="20"), item(2, "b", price="20"), item(3, "c", price="20")]
         row = vh.value_haul_record(
-            {"seller": "bob", "seller_id": 9, "country": "ro", "checkout_extra_ron": 30},
+            {"seller": "bob", "seller_id": 9, "country": "uk", "checkout_extra_ron": 30},
             {"deal_score": 9, "value_band": "steal", "reason": "ok"},
             items,
             "Gym bundle seeds M-L",
             "t1",
+            config={
+                "bundle_offer": {
+                    "gym_target_delivered_per_item_ron": 30,
+                    "default_checkout_extra_ron": 25,
+                }
+            },
         )
         self.assertEqual(row["kind"], "value_haul")
         self.assertEqual(row["suggested_offer_ron"], 54)

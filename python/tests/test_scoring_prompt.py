@@ -17,17 +17,17 @@ class ScoringPromptTests(unittest.TestCase):
             "notes": "technical shorts",
             "hunt_price": 100,
             "price_to": 180,
-            "country": "ro",
+            "country": "uk",
         }
         self.items = [
             {
                 "id": 1,
                 "title": "Lululemon shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "brand_title": "Lululemon",
                 "size_title": "L",
                 "status": "Very good",
-                "_profile": {"country_code": "ro"},
+                "_profile": {"country_code": "uk"},
             }
         ]
         self.extracted = {
@@ -73,7 +73,7 @@ class ScoringPromptTests(unittest.TestCase):
                 },
                 "equivalent_replacement_cost": {
                     "value": 400,
-                    "currency": "RON",
+                    "currency": "GBP",
                     "confidence": 1,
                     "evidence": "equivalent",
                 },
@@ -115,9 +115,9 @@ class ScoringPromptTests(unittest.TestCase):
 
     def test_scoica_prompt_mentions_isize_and_isofix(self):
         watch = {
-            "name": "Broad scoică auto i-Size",
-            "query": "scoica auto i-size",
-            "target_type": "newborn infant car seat / scoică auto i-Size",
+            "name": "Broad infant car seat i-Size",
+            "query": "infant car seat i-size",
+            "target_type": "newborn infant car seat i-Size",
             "family": "scoica",
             "target_sizes": ["40-87 cm", "0-13 kg"],
             "notes": "dedicated infant carrier",
@@ -142,7 +142,7 @@ class ScoringPromptTests(unittest.TestCase):
             self.watch,
             {
                 "checkout_fees": {
-                    "ro": {
+                    "uk": {
                         "estimated_shipping_ron": 15,
                         "buyer_fee_fixed_ron": 3,
                         "buyer_fee_pct": 0.05,
@@ -198,7 +198,7 @@ class ScoringPromptTests(unittest.TestCase):
     def test_gateway_does_not_fall_through_after_valid_but_unpriced_row(self):
         unpriced = {
             **self.items[0],
-            "price": {"amount": "unknown", "currency_code": "RON"},
+            "price": {"amount": "unknown", "currency_code": "GBP"},
         }
         stderr = io.StringIO()
         with (
@@ -227,7 +227,7 @@ class ScoringPromptTests(unittest.TestCase):
     def test_gemini_truthfully_logs_valid_but_unpriced_row(self):
         unpriced = {
             **self.items[0],
-            "price": {"amount": "unknown", "currency_code": "RON"},
+            "price": {"amount": "unknown", "currency_code": "GBP"},
         }
         stderr = io.StringIO()
         with (
@@ -278,7 +278,7 @@ class ScoringPromptTests(unittest.TestCase):
         extraction = self.extraction_for(1)
         extraction["factors"]["equivalent_replacement_cost"] = {
             "value": 0,
-            "currency": "RON",
+            "currency": "GBP",
             "confidence": 0,
             "evidence": "  UnKnOwN: no comparable evidence",
         }
@@ -297,7 +297,7 @@ class ScoringPromptTests(unittest.TestCase):
         extraction = self.extraction_for(1)
         extraction["factors"]["equivalent_replacement_cost"] = {
             "value": 0,
-            "currency": "RON",
+            "currency": "GBP",
             "confidence": 0,
             "evidence": "not provided",
         }
@@ -356,11 +356,11 @@ class ScoringPromptTests(unittest.TestCase):
         item = {
             **self.items[0],
             "_profile": {"country_code": "hu"},
-            "price": {"amount": "100", "currency_code": "RON"},
+            "price": {"amount": "100", "currency_code": "GBP"},
         }
         config = {
             "checkout_fees": {
-                "ro": {
+                "uk": {
                     "estimated_shipping_ron": 1,
                     "buyer_fee_fixed_ron": 0,
                     "buyer_fee_pct": 0,

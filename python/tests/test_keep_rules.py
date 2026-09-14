@@ -39,7 +39,7 @@ def v2(score=88, confidence=0.8, concern="none", hunt_fit=True):
 
 class KeepRuleTests(unittest.TestCase):
     def test_cached_deal_score_row_is_not_a_keep(self):
-        item = {"price": {"amount": "80", "currency_code": "RON"}}
+        item = {"price": {"amount": "80", "currency_code": "GBP"}}
         score = {
             "deal_score": 9,
             "value_band": "steal",
@@ -83,13 +83,13 @@ class KeepRuleTests(unittest.TestCase):
                 }
             }
         }
-        # 100 RON listing → 18 + 3 + 5 = 26
+        # 100 listing → 18 + 3 + 5 = 26
         self.assertAlmostEqual(bot.checkout_extra_ron("hu", cfg, 100), 26.0)
-        # 300 RON listing → 18 + 3 + 15 = 36 (not a flat 40)
+        # 300 listing → 18 + 3 + 15 = 36 (not a flat 40)
         self.assertAlmostEqual(bot.checkout_extra_ron("hu", cfg, 300), 36.0)
 
     def test_bundle_hunt_watch_never_keep(self):
-        item = {"price": {"amount": "200", "currency_code": "RON"}}
+        item = {"price": {"amount": "200", "currency_code": "GBP"}}
         watch = {
             "target_type": "men's gym clothing",
             "bundle_hunt": True,
@@ -100,7 +100,7 @@ class KeepRuleTests(unittest.TestCase):
     def test_mens_gym_tee_remains_excluded_before_v2_qualification(self):
         item = {
             "title": "Nike Dri-FIT training T-shirt",
-            "price": {"amount": "120", "currency_code": "RON"},
+            "price": {"amount": "120", "currency_code": "GBP"},
         }
         self.assertFalse(bot.is_keep(v2(score=98), CONFIG, GYM, item))
 
@@ -129,7 +129,7 @@ class KeepRuleTests(unittest.TestCase):
             "id": 1,
             "brand_title": "Nike",
             "size_title": "L",
-            "price": {"amount": "40", "currency_code": "RON"},
+            "price": {"amount": "40", "currency_code": "GBP"},
         }
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
         self.assertTrue(bot.is_keep(v2(), CONFIG, watch, item))
@@ -140,7 +140,7 @@ class KeepRuleTests(unittest.TestCase):
             "id": 2,
             "brand_title": "Nike",
             "size_title": "L",
-            "price": {"amount": "40", "currency_code": "RON"},
+            "price": {"amount": "40", "currency_code": "GBP"},
         }
         score = v2(score=68)
         watch = {"name": "Lululemon gym M-L", "target_type": "men's gym clothing"}
@@ -152,7 +152,7 @@ class KeepRuleTests(unittest.TestCase):
                         "id": 1,
                         "brand_title": "Lulu",
                         "size_title": "L",
-                        "price": {"amount": "90", "currency_code": "RON"},
+                        "price": {"amount": "90", "currency_code": "GBP"},
                         "user": {"id": 9, "login": "s"},
                     },
                     "score": v2(),
@@ -189,7 +189,7 @@ class KeepRuleTests(unittest.TestCase):
             {
                 "id": 1,
                 "title": "shorts",
-                "price": {"amount": "40", "currency_code": "RON"},
+                "price": {"amount": "40", "currency_code": "GBP"},
             }
         ]
         prompt = bot._extraction_prompt(
@@ -268,7 +268,7 @@ class KeepRuleTests(unittest.TestCase):
     def test_v2_solo_notification_uses_only_v2_score_semantics(self):
         item = {
             "title": "Technical shorts",
-            "price": {"amount": "80", "currency_code": "RON"},
+            "price": {"amount": "80", "currency_code": "GBP"},
             "brand_title": "Craft",
             "url": "https://example.test/1",
         }
@@ -290,7 +290,7 @@ class KeepRuleTests(unittest.TestCase):
     def test_v2_solo_notification_priority_uses_configured_keep_threshold(self):
         item = {
             "title": "Technical shorts",
-            "price": {"amount": "80", "currency_code": "RON"},
+            "price": {"amount": "80", "currency_code": "GBP"},
         }
         score = {
             **v2(score=91),
@@ -307,7 +307,7 @@ class KeepRuleTests(unittest.TestCase):
         item = {
             "id": 7,
             "title": "Technical shorts",
-            "price": {"amount": "80", "currency_code": "RON"},
+            "price": {"amount": "80", "currency_code": "GBP"},
         }
         malformed = {
             **v2(score=91),
@@ -350,7 +350,7 @@ class KeepRuleTests(unittest.TestCase):
         row = {
             "item": {
                 "title": "Technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
                 "url": "https://example.test/1",
             },
             "score": {
@@ -362,7 +362,7 @@ class KeepRuleTests(unittest.TestCase):
         bundle = {
             "seller": "seller",
             "seller_id": 4,
-            "country": "ro",
+            "country": "uk",
             "listing_sum": 80,
             "checkout_extra_ron": 22,
             "checkout_total": 102,
@@ -383,7 +383,7 @@ class KeepRuleTests(unittest.TestCase):
             "item": {
                 "id": 8,
                 "title": "Technical shorts",
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
             },
             "score": {
                 **v2(score=91),
@@ -396,7 +396,7 @@ class KeepRuleTests(unittest.TestCase):
                 bundle = {
                     "seller": "seller",
                     "seller_id": 4,
-                    "country": "ro",
+                    "country": "uk",
                     "listing_sum": 80,
                     "checkout_extra_ron": 22,
                     "checkout_total": 102,
@@ -461,16 +461,16 @@ class KeepRuleTests(unittest.TestCase):
         self.assertEqual(histogram["90-100"], 2)
 
     def test_test_mode_builds_factors_for_real_calculator(self):
-        watch = {"country": "ro"}
+        watch = {"country": "uk"}
         items = [
             {
                 "id": 7,
-                "price": {"amount": "80", "currency_code": "RON"},
+                "price": {"amount": "80", "currency_code": "GBP"},
             }
         ]
         config = {
             "checkout_fees": {
-                "ro": {
+                "uk": {
                     "estimated_shipping_ron": 15,
                     "buyer_fee_fixed_ron": 3,
                     "buyer_fee_pct": 0.05,

@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { opGetSizeGroups } from '@googlarz/vinted-client'
 import { getVintedClient } from '#/server/vintedCatalogue.js'
+import { defaultCountry } from '#/server/marketDefaults.js'
 
 export const Route = createFileRoute('/api/size-groups')({
   server: {
@@ -8,7 +9,7 @@ export const Route = createFileRoute('/api/size-groups')({
       GET: async ({ request }) => {
         try {
           const url = new URL(request.url)
-          const country = String(url.searchParams.get('country') || 'ro')
+          const country = String(url.searchParams.get('country') || defaultCountry())
           const groups = await opGetSizeGroups(getVintedClient(), {
             country: country as any,
           })

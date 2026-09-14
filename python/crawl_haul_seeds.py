@@ -97,7 +97,7 @@ def select_haul_seeds(
         row = next(iter(best.values()))
         country = (
             str(row.get("seller_country") or "").strip().lower()
-            or "ro"
+            or bot.market_defaults.default_country()
         )
         seeds.append(
             {

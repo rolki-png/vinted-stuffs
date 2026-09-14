@@ -86,7 +86,7 @@ Prepend to the `watches` array (so seeds run early):
     {
       "name": "Gym bundle seeds M-L",
       "query": "sport",
-      "country": "ro",
+      "country": "uk",
       "order": "newest_first",
       "per_page": 50,
       "price_to": 80,
@@ -154,7 +154,7 @@ def item(iid, title, brand="H&M", size="M", price="20"):
         "title": title,
         "brand_title": brand,
         "size_title": size,
-        "price": {"amount": price, "currency_code": "RON"},
+        "price": {"amount": price, "currency_code": "GBP"},
         "status": "Very good",
     }
 
@@ -380,7 +380,7 @@ EOF
 
 ```python
     def test_bundle_hunt_watch_never_keep(self):
-        item = {"price": {"amount": "200", "currency_code": "RON"}}
+        item = {"price": {"amount": "200", "currency_code": "GBP"}}
         score = {
             "deal_score": 10,
             "value_band": "steal",
@@ -553,9 +553,9 @@ A bundle can be an outstanding deal when:
 - there is little filler or junk
 
 For ordinary gym brands:
-- under ~{strong} RON delivered per useful item = strong (value_band hunt if score high enough)
-- under ~{excellent} RON = excellent
-- around ~{steal} RON or less = steal
+- under ~{strong} GBP delivered per useful item = strong (value_band hunt if score high enough)
+- under ~{excellent} GBP = excellent
+- around ~{steal} GBP or less = steal
 
 Reject bundles where the apparent low price is achieved by including wrong sizes,
 worn-out pieces, casual cotton tees with little gym value, or items the buyer is unlikely to use.
@@ -718,13 +718,13 @@ def send_ntfy_value_haul(topic: str, haul: dict, score: dict, useful: list) -> N
     seller = haul.get("seller") or haul.get("seller_id")
     per = score.get("effective_price_per_useful_item")
     total = haul.get("checkout_total")
-    title = f"value haul {n} @ {seller}: ~{per} RON/item ({total:.0f} total)" if per is not None and total is not None else f"value haul {n} @ {seller}"
+    title = f"value haul {n} @ {seller}: ~{per} GBP/item ({total:.0f} total)" if per is not None and total is not None else f"value haul {n} @ {seller}"
     lines = [
         score.get("reason") or "",
-        f"{haul.get('listing_sum', 0):.0f} + {haul.get('checkout_extra_ron', 0):.0f} = {haul.get('checkout_total', 0):.0f} RON",
+        f"{haul.get('listing_sum', 0):.0f} + {haul.get('checkout_extra_ron', 0):.0f} = {haul.get('checkout_total', 0):.0f} GBP",
     ]
     for it in useful:
-        lines.append(f"- {it.get('title')} ({listing_amount(it)} RON)")
+        lines.append(f"- {it.get('title')} ({listing_amount(it)} GBP)")
     # POST to ntfy like send_ntfy_bundle; Click = seller profile URL
 ```
 
@@ -908,7 +908,7 @@ Show `effective_price_per_useful_item` in meta when present:
 
 ```javascript
     const per = b.effective_price_per_useful_item != null
-      ? ` · ~${Number(b.effective_price_per_useful_item).toFixed(0)} RON/item`
+      ? ` · ~${Number(b.effective_price_per_useful_item).toFixed(0)} GBP/item`
       : "";
 ```
 
@@ -988,7 +988,7 @@ EOF
 | bundle_hunt seeds never solo alert/keep | 3, 6 |
 | Path A + Path B discovery | 6 |
 | Prefilter size + gym signals + cap | 2 |
-| Gate ≥3 or ≥2+≤20 RON | 2, 4 |
+| Gate ≥3 or ≥2+≤20 GBP | 2, 4 |
 | One LLM haul score + prompt bands | 4, 6 |
 | Alert predicate + reject_ids | 4 |
 | ntfy distinct copy | 5, 6 |

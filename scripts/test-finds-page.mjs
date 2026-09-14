@@ -9,6 +9,7 @@ assert.equal(parseFilters({ limit: "999" }).limit, 100);
 assert.equal(parseFilters({}).limit, 50);
 assert.equal(parseFilters({ family: "maternity" }).family, "maternity");
 assert.equal(parseFilters({ family: "scoica" }).family, "scoica");
+assert.equal(parseFilters({ family: "car_seat" }).family, "scoica");
 assert.equal(parseFilters({ family: "nope" }).family, "");
 assert.equal(parseFilters({}).family, "");
 

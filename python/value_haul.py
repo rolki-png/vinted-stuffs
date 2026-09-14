@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import re
 
+import market_defaults
+
 GYM_TOKENS = (
     "sport", "training", "gym", "running", "workout", "fitness",
     "nike", "adidas", "lululemon", "under armour", "underarmour",
@@ -51,9 +53,9 @@ def value_haul_config(config: dict) -> dict:
     defaults = {
         "min_items": 3,
         "min_items_steal": 2,
-        "steal_max_delivered_per_item_ron": 30,
-        "strong_max_delivered_per_item_ron": 30,
-        "excellent_max_delivered_per_item_ron": 25,
+        "steal_max_delivered_per_item_ron": 5,
+        "strong_max_delivered_per_item_ron": 5,
+        "excellent_max_delivered_per_item_ron": 4,
         "closet_crawl_limit": 36,
         "min_deal_score": 8,
         "keep_value_bands": ["steal", "hunt"],
@@ -61,10 +63,10 @@ def value_haul_config(config: dict) -> dict:
         "max_value_hauls_per_run": 3,
         "max_closet_sellers": 40,
         "max_seeds_per_watch": 25,
-        "max_candidate_price_ron": 40,
+        "max_candidate_price_ron": 7,
         "max_near_hauls_per_run": 25,
         "max_opportunity_bundles": 80,
-        "near_max_delivered_per_item_ron": 45,
+        "near_max_delivered_per_item_ron": 8,
     }
     merged = dict(defaults)
     merged.update(config.get("value_haul") or {})
@@ -172,8 +174,8 @@ def rough_delivered_per_item(items: list, checkout_extra: float) -> float | None
 def passes_value_haul_gate(n: int, rough_per_item: float | None, vh: dict) -> bool:
     min_items = int(vh.get("min_items", 3))
     min_steal = int(vh.get("min_items_steal", 2))
-    steal_cap = float(vh.get("steal_max_delivered_per_item_ron", 25))
-    strong_cap = float(vh.get("strong_max_delivered_per_item_ron", 30))
+    steal_cap = float(vh.get("steal_max_delivered_per_item_ron", 4))
+    strong_cap = float(vh.get("strong_max_delivered_per_item_ron", 5))
     # 3+ items still need a sane delivered average — otherwise junk closets
     # (kimono + hoodie) waste LLM calls and never keep.
     if n >= min_items and rough_per_item is not None and rough_per_item <= strong_cap:
@@ -189,7 +191,7 @@ def passes_near_haul_gate(n: int, rough_per_item: float | None, vh: dict) -> boo
     """Dashboard opportunities: ≥2 size-fit pieces with a looser delivered cap."""
     if n < int(vh.get("min_items_steal", 2)):
         return False
-    cap = float(vh.get("near_max_delivered_per_item_ron", 45))
+    cap = float(vh.get("near_max_delivered_per_item_ron", 8))
     if rough_per_item is None:
         return True
     return rough_per_item <= cap
@@ -202,7 +204,7 @@ def prefilter_candidates(items: list, watch: dict, config: dict) -> list:
         vh.get("max_candidate_price_ron")
         or watch.get("hunt_price")
         or watch.get("price_to")
-        or 40
+        or 7
     )
     scored = []
     for it in items:
@@ -233,7 +235,7 @@ def build_haul_payload(seller, seller_country, checkout_extra, items, watch):
     return {
         "kind": "value_haul",
         "seller": seller,
-        "seller_country": seller_country or "ro",
+        "seller_country": seller_country or market_defaults.default_country(),
         "checkout_extra_ron": float(checkout_extra),
         "matching_items": n,
         "total_listing_price": listing_sum,
@@ -259,9 +261,9 @@ def build_haul_payload(seller, seller_country, checkout_extra, items, watch):
 
 
 def value_haul_prompt(payload: dict, vh: dict) -> str:
-    strong = vh.get("strong_max_delivered_per_item_ron", 30)
-    excellent = vh.get("excellent_max_delivered_per_item_ron", 25)
-    steal = vh.get("steal_max_delivered_per_item_ron", 20)
+    strong = vh.get("strong_max_delivered_per_item_ron", 5)
+    excellent = vh.get("excellent_max_delivered_per_item_ron", 4)
+    steal = vh.get("steal_max_delivered_per_item_ron", 3)
     hunt = (payload.get("hunt") or {})
     maternity = is_maternity_watch(hunt) or "maternity" in str(hunt.get("target_type") or "").lower()
     if maternity:
@@ -278,10 +280,11 @@ def value_haul_prompt(payload: dict, vh: dict) -> str:
         brand_line = "For ordinary gym brands:"
         reject_line = (
             "Reject bundles where the apparent low price is achieved by including wrong sizes, "
-            "worn-out pieces, men's gym T-shirts / koszulki / tricouri (buyer is saturated on tees), "
+            "worn-out pieces, men's gym T-shirts (buyer is saturated on tees), "
             "casual cotton tops with little gym value, or items the buyer is unlikely to use. "
             "Prefer gym/training shorts as useful items."
         )
+    ccy = market_defaults.default_currency()
     return f"""This is a BUNDLE / value haul hunt.
 
 Do not judge the items only by individual resale value.
@@ -295,9 +298,9 @@ A bundle can be an outstanding deal when:
 - there is little filler or junk
 
 {brand_line}
-- under ~{strong} RON delivered per useful item = strong (value_band hunt if score high enough)
-- under ~{excellent} RON = excellent
-- around ~{steal} RON or less = steal
+- under ~{strong} {ccy} delivered per useful item = strong (value_band hunt if score high enough)
+- under ~{excellent} {ccy} = excellent
+- around ~{steal} {ccy} or less = steal
 
 {reject_line}
 
@@ -512,7 +515,7 @@ def enrich_bundle_offer_fields(rows: list, config: dict | None = None) -> list:
     import bundle_offer as bo
 
     cfg = bo.bundle_offer_config(config)
-    default_extra = float(cfg.get("default_checkout_extra_ron", 25))
+    default_extra = float(cfg.get("default_checkout_extra_ron", 4))
     out = []
     for row in rows:
         r = dict(row)

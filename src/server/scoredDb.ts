@@ -6,6 +6,7 @@ import path from "node:path";
 import pg from "pg";
 import { DEFAULTS, offerFields } from "./bundleOffer.ts";
 import { applyToRow } from "./bundleScore.js";
+import { defaultCurrency } from "./marketDefaults.js";
 import {
 	displayScore,
 	isKeep,
@@ -47,7 +48,7 @@ function exportRow(row) {
 		watch: row.hunt_name,
 		title: row.title || "",
 		price,
-		currency: row.currency || "RON",
+		currency: row.currency || defaultCurrency(),
 		brand: row.brand,
 		size: row.size,
 		condition: row.condition,

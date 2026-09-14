@@ -106,16 +106,16 @@ values use raw value 0.5 and confidence 0.
 - Absolute saving matters alongside percentage discount.
 
 The model estimates and explains equivalent replacement cost; code calculates the
-value factor after normalizing money to RON:
+value factor after normalizing money to GBP:
 
 ```text
 saving = replacement_cost - delivered_cost
 relative_value = clamp(50 + 50 × saving / replacement_cost, 0, 100)
-absolute_value = clamp(50 + 50 × saving / 200 RON, 0, 100)
+absolute_value = clamp(50 + 50 × saving / 200 GBP, 0, 100)
 value = 0.60 × relative_value + 0.40 × absolute_value
 ```
 
-`200 RON` is a versioned initial full-scale absolute saving, not prompt text.
+`200 GBP` is a versioned initial full-scale absolute saving, not prompt text.
 Replacement cost at or below zero makes value invalid. This calculation makes
 value monotonically decrease as delivered cost rises while recognizing that a
 large absolute saving can matter more than the same percentage on a cheap basic.

@@ -10,7 +10,7 @@ process.env.GITHUB_TOKEN = "tok"
 process.env.GITHUB_REF = "main"
 
 const blobA = "sha-blob-a"
-const config = { watches: [{ name: "A", query: "q", country: "ro", target_type: "t", notes: "" }] }
+const config = { watches: [{ name: "A", query: "q", country: "uk", target_type: "t", notes: "" }] }
 
 function contentsGetBody(sha, cfg) {
   return {

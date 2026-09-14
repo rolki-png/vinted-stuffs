@@ -9,6 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Protocol
 
+import market_defaults
+
 V2_FIELDS = (
     "score_version",
     "buy_score",
@@ -31,7 +33,7 @@ CREATE TABLE IF NOT EXISTS scored_listings (
   hunt_name TEXT NOT NULL,
   title TEXT NOT NULL DEFAULT '',
   price DECIMAL NULL,
-  currency TEXT NOT NULL DEFAULT 'RON',
+  currency TEXT NOT NULL DEFAULT 'GBP',
   brand TEXT NULL,
   size TEXT NULL,
   condition TEXT NULL,
@@ -331,7 +333,7 @@ def row_from_item(
         "hunt_name": hunt_name,
         "title": item.get("title") or "",
         "price": _price_amount(item),
-        "currency": (item.get("price") or {}).get("currency_code") or "RON",
+        "currency": (item.get("price") or {}).get("currency_code") or market_defaults.default_currency(),
         "brand": item.get("brand_title"),
         "size": item.get("size_title"),
         "condition": item.get("status"),
@@ -388,7 +390,7 @@ def row_from_item_score(
 
 def candidate_from_cached(row: dict, watch_obj: dict, fresh_item: dict | None = None) -> dict:
     price = row.get("price")
-    currency = row.get("currency") or "RON"
+    currency = row.get("currency") or market_defaults.default_currency()
     if fresh_item and isinstance(fresh_item.get("price"), dict):
         amount = fresh_item["price"].get("amount", price)
         currency = fresh_item["price"].get("currency_code") or currency
@@ -480,7 +482,7 @@ def export_row(row: dict) -> dict:
         "watch": row.get("hunt_name"),
         "title": row.get("title"),
         "price": price,
-        "currency": row.get("currency") or "RON",
+        "currency": row.get("currency") or market_defaults.default_currency(),
         "brand": row.get("brand"),
         "size": row.get("size"),
         "condition": row.get("condition"),
@@ -553,7 +555,7 @@ def index_bundle_opportunities(
         by_group.setdefault((str(sid), family), []).append(row)
 
     offer_cfg = bo.bundle_offer_config(config)
-    default_extra = float(offer_cfg.get("default_checkout_extra_ron", 25))
+    default_extra = float(offer_cfg.get("default_checkout_extra_ron", 4))
     out = []
     for (sid, family), rows in by_group.items():
         score_field = "buy_score"

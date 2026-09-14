@@ -41,7 +41,6 @@ POOL_PATH = Path("data/bundle_pool.json")
 LAST_RUN_PATH = Path("data/last_run.json")
 INDEXED_PATH = Path("data/indexed_scores.json")
 REPO_ROOT = Path(__file__).resolve().parents[1]
-CONFIG_PATH = Path(os.environ.get("VINTED_CONFIG", str(REPO_ROOT / "python" / "config.json")))
 VERCEL_GATEWAY_BASE = "https://ai-gateway.vercel.sh/v1"
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL") or "gemini-3.6-flash"
 # Cheap default (Meta contributor tier; inputs/outputs may be used for training)
@@ -83,8 +82,14 @@ def mark_seen(state: dict, item_id, hunt_name: str) -> None:
         keys.append(key)
 
 
+def config_path() -> Path:
+    """Resolve hunt config at call time so VINTED_CONFIG from dotenv is honored."""
+    explicit = os.environ.get("VINTED_CONFIG", "").strip()
+    return Path(explicit) if explicit else REPO_ROOT / "python" / "config.json"
+
+
 def load_config() -> dict:
-    return json.loads(CONFIG_PATH.read_text())
+    return json.loads(config_path().read_text())
 
 
 # ---------- vinted-mcp-cli ----------
@@ -952,7 +957,7 @@ def checkout_extra_ron(
         base = float(listing_sum or 0)
         return shipping + fixed + base * pct
     table = config.get("checkout_extra_ron") or {}
-    return float(table.get(cc, table.get("default", 25)))
+    return float(table.get(cc, table.get("default", 4)))
 
 
 def seller_id(item: dict):

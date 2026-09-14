@@ -8,6 +8,7 @@ VH = {
     "min_items_steal": 2,
     "steal_max_delivered_per_item_ron": 30,
     "max_candidates_to_score": 12,
+    "max_candidate_price_ron": 80,
 }
 WATCH = {
     "target_sizes": ["M", "L"],
@@ -253,6 +254,12 @@ class NearHaulTests(unittest.TestCase):
             items,
             "Gym bundle seeds M-L",
             "t1",
+            config={
+                "bundle_offer": {
+                    "gym_target_delivered_per_item_ron": 30,
+                    "default_checkout_extra_ron": 25,
+                }
+            },
         )
         self.assertEqual(row["kind"], "value_haul")
         self.assertEqual(row["suggested_offer_ron"], 54)

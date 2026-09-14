@@ -36,3 +36,28 @@ class TestMarketDefaults(unittest.TestCase):
         self.assertEqual(md.watch_country({"country": "uk"}), "fr")
         self.assertEqual(md.default_currency(), "EUR")
         self.assertEqual(md.site_host(), "www.vinted.fr")
+
+
+class TestConfigPath(unittest.TestCase):
+    def setUp(self):
+        self._prev = os.environ.get("VINTED_CONFIG")
+
+    def tearDown(self):
+        if self._prev is None:
+            os.environ.pop("VINTED_CONFIG", None)
+        else:
+            os.environ["VINTED_CONFIG"] = self._prev
+
+    def test_load_config_honors_env_after_import(self):
+        import json
+        import tempfile
+        from pathlib import Path
+
+        import vinted_bot as bot
+
+        overlay = Path(tempfile.mkdtemp()) / "overlay.json"
+        overlay.write_text(json.dumps({"watches": [{"name": "overlay-only"}]}) + "\n")
+        os.environ["VINTED_CONFIG"] = str(overlay)
+        cfg = bot.load_config()
+        self.assertEqual(cfg["watches"][0]["name"], "overlay-only")
+

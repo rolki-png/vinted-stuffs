@@ -555,7 +555,7 @@ def index_bundle_opportunities(
         by_group.setdefault((str(sid), family), []).append(row)
 
     offer_cfg = bo.bundle_offer_config(config)
-    default_extra = float(offer_cfg.get("default_checkout_extra_ron", 25))
+    default_extra = float(offer_cfg.get("default_checkout_extra_ron", 4))
     out = []
     for (sid, family), rows in by_group.items():
         score_field = "buy_score"

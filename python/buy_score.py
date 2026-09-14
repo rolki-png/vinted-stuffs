@@ -16,7 +16,7 @@ DEFAULTS = {
     "bundle_min_score": 60,
     "min_keep_confidence": 0.60,
     "duplication_penalty": 15.0,
-    "absolute_saving_full_scale_ron": 200.0,
+    "absolute_saving_full_scale_ron": 33.0,
     "personal_adjustment_cap": 10.0,
 }
 VALID_VERIFICATION = {"none", "inspect", "block"}

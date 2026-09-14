@@ -19,7 +19,7 @@ import {
 import { applyToFinds, loadVetoMap } from "./listingVetoes.ts";
 import { databaseUrl, exportRow, loadIndexedFromDb } from "./scoredDb.ts";
 import { mergeScoreRows, isV2 } from "./scoreSemantics.js";
-import { huntFamilySql, matchesHuntFamily } from "./tasteLearning.ts";
+import { huntFamilySql, matchesHuntFamily, canonFamily } from "./tasteLearning.ts";
 import { defaultCurrency } from "./marketDefaults.js";
 
 const DEFAULT_LIMIT = 50;
@@ -105,7 +105,7 @@ function parseFilters(raw = {}) {
 			? raw.veto
 			: "active",
 		watch: String(raw.watch || "").trim(),
-		family: HUNT_FAMILIES.has(family) ? family : "",
+		family: HUNT_FAMILIES.has(family) ? canonFamily(family) : "",
 		band: String(raw.band || "").trim(),
 		minScore: String(raw.min_score || raw.minScore || "").trim(),
 		source: String(raw.source || "").trim(),

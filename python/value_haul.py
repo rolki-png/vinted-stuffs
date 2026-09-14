@@ -53,9 +53,9 @@ def value_haul_config(config: dict) -> dict:
     defaults = {
         "min_items": 3,
         "min_items_steal": 2,
-        "steal_max_delivered_per_item_ron": 30,
-        "strong_max_delivered_per_item_ron": 30,
-        "excellent_max_delivered_per_item_ron": 25,
+        "steal_max_delivered_per_item_ron": 5,
+        "strong_max_delivered_per_item_ron": 5,
+        "excellent_max_delivered_per_item_ron": 4,
         "closet_crawl_limit": 36,
         "min_deal_score": 8,
         "keep_value_bands": ["steal", "hunt"],
@@ -63,10 +63,10 @@ def value_haul_config(config: dict) -> dict:
         "max_value_hauls_per_run": 3,
         "max_closet_sellers": 40,
         "max_seeds_per_watch": 25,
-        "max_candidate_price_ron": 40,
+        "max_candidate_price_ron": 7,
         "max_near_hauls_per_run": 25,
         "max_opportunity_bundles": 80,
-        "near_max_delivered_per_item_ron": 45,
+        "near_max_delivered_per_item_ron": 8,
     }
     merged = dict(defaults)
     merged.update(config.get("value_haul") or {})
@@ -174,8 +174,8 @@ def rough_delivered_per_item(items: list, checkout_extra: float) -> float | None
 def passes_value_haul_gate(n: int, rough_per_item: float | None, vh: dict) -> bool:
     min_items = int(vh.get("min_items", 3))
     min_steal = int(vh.get("min_items_steal", 2))
-    steal_cap = float(vh.get("steal_max_delivered_per_item_ron", 25))
-    strong_cap = float(vh.get("strong_max_delivered_per_item_ron", 30))
+    steal_cap = float(vh.get("steal_max_delivered_per_item_ron", 4))
+    strong_cap = float(vh.get("strong_max_delivered_per_item_ron", 5))
     # 3+ items still need a sane delivered average — otherwise junk closets
     # (kimono + hoodie) waste LLM calls and never keep.
     if n >= min_items and rough_per_item is not None and rough_per_item <= strong_cap:
@@ -191,7 +191,7 @@ def passes_near_haul_gate(n: int, rough_per_item: float | None, vh: dict) -> boo
     """Dashboard opportunities: ≥2 size-fit pieces with a looser delivered cap."""
     if n < int(vh.get("min_items_steal", 2)):
         return False
-    cap = float(vh.get("near_max_delivered_per_item_ron", 45))
+    cap = float(vh.get("near_max_delivered_per_item_ron", 8))
     if rough_per_item is None:
         return True
     return rough_per_item <= cap
@@ -204,7 +204,7 @@ def prefilter_candidates(items: list, watch: dict, config: dict) -> list:
         vh.get("max_candidate_price_ron")
         or watch.get("hunt_price")
         or watch.get("price_to")
-        or 40
+        or 7
     )
     scored = []
     for it in items:
@@ -261,9 +261,9 @@ def build_haul_payload(seller, seller_country, checkout_extra, items, watch):
 
 
 def value_haul_prompt(payload: dict, vh: dict) -> str:
-    strong = vh.get("strong_max_delivered_per_item_ron", 30)
-    excellent = vh.get("excellent_max_delivered_per_item_ron", 25)
-    steal = vh.get("steal_max_delivered_per_item_ron", 20)
+    strong = vh.get("strong_max_delivered_per_item_ron", 5)
+    excellent = vh.get("excellent_max_delivered_per_item_ron", 4)
+    steal = vh.get("steal_max_delivered_per_item_ron", 3)
     hunt = (payload.get("hunt") or {})
     maternity = is_maternity_watch(hunt) or "maternity" in str(hunt.get("target_type") or "").lower()
     if maternity:
@@ -515,7 +515,7 @@ def enrich_bundle_offer_fields(rows: list, config: dict | None = None) -> list:
     import bundle_offer as bo
 
     cfg = bo.bundle_offer_config(config)
-    default_extra = float(cfg.get("default_checkout_extra_ron", 25))
+    default_extra = float(cfg.get("default_checkout_extra_ron", 4))
     out = []
     for row in rows:
         r = dict(row)

@@ -228,7 +228,7 @@ class MemoryStoreTests(unittest.TestCase):
         self.assertEqual(opps[0]["family"], "other")
         self.assertIsNotNone(opps[0].get("bundle_score"))
         self.assertIn("suggested_offer_ron", opps[0])
-        self.assertEqual(opps[0]["checkout_extra_ron"], 25)
+        self.assertEqual(opps[0]["checkout_extra_ron"], 4)
         self.assertTrue(opps[0].get("offer_weak"))
 
     def test_index_bundles_split_by_family(self):

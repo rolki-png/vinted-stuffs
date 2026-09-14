@@ -5,7 +5,7 @@
     "bundle_min_score": 60,
     "min_keep_confidence": 0.6,
     "duplication_penalty": 15,
-    "absolute_saving_full_scale_ron": 200,
+    "absolute_saving_full_scale_ron": 33,
     "personal_adjustment_cap": 10,
     "pairwise_max_candidates": 20,
     "pairwise_neighbors": 2,
@@ -45,8 +45,8 @@
   "checkout_extra_ron": {
     "hu": 30,
     "pl": 35,
-    "default": 25,
-    "uk": 25
+    "default": 4,
+    "uk": 4
   },
   "checkout_fees": {
     "hu": {
@@ -60,22 +60,22 @@
       "buyer_fee_pct": 0.05
     },
     "default": {
-      "estimated_shipping_ron": 15,
-      "buyer_fee_fixed_ron": 3,
+      "estimated_shipping_ron": 3,
+      "buyer_fee_fixed_ron": 0.5,
       "buyer_fee_pct": 0.05
     },
     "uk": {
-      "estimated_shipping_ron": 15,
-      "buyer_fee_fixed_ron": 3,
+      "estimated_shipping_ron": 3,
+      "buyer_fee_fixed_ron": 0.5,
       "buyer_fee_pct": 0.05
     }
   },
   "value_haul": {
     "min_items": 3,
     "min_items_steal": 2,
-    "steal_max_delivered_per_item_ron": 30,
-    "strong_max_delivered_per_item_ron": 30,
-    "excellent_max_delivered_per_item_ron": 25,
+    "steal_max_delivered_per_item_ron": 5,
+    "strong_max_delivered_per_item_ron": 5,
+    "excellent_max_delivered_per_item_ron": 4,
     "closet_crawl_limit": 36,
     "min_deal_score": 8,
     "keep_value_bands": [
@@ -86,10 +86,10 @@
     "max_value_hauls_per_run": 15,
     "max_closet_sellers": 40,
     "max_seeds_per_watch": 25,
-    "max_candidate_price_ron": 40,
+    "max_candidate_price_ron": 7,
     "max_near_hauls_per_run": 25,
     "max_opportunity_bundles": 80,
-    "near_max_delivered_per_item_ron": 45
+    "near_max_delivered_per_item_ron": 8
   },
   "watches": [
     {
@@ -98,8 +98,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 120,
-      "hunt_price": 70,
+      "price_to": 20,
+      "hunt_price": 12,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -124,8 +124,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 120,
-      "hunt_price": 70,
+      "price_to": 20,
+      "hunt_price": 12,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -145,8 +145,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 120,
-      "hunt_price": 70,
+      "price_to": 20,
+      "hunt_price": 12,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -166,8 +166,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 120,
-      "hunt_price": 70,
+      "price_to": 20,
+      "hunt_price": 12,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -187,8 +187,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 80,
-      "hunt_price": 50,
+      "price_to": 13,
+      "hunt_price": 8.3,
       "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
@@ -209,8 +209,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 80,
-      "hunt_price": 50,
+      "price_to": 13,
+      "hunt_price": 8.3,
       "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
@@ -233,8 +233,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 80,
-      "hunt_price": 50,
+      "price_to": 13,
+      "hunt_price": 8.3,
       "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
@@ -255,8 +255,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 50,
-      "price_to": 80,
-      "hunt_price": 50,
+      "price_to": 13,
+      "hunt_price": 8.3,
       "target_type": "men's gym shorts suitable for building a multi-item bundle",
       "target_sizes": [
         "M",
@@ -277,8 +277,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 250,
-      "hunt_price": 150,
+      "price_to": 42,
+      "hunt_price": 25,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -301,8 +301,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 250,
-      "hunt_price": 150,
+      "price_to": 42,
+      "hunt_price": 25,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -325,8 +325,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 250,
-      "hunt_price": 150,
+      "price_to": 42,
+      "hunt_price": 25,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -349,8 +349,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 280,
-      "hunt_price": 170,
+      "price_to": 47,
+      "hunt_price": 28,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -373,8 +373,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 220,
-      "hunt_price": 130,
+      "price_to": 37,
+      "hunt_price": 22,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -397,8 +397,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 220,
-      "hunt_price": 130,
+      "price_to": 37,
+      "hunt_price": 22,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -421,8 +421,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 180,
-      "hunt_price": 110,
+      "price_to": 30,
+      "hunt_price": 18,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -445,8 +445,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 200,
-      "hunt_price": 120,
+      "price_to": 33,
+      "hunt_price": 20,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -467,8 +467,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 240,
-      "hunt_price": 150,
+      "price_to": 40,
+      "hunt_price": 25,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -489,8 +489,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 220,
-      "hunt_price": 140,
+      "price_to": 37,
+      "hunt_price": 23,
       "target_type": "men's gym or training shorts",
       "target_sizes": [
         "M",
@@ -511,8 +511,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 500,
-      "hunt_price": 320,
+      "price_to": 83,
+      "hunt_price": 53,
       "target_type": "men's sneakers",
       "target_sizes": [
         "43",
@@ -530,8 +530,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 550,
-      "hunt_price": 350,
+      "price_to": 92,
+      "hunt_price": 58,
       "target_type": "men's sneakers",
       "target_sizes": [
         "42.5",
@@ -550,8 +550,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 550,
-      "hunt_price": 350,
+      "price_to": 92,
+      "hunt_price": 58,
       "target_type": "men's sneakers",
       "target_sizes": [
         "42.5",
@@ -570,8 +570,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 250,
+      "price_to": 67,
+      "hunt_price": 42,
       "target_type": "men's sneakers",
       "target_sizes": [
         "42.5",
@@ -590,8 +590,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 250,
+      "price_to": 67,
+      "hunt_price": 42,
       "target_type": "men's sneakers",
       "target_sizes": [
         "42.5",
@@ -610,8 +610,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 290,
+      "price_to": 75,
+      "hunt_price": 48,
       "target_type": "men's or unisex sneakers",
       "target_sizes": [
         "42.5",
@@ -627,8 +627,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 380,
-      "hunt_price": 250,
+      "price_to": 63,
+      "hunt_price": 42,
       "target_type": "men's or unisex sneakers",
       "target_sizes": [
         "42.5",
@@ -644,8 +644,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 220,
+      "price_to": 58,
+      "hunt_price": 37,
       "target_type": "men's or unisex sneakers",
       "target_sizes": [
         "42.5",
@@ -661,8 +661,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 240,
+      "price_to": 67,
+      "hunt_price": 40,
       "target_type": "men's sneakers",
       "target_sizes": [
         "42.5",
@@ -678,8 +678,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 200,
+      "price_to": 58,
+      "hunt_price": 33,
       "target_type": "men's premium polo or T-shirt",
       "target_sizes": [
         "M",
@@ -693,8 +693,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 320,
-      "hunt_price": 180,
+      "price_to": 53,
+      "hunt_price": 30,
       "target_type": "men's premium polo or T-shirt",
       "target_sizes": [
         "M",
@@ -711,8 +711,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 320,
-      "hunt_price": 180,
+      "price_to": 53,
+      "hunt_price": 30,
       "target_type": "men's premium T-shirt or polo",
       "target_sizes": [
         "M",
@@ -726,8 +726,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 280,
-      "hunt_price": 160,
+      "price_to": 47,
+      "hunt_price": 27,
       "target_type": "men's premium T-shirt or polo",
       "target_sizes": [
         "M",
@@ -741,8 +741,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 180,
-      "hunt_price": 100,
+      "price_to": 30,
+      "hunt_price": 17,
       "target_type": "women's maternity or nursing leggings",
       "target_sizes": [
         "L/XL",
@@ -757,8 +757,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 180,
-      "hunt_price": 100,
+      "price_to": 30,
+      "hunt_price": 17,
       "target_type": "women's maternity or nursing leggings",
       "target_sizes": [
         "L/XL",
@@ -773,8 +773,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 180,
-      "hunt_price": 100,
+      "price_to": 30,
+      "hunt_price": 17,
       "target_type": "women's maternity or nursing leggings",
       "target_sizes": [
         "L/XL",
@@ -792,8 +792,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 220,
-      "hunt_price": 120,
+      "price_to": 37,
+      "hunt_price": 20,
       "target_type": "women's maternity or nursing leggings",
       "target_sizes": [
         "L/XL",
@@ -811,8 +811,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 120,
-      "hunt_price": 70,
+      "price_to": 20,
+      "hunt_price": 12,
       "target_type": "women's maternity or nursing leggings",
       "target_sizes": [
         "L/XL",
@@ -830,8 +830,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 350,
-      "hunt_price": 190,
+      "price_to": 58,
+      "hunt_price": 32,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -849,8 +849,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 380,
-      "hunt_price": 200,
+      "price_to": 63,
+      "hunt_price": 33,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -868,8 +868,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 240,
+      "price_to": 75,
+      "hunt_price": 40,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -887,8 +887,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 500,
-      "hunt_price": 260,
+      "price_to": 83,
+      "hunt_price": 43,
       "target_type": "women's premium maternity occasion dress",
       "target_sizes": [
         "L/XL",
@@ -906,8 +906,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 350,
-      "hunt_price": 200,
+      "price_to": 58,
+      "hunt_price": 33,
       "target_type": "women's premium maternity and nursing clothing",
       "target_sizes": [
         "L/XL",
@@ -925,8 +925,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 300,
-      "hunt_price": 170,
+      "price_to": 50,
+      "hunt_price": 28,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -941,8 +941,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 260,
-      "hunt_price": 150,
+      "price_to": 43,
+      "hunt_price": 25,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -960,8 +960,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 220,
-      "hunt_price": 120,
+      "price_to": 37,
+      "hunt_price": 20,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -979,8 +979,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 280,
-      "hunt_price": 150,
+      "price_to": 47,
+      "hunt_price": 25,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -998,8 +998,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 280,
-      "hunt_price": 150,
+      "price_to": 47,
+      "hunt_price": 25,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -1017,8 +1017,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 450,
-      "hunt_price": 240,
+      "price_to": 75,
+      "hunt_price": 40,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -1033,8 +1033,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 400,
-      "hunt_price": 220,
+      "price_to": 67,
+      "hunt_price": 37,
       "target_type": "women's premium maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -1052,8 +1052,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 120,
-      "hunt_price": 60,
+      "price_to": 20,
+      "hunt_price": 10,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -1068,8 +1068,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 140,
-      "hunt_price": 70,
+      "price_to": 23,
+      "hunt_price": 12,
       "target_type": "women's maternity clothing",
       "target_sizes": [
         "L/XL",
@@ -1084,8 +1084,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 200,
-      "hunt_price": 100,
+      "price_to": 33,
+      "hunt_price": 17,
       "target_type": "accessories",
       "target_sizes": [],
       "notes": "Bracelets, rings, watches, cufflinks, belts, wallets, bags, sunglasses, pens. Skip clothing and perfume unless an exceptional steal. No size filter — one-size and unsized pieces are hunt-fit when they are genuine Cerruti accessories.",
@@ -1100,8 +1100,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 40,
-      "price_to": 850,
-      "hunt_price": 520,
+      "price_to": 142,
+      "hunt_price": 87,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
@@ -1119,8 +1119,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 40,
-      "price_to": 850,
-      "hunt_price": 520,
+      "price_to": 142,
+      "hunt_price": 87,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
@@ -1138,8 +1138,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 850,
-      "hunt_price": 550,
+      "price_to": 142,
+      "hunt_price": 92,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
@@ -1156,8 +1156,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 750,
-      "hunt_price": 480,
+      "price_to": 125,
+      "hunt_price": 80,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-83 cm",
@@ -1174,8 +1174,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 700,
-      "hunt_price": 400,
+      "price_to": 117,
+      "hunt_price": 67,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-75 cm",
@@ -1192,8 +1192,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 850,
-      "hunt_price": 520,
+      "price_to": 142,
+      "hunt_price": 87,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "45-87 cm",
@@ -1210,8 +1210,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 700,
-      "hunt_price": 420,
+      "price_to": 117,
+      "hunt_price": 70,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "45-87 cm",
@@ -1228,8 +1228,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 30,
-      "price_to": 800,
-      "hunt_price": 480,
+      "price_to": 133,
+      "hunt_price": 80,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-87 cm",
@@ -1246,8 +1246,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 900,
-      "hunt_price": 550,
+      "price_to": 150,
+      "hunt_price": 92,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-83 cm",
@@ -1264,8 +1264,8 @@
       "country": "uk",
       "order": "newest_first",
       "per_page": 24,
-      "price_to": 700,
-      "hunt_price": 400,
+      "price_to": 117,
+      "hunt_price": 67,
       "target_type": "newborn infant car seat / auto i-Size",
       "target_sizes": [
         "40-86 cm",
@@ -1278,11 +1278,11 @@
     }
   ],
   "bundle_offer": {
-    "gym_target_delivered_per_item_ron": 30,
-    "maternity_target_delivered_per_item_ron": 50,
+    "gym_target_delivered_per_item_ron": 5,
+    "maternity_target_delivered_per_item_ron": 8,
     "min_haircut": 0.1,
     "max_haircut_alerted": 0.25,
     "max_haircut_near": 0.35,
-    "default_checkout_extra_ron": 25
+    "default_checkout_extra_ron": 4
   }
 }

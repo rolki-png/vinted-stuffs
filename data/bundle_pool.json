@@ -809,78 +809,6 @@
   },
   {
     "item": {
-      "id": 9956170844,
-      "title": "Avionaut Pixel Pro z bazą",
-      "price": {
-        "amount": "430.57",
-        "currency_code": "RON"
-      },
-      "brand_title": "Avionaut",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 2,
-      "url": "https://www.vinted.ro/items/9956170844-avionaut-pixel-pro-z-baza",
-      "user": {
-        "id": 116509832,
-        "login": "karo_duszczi"
-      },
-      "_profile": {
-        "username": "karo_duszczi",
-        "member_since": null,
-        "feedback_count": 212,
-        "feedback_reputation": 1,
-        "item_count": 20,
-        "country_code": "pl"
-      }
-    },
-    "score": {
-      "id": 9956170844,
-      "score_version": 2,
-      "buy_score": 65,
-      "buy_band": "bundle",
-      "score_confidence": 0.6725,
-      "score_interval_low": 57,
-      "score_interval_high": 72,
-      "score_factors": {
-        "usefulness": 83.6,
-        "quality": 76.6,
-        "condition": 69.2,
-        "versatility": 74.7,
-        "value": 72.88874985294117,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.3,
-        "delivered_cost_ron": 475.1,
-        "equivalent_replacement_cost_ron": 1700.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Pixel Pro + base, dual install",
-        "quality": "Pixel Pro i-Size dual-install shell",
-        "condition": "seller states Foarte buna",
-        "versatility": "belt + ISOFIX base included",
-        "value": "conservative new Pixel Pro + base set",
-        "fit_probability": "0-13 kg matches 0-13 kg target",
-        "duplication_probability": "no duplicate ownership shown"
-      },
-      "verification_concern": "inspect",
-      "verification_reason": "no manufacture date, crash history or insert detail shown; verify base model and expiry",
-      "hunt_fit": true,
-      "reason": "Very-good Pixel Pro with base near hunt price, verify insert, base compatibility and expiry."
-    },
-    "watch": "Avionaut Pixel Pro scoică",
-    "seller_id": 116509832,
-    "seller": "karo_duszczi"
-  },
-  {
-    "item": {
       "id": 9941413639,
       "title": "Scoică auto Cybex Cloud G i-size plus Stone Grey",
       "price": {
@@ -1310,6 +1238,78 @@
     "watch": "Broad scoică auto i-Size",
     "seller_id": 201757322,
     "seller": "simonas05"
+  },
+  {
+    "item": {
+      "id": 9956170844,
+      "title": "Avionaut Pixel Pro z bazą",
+      "price": {
+        "amount": "300",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Avionaut",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9956170844-avionaut-pixel-pro-z-baza",
+      "user": {
+        "id": 116509832,
+        "login": "karo_duszczi"
+      },
+      "_profile": {
+        "username": "karo_duszczi",
+        "member_since": null,
+        "feedback_count": 212,
+        "feedback_reputation": 1,
+        "item_count": 20,
+        "country_code": "pl"
+      }
+    },
+    "score": {
+      "id": 9956170844,
+      "score_version": 2,
+      "buy_score": 65,
+      "buy_band": "bundle",
+      "score_confidence": 0.6725,
+      "score_interval_low": 57,
+      "score_interval_high": 72,
+      "score_factors": {
+        "usefulness": 83.6,
+        "quality": 76.6,
+        "condition": 69.2,
+        "versatility": 74.7,
+        "value": 72.88874985294117,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 475.1,
+        "equivalent_replacement_cost_ron": 1700.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Pixel Pro + base, dual install",
+        "quality": "Pixel Pro i-Size dual-install shell",
+        "condition": "seller states Foarte buna",
+        "versatility": "belt + ISOFIX base included",
+        "value": "conservative new Pixel Pro + base set",
+        "fit_probability": "0-13 kg matches 0-13 kg target",
+        "duplication_probability": "no duplicate ownership shown"
+      },
+      "verification_concern": "inspect",
+      "verification_reason": "no manufacture date, crash history or insert detail shown; verify base model and expiry",
+      "hunt_fit": true,
+      "reason": "Very-good Pixel Pro with base near hunt price, verify insert, base compatibility and expiry."
+    },
+    "watch": "Avionaut Pixel Pro scoică",
+    "seller_id": 116509832,
+    "seller": "karo_duszczi"
   },
   {
     "item": {

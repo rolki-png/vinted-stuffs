@@ -1241,6 +1241,71 @@
   },
   {
     "item": {
+      "id": 9803793656,
+      "title": "Luksusowy długopis Cerruti 1881",
+      "price": {
+        "amount": "90",
+        "currency_code": "PLN"
+      },
+      "brand_title": "Cerruti 1881",
+      "size_title": null,
+      "status": "New",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9803793656-luksusowy-dlugopis-cerruti-1881",
+      "user": {
+        "id": 97261676,
+        "login": "x_t.w_x"
+      },
+      "_profile": {}
+    },
+    "score": {
+      "id": 9803793656,
+      "score_version": 2,
+      "buy_score": 60,
+      "buy_band": "bundle",
+      "score_confidence": 0.77,
+      "score_interval_low": 54,
+      "score_interval_high": 66,
+      "score_factors": {
+        "usefulness": 66.0,
+        "quality": 71.0,
+        "condition": 86.0,
+        "versatility": 58.0,
+        "value": 50.825615,
+        "fit_probability": 1.0,
+        "duplication_probability": 0.35,
+        "delivered_cost_ron": 146.07,
+        "equivalent_replacement_cost_ron": 150.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Practical writing instrument.",
+        "quality": "Luxury branding suggests decent construction.",
+        "condition": "New without tags.",
+        "versatility": "Standard office accessory.",
+        "value": "Market rate for pre-owned branded pens.",
+        "fit_probability": "Pen is a listed category accessory.",
+        "duplication_probability": "Pens are relatively common secondary market items."
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
+    },
+    "watch": "Cerruti 1881 accessories",
+    "seller_id": 97261676,
+    "seller": "x_t.w_x"
+  },
+  {
+    "item": {
       "id": 9956170844,
       "title": "Avionaut Pixel Pro z bazą",
       "price": {
@@ -1310,71 +1375,6 @@
     "watch": "Avionaut Pixel Pro scoică",
     "seller_id": 116509832,
     "seller": "karo_duszczi"
-  },
-  {
-    "item": {
-      "id": 9803793656,
-      "title": "Luksusowy długopis Cerruti 1881",
-      "price": {
-        "amount": "90",
-        "currency_code": "PLN"
-      },
-      "brand_title": "Cerruti 1881",
-      "size_title": null,
-      "status": "New",
-      "favourite_count": 0,
-      "url": "https://www.vinted.ro/items/9803793656-luksusowy-dlugopis-cerruti-1881",
-      "user": {
-        "id": 97261676,
-        "login": "x_t.w_x"
-      },
-      "_profile": {}
-    },
-    "score": {
-      "id": 9803793656,
-      "score_version": 2,
-      "buy_score": 60,
-      "buy_band": "bundle",
-      "score_confidence": 0.77,
-      "score_interval_low": 54,
-      "score_interval_high": 66,
-      "score_factors": {
-        "usefulness": 66.0,
-        "quality": 71.0,
-        "condition": 86.0,
-        "versatility": 58.0,
-        "value": 50.825615,
-        "fit_probability": 1.0,
-        "duplication_probability": 0.35,
-        "delivered_cost_ron": 146.07,
-        "equivalent_replacement_cost_ron": 150.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Practical writing instrument.",
-        "quality": "Luxury branding suggests decent construction.",
-        "condition": "New without tags.",
-        "versatility": "Standard office accessory.",
-        "value": "Market rate for pre-owned branded pens.",
-        "fit_probability": "Pen is a listed category accessory.",
-        "duplication_probability": "Pens are relatively common secondary market items."
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Authentic-appearing Cerruti 1881 pen, falls within the acceptable price range for a secondary luxury accessory."
-    },
-    "watch": "Cerruti 1881 accessories",
-    "seller_id": 97261676,
-    "seller": "x_t.w_x"
   },
   {
     "item": {

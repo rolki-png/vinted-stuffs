@@ -1097,78 +1097,6 @@
   },
   {
     "item": {
-      "id": 9897275066,
-      "title": "Scoica Cloud T-i size Cybex",
-      "price": {
-        "amount": "850.0",
-        "currency_code": "RON"
-      },
-      "brand_title": "Cybex",
-      "size_title": "0–13 kg",
-      "status": "Foarte bună",
-      "favourite_count": 5,
-      "url": "https://www.vinted.ro/items/9897275066-scoica-cloud-t-i-size-cybex",
-      "user": {
-        "id": 201757322,
-        "login": "simonas05"
-      },
-      "_profile": {
-        "username": "simonas05",
-        "member_since": null,
-        "feedback_count": 4,
-        "feedback_reputation": 1,
-        "item_count": 13,
-        "country_code": "ro"
-      }
-    },
-    "score": {
-      "id": 9897275066,
-      "score_version": 2,
-      "buy_score": 64,
-      "buy_band": "bundle",
-      "score_confidence": 0.695,
-      "score_interval_low": 57,
-      "score_interval_high": 71,
-      "score_factors": {
-        "usefulness": 80.0,
-        "quality": 78.0,
-        "condition": 68.2,
-        "versatility": 74.5,
-        "value": 72.05602941176471,
-        "fit_probability": 0.905,
-        "duplication_probability": 0.3,
-        "delivered_cost_ron": 910.5,
-        "equivalent_replacement_cost_ron": 1700.0,
-        "personal_adjustments": {
-          "usefulness": 0.0,
-          "quality": 0.0,
-          "condition": 0.0,
-          "versatility": 0.0,
-          "value": 0.0,
-          "fit_probability": 0.0,
-          "duplication_probability": 0.0
-        }
-      },
-      "factor_evidence": {
-        "usefulness": "Cloud T dual belt plus ISOFIX i-Size",
-        "quality": "Cybex Cloud T premium shell",
-        "condition": "Foarte buna per seller",
-        "versatility": "belt plus base install, stroller compatible",
-        "value": "Cloud T new ~1700-2000 RON",
-        "fit_probability": "0-13 kg matches 40-83/87cm hunt",
-        "duplication_probability": "no owned seat indicated"
-      },
-      "verification_concern": "none",
-      "verification_reason": "",
-      "hunt_fit": true,
-      "reason": "Cybex Cloud T i-Size in very good condition is a top dual-install shell but at 850 RON hard cap is poor price-quality"
-    },
-    "watch": "Broad scoică auto i-Size",
-    "seller_id": 201757322,
-    "seller": "simonas05"
-  },
-  {
-    "item": {
       "id": 8715175660,
       "title": "Białe spodenki szorty mesh Jordan Sport Dri-FIT Diamond M stan bdb",
       "price": {
@@ -1310,6 +1238,78 @@
     "watch": "Cybex Cloud T scoică",
     "seller_id": 270790505,
     "seller": "abn2025"
+  },
+  {
+    "item": {
+      "id": 9897275066,
+      "title": "Scoica Cloud T-i size Cybex",
+      "price": {
+        "amount": "850",
+        "currency_code": "RON"
+      },
+      "brand_title": "Cybex",
+      "size_title": null,
+      "status": "Used",
+      "favourite_count": 0,
+      "url": "https://www.vinted.ro/items/9897275066-scoica-cloud-t-i-size-cybex",
+      "user": {
+        "id": 201757322,
+        "login": "simonas05"
+      },
+      "_profile": {
+        "username": "simonas05",
+        "member_since": null,
+        "feedback_count": 4,
+        "feedback_reputation": 1,
+        "item_count": 13,
+        "country_code": "ro"
+      }
+    },
+    "score": {
+      "id": 9897275066,
+      "score_version": 2,
+      "buy_score": 64,
+      "buy_band": "bundle",
+      "score_confidence": 0.695,
+      "score_interval_low": 57,
+      "score_interval_high": 71,
+      "score_factors": {
+        "usefulness": 80.0,
+        "quality": 78.0,
+        "condition": 68.2,
+        "versatility": 74.5,
+        "value": 72.05602941176471,
+        "fit_probability": 0.905,
+        "duplication_probability": 0.3,
+        "delivered_cost_ron": 910.5,
+        "equivalent_replacement_cost_ron": 1700.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "Cloud T dual belt plus ISOFIX i-Size",
+        "quality": "Cybex Cloud T premium shell",
+        "condition": "Foarte buna per seller",
+        "versatility": "belt plus base install, stroller compatible",
+        "value": "Cloud T new ~1700-2000 RON",
+        "fit_probability": "0-13 kg matches 40-83/87cm hunt",
+        "duplication_probability": "no owned seat indicated"
+      },
+      "verification_concern": "none",
+      "verification_reason": "",
+      "hunt_fit": true,
+      "reason": "Cybex Cloud T i-Size in very good condition is a top dual-install shell but at 850 RON hard cap is poor price-quality"
+    },
+    "watch": "Broad scoică auto i-Size",
+    "seller_id": 201757322,
+    "seller": "simonas05"
   },
   {
     "item": {

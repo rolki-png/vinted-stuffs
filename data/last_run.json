@@ -1,14 +1,14 @@
 {
-  "finished_at": "2026-09-15T06:58:03.773042+00:00",
+  "finished_at": "2026-09-15T07:32:42.245143+00:00",
   "score_version": 2,
-  "scored": 0,
+  "scored": 1,
   "solo_keeps": 0,
   "bundles": 0,
   "value_hauls": 0,
   "near_hauls": 0,
   "alerts": 0,
   "score_histogram": {
-    "0-9": 0,
+    "0-9": 1,
     "10-19": 0,
     "20-29": 0,
     "30-39": 0,
@@ -19,5 +19,56 @@
     "80-89": 0,
     "90-100": 0
   },
-  "top": []
+  "top": [
+    {
+      "id": 7301459915,
+      "title": "LeGer by AboutYou Faux Leather Mini Skirt Dark Green Size S",
+      "price": 40.0,
+      "url": "https://www.vinted.ro/items/7301459915-leger-by-aboutyou-faux-leather-mini-skirt-dark-green-size-s",
+      "watch": "Broad scoică auto i-Size",
+      "score_version": 2,
+      "hunt_fit": false,
+      "reason": "Listing is a faux-leather mini skirt, not a dedicated i-Size infant carrier, so it has zero utility for this hunt.",
+      "buy_score": 0,
+      "buy_band": "skip",
+      "score_confidence": 0.0,
+      "score_interval_low": 0,
+      "score_interval_high": 0,
+      "score_factors": {
+        "usefulness": 0.0,
+        "quality": 50.0,
+        "condition": 68.0,
+        "versatility": 0.0,
+        "value": 50.0,
+        "fit_probability": 0.0,
+        "duplication_probability": 0.0,
+        "delivered_cost_ron": 60.0,
+        "equivalent_replacement_cost_ron": 0.0,
+        "personal_adjustments": {
+          "usefulness": 0.0,
+          "quality": 0.0,
+          "condition": 0.0,
+          "versatility": 0.0,
+          "value": 0.0,
+          "fit_probability": 0.0,
+          "duplication_probability": 0.0
+        }
+      },
+      "factor_evidence": {
+        "usefulness": "skirt, not a car seat",
+        "quality": "unknown - not a car seat, no materials",
+        "condition": "Foarte bună stated",
+        "versatility": "skirt, no car-seat use",
+        "value": "unknown - not an infant car seat",
+        "fit_probability": "mini skirt S, not 40-87cm carrier",
+        "duplication_probability": "not a car seat, no duplication"
+      },
+      "verification_concern": "block",
+      "verification_reason": "",
+      "rank_position": null,
+      "rank_confidence": null,
+      "seller_id": 188476168,
+      "seller": "mirceaxvlad"
+    }
+  ]
 }
